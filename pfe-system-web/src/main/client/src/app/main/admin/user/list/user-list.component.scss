@@ -1,0 +1,214 @@
+@import "src/@fuse/scss/fuse";
+
+:host {
+
+    #users {
+
+        .top-bg {
+            @include media-breakpoint('lt-md') {
+                height: 256px;
+            }
+        }
+
+        > .center {
+
+            > .header {
+
+                .search-wrapper {
+                    width: 100%;
+                    max-width: 480px;
+                    border-radius: 28px;
+                    overflow: hidden;
+                    @include mat-elevation(1);
+
+                    @include media-breakpoint('xs') {
+                        width: 100%;
+                    }
+
+                    .search {
+                        width: 100%;
+                        height: 48px;
+                        line-height: 48px;
+                        padding: 0 18px;
+                        background: white;
+                        
+                        mat-icon{
+                            color: rgba(0,0,0,.54);
+                        }
+                        input {
+                            width: 100%;
+                            height: 48px;
+                            min-height: 48px;
+                            max-height: 48px;
+                            padding: 0 16px;
+                            border: none;
+                            outline: none;
+                            color: black;
+                            
+                            &::placeholder{
+                                color: rgba(0,0,0,.54);
+                            }
+                        }
+                    }
+                }
+
+                @include media-breakpoint('lt-md') {
+                    padding: 8px 0;
+                    height: 192px !important;
+                    min-height: 192px !important;
+                    max-height: 192px !important;
+                }
+            }
+        }
+    }
+
+    .users-table {
+        flex: 1 1 auto;
+        border-bottom: 1px solid rgba(0, 0, 0, .12);
+        overflow: auto;
+        mat-cell:last-child{
+            padding: 0;
+        }
+        .mat-header-row {
+            min-height: 54px;
+        }
+
+        .user {
+            position: relative;
+            cursor: pointer;
+        }
+
+        .mat-cell {
+            min-width: 0;
+            display: flex;
+            align-items: left;
+        }
+
+        .mat-column-checkbox {
+            flex: 0 1 80px;
+        }
+
+        .mat-column-enabled {
+            flex: 0 1 80px;
+        }
+
+        .mat-column-employeeCode {
+            flex: 0 1 80px;
+        }
+
+        .mat-column-buttons {
+            flex: 0 1 80px;
+        }
+
+        .mat-column-active{
+            flex: 0 1 30px;
+        }
+
+        .mat-column-roles{
+            padding-bottom: 3px;
+            padding-top: 3px;
+        }
+        
+    }
+            
+    .example-container {
+            overflow: auto;
+            background-color: white;
+        }
+  
+    table {
+    width: 100%;
+    min-width: 850px;
+  }
+  
+}
+
+  
+.mat-menu-item {
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+    font-size: 14px;
+    line-height: 0px;
+    font-weight: 500;
+
+    .mat-icon {
+        margin-right: 6px;
+    }
+}
+
+
+.page-layout.carded.fullwidth {
+    .top-bg {
+        height: 152px;
+    }
+    .center {
+       .header {
+          height: 97px !important;
+          min-height: 97px !important;
+          max-height: 97px !important;
+              } 
+                } 
+                  }
+
+
+.add-button {
+    position: absolute;
+    bottom: 10px;
+    right: 5px;
+    padding: 0;
+    z-index: 99;
+        }
+
+    
+.HideTable {
+    display: none !important ;
+        }
+
+        .active-icon{
+            border-radius: 50%;
+        }
+
+
+        td.mat-column-checkbox {
+            padding-left: 8px;
+            padding-right: 8px;
+            width: 80px;
+        }
+        td.mat-column-username {
+            padding-left: 8px;
+            padding-right: 8px;
+        }
+        td.mat-column-employeeCode {
+            padding-left: 8px;
+            padding-right: 8px;
+        }
+        td.mat-column-roles {
+            padding-left: 8px;
+            padding-right: 8px;
+        }
+        td.mat-column-firstName {
+            padding-left: 8px;
+            padding-right: 8px;
+        }
+        
+        td.mat-column-lastName {
+            padding-left: 8px;
+            padding-right: 8px;
+        }
+        td.mat-column-structure{
+            padding-left: 8px;
+            padding-right: 8px;
+        }
+        td.mat-column-enabled{
+            padding-left: 8px;
+            padding-right: 8px;
+            height: 50px !important;
+        }
+        td.mat-column-buttons {
+            height: 52px;
+            width: 50px;            
+            }
+            .mat-checkbox{
+                padding-left: 8px;
+                padding-right: 8px;
+                font-size: 1px !important;
+            }

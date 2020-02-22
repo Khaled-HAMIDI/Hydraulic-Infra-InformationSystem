@@ -1,0 +1,56 @@
+<div fxLayout="row" fxLayout.xs="column" fxLayoutGap="30px" fxFlex="100">
+    <div fxLayout="column" fxFlex="50">
+        <ng-container *ngIf="showFilter">
+            <mat-form-field>
+                <mat-icon matPrefix class="mr-12 s-20 secondary-text">search</mat-icon>
+                <input matInput name="filter" [ngModel]="filterText" autocomplete="off"
+                    (ngModelChange)="filterItems($event)" placeholder="{{filterPlaceholder}}">
+            </mat-form-field>
+        </ng-container>
+         <fieldset class="duallistbox-fieldset">
+           <legend>{{itemsTitle}} ( {{itemsFiltered.length}} )</legend>
+            <mat-nav-list>
+                <div style="overflow-y: auto;height: 40vh;"> 
+                    <mat-list-item style="width:30px;" *ngFor="let item of itemsFiltered" (click)="addItem(item)">
+                        <mat-icon fxHide.xs mat-list-icon>arrow_forward</mat-icon>
+                        <span *ngFor="let property of properties">
+                            <span *ngIf="item" class="mr-12" matLine>{{ item[property] }}</span>
+                        </span>
+                    </mat-list-item>
+              </div>
+            </mat-nav-list>
+          </fieldset>
+    </div>
+
+    <div fxLayout="column" class="selectAllButtons">
+        <button  mat-fab  (click)="addItems()">
+            <mat-icon>last_page</mat-icon>
+        </button><br>
+        <button  mat-fab  (click)="removeItems()">
+            <mat-icon >first_page</mat-icon>
+        </button>
+    </div>
+
+    <div fxLayout="column" fxFlex="50">
+        <ng-container *ngIf="showFilter">
+            <mat-form-field>
+                <mat-icon matPrefix class="mr-12 s-20 secondary-text">search</mat-icon>
+                <input matInput name="filter" [ngModel]="filterSelectedText" autocomplete="off"
+                    (ngModelChange)="filterSelectedItems($event)" placeholder="{{filterPlaceholder}}">
+            </mat-form-field>
+        </ng-container>
+        <fieldset class="duallistbox-fieldset">
+            <legend>{{itemsSelectedTitle}} ( {{selectedItemsFiltered.length}} )</legend>
+            <mat-nav-list>
+                <div style="overflow-y: auto;height: 40vh;">
+                    <mat-list-item style="width:30px;" *ngFor="let item of selectedItemsFiltered" (click)="removeItem(item)">
+                        <mat-icon fxHide.xs mat-list-icon>arrow_back</mat-icon>
+                        <span *ngFor="let property of properties">
+                            <span *ngIf="item" class="mr-12" matLine>{{ item[property] }}</span>
+                        </span>
+                    </mat-list-item>
+                </div>
+            </mat-nav-list>
+        </fieldset>
+    </div>
+</div>

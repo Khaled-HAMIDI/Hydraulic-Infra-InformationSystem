@@ -1,0 +1,75 @@
+@import "src/@fuse/scss/fuse";
+
+toolbar {
+    position: relative;
+    display: flex;
+    flex: 0 0 auto;
+    z-index: 4;
+    &.below {
+        z-index: 2;
+    }
+
+    .mat-toolbar {
+        position: relative;
+        background: inherit !important;
+        color: inherit !important;
+    }
+
+    .logo {
+        display: flex;
+        align-items: center;
+
+        .logo-icon {
+            width: 38px;
+        }
+    }
+
+    .user-button,
+    fuse-search-bar,
+    .language-button,
+    .notification-button,
+    .chat-panel-toggle-button,
+    .quick-panel-toggle-button {
+        min-width: 64px;
+        height: 64px;
+
+        @include media-breakpoint('xs') {
+            height: 56px;
+        }
+    }
+
+    .navbar-toggle-button {
+        min-width: 56px;
+        height: 56px;
+    }
+   
+    .toolbar-separator {
+        height: 64px;
+        width: 1px;
+
+        @include media-breakpoint('xs') {
+            height: 56px;
+        }
+    }
+    
+}
+
+.notification-title {
+    font-weight: bold !important;
+    background-color: #F5F5F5 !important;
+    color: #039BE5 !important;
+}
+
+.notification-view-all:hover{
+    text-decoration: none !important; 
+}
+
+.notificationcolor {
+    background-color: #E6F3F4 !important;
+    border-color: #dddddd !important;
+ }
+ .notification-list{
+     border-block-end:  0.5px solid #E0E0E0 !important;
+     cursor: pointer;
+     background-color: white;
+ }

@@ -1,0 +1,6 @@
+<h1 matDialogTitle class="{{'CONFIRM-DIALOG.text-align' | translate}}">{{'CONFIRM-DIALOG.title' | translate}}</h1>
+<div mat-dialog-content class="{{'CONFIRM-DIALOG.text-align' | translate}}">{{confirmMessage}}</div>
+<div mat-dialog-actions class="pt-24 {{'CONFIRM-DIALOG.float' | translate}}">
+    <button mat-button (click)="dialogRef.close(false)">{{'CONFIRM-DIALOG.cancelButton' | translate}}</button>
+    <button mat-raised-button class="float-right mat-accent mg" (click)="dialogRef.close(true)">{{'CONFIRM-DIALOG.confirmButton' | translate}}</button>
+</div>

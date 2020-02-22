@@ -1,0 +1,55 @@
+<div>
+    <div class="group" *ngFor="let entityName of entitiesName">
+        <h2>{{"ENTITY-ENUM."+EntityName[entityName] | translate}}</h2>
+        <div class="fx">
+        <ng-container *ngFor="let upload of uploadFiles ; let i=index;">
+            <div *ngIf="upload.attachmentEntity == entityName" id="attachPin" class="pr-8">
+                <input hidden [name]="upload.name" [accept]="upload.format" id="sel{{upload.id}}"
+                    [attr.multiple]="upload.multiple ? '' : null" name="files[]" (change)="onChange($event, i)"
+                    type="file" #fileInput />
+
+                <button (click)="attachOrGetFile(i)" mat-raised-button [ngClass]="{bgc: upload.resetUpload && !upload.fileExiste,
+                fileColor: upload.fileExiste}" color="primary">
+
+                    <mat-icon *ngIf="!upload.resetUpload && showAndUpdate">attach_file</mat-icon>
+                    <mat-icon *ngIf="upload.resetUpload && !upload.fileExiste">done</mat-icon>
+                    <mat-icon *ngIf="upload.fileExiste">print</mat-icon>
+
+                    <span> {{upload.title}} </span>
+                </button>​
+                <ng-container *ngIf="showAndUpdate">
+                    <div fxLayout="row">
+                        <button *ngIf="upload.resetUpload" (click)="resetFileUpload(i)"
+                            class="td-file-upload-cancel mat-icon mat-icon-button mat-primary" type="button">
+                            <span class="mat-button-wrapper">
+                                <mat-icon aria-hidden="true">cancel</mat-icon>
+                            </span>
+                            <div class="mat-button-ripple mat-ripple mat-button-ripple-round" matripple=""></div>
+                            <div class="mat-button-focus-overlay"></div>
+                        </button>
+
+                        <ng-container *ngFor="let notAllowedItem of upload.notAllowedList">
+                            <ng-container>{{notAllowedItem.errorMsg}}</ng-container>
+                        </ng-container>
+                    </div>
+
+                    <div class="container" fxLayout="column" fxLayoutAlign="space-evenly stretch">
+                        <mat-dialog-content fxFlex>
+                            <mat-list>
+                                <mat-list-item *ngFor="let file of upload.selectedFiles" class="custom-margin">
+
+                                    <mat-progress-bar *ngIf="upload.progress" mode="determinate"
+                                        [value]="upload.progress[file.name]?.progress | async"></mat-progress-bar>
+
+                                </mat-list-item>
+                            </mat-list>
+                        </mat-dialog-content>
+
+                    </div>
+                </ng-container>
+
+            </div>
+        </ng-container>
+        </div>
+    </div>
+</div>

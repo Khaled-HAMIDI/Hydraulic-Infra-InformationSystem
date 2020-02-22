@@ -1,0 +1,109 @@
+<ng-container *ayamsHasAnyPermissions="['profils:show','profils:*','*:show','*:*']">
+    <div id="profil" class="page-layout carded fullwidth inner-scroll">
+
+        <!-- TOP BACKGROUND -->
+        <div class="top-bg accent"></div>
+        <!-- / TOP BACKGROUND -->
+
+        <!-- CENTER -->
+        <div class="center">
+
+            <!-- HEADER -->
+            <div class="header accent" fxLayout="row" fxLayoutAlign="space-between center">
+
+                <!-- APP TITLE -->
+                <div fxLayout="row" fxLayoutAlign="start center">
+
+                    <button mat-icon-button class="mr-0 mr-sm-16" [routerLink]="'/admin/profils'">
+                        <mat-icon>arrow_back</mat-icon>
+                    </button>
+
+
+                    <div fxLayout="column" fxLayoutAlign="start start"
+                        [@animate]="{value:'*',params:{delay:'100ms',x:'-25px'}}">
+                        <div class="h2">
+                            {{'SHOW.HEADER.title' | translate}}
+                        </div>
+
+                    </div>
+                </div>
+                <!-- / APP TITLE -->
+
+
+            </div>
+            <!-- / HEADER -->
+
+            <!-- CONTENT CARD -->
+            <div class="content-card mat-white-bg">
+
+                <!-- CONTENT -->
+                <div class="content">
+                    <div class="tab-content p-24" fusePerfectScrollbar>
+                        <div fxLayout="column">
+                            <ng-container *ngIf="profil.systemEntity">
+                                <ayams-alerts myText="{{'SHOW.TEXTS.system-entity'| translate}}" type="info">
+                                </ayams-alerts>
+                            </ng-container>
+                        </div>
+
+                        <div fxLayout="row" fxLayout.xs="column">
+                            <div fxFlex>
+                                <p class="myLabel">{{'SHOW.LABEL.name' | translate}}</p>
+                                <p class="myp">
+                                    <mat-icon matPrefix class="mr-12 s-20" color="accent">crop_free</mat-icon>
+                                    <span>{{profil.role}}</span>
+                                </p>
+                            </div>
+
+                            <div fxFlex>
+                                <p class="myLabel">{{'SHOW.LABEL.designation' | translate}}</p>
+                                <p class="myp">
+                                    <mat-icon matPrefix class="mr-12 s-20" color="accent">crop_free</mat-icon>
+                                    <span>{{profil.designation}}</span>
+                                </p>
+                            </div>
+                        </div>
+
+                        <div fxLayout="row" fxLayout.xs="column">
+                            <div fxFlex>
+                                <p class="myLabel">{{'SHOW.LABEL.creationDate' | translate}}</p>
+                                <p class="myp">
+                                    <mat-icon matPrefix class="mr-12 s-20" color="accent">calendar_today</mat-icon>
+                                    <span>{{profil.creationDate | date:'dd MMMM yyyy'}}</span>
+                                </p>
+                            </div>
+
+                            <div *ngIf="profil.lastModifiedDate" fxFlex>
+                                <p class="myLabel">{{'SHOW.LABEL.lastModifiedDate' | translate}}</p>
+                                <p class="myp">
+                                    <mat-icon matPrefix class="mr-12 s-20" color="accent">calendar_today</mat-icon>
+                                    <span>{{profil.lastModifiedDate | date:'dd MMMM yyyy'}}</span>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="w-100-p">
+                            <p class="myLabel">{{'SHOW.LABEL.authorities' | translate}}</p>
+                            <p class="myp">
+                                <mat-chip-list>
+                                    <div class="icon-permission">
+                                        <mat-icon matPrefix class="mr-12 s-20" color="accent">lock_open</mat-icon>
+                                    </div>
+                                    <div class="chip-list-permission">
+                                        <mat-chip *ngFor="let authority of profil.authorities">
+                                            {{authority.description}}
+                                        </mat-chip>
+                                    </div>
+                                </mat-chip-list>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <!-- / CONTENT -->
+
+            </div>
+            <!-- / CONTENT CARD -->
+
+        </div>
+        <!-- / CENTER -->
+    </div>
+</ng-container>

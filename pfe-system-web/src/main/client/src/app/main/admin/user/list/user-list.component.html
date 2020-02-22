@@ -1,0 +1,225 @@
+<div id="users" class="page-layout carded fullwidth inner-scroll">
+
+    <!-- SELECTED BAR -->
+    <selected-bar [ngStyle]="{ 'height': heightDyn() }" class="accent-600" *ngIf="selectBarDisplayed" [@slideInTop]>
+    </selected-bar>
+    <!-- / SELECTED BAR -->
+
+    <!-- TOP BACKGROUND -->
+    <div class="top-bg accent" id="headerHeight"></div>
+    <!-- / TOP BACKGROUND -->
+
+    <!-- CENTER -->
+    <div [ngClass]="{HideTable: emptyList}" class="center">
+
+        <!-- HEADER -->
+        <div class="header accent" fxLayout="column" fxLayoutAlign="center center" fxLayout.gt-sm="row"
+            fxLayoutAlign.gt-sm="space-between center">
+
+            <!-- APP TITLE -->
+            <div class="logo my-12 m-sm-0" fxLayout="row" fxLayoutAlign="start center">
+                <span class="logo-text h1">
+                    {{'LIST.HEADER.title' | translate}}
+                </span>
+            </div>
+            <!-- / APP TITLE -->
+
+            <!-- SEARCH -->
+            <ng-container *ayamsHasAnyPermissions="['users:export','users:*','*:export','*:*']">
+                <div class="search-wrapper mx-32 mx-md-0">
+                    <div class="search" fxFlex fxLayout="row" fxLayoutAlign="start center">
+                        <mat-icon>search</mat-icon>
+                        <input matInput (keyup)="applyFilter($event.target.value)"
+                            placeholder="{{'LIST.HEADER.search' | translate}}">
+                    </div>
+                </div>
+                <!-- / SEARCH -->
+
+                <button mat-raised-button (click)="export()" class="mat-white-bg mt-24 mt-md-0" [disabled]="!btnExport">
+                    <span>{{'LIST.HEADER.export' | translate}}</span>
+                </button>
+            </ng-container>
+        </div>
+        <!-- / HEADER -->
+
+        <!-- CONTENT CARD -->
+        <ng-container *ayamsHasAnyPermissions="['users:list','users:*','*:list','*:*']">
+
+            <div class="example-container mat-white-bg">
+
+                <table mat-table  [dataSource]="dataSource" matSort >
+                    <!-- Checkbox Column -->
+                    <ng-container matColumnDef="checkbox">
+                        <th mat-header-cell *matHeaderCellDef></th>
+                        <td mat-cell *matCellDef="let user">
+                            <mat-checkbox [(ngModel)]="usersCheckbox[user.id]" (ngModelChange)="onSelectedChange(user)"
+                                (click)="$event.stopPropagation()">
+                            </mat-checkbox>
+                        </td>
+                    </ng-container>
+
+                    <!-- UserName Column -->
+                    <ng-container matColumnDef="username">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header>{{'LIST.TABLE.username' | translate}}
+                        </th>
+                        <td mat-cell *matCellDef="let user">
+                            <p class="text-truncate">{{user.username}}</p>
+                        </td>
+                    </ng-container>
+
+                    <!-- employyeCode Column -->
+                    <ng-container matColumnDef="employeeCode">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header>{{'LIST.TABLE.employee-code' | translate}}
+                        </th>
+                        <td mat-cell *matCellDef="let user">
+                            <p class="text-truncate">{{user.employeeCode}}</p>
+                        </td>
+                    </ng-container>
+
+                    <!-- Permissions Column -->
+                    <ng-container matColumnDef="roles">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header>{{'LIST.TABLE.roles' | translate}}
+                        </th>
+                        <td mat-cell *matCellDef="let user">
+                            <mat-chip-list class="text-truncate">
+                                <span *ngFor="let role of user.roles;let i = index">
+                                    <mat-chip *ngIf="i<3">
+                                        {{ role }}
+                                    </mat-chip>
+                                    <span *ngIf="i == 3">....</span>
+                                </span>
+                            </mat-chip-list>
+                        </td>
+                    </ng-container>
+
+                    <!-- Adresse Column -->
+                    <ng-container matColumnDef="firstName">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header>{{'LIST.TABLE.firstName' | translate}}
+                        </th>
+                        <td mat-cell *matCellDef="let user">
+                            <p class="text-truncate">{{user.firstName}}</p>
+                        </td>
+                    </ng-container>
+
+                    <!-- userType Column -->
+                    <ng-container matColumnDef="lastName">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header>{{'LIST.TABLE.lastName' | translate}}
+                        </th>
+                        <td mat-cell *matCellDef="let user">
+                            <p class="category text-truncate">
+                                {{user.lastName}}
+                            </p>
+                        </td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="structure">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header>{{'LIST.TABLE.structure' | translate}}
+                        </th>
+                        <td mat-cell *matCellDef="let user">
+                            <p class="category text-truncate">
+                                {{user.structure}}
+                            </p>
+                        </td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="enabled">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header>{{'LIST.TABLE.enabled' | translate}}
+                        </th >
+                        <td mat-cell *matCellDef="let user">
+                            <mat-icon *ngIf="user.enabled" class="active-icon green-600-bg fuse-white-500-fg s-16">check
+                            </mat-icon>
+                            <mat-icon *ngIf="!user.enabled" class="active-icon red-500-bg fuse-white-500-fg s-16">close
+                            </mat-icon>
+                        </td>
+                    </ng-container>
+
+                    <!-- Buttons Column -->
+                    <ng-container matColumnDef="buttons" stickyEnd>
+                        <th mat-header-cell *matHeaderCellDef></th>
+                        <td mat-cell *matCellDef="let user">
+                            <div fxFlex="row" fxLayoutAlign="center">
+
+                                <button mat-icon-button [matMenuTriggerFor]="moreMenu" aria-label="More"
+                                    (click)="$event.stopPropagation();">
+                                    <mat-icon class="secondary-text">more_vert</mat-icon>
+                                </button>
+
+                                <mat-menu #moreMenu="matMenu">
+                                    <ng-container *ayamsHasAnyPermissions="['users:edit','users:*','*:edit','*:*']">
+                                        <button mat-menu-item aria-label="edit"
+                                            (click)="router.navigate(['/admin/users/'+user.id+'/edit'])">
+                                            <mat-icon>edit</mat-icon>
+                                            <span>{{'LIST.TABLE.action.edit' | translate}}</span>
+                                        </button>
+                                    </ng-container>
+                                    <ng-container *ayamsHasAnyPermissions="['users:delete','users:*','*:delete','*:*']">
+                                        <button mat-menu-item aria-label="remove" (click)="onDelete(user)">
+                                            <mat-icon>delete</mat-icon>
+                                            <span>{{'LIST.TABLE.action.remove' | translate}}</span>
+                                        </button>
+                                    </ng-container>
+                                    <ng-container
+                                        *ayamsHasAnyPermissions="['users:resetPassword','users:*','*:resetPassword','*:*']">
+                                        <button mat-menu-item aria-label="reset" (click)="onResetPswd(user)">
+                                            <mat-icon>lock</mat-icon>
+                                            <span>{{'LIST.TABLE.action.reset_pswd' | translate}}</span>
+                                        </button>
+                                    </ng-container>
+                                </mat-menu>
+                            </div>
+
+                        </td>
+                    </ng-container>
+
+                    <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky:true"></tr>
+                    <ng-container *ayamsHasAnyPermissions="['users:show','users:*','*:show','*:*']">
+                        <tr mat-row *matRowDef="let user; columns: displayedColumns;" class="user" matRipple
+                            [@animate]="{value:'*',params:{y:'100%'}}"
+                            (click)="router.navigate(['/admin/users/'+user.id+'/show'])">
+                        </tr>
+                    </ng-container>
+                </table>
+
+            </div>
+        </ng-container>
+        <mat-paginator [pageSizeOptions]="pageSizeOptions"></mat-paginator>
+
+
+        <!-- / CONTENT CARD -->
+    </div>
+    <!-- / CENTER -->
+    <!-- CENTER -->
+    <div [ngClass]="{HideTable: !emptyList}" class="center">
+
+        <!-- HEADER -->
+        <div class="header accent" fxLayout="column" fxLayoutAlign="center center" fxLayout.gt-sm="row"
+            fxLayoutAlign.gt-sm="space-between center">
+
+            <!-- APP TITLE -->
+            <div class="logo my-12 m-sm-0" fxLayout="row" fxLayoutAlign="start center">
+                <span class="logo-text h1">
+                    {{'LIST.HEADER.title' | translate}}
+                </span>
+            </div>
+
+        </div>
+        <!-- / HEADER -->
+
+        <!-- CONTENT CARD -->
+        <div class="example-container mat-white-bg">
+            <mat-card>
+                <h2 fxLayoutAlign="center center">
+                    {{'EMPTY-LIST.msg' | translate}}
+                </h2>
+            </mat-card>
+        </div>
+
+    </div>
+    <ng-container *ayamsHasAnyPermissions="['users:add','users:*','*:add','*:*']">
+        <button mat-fab class="accent add-button" [routerLink]="'/admin/users/add'"
+            matTooltip="{{'LIST.BUTTON.add' | translate}}" matTooltipPosition="left" *fuseIfOnDom
+            [@animate]="{value:'*',params:{delay:'300ms',scale:'.2'}}">
+            <mat-icon>person_add</mat-icon>
+        </button>
+    </ng-container>
+</div>

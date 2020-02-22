@@ -1,0 +1,183 @@
+<ng-container *ayamsHasAnyPermissions="['users:show','users:*','*:show','*:*']">
+    <div id="user" class="page-layout carded fullwidth inner-scroll">
+
+        <!-- TOP BACKGROUND -->
+        <div class="top-bg accent"></div>
+        <!-- / TOP BACKGROUND -->
+
+        <!-- CENTER -->
+        <div class="center">
+
+            <!-- HEADER -->
+            <div class="header accent" fxLayout="row" fxLayoutAlign="space-between center">
+
+                <!-- APP TITLE -->
+                <div fxLayout="row" fxLayoutAlign="start center">
+
+                    <button mat-icon-button class="mr-0 mr-sm-16" [routerLink]="'/admin/users'">
+                        <mat-icon>arrow_back</mat-icon>
+                    </button>
+
+
+                    <div fxLayout="column" fxLayoutAlign="start start"
+                        [@animate]="{value:'*',params:{delay:'100ms',x:'-25px'}}">
+                        <div class="h2">
+                            {{'SHOW.HEADER.title' | translate}} {{user.firstName}} {{user.lastName}}
+                        </div>
+
+                    </div>
+                </div>
+                <!-- / APP TITLE -->
+
+
+            </div>
+            <!-- / HEADER -->
+
+            <!-- CONTENT CARD -->
+            <div class="content-card mat-white-bg">
+
+                <!-- CONTENT -->
+                <div class="content">
+
+                    <div class="tab-content p-24" fusePerfectScrollbar>
+
+                        <div fxLayout="column" fxLayout.gt-sm="row">
+                            <div class="mr-sm-12 ml-sm-12" fxFlex>
+                                <fieldset class="myfieldset">
+                                    <legend>{{'SHOW.LEGENDS.infos-perso' | translate}}</legend>
+
+                                    <div class="mr-sm-24" fxFlex>
+                                        <p class="myLabel">{{'SHOW.LABEL.lastName' | translate}}</p>
+                                        <p class="myp">
+                                            <mat-icon matPrefix class="mr-12 s-20" color="accent">person</mat-icon>
+                                            <span>{{user.lastName}}</span>
+                                        </p>
+                                    </div>
+
+                                    <div class="mr-sm-24" fxFlex>
+                                        <p class="myLabel">{{'SHOW.LABEL.firstName' | translate}}</p>
+                                        <p class="myp">
+                                            <mat-icon matPrefix class="mr-12 s-20" color="accent">person</mat-icon>
+                                            <span>{{user.firstName}}</span>
+                                        </p>
+                                    </div>
+
+                                    <div class="mr-sm-24" fxFlex>
+                                        <p class="myLabel">{{'SHOW.LABEL.phoneNumber' | translate}}</p>
+                                        <p class="myp">
+                                            <mat-icon matPrefix class="mr-12 s-20" color="accent">phone</mat-icon>
+                                            <span>{{user.phoneNumber}}</span>
+                                        </p>
+                                    </div>
+
+                                    <div class="mr-sm-24" fxFlex>
+                                        <p class="myLabel">{{'SHOW.LABEL.email' | translate}}</p>
+                                        <p class="myp">
+                                            <mat-icon matPrefix class="mr-12 s-20" color="accent">email</mat-icon>
+                                            <span>{{user.email}}</span>
+                                        </p>
+                                    </div>
+                                </fieldset>
+                            </div>
+
+
+                            <div class="mr-sm-12 ml-sm-12" fxFlex>
+                                <fieldset class="myfieldset">
+                                    <legend>{{'SHOW.LEGENDS.infos-user' | translate}}</legend>
+
+                                    <div class="mr-sm-24" fxFlex>
+                                        <p class="myLabel">{{'SHOW.LABEL.username' | translate}}</p>
+                                        <p class="myp">
+                                            <mat-icon matPrefix class="mr-12 s-20" color="accent">account_box</mat-icon>
+                                            <span>{{user.username}}</span>
+                                        </p>
+                                    </div>
+
+                                    <div class="mr-sm-24" fxFlex>
+                                        <p class="myLabel">{{'SHOW.LABEL.employee-code' | translate}}</p>
+                                        <p class="myp">
+                                            <mat-icon matPrefix class="mr-12 s-20" color="accent">keyboard</mat-icon>
+                                            <span>{{user.employeeCode}}</span>
+                                        </p>
+                                    </div>
+
+                                    <div class="w-100-p">
+                                        <p class="myLabel">{{'SHOW.LABEL.roles' | translate}}</p>
+                                        <p class="myp">
+                                            <mat-chip-list>
+                                                <div class="icon-profil">
+                                                    <mat-icon matPrefix class="mr-12 s-20" color="accent">lock_open
+                                                    </mat-icon>
+                                                </div>
+                                                <div class="chip-list-profil">
+                                                    <mat-chip *ngFor="let role of user.roles">
+                                                        {{role.designation}}
+                                                    </mat-chip>
+                                                </div>
+                                            </mat-chip-list>
+                                        </p>
+                                    </div>
+
+                                    <div class="active_div">
+                                        <span *ngIf="user.enabled">
+                                            <mat-icon class="active-icon green-600-bg fuse-white-500-fg s-16">check
+                                            </mat-icon>
+                                            {{ 'SHOW.LABEL.active' | translate }}
+                                        </span>
+                                        <span *ngIf="!user.enabled">
+                                            <mat-icon class="active-icon red-500-bg fuse-white-500-fg s-16">close
+                                            </mat-icon>
+                                            {{ 'SHOW.LABEL.inactive' | translate }}
+                                        </span>
+                                    </div>
+                                </fieldset>
+                            </div>
+                        </div>
+
+                        <div fxLayout="column" class="mr-sm-12 ml-sm-12">
+                            <fieldset class="myfieldset2">
+                                <legend>{{'SHOW.LEGENDS.structure' | translate}}</legend>
+                                <div fxLayout="column" fxLayout.gt-sm="row">
+                                    <div *ngIf="user.structure.type == 'UNIT'" class="mr-sm-24" fxFlex>
+                                        <p class="myLabel">{{'SHOW.LABEL.unit' | translate}}</p>
+                                        <p class="myp">
+                                            <mat-icon matPrefix class="mr-12 s-20" color="accent">home</mat-icon>
+                                            <span>{{user.structure.designation}}</span>
+                                        </p>
+                                    </div>
+
+                                    <div *ngIf="user.structure.type == 'CENTER' || user.structure.type == 'AGENCY'"
+                                        class="mr-sm-24" fxFlex>
+                                        <p class="myLabel">{{'SHOW.LABEL.center' | translate}}</p>
+                                        <p class="myp">
+                                            <mat-icon matPrefix class="mr-12 s-20" color="accent">location_city
+                                            </mat-icon>
+                                            <span
+                                                *ngIf="user.structure.type == 'CENTER'">{{user.structure.designation}}</span>
+                                            <span
+                                                *ngIf="user.structure.parentStructure?.type == 'CENTER'">{{user.structure.parentStructure.designation}}</span>
+                                        </p>
+                                    </div>
+
+                                    <div *ngIf="user.structure.type == 'AGENCY'" class="mr-sm-24" fxFlex>
+                                        <p class="myLabel">{{'SHOW.LABEL.agency' | translate}}</p>
+                                        <p class="myp">
+                                            <mat-icon matPrefix class="mr-12 s-20" color="accent">domain</mat-icon>
+                                            <span>{{user.structure.designation}}</span>
+                                        </p>
+                                    </div>
+                                </div>
+                            </fieldset>
+                        </div>
+
+                    </div>
+                </div>
+                <!-- / CONTENT -->
+
+            </div>
+            <!-- / CONTENT CARD -->
+
+        </div>
+        <!-- / CENTER -->
+    </div>
+</ng-container>

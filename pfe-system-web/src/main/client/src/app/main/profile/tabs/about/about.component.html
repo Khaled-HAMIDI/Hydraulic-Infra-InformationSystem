@@ -1,0 +1,104 @@
+<div id="about" class="p-24" fxLayout="row wrap">
+
+    <div class="about-content" fxLayout="column" fxFlex="100" fxFlex.gt-sm="50" fxFlex.gt-md="65">
+
+        <!-- GENERAL INFORMATIONS -->
+        <div class="profile-box info-box general" fxLayout="column">
+
+            <header class="accent">
+                <div class="title">{{ 'GENERAL-INFORMATIONS.TITLE' | translate }}</div>
+            </header>
+
+            <div class="content">
+                <!-- FIRST NAME -->
+                <div class="info-line">
+                    <div class="title">{{ 'GENERAL-INFORMATIONS.FIRST-NAME' | translate }}</div>
+                    <div class="info">{{ user.firstName }}</div>
+                </div>
+                <!-- LAST NAME -->
+                <div class="info-line">
+                    <div class="title">{{ 'GENERAL-INFORMATIONS.LAST-NAME' | translate }}</div>
+                    <div class="info">{{ user.lastName }}</div>
+                </div>
+                <!-- EMPLOYEE CODE -->
+                <div class="info-line">
+                    <div class="title">{{ 'GENERAL-INFORMATIONS.EMPLOYEE-CODE' | translate }}</div>
+                    <div class="info">{{ user.employeeCode }}</div>
+                </div>
+                <!-- EMAIL -->
+                <div class="info-line">
+                    <div class="title">{{ 'GENERAL-INFORMATIONS.EMAIL' | translate }}</div>
+                    <div class="info">{{ user.email }}</div>
+                </div>
+                <!-- PHONE NUMBER -->
+                <div class="info-line">
+                    <div class="title">{{ 'GENERAL-INFORMATIONS.PHONE-NUMBER' | translate }}</div>
+                    <div class="info">{{ user.phoneNumber }}</div>
+                </div>
+            </div>
+
+        </div>
+
+
+    </div>
+
+    <div class="about-sidebar groups" fxLayout="column" fxFlex="100" fxFlex.gt-sm="50" fxFlex.gt-md="35">
+
+        <!-- STRUCTURE INFORMATIONS -->
+        <div class="profile-box groups" fxLayout="column">
+
+            <header class="accent" fxLayout="row" fxLayoutAlign="space-between center">
+                <div class="title">{{ 'STRUCTURE-INFORMATIONS.TITLE' | translate }}</div>
+            </header>
+
+            <div class="content">
+                <!-- CURRENT STRUCTURE -->
+                <div class="group" fxLayout="row" fxLayoutAlign="space-between center">
+                    <div fxLayout="row" fxLayoutAlign="start center">
+                        <!-- LOGO -->
+                        <div class="logo">{{ user.structure.type.substring(0,1) | uppercase }}</div>
+                        <div>
+                            <!-- DESIGNATION -->
+                            <div class="name">{{ user.structure.designation }}</div>
+                            <!-- TYPE -->
+                            <div class="category">{{ user.structure.type }}</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PARENT STRUCTURE -->
+                <div *ngIf="user.structure.parentStructure" class="group" fxLayout="row" fxLayoutAlign="space-between center">
+                    <div fxLayout="row" fxLayoutAlign="start center">
+                        <!-- LOGO -->
+                        <div class="logo">{{ user.structure.parentStructure.type.substring(0,1) | uppercase  }}</div>
+                        <div>
+                            <!-- DESIGNATION -->
+                            <div class="name">{{ user.structure.parentStructure.designation }}</div>
+                            <!-- TYPE -->
+                            <div class="category">{{ user.structure.parentStructure.type }}</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- GRAND PARENT STRUCTURE -->
+                <div *ngIf="user.structure.parentStructure?.parentStructure" class="group" fxLayout="row" fxLayoutAlign="space-between center">
+                    <div fxLayout="row" fxLayoutAlign="start center">
+                        <!-- LOGO -->
+                        <div class="logo">{{ user.structure.parentStructure.parentStructure.type.substring(0,1) | uppercase }}</div>
+                        <div>
+                            <!-- DESIGNATION -->
+                            <div class="name">{{ user.structure.parentStructure.parentStructure.designation }}</div>
+                            <!-- TYPE -->
+                            <div class="category">{{ user.structure.parentStructure.parentStructure.type }}</div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+</div>

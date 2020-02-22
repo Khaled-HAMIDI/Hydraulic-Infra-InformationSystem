@@ -1,0 +1,218 @@
+<div id="agencies" class="page-layout carded fullwidth inner-scroll">
+
+    <!-- SELECTED BAR -->
+    <selected-bar [ngStyle]="{ 'height': heightDyn() }" class="accent-600" *ngIf="selectBarDisplayed" [@slideInTop]>
+    </selected-bar>
+    <!-- / SELECTED BAR -->
+
+    <!-- TOP BACKGROUND -->
+    <div class="top-bg accent" id="headerHeight"></div>
+    <!-- / TOP BACKGROUND -->
+
+    <!-- CENTER -->
+    <div [ngClass]="{HideTable: emptyList}" class="center">
+
+        <!-- HEADER -->
+        <div class="header accent" fxLayout="column" fxLayoutAlign="center center" fxLayout.gt-sm="row"
+            fxLayoutAlign.gt-sm="space-between center">
+
+            <!-- APP TITLE -->
+            <div class="logo my-12 m-sm-0" fxLayout="row" fxLayoutAlign="start center">
+                <span class="logo-text h1">
+                    {{'LIST.HEADER.title' | translate}}
+                </span>
+            </div>
+            <!-- / APP TITLE -->
+
+            <!-- SEARCH -->
+            <ng-container *ayamsHasAnyPermissions="['agencies:export','agencies:*','*:export','*:*']">
+                <div class="search-wrapper mx-32 mx-md-0">
+                    <div class="search" fxFlex fxLayout="row" fxLayoutAlign="start center">
+                        <mat-icon>search</mat-icon>
+                        <input matInput (keyup)="applyFilter($event.target.value)"
+                            placeholder="{{'LIST.HEADER.search' | translate}}">
+                    </div>
+                </div>
+                <!-- / SEARCH -->
+                <button [disabled]="!btnExport" mat-raised-button (click)="export()" class="mat-white-bg mt-24 mt-md-0">
+                    <span>{{'LIST.HEADER.export' | translate}}</span>
+                </button>
+            </ng-container>
+        </div>
+        <!-- / HEADER -->
+
+        <!-- CONTENT CARD -->
+        <ng-container *ayamsHasAnyPermissions="['agencies:list','agencies:*','*:list','*:*']">
+            <div class="example-container mat-white-bg">
+
+                <table mat-table [dataSource]="dataSource" matSort>
+
+                    <!-- Checkbox Column -->
+                    <ng-container matColumnDef="checkbox">
+                        <th mat-header-cell *matHeaderCellDef></th>
+                        <td mat-cell *matCellDef="let agency">
+                            <mat-checkbox [(ngModel)]="agenciesCheckbox[agency.id]"
+                                (ngModelChange)="onSelectedChange(agency)" (click)="$event.stopPropagation()">
+                            </mat-checkbox>
+                        </td>
+                    </ng-container>
+
+                    <!-- Code Column -->
+                    <ng-container matColumnDef="code">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header>{{'LIST.TABLE.code' | translate}}
+                        </th>
+                        <td mat-cell *matCellDef="let agency">
+                            <p class="text-truncate">{{agency.code}}</p>
+                        </td>
+                    </ng-container>
+
+                    <!-- Adresse Column -->
+                    <ng-container matColumnDef="address">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header>{{'LIST.TABLE.address' | translate}}
+                        </th>
+                        <td mat-cell *matCellDef="let agency">
+                            <p class="text-truncate">{{agency.address}}</p>
+                        </td>
+                    </ng-container>
+
+                    <!-- AgencyType Column -->
+                    <ng-container matColumnDef="agencyType">
+                        <th mat-header-cell *matHeaderCellDef fxHide mat-sort-header fxShow.gt-xs>{{'LIST.TABLE.agencyType' |
+                        translate}}</th>
+                        <td mat-cell *matCellDef="let agency" fxHide fxShow.gt-xs>
+                            <p class="category text-truncate">
+                                {{agency.agencyType}}
+                            </p>
+                        </td>
+                    </ng-container>
+
+                    <!-- AgencyType Column -->
+                    <ng-container matColumnDef="center">
+                        <th mat-header-cell *matHeaderCellDef fxHide mat-sort-header fxShow.gt-xs>{{'LIST.TABLE.center' |
+                        translate}}</th>
+                        <td mat-cell *matCellDef="let agency" fxHide fxShow.gt-xs>
+                            <p class="category text-truncate">
+                                {{agency.center}}
+                            </p>
+                        </td>
+                    </ng-container>
+
+                    <!-- Designation Column -->
+                    <ng-container matColumnDef="designation">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header fxHide fxShow.gt-xs>{{'LIST.TABLE.designation' |
+                        translate}}</th>
+                        <td mat-cell *matCellDef="let agency" fxHide fxShow.gt-xs>
+                            <p class="price text-truncate">
+                                {{agency.designation}}
+                            </p>
+                        </td>
+                    </ng-container>
+
+                    <!-- headOfTheStructure Column -->
+                    <ng-container matColumnDef="headOfTheStructure">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header>
+                            {{'LIST.TABLE.headOfTheStructure' | translate}}
+                        </th>
+                        <td mat-cell *matCellDef="let agency">
+                            <p class="text-truncate">{{agency.headOfTheStructure}}</p>
+                        </td>
+                    </ng-container>
+
+                    <!-- Phone Column -->
+                    <ng-container matColumnDef="phone">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header>{{'LIST.TABLE.phone' | translate}}
+                        </th>
+                        <td mat-cell *matCellDef="let agency">
+                            <p class="text-truncate">{{agency.phone}}</p>
+                        </td>
+                    </ng-container>
+
+                    <!-- email Column -->
+                    <ng-container matColumnDef="email">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header>{{'LIST.TABLE.email' | translate}}
+                        </th>
+                        <td mat-cell *matCellDef="let agency">
+                            <p class="text-truncate">{{agency.email}}</p>
+                        </td>
+                    </ng-container>
+
+                    <!-- Buttons Column -->
+                    <ng-container matColumnDef="buttons" stickyEnd>
+                        <th mat-header-cell *matHeaderCellDef></th>
+                        <td mat-cell *matCellDef="let agency">
+                            <div fxFlex="row" fxLayoutAlign="center">
+
+                                <button mat-icon-button [matMenuTriggerFor]="moreMenu" aria-label="More"
+                                    (click)="$event.stopPropagation();">
+                                    <mat-icon class="secondary-text">more_vert</mat-icon>
+                                </button>
+
+                                <mat-menu #moreMenu="matMenu">
+                                    <button *ayamsHasAnyPermissions="['agencies:edit','agencies:*','*:edit','*:*']"
+                                        mat-menu-item aria-label="edit"
+                                        (click)="router.navigate(['/admin/agencies/'+agency.id+'/edit'])">
+                                        <mat-icon>edit</mat-icon>
+                                        <span>{{'LIST.TABLE.action.edit' | translate}}</span>
+                                    </button>
+                                    <button *ayamsHasAnyPermissions="['agencies:delete','agencies:*','*:delete','*:*']"
+                                        mat-menu-item aria-label="remove" (click)="onDelete(agency)">
+                                        <mat-icon>delete</mat-icon>
+                                        <span>{{'LIST.TABLE.action.remove' | translate}}</span>
+                                    </button>
+                                </mat-menu>
+                            </div>
+
+                        </td>
+                    </ng-container>
+
+                    <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky:true"></tr>
+                    <ng-container *ayamsHasAnyPermissions="['agencies:show','agencies:*','*:show','*:*']">
+                        <tr mat-row *matRowDef="let agency; columns: displayedColumns;" class="agency" matRipple
+                            (click)="router.navigate(['/admin/agencies/'+agency.id+'/show'])">
+                        </tr>
+                    </ng-container>
+                </table>
+            </div>
+
+        </ng-container>
+        <mat-paginator [pageSizeOptions]="pageSizeOptions"></mat-paginator>
+    </div>
+    <!-- / CENTER -->
+
+    <!-- CENTER -->
+    <div [ngClass]="{HideTable: !emptyList}" class="center">
+
+        <!-- HEADER -->
+        <div class="header accent" fxLayout="column" fxLayoutAlign="center center" fxLayout.gt-sm="row"
+            fxLayoutAlign.gt-sm="space-between center">
+
+            <!-- APP TITLE -->
+            <div class="logo my-12 m-sm-0" fxLayout="row" fxLayoutAlign="start center">
+                <span class="logo-text h1">
+                    {{'LIST.HEADER.title' | translate}}
+                </span>
+            </div>
+
+        </div>
+        <!-- / HEADER -->
+
+        <!-- CONTENT CARD -->
+        <div class="example-container mat-white-bg">
+            <mat-card>
+                <h2 fxLayoutAlign="center center">
+                    {{'EMPTY-LIST.msg' | translate}}
+                </h2>
+            </mat-card>
+        </div>
+
+    </div>
+    <!-- / CENTER -->
+
+    <ng-container *ayamsHasAnyPermissions="['agencies:add','agencies:*','*:add','*:*']">
+        <button mat-fab class="accent add-button" [routerLink]="'/admin/agencies/add'"
+            matTooltip="{{'LIST.BUTTON.add' | translate}}" matTooltipPosition="left" *fuseIfOnDom
+            [@animate]="{value:'*', params:{delay:'300ms',scale:'.2'}}">
+            <mat-icon>add</mat-icon>
+        </button>
+    </ng-container>
+</div>

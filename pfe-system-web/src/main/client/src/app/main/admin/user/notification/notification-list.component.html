@@ -1,0 +1,24 @@
+<div fxLayout="column" class="w-100-p">
+    <div>
+        <mat-toolbar class="accent">
+            <mat-icon>notifications</mat-icon>
+            <span class="m-12">{{'LIST.TITLE.notifications' | translate}}</span>
+        </mat-toolbar>
+    </div>
+
+    <div class="notification-block">
+        <ng-container *ngFor="let notification of notifications">
+            <mat-list class="mr-4 ml-4 notification-list" role="list"
+                [ngClass]="{notificationcolor: !notification.seen}">
+                <div fxLayout="row">
+                    <mat-list-item role="listitem" (click)="markNotificationAsSeen(notification)">
+                        {{notification.message}}
+                    </mat-list-item>
+                    <mat-icon class="m-12 icon-color" (click)=deleteNotification(notification)>
+                        delete
+                    </mat-icon>
+                </div>
+            </mat-list>
+        </ng-container>
+    </div>
+</div>

@@ -1,0 +1,152 @@
+# JetBrains IntelliJ IDE
+.idea/**/workspace.xml
+.idea/**/tasks.xml
+.idea/dictionaries
+
+# Sensitive or high-churn files:
+.idea/**/dataSources/
+.idea/**/dataSources.ids
+.idea/**/dataSources.local.xml
+.idea/**/sqlDataSources.xml
+.idea/**/dynamic.xml
+.idea/**/uiDesigner.xml
+
+# Gradle:
+.idea/**/gradle.xml
+.idea/**/libraries
+
+# CMake
+cmake-build-debug/
+cmake-build-release/
+
+## File-based project format:
+**/*.iws
+**/out/
+**/*.iml
+checkstyle.iml
+checkstyle.ipr
+checkstyle.iws
+
+# IntelliJ
+out/
+
+# Sonarlint plugin
+.idea/sonarlint
+
+
+
+# VS code IDE
+**/.vscode/*
+!**/.vscode/settings.json
+!**/.vscode/tasks.json
+!**/.vscode/launch.json
+!**/.vscode/extensions.json
+
+
+
+# Eclipse IDE
+**/.project
+**/.classpath
+**/.metadata
+**/bin/
+**/tmp/
+**/*.tmp
+**/*.bak
+**/*.swp
+**/*~.nib
+**/local.properties
+**/.settings/
+**/.loadpath
+**/.recommenders
+
+# External tool builders
+**/.externalToolBuilders/
+
+# Locally stored "Eclipse launch configurations"
+**/*.launch
+
+# Java annotation processor (APT)
+**/.factorypath
+
+# STS (Spring Tool Suite)
+**/.springBeans
+**/.sts4-cache
+
+# Code Recommenders
+**/.recommenders/
+
+
+
+# Java language
+# Compiled class file
+**/*.class
+
+# Log file
+**/*.log
+
+# BlueJ files
+**/*.ctxt
+
+# Mobile Tools for Java (J2ME)
+**/.mtj.tmp/
+
+# Package Files
+**/*.jar
+**/*.war
+**/*.ear
+**/*.zip
+**/*.tar.gz
+**/*.rar
+
+# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
+**/hs_err_pid*
+
+
+
+# Maven build
+target/
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.next
+release.properties
+dependency-reduced-pom.xml
+buildNumber.properties
+.mvn/timing.properties
+
+# Avoid ignoring Maven wrapper jar file (.jar files are usually ignored)
+!/.mvn/wrapper/maven-wrapper.jar
+
+
+
+# Angular project
+# compiled output
+**/dist
+**/tmp
+**/out-tsc
+
+# dependencies
+**/node_modules
+
+# misc
+**/.sass-cache
+**/connect.lock
+**/coverage
+**/typings
+
+# e2e
+**/e2e/*.js
+**/e2e/*.map
+
+# System Files
+**/.DS_Store
+**/Thumbs.db
+
+**/jooq
+**/.idea
+pfe-system-web/src/main/resources/db/migration/V100.0.0__add_values.sql
+
+
+# app folders
+uploads/
+/print/

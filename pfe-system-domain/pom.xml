@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project
+        xmlns="http://maven.apache.org/POM/4.0.0"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>dz.ade.pfe</groupId>
+        <artifactId>pfe-system</artifactId>
+        <version>0.0.1</version>
+    </parent>
+
+    <artifactId>pfe-system-domain</artifactId>
+    <version>0.0.1</version>
+    <packaging>jar</packaging>
+    <name>pfe-system-domain</name>
+    <description>Domain module</description>
+
+    <properties>
+        <properties-maven-plugin.version>1.0.0</properties-maven-plugin.version>
+        <hibernate-types.version>2.5.0</hibernate-types.version>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-jpa</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-jooq</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.vladmihalcea</groupId>
+            <artifactId>hibernate-types-52</artifactId>
+            <version>${hibernate-types.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-security</artifactId>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>properties-maven-plugin</artifactId>
+                <version>${properties-maven-plugin.version}</version>
+                <executions>
+                    <execution>
+                        <phase>initialize</phase>
+                        <goals>
+                            <goal>read-project-properties</goal>
+                        </goals>
+                        <configuration>
+                            <files>
+                                <file>src/main/resources/jooq.properties</file>
+                            </files>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.jooq</groupId>
+                <artifactId>jooq-codegen-maven</artifactId>
+                <executions>
+                    <execution>
+						<id>generate-mypostgres</id>
+						<phase>generate-sources</phase>
+						<goals>
+						  <goal>generate</goal>
+						</goals>
+						<configuration>
+							<jdbc>
+								<!--suppress UnresolvedMavenProperty -->
+                                <driver>${db.driver}</driver>
+								<!--suppress UnresolvedMavenProperty -->
+                                <url>${db.url}</url>
+								<!--suppress UnresolvedMavenProperty -->
+                                <user>${db.username}</user>
+								<!--suppress UnresolvedMavenProperty -->
+                                <password>${db.password}</password>
+							</jdbc>
+							<generator>
+								<database>
+									<name>org.jooq.meta.postgres.PostgresDatabase</name>
+									<includes>.*</includes>
+									<excludes></excludes>
+									<inputSchema>pfe</inputSchema>
+								</database>
+								<generate>
+									<deprecated>false</deprecated>
+									<instanceFields>true</instanceFields>
+									<pojos>false</pojos>
+								</generate>
+								<target>
+									<packageName>dz.ade.pfe.domain.jooq.gen</packageName>
+									<directory>src/main/java</directory>
+								</target>
+							</generator>
+						</configuration>
+                    </execution>
+                </executions>
+                <dependencies>
+                    <dependency>
+                        <groupId>org.postgresql</groupId>
+                        <artifactId>postgresql</artifactId>
+                        <version>${postgresql.version}</version>
+                    </dependency>
+                </dependencies>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>

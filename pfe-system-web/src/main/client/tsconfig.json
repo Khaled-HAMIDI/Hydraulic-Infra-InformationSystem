@@ -1,0 +1,33 @@
+{
+    "compileOnSave": false,
+    "compilerOptions": {
+        "baseUrl": "./src",
+        "outDir": "./dist/out-tsc",
+        "sourceMap": true,
+        "declaration": false,
+        "module": "esnext",
+        "moduleResolution": "node",
+        "emitDecoratorMetadata": true,
+        "experimentalDecorators": true,
+        "importHelpers": true,
+        "allowSyntheticDefaultImports": true,
+        "target": "es2015",
+        "downlevelIteration": true,
+        "typeRoots": [
+            "node_modules/@types",
+            "manual_typings"
+        ],
+        "lib": [
+            "es2018",
+            "dom"
+        ],
+        "paths": {
+            "@fuse": [
+                "@fuse/"
+            ],
+            "lodash/*": [
+                "node_modules/@types/lodash-es/*"
+            ]
+        }
+    }
+}

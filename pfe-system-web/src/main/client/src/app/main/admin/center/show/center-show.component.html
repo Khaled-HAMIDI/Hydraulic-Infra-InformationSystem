@@ -1,0 +1,267 @@
+<ng-container *ayamsHasAnyPermissions="['centers:show','centers:*','*:show','*:*']">
+    <div id="center" class="page-layout carded fullwidth inner-scroll">
+
+        <!-- TOP BACKGROUND -->
+        <div class="top-bg accent"></div>
+        <!-- / TOP BACKGROUND -->
+
+        <!-- CENTER -->
+        <div class="center">
+
+            <!-- HEADER -->
+            <div class="header accent" fxLayout="row" fxLayoutAlign="space-between center">
+
+                <!-- APP TITLE -->
+                <div fxLayout="row" fxLayoutAlign="start center">
+
+                    <button mat-icon-button class="mr-0 mr-sm-16" [routerLink]="'/admin/centers'">
+                        <mat-icon>arrow_back</mat-icon>
+                    </button>
+
+
+                    <div fxLayout="column" fxLayoutAlign="start start"
+                        [@animate]="{value:'*',params:{delay:'100ms',x:'-25px'}}">
+                        <div class="h2">
+                            {{'SHOW.HEADER.title' | translate}} {{center.code}}
+                        </div>
+
+                    </div>
+                </div>
+                <!-- / APP TITLE -->
+
+
+            </div>
+            <!-- / HEADER -->
+
+            <!-- CONTENT CARD -->
+            <div class="content-card mat-white-bg">
+
+                <!-- CONTENT -->
+                <div class="content">
+
+                    <div class="tab-content p-24" fusePerfectScrollbar>
+
+                        <div fxLayout="column" fxLayout.gt-sm="row">
+
+                            <div class="ml-sm-12 mr-sm-24" fxFlex>
+                                <p class="myLabel">{{'SHOW.LABEL.code' | translate}}</p>
+                                <p class="myp">
+                                    <mat-icon matPrefix class="mr-12 s-20" color="accent">clear_all</mat-icon>
+                                    <span>{{center.code}}</span>
+                                </p>
+                            </div>
+
+                            <div class="ml-sm-12 mr-sm-24" fxFlex>
+                                <p class="myLabel">{{'SHOW.LABEL.designation' | translate}}</p>
+                                <p class="myp">
+                                    <mat-icon matPrefix class="mr-12 s-20" color="accent">crop_free</mat-icon>
+                                    <span>{{center.designation}}</span>
+                                </p>
+                            </div>
+
+                        </div>
+
+                        <div fxLayout="column" fxLayout.gt-sm="row">
+
+                            <div class="ml-sm-12 mr-sm-12" fxFlex>
+                                <fieldset class="myfieldset">
+                                    <legend>{{'SHOW.LEGENDS.agencies' | translate}}</legend>
+
+                                    <div class="w-100-p">
+                                        <p class="myLabel">{{'SHOW.LABEL.address' | translate}}</p>
+                                        <p class="myp">
+                                            <mat-icon matPrefix class="mr-12 s-20" color="accent">place</mat-icon>
+                                            <span>{{center.address}}</span>
+                                        </p>
+                                    </div>
+
+                                    <div class="w-100-p">
+                                        <p class="myLabel">{{'SHOW.LABEL.phone' | translate}}</p>
+                                        <p class="myp">
+                                            <mat-icon matPrefix class="mr-12 s-20" color="accent">phone</mat-icon>
+                                            <span>{{center.phone}}</span>
+                                        </p>
+                                    </div>
+
+                                    <div class="w-100-p">
+                                        <p class="myLabel">{{'SHOW.LABEL.email' | translate}}</p>
+                                        <p class="myp">
+                                            <mat-icon matPrefix class="mr-12 s-20" color="accent">email</mat-icon>
+                                            <span>{{center.email}}</span>
+                                        </p>
+                                    </div>
+                                </fieldset>
+                            </div>
+
+
+                            <div class="ml-sm-12 mr-sm-12" fxFlex *ngIf="center.headOfTheStructure">
+                                <fieldset class="myfieldset">
+                                    <legend>{{'SHOW.LEGENDS.headOfTheStructure' | translate}}</legend>
+
+                                    <div class="w-100-p">
+                                        <p class="myLabel">{{'SHOW.LABEL.headOfTheStructure' | translate}}</p>
+                                        <p class="myp">
+                                            <mat-icon matPrefix class="mr-12 s-20" color="accent">account_circle
+                                            </mat-icon>
+                                            <span>{{center.headOfTheStructure.lastName}}
+                                                {{center.headOfTheStructure.firstName}}</span>
+                                        </p>
+                                    </div>
+
+                                    <div class="w-100-p">
+                                        <p class="myLabel">{{'SHOW.LABEL.phone' | translate}}</p>
+                                        <p class="myp">
+                                            <mat-icon matPrefix class="mr-12 s-20" color="accent">phone</mat-icon>
+                                            <span>{{center.headOfTheStructure.phoneNumber}}</span>
+                                        </p>
+                                    </div>
+
+                                    <div class="w-100-p">
+                                        <p class="myLabel">{{'SHOW.LABEL.email' | translate}}</p>
+                                        <p class="myp">
+                                            <mat-icon matPrefix class="mr-12 s-20" color="accent">email</mat-icon>
+                                            <span>{{center.headOfTheStructure.email}}</span>
+                                        </p>
+                                    </div>
+
+                                </fieldset>
+                            </div>
+
+                        </div>
+
+                        <!-- OTHERS INFORMATIONS -->
+                        <div fxLayout="column" fxLayout.gt-sm="row">
+
+                            <div class="ml-sm-12 mr-sm-12" fxFlex>
+                                <fieldset class="myfieldset">
+                                    <!-- LEGEND -->
+                                    <legend>{{'SHOW.LEGENDS.others' | translate}}</legend>
+
+                                    <!-- FAX -->
+                                    <div class="w-100-p">
+                                        <p class="myLabel">{{'SHOW.LABEL.fax' | translate}}</p>
+                                        <p class="myp">
+                                            <mat-icon matPrefix class="mr-12 s-20" color="accent">account_circle
+                                            </mat-icon>
+                                            <span>{{center.fax}}
+                                                {{center.fax}}</span>
+                                        </p>
+                                    </div>
+
+                                    <!-- RIB -->
+                                    <div class="w-100-p">
+                                        <p class="myLabel">{{'SHOW.LABEL.rib' | translate}}</p>
+                                        <p class="myp">
+                                            <mat-icon matPrefix class="mr-12 s-20" color="accent">account_circle
+                                            </mat-icon>
+                                            <span>{{center.rib}}
+                                                {{center.rib}}</span>
+                                        </p>
+                                    </div>
+
+                                    <!-- RIP -->
+                                    <div class="w-100-p">
+                                        <p class="myLabel">{{'SHOW.LABEL.rip' | translate}}</p>
+                                        <p class="myp">
+                                            <mat-icon matPrefix class="mr-12 s-20" color="accent">account_circle
+                                            </mat-icon>
+                                            <span>{{center.rip}}
+                                                {{center.rip}}</span>
+                                        </p>
+                                    </div>
+
+                                    <!-- AGENCY -->
+                                    <div class="w-100-p">
+                                        <p class="myLabel">{{'SHOW.LABEL.agency' | translate}}</p>
+                                        <p class="myp">
+                                            <mat-icon matPrefix class="mr-12 s-20" color="accent">account_circle
+                                            </mat-icon>
+                                            <span>{{center.agency}}
+                                                {{center.agency}}</span>
+                                        </p>
+                                    </div>
+
+                                    <!-- TAX ID NUMBER -->
+                                    <div class="w-100-p">
+                                        <p class="myLabel">{{'SHOW.LABEL.taxIdNumber' | translate}}</p>
+                                        <p class="myp">
+                                            <mat-icon matPrefix class="mr-12 s-20" color="accent">account_circle
+                                            </mat-icon>
+                                            <span>{{center.taxIdNumber}}
+                                                {{center.taxIdNumber}}</span>
+                                        </p>
+                                    </div>
+
+                                    <!-- THIRD PARTY CODE -->
+                                    <div class="w-100-p">
+                                        <p class="myLabel">{{'SHOW.LABEL.thirdPartyCode' | translate}}</p>
+                                        <p class="myp">
+                                            <mat-icon matPrefix class="mr-12 s-20" color="accent">account_circle
+                                            </mat-icon>
+                                            <span>{{center.thirdPartyCode}}
+                                                {{center.thirdPartyCode}}</span>
+                                        </p>
+                                    </div>
+
+                                    <!-- BANK OF DOMICILIATION -->
+                                    <div class="w-100-p">
+                                        <p class="myLabel">{{'SHOW.LABEL.bankOfDomiciliation' | translate}}</p>
+                                        <p class="myp">
+                                            <mat-icon matPrefix class="mr-12 s-20" color="accent">account_circle
+                                            </mat-icon>
+                                            <span>{{center.bankOfDomiciliation}}
+                                                {{center.bankOfDomiciliation}}</span>
+                                        </p>
+                                    </div>
+
+                                    <!-- BUSINESS REGISTER NUMBER -->
+                                    <div class="w-100-p">
+                                        <p class="myLabel">{{'SHOW.LABEL.businessRegisterNumber' | translate}}</p>
+                                        <p class="myp">
+                                            <mat-icon matPrefix class="mr-12 s-20" color="accent">account_circle
+                                            </mat-icon>
+                                            <span>{{center.businessRegisterNumber}}
+                                                {{center.businessRegisterNumber}}</span>
+                                        </p>
+                                    </div>
+
+                                    <!-- TAX IDENTIFICATION NUMBER -->
+                                    <div class="w-100-p">
+                                        <p class="myLabel">{{'SHOW.LABEL.taxIdentificationNumber' | translate}}</p>
+                                        <p class="myp">
+                                            <mat-icon matPrefix class="mr-12 s-20" color="accent">account_circle
+                                            </mat-icon>
+                                            <span>{{center.taxIdentificationNumber}}
+                                                {{center.taxIdentificationNumber}}</span>
+                                        </p>
+                                    </div>
+
+
+                                </fieldset>
+                            </div>
+                        </div>
+
+                        <div fxLayout="row">
+                            <div class="ml-sm-12 mr-sm-12" fxFlex>
+                                <fieldset class="myfieldset">
+                                    <legend>{{'SHOW.LEGENDS.location' | translate}}</legend>
+                                    <div class="mapcls">
+                                        <div leaflet [leafletOptions]="options" [leafletLayersControl]="layersControl"
+                                            style="height: 300px;" class="mapwh">
+                                        </div>
+                                    </div>
+                                </fieldset>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <!-- / CONTENT -->
+
+            </div>
+            <!-- / CONTENT CARD -->
+
+        </div>
+        <!-- / CENTER -->
+    </div>
+</ng-container>

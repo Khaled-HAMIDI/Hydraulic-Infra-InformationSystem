@@ -1,0 +1,198 @@
+<div id="profils" class="page-layout carded fullwidth inner-scroll">
+
+    <!-- SELECTED BAR -->
+    <selected-bar [ngStyle]="{ 'height': heightDyn() }" class="accent-600" *ngIf="selectBarDisplayed" [@slideInTop]>
+    </selected-bar>
+    <!-- / SELECTED BAR -->
+
+    <!-- TOP BACKGROUND -->
+    <div class="top-bg accent" id="headerHeight"></div>
+    <!-- / TOP BACKGROUND -->
+
+    <!-- CENTER -->
+    <div [ngClass]="{HideTable: emptyList}" class="center">
+
+        <!-- HEADER -->
+        <div class="header accent" fxLayout="column" fxLayoutAlign="center center" fxLayout.gt-sm="row"
+            fxLayoutAlign.gt-sm="space-between center">
+
+            <!-- APP TITLE -->
+            <div class="logo my-12 m-sm-0" fxLayout="row" fxLayoutAlign="start center">
+                <span class="logo-text h1">
+                    {{'LIST.HEADER.title' | translate}}
+                </span>
+            </div>
+            <!-- / APP TITLE -->
+
+            <!-- SEARCH -->
+            <ng-container *ayamsHasAnyPermissions="['profils:export','profils:*','*:export','*:*']">
+                <div class="search-wrapper mx-32 mx-md-0">
+                    <div class="search" fxFlex fxLayout="row" fxLayoutAlign="start center">
+                        <mat-icon>search</mat-icon>
+                        <input matInput (keyup)="applyFilter($event.target.value)"
+                            placeholder="{{'LIST.HEADER.search' | translate}}">
+                    </div>
+                </div>
+                <!-- / SEARCH -->
+                <button [disabled]="!btnExport" mat-raised-button (click)="export()"
+                    class="add-product-button mat-white-bg mt-24 mt-md-0">
+                    <span>{{'LIST.HEADER.export' | translate}}</span>
+                </button>
+            </ng-container>
+        </div>
+        <!-- / HEADER -->
+
+        <!-- CONTENT CARD -->
+        <ng-container *ayamsHasAnyPermissions="['profils:list','profils:*','*:list','*:*']">
+            <div class="example-container mat-white-bg">
+
+                <table mat-table  [dataSource]="dataSource" matSort >
+
+                    <!-- Checkbox Column -->
+                    <ng-container matColumnDef="checkbox">
+                        <th mat-header-cell *matHeaderCellDef></th>
+                        <td mat-cell *matCellDef="let profil">
+                            <ng-container *ngIf="!profil.systemEntity">
+                                <mat-checkbox [(ngModel)]="profilsCheckbox[profil.id]"
+                                    (ngModelChange)="onSelectedChange(profil)" (click)="$event.stopPropagation()">
+                                </mat-checkbox>
+                            </ng-container>
+                        </td>
+                    </ng-container>
+
+                    <!-- Code Column -->
+                    <ng-container matColumnDef="role">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header>{{'LIST.TABLE.name' | translate}}
+                        </th>
+                        <td mat-cell *matCellDef="let profil">
+                            <p class="text-truncate">{{profil.role}}</p>
+                        </td>
+                    </ng-container>
+
+                    <!-- Code Designation -->
+                    <ng-container matColumnDef="designation">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header>{{'LIST.TABLE.designation' | translate}}
+                        </th>
+                        <td mat-cell *matCellDef="let profil">
+                            <p class="text-truncate">{{profil.designation}}</p>
+                        </td>
+                    </ng-container>
+
+                    <!-- Code Column -->
+                    <ng-container matColumnDef="creationDate">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header>{{'LIST.TABLE.creationDate' | translate}}
+                        </th >
+                        <td mat-cell *matCellDef="let profil">
+                            <p class="text-truncate">{{profil.creationDate | date:'dd MMMM yyyy'}}</p>
+                        </td>
+                    </ng-container>
+
+                    <!-- Code Column -->
+                    <ng-container matColumnDef="lastModifiedDate">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header>{{'LIST.TABLE.lastModifiedDate' | translate}}
+                        </th>
+                        <td mat-cell *matCellDef="let profil">
+                            <p class="text-truncate">{{profil.lastModifiedDate | date:'dd MMMM yyyy'}}</p>
+                        </td>
+                    </ng-container>
+
+                    <!-- Permissions Column -->
+                    <ng-container matColumnDef="authorities">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header>{{'LIST.TABLE.authorities' | translate}}
+                        </th>
+                        <td mat-cell *matCellDef="let profil">
+                            <mat-chip-list class="text-truncate">
+                                <span *ngFor="let authority of profil.authorities;let i = index">
+                                    <mat-chip *ngIf="i<3">
+                                        {{ authority }}
+                                    </mat-chip>
+                                    <span *ngIf="i == 3">....</span>
+                                </span>
+                            </mat-chip-list>
+                        </td>
+                    </ng-container>
+
+
+                    <!-- Buttons Column -->
+                    <ng-container matColumnDef="buttons" stickyEnd>
+                        <th mat-header-cell *matHeaderCellDef></th>
+                        <td mat-cell *matCellDef="let profil">
+                            <div fxFlex="row" fxLayoutAlign="center" *ngIf="!profil.systemEntity">
+
+                                <button mat-icon-button [matMenuTriggerFor]="moreMenu" aria-label="More"
+                                    (click)="$event.stopPropagation();">
+                                    <mat-icon class="secondary-text">more_vert</mat-icon>
+                                </button>
+
+                                <mat-menu #moreMenu="matMenu">
+                                    <ng-container *ayamsHasAnyPermissions="['profils:edit','profils:*','*:edit','*:*']">
+                                        <button mat-menu-item aria-label="edit"
+                                            (click)="router.navigate(['/admin/profils/'+profil.id+'/edit'])">
+                                            <mat-icon>edit</mat-icon>
+                                            <span>{{'LIST.TABLE.action.edit' | translate}}</span>
+                                        </button>
+                                    </ng-container>
+                                    <ng-container
+                                        *ayamsHasAnyPermissions="['profils:delete','profils:*','*:delete','*:*']">
+                                        <button mat-menu-item aria-label="remove" (click)="onDelete(profil)">
+                                            <mat-icon>delete</mat-icon>
+                                            <span>{{'LIST.TABLE.action.remove' | translate}}</span>
+                                        </button>
+                                    </ng-container>
+                                </mat-menu>
+                            </div>
+
+                        </td>
+                    </ng-container>
+
+                    <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky:true"></tr>
+                    <ng-container *ayamsHasAnyPermissions="['profils:show','profils:*','*:show','*:*']">
+                        <tr mat-row *matRowDef="let profil; columns: displayedColumns;" class="profil" matRipple
+                            (click)="router.navigate(['/admin/profils/'+profil.id+'/show'])">
+                        </tr>
+                    </ng-container>
+                </table>
+
+            </div>
+
+        </ng-container>
+        <mat-paginator [pageSizeOptions]="pageSizeOptions"></mat-paginator>
+        <!-- / CONTENT CARD -->
+    </div>
+    <!-- / CENTER -->
+    <!-- CENTER -->
+    <div [ngClass]="{HideTable: !emptyList}" class="center">
+
+        <!-- HEADER -->
+        <div class="header accent" fxLayout="column" fxLayoutAlign="center center" fxLayout.gt-sm="row"
+            fxLayoutAlign.gt-sm="space-between center">
+
+            <!-- APP TITLE -->
+            <div class="logo my-12 m-sm-0" fxLayout="row" fxLayoutAlign="start center">
+                <span class="logo-text h1">
+                    {{'LIST.HEADER.title' | translate}}
+                </span>
+            </div>
+
+        </div>
+        <!-- / HEADER -->
+
+        <!-- CONTENT CARD -->
+        <div class="example-container mat-white-bg">
+            <mat-card>
+                <h2 fxLayoutAlign="center center">
+                    {{'EMPTY-LIST.msg' | translate}}
+                </h2>
+            </mat-card>
+        </div>
+
+    </div>
+    <!-- / CENTER -->
+    <ng-container *ayamsHasAnyPermissions="['profils:add','profils:*','*:add','*:*']">
+        <button mat-fab class="accent add-button" [routerLink]="'/admin/profils/add'"
+            matTooltip="{{'LIST.BUTTON.add' | translate}}" matTooltipPosition="left" *fuseIfOnDom
+            [@animate]="{value:'*', params:{delay:'300ms',scale:'.2'}}">
+            <mat-icon>add</mat-icon>
+        </button>
+    </ng-container>
+</div>

@@ -1,0 +1,84 @@
+
+.page-layout.carded.fullwidth {
+    .top-bg {
+        height: 152px;
+    }
+    .center {
+       .header {
+          height: 97px !important;
+          min-height: 97px !important;
+          max-height: 97px !important;
+              } 
+                } 
+                  }
+
+ 
+     .mat-white-bg[disabled] {
+        background-color: rgba(255, 255, 255, 0.52) !important;
+        color: rgba(0, 0, 0, 0.26) !important;
+                    }
+                
+                                  
+.myLabel {
+    font-size: 12px;
+    font-weight: 500;
+    color: rgba(0, 0, 0, 0.38);
+    margin-bottom: -12px;
+    margin-left: 30px;
+}
+
+.myp{
+    font-size: 16px !important;
+    margin-top: 17px !important;
+}
+
+.myfieldset{
+    padding-top: 15px;
+    border-radius: 7px;
+    border: 1px solid rgb(224, 224, 224);
+    margin-top: 15px;
+    min-height: 307px;
+
+    legend {
+        padding-left: 5px;
+        padding-right: 5px;
+    }
+}
+
+.myfieldset2{
+    padding-top: 10px;
+    border-radius: 7px;
+    border: 1px solid rgb(224, 224, 224);
+    margin-top: 15px;
+    
+    legend {
+        padding-left: 5px;
+        padding-right: 5px;
+    }
+    }
+
+mat-chip-list {
+    padding-top: 6px;
+    position: relative;
+
+    .icon-profil{
+        position: absolute;
+        top: 7px;        
+        margin-left: 4px;
+    }
+
+    .chip-list-profil{
+        margin-left: 30px;
+    }
+}
+
+.active-icon{
+    border-radius: 50%;
+    margin-right: 12px;
+    width: 20px;
+    height: 20px;
+}
+
+.active_div{
+    margin-top: 25px;
+}

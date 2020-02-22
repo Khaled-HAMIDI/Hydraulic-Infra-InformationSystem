@@ -1,0 +1,200 @@
+@import "src/@fuse/scss/fuse";
+
+:host {
+
+    #centers {
+
+        .top-bg {
+            @include media-breakpoint('lt-md') {
+                height: 256px;
+            }
+        }
+
+        > .center {
+
+            > .header {
+
+                .search-wrapper {
+                    width: 100%;
+                    max-width: 480px;
+                    border-radius: 28px;
+                    overflow: hidden;
+                    @include mat-elevation(1);
+
+                    @include media-breakpoint('xs') {
+                        width: 100%;
+                    }
+
+                    .search {
+                        width: 100%;
+                        height: 48px;
+                        line-height: 48px;
+                        padding: 0 18px;
+                        background: white;
+                        
+                        mat-icon{
+                            color: rgba(0,0,0,.54);
+                        }
+                        input {
+                            width: 100%;
+                            height: 48px;
+                            min-height: 48px;
+                            max-height: 48px;
+                            padding: 0 16px;
+                            border: none;
+                            outline: none;
+                            color: black;
+                            
+                            &::placeholder{
+                                color: rgba(0,0,0,.54);
+                            }
+                        }
+                    }
+                }
+
+                @include media-breakpoint('lt-md') {
+                    padding: 8px 0;
+                    height: 192px !important;
+                    min-height: 192px !important;
+                    max-height: 192px !important;
+                }
+            }
+        }
+    }
+
+    .centers-table {
+        flex: 1 1 auto;
+        border-bottom: 1px solid rgba(0, 0, 0, .12);
+        overflow: auto;
+        mat-cell:last-child{
+            padding: 0;
+        }
+        .mat-header-row {
+            min-height: 54px;
+        }
+
+        .center {
+            position: relative;
+            cursor: pointer;
+        }
+
+        .mat-cell {
+            min-width: 0;
+            display: flex;
+            align-items: left;
+        }
+
+
+        .mat-column-checkbox {
+            flex: 0 1 80px;
+        }
+
+        .mat-column-code {
+            flex: 0 1 100px;
+        }
+
+        .mat-column-centerType {
+            flex: 0 1 100px;
+        }
+
+        .mat-column-phone {
+            flex: 0 1 100px;
+        }
+
+        .mat-column-buttons {
+            flex: 0 1 80px;
+        }
+        
+    }
+            
+    .example-container {
+            overflow: auto;
+            background-color: white;
+        }
+  
+    table {
+    width: 100%;
+    min-width: 850px;
+  }
+  
+}
+
+  
+.mat-menu-item {
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+    font-size: 14px;
+    line-height: 0px;
+    font-weight: 500;
+
+    .mat-icon {
+        margin-right: 6px;
+    }
+}
+
+
+.page-layout.carded.fullwidth {
+    .top-bg {
+        height: 152px;
+    }
+    .center {
+       .header {
+          height: 97px !important;
+          min-height: 97px !important;
+          max-height: 97px !important;
+              } 
+                } 
+                  }
+
+
+.add-button {
+    position: absolute;
+    bottom: 10px;
+    right: 5px;
+    padding: 0;
+    z-index: 99;
+        }
+
+        .HideTable {
+            display: none !important ;
+                }
+
+
+                td.mat-column-checkbox {
+                    padding-left: 8px;
+                    padding-right: 8px;
+                    width: 80px;
+                }
+                td.mat-column-code {
+                    padding-left: 8px;
+                    padding-right: 8px;
+                }
+                
+                td.mat-column-address {
+                    padding-left: 8px;
+                    padding-right: 8px;
+                }
+                td.mat-column-designation{
+                    padding-left: 8px;
+                    padding-right: 8px;
+                }
+                td.mat-column-headOfTheStructure{
+                    padding-left: 8px;
+                    padding-right: 8px;
+                }
+                td.mat-column-phone{
+                    padding-left: 8px;
+                    padding-right: 8px;
+                }
+                td.mat-column-email{
+                    padding-left: 8px;
+                    padding-right: 8px;
+                }
+                td.mat-column-buttons {
+                    height: 52px;
+                    width: 50px;            
+                    }
+                    .mat-checkbox{
+                        padding-left: 8px;
+                        padding-right: 8px;
+                        font-size: 1px !important;
+                    }
