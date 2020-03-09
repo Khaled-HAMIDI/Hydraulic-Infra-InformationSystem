@@ -5,6 +5,12 @@ export const locale = {
             'HOME': {
                 'TITLE': 'Accueil'
             },
+            'BUSINESS': {
+                'TITLE': 'Metier'
+            },
+            'INVENTORY': {
+                'TITLE': 'Inventaire'
+            },
             'ADMIN': {
                 'TITLE': 'Administration'
             },

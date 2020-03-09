@@ -18,6 +18,22 @@ export const navigation: FuseNavigation[] = [
         ]
     },
     {
+        id: 'business',
+        title: 'Matier',
+        translate: 'NAV.BUSINESS.TITLE',
+        type: 'group',
+        children: [
+            {
+                id: 'inventory',
+                title: 'inventaire',
+                translate: 'NAV.INVENTORY.TITLE',
+                type: 'item',
+                icon: 'home',
+                url: '/inventaire'
+            }
+        ]
+    },
+    {
         id: 'admin',
         title: 'Admin',
         translate: 'NAV.ADMIN.TITLE',
