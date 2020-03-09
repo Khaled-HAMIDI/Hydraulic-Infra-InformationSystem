@@ -3,6 +3,7 @@ package dz.ade.pfe.domain.ouvrage;
 import lombok.*;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.util.Date;
 import dz.ade.pfe.domain.commons.Auditing;
 
@@ -13,7 +14,7 @@ import dz.ade.pfe.domain.commons.Auditing;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class Inventaire extends Auditing {
+public class Inventaire {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "inventaire_gen")
     @SequenceGenerator(name = "inventaire_gen", sequenceName = "inventaire_seq", schema = "pfe", allocationSize = 1)
@@ -23,7 +24,7 @@ public class Inventaire extends Auditing {
     private Long responsable;
 
     @Column(name = "date")
-    private Date date;
+    private LocalDate date;
 
 
 

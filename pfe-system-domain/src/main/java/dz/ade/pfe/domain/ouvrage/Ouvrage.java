@@ -3,6 +3,7 @@ package dz.ade.pfe.domain.ouvrage;
 import lombok.*;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.util.Date;
 import dz.ade.pfe.domain.commons.Auditing;
 
@@ -14,7 +15,7 @@ import dz.ade.pfe.domain.commons.Auditing;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class Ouvrage extends Auditing{
+public class Ouvrage {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "ouvrage_gen")
     @SequenceGenerator(name = "ouvrage_gen", sequenceName = "ouvrage_seq", schema = "pfe", allocationSize = 1)
@@ -57,10 +58,10 @@ public class Ouvrage extends Auditing{
     private String nature_construction;
 
     @Column(name = "date_mise_service")
-    private Date date_mise_service;
+    private LocalDate date_mise_service;
 
-    @Column(name = "date_transfert_exploitation")
-    private Date date_transfert_exploitation;
+    @Column(name = "date_exploitation")
+    private LocalDate date_exploitation;
 
     @Column(name = "maitre_ouvrage")
     private String maitre_ouvrage;
@@ -68,11 +69,11 @@ public class Ouvrage extends Auditing{
     @Column(name = "cout_realisation")
     private double cout_realisation;
 
-    @Column(name = "ligne_electrique_specialisee")
-    private boolean ligne_electrique_specialisee;
+    @Column(name = "ligne_specialisee")
+    private double ligne_specialisee;
 
-    @Column(name = "facture_mensuelle_moyenne_energie")
-    private double facture_mensuelle_moyenne_energie;
+    @Column(name = "facture_m_energie")
+    private double facture_m_energie;
 
     @Column(name = "effectif_total")
     private double effectif_total;

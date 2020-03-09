@@ -122,7 +122,7 @@ create table pfe.bloc_local
 );
 
 
-create table pfe.bloc_local
+create table pfe.equipement_electrique
 (
   id                 int8 not null,
   puissance          float8,
