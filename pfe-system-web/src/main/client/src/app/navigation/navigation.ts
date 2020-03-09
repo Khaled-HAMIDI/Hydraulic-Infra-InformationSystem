@@ -24,12 +24,32 @@ export const navigation: FuseNavigation[] = [
         type: 'group',
         children: [
             {
-                id: 'inventory',
-                title: 'inventaire',
+                id: 'patrimony',
+                title: 'patrimoine',
                 translate: 'NAV.INVENTORY.TITLE',
-                type: 'item',
+                type: 'collapsable',
                 icon: 'home',
-                url: '/inventaire'
+                children:[
+                    {
+                        'id'   : 'list',
+                        'title': 'Liste',
+                        'type' : 'item',
+                        'url'  : '/ouvrage/list'
+                    },
+                    {
+                        'id'   : 'integrate',
+                        'title': 'Intégrer',
+                        'type' : 'item',
+                        'url'  : '/ouvrage/add'
+                    },
+                    {
+                        'id'   : 'inventory',
+                        'title': 'Inventaire',
+                        'type' : 'item',
+                        'url'  : '/ouvrage/inventaire'
+                    }
+                ]
+                
             }
         ]
     },
