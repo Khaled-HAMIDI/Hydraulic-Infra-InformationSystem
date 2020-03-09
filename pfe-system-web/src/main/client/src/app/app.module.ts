@@ -54,7 +54,7 @@ const appRoutes: Routes = [
         loadChildren: () => import('./main/print/print.module').then(m => m.PrintModule),
         canActivate: [AuthenticationGuard]
     },
-    { path: 'patrimoine', 
+    { path: 'patrimony', 
       loadChildren: () => import('./main/inventaire-ouvrage/inventaire-ouvrage.module').then(m => m.InventaireOuvrageModule),
       canActivate: [AuthenticationGuard]
     },

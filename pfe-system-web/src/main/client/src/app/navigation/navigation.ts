@@ -34,19 +34,19 @@ export const navigation: FuseNavigation[] = [
                         'id'   : 'list',
                         'title': 'Liste',
                         'type' : 'item',
-                        'url'  : '/ouvrage/list'
+                        'url'  : 'patrimony/ouvrages'
                     },
                     {
                         'id'   : 'integrate',
                         'title': 'Intégrer',
                         'type' : 'item',
-                        'url'  : '/ouvrage/add'
+                        'url'  : 'patrimony/ouvrage/add'
                     },
                     {
                         'id'   : 'inventory',
                         'title': 'Inventaire',
                         'type' : 'item',
-                        'url'  : '/ouvrage/inventaire'
+                        'url'  : 'patrimony/inventaire'
                     }
                 ]
                 
