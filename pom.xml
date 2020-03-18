@@ -48,6 +48,8 @@
         <module>pfe-system-utils</module>
         <module>pfe-system-commons</module>
         <module>pfe-system-domain</module>
+        <module>pfe-system-persistence</module>
+        <module>pfe-system-application</module>
         <module>pfe-system-admin</module>
         <module>pfe-system-web</module>
         <module>pfe-system-adminserver</module>

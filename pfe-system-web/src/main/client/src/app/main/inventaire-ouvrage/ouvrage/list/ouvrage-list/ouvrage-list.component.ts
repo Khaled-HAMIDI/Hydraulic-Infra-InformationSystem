@@ -47,11 +47,11 @@ export class OuvrageListComponent extends Table implements OnInit,OnDestroy {
   ngOnInit() {
     this.route.data.pipe(takeUntil(this._unsubscribeAll)).subscribe(
       (response) => {
-          //this.btnExport = response.data[0].length;
-          //this.emptyList = response.data[0].length == 0;
+          this.btnExport = response.data.length;
+          this.emptyList = response.data.length == 0;
          // this.initTable(response.data[0]);
           //this.initUsersSelected(response.data[0]);
-          console.log(response.data[0])
+          //console.log(response.data[0])
       },
       (error) => {
 

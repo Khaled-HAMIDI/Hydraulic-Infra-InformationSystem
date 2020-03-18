@@ -5,7 +5,35 @@
     <!-- / TOP BACKGROUND -->
     <!-- CENTER -->
     <div [ngClass]="{HideTable: emptyList}" class="center">
-        
+        <!-- HEADER -->
+        <div class="header accent" fxLayout="column" fxLayoutAlign="center center" fxLayout.gt-sm="row"
+            fxLayoutAlign.gt-sm="space-between center">
+
+            <!-- APP TITLE -->
+            <div class="logo my-12 m-sm-0" fxLayout="row" fxLayoutAlign="start center">
+                <span class="logo-text h1">
+                   Ouvrages <!-- {{'LIST.HEADER.title' | translate}} -->
+                </span>
+            </div>
+            <!-- / APP TITLE -->
+
+            <!-- SEARCH -->
+            <ng-container *ayamsHasAnyPermissions="['users:export','users:*','*:export','*:*']">
+                <div class="search-wrapper mx-32 mx-md-0">
+                    <div class="search" fxFlex fxLayout="row" fxLayoutAlign="start center">
+                        <mat-icon>search</mat-icon>
+                        <input matInput (keyup)="applyFilter($event.target.value)"
+                            placeholder="Recherche">
+                    </div>
+                </div>
+                <!-- / SEARCH -->
+
+                <button mat-raised-button (click)="export()" class="mat-white-bg mt-24 mt-md-0" [disabled]="!btnExport">
+                    <span>Exporter</span>
+                </button>
+            </ng-container>
+        </div>
+        <!-- / HEADER -->
     </div>
     <!-- / CENTER -->
 </div>
