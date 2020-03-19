@@ -173,6 +173,12 @@
             <version>0.0.1</version>
             <scope>compile</scope>
         </dependency>
+        <dependency>
+            <groupId>dz.ade.pfe</groupId>
+            <artifactId>pfe-system-persistence</artifactId>
+            <version>0.0.1</version>
+            <scope>compile</scope>
+        </dependency>
     </dependencies>
 
     <build>
