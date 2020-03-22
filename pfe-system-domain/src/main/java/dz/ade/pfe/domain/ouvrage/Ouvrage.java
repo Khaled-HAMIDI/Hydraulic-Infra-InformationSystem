@@ -22,7 +22,7 @@ public class Ouvrage {
     protected Long id;
 
     @Column(name = "code")
-    private double code;
+    private String code;
 
     @Column(name = "nom")
     private String nom;
@@ -31,7 +31,7 @@ public class Ouvrage {
     private String type;
 
     @Column(name = "fonctionnement")
-    private String fonctionnement;
+    private boolean fonctionnement;
 
     @Column(name = "etat")
     private String etat;
@@ -70,14 +70,13 @@ public class Ouvrage {
     private double cout_realisation;
 
     @Column(name = "ligne_specialisee")
-    private double ligne_specialisee;
+    private boolean ligne_specialisee;
 
     @Column(name = "facture_m_energie")
     private double facture_m_energie;
 
     @Column(name = "effectif_total")
-    private double effectif_total;
-
+    private int effectif_total;
 
 }
 

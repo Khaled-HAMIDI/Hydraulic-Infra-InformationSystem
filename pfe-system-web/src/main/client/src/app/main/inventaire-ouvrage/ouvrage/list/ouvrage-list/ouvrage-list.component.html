@@ -34,6 +34,125 @@
             </ng-container>
         </div>
         <!-- / HEADER -->
+
+        <!-- CONTENT CARD -->
+        <ng-container *ayamsHasAnyPermissions="['*:*']">
+            <div class="example-container mat-white-bg">
+
+                <table mat-table  [dataSource]="dataSource" matSort >
+
+                    <!-- Checkbox Column -->
+                    <ng-container matColumnDef="checkbox">
+                        <th mat-header-cell *matHeaderCellDef>
+                            <mat-checkbox></mat-checkbox>
+                        </th>
+                        <td mat-cell *matCellDef="let ouvrage">
+                            <ng-container *ngIf="!ouvrage.systemEntity">
+                                <mat-checkbox [(ngModel)]="ouvragesCheckbox[ouvrage.id]"
+                                    (ngModelChange)="onSelectedChange(ouvrage)" (click)="$event.stopPropagation()">
+                                </mat-checkbox>
+                            </ng-container>
+                        </td>
+                    </ng-container>
+
+                    <!-- Code Column -->
+                    <ng-container matColumnDef="role">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header>{{'LIST.TABLE.name' | translate}}
+                        </th>
+                        <td mat-cell *matCellDef="let ouvrage">
+                            <p class="text-truncate">{{ouvrage.role}}</p>
+                        </td>
+                    </ng-container>
+
+                    <!-- Code Designation -->
+                    <ng-container matColumnDef="designation">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header>{{'LIST.TABLE.designation' | translate}}
+                        </th>
+                        <td mat-cell *matCellDef="let ouvrage">
+                            <p class="text-truncate">{{ouvrage.designation}}</p>
+                        </td>
+                    </ng-container>
+
+                    <!-- Code Column -->
+                    <ng-container matColumnDef="creationDate">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header>{{'LIST.TABLE.creationDate' | translate}}
+                        </th >
+                        <td mat-cell *matCellDef="let ouvrage">
+                            <p class="text-truncate">{{ouvrage.creationDate | date:'dd MMMM yyyy'}}</p>
+                        </td>
+                    </ng-container>
+
+                    <!-- Code Column -->
+                    <ng-container matColumnDef="lastModifiedDate">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header>{{'LIST.TABLE.lastModifiedDate' | translate}}
+                        </th>
+                        <td mat-cell *matCellDef="let ouvrage">
+                            <p class="text-truncate">{{ouvrage.lastModifiedDate | date:'dd MMMM yyyy'}}</p>
+                        </td>
+                    </ng-container>
+
+                    <!-- Permissions Column -->
+                    <ng-container matColumnDef="authorities">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header>{{'LIST.TABLE.authorities' | translate}}
+                        </th>
+                        <td mat-cell *matCellDef="let ouvrage">
+                            <mat-chip-list class="text-truncate">
+                                <span *ngFor="let authority of ouvrage.authorities;let i = index">
+                                    <mat-chip *ngIf="i<3">
+                                        {{ authority }}
+                                    </mat-chip>
+                                    <span *ngIf="i == 3">....</span>
+                                </span>
+                            </mat-chip-list>
+                        </td>
+                    </ng-container>
+
+
+                    <!-- Buttons Column -->
+                    <ng-container matColumnDef="buttons" stickyEnd>
+                        <th mat-header-cell *matHeaderCellDef></th>
+                        <td mat-cell *matCellDef="let ouvrage">
+                            <div fxFlex="row" fxLayoutAlign="center" *ngIf="!ouvrage.systemEntity">
+
+                                <button mat-icon-button [matMenuTriggerFor]="moreMenu" aria-label="More"
+                                    (click)="$event.stopPropagation();">
+                                    <mat-icon class="secondary-text">more_vert</mat-icon>
+                                </button>
+
+                                <mat-menu #moreMenu="matMenu">
+                                    <ng-container *ayamsHasAnyPermissions="['ouvrages:edit','ouvrages:*','*:edit','*:*']">
+                                        <button mat-menu-item aria-label="edit"
+                                            (click)="router.navigate(['/admin/ouvrages/'+ouvrage.id+'/edit'])">
+                                            <mat-icon>edit</mat-icon>
+                                            <span>{{'LIST.TABLE.action.edit' | translate}}</span>
+                                        </button>
+                                    </ng-container>
+                                    <ng-container
+                                        *ayamsHasAnyPermissions="['ouvrages:delete','ouvrages:*','*:delete','*:*']">
+                                        <button mat-menu-item aria-label="remove" (click)="onDelete(ouvrage)">
+                                            <mat-icon>delete</mat-icon>
+                                            <span>{{'LIST.TABLE.action.remove' | translate}}</span>
+                                        </button>
+                                    </ng-container>
+                                </mat-menu>
+                            </div>
+
+                        </td>
+                    </ng-container>
+
+                    <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky:true"></tr>
+                    <ng-container *ayamsHasAnyPermissions="['ouvrages:show','ouvrages:*','*:show','*:*']">
+                        <tr mat-row *matRowDef="let ouvrage; columns: displayedColumns;" class="ouvrage" matRipple
+                            (click)="router.navigate(['/admin/ouvrages/'+ouvrage.id+'/show'])">
+                        </tr>
+                    </ng-container>
+                </table>
+
+            </div>
+
+        </ng-container>
+        <mat-paginator [pageSizeOptions]="pageSizeOptions"></mat-paginator>
+        <!-- / CONTENT CARD -->
     </div>
     <!-- / CENTER -->
 </div>

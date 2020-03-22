@@ -24,45 +24,112 @@ const COLUMN_NAMES: string[] = [
   templateUrl: './ouvrage-list.component.html',
   styleUrls: ['./ouvrage-list.component.scss']
 })
-export class OuvrageListComponent extends Table implements OnInit,OnDestroy {
+export class OuvrageListComponent extends Table implements OnInit, OnDestroy {
   private _unsubscribeAll: Subject<any>;
-  usersCheckbox: Object;
+  ouvragesCheckbox: Object;
   selectBarDisplayed: boolean;
   confirmDialogRef: MatDialogRef<FuseConfirmDialogComponent>;
   btnExport: boolean;
   emptyList: boolean;
   constructor(
+    private ouvrageListService: OuvrageListService,
     private route: ActivatedRoute,
     public authorizationService: AuthorizationService,
-    private userListService: OuvrageListService,
-    public _matDialog: MatDialog,
+    public matDialog: MatDialog,
     private toolsService: ToolsService,
-    public router: Router) {
+    public router: Router) 
+    {
     super(COLUMN_NAMES)
     this._unsubscribeAll = new Subject();
-    this.usersCheckbox = {};
+    this.ouvragesCheckbox = {};
     this.selectBarDisplayed = false;
   }
 
   ngOnInit() {
     this.route.data.pipe(takeUntil(this._unsubscribeAll)).subscribe(
       (response) => {
-          //this.btnExport = response.data.length;
-          //this.emptyList = response.data.length == 0;
-         // this.initTable(response.data[0]);
-          //this.initUsersSelected(response.data[0]);
+        this.btnExport = response.data.length;
+        this.emptyList = response.data.length == 0;
+        this.initTable(response.data);
+        //this.initUsersSelected(response.data[0]);
       },
       (error) => {
+        console.log(error);
+      }
+    );
+    this.ouvrageListService.onSelectedOuvragesChanged.pipe(takeUntil(this._unsubscribeAll)).subscribe(
+      (ouvragesSelected) => {
+          this.selectBarDisplayed = ouvragesSelected.length > 0;
+
+          for (const id in this.ouvragesCheckbox) {
+              if (!this.ouvragesCheckbox.hasOwnProperty(id)) continue;
+              this.ouvragesCheckbox[id] = ouvragesSelected.includes(id);
+          }
 
       }
   );
-  }
+
+  this.ouvrageListService.onOuvragesChanged.pipe(takeUntil(this._unsubscribeAll)).subscribe(
+      (ouvrages) => {
+          this.dataSource.data = ouvrages;
+          this.applyFilter(this.dataSource.filter);
+          this.checkPage();
+      }
+  );
+}
+
+initOuvragesSelected(ouvrages) {
+  ouvrages.forEach(
+      (ouvrage) => {
+          this.ouvragesCheckbox[ouvrage.id] = false;
+      }
+  );
+}
+
+// -----------------------------------------------------------------------------------------------------
+// @ Event function
+// -----------------------------------------------------------------------------------------------------
+onSelectedChange(ouvrage): void {
+  this.ouvrageListService.toggleSelectedOuvrage(ouvrage);
+}
+
+onDelete(ouvrage): void {
+  this.confirmDialogRef = this.matDialog.open(FuseConfirmDialogComponent);
+
+  this.confirmDialogRef.componentInstance.confirmMessage = this.toolsService.getTranslation('LIST.CONFIRM-DIALOG.delete');
+  this.confirmDialogRef.afterClosed().pipe(takeUntil(this._unsubscribeAll)).subscribe(result => {
+      if (result) {
+          this.ouvrageListService.deleteOuvrage(ouvrage);
+
+      }
+      this.confirmDialogRef = null;
+  });
+
+}
+
+// -----------------------------------------------------------------------------------------------------
+// @ Public function
+// -----------------------------------------------------------------------------------------------------
+applyFilter(filterValue: string) {
+
+  this.filter(filterValue);
+  this.ouvrageListService.setOuvragesByFilter(this.dataSource.filteredData);
+  this.btnExport = this.dataSource['_renderData'].value.length;
+}
+
+export() {
+  this.ouvrageListService.exportDataXLS(["id"]);
+}
+
+heightDyn() {
+  return document.getElementById('headerHeight').clientHeight + 'px';
+}
 
   ngOnDestroy(): void {
     // Unsubscribe from all subscriptions
     this._unsubscribeAll.next();
     this._unsubscribeAll.complete();
     if (this.confirmDialogRef) this.confirmDialogRef.close();
-}
+  }
 
 }
