@@ -1,30 +1,30 @@
-package dz.ade.pfe.domain.commons;
+package dz.ade.pfe.domain.ouvrage;
 
 import lombok.*;
 
 import javax.persistence.*;
 
 @Entity
-@Table(name = "post_transformation", schema = "pfe")
+@Table(name = "transformation_station", schema = "pfe")
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class PostTransformation {
+public class TransformationStation {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "post_transformation_gen")
     @SequenceGenerator(name = "post_transformation_gen", sequenceName = "post_transformation_seq", schema = "pfe", allocationSize = 1)
     protected Long id;
 
-    @Column(name = "marque")
-    private String marque;
+    @Column(name = "brand")
+    private String brand;
 
-    @Column(name = "puissance")
-    private double puissance;
+    @Column(name = "power")
+    private double power;
 
-    @Column(name = "emplacement")
-    private String emplacement;
+    @Column(name = "location")
+    private String location;
 
     @Column(name = "up_us")
     private double up_us;
@@ -35,14 +35,14 @@ public class PostTransformation {
     @Column(name = "ucc")
     private double ucc;
 
-    @Column(name = "couplage")
-    private String couplage;
+    @Column(name = "coupling")
+    private String coupling;
 
-    @Column(name = "nhuile")
-    private String nhuile;
+    @Column(name = "oil_nature")
+    private String oilNature;
 
-    @Column(name = "nabri")
-    private String nabri;
+    @Column(name = "abri_nature")
+    private String abriNature;
 
     @Column(name = "pmt")
     private double pmt;

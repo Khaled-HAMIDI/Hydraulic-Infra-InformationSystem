@@ -6,37 +6,37 @@ import javax.persistence.*;
 import dz.ade.pfe.domain.commons.Auditing;
 
 @Entity
-@Table(name = "securite", schema = "pfe")
+@Table(name = "security", schema = "pfe")
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class Securite {
+public class Security {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "securite_gen")
     @SequenceGenerator(name = "securite_gen", sequenceName = "securite_seq", schema = "pfe", allocationSize = 1)
     protected Long id;
 
-    @Column(name = "cloture")
-    private boolean cloture;
+    @Column(name = "closing")
+    private boolean closing;
 
     @Column(name = "nature")
     private String nature;
 
-    @Column(name = "guerite")
-    private double guerite;
+    @Column(name = "entry_box")
+    private double entryBox;
 
-    @Column(name = "agents_securite")
-    private double agents_securite;
+    @Column(name = "nb_agents")
+    private double nbAgents;
 
-    @Column(name = "armement")
-    private boolean armement;
+    @Column(name = "weaponry")
+    private boolean weaponry;
 
-    @Column(name = "telesurveillance")
-    private boolean telesurveillance;
+    @Column(name = "remote_monitoring")
+    private boolean remoteMonitoring;
 
-    @Column(name = "acces")
-    private String acces;
+    @Column(name = "access")
+    private String access;
 
 }

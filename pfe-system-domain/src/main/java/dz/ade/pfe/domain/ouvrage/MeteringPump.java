@@ -7,13 +7,13 @@ import javax.persistence.*;
 import dz.ade.pfe.domain.commons.Auditing;
 
 @Entity
-@Table(name = "pompe_doseuse", schema = "pfe")
+@Table(name = "metering_pump", schema = "pfe")
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class PompeDoseuse {
+public class MeteringPump {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "pompe_doseuse_gen")
     @SequenceGenerator(name = "pompe_doseuse_gen", sequenceName = "pompe_doseuse_seq", schema = "pfe", allocationSize = 1)
@@ -29,15 +29,15 @@ public class PompeDoseuse {
     @Column(name = "hmt")
     private String hmt;
 
-    @Column(name = "puisssance")
-    private double puissance;
+    @Column(name = "power")
+    private double power;
 
-    @Column(name = "fonctionnement")
-    private boolean fonctionnement;
+    @Column(name = "enabled")
+    private boolean enabled;
 
     @Column(name = "mode")
     private String mode;
 
-    @Column(name = "etat")
-    private String etat;
+    @Column(name = "state")
+    private String state;
 }

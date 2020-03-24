@@ -6,34 +6,34 @@ import javax.persistence.*;
 import dz.ade.pfe.domain.commons.Auditing;
 
 @Entity
-@Table(name = "composant_ouvrage", schema = "pfe")
+@Table(name = "ouvrage_component", schema = "pfe")
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class ComposantOuvrage {
+public class OuvrageComponent {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "composant_ouvrage_gen")
     @SequenceGenerator(name = "composant_ouvrage_gen", sequenceName = "composant_ouvrage_seq", schema = "pfe", allocationSize = 1)
     protected Long id;
 
 
-    @Column(name = "capacite")
-    private double capacite;
+    @Column(name = "capacity")
+    private double capacity;
 
     @Column(name = "type")
     private String type;
 
-    @Column(name = "forme")
-    private String forme;
+    @Column(name = "form")
+    private String form;
 
     @Column(name = "nature")
     private String nature;
 
-    @Column(name = "etat")
-    private String etat;
+    @Column(name = "state")
+    private String state;
 
-    @Column(name = "fonctionnement")
-    private boolean fonctionnement;
+    @Column(name = "enabled")
+    private boolean enabled;
 }

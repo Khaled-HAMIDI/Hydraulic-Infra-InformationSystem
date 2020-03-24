@@ -6,13 +6,13 @@ import javax.persistence.*;
 import dz.ade.pfe.domain.commons.Auditing;
 
 @Entity
-@Table(name = "ouvrage_chaine", schema = "pfe")
+@Table(name = "ouvrage_chain", schema = "pfe")
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class OuvrageChaine {
+public class OuvrageChain {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "ouvrage_chaine_gen")
     @SequenceGenerator(name = "ouvrage_chaine_gen", sequenceName = "ouvrage_chaine_seq", schema = "pfe", allocationSize = 1)

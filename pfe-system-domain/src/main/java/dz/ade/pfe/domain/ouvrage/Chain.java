@@ -7,13 +7,13 @@ import dz.ade.pfe.domain.commons.Auditing;
 
 
 @Entity
-@Table(name = "chaine", schema = "pfe")
+@Table(name = "chain", schema = "pfe")
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class Chaine {
+public class Chain {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "chaine_gen")
     @SequenceGenerator(name = "chaine_gen", sequenceName = "chaine_seq", schema = "pfe", allocationSize = 1)
@@ -22,8 +22,8 @@ public class Chaine {
     @Column(name = "code")
     private double code;
 
-    @Column(name = "nom")
-    private String nom;
+    @Column(name = "name")
+    private String name;
 
 }
 

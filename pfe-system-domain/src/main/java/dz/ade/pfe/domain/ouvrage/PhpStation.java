@@ -6,13 +6,13 @@ import javax.persistence.*;
 import dz.ade.pfe.domain.commons.Auditing;
 
 @Entity
-@Table(name = "station_php", schema = "pfe")
+@Table(name = "php_station", schema = "pfe")
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class StationPHP {
+public class PhpStation {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "station_php_gen")
     @SequenceGenerator(name = "station_php_gen", sequenceName = "station_php_seq", schema = "pfe", allocationSize = 1)
@@ -24,8 +24,8 @@ public class StationPHP {
     @Column(name = "hmt")
     private double hmt;
 
-    @Column(name = "puissance")
-    private double puissance;
+    @Column(name = "power")
+    private double power;
 
 
 }

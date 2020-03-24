@@ -1,4 +1,4 @@
-package dz.ade.pfe.domain.commons;
+package dz.ade.pfe.domain.ouvrage;
 
 import lombok.*;
 
@@ -8,13 +8,13 @@ import java.time.LocalDate;
 import java.util.Date;
 
 @Entity
-@Table(name = "groupe_electro_pompe", schema = "pfe")
+@Table(name = "electro_group_pump", schema = "pfe")
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class GroupeElectroPompe {
+public class ElectroGroupPump  {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "groupe_electro_pompe_gen")
     @SequenceGenerator(name = "groupe_electro_pompe_gen", sequenceName = "groupe_electro_pompe_seq", schema = "pfe", allocationSize = 1)
@@ -23,11 +23,11 @@ public class GroupeElectroPompe {
     @Column(name = "gepi")
     private double gepi;
 
-    @Column(name = "marque")
-    private String marque;
+    @Column(name = "brand")
+    private String brand;
 
-    @Column(name = "puissance")
-    private double puissance;
+    @Column(name = "power")
+    private double power;
 
     @Column(name = "hmt")
     private double hmt;
@@ -35,8 +35,8 @@ public class GroupeElectroPompe {
     @Column(name = "debit")
     private double debit;
 
-    @Column(name = "etat")
-    private String etat;
+    @Column(name = "state")
+    private String state;
 
     @Column(name = "date")
     private LocalDate date;

@@ -1,4 +1,4 @@
-package dz.ade.pfe.domain.commons;
+package dz.ade.pfe.domain.ouvrage;
 
 import lombok.*;
 
@@ -7,26 +7,26 @@ import java.time.LocalDate;
 import java.util.Date;
 
 @Entity
-@Table(name = "groupe_electro_moteur", schema = "pfe")
+@Table(name = "electro_group_motor", schema = "pfe")
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class GroupeElectroMoteur {
+public class ElectroGroupMotor {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "groupe_electro_moteur_gen")
     @SequenceGenerator(name = "groupe_electro_moteur_gen", sequenceName = "groupe_electro_moteur_seq", schema = "pfe", allocationSize = 1)
     protected Long id;
 
-    @Column(name = "marque")
-    private String marque;
+    @Column(name = "brand")
+    private String brand;
 
-    @Column(name = "puissance")
-    private double puissance;
+    @Column(name = "power")
+    private double power;
 
-    @Column(name = "etat")
-    private String etat;
+    @Column(name = "state")
+    private String state;
 
     @Column(name = "mode")
     private String mode;

@@ -1,17 +1,17 @@
-package dz.ade.pfe.domain.commons;
+package dz.ade.pfe.domain.ouvrage;
 
 import lombok.*;
 
 import javax.persistence.*;
 
 @Entity
-@Table(name = "prise_eau", schema = "pfe")
+@Table(name = "water_intake", schema = "pfe")
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class PriseEau {
+public class WaterIntake {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "prise_eau_gen")
     @SequenceGenerator(name = "prise_eau_gen", sequenceName = "prise_eau_seq", schema = "pfe", allocationSize = 1)

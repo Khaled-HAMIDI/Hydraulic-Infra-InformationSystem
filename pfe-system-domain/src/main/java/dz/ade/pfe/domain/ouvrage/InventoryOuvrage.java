@@ -7,13 +7,13 @@ import dz.ade.pfe.domain.commons.Auditing;
 
 
 @Entity
-@Table(name = "inventaire_ouvrage", schema = "pfe")
+@Table(name = "inventory_ouvrage", schema = "pfe")
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class InventaireOuvrage {
+public class InventoryOuvrage {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "inventaire_ouvrage_gen")
     @SequenceGenerator(name = "inventaire_ouvrage_gen", sequenceName = "inventaire_ouvrage_seq", schema = "pfe", allocationSize = 1)
