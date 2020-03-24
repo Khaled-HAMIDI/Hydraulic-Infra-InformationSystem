@@ -12,11 +12,9 @@ const COLUMN_NAMES: string[] = [
   'checkbox',
   'type',
   'ouvrageCode',
-  'unite',
   'commune',
   'debit',
-  'enabled',
-  'buttons'
+  'enabled'
 ];
 
 @Component({
@@ -51,7 +49,7 @@ export class OuvrageListComponent extends Table implements OnInit, OnDestroy {
         this.btnExport = response.data.length;
         this.emptyList = response.data.length == 0;
         this.initTable(response.data);
-        //this.initUsersSelected(response.data[0]);
+        this.initOuvragesSelected(response.data);
       },
       (error) => {
         console.log(error);
