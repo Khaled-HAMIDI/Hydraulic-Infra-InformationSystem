@@ -22,7 +22,8 @@ public class Generator extends Auditing{
     private double storageTank;
 
     @Column(name = "nature")
-    private String nature;
+    @Enumerated(EnumType.STRING)
+    private EnumTypeGeneral nature;
 
     @Column(name = "power")
     private double power;

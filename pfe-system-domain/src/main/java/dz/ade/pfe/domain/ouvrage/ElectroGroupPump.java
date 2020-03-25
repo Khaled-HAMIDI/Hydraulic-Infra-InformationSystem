@@ -37,7 +37,8 @@ public class ElectroGroupPump  extends Auditing{
     private double debit;
 
     @Column(name = "state")
-    private String state;
+    @Enumerated(EnumType.STRING)
+    private EnumEtat state;
 
     @Column(name = "date")
     private LocalDate date;

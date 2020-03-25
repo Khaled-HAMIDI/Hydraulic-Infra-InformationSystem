@@ -29,12 +29,13 @@ public class Ouvrage extends Auditing{
 
     @Column(name = "type")
     private String type;
-
+    
     @Column(name = "fonctionnement")
-    private boolean fonctionnement;
+    private Boolean fonctionnement;
 
     @Column(name = "etat")
-    private String etat;
+    @Enumerated(EnumType.STRING)
+    private EnumEtat etat;
 
     @Column(name = "localite")
     private String localite;

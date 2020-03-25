@@ -27,13 +27,16 @@ public class ElectroGroupMotor extends Auditing{
     private double power;
 
     @Column(name = "state")
-    private String state;
+    @Enumerated(EnumType.STRING)
+    private EnumEtat state;
 
     @Column(name = "mode")
-    private String mode;
+    @Enumerated(EnumType.STRING)
+    private EnumModeDemarageGrp mode;
 
     @Column(name = "type")
-    private String type;
+    @Enumerated(EnumType.STRING)
+    private EnumTypeGrpElectro type;
 
     @Column(name = "date")
     private LocalDate date;

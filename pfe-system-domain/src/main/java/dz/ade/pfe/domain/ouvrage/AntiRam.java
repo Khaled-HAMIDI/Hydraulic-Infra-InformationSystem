@@ -35,7 +35,8 @@ public class AntiRam extends Auditing {
     private double inflationPressure;
 
     @Column(name = "type")
-    private String type;
+    @Enumerated(EnumType.STRING)
+    private EnumTypeGeneral type;
 
     @Column(name = "compressor")
     private boolean compressor;

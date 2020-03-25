@@ -23,10 +23,12 @@ public class LocalBlock extends Auditing {
     private double area;
 
     @Column(name = "nature")
-    private String nature;
+    @Enumerated(EnumType.STRING)
+    private EnumNatureBlocLocal nature;
 
     @Column(name = "state")
-    private String state;
+    @Enumerated(EnumType.STRING)
+    private EnumEtat state;
 
 
 }

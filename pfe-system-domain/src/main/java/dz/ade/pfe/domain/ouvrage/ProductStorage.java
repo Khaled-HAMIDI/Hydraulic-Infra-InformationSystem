@@ -19,17 +19,19 @@ public class ProductStorage extends Auditing{
     protected Long id;
 
     @Column(name = "type")
-    private String type;
+    @Enumerated(EnumType.STRING)
+    private EnumTypeReservoir type;
 
     @Column(name = "form")
     private String form;
 
-        @Column(name = "dimention")
+    @Column(name = "dimention")
     private String dimention;
 
     @Column(name = "arrangement")
     private String arrangement;
 
     @Column(name = "state")
-    private String state;
+    @Enumerated(EnumType.STRING)
+    private EnumEtat state;
 }
