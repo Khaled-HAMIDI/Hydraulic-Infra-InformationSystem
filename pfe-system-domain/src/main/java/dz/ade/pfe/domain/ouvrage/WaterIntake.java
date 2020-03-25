@@ -3,6 +3,7 @@ package dz.ade.pfe.domain.ouvrage;
 import lombok.*;
 
 import javax.persistence.*;
+import dz.ade.pfe.domain.commons.Auditing;
 
 @Entity
 @Table(name = "water_intake", schema = "pfe")
@@ -11,7 +12,7 @@ import javax.persistence.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class WaterIntake {
+public class WaterIntake extends Auditing{
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "prise_eau_gen")
     @SequenceGenerator(name = "prise_eau_gen", sequenceName = "prise_eau_seq", schema = "pfe", allocationSize = 1)

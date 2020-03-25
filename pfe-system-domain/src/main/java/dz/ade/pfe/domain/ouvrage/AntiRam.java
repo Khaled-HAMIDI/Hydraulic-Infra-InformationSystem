@@ -3,6 +3,7 @@ package dz.ade.pfe.domain.ouvrage;
 import lombok.*;
 
 import javax.persistence.*;
+import dz.ade.pfe.domain.commons.Auditing;
 import java.util.Date;
 
 @Entity
@@ -12,7 +13,7 @@ import java.util.Date;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class AntiRam {
+public class AntiRam extends Auditing {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "anti_belier_gen")
     @SequenceGenerator(name = "anti_belier_gen", sequenceName = "anti_belier_seq", schema = "pfe", allocationSize = 1)
