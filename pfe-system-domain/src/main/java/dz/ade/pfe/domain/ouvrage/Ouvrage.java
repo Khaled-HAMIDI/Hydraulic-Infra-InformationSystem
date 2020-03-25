@@ -24,59 +24,108 @@ public class Ouvrage {
     @Column(name = "code")
     private String code;
 
-    @Column(name = "nom")
-    private String nom;
+    @Column(name = "name")
+    private String name;
 
     @Column(name = "type")
     private String type;
 
-    @Column(name = "fonctionnement")
-    private boolean fonctionnement;
+    @Column(name = "form")
+    private String form;
 
-    @Column(name = "etat")
-    private String etat;
+    @Column(name = "process")
+    private String process;
 
-    @Column(name = "localite")
-    private String localite;
+    @Column(name = "nb_compartment")
+    private int nbCompartment;
 
-    @Column(name = "commune")
-    private Long commune ;
+    @Column(name = "raft_rating")
+    private double raftRating;
 
-    @Column(name = "cordonnee")
-    private double cordonnee;
+    @Column(name = "cote_trop_full")
+    private int coteTropFull;
 
-    @Column(name = "superficie")
-    private double superficie;
+    @Column(name = "enabled")
+    private boolean enabled;
 
-    @Column(name = "capacite_installee")
-    private double capacite_installee;
+    @Column(name = "state")
+    private String state;
 
-    @Column(name = "capacite_actuelle")
-    private double capacite_actuelle;
+    @Column(name = "coordinate_x")
+    private double coordinateX;
 
-    @Column(name = "nature_construction")
-    private String nature_construction;
+    @Column(name = "coordinate_y")
+    private double coordinateY;
 
-    @Column(name = "date_mise_service")
-    private LocalDate date_mise_service;
+    @Column(name = "coordinate_Z")
+    private double coordinateZ;
 
-    @Column(name = "date_exploitation")
-    private LocalDate date_exploitation;
+    @Column(name = "area")
+    private double area;
+
+    @Column(name = "installed_capacity")
+    private double installedCapacity;
+
+    @Column(name = "current_capacity")
+    private double currentCapacity;
+
+    @Column(name = "hmt")
+    private double hmt;
+
+    @Column(name = "power")
+    private double power;
+
+    @Column(name = "nb_pump")
+    private int nbPump;
+
+    @Column(name = "pump_debit")
+    private double pumpDebit;
+
+    @Column(name = "construction_type")
+    private String constructionType;
+
+    @Column(name = "water_source")
+    private String water_source;
+
+    @Column(name = "commissioning_date")
+    private LocalDate commissioningDate;
+
+    @Column(name = "operating_date")
+    private LocalDate operatingDate;
 
     @Column(name = "maitre_ouvrage")
     private String maitre_ouvrage;
 
-    @Column(name = "cout_realisation")
-    private double cout_realisation;
+    @Column(name = "realization_cost")
+    private double realizationCost;
 
-    @Column(name = "ligne_specialisee")
-    private boolean ligne_specialisee;
+    @Column(name = "remote_management")
+    private boolean remoteManagement;
 
-    @Column(name = "facture_m_energie")
-    private double facture_m_energie;
+    @Column(name = "water_tank")
+    private boolean waterTank;
 
-    @Column(name = "effectif_total")
-    private int effectif_total;
+    @Column(name = "tank_capacity")
+    private double tankCapacity;
+
+    @Column(name = "specialized_line")
+    private boolean specializedLine;
+
+    @Column(name = "abri")
+    private boolean abri;
+
+    @Column(name = "energy_monthly_bill")
+    private double energyMonthlyBill;
+
+    @Column(name = "total_workforce")
+    private int totalWorkforce;
+
+    @Column(name = "distribution")
+    private boolean distribution;
+
+    @Column(name = "population_served")
+    private double populationServed;
+
 
 }
 
