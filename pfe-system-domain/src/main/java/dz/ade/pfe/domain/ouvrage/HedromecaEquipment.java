@@ -3,6 +3,7 @@ package dz.ade.pfe.domain.ouvrage;
 import lombok.*;
 
 import javax.persistence.*;
+import dz.ade.pfe.domain.commons.Auditing;
 import java.awt.*;
 
 @Entity
@@ -12,7 +13,7 @@ import java.awt.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class HedromecaEquipment {
+public class HedromecaEquipment extends Auditing{
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "equipement_hedromeca_gen")
     @SequenceGenerator(name = "equipement_hedromeca_gen", sequenceName = "equipement_hedromeca_seq", schema = "pfe", allocationSize = 1)

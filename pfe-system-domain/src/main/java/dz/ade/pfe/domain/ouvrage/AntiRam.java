@@ -1,9 +1,9 @@
 package dz.ade.pfe.domain.ouvrage;
 
 import lombok.*;
-import dz.ade.pfe.domain.commons.Auditing;
 
 import javax.persistence.*;
+import dz.ade.pfe.domain.commons.Auditing;
 import java.util.Date;
 
 @Entity

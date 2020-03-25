@@ -2,8 +2,10 @@ package dz.ade.pfe.domain.ouvrage;
 
 import lombok.*;
 
+
 import javax.persistence.*;
 import dz.ade.pfe.domain.commons.Auditing;
+
 
 @Entity
 @Table(name = "electrical_equipment", schema = "pfe")
@@ -12,7 +14,7 @@ import dz.ade.pfe.domain.commons.Auditing;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class ElectricalEquipment {
+public class ElectricalEquipment extends Auditing{
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "equipement_electrique_gen")
     @SequenceGenerator(name = "equipement_electrique_gen", sequenceName = "equipement_electrique_seq", schema = "pfe", allocationSize = 1)

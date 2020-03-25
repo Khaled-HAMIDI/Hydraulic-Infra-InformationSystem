@@ -12,7 +12,7 @@ import dz.ade.pfe.domain.commons.Auditing;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class PhpStation {
+public class PhpStation extends Auditing{
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "station_php_gen")
     @SequenceGenerator(name = "station_php_gen", sequenceName = "station_php_seq", schema = "pfe", allocationSize = 1)

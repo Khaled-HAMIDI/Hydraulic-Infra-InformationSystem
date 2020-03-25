@@ -3,6 +3,7 @@ package dz.ade.pfe.domain.ouvrage;
 import lombok.*;
 
 import javax.persistence.*;
+import dz.ade.pfe.domain.commons.Auditing;
 
 @Entity
 @Table(name = "product_storage", schema = "pfe")
@@ -11,7 +12,7 @@ import javax.persistence.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class ProductStorage {
+public class ProductStorage extends Auditing{
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "stockage_produit_gen")
     @SequenceGenerator(name = "stockage_produit_gen", sequenceName = "stockage_produit_seq", schema = "pfe", allocationSize = 1)

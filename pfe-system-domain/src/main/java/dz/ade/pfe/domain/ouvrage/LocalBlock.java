@@ -13,7 +13,7 @@ import dz.ade.pfe.domain.commons.Auditing;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class LocalBlock  {
+public class LocalBlock extends Auditing {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "bloc_local_gen")
     @SequenceGenerator(name = "bloc_local_gen", sequenceName = "bloc_local_seq", schema = "pfe", allocationSize = 1)

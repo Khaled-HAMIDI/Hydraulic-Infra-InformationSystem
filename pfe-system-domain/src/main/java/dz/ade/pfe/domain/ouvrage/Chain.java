@@ -13,7 +13,7 @@ import dz.ade.pfe.domain.commons.Auditing;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class Chain {
+public class Chain extends Auditing{
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "chaine_gen")
     @SequenceGenerator(name = "chaine_gen", sequenceName = "chaine_seq", schema = "pfe", allocationSize = 1)

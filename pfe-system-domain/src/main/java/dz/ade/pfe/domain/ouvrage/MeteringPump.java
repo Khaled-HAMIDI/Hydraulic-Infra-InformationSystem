@@ -13,7 +13,7 @@ import dz.ade.pfe.domain.commons.Auditing;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class MeteringPump {
+public class MeteringPump extends Auditing{
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "pompe_doseuse_gen")
     @SequenceGenerator(name = "pompe_doseuse_gen", sequenceName = "pompe_doseuse_seq", schema = "pfe", allocationSize = 1)
