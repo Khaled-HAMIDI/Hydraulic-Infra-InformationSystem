@@ -43,7 +43,7 @@ public class Ouvrage extends Auditing{
     private double raftRating;
 
     @Column(name = "cote_trop_full")
-    private int coteTropFull;
+    private double coteTropFull;
 
     @Column(name = "enabled")
     private boolean enabled;
