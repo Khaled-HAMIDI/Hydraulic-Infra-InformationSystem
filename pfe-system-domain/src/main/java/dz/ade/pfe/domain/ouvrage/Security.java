@@ -22,7 +22,8 @@ public class Security extends Auditing{
     private boolean closing;
 
     @Column(name = "nature")
-    private String nature;
+    @Enumerated(EnumType.STRING)
+    private EnumNatureSecurity nature;
 
     @Column(name = "entry_box")
     private double entryBox;

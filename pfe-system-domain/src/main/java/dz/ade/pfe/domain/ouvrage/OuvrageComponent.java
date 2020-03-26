@@ -26,13 +26,16 @@ public class OuvrageComponent extends Auditing{
     private String type;
 
     @Column(name = "form")
-    private String form;
+    @Enumerated(EnumType.STRING)
+    private EnumForm form;
 
+    /* Normalement on laisse soit type soit nature*/
     @Column(name = "nature")
     private String nature;
 
     @Column(name = "state")
-    private String state;
+    @Enumerated(EnumType.STRING)
+    private EnumEtat state;
 
     @Column(name = "enabled")
     private boolean enabled;

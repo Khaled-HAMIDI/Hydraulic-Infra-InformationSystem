@@ -20,7 +20,8 @@ public class ElectricBuilding extends Auditing{
 
 
     @Column(name = "state")
-    private String state;
+    @Enumerated(EnumType.STRING)
+    private EnumEtat state;
 
     @Column(name = "nature")
     private String nature;

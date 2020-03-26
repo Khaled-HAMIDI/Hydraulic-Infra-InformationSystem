@@ -20,6 +20,7 @@ public class MeteringPump extends Auditing{
     protected Long id;
 
 
+    /*C'est demandé de le laisser commme un chaps de saisie*/
     @Column(name = "type")
     private String type;
 
@@ -36,8 +37,10 @@ public class MeteringPump extends Auditing{
     private boolean enabled;
 
     @Column(name = "mode")
-    private String mode;
+    @Enumerated(EnumType.STRING)
+    private EnumModePompe mode;
 
     @Column(name = "state")
-    private String state;
+    @Enumerated(EnumType.STRING)
+    private EnumEtat state;
 }

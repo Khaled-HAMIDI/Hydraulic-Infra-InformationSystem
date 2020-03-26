@@ -29,7 +29,8 @@ public class HedromecaEquipment extends Auditing{
     private String materials;
 
     @Column(name = "state")
-    private String state;
+    @Enumerated(EnumType.STRING)
+    private EnumEtat state;
 
     @Column(name = "observation")
     private String observation;

@@ -30,8 +30,16 @@ public class Ouvrage extends Auditing{
     @Column(name = "type")
     private String type;
 
+    @Column(name = "enabled")
+    private boolean enabled;
+
     @Column(name = "form")
-    private String form;
+    @Enumerated(EnumType.STRING)
+    private EnumForm form;
+
+    @Column(name = "state")
+    @Enumerated(EnumType.STRING)
+    private EnumEtat state;
 
     @Column(name = "process")
     private String process;
@@ -44,12 +52,6 @@ public class Ouvrage extends Auditing{
 
     @Column(name = "cote_trop_full")
     private Double coteTropFull;
-
-    @Column(name = "enabled")
-    private Boolean enabled;
-
-    @Column(name = "state")
-    private String state;
 
     @Column(name = "coordinate_x")
     private Double coordinateX;
