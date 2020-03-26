@@ -29,31 +29,20 @@ public class Ouvrage extends Auditing{
 
     @Column(name = "type")
     private String type;
-<<<<<<< HEAD
-    
-    @Column(name = "fonctionnement")
-    private Boolean fonctionnement;
-||||||| merged common ancestors
 
-    @Column(name = "fonctionnement")
-    private boolean fonctionnement;
-=======
+    @Column(name = "enabled")
+    private boolean enabled;
 
     @Column(name = "form")
-    private String form;
->>>>>>> eff2e6d20727957ad9adcc44cc2be1309c53608b
-
-<<<<<<< HEAD
-    @Column(name = "etat")
     @Enumerated(EnumType.STRING)
-    private EnumEtat etat;
-||||||| merged common ancestors
-    @Column(name = "etat")
-    private String etat;
-=======
+    private EnumForm form;
+
+    @Column(name = "state")
+    @Enumerated(EnumType.STRING)
+    private EnumEtat state;
+
     @Column(name = "process")
     private String process;
->>>>>>> eff2e6d20727957ad9adcc44cc2be1309c53608b
 
     @Column(name = "nb_compartment")
     private int nbCompartment;
@@ -63,12 +52,6 @@ public class Ouvrage extends Auditing{
 
     @Column(name = "cote_trop_full")
     private double coteTropFull;
-
-    @Column(name = "enabled")
-    private boolean enabled;
-
-    @Column(name = "state")
-    private String state;
 
     @Column(name = "coordinate_x")
     private double coordinateX;
