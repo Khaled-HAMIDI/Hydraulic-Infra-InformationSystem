@@ -37,49 +37,49 @@ public class Ouvrage extends Auditing{
     private String process;
 
     @Column(name = "nb_compartment")
-    private int nbCompartment;
+    private Integer nbCompartment;
 
     @Column(name = "raft_rating")
-    private double raftRating;
+    private Double raftRating;
 
     @Column(name = "cote_trop_full")
-    private double coteTropFull;
+    private Double coteTropFull;
 
     @Column(name = "enabled")
-    private boolean enabled;
+    private Boolean enabled;
 
     @Column(name = "state")
     private String state;
 
     @Column(name = "coordinate_x")
-    private double coordinateX;
+    private Double coordinateX;
 
     @Column(name = "coordinate_y")
-    private double coordinateY;
+    private Double coordinateY;
 
     @Column(name = "coordinate_Z")
-    private double coordinateZ;
+    private Double coordinateZ;
 
     @Column(name = "area")
-    private double area;
+    private Double area;
 
     @Column(name = "installed_capacity")
-    private double installedCapacity;
+    private Double installedCapacity;
 
     @Column(name = "current_capacity")
-    private double currentCapacity;
+    private Double currentCapacity;
 
     @Column(name = "hmt")
-    private double hmt;
+    private Double hmt;
 
     @Column(name = "power")
-    private double power;
+    private Double power;
 
     @Column(name = "nb_pump")
-    private int nbPump;
+    private Integer nbPump;
 
     @Column(name = "pump_debit")
-    private double pumpDebit;
+    private Double pumpDebit;
 
     @Column(name = "construction_type")
     private String constructionType;
@@ -97,34 +97,34 @@ public class Ouvrage extends Auditing{
     private String maitre_ouvrage;
 
     @Column(name = "realization_cost")
-    private double realizationCost;
+    private Double realizationCost;
 
     @Column(name = "remote_management")
-    private boolean remoteManagement;
+    private Boolean remoteManagement;
 
     @Column(name = "water_tank")
-    private boolean waterTank;
+    private Boolean waterTank;
 
     @Column(name = "tank_capacity")
-    private double tankCapacity;
+    private Double tankCapacity;
 
     @Column(name = "specialized_line")
-    private boolean specializedLine;
+    private Boolean specializedLine;
 
     @Column(name = "abri")
-    private boolean abri;
+    private Boolean abri;
 
     @Column(name = "energy_monthly_bill")
-    private double energyMonthlyBill;
+    private Double energyMonthlyBill;
 
     @Column(name = "total_workforce")
-    private int totalWorkforce;
+    private Integer totalWorkforce;
 
     @Column(name = "distribution")
-    private boolean distribution;
+    private Boolean distribution;
 
     @Column(name = "population_served")
-    private double populationServed;
+    private Double populationServed;
 
 
 }

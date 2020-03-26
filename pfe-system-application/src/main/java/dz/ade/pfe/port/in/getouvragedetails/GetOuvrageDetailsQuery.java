@@ -1,7 +1,8 @@
 package dz.ade.pfe.port.in.getouvragedetails;
 
 import dz.ade.pfe.domain.ouvrage.Ouvrage;
+import dz.ade.pfe.service.getouvragedetails.OuvrageDto;
 
 public interface GetOuvrageDetailsQuery {
-    Ouvrage getOuvrageDetails(String code);
+    OuvrageDto getOuvrageDetails(String code);
 }

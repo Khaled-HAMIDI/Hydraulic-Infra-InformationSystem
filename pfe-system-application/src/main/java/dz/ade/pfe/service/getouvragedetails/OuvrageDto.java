@@ -1,4 +1,4 @@
-package dz.ade.pfe.web.ouvrage.inventory.ouvrage;
+package dz.ade.pfe.service.getouvragedetails;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

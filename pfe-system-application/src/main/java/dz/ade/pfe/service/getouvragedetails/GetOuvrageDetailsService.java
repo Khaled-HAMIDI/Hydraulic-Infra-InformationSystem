@@ -10,11 +10,14 @@ import org.springframework.stereotype.Service;
 @Service
 @RequiredArgsConstructor
 public class GetOuvrageDetailsService implements GetOuvrageDetailsQuery {
-    @Autowired
+    //@Autowired
     private final LoadOuvrageDetails loadOuvrageDetails;
+    private final OuvrageMapper ouvrageMapper;
 
     @Override
-    public Ouvrage getOuvrageDetails(String code){
-        return loadOuvrageDetails.loadOuvrageDetails(code);
+    public OuvrageDto getOuvrageDetails(String code){
+
+        Ouvrage ouvrage = loadOuvrageDetails.loadOuvrageDetails(code);
+        return  ouvrageMapper.ouvrageToOuvrageDto(ouvrage);
     }
 }

@@ -1,4 +1,4 @@
-package dz.ade.pfe.web.ouvrage.inventory.ouvrage;
+package dz.ade.pfe.service.getouvragedetails;
 
 import dz.ade.pfe.domain.ouvrage.Ouvrage;
 import org.mapstruct.Mapper;

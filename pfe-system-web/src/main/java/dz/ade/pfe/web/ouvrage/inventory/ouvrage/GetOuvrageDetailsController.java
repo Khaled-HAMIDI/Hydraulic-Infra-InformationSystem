@@ -1,9 +1,7 @@
 package dz.ade.pfe.web.ouvrage.inventory.ouvrage;
 
-import dz.ade.pfe.domain.commons.Commune;
-import dz.ade.pfe.domain.ouvrage.Ouvrage;
 import dz.ade.pfe.port.in.getouvragedetails.GetOuvrageDetailsQuery;
-import dz.ade.pfe.web.commons.communes.dto.CommuneListDto;
+import dz.ade.pfe.service.getouvragedetails.OuvrageDto;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
@@ -25,7 +23,7 @@ import java.util.List;
 public class GetOuvrageDetailsController {
 
     private final GetOuvrageDetailsQuery getOuvrageDetailsQuery;
-    private final OuvrageMapper ouvrageMapper;
+
 
     @GetMapping(value = "/ouvrage/{code}")
     @ApiOperation(value = "View a list of available commune by wilaya")
@@ -36,7 +34,6 @@ public class GetOuvrageDetailsController {
             @ApiResponse(code = 404, message = "The resource you were trying to reach is not found")
     })
     public OuvrageDto getOuvrageDetails(@PathVariable String code) {
-        Ouvrage ouvrage = getOuvrageDetailsQuery.getOuvrageDetails(code);
-        return ouvrageMapper.ouvrageToOuvrageDto(ouvrage);
+        return getOuvrageDetailsQuery.getOuvrageDetails(code);
     }
 }
