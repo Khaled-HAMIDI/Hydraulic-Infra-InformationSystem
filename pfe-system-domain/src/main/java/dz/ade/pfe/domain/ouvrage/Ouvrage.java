@@ -95,7 +95,7 @@ public class Ouvrage extends Auditing{
     @Column(name = "operating_date")
     private LocalDate operatingDate;
 
-    @Column(name = "maitre_ouvrage")    
+    @Column(name = "maitre_ouvrage")
     private String maitre_ouvrage;
 
     @Column(name = "realization_cost")
