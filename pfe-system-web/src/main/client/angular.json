@@ -38,7 +38,11 @@
                             "./node_modules/ornamentum/themes/base.theme.scss",
                             "./node_modules/ornamentum/themes/addon.base.theme.scss"
                         ],
-                        "scripts": [],
+                        "scripts": [
+                            "./src/assets/d3network/d3.v3.min.js",
+                            "./src/assets/d3network/cola.min.js",
+                            "./src/assets/d3network/inet-henge.js"
+                        ],
                         "showCircularDependencies": false
                     },
                     "configurations": {

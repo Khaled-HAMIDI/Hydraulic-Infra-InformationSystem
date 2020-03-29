@@ -1,11 +1,15 @@
-import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
-import { ouvrages } from './ouvrages'
-import { images } from './images'
+import { Component, OnInit, ViewChild, ElementRef, ViewEncapsulation } from '@angular/core';
+import { nodes } from './images'
+import { repeat } from 'rxjs/operators';
+declare var Diagram:any;
+declare var cola:any; 
+declare var d3:any; 
 
 @Component({
   selector: 'app-draw',
   templateUrl: './draw.component.html',
-  styleUrls: ['./draw.component.scss']
+  styleUrls: ['./draw.component.scss'],
+  encapsulation: ViewEncapsulation.None,
 })
 export class DrawComponent implements OnInit {
   ctx;
@@ -14,40 +18,57 @@ export class DrawComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    //---Forage
-    this.ctx = this.canvas.nativeElement.getContext('2d');
-    var forageImg = new Image();
-    forageImg.onload = () => {
-      this.ctx.beginPath();
-      this.ctx.lineWidth = 1.5
-      this.filter('F', ouvrages).forEach((forage, i) => {
-        this.ctx.drawImage(forageImg, 30 + i * 70, 30, 43, 48)
-        this.ctx.moveTo(30 + i*70 + 21, 30+48)
-        this.ctx.lineTo(30 + 106.5 + 20, 130)
-      })
-      this.ctx.stroke()
-    }
-    forageImg.src = images['F']
-    //---Reservoir
-    var resImg = new Image();
-    resImg.onload = () => {
-      this.filter('R', ouvrages).forEach((res, i) => {
-        this.ctx.drawImage(resImg, 30 + 106.5, 150, 43, 48)
-        this.ctx.beginPath();
-        this.ctx.lineWidth = 1.5
-        this.ctx.moveTo(30 + 106.5 + 20, 150)
-        this.ctx.lineTo(30 + 106.5 + 20, 130)
-        this.ctx.moveTo(30 + 106.5 + 20, 150+48)
-        this.ctx.lineTo(30 + 106.5 + 20, 150 + 150)
-        this.ctx.stroke()
-      })
-    }
-    resImg.src = images['R']
-    //--Population
-    this.ctx.lineWidth = 2
-    this.ctx.strokeRect(30 + 106.5 + 20 - 50, 150 + 150,100,35)
-    this.ctx.font = "14px Arial";
-    this.ctx.fillText('Population',30 + 106.5 + 20 - 35, 150 + 150+17)
+  var diagram = new Diagram('#diagram', nodes, {pop: /^([^\s-]+)-/, bundle: true});
+  diagram.on('rendered', () => {
+    d3.selectAll('line').on('mouseover', function (d) {
+      // Hide all labels
+      d3.selectAll('.link text').style('visibility', 'hidden');
+
+      // Show hovered labels
+      d3.selectAll(`.link text.${d.path_id()}`).style('visibility', 'visible');
+    }).on('mouseout', function (d) {
+      if (currentScale() > 1.5) {
+        // Show all labels
+        d3.selectAll('.link text').style('visibility', 'visible');
+      } else {
+        // Hide hovered labels
+        d3.selectAll(`.link text.${d.path_id()}`).style('visibility', 'hidden');
+      }
+    });
+
+    // You can also change label position, which is, how far it is from the node along the link line
+    d3.selectAll('.link textPath tspan').attr('x', '40');
+    d3.selectAll('.link textPath.reverse tspan').attr('x', '-40');
+    d3.selectAll('tspan.title').attr('x', '-20');
+    //Water Flow Animation
+      d3.selectAll("path").style("opacity","0.5")
+      d3.selectAll("path").style("opacity","1")
+      d3.selectAll("path").each(function(d,i){
+        // Get the length of each line in turn
+          repeat(i)
+           })
+           function repeat(i){
+             var line = d3.select("#path"+i)
+            var totalLength = line.node().getTotalLength();
+           line.attr("stroke-dasharray", totalLength + " " + totalLength)
+          .attr("stroke-dashoffset", totalLength)
+          .transition()
+          .duration(8000)
+          // .delay(100)
+          .ease("linear") //Try linear, quad, bounce... see other examples here - http://bl.ocks.org/hunzy/9929724
+          .attr("stroke-dashoffset", 0)
+          // .style("stroke-dasharray","5")
+          .style("stroke-width",2.5)
+          .each("end",() => repeat(i))
+           }
+    
+  });
+
+  function currentScale() {
+    return d3.transform(diagram.svg.attr('transform')).scale[0];
+  }
+   diagram.init('loopback', 'interface','title');
+    
   }
 
   drawSchema() {
