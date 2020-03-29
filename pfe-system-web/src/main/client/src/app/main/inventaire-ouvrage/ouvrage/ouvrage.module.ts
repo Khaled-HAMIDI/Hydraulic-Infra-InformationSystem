@@ -28,6 +28,8 @@ import { OuvrageListComponent } from './list/ouvrage-list/ouvrage-list.component
 import { OuvrageListService } from './list/ouvrage-list/ouvrage-list.service';
 import { AyamsModule } from '@ayams/ayams.module';
 import { IConfig, NgxMaskModule } from 'ngx-mask';
+import { AddComponent } from './add/add.component';
+import { EditComponent } from './edit/edit.component';
 
 export const options: Partial<IConfig> | (() => Partial<IConfig>) = null;
 
@@ -40,7 +42,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  declarations: [OuvrageListComponent],
+  declarations: [OuvrageListComponent, AddComponent, EditComponent],
   imports: [
     CommonModule,
     RouterModule.forChild(routes),
