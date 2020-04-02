@@ -37,7 +37,7 @@ public class UserController {
     private OrganisationalStructureComponent organisationalStructureComponent;
     private UserUserDtoMapper userUserDtoMapper;
     private OrganisationalStructureDtoMapper organisationalStructureDtoMapper;
-    private ProfileManager profileManager;
+    private ProfileManager profileManager;  
 
     public UserController(UserComponent userComponent,
                           SecurityService securityService,

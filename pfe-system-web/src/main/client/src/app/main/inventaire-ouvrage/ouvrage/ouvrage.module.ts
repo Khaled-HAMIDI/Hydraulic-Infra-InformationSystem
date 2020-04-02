@@ -30,10 +30,17 @@ import { AyamsModule } from '@ayams/ayams.module';
 import { IConfig, NgxMaskModule } from 'ngx-mask';
 import { OuvrageAddComponent } from './ouvrage-add/ouvrage-add.component';
 import { OuvrageEditComponent } from './ouvrage-edit/ouvrage-edit.component';
+import {OuvrageAddService} from "./ouvrage-add/ouvrage-add.service";
+import {MatDatepickerModule} from "@angular/material/datepicker";
 
 export const options: Partial<IConfig> | (() => Partial<IConfig>) = null;
 
 const routes: Routes = [
+    {
+        path: 'add',
+        component: OuvrageAddComponent,
+        data: {action: 'add'}
+    },
   {
     path: '**',
     component: OuvrageListComponent,
@@ -43,10 +50,10 @@ const routes: Routes = [
 
 @NgModule({
   declarations: [OuvrageListComponent, OuvrageAddComponent, OuvrageEditComponent],
-  imports: [
-    CommonModule,
-    RouterModule.forChild(routes),
-    MatSortModule,
+    imports: [
+        CommonModule,
+        RouterModule.forChild(routes),
+        MatSortModule,
         MatTableModule,
         MatPaginatorModule,
         MatIconModule,
@@ -70,6 +77,7 @@ const routes: Routes = [
         MatToolbarModule,
         AyamsModule,
         NgxMaskModule.forRoot(options),
-  ]
+        MatDatepickerModule,
+    ]
 })
 export class OuvrageModule { }

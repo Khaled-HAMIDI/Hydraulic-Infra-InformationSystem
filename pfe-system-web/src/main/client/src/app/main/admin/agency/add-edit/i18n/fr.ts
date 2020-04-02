@@ -3,57 +3,48 @@ export const locale = {
     data: {
         'ADD-EDIT': {
             'HEADER': {
-                'title-edit': 'Agence N°',
-                'title-add': 'Nouvelle Agence',
+                'title-edit': 'الوكالة رقم ',
+                'title-add': 'Nouveau Utilisateur',
             },
             'BUTTON': {
-                'add': 'Enregistrer',
-                'edit': 'Sauvegarder',
+                'add': 'Ajouter',
+                'edit': 'تعديل',
             },
             'PLACE-HOLDER': {
-                'code': 'Code',
-                'address': 'Adresse',
-                'agencyType': 'Type d\'agence',
-                'center': 'Center',
-                'designation': 'Designation',
-                'headOfTheStructure': 'Chef de structure',
-                'phone': 'Téléphone',
+                'username': 'Nom d\'utilisateur',
+                'firstName': 'Prénom',
+                'lastName': 'Nom',
+                'structure': 'Strcuture',
+                'phoneNumber': 'Téléphone',
                 'email': 'Email',
-                'longitude': 'Longitude',
-                'latitude': 'Latitude',
-
-                'fax'                    : 'FAX',
-                'rib'                    : 'RIB',
-                'rip'                    : 'RIP',
-                'agency'                 : 'Agence',
-                'taxIdNumber'            : "Numéro d'identification fiscale",
-                'thirdPartyCode'         : 'Code tiers',
-                'bankOfDomiciliation'    : 'Banque de domiciliation',
-                'businessRegisterNumber' : "Numéro de registre d'entreprise",
-                'taxIdentificationNumber': "Numéro d'identification fiscale",
+                'active': 'Activé',
+                'inactive': 'Désactivé',
+                'center': 'Choisir le centre',
+                'agency': 'Choisir l\'agence',
+                'roles': 'Profils',
+                'noSelection': 'Aucune selection',
+                'employee-code': 'Code d\'employé'
             },
             'TOAST-EDIT': {
-                'title': 'Modification des agences',
+                'title': 'تعديل الوكالات',
                 'success': {
-                    'before-var': 'L\'agence N° ',
-                    'after-var': ' a été  modifiée'
+                    'before-var': 'الوكالة رقم ',
+                    'after-var': 'تم تعديلها '
                 },
                 'error': {
-                    'before-var': 'L\'agence N° ',
-                    'after-var': ' n\'a pas été modifiée'
+                    'before-var': 'الوكالة رقم ',
+                    'after-var': 'لم يتم تعديلها '
                 }
             },
             'TOAST-ADD': {
-                'title': 'Création des agences',
-                'success': 'L\'agence a été crée',
-                'error': 'L\'agence n\'a pas été crée'
+                'title': 'Création d\'un utilisateur',
+                'success': 'L\'utilisateur a été crée',
+                'error': 'L\'utilisateur n\'a pas été crée'
             },
-            "LEGENDS": {
-                'agencies': 'Coordonnées de l\'agence',
-                'headOfTheStructure': 'Coordonnées du chef de structure',
-                'location': 'Emplacement',
-                
-                'others': 'Autres informations'
+            "LEGENDS":{
+                'infos-perso' : 'Informations personnelles',
+                'infos-user' : 'Informations utilisateur',
+                'structure' : 'Structure'
             }
         },
     }

@@ -2,6 +2,8 @@ package dz.ade.pfe.web.ouvrage.inventory.ouvrage;
 
 import dz.ade.pfe.domain.ouvrage.Ouvrage;
 import dz.ade.pfe.port.in.createouvrage.CreateOuvrageQuery;
+import dz.ade.pfe.service.createouvrage.OuvrageAddDto;
+import dz.ade.pfe.service.createouvrage.OuvrageOuvrageDtoMapper;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
@@ -10,18 +12,21 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
+
 
 @RestController
-@RequestMapping(value = "/api/ouvrage")
+@RequestMapping(value = "/api")
 @Api(value = "ouvrage", description = "Operations on ouvrage")
 @Component
 @RequiredArgsConstructor
 public class CreateOuvrageController {
 
     private final CreateOuvrageQuery createOuvrageQuery;
+    private OuvrageOuvrageDtoMapper ouvrageOuvrageDtoMapper;
 
 
-    @PostMapping
+    @PostMapping(value = "/ouvrage")
     @ApiOperation(value = "Save an ouvrage")
     @ApiResponses(value = {
             @ApiResponse(code = 200, message = "Successfully added an ouvrage"),
@@ -29,7 +34,8 @@ public class CreateOuvrageController {
             @ApiResponse(code = 403, message = "Accessing the resource you were trying to reach is forbidden"),
             @ApiResponse(code = 404, message = "The resource you were trying to reach is not found")
     })
-    public String createOuvrage(@RequestBody Ouvrage ouvrage) {
+    public String createOuvrage(@RequestBody OuvrageAddDto ouvrageAddDto) {
+        Ouvrage ouvrage = ouvrageOuvrageDtoMapper.ouvrageAddDtoToOuvrage(ouvrageAddDto);
         return createOuvrageQuery.createOuvrage(ouvrage);
     }
 }

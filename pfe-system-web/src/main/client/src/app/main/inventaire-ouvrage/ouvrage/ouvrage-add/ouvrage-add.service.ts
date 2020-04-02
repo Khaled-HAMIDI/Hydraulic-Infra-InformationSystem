@@ -1,0 +1,57 @@
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { API } from 'config/api.config';
+import { ActivatedRouteSnapshot, RouterStateSnapshot, Resolve, Router } from '@angular/router';
+import { Agency } from '../../../model/admin.model';
+import { ToolsService } from '@ayams/services/tools.service';
+
+const OUVRAGE_API = API + '/ouvrage';
+
+@Injectable({
+    providedIn: 'root'
+})
+
+export class OuvrageAddService {
+
+    constructor(private router: Router,
+                private http: HttpClient,
+                private toolsService: ToolsService) {
+    }
+
+    // -----------------------------------------------------------------------------------------------------
+    // @ API function
+    // -----------------------------------------------------------------------------------------------------
+
+
+    save(ouvrage): Promise<any> {
+        return new Promise((resolve, reject) => {
+            this.http.post(OUVRAGE_API, ouvrage)
+                .subscribe((response: any) => {
+                    resolve(response);
+                }, reject);
+        });
+
+    }
+
+
+
+    saveOuvrage(ouvrage) {
+        return new Promise((resolve, reject) => {
+            this.toolsService.showProgressBar();
+            this.save(ouvrage).then((responce) => {
+
+                    this.toolsService.hideProgressBar();
+                    this.toolsService.showSuccess('ADD.TOAST-ADD.success');
+                    resolve(responce);
+                },
+                (error) => {
+                    console.log(error);
+                    this.toolsService.hideProgressBar();
+                    this.toolsService.showError('ADD.TOAST-ADD.error');
+                    reject(error);
+                })
+        });
+
+    }
+}

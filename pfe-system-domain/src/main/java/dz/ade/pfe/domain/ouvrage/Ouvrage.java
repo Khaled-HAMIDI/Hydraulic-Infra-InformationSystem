@@ -87,7 +87,7 @@ public class Ouvrage extends Auditing{
     private String constructionType;
 
     @Column(name = "water_source")
-    private String water_source;
+    private String waterSource;
 
     @Column(name = "commissioning_date")
     private LocalDate commissioningDate;
@@ -96,7 +96,7 @@ public class Ouvrage extends Auditing{
     private LocalDate operatingDate;
 
     @Column(name = "maitre_ouvrage")
-    private String maitre_ouvrage;
+    private String maitreOuvrage;
 
     @Column(name = "realization_cost")
     private Double realizationCost;

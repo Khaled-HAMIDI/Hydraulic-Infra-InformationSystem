@@ -40,7 +40,7 @@ export const navigation: FuseNavigation[] = [
                         'id'   : 'integrate',
                         'title': 'Intégrer',
                         'type' : 'item',
-                        'url'  : 'patrimony/ouvrage/add'
+                        'url'  : 'patrimony/ouvrages/add'
                     },
                     {
                         'id'   : 'inventory',
