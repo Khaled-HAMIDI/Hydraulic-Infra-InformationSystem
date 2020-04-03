@@ -9,11 +9,6 @@ import org.mapstruct.Mappings;
 @Mapper(componentModel = "spring")
 public interface OuvrageOuvrageDtoMapper {
 
-
-    @Mappings({
-            @Mapping(target = "commissioningDate", dateFormat = "yyyy-MM-dd"),
-            @Mapping(target = "operatingDate", dateFormat = "yyyy-MM-dd")
-    })
     Ouvrage ouvrageAddDtoToOuvrage(OuvrageAddDto ouvrageAddDto);
 
 }

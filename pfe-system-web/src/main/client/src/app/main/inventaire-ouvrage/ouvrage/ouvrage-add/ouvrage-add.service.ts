@@ -29,7 +29,10 @@ export class OuvrageAddService {
             this.http.post(OUVRAGE_API, ouvrage)
                 .subscribe((response: any) => {
                     resolve(response);
-                }, reject);
+                }, (error : any) => {
+                    console.log(error);
+                    reject(error);
+                });
         });
 
     }
@@ -39,11 +42,11 @@ export class OuvrageAddService {
     saveOuvrage(ouvrage) {
         return new Promise((resolve, reject) => {
             this.toolsService.showProgressBar();
-            this.save(ouvrage).then((responce) => {
+            this.save(ouvrage).then((response) => {
 
                     this.toolsService.hideProgressBar();
                     this.toolsService.showSuccess('ADD.TOAST-ADD.success');
-                    resolve(responce);
+                    resolve(response);
                 },
                 (error) => {
                     console.log(error);

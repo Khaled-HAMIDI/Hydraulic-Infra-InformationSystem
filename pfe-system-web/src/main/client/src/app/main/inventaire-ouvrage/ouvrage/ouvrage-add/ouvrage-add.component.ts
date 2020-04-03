@@ -8,6 +8,7 @@ import { FuseTranslationLoaderService } from '@fuse/services/translation-loader.
 import { locale as french } from './i18n/fr';
 import { locale as arabic } from './i18n/ar';
 import { AyamsValidators } from '@ayams/validators';
+import {error} from "util";
 
 
 /* A appliquer pour le code des ouvrages
@@ -41,7 +42,7 @@ export class OuvrageAddComponent implements OnInit, OnDestroy {
      * On init
      */
     ngOnInit(): void {
-    this.initForm();
+        this.initForm();
     }
 
     /**
@@ -52,7 +53,6 @@ export class OuvrageAddComponent implements OnInit, OnDestroy {
 
     createOuvrageForm(): FormGroup {
         let obj = {
-            id: [this.ouvrage.id],
             code: [this.ouvrage.code],
             name: [this.ouvrage.name , Validators.required],
             type: [this.ouvrage.type, Validators.required],
@@ -102,7 +102,6 @@ export class OuvrageAddComponent implements OnInit, OnDestroy {
     }
 
 
-
     /**
      * Save ouvrage
      */
@@ -111,11 +110,18 @@ export class OuvrageAddComponent implements OnInit, OnDestroy {
         console.log(ouvrage);
 
         this.ouvrageAddService.saveOuvrage(ouvrage)
-        .then(() => {
-            console.log("Testt");
+        .then((response) => {
+            console.log("It worked");
+        },
+            (error) => {
+            console.log("No")
         });
     }
 
+
+    /**
+     * To toggle the sliders
+     */
     toggleEnabled(): void {
         this.ouvrage.enabled = !this.ouvrage.enabled;
     }

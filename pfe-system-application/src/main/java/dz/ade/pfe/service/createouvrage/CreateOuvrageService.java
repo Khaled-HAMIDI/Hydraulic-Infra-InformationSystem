@@ -13,7 +13,7 @@ public class CreateOuvrageService implements CreateOuvrageQuery {
     private final SaveOuvrage saveOuvrage;
 
     @Override
-    public String createOuvrage(Ouvrage ouvrage){
+    public Ouvrage createOuvrage(Ouvrage ouvrage){
 
         return saveOuvrage.saveOuvrage(ouvrage);
     }
