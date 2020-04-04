@@ -1,7 +1,9 @@
 package dz.ade.pfe.web.ouvrage.inventory.ouvrage;
 
 
+import dz.ade.pfe.domain.ouvrage.Ouvrage;
 import dz.ade.pfe.port.in.updateouvrage.UpdateOuvrageQuery;
+import dz.ade.pfe.service.createouvrage.OuvrageAddDto;
 import dz.ade.pfe.service.updateouvrage.OuvrageUpdateDto;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -13,7 +15,7 @@ import org.springframework.web.bind.annotation.*;
 
 
 @RestController
-@RequestMapping(value = "/api/ouvrage")
+@RequestMapping(value = "/api")
 @Api(value = "ouvrage", description = "Operations on ouvrage")
 @Component
 @RequiredArgsConstructor
@@ -22,7 +24,7 @@ public class UpdateOuvrageController {
     private final UpdateOuvrageQuery updateOuvrageQuery;
 
 
-    @PutMapping(value = "/{id}")
+    @PutMapping(value = "/ouvrage/{code}")
     @ApiOperation(value = "Save an ouvrage")
     @ApiResponses(value = {
             @ApiResponse(code = 200, message = "Successfully added an ouvrage"),
@@ -30,7 +32,19 @@ public class UpdateOuvrageController {
             @ApiResponse(code = 403, message = "Accessing the resource you were trying to reach is forbidden"),
             @ApiResponse(code = 404, message = "The resource you were trying to reach is not found")
     })
-    public String updateOuvrage(@PathVariable(value = "id") int id,@RequestBody OuvrageUpdateDto ouvrageUpdateDto) {
-        return updateOuvrageQuery.updateOuvrage(ouvrageUpdateDto,id);
+    public Ouvrage updateOuvrage(@PathVariable(value = "code") String code, @RequestBody OuvrageUpdateDto ouvrageUpdateDto) {
+        return updateOuvrageQuery.updateOuvrage(ouvrageUpdateDto,code);
+    }
+
+    @GetMapping(value = "/ouvrage/edit/{code}")
+    @ApiOperation(value = "get an ouvrage")
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "Successfully retrieved an ouvrage"),
+            @ApiResponse(code = 401, message = "You are not authorized to view the resource"),
+            @ApiResponse(code = 403, message = "Accessing the resource you were trying to reach is forbidden"),
+            @ApiResponse(code = 404, message = "The resource you were trying to reach is not found")
+    })
+    public Ouvrage getUpdatedOuvrage(@PathVariable(value = "code") String code) {
+        return updateOuvrageQuery.getUpdatedOuvrage(code);
     }
 }

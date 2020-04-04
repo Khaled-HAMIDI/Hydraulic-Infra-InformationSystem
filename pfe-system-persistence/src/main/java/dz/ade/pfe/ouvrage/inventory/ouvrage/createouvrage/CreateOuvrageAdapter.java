@@ -12,8 +12,8 @@ public class CreateOuvrageAdapter implements SaveOuvrage {
 
     private final OuvrageRepository ouvrageRepository;
     @Override
-    public String saveOuvrage(Ouvrage ouvrage) {
+    public Ouvrage saveOuvrage(Ouvrage ouvrage) {
         ouvrageRepository.save(ouvrage);
-        return "Ouvrage was Succesfully Created";
+        return ouvrage;
     }
 }

@@ -13,6 +13,8 @@ import javax.persistence.Enumerated;
 @NoArgsConstructor
 public class OuvrageUpdateDto {
 
+    private boolean enabled;
+
     private double currentCapacity;
 
     private Double power;
@@ -22,6 +24,18 @@ public class OuvrageUpdateDto {
     @Enumerated(EnumType.STRING)
     private EnumEtat state;
 
-    /* En cas de nouvelles batiments sont installées ...*/
-    private Double populationServed;
+    private Boolean remoteManagement;
+
+    private Boolean specializedLine;
+
+    private Boolean abri;
+
+    private Double energyMonthlyBill;
+
+    private Integer totalWorkforce;
+
+    public boolean getEnabled() {
+        return this.enabled;
+    }
+
 }

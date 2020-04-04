@@ -1,7 +1,5 @@
 
-
 export class Ouvrage {
-    id: string;
     code: string;
     name: string;
     type: string;
@@ -41,7 +39,6 @@ export class Ouvrage {
 
     constructor(ouvrage?) {
         ouvrage = ouvrage || {} ;
-        this.id = ouvrage.id  ||  '';
         this.code = ouvrage.code ||  '';
         this.name = ouvrage.name ||  '';
         this.type = ouvrage.type ||  '';
@@ -75,8 +72,7 @@ export class Ouvrage {
         this.abri = true;
         this.energyMonthlyBill = ouvrage.energyMonthlyBill ||  '';
         this.totalWorkforce = ouvrage.totalWorkforce ||  '';
-        this.distribution = true ;
+        this.distribution = false ;
         this.populationServed = ouvrage.populationServed ||  '';
     }
 }
-
