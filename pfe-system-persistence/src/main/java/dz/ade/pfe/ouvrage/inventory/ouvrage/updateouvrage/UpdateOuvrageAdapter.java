@@ -3,6 +3,7 @@ package dz.ade.pfe.ouvrage.inventory.ouvrage.updateouvrage;
 import dz.ade.pfe.domain.ouvrage.Ouvrage;
 import dz.ade.pfe.ouvrage.inventory.ouvrage.OuvrageRepository;
 import dz.ade.pfe.port.out.updateouvrage.UpdateSaveOuvrage;
+import dz.ade.pfe.service.createouvrage.OuvrageAddDto;
 import dz.ade.pfe.service.updateouvrage.OuvrageUpdateDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
@@ -12,17 +13,31 @@ import org.springframework.stereotype.Component;
 public class UpdateOuvrageAdapter implements UpdateSaveOuvrage {
 
     private final OuvrageRepository ouvrageRepository;
-    @Override
-    public String updateSaveOuvrage(OuvrageUpdateDto ouvrageUpdateDto,int id) {
-        Ouvrage existingOuvrage=ouvrageRepository.getOne((long) 1);
 
+    @Override
+    public Ouvrage updateSaveOuvrage(OuvrageUpdateDto ouvrageUpdateDto, String code) {
+        Ouvrage existingOuvrage=ouvrageRepository.findByCode(code);
+
+        existingOuvrage.setEnabled(ouvrageUpdateDto.getEnabled());
         existingOuvrage.setCurrentCapacity(ouvrageUpdateDto.getCurrentCapacity());
         existingOuvrage.setState(ouvrageUpdateDto.getState());
-        existingOuvrage.setPopulationServed(ouvrageUpdateDto.getPopulationServed());
         existingOuvrage.setPower(ouvrageUpdateDto.getPower());
         existingOuvrage.setPumpDebit(ouvrageUpdateDto.getPumpDebit());
+        existingOuvrage.setTotalWorkforce(ouvrageUpdateDto.getTotalWorkforce());
+        existingOuvrage.setEnergyMonthlyBill(ouvrageUpdateDto.getEnergyMonthlyBill());
+        existingOuvrage.setSpecializedLine(ouvrageUpdateDto.getSpecializedLine());
+        existingOuvrage.setRemoteManagement(ouvrageUpdateDto.getRemoteManagement());
+        existingOuvrage.setAbri(ouvrageUpdateDto.getAbri());
 
         ouvrageRepository.save(existingOuvrage);
-        return "Ouvrage was Succesfully Updated";
+        return existingOuvrage;
+    }
+
+
+    @Override
+    public Ouvrage getUpdatedOuvrage(String code) {
+
+
+        return ouvrageRepository.findByCode(code);
     }
 }

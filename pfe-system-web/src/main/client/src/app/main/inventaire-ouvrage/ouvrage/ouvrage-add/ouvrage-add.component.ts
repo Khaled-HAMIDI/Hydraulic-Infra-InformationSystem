@@ -7,8 +7,7 @@ import { ActivatedRoute } from '@angular/router';
 import { FuseTranslationLoaderService } from '@fuse/services/translation-loader.service';
 import { locale as french } from './i18n/fr';
 import { locale as arabic } from './i18n/ar';
-import { AyamsValidators } from '@ayams/validators';
-import {error} from "util";
+
 
 
 /* A appliquer pour le code des ouvrages
@@ -119,6 +118,10 @@ export class OuvrageAddComponent implements OnInit, OnDestroy {
     }
 
 
+    ngOnDestroy(): void {
+
+    }
+
     /**
      * To toggle the sliders
      */
@@ -147,8 +150,6 @@ export class OuvrageAddComponent implements OnInit, OnDestroy {
     }
 
 
-    ngOnDestroy(): void {
 
-}
 
 }

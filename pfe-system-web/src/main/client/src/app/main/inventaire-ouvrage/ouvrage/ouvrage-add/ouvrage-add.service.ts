@@ -1,9 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
 import { API } from 'config/api.config';
-import { ActivatedRouteSnapshot, RouterStateSnapshot, Resolve, Router } from '@angular/router';
-import { Agency } from '../../../model/admin.model';
+import {  Router } from '@angular/router';
 import { ToolsService } from '@ayams/services/tools.service';
 
 const OUVRAGE_API = API + '/ouvrage';

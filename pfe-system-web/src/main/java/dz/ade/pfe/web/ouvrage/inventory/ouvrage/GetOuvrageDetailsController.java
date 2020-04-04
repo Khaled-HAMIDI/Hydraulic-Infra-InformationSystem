@@ -36,4 +36,7 @@ public class GetOuvrageDetailsController {
     public OuvrageDto getOuvrageDetails(@PathVariable String code) {
         return getOuvrageDetailsQuery.getOuvrageDetails(code);
     }
+
+
+
 }

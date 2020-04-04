@@ -41,6 +41,11 @@ const routes: Routes = [
         component: OuvrageAddComponent,
         data: {action: 'add'}
     },
+    {
+        path: ':code/edit',
+        component: OuvrageEditComponent,
+        data: {action: 'edit'}
+    },
   {
     path: '**',
     component: OuvrageListComponent,
