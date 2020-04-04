@@ -15,6 +15,9 @@ import { ProfilAddEditService } from './profil-add-edit.service';
 import sortBy from 'lodash/sortBy';
 import pullAllWith from 'lodash/pullAllWith';
 import isEqual from 'lodash/isEqual';
+import { AllPermissions } from './permission'
+import { NestedTreeControl } from '@angular/cdk/tree';
+import { MatTreeNestedDataSource } from '@angular/material/tree';
 
 @Component({
     selector: 'profil-add-edit',
@@ -30,6 +33,9 @@ export class ProfilAddEditComponent implements OnInit, OnDestroy {
     allPermissions: Authority[];
     pageType: string;
     profilForm: FormGroup;
+    AllPermissions = []
+    dataSource = new MatTreeNestedDataSource<any>();
+    treeControl = new NestedTreeControl<any>(node => node.children);
 
     constructor(
         private profilAddEditService: ProfilAddEditService,
@@ -42,8 +48,12 @@ export class ProfilAddEditComponent implements OnInit, OnDestroy {
         this._unsubscribeAll = new Subject();
         this.profil = new Role();
         this.fuseTranslationLoader.loadTranslations(french, arabic);
+        this.AllPermissions = AllPermissions;
+        this.dataSource.data = this.AllPermissions;
     }
- 
+
+    hasChild = (_: number, node) => !!node.children && node.children.length > 0;
+
     ngOnInit(): void {
         this.route.data.pipe(takeUntil(this._unsubscribeAll)).subscribe(
             (response) => {
@@ -72,8 +82,18 @@ export class ProfilAddEditComponent implements OnInit, OnDestroy {
     onSave(): void {
         const profil = this.profilForm.getRawValue();
         var permissionIds = [];
-        this.profil.authorities.forEach((perm) => { permissionIds.push(perm.id) });
-
+        // this.profil.authorities.forEach((perm) => { permissionIds.push(perm.id) });
+        this.AllPermissions.forEach((perm)=>{
+            if(perm.checked) permissionIds.push(perm.id)
+            else {
+                if(perm.children)
+                {
+                    perm.children.forEach((perm)=> {
+                        if(perm.checked) permissionIds.push(perm.id)
+                    })
+                }
+            }
+        })
         profil.authorities = permissionIds;
 
         this.profilAddEditService.saveProfil(profil)
@@ -93,7 +113,7 @@ export class ProfilAddEditComponent implements OnInit, OnDestroy {
 
         if (type == 'edit') {
             this.profil = new Role(profil);
-            this.allPermissions = pullAllWith(this.allPermissions, this.profil.authorities, isEqual);            
+            this.allPermissions = pullAllWith(this.allPermissions, this.profil.authorities, isEqual);
         } else {
             this.profil = new Role();
         }
@@ -112,7 +132,7 @@ export class ProfilAddEditComponent implements OnInit, OnDestroy {
     separatorKeysCodes: number[] = [ENTER, COMMA];
     filteredPermissions: Observable<Authority[]>;
 
-    @ViewChild('profilInput', {static: false}) profilInput: ElementRef;
+    @ViewChild('profilInput', { static: false }) profilInput: ElementRef;
 
     initFilteredPermissions() {
         this.filteredPermissions = this.profilForm.get('authorities').valueChanges.pipe(
@@ -149,6 +169,56 @@ export class ProfilAddEditComponent implements OnInit, OnDestroy {
         this.removeFromAllPermissions(permission);
 
         this.profilForm.get('authorities').setValue(null);
+    }
+
+    parentSelect(node) {
+        let permission: Authority = new Authority(node)
+        if (node.children) {
+            const ind = this.AllPermissions.findIndex((item) => {
+                return item.id === permission.id;
+            });
+            this.AllPermissions[ind].children.map((per) => {
+                return per.checked = node.checked
+            })
+        }
+    }
+
+    childSelect(node) {
+        let permission: Authority = new Authority(node)
+        if (node.checked)
+            this.profil.authorities.push(permission)
+        else {
+            const index = this.profil.authorities.findIndex((item) => {
+                return item.id === permission.id;
+            });
+            if(index >= 0)
+            this.profil.authorities.splice(index, 1);
+        }
+        // /* check parent if all child checked */
+         const i = this.findChildParent(node)
+        if (this.AllChildSeleted(this.AllPermissions[i]))
+        {
+            this.AllPermissions[i].checked = true;
+        }else{
+            this.AllPermissions[i].checked = false;
+        }
+    }
+
+    findChildParent(node): number{
+       let found = false
+       const index =  this.AllPermissions.findIndex((item)=> {
+            item.children.forEach((child)=>{
+                if(child.id === node.id) 
+                found = true;
+            })
+            return found;
+        })
+        return index;
+    }
+    AllChildSeleted(node){
+       return node.children.every((child)=>{
+            return child.checked===true
+        })
     }
 
     removeFromAllPermissions(permission: Authority) {

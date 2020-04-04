@@ -14,6 +14,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatSortModule } from '@angular/material/sort';
 import { MatTableModule } from '@angular/material/table';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import {MatTreeModule} from '@angular/material/tree';
 import { FuseSharedModule } from '@fuse/shared.module';
 import { ProfilListComponent } from './list/profil-list.component';
 import { FuseConfirmDialogModule } from '@fuse/components';
@@ -81,6 +82,7 @@ const routes = [
         MatMenuModule,
         MatSortModule,
         MatTableModule,
+        MatTreeModule,
         FuseSharedModule,
         MatCheckboxModule,
         FuseConfirmDialogModule,
