@@ -37,7 +37,6 @@ public class UpdateOuvrageAdapter implements UpdateSaveOuvrage {
     @Override
     public Ouvrage getUpdatedOuvrage(String code) {
 
-
         return ouvrageRepository.findByCode(code);
     }
 }

@@ -47,6 +47,10 @@ const routes: Routes = [
         component: OuvrageEditComponent,
         data: {action: 'edit'}
     },
+    {
+        path: ':code/show',
+        component: OuvrageShowComponent
+    },
   {
     path: '**',
     component: OuvrageListComponent,

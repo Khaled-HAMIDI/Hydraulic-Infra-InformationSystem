@@ -1,1 +1,376 @@
-<p>ouvrage-show works!</p>
+ <div id="user" class="page-layout carded fullwidth inner-scroll">
+
+        <!-- TOP BACKGROUND -->
+        <div class="top-bg accent"></div>
+        <!-- / TOP BACKGROUND -->
+
+        <!-- CENTER -->
+        <div class="center">
+
+            <!-- HEADER -->
+            <div class="header accent" fxLayout="row" fxLayoutAlign="space-between center">
+
+                <!-- APP TITLE -->
+                <div fxLayout="row" fxLayoutAlign="start center">
+
+                    <button mat-icon-button class="mr-0 mr-sm-16" [routerLink]="'/patrimony/ouvrages'">
+                        <mat-icon>arrow_back</mat-icon>
+                    </button>
+
+
+                    <div fxLayout="column" fxLayoutAlign="start start"
+                         [@animate]="{value:'*',params:{delay:'100ms',x:'-25px'}}">
+                        <div class="h2">
+                            {{'SHOW.HEADER.title' | translate}} {{ouvrage.name}}
+                        </div>
+
+                    </div>
+                </div>
+                <!-- / APP TITLE -->
+
+
+            </div>
+            <!-- / HEADER -->
+
+            <!-- CONTENT CARD -->
+            <div class="content-card mat-white-bg">
+
+                <!-- CONTENT -->
+                <div class="content">
+
+                    <div class="tab-content p-24" fusePerfectScrollbar>
+
+                        <div fxLayout="column" fxLayout.gt-sm="row">
+                            <div class="mr-sm-12 ml-sm-12" fxFlex>
+                                <fieldset class="myfieldset">
+                                    <legend>{{'SHOW.LEGENDS.general' | translate}}</legend>
+
+                                    <div class="mr-sm-24" fxFlex>
+                                        <p class="myLabel">{{'SHOW.LABEL.code' | translate}}</p>
+                                        <p class="myp">
+                                            <mat-icon matPrefix class="mr-12 s-20" color="accent">keyboard</mat-icon>
+                                            <span>{{ouvrage.code}}</span>
+                                        </p>
+                                    </div>
+
+                                    <div class="mr-sm-24" fxFlex>
+                                        <p class="myLabel">{{'SHOW.LABEL.state' | translate}}</p>
+                                        <p class="myp">
+                                            <mat-icon matPrefix class="mr-12 s-20" color="accent">keyboard</mat-icon>
+                                            <span>{{ouvrage.state}}</span>
+                                        </p>
+                                    </div>
+
+                                    <div class="mr-sm-24" fxFlex>
+                                        <p class="myLabel">{{'SHOW.LABEL.enabled' | translate}}</p>
+                                        <p class="myp">
+                                            <mat-icon matPrefix class="mr-12 s-20" color="accent">keyboard</mat-icon>
+                                            <span *ngIf="ouvrage.enabled">
+                                                {{ 'SHOW.LABEL.enabledActive' | translate }}
+                                            </span>
+                                            <span *ngIf="!ouvrage.enabled">
+                                                {{ 'SHOW.LABEL.enabledInactive' | translate }}
+                                            </span>
+                                        </p>
+                                    </div>
+
+                                    <div class="mr-sm-24" fxFlex>
+                                        <p class="myLabel">{{'SHOW.LABEL.form' | translate}}</p>
+                                        <p class="myp">
+                                            <mat-icon matPrefix class="mr-12 s-20" color="accent">domain</mat-icon>
+                                            <span>{{ouvrage.form}}</span>
+                                        </p>
+                                    </div>
+
+                                    <div class="mr-sm-24" fxFlex>
+                                        <p class="myLabel">{{'SHOW.LABEL.process' | translate}}</p>
+                                        <p class="myp">
+                                            <mat-icon matPrefix class="mr-12 s-20" color="accent">keyboard</mat-icon>
+                                            <span>{{ouvrage.process}}</span>
+                                        </p>
+                                    </div>
+
+                                    <div class="mr-sm-24" fxFlex>
+                                        <p class="myLabel">{{'SHOW.LABEL.constructionType' | translate}}</p>
+                                        <p class="myp">
+                                            <mat-icon matPrefix class="mr-12 s-20" color="accent">keyboard</mat-icon>
+                                            <span>{{ouvrage.constructionType}}</span>
+                                        </p>
+                                    </div>
+
+                                    <div class="mr-sm-24" fxFlex>
+                                        <p class="myLabel">{{'SHOW.LABEL.waterSource' | translate}}</p>
+                                        <p class="myp">
+                                            <mat-icon matPrefix class="mr-12 s-20" color="accent">keyboard</mat-icon>
+                                            <span>{{ouvrage.waterSource}}</span>
+                                        </p>
+                                    </div>
+
+                                    <div class="mr-sm-24" fxFlex>
+                                        <p class="myLabel">{{'SHOW.LABEL.commissioningDate' | translate}}</p>
+                                        <p class="myp">
+                                            <mat-icon matPrefix class="mr-12 s-20" color="accent">keyboard</mat-icon>
+                                            <span>{{ouvrage.commissioningDate}}</span>
+                                        </p>
+                                    </div>
+
+                                    <div class="mr-sm-24" fxFlex>
+                                        <p class="myLabel">{{'SHOW.LABEL.operatingDate' | translate}}</p>
+                                        <p class="myp">
+                                            <mat-icon matPrefix class="mr-12 s-20" color="accent">keyboard</mat-icon>
+                                            <span>{{ouvrage.operatingDate}}</span>
+                                        </p>
+                                    </div>
+
+                                    <div class="mr-sm-24" fxFlex>
+                                        <p class="myLabel">{{'SHOW.LABEL.maitreOuvrage' | translate}}</p>
+                                        <p class="myp">
+                                            <mat-icon matPrefix class="mr-12 s-20" color="accent">keyboard</mat-icon>
+                                            <span>{{ouvrage.maitreOuvrage}}</span>
+                                        </p>
+                                    </div>
+
+                                    <div class="mr-sm-24" fxFlex>
+                                        <p class="myLabel">{{'SHOW.LABEL.realizationCost' | translate}}</p>
+                                        <p class="myp">
+                                            <mat-icon matPrefix class="mr-12 s-20" color="accent">keyboard</mat-icon>
+                                            <span>{{ouvrage.realizationCost}}</span>
+                                        </p>
+                                    </div>
+
+                                    <div class="mr-sm-24" fxFlex>
+                                        <p class="myLabel">{{'SHOW.LABEL.totalWorkforce' | translate}}</p>
+                                        <p class="myp">
+                                            <mat-icon matPrefix class="mr-12 s-20" color="accent">person</mat-icon>
+                                            <span>{{ouvrage.totalWorkforce}}</span>
+                                        </p>
+                                    </div>
+
+                                    <div class="mr-sm-24" fxFlex>
+                                        <p class="myLabel">{{'SHOW.LABEL.specializedLine' | translate}}</p>
+                                        <p class="myp">
+                                            <mat-icon matPrefix class="mr-12 s-20" color="accent">keyboard</mat-icon>
+                                            <span *ngIf="ouvrage.specializedLine">
+                                                {{ 'SHOW.LABEL.specializedLineActive' | translate }}
+                                            </span>
+                                            <span *ngIf="!ouvrage.specializedLine">
+                                                {{ 'SHOW.LABEL.specializedLineInactive' | translate }}
+                                            </span>
+                                        </p>
+                                    </div>
+
+                                    <div class="mr-sm-24" fxFlex>
+                                        <p class="myLabel">{{'SHOW.LABEL.abri' | translate}}</p>
+                                        <p class="myp">
+                                            <mat-icon matPrefix class="mr-12 s-20" color="accent">home</mat-icon>
+                                            <span *ngIf="ouvrage.abri">
+                                                {{ 'SHOW.LABEL.abriActive' | translate }}
+                                            </span>
+                                            <span *ngIf="!ouvrage.abri">
+                                                {{ 'SHOW.LABEL.abriInactive' | translate }}
+                                            </span>
+                                        </p>
+                                    </div>
+
+                                </fieldset>
+                            </div>
+
+
+                            <div class="mr-sm-12 ml-sm-12" fxFlex>
+                                <fieldset class="myfieldset">
+                                    <legend>{{'SHOW.LEGENDS.technical' | translate}}</legend>
+
+                                    <div class="mr-sm-24" fxFlex>
+                                        <p class="myLabel">{{'SHOW.LABEL.nbCompartment' | translate}}</p>
+                                        <p class="myp">
+                                            <mat-icon matPrefix class="mr-12 s-20" color="accent">keyboard</mat-icon>
+                                            <span>{{ouvrage.nbCompartment}}</span>
+                                        </p>
+                                    </div>
+
+                                    <div class="mr-sm-24" fxFlex>
+                                        <p class="myLabel">{{'SHOW.LABEL.raftRating' | translate}}</p>
+                                        <p class="myp">
+                                            <mat-icon matPrefix class="mr-12 s-20" color="accent">keyboard</mat-icon>
+                                            <span>{{ouvrage.raftRating}}</span>
+                                        </p>
+                                    </div>
+
+                                    <div class="mr-sm-24" fxFlex>
+                                        <p class="myLabel">{{'SHOW.LABEL.coteTropFull' | translate}}</p>
+                                        <p class="myp">
+                                            <mat-icon matPrefix class="mr-12 s-20" color="accent">keyboard</mat-icon>
+                                            <span>{{ouvrage.coteTropFull}}</span>
+                                        </p>
+                                    </div>
+
+                                    <div class="mr-sm-24" fxFlex>
+                                        <p class="myLabel">{{'SHOW.LABEL.installedCapacity' | translate}}</p>
+                                        <p class="myp">
+                                            <mat-icon matPrefix class="mr-12 s-20" color="accent">keyboard</mat-icon>
+                                            <span>{{ouvrage.installedCapacity}}</span>
+                                        </p>
+                                    </div>
+
+                                    <div class="mr-sm-24" fxFlex>
+                                        <p class="myLabel">{{'SHOW.LABEL.currentCapacity' | translate}}</p>
+                                        <p class="myp">
+                                            <mat-icon matPrefix class="mr-12 s-20" color="accent">keyboard</mat-icon>
+                                            <span>{{ouvrage.currentCapacity}}</span>
+                                        </p>
+                                    </div>
+
+                                    <div class="mr-sm-24" fxFlex>
+                                        <p class="myLabel">{{'SHOW.LABEL.hmt' | translate}}</p>
+                                        <p class="myp">
+                                            <mat-icon matPrefix class="mr-12 s-20" color="accent">keyboard</mat-icon>
+                                            <span>{{ouvrage.hmt}}</span>
+                                        </p>
+                                    </div>
+
+                                    <div class="mr-sm-24" fxFlex>
+                                        <p class="myLabel">{{'SHOW.LABEL.power' | translate}}</p>
+                                        <p class="myp">
+                                            <mat-icon matPrefix class="mr-12 s-20" color="accent">keyboard</mat-icon>
+                                            <span>{{ouvrage.power}}</span>
+                                        </p>
+                                    </div>
+
+                                    <div class="mr-sm-24" fxFlex>
+                                        <p class="myLabel">{{'SHOW.LABEL.nbPump' | translate}}</p>
+                                        <p class="myp">
+                                            <mat-icon matPrefix class="mr-12 s-20" color="accent">keyboard</mat-icon>
+                                            <span>{{ouvrage.nbPump}}</span>
+                                        </p>
+                                    </div>
+
+                                    <div class="mr-sm-24" fxFlex>
+                                        <p class="myLabel">{{'SHOW.LABEL.pumpDebit' | translate}}</p>
+                                        <p class="myp">
+                                            <mat-icon matPrefix class="mr-12 s-20" color="accent">keyboard</mat-icon>
+                                            <span>{{ouvrage.pumpDebit}}</span>
+                                        </p>
+                                    </div>
+
+                                    <div class="mr-sm-24" fxFlex>
+                                        <p class="myLabel">{{'SHOW.LABEL.remoteManagement' | translate}}</p>
+                                        <p class="myp">
+                                            <mat-icon matPrefix class="mr-12 s-20" color="accent">keyboard</mat-icon>
+                                            <span *ngIf="ouvrage.remoteManagement">
+                                                {{ 'SHOW.LABEL.remoteManagementActive' | translate }}
+                                            </span>
+                                            <span *ngIf="!ouvrage.remoteManagement">
+                                                {{ 'SHOW.LABEL.remoteManagementInactive' | translate }}
+                                            </span>
+                                        </p>
+                                    </div>
+
+                                    <div class="mr-sm-24" fxFlex>
+                                        <p class="myLabel">{{'SHOW.LABEL.waterTank' | translate}}</p>
+                                        <p class="myp">
+                                            <mat-icon matPrefix class="mr-12 s-20" color="accent">keyboard</mat-icon>
+                                            <span *ngIf="ouvrage.waterTank">
+                                                {{ 'SHOW.LABEL.waterTankActive' | translate }}
+                                            </span>
+                                            <span *ngIf="!ouvrage.waterTank">
+                                                {{ 'SHOW.LABEL.waterTankInactive' | translate }}
+                                            </span>
+                                        </p>
+                                    </div>
+
+                                    <div class="mr-sm-24" fxFlex>
+                                        <p class="myLabel">{{'SHOW.LABEL.tankCapacity' | translate}}</p>
+                                        <p class="myp">
+                                            <mat-icon matPrefix class="mr-12 s-20" color="accent">keyboard</mat-icon>
+                                            <span>{{ouvrage.tankCapacity}}</span>
+                                        </p>
+                                    </div>
+
+                                    <div class="mr-sm-24" fxFlex>
+                                        <p class="myLabel">{{'SHOW.LABEL.energyMonthlyBill' | translate}}</p>
+                                        <p class="myp">
+                                            <mat-icon matPrefix class="mr-12 s-20" color="accent">keyboard</mat-icon>
+                                            <span>{{ouvrage.energyMonthlyBill}}</span>
+                                        </p>
+                                    </div>
+
+                                    <div class="mr-sm-24" fxFlex>
+                                        <p class="myLabel">{{'SHOW.LABEL.distribution' | translate}}</p>
+                                        <p class="myp">
+                                            <mat-icon matPrefix class="mr-12 s-20" color="accent">keyboard</mat-icon>
+                                            <span *ngIf="ouvrage.distribution">
+                                                {{ 'SHOW.LABEL.distributionActive' | translate }}
+                                            </span>
+                                            <span *ngIf="!ouvrage.distribution">
+                                                {{ 'SHOW.LABEL.distributionInactive' | translate }}
+                                            </span>
+                                        </p>
+                                    </div>
+
+                                    <div class="mr-sm-24" fxFlex *ngIf="ouvrage.distribution">
+                                        <p class="myLabel">{{'SHOW.LABEL.populationServed' | translate}}</p>
+                                        <p class="myp">
+                                            <mat-icon matPrefix class="mr-12 s-20" color="accent">domain</mat-icon>
+                                            <span>{{ouvrage.populationServed}}</span>
+                                        </p>
+                                    </div>
+
+                                </fieldset>
+                            </div>
+                        </div>
+
+                        <div fxLayout="column" class="mr-sm-12 ml-sm-12">
+                            <fieldset class="myfieldset2">
+                                <legend>{{'SHOW.LEGENDS.location' | translate}}</legend>
+                                <div fxLayout="column" fxLayout.gt-sm="row">
+
+                                    <div class="mr-sm-24" fxFlex>
+                                        <p class="myLabel">{{'SHOW.LABEL.coordinateX' | translate}}</p>
+                                        <p class="myp">
+                                            <mat-icon matPrefix class="mr-12 s-20" color="accent">place</mat-icon>
+                                            <span>{{ouvrage.coordinateX}}</span>
+                                        </p>
+                                    </div>
+
+
+                                    <div class="mr-sm-24" fxFlex>
+                                        <p class="myLabel">{{'SHOW.LABEL.coordinateY' | translate}}</p>
+                                        <p class="myp">
+                                            <mat-icon matPrefix class="mr-12 s-20" color="accent">place</mat-icon>
+                                            <span>{{ouvrage.coordinateY}}</span>
+                                        </p>
+                                    </div>
+
+                                    <div class="mr-sm-24" fxFlex>
+                                        <p class="myLabel">{{'SHOW.LABEL.coordinateZ' | translate}}</p>
+                                        <p class="myp">
+                                            <mat-icon matPrefix class="mr-12 s-20" color="accent">place</mat-icon>
+                                            <span>{{ouvrage.coordinateZ}}</span>
+                                        </p>
+                                    </div>
+
+
+                                    <div class="mr-sm-24" fxFlex>
+                                        <p class="myLabel">{{'SHOW.LABEL.area' | translate}}</p>
+                                        <p class="myp">
+                                            <mat-icon matPrefix class="mr-12 s-20" color="accent">domain</mat-icon>
+                                            <span>{{ouvrage.area}}</span>
+                                        </p>
+                                    </div>
+
+
+                                </div>
+                            </fieldset>
+                        </div>
+
+                    </div>
+                </div>
+                <!-- / CONTENT -->
+
+            </div>
+            <!-- / CONTENT CARD -->
+
+        </div>
+        <!-- / CENTER -->
+    </div>
+

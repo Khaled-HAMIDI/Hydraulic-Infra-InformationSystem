@@ -1,15 +1,56 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import {Ouvrage} from '../../../model/ouvrage.model';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { fuseAnimations } from '@fuse/animations';
+import {ActivatedRoute, Router} from '@angular/router';
+import { FuseTranslationLoaderService } from '@fuse/services/translation-loader.service';
+import { locale as french } from './i18n/fr';
+import { locale as arabic } from './i18n/ar';
+import {OuvrageEditService} from "../ouvrage-edit/ouvrage-edit.service";
+import {OuvrageShowService} from "./ouvrage-show.service";
+
+
 
 @Component({
   selector: 'app-ouvrage-show',
   templateUrl: './ouvrage-show.component.html',
-  styleUrls: ['./ouvrage-show.component.scss']
+  styleUrls: ['./ouvrage-show.component.scss'],
+    animations: fuseAnimations
 })
-export class OuvrageShowComponent implements OnInit {
+export class OuvrageShowComponent implements OnInit, OnDestroy {
 
-  constructor() { }
+    ouvrage: Ouvrage;
 
-  ngOnInit() {
-  }
+
+    constructor(
+        private ouvrageShowService: OuvrageShowService,
+        private route: ActivatedRoute,
+        private fuseTranslationLoader: FuseTranslationLoaderService) {
+
+        this.fuseTranslationLoader.loadTranslations(french, arabic);
+    }
+
+    ngOnInit(): void {
+        this.ouvrageShowService.get(this.route.snapshot.params['code']).then(
+            (ouvrage) => {
+                console.log(ouvrage);
+                this.initOuvrage(ouvrage);
+            },
+            (error) => {
+                console.log(error);
+            }
+        );
+    }
+
+
+
+    initOuvrage(ouvrage) {
+        this.ouvrage= new Ouvrage(ouvrage);
+
+    }
+
+    ngOnDestroy(): void {
+    }
+
 
 }

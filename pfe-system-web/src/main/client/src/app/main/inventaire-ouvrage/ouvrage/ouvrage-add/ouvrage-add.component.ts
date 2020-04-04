@@ -44,12 +44,6 @@ export class OuvrageAddComponent implements OnInit, OnDestroy {
         this.initForm();
     }
 
-    /**
-     * Create agency form
-     *
-     * @returns {FormGroup}
-     */
-
     createOuvrageForm(): FormGroup {
         let obj = {
             code: [this.ouvrage.code],
@@ -96,6 +90,11 @@ export class OuvrageAddComponent implements OnInit, OnDestroy {
 
     initForm(){
         this.ouvrage = new Ouvrage();
+        this.ouvrage.enabled = true;
+        this.ouvrage.specializedLine = true;
+        this.ouvrage.abri = true;
+        this.ouvrage.remoteManagement = true;
+        this.ouvrage.waterTank = true;
         this.ouvrageForm = this.createOuvrageForm();
 
     }

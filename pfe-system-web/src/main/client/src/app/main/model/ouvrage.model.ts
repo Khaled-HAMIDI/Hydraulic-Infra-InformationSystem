@@ -42,7 +42,7 @@ export class Ouvrage {
         this.code = ouvrage.code ||  '';
         this.name = ouvrage.name ||  '';
         this.type = ouvrage.type ||  '';
-        this.enabled = true;
+        this.enabled = ouvrage.enabled || false;
         this.form = ouvrage.form ||  '';
         this.state = ouvrage.state ||  '';
         this.process = ouvrage.process ||  '';
@@ -65,14 +65,14 @@ export class Ouvrage {
         this.operatingDate = ouvrage.operatingDate ||  '';
         this.maitreOuvrage = ouvrage.maitreOuvrage ||  '';
         this.realizationCost = ouvrage.realizationCost ||  '';
-        this.remoteManagement = true ;
-        this.waterTank = true ;
+        this.remoteManagement = ouvrage.remoteManagement || false ;
+        this.waterTank = ouvrage.waterTank || false ;
         this.tankCapacity = ouvrage.tankCapacity ||  '';
-        this.specializedLine = true ;
-        this.abri = true;
+        this.specializedLine = ouvrage.specializedLine || false ;
+        this.abri = ouvrage.abri || false;
         this.energyMonthlyBill = ouvrage.energyMonthlyBill ||  '';
         this.totalWorkforce = ouvrage.totalWorkforce ||  '';
-        this.distribution = false ;
+        this.distribution = ouvrage.distribution || false ;
         this.populationServed = ouvrage.populationServed ||  '';
     }
 }
