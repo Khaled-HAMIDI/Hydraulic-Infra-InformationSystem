@@ -32,6 +32,7 @@ import { OuvrageAddComponent } from './ouvrage-add/ouvrage-add.component';
 import { OuvrageEditComponent } from './ouvrage-edit/ouvrage-edit.component';
 import {OuvrageAddService} from "./ouvrage-add/ouvrage-add.service";
 import {MatDatepickerModule} from "@angular/material/datepicker";
+import { OuvrageShowComponent } from './ouvrage-show/ouvrage-show.component';
 
 export const options: Partial<IConfig> | (() => Partial<IConfig>) = null;
 
@@ -54,7 +55,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  declarations: [OuvrageListComponent, OuvrageAddComponent, OuvrageEditComponent],
+  declarations: [OuvrageListComponent, OuvrageAddComponent, OuvrageEditComponent, OuvrageShowComponent],
     imports: [
         CommonModule,
         RouterModule.forChild(routes),
