@@ -73,7 +73,7 @@ export class ProfilAddEditComponent implements OnInit, OnDestroy {
             id: [this.profil.id],
             role: [this.profil.role, Validators.required],
             designation: [this.profil.designation, Validators.required],
-            authorities: [this.profil.authorities, this.permisionsValidator()]
+            authorities: [this.profil.authorities]
         };
 
         return this.formBuilder.group(obj);
@@ -185,15 +185,15 @@ export class ProfilAddEditComponent implements OnInit, OnDestroy {
 
     childSelect(node) {
         let permission: Authority = new Authority(node)
-        if (node.checked)
-            this.profil.authorities.push(permission)
-        else {
-            const index = this.profil.authorities.findIndex((item) => {
-                return item.id === permission.id;
-            });
-            if(index >= 0)
-            this.profil.authorities.splice(index, 1);
-        }
+        // if (node.checked)
+        //     this.profil.authorities.push(permission)
+        // else {
+        //     const index = this.profil.authorities.findIndex((item) => {
+        //         return item.id === permission.id;
+        //     });
+        //     if(index >= 0)
+        //     this.profil.authorities.splice(index, 1);
+        // }
         // /* check parent if all child checked */
          const i = this.findChildParent(node)
         if (this.AllChildSeleted(this.AllPermissions[i]))
@@ -220,6 +220,14 @@ export class ProfilAddEditComponent implements OnInit, OnDestroy {
             return child.checked===true
         })
     }
+    AtLeastOneSelected():boolean{
+       let thereIsOne = false
+        this.AllPermissions.forEach((perm)=>{
+            if(perm.checked) return thereIsOne=true;
+            if(perm.children) perm.children.forEach((child)=> {if(child.checked) return thereIsOne=true})
+       })
+        return thereIsOne;
+    }
 
     removeFromAllPermissions(permission: Authority) {
         const index = this.allPermissions.indexOf(permission);
@@ -240,7 +248,7 @@ export class ProfilAddEditComponent implements OnInit, OnDestroy {
     permisionsValidator(): ValidatorFn {
 
         return (control: AbstractControl): { [key: string]: any } | null => {
-            const forbidden = this.profil.authorities.length != 0;
+            const forbidden = this.AtLeastOneSelected();
             return !forbidden ? { 'forbiddenName': { value: this.profil.authorities } } : null;
         };
     }
