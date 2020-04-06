@@ -65,7 +65,7 @@ public class CreateOuvrageController {
         ouvrage.setRealizationCost(ouvrageAddDto.getRealizationCost());
         ouvrage.setRemoteManagement(ouvrageAddDto.getRemoteManagement());
         ouvrage.setWaterTank(ouvrageAddDto.getWaterTank());
-        ouvrage.setTankCapacity(ouvrageAddDto.getTankCapacity());
+        ouvrage.setTankCapacity1(ouvrageAddDto.getTankCapacity());
         ouvrage.setSpecializedLine(ouvrageAddDto.getSpecializedLine());
         ouvrage.setAbri(ouvrageAddDto.getAbri());
         ouvrage.setEnergyMonthlyBill(ouvrageAddDto.getEnergyMonthlyBill());

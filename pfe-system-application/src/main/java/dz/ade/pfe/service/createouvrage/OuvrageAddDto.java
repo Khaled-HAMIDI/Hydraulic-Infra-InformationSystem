@@ -1,8 +1,7 @@
 package dz.ade.pfe.service.createouvrage;
 
 
-import dz.ade.pfe.domain.ouvrage.EnumEtat;
-import dz.ade.pfe.domain.ouvrage.EnumForm;
+import dz.ade.pfe.domain.ouvrage.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -21,8 +20,8 @@ public class OuvrageAddDto {
      
     private String name;
 
-
-    private String type;
+    @Enumerated(EnumType.STRING)
+    private EnumTypeGeneral type;
 
 
     private boolean enabled;
@@ -35,8 +34,8 @@ public class OuvrageAddDto {
     @Enumerated(EnumType.STRING)
     private EnumEtat state;
 
-
-    private String process;
+    @Enumerated(EnumType.STRING)
+    private EnumProcess process;
 
 
     private Integer nbCompartment;
@@ -80,8 +79,8 @@ public class OuvrageAddDto {
 
     private String constructionType;
 
-
-    private String waterSource;
+    @Enumerated(EnumType.STRING)
+    private EnumProvenance waterSource;
 
 
     private LocalDate commissioningDate;
