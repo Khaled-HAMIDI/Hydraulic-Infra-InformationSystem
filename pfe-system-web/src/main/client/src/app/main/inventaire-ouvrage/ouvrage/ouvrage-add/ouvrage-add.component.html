@@ -77,12 +77,12 @@
                                     <mat-form-field appearance="outline" class="w-100-p">
                                         <mat-label>{{'ADD.PLACE-HOLDER.type' | translate}}</mat-label>
                                         <mat-select formControlName="type" required #typeouv>
-                                            <mat-option value="StationTraitementConventionelle">Station de Traitement Conventionelle</mat-option>
-                                            <mat-option value="StationTraitementNonConventionelle">Station de Traitement Non Conventionelle</mat-option>
-                                            <mat-option value="Reservoir">Reservoir</mat-option>
-                                            <mat-option value="Forage">Forage, Puit, Source</mat-option>
-                                            <mat-option value="StationPompage">Station de Pompage</mat-option>
-                                            <mat-option value="BriseCharge">Brise Charge</mat-option>
+                                            <mat-option value="StationTraitementConventionelle" (click)="initFormStationTC()">Station de Traitement Conventionelle</mat-option>
+                                            <mat-option value="StationTraitementNonConventionelle" (click)="initFormStationTNC()">Station de Traitement Non Conventionelle</mat-option>
+                                            <mat-option value="Reservoir" (click)="initFormReservoir()">Reservoir</mat-option>
+                                            <mat-option value="Forage" (click)="initFormForage()">Forage, Puit, Source</mat-option>
+                                            <mat-option value="StationPompage" (click)="initFormStationPompage()">Station de Pompage</mat-option>
+                                            <mat-option value="BriseCharge" (click)="initFormBriseCharge()">Brise Charge</mat-option>
                                         </mat-select>
                                         <mat-icon matSuffix class="secondary-text">domain</mat-icon>
                                     </mat-form-field>
@@ -417,23 +417,35 @@
 
                                 <legend>{{'ADD.LEGENDS.location' | translate}}</legend>
 
+                                <div>
+                                    <mat-slide-toggle matInput
+                                                      class="mt-20" (change)="toggleCordonates()">
+                                            <span *ngIf="autoCordinate">
+                                                {{ 'ADD.PLACE-HOLDER.autocordinateActive' | translate }}
+                                            </span>
+                                        <span *ngIf="!autoCordinate">
+                                                {{ 'ADD.PLACE-HOLDER.autocordinateInactive' | translate }}
+                                            </span>
+                                    </mat-slide-toggle>
+                                </div>
+
 
                                 <mat-form-field appearance="outline" class="w-100-p">
                                     <mat-label>{{'ADD.PLACE-HOLDER.coordinateX' | translate}}</mat-label>
                                     <mat-icon matSuffix class="secondary-text">place</mat-icon>
-                                    <input matInput name="coordinateX" formControlName="coordinateX" required>
+                                    <input matInput name="coordinateX" formControlName="coordinateX" required #locx>
                                 </mat-form-field>
 
                                 <mat-form-field appearance="outline" class="w-100-p">
                                     <mat-label>{{'ADD.PLACE-HOLDER.coordinateY' | translate}}</mat-label>
                                     <mat-icon matSuffix class="secondary-text">place</mat-icon>
-                                    <input matInput name="coordinateY" formControlName="coordinateY" required>
+                                    <input matInput name="coordinateY" formControlName="coordinateY" required #locy>
                                 </mat-form-field>
 
                                 <mat-form-field appearance="outline" class="w-100-p">
                                     <mat-label>{{'ADD.PLACE-HOLDER.coordinateZ' | translate}}</mat-label>
                                     <mat-icon matSuffix class="secondary-text">place</mat-icon>
-                                    <input matInput name="coordinateZ" formControlName="coordinateZ" required>
+                                    <input matInput name="coordinateZ" formControlName="coordinateZ" required #locz>
                                 </mat-form-field>
 
                                 <mat-form-field appearance="outline" class="w-100-p">

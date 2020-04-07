@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import {Component, OnInit, OnDestroy, ViewChild, ElementRef} from '@angular/core';
 import {Ouvrage} from '../../../model/ouvrage.model';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { OuvrageAddService } from './ouvrage-add.service';
@@ -25,6 +25,12 @@ export class OuvrageAddComponent implements OnInit, OnDestroy {
     ouvrage: Ouvrage;
     ouvrageForm: FormGroup;
 
+    @ViewChild('locx',{static: false}) locx: ElementRef;
+    @ViewChild('locy',{static: false}) locy: ElementRef;
+    @ViewChild('locz',{static: false}) locz: ElementRef;
+
+    autoCordinate :boolean;
+
     constructor(
         private ouvrageAddService: OuvrageAddService,
         private formBuilder: FormBuilder,
@@ -34,7 +40,7 @@ export class OuvrageAddComponent implements OnInit, OnDestroy {
         // Set the default
         this.ouvrage = new Ouvrage();
         this.fuseTranslationLoader.loadTranslations(french, arabic);
-
+        this.autoCordinate=false;
     }
 
     /**
@@ -43,6 +49,8 @@ export class OuvrageAddComponent implements OnInit, OnDestroy {
     ngOnInit(): void {
         this.initForm();
     }
+
+    /*Forms types*/
 
     createOuvrageForm(): FormGroup {
         let obj = {
@@ -84,7 +92,6 @@ export class OuvrageAddComponent implements OnInit, OnDestroy {
             distribution: [this.ouvrage.distribution, Validators.required],
             populationServed: [this.ouvrage.populationServed],
 
-
             chemicalMonthlyBill: [this.ouvrage.chemicalMonthlyBill, Validators.required],
             coteTn: [this.ouvrage.coteTn, Validators.required],
             debitLoadBreaker: [this.ouvrage.debitLoadBreaker, Validators.required],
@@ -101,6 +108,342 @@ export class OuvrageAddComponent implements OnInit, OnDestroy {
 
     }
 
+    createReservoirForm(): FormGroup {
+        let obj = {
+            code: [this.ouvrage.code, Validators.required],
+            name: [this.ouvrage.name , Validators.required],
+            type: [this.ouvrage.type, Validators.required],
+            enabled: [this.ouvrage.enabled, Validators.required],
+            form: [this.ouvrage.form, Validators.required],
+            state: [this.ouvrage.state, Validators.required],
+            process: [this.ouvrage.process],
+            nbCompartment: [this.ouvrage.nbCompartment, Validators.required],
+            raftRating: [this.ouvrage.raftRating, Validators.required],
+
+            coteTropFull: [this.ouvrage.coteTropFull, Validators.required],
+            coordinateX: [this.ouvrage.coordinateX, Validators.required],
+            coordinateZ: [this.ouvrage.coordinateZ, Validators.required],
+            coordinateY: [this.ouvrage.coordinateY, Validators.required],
+            area: [this.ouvrage.area, Validators.required],
+            installedCapacity: [this.ouvrage.installedCapacity],
+            currentCapacity: [this.ouvrage.currentCapacity],
+            hmt: [this.ouvrage.hmt],
+            power: [this.ouvrage.power],
+            nbPump: [this.ouvrage.nbPump],
+            pumpDebit: [this.ouvrage.pumpDebit],
+            constructionType: [this.ouvrage.constructionType, Validators.required],
+            waterSource: [this.ouvrage.waterSource],
+            commissioningDate: [this.ouvrage.commissioningDate, Validators.required],
+            operatingDate: [this.ouvrage.operatingDate, Validators.required],
+            maitreOuvrage: [this.ouvrage.maitreOuvrage, Validators.required],
+            realizationCost: [this.ouvrage.realizationCost, Validators.required],
+            remoteManagement: [this.ouvrage.remoteManagement, Validators.required],
+            waterTank: [this.ouvrage.waterTank],
+            tankCapacity1: [this.ouvrage.tankCapacity1, Validators.required],
+            tankCapacity2: [this.ouvrage.tankCapacity2],
+            specializedLine: [this.ouvrage.specializedLine, Validators.required],
+            abri: [this.ouvrage.abri],
+            energyMonthlyBill: [this.ouvrage.energyMonthlyBill, Validators.required],
+            totalWorkforce: [this.ouvrage.totalWorkforce, Validators.required],
+            distribution: [this.ouvrage.distribution, Validators.required],
+            populationServed: [this.ouvrage.populationServed],
+
+            chemicalMonthlyBill: [this.ouvrage.chemicalMonthlyBill],
+            coteTn: [this.ouvrage.coteTn],
+            debitLoadBreaker: [this.ouvrage.debitLoadBreaker],
+            chargesAmontEtAval: [this.ouvrage.chargesAmontEtAval],
+            currentDebit: [this.ouvrage.currentDebit],
+            exploitationDebit: [this.ouvrage.exploitationDebit],
+            electricAlimentation: [this.ouvrage.electricAlimentation, Validators.required],
+            tankType: [this.ouvrage.tankType, Validators.required],
+            tankRole: [this.ouvrage.tankRole, Validators.required],
+            treatmentStationType: [this.ouvrage.treatmentStationType],
+        };
+
+        return this.formBuilder.group(obj);
+
+    }
+
+    createStTraitCForm(): FormGroup {
+        let obj = {
+            code: [this.ouvrage.code],
+            name: [this.ouvrage.name , Validators.required],
+            type: [this.ouvrage.type, Validators.required],
+            enabled: [this.ouvrage.enabled, Validators.required],
+            form: [this.ouvrage.form],
+            state: [this.ouvrage.state, Validators.required],
+            process: [this.ouvrage.process, Validators.required],
+            nbCompartment: [this.ouvrage.nbCompartment, Validators.required],
+            raftRating: [this.ouvrage.raftRating],
+
+            coteTropFull: [this.ouvrage.coteTropFull],
+            coordinateX: [this.ouvrage.coordinateX, Validators.required],
+            coordinateZ: [this.ouvrage.coordinateZ, Validators.required],
+            coordinateY: [this.ouvrage.coordinateY, Validators.required],
+            area: [this.ouvrage.area, Validators.required],
+            installedCapacity: [this.ouvrage.installedCapacity],
+            currentCapacity: [this.ouvrage.currentCapacity],
+            hmt: [this.ouvrage.hmt],
+            power: [this.ouvrage.power],
+            nbPump: [this.ouvrage.nbPump],
+            pumpDebit: [this.ouvrage.pumpDebit],
+            constructionType: [this.ouvrage.constructionType, Validators.required],
+            waterSource: [this.ouvrage.waterSource, Validators.required],
+            commissioningDate: [this.ouvrage.commissioningDate, Validators.required],
+            operatingDate: [this.ouvrage.operatingDate, Validators.required],
+            maitreOuvrage: [this.ouvrage.maitreOuvrage, Validators.required],
+            realizationCost: [this.ouvrage.realizationCost, Validators.required],
+            remoteManagement: [this.ouvrage.remoteManagement, Validators.required],
+            waterTank: [this.ouvrage.waterTank],
+            tankCapacity1: [this.ouvrage.tankCapacity1],
+            tankCapacity2: [this.ouvrage.tankCapacity2],
+            specializedLine: [this.ouvrage.specializedLine, Validators.required],
+            abri: [this.ouvrage.abri],
+            energyMonthlyBill: [this.ouvrage.energyMonthlyBill, Validators.required],
+            totalWorkforce: [this.ouvrage.totalWorkforce, Validators.required],
+            distribution: [this.ouvrage.distribution, Validators.required],
+            populationServed: [this.ouvrage.populationServed],
+
+            chemicalMonthlyBill: [this.ouvrage.chemicalMonthlyBill, Validators.required],
+            coteTn: [this.ouvrage.coteTn],
+            debitLoadBreaker: [this.ouvrage.debitLoadBreaker],
+            chargesAmontEtAval: [this.ouvrage.chargesAmontEtAval],
+            currentDebit: [this.ouvrage.currentDebit],
+            exploitationDebit: [this.ouvrage.exploitationDebit],
+            electricAlimentation: [this.ouvrage.electricAlimentation],
+            tankType: [this.ouvrage.tankType],
+            tankRole: [this.ouvrage.tankRole],
+            treatmentStationType: [this.ouvrage.treatmentStationType,Validators.required],
+        };
+
+        return this.formBuilder.group(obj);
+
+    }
+
+    createStTraitNCForm(): FormGroup {
+        let obj = {
+            code: [this.ouvrage.code, Validators.required],
+            name: [this.ouvrage.name , Validators.required],
+            type: [this.ouvrage.type, Validators.required],
+            enabled: [this.ouvrage.enabled, Validators.required],
+            form: [this.ouvrage.form],
+            state: [this.ouvrage.state, Validators.required],
+            process: [this.ouvrage.process, Validators.required],
+            nbCompartment: [this.ouvrage.nbCompartment, Validators.required],
+            raftRating: [this.ouvrage.raftRating],
+
+            coteTropFull: [this.ouvrage.coteTropFull],
+            coordinateX: [this.ouvrage.coordinateX, Validators.required],
+            coordinateZ: [this.ouvrage.coordinateZ, Validators.required],
+            coordinateY: [this.ouvrage.coordinateY, Validators.required],
+            area: [this.ouvrage.area, Validators.required],
+            installedCapacity: [this.ouvrage.installedCapacity],
+            currentCapacity: [this.ouvrage.currentCapacity],
+            hmt: [this.ouvrage.hmt],
+            power: [this.ouvrage.power],
+            nbPump: [this.ouvrage.nbPump],
+            pumpDebit: [this.ouvrage.pumpDebit],
+            constructionType: [this.ouvrage.constructionType, Validators.required],
+            waterSource: [this.ouvrage.waterSource],
+            commissioningDate: [this.ouvrage.commissioningDate, Validators.required],
+            operatingDate: [this.ouvrage.operatingDate, Validators.required],
+            maitreOuvrage: [this.ouvrage.maitreOuvrage, Validators.required],
+            realizationCost: [this.ouvrage.realizationCost, Validators.required],
+            remoteManagement: [this.ouvrage.remoteManagement, Validators.required],
+            waterTank: [this.ouvrage.waterTank],
+            tankCapacity1: [this.ouvrage.tankCapacity1],
+            tankCapacity2: [this.ouvrage.tankCapacity2],
+            specializedLine: [this.ouvrage.specializedLine, Validators.required],
+            abri: [this.ouvrage.abri],
+            energyMonthlyBill: [this.ouvrage.energyMonthlyBill, Validators.required],
+            totalWorkforce: [this.ouvrage.totalWorkforce, Validators.required],
+            distribution: [this.ouvrage.distribution, Validators.required],
+            populationServed: [this.ouvrage.populationServed],
+
+            chemicalMonthlyBill: [this.ouvrage.chemicalMonthlyBill],
+            coteTn: [this.ouvrage.coteTn],
+            debitLoadBreaker: [this.ouvrage.debitLoadBreaker],
+            chargesAmontEtAval: [this.ouvrage.chargesAmontEtAval],
+            currentDebit: [this.ouvrage.currentDebit],
+            exploitationDebit: [this.ouvrage.exploitationDebit],
+            electricAlimentation: [this.ouvrage.electricAlimentation],
+            tankType: [this.ouvrage.tankType],
+            tankRole: [this.ouvrage.tankRole],
+            treatmentStationType: [this.ouvrage.treatmentStationType,Validators.required],
+        };
+
+        return this.formBuilder.group(obj);
+
+    }
+
+    createStPompageForm(): FormGroup {
+        let obj = {
+            code: [this.ouvrage.code, Validators.required],
+            name: [this.ouvrage.name , Validators.required],
+            type: [this.ouvrage.type, Validators.required],
+            enabled: [this.ouvrage.enabled, Validators.required],
+            form: [this.ouvrage.form],
+            state: [this.ouvrage.state, Validators.required],
+            process: [this.ouvrage.process],
+            nbCompartment: [this.ouvrage.nbCompartment, Validators.required],
+            raftRating: [this.ouvrage.raftRating],
+
+            coteTropFull: [this.ouvrage.coteTropFull],
+            coordinateX: [this.ouvrage.coordinateX, Validators.required],
+            coordinateZ: [this.ouvrage.coordinateZ, Validators.required],
+            coordinateY: [this.ouvrage.coordinateY, Validators.required],
+            area: [this.ouvrage.area, Validators.required],
+            installedCapacity: [this.ouvrage.installedCapacity, Validators.required],
+            currentCapacity: [this.ouvrage.currentCapacity, Validators.required],
+            hmt: [this.ouvrage.hmt],
+            power: [this.ouvrage.power],
+            nbPump: [this.ouvrage.nbPump],
+            pumpDebit: [this.ouvrage.pumpDebit],
+            constructionType: [this.ouvrage.constructionType],
+            waterSource: [this.ouvrage.waterSource],
+            commissioningDate: [this.ouvrage.commissioningDate, Validators.required],
+            operatingDate: [this.ouvrage.operatingDate, Validators.required],
+            maitreOuvrage: [this.ouvrage.maitreOuvrage, Validators.required],
+            realizationCost: [this.ouvrage.realizationCost, Validators.required],
+            remoteManagement: [this.ouvrage.remoteManagement, Validators.required],
+            waterTank: [this.ouvrage.waterTank, Validators.required],
+            tankCapacity1: [this.ouvrage.tankCapacity1],
+            tankCapacity2: [this.ouvrage.tankCapacity2, Validators.required],
+            specializedLine: [this.ouvrage.specializedLine, Validators.required],
+            abri: [this.ouvrage.abri],
+            energyMonthlyBill: [this.ouvrage.energyMonthlyBill, Validators.required],
+            totalWorkforce: [this.ouvrage.totalWorkforce, Validators.required],
+            distribution: [this.ouvrage.distribution, Validators.required],
+            populationServed: [this.ouvrage.populationServed],
+
+            chemicalMonthlyBill: [this.ouvrage.chemicalMonthlyBill],
+            coteTn: [this.ouvrage.coteTn],
+            debitLoadBreaker: [this.ouvrage.debitLoadBreaker],
+            chargesAmontEtAval: [this.ouvrage.chargesAmontEtAval],
+            currentDebit: [this.ouvrage.currentDebit],
+            exploitationDebit: [this.ouvrage.exploitationDebit],
+            electricAlimentation: [this.ouvrage.electricAlimentation],
+            tankType: [this.ouvrage.tankType],
+            tankRole: [this.ouvrage.tankRole],
+            treatmentStationType: [this.ouvrage.treatmentStationType],
+        };
+
+        return this.formBuilder.group(obj);
+
+    }
+
+    createForageForm(): FormGroup {
+        let obj = {
+            code: [this.ouvrage.code, Validators.required],
+            name: [this.ouvrage.name , Validators.required],
+            type: [this.ouvrage.type, Validators.required],
+            enabled: [this.ouvrage.enabled, Validators.required],
+            form: [this.ouvrage.form],
+            state: [this.ouvrage.state, Validators.required],
+            process: [this.ouvrage.process],
+            nbCompartment: [this.ouvrage.nbCompartment, Validators.required],
+            raftRating: [this.ouvrage.raftRating],
+
+            coteTropFull: [this.ouvrage.coteTropFull],
+            coordinateX: [this.ouvrage.coordinateX, Validators.required],
+            coordinateZ: [this.ouvrage.coordinateZ, Validators.required],
+            coordinateY: [this.ouvrage.coordinateY, Validators.required],
+            area: [this.ouvrage.area, Validators.required],
+            installedCapacity: [this.ouvrage.installedCapacity],
+            currentCapacity: [this.ouvrage.currentCapacity],
+            hmt: [this.ouvrage.hmt, Validators.required],
+            power: [this.ouvrage.power, Validators.required],
+            nbPump: [this.ouvrage.nbPump],
+            pumpDebit: [this.ouvrage.pumpDebit],
+            constructionType: [this.ouvrage.constructionType, Validators.required],
+            waterSource: [this.ouvrage.waterSource],
+            commissioningDate: [this.ouvrage.commissioningDate, Validators.required],
+            operatingDate: [this.ouvrage.operatingDate, Validators.required],
+            maitreOuvrage: [this.ouvrage.maitreOuvrage, Validators.required],
+            realizationCost: [this.ouvrage.realizationCost, Validators.required],
+            remoteManagement: [this.ouvrage.remoteManagement, Validators.required],
+            waterTank: [this.ouvrage.waterTank],
+            tankCapacity1: [this.ouvrage.tankCapacity1],
+            tankCapacity2: [this.ouvrage.tankCapacity2],
+            specializedLine: [this.ouvrage.specializedLine, Validators.required],
+            abri: [this.ouvrage.abri, Validators.required],
+            energyMonthlyBill: [this.ouvrage.energyMonthlyBill, Validators.required],
+            totalWorkforce: [this.ouvrage.totalWorkforce, Validators.required],
+            distribution: [this.ouvrage.distribution, Validators.required],
+            populationServed: [this.ouvrage.populationServed],
+
+            chemicalMonthlyBill: [this.ouvrage.chemicalMonthlyBill],
+            coteTn: [this.ouvrage.coteTn],
+            debitLoadBreaker: [this.ouvrage.debitLoadBreaker],
+            chargesAmontEtAval: [this.ouvrage.chargesAmontEtAval],
+            currentDebit: [this.ouvrage.currentDebit, Validators.required],
+            exploitationDebit: [this.ouvrage.exploitationDebit, Validators.required],
+            electricAlimentation: [this.ouvrage.electricAlimentation],
+            tankType: [this.ouvrage.tankType],
+            tankRole: [this.ouvrage.tankRole],
+            treatmentStationType: [this.ouvrage.treatmentStationType],
+        };
+
+        return this.formBuilder.group(obj);
+
+    }
+
+    createBriseChargeForm(): FormGroup {
+        let obj = {
+            code: [this.ouvrage.code, Validators.required],
+            name: [this.ouvrage.name , Validators.required],
+            type: [this.ouvrage.type, Validators.required],
+            enabled: [this.ouvrage.enabled, Validators.required],
+            form: [this.ouvrage.form],
+            state: [this.ouvrage.state, Validators.required],
+            process: [this.ouvrage.process],
+            nbCompartment: [this.ouvrage.nbCompartment, Validators.required],
+            raftRating: [this.ouvrage.raftRating],
+
+            coteTropFull: [this.ouvrage.coteTropFull],
+            coordinateX: [this.ouvrage.coordinateX, Validators.required],
+            coordinateZ: [this.ouvrage.coordinateZ, Validators.required],
+            coordinateY: [this.ouvrage.coordinateY, Validators.required],
+            area: [this.ouvrage.area, Validators.required],
+            installedCapacity: [this.ouvrage.installedCapacity],
+            currentCapacity: [this.ouvrage.currentCapacity],
+            hmt: [this.ouvrage.hmt],
+            power: [this.ouvrage.power],
+            nbPump: [this.ouvrage.nbPump],
+            pumpDebit: [this.ouvrage.pumpDebit],
+            constructionType: [this.ouvrage.constructionType, Validators.required],
+            waterSource: [this.ouvrage.waterSource],
+            commissioningDate: [this.ouvrage.commissioningDate, Validators.required],
+            operatingDate: [this.ouvrage.operatingDate, Validators.required],
+            maitreOuvrage: [this.ouvrage.maitreOuvrage, Validators.required],
+            realizationCost: [this.ouvrage.realizationCost, Validators.required],
+            remoteManagement: [this.ouvrage.remoteManagement, Validators.required],
+            waterTank: [this.ouvrage.waterTank],
+            tankCapacity1: [this.ouvrage.tankCapacity1],
+            tankCapacity2: [this.ouvrage.tankCapacity2],
+            specializedLine: [this.ouvrage.specializedLine, Validators.required],
+            abri: [this.ouvrage.abri],
+            energyMonthlyBill: [this.ouvrage.energyMonthlyBill, Validators.required],
+            totalWorkforce: [this.ouvrage.totalWorkforce, Validators.required],
+            distribution: [this.ouvrage.distribution, Validators.required],
+            populationServed: [this.ouvrage.populationServed],
+
+            chemicalMonthlyBill: [this.ouvrage.chemicalMonthlyBill],
+            coteTn: [this.ouvrage.coteTn, Validators.required],
+            debitLoadBreaker: [this.ouvrage.debitLoadBreaker, Validators.required],
+            chargesAmontEtAval: [this.ouvrage.chargesAmontEtAval, Validators.required],
+            currentDebit: [this.ouvrage.currentDebit],
+            exploitationDebit: [this.ouvrage.exploitationDebit],
+            electricAlimentation: [this.ouvrage.electricAlimentation, Validators.required],
+            tankType: [this.ouvrage.tankType],
+            tankRole: [this.ouvrage.tankRole],
+            treatmentStationType: [this.ouvrage.treatmentStationType],
+        };
+
+        return this.formBuilder.group(obj);
+
+    }
+
     initForm(){
         this.ouvrage = new Ouvrage();
         this.ouvrage.enabled = true;
@@ -110,9 +453,38 @@ export class OuvrageAddComponent implements OnInit, OnDestroy {
         this.ouvrage.waterTank = true;
         this.ouvrage.electricAlimentation = true;
         this.ouvrageForm = this.createOuvrageForm();
-
     }
 
+    initFormStationTC(){
+        this.ouvrage.type = 'StationTraitementConventionelle';
+        this.ouvrageForm = this.createStTraitCForm();
+    }
+
+
+    initFormStationTNC(){
+        this.ouvrage.type = 'StationTraitementNonConventionelle';
+        this.ouvrageForm = this.createStTraitNCForm();
+    }
+
+    initFormStationPompage(){
+        this.ouvrage.type = 'StationPompage';
+        this.ouvrageForm = this.createStPompageForm();
+    }
+
+    initFormReservoir(){
+        this.ouvrage.type = 'Reservoir';
+        this.ouvrageForm = this.createReservoirForm();
+    }
+
+    initFormBriseCharge(){
+        this.ouvrage.type = 'BriseCharge';
+        this.ouvrageForm = this.createBriseChargeForm();
+    }
+
+    initFormForage(){
+        this.ouvrage.type = 'Forage';
+        this.ouvrageForm = this.createForageForm();
+    }
 
     /**
      * Save ouvrage
@@ -166,6 +538,31 @@ export class OuvrageAddComponent implements OnInit, OnDestroy {
         this.ouvrage.electricAlimentation = !this.ouvrage.electricAlimentation;
     }
 
+    toggleCordonates() :void {
+        if (this.autoCordinate){
+            this.locx.nativeElement.value = '';
+            this.locy.nativeElement.value = '';
+            this.locz.nativeElement.value = '';
+            this.autoCordinate = !this.autoCordinate;
+        }
+        else {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(this.showPosition);
+            } else {
+                console.log("Geolocation is not supported by this browser");
+            }
+            this.autoCordinate = !this.autoCordinate;
+        }
 
+    }
 
+    showPosition(position) :void{
+        this.locx.nativeElement.value = position.coords.latitude;
+        this.locy.nativeElement.value = position.coords.longitude;
+        this.locz.nativeElement.value = position.coords.altitude;
+    }
 }
+
+
+
+

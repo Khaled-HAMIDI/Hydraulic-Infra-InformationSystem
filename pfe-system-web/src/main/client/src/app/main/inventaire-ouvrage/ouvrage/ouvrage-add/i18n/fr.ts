@@ -70,7 +70,10 @@ export const locale = {
                 'abriActive' : 'Existance d\'un abri',
                 'abriInactive' : 'Non existance d\'un abri',
                 'electricAlimentationActive' : 'Alimenté par une ligne électrique',
-                'electricAlimentationInactive' : 'Non alimmenté par une ligne électrique'
+                'electricAlimentationInactive' : 'Non alimmenté par une ligne électrique',
+                'autocordinateActive' : 'Les cordonnées geographiques sont collectées automatiquement',
+                'autocordinateInactive' : 'Entrez les cordonnées'
+
 
             },
             'TOAST-ADD': {

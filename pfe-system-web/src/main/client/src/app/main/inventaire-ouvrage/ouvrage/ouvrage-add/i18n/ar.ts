@@ -70,7 +70,9 @@ export const locale = {
                 'abriActive' : 'وجود ملجأ',
                 'abriInactive' : 'لا يوجد مأوى',
                 'electricAlimentationActive' : 'مدعوم من خط الكهرباء',
-                'electricAlimentationInactive' : 'لا يعمل بواسطة خط كهرباء'
+                'electricAlimentationInactive' : 'لا يعمل بواسطة خط كهرباء',
+                'autocordinateActive' : 'Les cordonnées geographiques sont collectées automatiquement',
+                'autocordinateInactive' : 'Entrez les cordonnées'
             },
             'TOAST-ADD': {
                 'title': 'إضافة المنشئات',
