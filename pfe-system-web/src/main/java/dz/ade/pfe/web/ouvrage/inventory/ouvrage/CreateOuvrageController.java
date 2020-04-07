@@ -65,13 +65,26 @@ public class CreateOuvrageController {
         ouvrage.setRealizationCost(ouvrageAddDto.getRealizationCost());
         ouvrage.setRemoteManagement(ouvrageAddDto.getRemoteManagement());
         ouvrage.setWaterTank(ouvrageAddDto.getWaterTank());
-        ouvrage.setTankCapacity1(ouvrageAddDto.getTankCapacity());
+        ouvrage.setTankCapacity1(ouvrageAddDto.getTankCapacity1());
+        ouvrage.setTankCapacity2(ouvrageAddDto.getTankCapacity2());
         ouvrage.setSpecializedLine(ouvrageAddDto.getSpecializedLine());
         ouvrage.setAbri(ouvrageAddDto.getAbri());
         ouvrage.setEnergyMonthlyBill(ouvrageAddDto.getEnergyMonthlyBill());
         ouvrage.setTotalWorkforce(ouvrageAddDto.getTotalWorkforce());
         ouvrage.setDistribution(ouvrageAddDto.getDistribution());
         ouvrage.setPopulationServed(ouvrageAddDto.getPopulationServed());
+
+        ouvrage.setChemicalMonthlyBill(ouvrageAddDto.getChemicalMonthlyBill());
+        ouvrage.setCoteTn(ouvrageAddDto.getCoteTn());
+        ouvrage.setDebitLoadBreaker(ouvrageAddDto.getDebitLoadBreaker());
+        ouvrage.setChargesAmontEtAval(ouvrageAddDto.getChargesAmontEtAval());
+        ouvrage.setCurrentDebit(ouvrageAddDto.getCurrentDebit());
+        ouvrage.setElectricAlimentation(ouvrageAddDto.getElectricAlimentation());
+        ouvrage.setExploitationDebit(ouvrageAddDto.getExploitationDebit());
+        ouvrage.setTankType(ouvrageAddDto.getTankType());
+        ouvrage.setTankRole(ouvrageAddDto.getTankRole());
+        ouvrage.setTreatmentStationType(ouvrageAddDto.getTreatmentStationType());
+
 
 
 

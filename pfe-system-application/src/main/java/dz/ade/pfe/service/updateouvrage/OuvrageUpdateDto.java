@@ -34,6 +34,18 @@ public class OuvrageUpdateDto {
 
     private Integer totalWorkforce;
 
+    private Double chemicalMonthlyBill;
+
+    private Double coteTn;
+
+    private Double debitLoadBreaker;
+
+    private Double chargesAmontEtAval;
+
+    private Double currentDebit;
+
+    private Boolean electricAlimentation;
+
     public boolean getEnabled() {
         return this.enabled;
     }

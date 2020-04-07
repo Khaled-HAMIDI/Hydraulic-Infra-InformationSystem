@@ -19,6 +19,14 @@ export const locale = {
                 'specializedLine':'خط متخصص',
                 'energyMonthlyBill': 'فاتورة الطاقة',
                 'totalWorkforce': 'إجمالي القوى العاملة',
+
+                'chemicalMonthlyBill': 'فاتورة كيميائية',
+                'coteTn' : 'coteTn',
+                'debitLoadBreaker': 'تدفق كسارة الشحن',
+                'chargesAmontEtAval': 'Charges amont et aval ',
+                'currentDebit':'التدفق الحالي',
+                'electricAlimentation': 'تغذية كهربائية',
+
                 'enabledActive' : 'قيد العمل',
                 'enabledInactive' : 'متوقف',
                 'remoteManagementActive' : 'الإدارة عن بُعد متوفرة',
@@ -26,7 +34,9 @@ export const locale = {
                 'specializedLineActive' : 'مدعوم من خط كهرباء متخصص',
                 'specializedLineInactive' : 'مدعوم من خط كهرباء عادي',
                 'abriActive' : 'وجود ملجأ',
-                'abriInactive' : 'لا يوجد مأوى'
+                'abriInactive' : 'لا يوجد مأوى',
+                'electricAlimentationActive' : 'مدعوم من خط الكهرباء',
+                'electricAlimentationInactive' : 'لا يعمل بواسطة خط كهرباء'
             },
             'TOAST-EDIT': {
                 'title': 'تحديث المنشأة',

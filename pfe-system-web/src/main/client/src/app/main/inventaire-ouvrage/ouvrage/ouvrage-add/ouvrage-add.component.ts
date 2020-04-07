@@ -75,13 +75,26 @@ export class OuvrageAddComponent implements OnInit, OnDestroy {
             realizationCost: [this.ouvrage.realizationCost, Validators.required],
             remoteManagement: [this.ouvrage.remoteManagement, Validators.required],
             waterTank: [this.ouvrage.waterTank, Validators.required],
-            tankCapacity: [this.ouvrage.tankCapacity, Validators.required],
+            tankCapacity1: [this.ouvrage.tankCapacity1, Validators.required],
+            tankCapacity2: [this.ouvrage.tankCapacity2, Validators.required],
             specializedLine: [this.ouvrage.specializedLine, Validators.required],
             abri: [this.ouvrage.abri, Validators.required],
             energyMonthlyBill: [this.ouvrage.energyMonthlyBill, Validators.required],
             totalWorkforce: [this.ouvrage.totalWorkforce, Validators.required],
             distribution: [this.ouvrage.distribution, Validators.required],
             populationServed: [this.ouvrage.populationServed],
+
+
+            chemicalMonthlyBill: [this.ouvrage.chemicalMonthlyBill, Validators.required],
+            coteTn: [this.ouvrage.coteTn, Validators.required],
+            debitLoadBreaker: [this.ouvrage.debitLoadBreaker, Validators.required],
+            chargesAmontEtAval: [this.ouvrage.chargesAmontEtAval, Validators.required],
+            currentDebit: [this.ouvrage.currentDebit, Validators.required],
+            exploitationDebit: [this.ouvrage.exploitationDebit, Validators.required],
+            electricAlimentation: [this.ouvrage.electricAlimentation, Validators.required],
+            tankType: [this.ouvrage.tankType, Validators.required],
+            tankRole: [this.ouvrage.tankRole, Validators.required],
+            treatmentStationType: [this.ouvrage.treatmentStationType,Validators.required],
         };
 
         return this.formBuilder.group(obj);
@@ -95,6 +108,7 @@ export class OuvrageAddComponent implements OnInit, OnDestroy {
         this.ouvrage.abri = true;
         this.ouvrage.remoteManagement = true;
         this.ouvrage.waterTank = true;
+        this.ouvrage.electricAlimentation = true;
         this.ouvrageForm = this.createOuvrageForm();
 
     }
@@ -148,6 +162,9 @@ export class OuvrageAddComponent implements OnInit, OnDestroy {
         this.ouvrage.remoteManagement = !this.ouvrage.remoteManagement;
     }
 
+    toggleElectricAlimentation() :void {
+        this.ouvrage.electricAlimentation = !this.ouvrage.electricAlimentation;
+    }
 
 
 

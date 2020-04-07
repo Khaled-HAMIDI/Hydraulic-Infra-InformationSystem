@@ -33,14 +33,27 @@ export const locale = {
                 'maitreOuvrage': 'Maitre d\'ouvrage',
                 'realizationCost': 'Cout de réalisation',
                 'remoteManagement' : 'Télégestion',
-                'waterTank': 'Réservoir ???',
-                'tankCapacity': 'Capacité ',
+                'waterTank': 'Bache a haut',
+                'tankCapacity1': 'Capacité du réservoir ',
+                'tankCapacity2': 'Capacité du bache à haut ',
                 'specializedLine':'Ligne specialisée',
                 'abri': "Abri",
                 'energyMonthlyBill': 'Facture monsulle d\'énergie',
                 'totalWorkforce': 'Effectif total',
                 'distribution' : "Distribution",
                 'populationServed': "Population déservée",
+
+                'chemicalMonthlyBill': 'Facture monsuelle des produits chimiques',
+                'coteTn' : 'coteTn',
+                'debitLoadBreaker': 'Débit de brise charge',
+                'chargesAmontEtAval': 'Charges amont et aval ',
+                'currentDebit':'Débit courant',
+                'exploitationDebit': "Débit d'exploitation",
+                'electricAlimentation': 'Alimentation électrique',
+                'tankType': 'Type du réservoir',
+                'tankRole' : "Role du réservoir",
+                'treatmentStationType': "Type de la station de traitement",
+
                 'enabledActive' : 'En marche',
                 'enabledInactive' : 'En arret',
                 'distributionActive' : 'Distribue à une population',
@@ -52,7 +65,10 @@ export const locale = {
                 'specializedLineActive' : 'Alimenté par une ligne électrique spécialisée',
                 'specializedLineInactive' : 'Alimenté par une ligne électrique simple',
                 'abriActive' : 'Existance d\'un abri',
-                'abriInactive' : 'Non existance d\'un abri'
+                'abriInactive' : 'Non existance d\'un abri',
+
+                'electricAlimentationActive' : 'Alimenté par une ligne électrique',
+                'electricAlimentationInactive' : 'Non alimmenté par une ligne électrique'
 
             },
             "LEGENDS": {

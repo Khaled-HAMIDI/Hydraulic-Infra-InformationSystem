@@ -28,13 +28,25 @@ export class Ouvrage {
     realizationCost: number;
     remoteManagement: boolean;
     waterTank: boolean;
-    tankCapacity: number;
+    tankCapacity1: number;
+    tankCapacity2: number;
     specializedLine: boolean;
     abri: boolean;
     energyMonthlyBill: number;
     totalWorkforce: number;
     distribution: boolean;
     populationServed: number;
+
+    chemicalMonthlyBill: number;
+    coteTn: number;
+    debitLoadBreaker:number;
+    chargesAmontEtAval: number;
+    currentDebit: number;
+    exploitationDebit:number;
+    electricAlimentation:boolean;
+    tankType: string;
+    tankRole: string;
+    treatmentStationType:string;
 
 
     constructor(ouvrage?) {
@@ -67,12 +79,25 @@ export class Ouvrage {
         this.realizationCost = ouvrage.realizationCost ||  '';
         this.remoteManagement = ouvrage.remoteManagement || false ;
         this.waterTank = ouvrage.waterTank || false ;
-        this.tankCapacity = ouvrage.tankCapacity ||  '';
+        this.tankCapacity1 = ouvrage.tankCapacity1 ||  '';
+        this.tankCapacity2 = ouvrage.tankCapacity2 ||  '';
         this.specializedLine = ouvrage.specializedLine || false ;
         this.abri = ouvrage.abri || false;
         this.energyMonthlyBill = ouvrage.energyMonthlyBill ||  '';
         this.totalWorkforce = ouvrage.totalWorkforce ||  '';
         this.distribution = ouvrage.distribution || false ;
         this.populationServed = ouvrage.populationServed ||  '';
+
+        this.chemicalMonthlyBill = ouvrage.chemicalMonthlyBill ||  '';
+        this.coteTn = ouvrage.coteTn ||  '';
+        this.debitLoadBreaker = ouvrage.debitLoadBreaker ||  '';
+        this.chargesAmontEtAval = ouvrage.chargesAmontEtAval || '';
+        this.currentDebit = ouvrage.currentDebit ||  '';
+        this.exploitationDebit = ouvrage.exploitationDebit ||  '';
+        this.electricAlimentation = ouvrage.electricAlimentation ||  false;
+        this.tankType = ouvrage.tankType ||  '';
+        this.tankRole = ouvrage.tankRole ||  '';
+        this.treatmentStationType = ouvrage.treatmentStationType ||  '';
+
     }
 }

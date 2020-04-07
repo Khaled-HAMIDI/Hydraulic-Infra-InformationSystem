@@ -58,21 +58,21 @@
                                             <mat-icon matSuffix class="secondary-text">keyboard</mat-icon>
                                         </mat-form-field>
 
-                                        <mat-form-field appearance="outline" class="w-100-p">
+                                        <mat-form-field appearance="outline" class="w-100-p" *ngIf="ouvrage.type == 'StationPompage'">
                                             <mat-label>{{'EDIT.PLACE-HOLDER.currentCapacity' | translate}}</mat-label>
                                             <mat-icon matSuffix class="secondary-text">keyboard</mat-icon>
                                             <input matInput name="currentCapacity" formControlName="currentCapacity"
                                                     required>
                                         </mat-form-field>
 
-                                        <mat-form-field appearance="outline" class="w-100-p">
+                                        <mat-form-field appearance="outline" class="w-100-p" *ngIf="ouvrage.type == 'StationPompage' || ouvrage.type =='Forage'">
                                             <mat-label>{{'EDIT.PLACE-HOLDER.power' | translate}}</mat-label>
                                             <mat-icon matSuffix class="secondary-text">keyboard</mat-icon>
                                             <input matInput name="power" formControlName="power"
                                                     required>
                                         </mat-form-field>
 
-                                        <div>
+                                        <div *ngIf="ouvrage.type == 'Forage'">
                                             <mat-slide-toggle matInput name="abri" formControlName="abri"
                                                               class="mt-20" required [checked]="ouvrage.abri" (change)="toggleAbri()">
                                             <span *ngIf="ouvrage.abri">
@@ -102,11 +102,47 @@
                                 <div class="mr-sm-12 ml-sm-12" fxFlex>
                                     <fieldset class="myfieldset">
 
-                                        <mat-form-field appearance="outline" class="w-100-p">
+                                        <div *ngIf="ouvrage.type == 'Reservoir' || ouvrage.type =='BriseCharge'">
+                                            <mat-slide-toggle matInput name="electricAlimentation" formControlName="electricAlimentation"
+                                                              class="mt-20" required [checked]="ouvrage.electricAlimentation" (change)="toggleElectricAlimentation()">
+                                            <span *ngIf="ouvrage.electricAlimentation">
+                                                {{ 'EDIT.PLACE-HOLDER.electricAlimentationActive' | translate }}
+                                            </span>
+                                                <span *ngIf="!ouvrage.remoteManagement">
+                                                {{ 'EDIT.PLACE-HOLDER.electricAlimentationInactive' | translate }}
+                                            </span>
+                                            </mat-slide-toggle>
+                                        </div>
+
+                                        <mat-form-field appearance="outline" class="w-100-p" *ngIf="ouvrage.type == 'BriseCharge'">
+                                            <mat-label>{{'EDIT.PLACE-HOLDER.chargesAmontEtAval' | translate}}</mat-label>
+                                            <mat-icon matSuffix class="secondary-text">keyboard</mat-icon>
+                                            <input matInput name="chargesAmontEtAval" formControlName="chargesAmontEtAval" required>
+                                        </mat-form-field>
+
+                                        <mat-form-field appearance="outline" class="w-100-p" *ngIf="ouvrage.type == 'StationPompage'">
                                             <mat-label>{{'EDIT.PLACE-HOLDER.pumpDebit' | translate}}</mat-label>
                                             <mat-icon matSuffix class="secondary-text">keyboard</mat-icon>
                                             <input matInput name="pumpDebit" formControlName="pumpDebit"
                                                    required>
+                                        </mat-form-field>
+
+                                        <mat-form-field appearance="outline" class="w-100-p" *ngIf="ouvrage.type == 'Forage'">
+                                            <mat-label>{{'EDIT.PLACE-HOLDER.currentDebit' | translate}}</mat-label>
+                                            <mat-icon matSuffix class="secondary-text">keyboard</mat-icon>
+                                            <input matInput name="currentDebit" formControlName="currentDebit" required>
+                                        </mat-form-field>
+
+                                        <mat-form-field appearance="outline" class="w-100-p" *ngIf="ouvrage.type == 'BriseCharge'">
+                                            <mat-label>{{'EDIT.PLACE-HOLDER.debitLoadBreaker' | translate}}</mat-label>
+                                            <mat-icon matSuffix class="secondary-text">keyboard</mat-icon>
+                                            <input matInput name="debitLoadBreaker" formControlName="debitLoadBreaker" required>
+                                        </mat-form-field>
+
+                                        <mat-form-field appearance="outline" class="w-100-p" *ngIf="ouvrage.type == 'BriseCharge'">
+                                            <mat-label>{{'EDIT.PLACE-HOLDER.coteTn' | translate}}</mat-label>
+                                            <mat-icon matSuffix class="secondary-text">keyboard</mat-icon>
+                                            <input matInput name="coteTn" formControlName="coteTn" required>
                                         </mat-form-field>
 
                                         <mat-form-field appearance="outline" class="w-100-p">
@@ -114,6 +150,12 @@
                                             <mat-icon matSuffix class="secondary-text">keyboard</mat-icon>
                                             <input matInput name="totalWorkforce" formControlName="totalWorkforce"
                                                    required>
+                                        </mat-form-field>
+
+                                        <mat-form-field appearance="outline" class="w-100-p" *ngIf="ouvrage.type == 'StationTraitementConventionelle' || ouvrage.type == 'StationTraitementNonConventionelle'">
+                                            <mat-label>{{'EDIT.PLACE-HOLDER.chemicalMonthlyBill' | translate}}</mat-label>
+                                            <mat-icon matSuffix class="secondary-text">keyboard</mat-icon>
+                                            <input matInput name="chemicalMonthlyBill" formControlName="chemicalMonthlyBill" required>
                                         </mat-form-field>
 
                                         <mat-form-field appearance="outline" class="w-100-p">
