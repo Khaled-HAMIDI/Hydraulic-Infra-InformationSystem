@@ -1,4 +1,4 @@
-import {Component, OnInit, OnDestroy, ViewChild, ElementRef} from '@angular/core';
+import {Component, OnInit, OnDestroy, ViewChild, ElementRef, ChangeDetectorRef} from '@angular/core';
 import {Ouvrage} from '../../../model/ouvrage.model';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { OuvrageAddService } from './ouvrage-add.service';
@@ -32,6 +32,7 @@ export class OuvrageAddComponent implements OnInit, OnDestroy {
     autoCordinate :boolean;
 
     constructor(
+        private cdRef:ChangeDetectorRef,
         private ouvrageAddService: OuvrageAddService,
         private formBuilder: FormBuilder,
         private route: ActivatedRoute,
@@ -479,6 +480,7 @@ export class OuvrageAddComponent implements OnInit, OnDestroy {
     initFormBriseCharge(){
         this.ouvrage.type = 'BriseCharge';
         this.ouvrageForm = this.createBriseChargeForm();
+        // this.cdRef.detectChanges();
     }
 
     initFormForage(){
@@ -491,7 +493,16 @@ export class OuvrageAddComponent implements OnInit, OnDestroy {
      */
     onSave(): void {
         const ouvrage = this.ouvrageForm.getRawValue();
-        console.log(ouvrage);
+
+        if (ouvrage.tankRole == '') ouvrage.tankRole = 'none';
+        if (ouvrage.tankType == '') ouvrage.tankType = 'none';
+        if (ouvrage.waterSource == '') ouvrage.waterSource = 'none';
+        if (ouvrage.process == '') ouvrage.process = 'none';
+        if (ouvrage.state == '') ouvrage.state = 'none';
+        if (ouvrage.form == '') ouvrage.form = 'none';
+        if (ouvrage.type == '') ouvrage.type = 'none';
+        if (ouvrage.treatmentStationType == '') ouvrage.treatmentStationType = 'none';
+
 
         this.ouvrageAddService.saveOuvrage(ouvrage)
         .then((response) => {
@@ -501,6 +512,7 @@ export class OuvrageAddComponent implements OnInit, OnDestroy {
             console.log("No")
         });
     }
+
 
 
     ngOnDestroy(): void {
@@ -554,6 +566,10 @@ export class OuvrageAddComponent implements OnInit, OnDestroy {
             this.autoCordinate = !this.autoCordinate;
         }
 
+    }
+
+    test() : void{
+        console.log(this.ouvrageForm.valid);
     }
 
     showPosition(position) :void{

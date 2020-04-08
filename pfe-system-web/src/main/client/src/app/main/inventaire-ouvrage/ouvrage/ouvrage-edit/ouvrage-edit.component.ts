@@ -35,22 +35,21 @@ export class OuvrageEditComponent implements OnInit, OnDestroy {
     }
 
     ngOnInit(): void {
-        console.log(this.route.snapshot.params['code']);
         this.ouvrageEditService.get(this.route.snapshot.params['code']).then(
             (ouvrage) => {
+                console.log(ouvrage);
                 this.initForm(ouvrage);
 
             },
             (error) => {
                 this.test = new Ouvrage();
                 this.initForm(this.test);
-                console.log(error);
             }
         );
     }
 
 
-    createUserForm(): FormGroup {
+    createOuvrageForm(): FormGroup {
 
         let obj = {
             enabled: [this.ouvrage.enabled, Validators.required],
@@ -79,6 +78,8 @@ export class OuvrageEditComponent implements OnInit, OnDestroy {
     onSave(): void {
         const ouvrage = this.ouvrageForm.getRawValue();
         console.log(ouvrage);
+        if (ouvrage.state == '') ouvrage.state="none";
+
 
 
         this.ouvrageEditService.saveOuvrage(ouvrage,this.ouvrage.code)
@@ -91,7 +92,8 @@ export class OuvrageEditComponent implements OnInit, OnDestroy {
 
         this.ouvrage= new Ouvrage(ouvrage);
 
-        this.ouvrageForm = this.createUserForm();
+        console.log(this.ouvrage);
+        this.ouvrageForm = this.createOuvrageForm();
 
     }
 
