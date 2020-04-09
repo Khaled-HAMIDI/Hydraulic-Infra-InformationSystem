@@ -13,7 +13,6 @@ export const locale = {
                 'structure': 'الهيئة',
                 'phoneNumber': 'رقم الهاتف',
                 'email': 'البريد الإلكتروني',
-                'agency': 'الوكالة',
                 'center': 'المركز',
                 'roles': 'الأدوار',
                 'active': 'مفعل',

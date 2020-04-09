@@ -58,7 +58,6 @@ export class Structure {
     fax                    : string;
     rib                    : string;
     rip                    : string;
-    agency                 : string;
     taxIdNumber            : string;
     thirdPartyCode         : string;
     bankOfDomiciliation    : string;
@@ -80,7 +79,6 @@ export class Structure {
         this.fax                     = structure.fax                     || '';
         this.rib                     = structure.rib                     || '';
         this.rip                     = structure.rip                     || '';
-        this.agency                  = structure.agency                  || '';
         this.taxIdNumber             = structure.taxIdNumber             || '';
         this.thirdPartyCode          = structure.thirdPartyCode          || '';
         this.bankOfDomiciliation     = structure.bankOfDomiciliation     || '';
@@ -89,34 +87,6 @@ export class Structure {
     }
 }
 
-export class Agency extends Structure {
-    agencyType: AgencyType;
-    center: any;
-    meterReaders: string;
-    placeOfConsumption: string;
-
-    constructor(agency?) {
-        agency = agency || {};
-        super(agency);
-        this.agencyType = agency.agencyType || {};
-        this.center = agency.center || {};
-        this.meterReaders = agency.meterReaders || '';
-        this.placeOfConsumption = agency.placeOfConsumption || '';
-    }
-}
-
-export class AgencyType {
-    id: string;
-    code: string;
-    designation: string;
-
-    constructor(agencyType?) {
-        agencyType = agencyType || {};
-        this.id = agencyType.id || '';
-        this.code = agencyType.code || '';
-        this.designation = agencyType.designation || '';
-    }
-}
 export class Center extends Structure {
     constructor(center?) {
         center = center || {};

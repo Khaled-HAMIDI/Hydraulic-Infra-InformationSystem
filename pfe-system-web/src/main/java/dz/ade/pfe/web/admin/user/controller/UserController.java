@@ -147,22 +147,6 @@ public class UserController {
             userDto.getStructure().setParentStructure(parentDto);
         }
 
-        if (StructureType.AGENCY.equals(structureType)) {
-            Optional<Center> center = organisationalStructureComponent.getCenterByAgencyCode(user.getOrganisationalStructure().getCode());
-            if (!center.isPresent()) {
-                Log.error("This agency has no center");
-            }
-            Center orgCenter = center.get();
-            Optional<Unit> unit = organisationalStructureComponent.getUnitByCenterCode(orgCenter.getCode());
-            if (!unit.isPresent()) {
-                Log.error("This center has no Unit");
-            }
-            Unit orgUnit = unit.get();
-            StructureDto centerDto = organisationalStructureDtoMapper.organisationalStructureToOrganisationalStructureDto(orgCenter);
-            StructureDto unitDto = organisationalStructureDtoMapper.organisationalStructureToOrganisationalStructureDto(orgUnit);
-            centerDto.setParentStructure(unitDto);
-            userDto.getStructure().setParentStructure(centerDto);
-        }
         return userDto;
     }
 

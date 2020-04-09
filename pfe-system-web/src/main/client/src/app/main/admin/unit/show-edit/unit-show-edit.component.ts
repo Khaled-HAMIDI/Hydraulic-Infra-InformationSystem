@@ -120,7 +120,6 @@ export class UnitShowEditComponent implements OnInit, OnDestroy {
             fax                     : [this.unit.fax                    , Validators.required],
             rib                     : [this.unit.rib                    , Validators.required],
             rip                     : [this.unit.rip                    , Validators.required],
-            agency                  : [this.unit.agency                 , Validators.required],
             taxIdNumber             : [this.unit.taxIdNumber            , Validators.required],
             thirdPartyCode          : [this.unit.thirdPartyCode         , Validators.required],
             bankOfDomiciliation     : [this.unit.bankOfDomiciliation    , Validators.required],

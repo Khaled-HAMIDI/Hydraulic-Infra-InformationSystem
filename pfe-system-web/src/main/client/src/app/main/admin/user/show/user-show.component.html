@@ -138,31 +138,24 @@
                             <fieldset class="myfieldset2">
                                 <legend>{{'SHOW.LEGENDS.structure' | translate}}</legend>
                                 <div fxLayout="column" fxLayout.gt-sm="row">
-                                    <div *ngIf="user.structure.type == 'UNIT'" class="mr-sm-24" fxFlex>
+
+                                    <div *ngIf="user.structure.type == 'UNIT' || user.structure.type == 'CENTER'"
+                                        class="mr-sm-24" fxFlex>
                                         <p class="myLabel">{{'SHOW.LABEL.unit' | translate}}</p>
                                         <p class="myp">
-                                            <mat-icon matPrefix class="mr-12 s-20" color="accent">home</mat-icon>
-                                            <span>{{user.structure.designation}}</span>
-                                        </p>
-                                    </div>
-
-                                    <div *ngIf="user.structure.type == 'CENTER' || user.structure.type == 'AGENCY'"
-                                        class="mr-sm-24" fxFlex>
-                                        <p class="myLabel">{{'SHOW.LABEL.center' | translate}}</p>
-                                        <p class="myp">
-                                            <mat-icon matPrefix class="mr-12 s-20" color="accent">location_city
+                                            <mat-icon matPrefix class="mr-12 s-20" color="accent">home
                                             </mat-icon>
                                             <span
-                                                *ngIf="user.structure.type == 'CENTER'">{{user.structure.designation}}</span>
+                                                *ngIf="user.structure.type == 'UNIT'">{{user.structure.designation}}</span>
                                             <span
-                                                *ngIf="user.structure.parentStructure?.type == 'CENTER'">{{user.structure.parentStructure.designation}}</span>
+                                                *ngIf="user.structure.parentStructure?.type == 'UNIT'">{{user.structure.parentStructure.designation}}</span>
                                         </p>
                                     </div>
 
-                                    <div *ngIf="user.structure.type == 'AGENCY'" class="mr-sm-24" fxFlex>
-                                        <p class="myLabel">{{'SHOW.LABEL.agency' | translate}}</p>
+                                    <div *ngIf="user.structure.type == 'CENTER'" class="mr-sm-24" fxFlex>
+                                        <p class="myLabel">{{'SHOW.LABEL.center' | translate}}</p>
                                         <p class="myp">
-                                            <mat-icon matPrefix class="mr-12 s-20" color="accent">domain</mat-icon>
+                                            <mat-icon matPrefix class="mr-12 s-20" color="accent">location_city</mat-icon>
                                             <span>{{user.structure.designation}}</span>
                                         </p>
                                     </div>

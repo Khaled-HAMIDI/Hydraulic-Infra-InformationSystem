@@ -23,7 +23,6 @@ export const locale = {
                 'fax'                    : 'FAX',
                 'rib'                    : 'RIB',
                 'rip'                    : 'RIP',
-                'agency'                 : 'Agence',
                 'taxIdNumber'            : "Numéro d'identification fiscale",
                 'thirdPartyCode'         : 'Code tiers',
                 'bankOfDomiciliation'    : 'Banque de domiciliation',

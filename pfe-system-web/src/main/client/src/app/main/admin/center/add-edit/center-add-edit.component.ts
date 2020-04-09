@@ -139,7 +139,6 @@ export class CenterAddEditComponent implements OnInit, OnDestroy {
             fax                     : [this.center.fax                    , Validators.required],
             rib                     : [this.center.rib                    , Validators.required],
             rip                     : [this.center.rip                    , Validators.required],
-            agency                  : [this.center.agency                 , Validators.required],
             taxIdNumber             : [this.center.taxIdNumber            , Validators.required],
             thirdPartyCode          : [this.center.thirdPartyCode         , Validators.required],
             bankOfDomiciliation     : [this.center.bankOfDomiciliation    , Validators.required],

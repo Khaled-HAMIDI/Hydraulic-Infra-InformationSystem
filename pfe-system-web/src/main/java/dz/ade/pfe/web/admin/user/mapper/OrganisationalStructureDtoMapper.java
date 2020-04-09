@@ -12,7 +12,7 @@ public interface OrganisationalStructureDtoMapper {
 
     @Mappings({
             @Mapping(target = "id", source = "code"),
-            @Mapping(source = "structureType.value", target = "type")
+            @Mapping(source = "structureType", target = "type")
     })
     StructureDto organisationalStructureToOrganisationalStructureDto(OrganisationalStructure organisationalStructure);
 

@@ -27,7 +27,6 @@ public class CenterShowDto {
 	private String businessRegisterNumber;
 	private String fax;
 	private String bankOfDomiciliation;
-	private String agency;
 	private String rib;
 	private String rip;
 	private String taxIdNumber;

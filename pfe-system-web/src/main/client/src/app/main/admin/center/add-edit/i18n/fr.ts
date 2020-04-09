@@ -25,7 +25,6 @@ export const locale = {
                 'fax'                    : 'FAX',
                 'rib'                    : 'RIB',
                 'rip'                    : 'RIP',
-                'agency'                 : 'Agence',
                 'taxIdNumber'            : "Numéro d'identification fiscale",
                 'thirdPartyCode'         : 'Code tiers',
                 'bankOfDomiciliation'    : 'Banque de domiciliation',
@@ -49,7 +48,7 @@ export const locale = {
                 'error': 'Le centre n\'a pas été crée'
             },
             "LEGENDS":{
-               'agencies' : 'Coordonnées du centre',
+               'infos-center' : 'Coordonnées du centre',
                'headOfTheStructure' : 'Coordonnées du chef de structure',
                'location' : 'Emplacement',
 

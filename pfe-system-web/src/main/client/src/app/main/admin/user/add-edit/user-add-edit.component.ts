@@ -5,7 +5,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { FuseTranslationLoaderService } from '@fuse/services/translation-loader.service';
 import { locale as french } from './i18n/fr';
 import { locale as arabic } from './i18n/ar';
-import { User, Center, Agency, Role } from '../../../model/admin.model';
+import { User, Center, Role } from '../../../model/admin.model';
 import { MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
 import { MatChipInputEvent } from '@angular/material/chips';
 import { map, startWith, takeUntil } from 'rxjs/operators';
@@ -15,9 +15,7 @@ import { UserAddEditService } from './user-add-edit.service';
 import { AyamsValidators } from '@ayams/validators';
 import sortBy from 'lodash/sortBy';
 import pullAllBy from 'lodash/pullAllBy';
-import isEqual from 'lodash/isEqual';
 import cloneDeep from 'lodash/cloneDeep';
-import { MatOption } from '@angular/material';
 
 
 @Component({
@@ -34,9 +32,6 @@ export class UserAddEditComponent implements OnInit, OnDestroy {
   pageType: string;
   userForm: FormGroup;
   centers: Center[];
-  agencies: Agency[];
-  filtredAgencies: Agency[];
-  showAgencies: boolean = false;
   checked: boolean = true;
   allRoles: Role[];
   immuableAllRoles: Role[];
@@ -78,21 +73,12 @@ export class UserAddEditComponent implements OnInit, OnDestroy {
       phoneNumber: [this.user.phoneNumber, AyamsValidators.phoneFormatValidator()],
       enabled: [this.user.enabled, Validators.required],
       roles: [this.user.roles, this.rolesValidator()],
-      agency: ['-1', AyamsValidators.requiredAndNotEmptyObjectValidator()],
       center: ['-1', AyamsValidators.requiredAndNotEmptyObjectValidator()],
       employeeCode: [this.user.employeeCode, Validators.required]
     };
 
     if (this.pageType == 'edit') {
-      switch (this.user.structure.type) {
-        case 'Centre':
           obj['center'] = [this.user.structure.id, Validators.required];
-          break;
-        case 'Agence':
-          obj['agency'] = [this.user.structure.id, Validators.required];
-          obj['center'] = [this.user.structure.parentStructure.id, Validators.required];
-          break;
-      }
     }
 
     return this.formBuilder.group(obj);
@@ -109,15 +95,12 @@ export class UserAddEditComponent implements OnInit, OnDestroy {
     user.roles.forEach((role) => { roleIds.push(role.id) });
     user.roles = roleIds;
 
-    if (user.agency != '-1') {
-      user['structure'] = user.agency;
-    } else if (user.center != '-1') {
+    if (user.center != '-1') {
       user['structure'] = user.center;
     } else {
       user['structure'] = null;
     }
 
-    delete user["agency"];
     delete user["center"];
     if (this.pageType == 'add') {
       user.email += this.emailSuffix;
@@ -151,18 +134,8 @@ export class UserAddEditComponent implements OnInit, OnDestroy {
 
       this.allRoles = pullAllBy(this.allRoles, this.user.roles, 'id');
 
-      if (this.user.structure.type == 'Agence') {
-        this.showAgencies = true;
-        this.userAddEditService.getAgenciesWithCenterId(this.user.structure.parentStructure.id).then(
-          (response: Agency[]) => {
-            this.filtredAgencies = response;
-          });
-      } else {
-        this.showAgencies = false;
-      }
     } else {
       this.user = new User();
-      this.showAgencies = false;
       this.username = '';
 
     }
@@ -178,29 +151,6 @@ export class UserAddEditComponent implements OnInit, OnDestroy {
 
       });
   }
-
-  filterAgencies(centerId): void {
-
-    if (centerId == -1) {
-      this.showAgencies = false;
-      return;
-    }
-    if (centerId) {
-      this.userAddEditService.getAgenciesWithCenterId(centerId).then(
-        (response: Agency[]) => {
-
-          this.filtredAgencies = response;
-        });
-      this.showAgencies = true;
-    } else {
-      this.showAgencies = false;
-    }
-  }
-
-  toggle(): void {
-    this.user.enabled = !this.user.enabled;
-  }
-
 
   // Chips
   visible = true;

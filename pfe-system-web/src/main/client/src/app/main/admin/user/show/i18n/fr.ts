@@ -13,7 +13,6 @@ export const locale = {
                 'structure': 'Structure',
                 'phoneNumber': 'Téléphone',
                 'email': 'Email',
-                'agency': 'Agence',
                 'center': 'Centre',
                 'roles': 'Profils',
                 'active': 'Activé',

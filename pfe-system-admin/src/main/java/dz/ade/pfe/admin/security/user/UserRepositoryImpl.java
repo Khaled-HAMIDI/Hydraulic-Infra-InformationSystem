@@ -46,13 +46,6 @@ public interface UserRepositoryImpl extends UserRepository, JpaRepository<User, 
             "WHERE o.code = :code AND u.deleted = false ")
     List<User> findAllUsersByOrganisationalStructureCode(@Param("code") String code);
 
-    @Query(value = "SELECT new dz.ade.pfe.admin.organisationalstructures.TestUser(u.organisationalStructure.code, count(u)) " +
-            "from User u " +
-            "where exists (select r from u.roles r where r.role = :role) " +
-            "and u.organisationalStructure.code in (select a.code from Agency a where a.code IN (:agencyCodes)) " +
-            "group by u.organisationalStructure.code")
-    List<TestUser> getUsersByProfileGroupByAgency(List<String> agencyCodes, String role);
-
     int countUserByOrganisationalStructure_CodeAndRolesContains(String code, Role role);
 
     @Query("SELECT u FROM User u JOIN u.roles r WHERE u.deleted = :deleted AND r.role IN (:roles)")

@@ -23,17 +23,4 @@ public interface PlaceDtoPlaceMapper {
     })
     WilayaDto wilayaToWilayaDto(Wilaya wilaya);
 
-    @Mappings({
-            @Mapping(source = "code", target = "id"),
-    })
-    ActivityDto activityToActivityDto(Activity activity);
-
-    List<ActivityDto> activityToActivityDto(List<Activity> activity);
-
-    @Mappings({
-            @Mapping(source = "code", target = "id")
-    })
-    SousActivityDto sousActivityToSousActivityDto(SousActivity sousActivity);
-
-    List<SousActivityDto> sousActivityToSousActivityDto(List<SousActivity> sousActivity);
 }

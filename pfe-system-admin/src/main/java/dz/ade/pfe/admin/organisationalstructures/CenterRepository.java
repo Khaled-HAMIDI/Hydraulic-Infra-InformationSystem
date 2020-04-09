@@ -15,7 +15,5 @@ interface CenterRepository {
 
     Center save(Center center);
 
-    Optional<Center> getCenterByAgencyCode(String code);
-
     int delete(List<String> centers);
 }

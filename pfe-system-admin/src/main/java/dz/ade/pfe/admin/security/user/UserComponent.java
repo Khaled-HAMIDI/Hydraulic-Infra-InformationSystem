@@ -42,8 +42,6 @@ public interface UserComponent {
 
     List<User> getOrganisationalStructureUsers(String code);
 
-    List<TestUser> getUsersByProfileGroupByAgency(List<String> agencyCodes, String role);
-
     int getUserRoleCount(String code, Role role);
 
     int disableUsersByOrganisationalStructureCodes(List<String> codes);

@@ -32,8 +32,6 @@ interface UserRepository {
 
     List<User> findAllUsersByOrganisationalStructureCode(String code);
 
-    List<TestUser> getUsersByProfileGroupByAgency(List<String> agencyCodes, String role);
-
     int countUserByOrganisationalStructure_CodeAndRolesContains(String code, Role role);
 
     Optional<User> findByEmployeeCode(String employeeCode);

@@ -43,8 +43,6 @@ public class UnitEditDto {
     @NotBlank
     private String bankOfDomiciliation;
     @NotBlank
-    private String agency;
-    @NotBlank
     private String rib;
     @NotBlank
     private String rip;
