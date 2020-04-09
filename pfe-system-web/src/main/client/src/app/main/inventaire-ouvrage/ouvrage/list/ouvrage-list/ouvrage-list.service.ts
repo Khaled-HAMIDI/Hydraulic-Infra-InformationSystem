@@ -5,16 +5,17 @@ import { Observable, Subject, BehaviorSubject } from 'rxjs';
 import { API } from 'config/api.config';
 import { ToolsService } from '@ayams/services/tools.service';
 import * as XLSX from 'xlsx';
+import { OuvrageList } from '../../../../model/ouvrage.model';
 import forEach from 'lodash/forEach';
 import map from 'lodash/map';
 
-const OUVRAGE_API = API + '/ouvrage';
+const OUVRAGE_API = API + '/ouvrages';
 @Injectable({
   providedIn: 'root'
 })
 export class OuvrageListService implements Resolve<any> {
-  ouvrages: any[];
-  ouvragesByFilter: any[];
+  ouvrages: OuvrageList[];
+  ouvragesByFilter: OuvrageList[];
   ouvragesSelected: string[];
 
   onOuvragesChanged: Subject<any>;
@@ -34,11 +35,10 @@ export class OuvrageListService implements Resolve<any> {
   // @ API function
   // -----------------------------------------------------------------------------------------------------
 
-  getAll(): Promise<String> {
+  getAll(): Promise<OuvrageList[]> {
     return new Promise((resolve, reject) => {
-      this.http.get(OUVRAGE_API + "/1")
+      this.http.get(OUVRAGE_API)
         .subscribe((response: any) => {
-          console.log(response)
           resolve(response);
         }, reject = (err) => { console.log(err) });
     });
@@ -75,10 +75,10 @@ export class OuvrageListService implements Resolve<any> {
     const ouvragesToSelect = this.ouvragesByFilter.length ? this.ouvragesByFilter : this.ouvrages;
     this.ouvragesSelected = [];
 
-    ouvragesToSelect.forEach(ouvrage => {
-      if (!ouvrage.systemEntity)
-        this.selectOuvrage(ouvrage.id, false);
-    })
+    // ouvragesToSelect.forEach(ouvrage => {
+    //   if (!ouvrage.systemEntity)
+    //     this.selectOuvrage(ouvrage.id, false);
+    // })
     this.onSelectedOuvragesChanged.next(this.ouvragesSelected);
   }
 
@@ -153,8 +153,8 @@ export class OuvrageListService implements Resolve<any> {
           const ouvrage = this.ouvrages.find(_ouvrage => {
               return _ouvrage.id === ouvrageId;
           });
-          if (!ouvrage.systemEntity)
-          this.deleteFromOuvrages(this.ouvrages.indexOf(ouvrage), false);
+          // if (!ouvrage.systemEntity)
+          // this.deleteFromOuvrages(this.ouvrages.indexOf(ouvrage), false);
       }
   }
 // -----------------------------------------------------------------------------------------------------
@@ -172,7 +172,6 @@ export class OuvrageListService implements Resolve<any> {
       ]).then(
         (data) => {
           resolve(data);
-          console.log(data)
         },
         (error) => {
           //this.router.navigate(['**']);

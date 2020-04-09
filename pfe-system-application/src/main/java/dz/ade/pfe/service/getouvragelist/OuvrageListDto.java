@@ -1,16 +1,14 @@
-package dz.ade.pfe.service.getouvragedetails;
+package dz.ade.pfe.service.getouvragelist;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.time.LocalDate;
-
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class OuvrageDto {
 
+public class OuvrageListDto {
     private String id;
 
     private String type;
@@ -22,5 +20,4 @@ public class OuvrageDto {
     private Double installedCapacity;
 
     private Double currentCapacity;
-
 }

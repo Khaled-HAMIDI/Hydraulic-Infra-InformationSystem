@@ -6,6 +6,8 @@ import { FuseConfirmDialogComponent } from '@fuse/components/confirm-dialog/conf
 import { Router, ActivatedRoute } from '@angular/router';
 import { AuthorizationService } from '@ayams/services/authorization.service';
 import { OuvrageListService } from './ouvrage-list.service';
+import { locale as french } from '../i18n/fr';
+import { locale as arabic } from '../i18n/ar';
 import { ToolsService } from '@ayams/services/tools.service';
 import { takeUntil } from 'rxjs/operators';
 const COLUMN_NAMES: string[] = [
@@ -14,7 +16,8 @@ const COLUMN_NAMES: string[] = [
   'ouvrageCode',
   'commune',
   'debit',
-  'enabled'
+  'enabled',
+  'buttons'
 ];
 
 @Component({
@@ -41,15 +44,17 @@ export class OuvrageListComponent extends Table implements OnInit, OnDestroy {
     this._unsubscribeAll = new Subject();
     this.ouvragesCheckbox = {};
     this.selectBarDisplayed = false;
+    this.toolsService.loadTranslations(french, arabic);
   }
 
   ngOnInit() {
     this.route.data.pipe(takeUntil(this._unsubscribeAll)).subscribe(
       (response) => {
-        this.btnExport = response.data.length;
-        this.emptyList = response.data.length == 0;
-        this.initTable(response.data);
-        this.initOuvragesSelected(response.data);
+        console.log(response.data[0]);
+        this.btnExport = response.data[0].length;
+        this.emptyList = response.data[0].length == 0;
+        this.initTable(response.data[0]);
+        this.initOuvragesSelected(response.data[0]);
       },
       (error) => {
         console.log(error);

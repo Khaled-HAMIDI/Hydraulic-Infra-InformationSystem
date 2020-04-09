@@ -23151,7 +23151,7 @@ var Link = function () {
   }, {
     key: 'zoom',
     value: function zoom(scale) {
-      var visibility = 'hidden';
+      var visibility = 'visible';
       if (scale && scale > 1.5) visibility = 'visible';
 
       d3.selectAll('.link text').style('visibility', visibility);
