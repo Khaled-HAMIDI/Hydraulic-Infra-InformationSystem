@@ -7,7 +7,7 @@ import javax.persistence.*;
 @Embeddable
 @Getter
 @Setter
-@EqualsAndHashCode(exclude = {"commune", "street"}, callSuper = false)
+@EqualsAndHashCode(exclude = {"commune"}, callSuper = false)
 @NoArgsConstructor
 @AllArgsConstructor
 public class DetailedAddress {
@@ -37,7 +37,4 @@ public class DetailedAddress {
     @JoinColumn(name = "commune_id")
     private Commune commune;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "street_id")
-    private Street street;
 }

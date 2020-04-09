@@ -36,7 +36,4 @@ public class Commune extends Auditing {
     @JoinColumn(name = "wilaya_id")
     private Wilaya wilaya;
 
-    @Column(name = "administrator")
-    @Enumerated(EnumType.STRING)
-    private Administrator administrator = Administrator.ADE;
 }

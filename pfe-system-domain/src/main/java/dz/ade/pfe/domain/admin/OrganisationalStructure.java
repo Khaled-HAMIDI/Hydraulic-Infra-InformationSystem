@@ -71,9 +71,6 @@ public abstract class OrganisationalStructure extends Auditing {
     @Column(name = "bank_of_domiciliation")
     protected String bankOfDomiciliation;
 
-    @Column(name = "agency")
-    protected String agency;
-
     @Column(name = "rib")
     protected String rib;
 
@@ -88,9 +85,6 @@ public abstract class OrganisationalStructure extends Auditing {
 
     @Column(name = "third_party_code")
     protected String thirdPartyCode;
-
-    @Column(name = "epeor_code")
-    protected String epeorCode;
 
     @Column(name = "deleted")
     @Builder.Default

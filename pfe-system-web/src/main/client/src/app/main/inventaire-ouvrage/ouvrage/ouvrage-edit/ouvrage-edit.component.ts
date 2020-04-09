@@ -35,22 +35,21 @@ export class OuvrageEditComponent implements OnInit, OnDestroy {
     }
 
     ngOnInit(): void {
-        console.log(this.route.snapshot.params['code']);
         this.ouvrageEditService.get(this.route.snapshot.params['code']).then(
             (ouvrage) => {
+                console.log(ouvrage);
                 this.initForm(ouvrage);
 
             },
             (error) => {
                 this.test = new Ouvrage();
                 this.initForm(this.test);
-                console.log(error);
             }
         );
     }
 
 
-    createUserForm(): FormGroup {
+    createOuvrageForm(): FormGroup {
 
         let obj = {
             enabled: [this.ouvrage.enabled, Validators.required],
@@ -62,7 +61,14 @@ export class OuvrageEditComponent implements OnInit, OnDestroy {
             energyMonthlyBill: [this.ouvrage.energyMonthlyBill, Validators.required],
             specializedLine: [this.ouvrage.specializedLine, Validators.required],
             remoteManagement: [this.ouvrage.remoteManagement, Validators.required],
-            abri: [this.ouvrage.abri, Validators.required]
+            abri: [this.ouvrage.abri, Validators.required],
+
+            chemicalMonthlyBill: [this.ouvrage.chemicalMonthlyBill, Validators.required],
+            coteTn: [this.ouvrage.coteTn, Validators.required],
+            debitLoadBreaker: [this.ouvrage.debitLoadBreaker, Validators.required],
+            chargesAmontEtAval: [this.ouvrage.chargesAmontEtAval, Validators.required],
+            currentDebit: [this.ouvrage.currentDebit, Validators.required],
+            electricAlimentation: [this.ouvrage.electricAlimentation, Validators.required]
         };
 
         return this.formBuilder.group(obj);
@@ -72,6 +78,8 @@ export class OuvrageEditComponent implements OnInit, OnDestroy {
     onSave(): void {
         const ouvrage = this.ouvrageForm.getRawValue();
         console.log(ouvrage);
+        if (ouvrage.state == '') ouvrage.state="none";
+
 
 
         this.ouvrageEditService.saveOuvrage(ouvrage,this.ouvrage.code)
@@ -84,7 +92,8 @@ export class OuvrageEditComponent implements OnInit, OnDestroy {
 
         this.ouvrage= new Ouvrage(ouvrage);
 
-        this.ouvrageForm = this.createUserForm();
+        console.log(this.ouvrage);
+        this.ouvrageForm = this.createOuvrageForm();
 
     }
 
@@ -107,5 +116,9 @@ export class OuvrageEditComponent implements OnInit, OnDestroy {
 
     toggleRemoteManagement() :void {
         this.ouvrage.remoteManagement = !this.ouvrage.remoteManagement;
+    }
+
+    toggleElectricAlimentation() :void {
+        this.ouvrage.electricAlimentation = !this.ouvrage.electricAlimentation;
     }
 }

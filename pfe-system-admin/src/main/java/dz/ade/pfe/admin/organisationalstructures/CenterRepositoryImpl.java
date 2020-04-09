@@ -16,9 +16,6 @@ interface CenterRepositoryImpl extends CenterRepository, JpaRepository<Center, L
 
     Optional<Center> findByCodeAndDeleted(String code, Boolean deleted);
 
-    @Query(value = "SELECT a.center FROM Agency a WHERE a.code = :code")
-    Optional<Center> getCenterByAgencyCode(@Param("code") String code);
-
     List<Center> findAllByDeleted(Boolean deleted);
 
     @Transactional

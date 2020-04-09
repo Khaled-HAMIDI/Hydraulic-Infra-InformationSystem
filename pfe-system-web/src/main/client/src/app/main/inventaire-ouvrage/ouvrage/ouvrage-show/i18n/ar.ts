@@ -34,13 +34,26 @@ export const locale = {
                 'realizationCost': 'تكلفة الإنتاج',
                 'remoteManagement' : 'الإدارة عن بعد',
                 'waterTank': 'خزان',
-                'tankCapacity': 'القدرة',
+                'tankCapacity1': 'سعة الخزان',
+                'tankCapacity2': 'قدرة القماش المشمع على ارتفاع هههه',
                 'specializedLine':'خط متخصص',
                 'abri': "المأوى",
                 'energyMonthlyBill': 'فاتورة الطاقة',
                 'totalWorkforce': 'إجمالي القوى العاملة',
                 'distribution' : "التوزيع",
                 'populationServed': "عدد السكان",
+
+                'chemicalMonthlyBill': 'فاتورة كيميائية',
+                'coteTn' : 'coteTn',
+                'debitLoadBreaker': 'تدفق كسارة الشحن',
+                'chargesAmontEtAval': 'Charges amont et aval ',
+                'currentDebit':'التدفق الحالي',
+                'exploitationDebit': "إنتاجية التشغيل",
+                'electricAlimentation': 'تغذية كهربائية',
+                'tankType': 'نوع الخزان',
+                'tankRole' : "دور الخزان",
+                'treatmentStationType': "نوع محطة المعالجة",
+
                 'enabledActive' : 'قيد العمل',
                 'enabledInactive' : 'متوقف',
                 'distributionActive' : 'توزع على السكان',
@@ -52,7 +65,10 @@ export const locale = {
                 'specializedLineActive' : 'مدعوم من خط كهرباء متخصص',
                 'specializedLineInactive' : 'مدعوم من خط كهرباء عادي',
                 'abriActive' : 'وجود ملجأ',
-                'abriInactive' : 'لا يوجد مأوى'
+                'abriInactive' : 'لا يوجد مأوى',
+
+                'electricAlimentationActive' : 'مدعوم من خط الكهرباء',
+                'electricAlimentationInactive' : 'لا يعمل بواسطة خط كهرباء'
             },
             "LEGENDS": {
                 'general': 'معلومات عامة',

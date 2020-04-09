@@ -14,18 +14,15 @@ import java.util.*;
 @Component
 class OrganisationalStructureComponentImpl implements OrganisationalStructureComponent {
 
-    private AgencyRepository agencyRepository;
     private CenterRepository centerRepository;
     private UnitRepository unitRepository;
     private OrganisationalStructureRepository organisationalStructureRepository;
     private JooqOrganisationalStructureRepository jooqOrganisationalStructureRepository;
 
-    public OrganisationalStructureComponentImpl(AgencyRepository agencyRepository,
-                                                CenterRepository centerRepository,
+    public OrganisationalStructureComponentImpl(CenterRepository centerRepository,
                                                 UnitRepository unitRepository,
                                                 OrganisationalStructureRepository organisationalStructureRepository,
                                                 JooqOrganisationalStructureRepository jooqOrganisationalStructureRepository) {
-        this.agencyRepository = agencyRepository;
         this.centerRepository = centerRepository;
         this.unitRepository = unitRepository;
         this.organisationalStructureRepository = organisationalStructureRepository;
@@ -48,16 +45,6 @@ class OrganisationalStructureComponentImpl implements OrganisationalStructureCom
     }
 
     @Override
-    public Agency createAgency(Agency agency) {
-        return agencyRepository.save(agency);
-    }
-
-    @Override
-    public Agency updateAgency(Agency agency) {
-        return agencyRepository.save(agency);
-    }
-
-    @Override
     public Optional<Center> getCenter(String code) {
         return centerRepository.findOneByDeletedAndCode(false, code);
     }
@@ -65,22 +52,6 @@ class OrganisationalStructureComponentImpl implements OrganisationalStructureCom
     @Override
     public Optional<Center> findNotDeletedCenterByCode(String code) {
         return centerRepository.findByCodeAndDeleted(code, false);
-    }
-
-    @Override
-    public Optional<Agency> findNotDeletedAgencyByCode(String code) {
-        return agencyRepository.findByCodeAndDeleted(code, false);
-    }
-
-    @Override
-    public List<Agency> getAgencies() {
-        return agencyRepository.findAllByDeleted(false);
-    }
-
-
-    @Override
-    public Optional<Agency> getAgency(String code) {
-        return agencyRepository.findOneByDeletedAndCode(false, code);
     }
 
     @Override
@@ -99,47 +70,13 @@ class OrganisationalStructureComponentImpl implements OrganisationalStructureCom
     }
 
     @Override
-    public Optional<Center> getCenterByAgencyCode(String code) {
-        return centerRepository.getCenterByAgencyCode(code);
-    }
-
-    @Override
     public Optional<Unit> getUnitByCode(String code) {
         return unitRepository.findOneByDeletedAndCode(false, code);
     }
 
     @Override
-    public int deleteAgencies(List<String> agencies) {
-        return agencyRepository.delete(agencies);
-    }
-
-    @Override
     public int deleteCenters(List<String> centers) {
         return centerRepository.delete(centers);
-    }
-
-    @Override
-    public List<Agency> getAgenciesByCenter(String code) {
-        return agencyRepository.findAgenciesByCenter_Code(code);
-    }
-
-    @Override
-    public List<Agency> getAgenciesByStructureCode(String code, StructureType structureType) {
-        List<Agency> agencies = null;
-        switch (structureType) {
-            case UNIT:
-                agencies = agencyRepository.findAllByDeletedAndCenterUnitCode(false, code);
-                break;
-            case CENTER:
-                agencies = agencyRepository.findAllByDeletedAndCenterCode(false, code);
-                break;
-            case AGENCY:
-                Optional<Agency> agency = agencyRepository.findOneByDeletedAndCode(false, code);
-                agencies = agency.map(Collections::singletonList).orElseGet(ArrayList::new);
-                break;
-        }
-
-        return agencies;
     }
 
     @Override
@@ -158,15 +95,4 @@ class OrganisationalStructureComponentImpl implements OrganisationalStructureCom
         return unitRepository.save(unit);
     }
 
-    @Override
-    public Optional<Agency> getAgencyWithParentStructures(String code) {
-        return agencyRepository.getAgencyWithParentStructures(code);
-    }
-
-    @Override
-    public Agency getAgencyWithCenterAndUnite(String code) {
-        ResourceNotFoundException resourceNotFoundExceptionSupplier = new ResourceNotFoundException(String.format("Resource with {ID %s} not found", code));
-
-        return agencyRepository.getAgencyWithCenterAndUnite(code).orElseThrow(() -> resourceNotFoundExceptionSupplier);
-    }
 }

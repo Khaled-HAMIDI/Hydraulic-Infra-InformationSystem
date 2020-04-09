@@ -9,8 +9,7 @@ import java.util.stream.Stream;
  */
 public enum StructureType {
     UNIT("Unité"),
-    CENTER("Centre"),
-    AGENCY("Agence");
+    CENTER("Centre");
 
     private String value;
 

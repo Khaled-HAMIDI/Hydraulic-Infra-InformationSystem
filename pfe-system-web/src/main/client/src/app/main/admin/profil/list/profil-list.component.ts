@@ -5,7 +5,7 @@ import { FuseConfirmDialogComponent } from '@fuse/components/confirm-dialog/conf
 import { ActivatedRoute, Router } from '@angular/router';
 import { locale as french } from './i18n/fr';
 import { locale as arabic } from './i18n/ar';
-import { Table } from '../../agency/list/Table';
+import { Table } from './Table';
 import { ProfilListService } from './profil-list.service';
 import { Subject } from '../../../../../../node_modules/rxjs';
 import { takeUntil } from '../../../../../../node_modules/rxjs/operators';

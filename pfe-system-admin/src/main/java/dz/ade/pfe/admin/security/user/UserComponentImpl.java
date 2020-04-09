@@ -121,11 +121,6 @@ class UserComponentImpl implements UserComponent, UserDetailsService {
     }
 
     @Override
-    public List<TestUser> getUsersByProfileGroupByAgency(List<String> agencyCodes, String role) {
-        return userRepository.getUsersByProfileGroupByAgency(agencyCodes, role);
-    }
-
-    @Override
     public int getUserRoleCount(String code, Role role) {
         return userRepository.countUserByOrganisationalStructure_CodeAndRolesContains(code, role);
     }

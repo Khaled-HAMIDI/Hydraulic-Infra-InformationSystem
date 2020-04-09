@@ -23,7 +23,6 @@ export const locale = {
                 'fax'                    : 'الفاكس',
                 'rib'                    : 'بيان التعريف البنكي',
                 'rip'                    : 'بيان الهوية البريدية',
-                'agency'                 : 'وكالة',
                 'taxIdNumber'            : "رقم التعريف الجبائي",
                 'thirdPartyCode'         : 'كود الطرف الثالث',
                 'bankOfDomiciliation'    : 'بنك المسكن',

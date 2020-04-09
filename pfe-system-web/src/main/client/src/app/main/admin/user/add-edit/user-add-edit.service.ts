@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { API } from 'config/api.config';
 import { ActivatedRouteSnapshot, RouterStateSnapshot, Resolve, Router } from '@angular/router';
-import { Role, Center, Agency, User } from '../../../model/admin.model';
+import { Role, Center, User } from '../../../model/admin.model';
 import { ToolsService } from '@ayams/services/tools.service';
 
 
@@ -93,16 +93,6 @@ export class UserAddEditService implements Resolve<any>{
         });
 
     }
-
-    getAgenciesWithCenterId(centerId: string): Promise<Agency[]> {
-        return new Promise((resolve, reject) => {
-            this.http.get(CENTERS_API + '/' + centerId + '/agencies')
-                .subscribe((response: any) => {
-                    resolve(response);
-                }, reject);
-        });
-    }
-
 
     resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<any> | Promise<any> | any {
 

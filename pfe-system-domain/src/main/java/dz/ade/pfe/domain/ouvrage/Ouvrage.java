@@ -28,7 +28,8 @@ public class Ouvrage extends Auditing{
     private String name;
 
     @Column(name = "type")
-    private String type;
+    @Enumerated(EnumType.STRING)
+    private EnumTypeGeneral type;
 
     @Column(name = "enabled")
     private boolean enabled;
@@ -42,16 +43,63 @@ public class Ouvrage extends Auditing{
     private EnumEtat state;
 
     @Column(name = "process")
-    private String process;
+    @Enumerated(EnumType.STRING)
+    private EnumProcess process;
 
     @Column(name = "nb_compartment")
     private Integer nbCompartment;
 
+    /*type de station de traitement*/
+    @Column(name = "treatment_station_type")
+    @Enumerated(EnumType.STRING)
+    private EnumTypeStTraitement treatmentStationType;
+
+    /*Cote du radier */
     @Column(name = "raft_rating")
     private Double raftRating;
 
+    /*cote trop plein */
     @Column(name = "cote_trop_full")
     private Double coteTropFull;
+
+    /*capacité du reservoir*/
+    @Column(name = "tank_capacity1")
+    private Double tankCapacity1;
+
+    /*role du reservoir*/
+    @Column(name = "tank_role")
+    @Enumerated(EnumType.STRING)
+    private EnumRoleReservoir tankRole;
+
+    /*type réservoir*/
+    @Column(name = "tank_type")
+    @Enumerated(EnumType.STRING)
+    private EnumTypeReservoir tankType;
+
+    /* alimentation electrique */
+    @Column(name = "electric_alimentation")
+    private Boolean electricAlimentation;
+
+    /*debit exploitation forage*/
+    @Column(name = "exploitation_debit")
+    private Double exploitationDebit;
+
+    /*debit actuel forage*/
+    @Column(name = "current_debit")
+    private Double currentDebit;
+
+    /*Charges amont et aval brise charge*/
+    @Column(name = "charges_amont_et_aval")
+    private Double chargesAmontEtAval;
+
+    /*debit brise charge*/
+    @Column(name = "debit_load_breaker")
+    private Double debitLoadBreaker;
+
+    /*Brise charge cote tn*/
+    @Column(name = "cote_tn")
+    private Double coteTn;
+
 
     @Column(name = "coordinate_x")
     private Double coordinateX;
@@ -87,7 +135,8 @@ public class Ouvrage extends Auditing{
     private String constructionType;
 
     @Column(name = "water_source")
-    private String waterSource;
+    @Enumerated(EnumType.STRING)
+    private EnumProvenance waterSource;
 
     @Column(name = "commissioning_date")
     private LocalDate commissioningDate;
@@ -104,11 +153,13 @@ public class Ouvrage extends Auditing{
     @Column(name = "remote_management")
     private Boolean remoteManagement;
 
+    /*existance bache a haut*/
     @Column(name = "water_tank")
     private Boolean waterTank;
 
-    @Column(name = "tank_capacity")
-    private Double tankCapacity;
+    /*capacité bache a haut*/
+    @Column(name = "tank_capacity2")
+    private Double tankCapacity2;
 
     @Column(name = "specialized_line")
     private Boolean specializedLine;
@@ -127,6 +178,10 @@ public class Ouvrage extends Auditing{
 
     @Column(name = "population_served")
     private Double populationServed;
+
+    /*facture de consommation des produits chimiques*/
+    @Column(name = "chemical_monthly_bill")
+    private Double chemicalMonthlyBill;
 
 
 }
