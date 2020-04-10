@@ -28,7 +28,7 @@
 
 
                 <button mat-raised-button class="save-agency-button mat-white-bg"
-                         (click)="onSave()">
+                         (click)="onSave()" [disabled]="ouvrageForm.valid">
                     <span>{{'EDIT.BUTTON.edit' | translate}}</span>
                 </button>
             </div>

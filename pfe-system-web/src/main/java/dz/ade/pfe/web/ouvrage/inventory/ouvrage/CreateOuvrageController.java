@@ -73,7 +73,6 @@ public class CreateOuvrageController {
         ouvrage.setTotalWorkforce(ouvrageAddDto.getTotalWorkforce());
         ouvrage.setDistribution(ouvrageAddDto.getDistribution());
         ouvrage.setPopulationServed(ouvrageAddDto.getPopulationServed());
-
         ouvrage.setChemicalMonthlyBill(ouvrageAddDto.getChemicalMonthlyBill());
         ouvrage.setCoteTn(ouvrageAddDto.getCoteTn());
         ouvrage.setDebitLoadBreaker(ouvrageAddDto.getDebitLoadBreaker());
