@@ -31,6 +31,13 @@ export class StationNonConvComponent  implements OnInit, OnDestroy {
     ) {
         // Set the default
         this.ouvrage = new Ouvrage();
+        this.ouvrage.enabled = true;
+        this.ouvrage.specializedLine = true;
+        this.ouvrage.abri = true;
+        this.ouvrage.remoteManagement = true;
+        this.ouvrage.waterTank = true;
+        this.ouvrage.electricAlimentation = true;
+
         this.fuseTranslationLoader.loadTranslations(french, arabic);
         this.autoCordinate=false;
     }
