@@ -12,11 +12,12 @@ export const locale = {
                 'TITLE': 'المعرفة التراثية',
                 'ITEMS':{
                     'INTEGRATE':'دمج',
-                    'LIST':'قائمة'
+                    'LIST':'قائمة',
+                    'CHAIN':'chaine'
                 }
             },
             'INVENTORY': {
-                'TITLE': 'Inventaire',
+                'TITLE': 'Inventaire(en arabe)',
                 'ITEMS':{
                     'START' :'Lancer un inventaire',
                     'FOLLOW' : 'Inventaires courants',

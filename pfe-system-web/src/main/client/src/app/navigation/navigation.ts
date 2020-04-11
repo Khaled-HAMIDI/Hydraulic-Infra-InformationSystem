@@ -43,6 +43,13 @@ export const navigation: FuseNavigation[] = [
                         translate: 'NAV.PATRIMONY.ITEMS.INTEGRATE',
                         type : 'item',
                         url  : 'patrimony/ouvrages/add'
+                    },
+                    {
+                        id: 'chain',
+                        title: 'Chaine',
+                        translate: 'NAV.PATRIMONY.ITEMS.CHAIN',
+                        type: 'item',
+                        url: 'patrimony/chain/list'
                     }
                 ]
                 
@@ -55,23 +62,11 @@ export const navigation: FuseNavigation[] = [
                 icon: 'home',
                 children:[
                     {
-<<<<<<< HEAD
-                        id   : 'lancer',
+                        id: 'lancer',
                         title: 'Lancer inventaire',
                         translate: 'NAV.INVENTORY.ITEMS.START',
-                        type : 'item',
-                        url  : 'pasencore'
-||||||| merged common ancestors
-                        'id'   : 'list',
-                        'title': 'Liste',
-                        'type' : 'item',
-                        'url'  : 'patrimony/ouvrages'
-=======
-                        'id'   : 'list',
-                        'title': 'Liste',
-                        'type' : 'item',
-                        'url'  : 'patrimony/ouvrages/list'
->>>>>>> 32871ae2a2f7ada4ebc4341c770ef881a2e60564
+                        type: 'item',
+                        url: 'pasencore'
                     },
                     {
                         id   : 'suivre',
@@ -81,29 +76,11 @@ export const navigation: FuseNavigation[] = [
                         url  : 'pasencore'
                     },
                     {
-<<<<<<< HEAD
-                        id   : 'liste',
+                        id: 'liste',
                         title: 'Liste inventaires',
                         translate: 'NAV.INVENTORY.ITEMS.LIST',
-                        type : 'item',
-                        url  : 'pasencore'
-||||||| merged common ancestors
-                        'id'   : 'inventory',
-                        'title': 'Inventaire',
-                        'type' : 'item',
-                        'url'  : 'patrimony/inventaire'
-=======
-                        'id'   : 'inventory',
-                        'title': 'Inventaire',
-                        'type' : 'item',
-                        'url'  : 'patrimony/inventaire'
-                    },
-                    {
-                        'id'   : 'chain',
-                        'title': 'Chaine',
-                        'type' : 'item',
-                        'url'  : 'patrimony/chain/list'
->>>>>>> 32871ae2a2f7ada4ebc4341c770ef881a2e60564
+                        type: 'item',
+                        url: 'pasencore'
                     }
                 ]
 
