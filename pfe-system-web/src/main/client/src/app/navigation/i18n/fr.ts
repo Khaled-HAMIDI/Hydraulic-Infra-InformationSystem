@@ -8,8 +8,20 @@ export const locale = {
             'BUSINESS': {
                 'TITLE': 'Metier'
             },
+            'PATRIMONY': {
+                'TITLE': 'Connaissance patrimoniale',
+                'ITEMS':{
+                    'INTEGRATE':'Intégrer un ouvrage',
+                    'LIST':'Liste des ouvrages'
+                }
+            },
             'INVENTORY': {
-                'TITLE': 'patrimoine'
+                'TITLE': 'Inventaire',
+                'ITEMS':{
+                    'START' :'Lancer un inventaire',
+                    'FOLLOW' : 'Inventaires courants',
+                    'LIST'  :'Inventaires terminés'
+                }
             },
             'ADMIN': {
                 'TITLE': 'Administration'

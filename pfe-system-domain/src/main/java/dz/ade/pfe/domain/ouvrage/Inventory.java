@@ -26,6 +26,9 @@ public class Inventory extends Auditing{
     @Column(name = "date")
     private LocalDate date;
 
+    @Column(name = "completed")
+    private boolean completed;
+
 
 
 }

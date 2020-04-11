@@ -5,6 +5,24 @@ export const locale = {
             'HOME': {
                 'TITLE': 'إستقبال'
             },
+            'BUSINESS': {
+                'TITLE': 'المهني'
+            },
+            'PATRIMONY': {
+                'TITLE': 'المعرفة التراثية',
+                'ITEMS':{
+                    'INTEGRATE':'دمج',
+                    'LIST':'قائمة'
+                }
+            },
+            'INVENTORY': {
+                'TITLE': 'Inventaire',
+                'ITEMS':{
+                    'START' :'Lancer un inventaire',
+                    'FOLLOW' : 'Inventaires courants',
+                    'LIST'  :'Inventaires terminés'
+                }
+            },
             'ADMIN': {
                 'TITLE': 'الإدارة'
             },

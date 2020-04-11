@@ -26,30 +26,57 @@ export const navigation: FuseNavigation[] = [
             {
                 id: 'patrimony',
                 title: 'patrimoine',
+                translate: 'NAV.PATRIMONY.TITLE',
+                type: 'collapsable',
+                icon: 'home',
+                children:[
+                    {
+                        id   : 'list',
+                        title: 'Liste',
+                        translate: 'NAV.PATRIMONY.ITEMS.LIST',
+                        type : 'item',
+                        url  : 'patrimony/ouvrages'
+                    },
+                    {
+                        id   : 'integrate',
+                        title: 'Intégrer',
+                        translate: 'NAV.PATRIMONY.ITEMS.INTEGRATE',
+                        type : 'item',
+                        url  : 'patrimony/ouvrages/add'
+                    }
+                ]
+                
+            },
+            {
+                id: 'inventory',
+                title: 'inventaire',
                 translate: 'NAV.INVENTORY.TITLE',
                 type: 'collapsable',
                 icon: 'home',
                 children:[
                     {
-                        'id'   : 'list',
-                        'title': 'Liste',
-                        'type' : 'item',
-                        'url'  : 'patrimony/ouvrages'
+                        id   : 'lancer',
+                        title: 'Lancer inventaire',
+                        translate: 'NAV.INVENTORY.ITEMS.START',
+                        type : 'item',
+                        url  : 'pasencore'
                     },
                     {
-                        'id'   : 'integrate',
-                        'title': 'Intégrer',
-                        'type' : 'item',
-                        'url'  : 'patrimony/ouvrages/add'
+                        id   : 'suivre',
+                        title: 'Suivre inventaire',
+                        translate: 'NAV.INVENTORY.ITEMS.FOLLOW',
+                        type : 'item',
+                        url  : 'pasencore'
                     },
                     {
-                        'id'   : 'inventory',
-                        'title': 'Inventaire',
-                        'type' : 'item',
-                        'url'  : 'patrimony/inventaire'
+                        id   : 'liste',
+                        title: 'Liste inventaires',
+                        translate: 'NAV.INVENTORY.ITEMS.LIST',
+                        type : 'item',
+                        url  : 'pasencore'
                     }
                 ]
-                
+
             }
         ]
     },
