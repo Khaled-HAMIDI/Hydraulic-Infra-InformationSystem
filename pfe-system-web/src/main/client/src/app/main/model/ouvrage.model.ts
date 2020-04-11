@@ -119,3 +119,46 @@ export class OuvrageList {
         this.currentCapacity = ouvrage.currentCapacity || null;
     }
 }
+
+
+export class OuvrageEdit {
+
+    enabled: boolean;
+    state: string;
+    currentCapacity: number;
+    power: number;
+    pumpDebit: number;
+    specializedLine: boolean;
+    remoteManagement : boolean;
+    abri: boolean;
+    energyMonthlyBill: number;
+    totalWorkforce: number;
+    chemicalMonthlyBill: number;
+    coteTn: number;
+    debitLoadBreaker:number;
+    chargesAmontEtAval: number;
+    currentDebit: number;
+    electricAlimentation:boolean;
+
+
+    constructor(ouvrage?) {
+        ouvrage = ouvrage || {};
+        this.enabled = ouvrage.enabled || false;
+        this.state = ouvrage.state ||  '';
+        this.remoteManagement = ouvrage.remoteManagement ||  false;
+        this.currentCapacity = ouvrage.currentCapacity ||  '';
+        this.power = ouvrage.power ||  '';
+        this.pumpDebit = ouvrage.pumpDebit ||  '';
+        this.specializedLine = ouvrage.specializedLine || false ;
+        this.abri = ouvrage.abri || false;
+        this.energyMonthlyBill = ouvrage.energyMonthlyBill ||  '';
+        this.totalWorkforce = ouvrage.totalWorkforce ||  '';
+        this.chemicalMonthlyBill = ouvrage.chemicalMonthlyBill ||  '';
+        this.coteTn = ouvrage.coteTn ||  '';
+        this.debitLoadBreaker = ouvrage.debitLoadBreaker ||  '';
+        this.chargesAmontEtAval = ouvrage.chargesAmontEtAval || '';
+        this.currentDebit = ouvrage.currentDebit ||  '';
+        this.electricAlimentation = ouvrage.electricAlimentation ||  false;
+
+    }
+}

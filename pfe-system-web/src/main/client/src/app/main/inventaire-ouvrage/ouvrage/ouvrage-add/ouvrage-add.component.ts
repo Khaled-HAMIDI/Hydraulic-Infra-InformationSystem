@@ -73,7 +73,6 @@ export class OuvrageAddComponent implements OnInit, OnDestroy {
 
 
     onSelect(): void {
-        console.log(this.ouvrageForm.get('type').value);
         this.router.navigate([this.ouvrageForm.get('type').value],{relativeTo:this.route});
     }
 
