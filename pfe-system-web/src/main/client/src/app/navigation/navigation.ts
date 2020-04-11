@@ -34,7 +34,7 @@ export const navigation: FuseNavigation[] = [
                         'id'   : 'list',
                         'title': 'Liste',
                         'type' : 'item',
-                        'url'  : 'patrimony/ouvrages'
+                        'url'  : 'patrimony/ouvrages/list'
                     },
                     {
                         'id'   : 'integrate',
@@ -47,6 +47,12 @@ export const navigation: FuseNavigation[] = [
                         'title': 'Inventaire',
                         'type' : 'item',
                         'url'  : 'patrimony/inventaire'
+                    },
+                    {
+                        'id'   : 'chain',
+                        'title': 'Chaine',
+                        'type' : 'item',
+                        'url'  : 'patrimony/chain/list'
                     }
                 ]
                 
