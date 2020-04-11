@@ -5,6 +5,9 @@ import lombok.*;
 import javax.persistence.*;
 import dz.ade.pfe.domain.commons.Auditing;
 
+import java.util.ArrayList;
+import java.util.List;
+
 
 @Entity
 @Table(name = "chain", schema = "pfe")
@@ -20,10 +23,14 @@ public class Chain extends Auditing{
     protected Long id;
 
     @Column(name = "code")
-    private double code;
+    private String code;
 
     @Column(name = "name")
     private String name;
+
+    @OneToMany(mappedBy = "chain", cascade = CascadeType.ALL)
+    @Builder.Default
+    protected List<OuvrageChain> ouvrages = new ArrayList<>();
 
 }
 

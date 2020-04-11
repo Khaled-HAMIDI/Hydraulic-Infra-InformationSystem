@@ -17,6 +17,7 @@ public class OuvragePersistenceAdapter implements LoadOuvrageDetails, LoadOuvrag
     public Ouvrage loadOuvrageDetails(String code) {
         return ouvrageRepository.getOne((long) 1);
     }
+    @Override
     public List<Ouvrage> loadOuvrageList() {
         return ouvrageRepository.findAll();
     }

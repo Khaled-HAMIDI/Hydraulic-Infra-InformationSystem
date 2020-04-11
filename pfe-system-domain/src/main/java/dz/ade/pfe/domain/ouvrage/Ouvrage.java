@@ -1,10 +1,14 @@
 package dz.ade.pfe.domain.ouvrage;
 
+import dz.ade.pfe.domain.admin.User;
 import lombok.*;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
+
 import dz.ade.pfe.domain.commons.Auditing;
 
 
@@ -183,6 +187,9 @@ public class Ouvrage extends Auditing{
     @Column(name = "chemical_monthly_bill")
     private Double chemicalMonthlyBill;
 
+    @OneToMany(mappedBy = "ouvrage", cascade = CascadeType.ALL)
+    @Builder.Default
+    protected List<OuvrageChain> chains = new ArrayList<>();
 
 }
 

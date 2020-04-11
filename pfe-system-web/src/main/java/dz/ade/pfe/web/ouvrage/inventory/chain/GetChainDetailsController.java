@@ -1,7 +1,7 @@
-package dz.ade.pfe.web.ouvrage.inventory.ouvrage;
+package dz.ade.pfe.web.ouvrage.inventory.chain;
 
-import dz.ade.pfe.port.in.getouvragedetails.GetOuvrageDetailsQuery;
-import dz.ade.pfe.service.getouvragedetails.OuvrageDto;
+import dz.ade.pfe.port.in.chain.getchaindetails.GetChainDetailsQuery;
+import dz.ade.pfe.service.chain.getchaindetails.ChainDto;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
@@ -13,18 +13,16 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.List;
-
 @RestController
 @RequestMapping(value = "/api")
-@Api(value = "ouvrage", description = "Operations on ouvrage")
+@Api(value = "Chains", description = "Obtenir la list des chains")
 @Component
 @RequiredArgsConstructor
-public class GetOuvrageDetailsController {
+public class GetChainDetailsController {
 
-    private final GetOuvrageDetailsQuery getOuvrageDetailsQuery;
+    private final GetChainDetailsQuery getChainDetailsQuery;
 
-    @GetMapping(value = "/ouvrage/{code}")
+    @GetMapping(value = "/chain/{code}")
     @ApiOperation(value = "View a list of available commune by wilaya")
     @ApiResponses(value = {
             @ApiResponse(code = 200, message = "Successfully retrieved a list of commune by wilaya"),
@@ -32,10 +30,8 @@ public class GetOuvrageDetailsController {
             @ApiResponse(code = 403, message = "Accessing the resource you were trying to reach is forbidden"),
             @ApiResponse(code = 404, message = "The resource you were trying to reach is not found")
     })
-    public OuvrageDto getOuvrageDetails(@PathVariable String code) {
-        return getOuvrageDetailsQuery.getOuvrageDetails(code);
+    public ChainDto getChainDetails(@PathVariable String code) {
+        return getChainDetailsQuery.getChainDetails(code);
     }
-
-
 
 }

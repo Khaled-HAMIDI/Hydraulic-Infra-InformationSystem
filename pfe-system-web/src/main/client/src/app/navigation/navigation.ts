@@ -55,11 +55,23 @@ export const navigation: FuseNavigation[] = [
                 icon: 'home',
                 children:[
                     {
+<<<<<<< HEAD
                         id   : 'lancer',
                         title: 'Lancer inventaire',
                         translate: 'NAV.INVENTORY.ITEMS.START',
                         type : 'item',
                         url  : 'pasencore'
+||||||| merged common ancestors
+                        'id'   : 'list',
+                        'title': 'Liste',
+                        'type' : 'item',
+                        'url'  : 'patrimony/ouvrages'
+=======
+                        'id'   : 'list',
+                        'title': 'Liste',
+                        'type' : 'item',
+                        'url'  : 'patrimony/ouvrages/list'
+>>>>>>> 32871ae2a2f7ada4ebc4341c770ef881a2e60564
                     },
                     {
                         id   : 'suivre',
@@ -69,11 +81,29 @@ export const navigation: FuseNavigation[] = [
                         url  : 'pasencore'
                     },
                     {
+<<<<<<< HEAD
                         id   : 'liste',
                         title: 'Liste inventaires',
                         translate: 'NAV.INVENTORY.ITEMS.LIST',
                         type : 'item',
                         url  : 'pasencore'
+||||||| merged common ancestors
+                        'id'   : 'inventory',
+                        'title': 'Inventaire',
+                        'type' : 'item',
+                        'url'  : 'patrimony/inventaire'
+=======
+                        'id'   : 'inventory',
+                        'title': 'Inventaire',
+                        'type' : 'item',
+                        'url'  : 'patrimony/inventaire'
+                    },
+                    {
+                        'id'   : 'chain',
+                        'title': 'Chaine',
+                        'type' : 'item',
+                        'url'  : 'patrimony/chain/list'
+>>>>>>> 32871ae2a2f7ada4ebc4341c770ef881a2e60564
                     }
                 ]
 

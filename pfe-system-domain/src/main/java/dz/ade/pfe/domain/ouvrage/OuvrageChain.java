@@ -18,11 +18,13 @@ public class OuvrageChain extends Auditing{
     @SequenceGenerator(name = "ouvrage_chaine_gen", sequenceName = "ouvrage_chaine_seq", schema = "pfe", allocationSize = 1)
     protected Long id;
 
-    @Column(name = "id_ouvrage")
-    private Long id_ouvrage;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "chain_id")
+    private Chain chain;
 
-    @Column(name = "id_chaine")
-    private Long id_chaine;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "ouvrage_id")
+    private Ouvrage ouvrage;
 
     @Column(name = "position")
     private double position;

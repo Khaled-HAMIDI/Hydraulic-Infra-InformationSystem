@@ -55,7 +55,7 @@ const appRoutes: Routes = [
         canActivate: [AuthenticationGuard]
     },
     { path: 'patrimony', 
-      loadChildren: () => import('./main/inventaire-ouvrage/inventaire-ouvrage.module').then(m => m.InventaireOuvrageModule),
+      loadChildren: () => import('./main/inventory-ouvrage/inventory-ouvrage.module').then(m => m.InventoryOuvrageModule),
       canActivate: [AuthenticationGuard]
     },
     {

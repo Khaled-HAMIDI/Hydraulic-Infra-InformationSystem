@@ -14,6 +14,11 @@ const routes: Routes = [
     path: 'ouvrages',
     loadChildren: () => import('./ouvrage/ouvrage.module').then(m => m.OuvrageModule),
     canActivate: [AuthenticationGuard]
+  },
+  {
+    path: 'chain',
+    loadChildren: () => import('./chain/chain.module').then(m => m.ChainModule),
+    canActivate: [AuthenticationGuard]
   }
 ];
 
@@ -24,4 +29,4 @@ const routes: Routes = [
     RouterModule.forChild(routes)
   ]
 })
-export class InventaireOuvrageModule { }
+export class InventoryOuvrageModule { }
