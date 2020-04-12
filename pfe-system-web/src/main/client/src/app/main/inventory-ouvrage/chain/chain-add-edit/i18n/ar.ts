@@ -1,88 +1,35 @@
 export const locale = {
     lang: 'ar',
     data: {
-        'ADD': {
+        'ADD-EDIT': {
             'HEADER': {
-                'title-add': 'إضافة منشأة',
+                'title-edit': 'الدور ',
+                'title-add': 'إضافة دور',
             },
             'BUTTON': {
                 'add': 'إضافة',
+                'edit': 'تعديل',
             },
             'PLACE-HOLDER': {
-                'code': 'الرقم التسلسلي',
-                'name': 'اسم المنشأة',
-                'type': ' نوع المنشأة',
-                'enabled': 'سير العمل',
-                'form': 'شكل المنشأة',
-                'state': 'حالة المنشأة',
-                'process': 'Processus',
-                'nbCompartment': 'عدد الحجرات',
-                'raftRating': 'تصنيف الطوافة',
-                'coteTropFull': 'Cote trop plein',
-                'coordinateX' : 'X إحداثيات',
-                'coordinateY' : ' Y إحداثيات',
-                'coordinateZ' : 'Z إحداثيات',
-                'area' : 'المساحة',
-                'installedCapacity' : "القدرة المركبة",
-                'currentCapacity'  : 'القدرة الحالية',
-                'hmt'    : 'HMT',
-                'power' : "القوة",
-                'nbPump': "عدد المضخات",
-                'pumpDebit': 'تدفق المضخة',
-                'constructionType': 'نوع البناء',
-                'waterSource': 'مصدر الماء',
-                'commissioningDate': 'تاريخ بداية الخدمة',
-                'operatingDate': 'التاريخ العملي',
-                'maitreOuvrage': 'صاحب المشروع',
-                'realizationCost': 'تكلفة الإنتاج',
-                'remoteManagement' : 'الإدارة عن بعد',
-                'waterTank': 'خزان',
-                'tankCapacity1': 'سعة الخزان',
-                'tankCapacity2': 'قدرة القماش المشمع على ارتفاع هههه',
-                'specializedLine':'خط متخصص',
-                'abri': "المأوى",
-                'energyMonthlyBill': 'فاتورة الطاقة',
-                'totalWorkforce': 'إجمالي القوى العاملة',
-                'distribution' : "التوزيع",
-                'populationServed': "عدد السكان",
-
-                'chemicalMonthlyBill': 'فاتورة كيميائية',
-                'coteTn' : 'coteTn',
-                'debitLoadBreaker': 'تدفق كسارة الشحن',
-                'chargesAmontEtAval': 'Charges amont et aval ',
-                'currentDebit':'التدفق الحالي',
-                'exploitationDebit': "إنتاجية التشغيل",
-                'electricAlimentation': 'تغذية كهربائية',
-                'tankType': 'نوع الخزان',
-                'tankRole' : "دور الخزان",
-                'treatmentStationType': "نوع محطة المعالجة",
-
-                'enabledActive' : 'قيد العمل',
-                'enabledInactive' : 'متوقف',
-                'distributionActive' : 'توزع على السكان',
-                'distributionInactive' : 'لا توزع على السكان',
-                'remoteManagementActive' : 'الإدارة عن بُعد متوفرة',
-                'remoteManagementInactive' : 'الإدارة عن بُعد غير متوفرة',
-                'waterTankActive' : 'Existance du ?',
-                'waterTankInactive' : '? n\'existe pas',
-                'specializedLineActive' : 'مدعوم من خط كهرباء متخصص',
-                'specializedLineInactive' : 'مدعوم من خط كهرباء عادي',
-                'abriActive' : 'وجود ملجأ',
-                'abriInactive' : 'لا يوجد مأوى',
-                'electricAlimentationActive' : 'مدعوم من خط الكهرباء',
-                'electricAlimentationInactive' : 'لا يعمل بواسطة خط كهرباء',
-                'autocordinateActive' : 'Les cordonnées geographiques sont collectées automatiquement',
-                'autocordinateInactive' : 'Entrez les cordonnées'
+                'name': 'الاسم',
+                'permissions': 'الرخص',
+                'designation': 'التعيين'
+            },
+            'TOAST-EDIT': {
+                'title': 'تعديل الأدوار',
+                'success': {
+                    'before-var': 'الدور رقم ',
+                    'after-var': 'تم تعديلها '
+                },
+                'error': {
+                    'before-var': 'الدور رقم ',
+                    'after-var': 'لم يتم تعديلها '
+                }
             },
             'TOAST-ADD': {
-                'title': 'إضافة المنشئات',
-                'success': 'تمت إضافة المنشأة',
-                'error': 'لم يتم إضافة المنشأة '
-            },
-            "LEGENDS": {
-                'general': 'معلومات عامة',
-                'technical': 'معلومات تقنية',
-                'location': 'الموقع'
+                'title': 'إضافة الوكالات',
+                'success': 'تمت إضافة الدور',
+                'error': 'لم تتم إضافة الدور'
             }
         },
     }

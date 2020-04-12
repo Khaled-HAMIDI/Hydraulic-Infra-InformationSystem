@@ -23,6 +23,7 @@ import { MatTableModule } from '@angular/material/table';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatListModule } from '@angular/material/list';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import {MatTreeModule} from '@angular/material/tree';
 import { AuthenticationGuard } from 'app/guards/authentication.guard';
 import { OuvrageListComponent } from './list/ouvrage-list/ouvrage-list.component';
 import { OuvrageListService } from './list/ouvrage-list/ouvrage-list.service';
@@ -85,6 +86,7 @@ const routes: Routes = [
         MatAutocompleteModule,
         MatListModule,
         MatToolbarModule,
+        MatTreeModule,
         AyamsModule,
         NgxMaskModule.forRoot(options),
         MatDatepickerModule,

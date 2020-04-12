@@ -43,7 +43,7 @@ export const navigation: FuseNavigation[] = [
                         title: 'Liste',
                         translate: 'NAV.PATRIMONY.ITEMS.LIST',
                         type : 'item',
-                        url  : 'patrimony/ouvrages'
+                        url  : 'patrimony/ouvrages/list'
                     },
                     {
                         id   : 'integrate',

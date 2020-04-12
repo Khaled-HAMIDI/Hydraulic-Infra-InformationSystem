@@ -1,472 +1,134 @@
-<div id="addOuvrage" class="page-layout carded fullwidth inner-scroll">
+<ng-container *ayamsHasAnyPermissions="['chains:add','chains:edit','chains:*','*:edit','*:add','*:*']">
+    <div id="chain" class="page-layout carded fullwidth inner-scroll">
 
-    <!-- TOP BACKGROUND -->
-    <div class="top-bg accent"></div>
-    <!-- / TOP BACKGROUND -->
+        <!-- TOP BACKGROUND -->
+        <div class="top-bg accent"></div>
+        <!-- / TOP BACKGROUND -->
 
-    <!-- CENTER -->
-    <div class="center">
+        <!-- CENTER -->
+        <div class="center">
 
-        <!-- HEADER -->
-        <div class="header accent" fxLayout="row" fxLayoutAlign="space-between center">
+            <!-- HEADER -->
+            <div class="header accent" fxLayout="row" fxLayoutAlign="space-between center">
 
-            <!-- APP TITLE -->
-            <div fxLayout="row" fxLayoutAlign="start center">
+                <!-- APP TITLE -->
+                <div fxLayout="row" fxLayoutAlign="start center">
 
-                <button mat-icon-button class="mr-0 mr-sm-16" [routerLink]="'patrimony/ouvrages'">
-                    <mat-icon>arrow_back</mat-icon>
-                </button>
+                    <button mat-icon-button class="mr-0 mr-sm-16" [routerLink]="'/patrimony/chains'">
+                        <mat-icon>arrow_back</mat-icon>
+                    </button>
 
 
-                <div fxLayout="column" fxLayoutAlign="start start"
-                     [@animate]="{value:'*',params:{delay:'100ms',x:'-25px'}}">
-                    <div class="h2" >
-                        {{'ADD.HEADER.title-add' | translate}}
+                    <div fxLayout="column" fxLayoutAlign="start start"
+                        [@animate]="{value:'*',params:{delay:'100ms',x:'-25px'}}">
+                        <div class="h2" *ngIf="pageType ==='edit'">
+                            {{'ADD-EDIT.HEADER.title-edit' | translate}}
+                        </div>
+                        <div class="h2" *ngIf="pageType ==='add'">
+                            {{'ADD-EDIT.HEADER.title-add' | translate}}
+                        </div>
                     </div>
                 </div>
+                <!-- / APP TITLE -->
+
+                <button mat-raised-button class="save-chain-button mat-white-bg" [disabled]="chainForm.invalid || !AtLeastOneSelected()"
+                    *ngIf="pageType ==='add'" (click)="onSave()">
+                    <span>{{'ADD-EDIT.BUTTON.add' | translate}}</span>
+                </button>
+
+                <button mat-raised-button class="save-chain-button mat-white-bg" [disabled]="chainForm.invalid || !AtLeastOneSelected()"
+                    *ngIf="pageType ==='edit'" (click)="onSave()">
+                    <span>{{'ADD-EDIT.BUTTON.edit' | translate}}</span>
+                </button>
             </div>
-            <!-- / APP TITLE -->
-            <button mat-raised-button class=" mat-white-bg" (click)="onSave()">
-                <span>{{'ADD.BUTTON.add' | translate}}</span>
-            </button>
+            <!-- / HEADER -->
 
+            <!-- CONTENT CARD -->
+            <div class="content-card mat-white-bg">
 
-        </div>
-        <!-- / HEADER -->
+                <!-- CONTENT -->
+                <div class="content">
 
-        <!-- CONTENT CARD -->
-        <div class="content-card mat-white-bg">
+                    <form name="chainForm" [formGroup]="chainForm" class="chain w-100-p" fxLayout="column" fxFlex>
 
-            <!-- CONTENT -->
-            <div class="content">
+                        <div class="tab-content p-24" fusePerfectScrollbar>
 
-                <form name="ouvrageForm" [formGroup]="ouvrageForm" class="w-100-p" fxLayout="column" fxFlex>
+                            <mat-form-field appearance="outline" class="w-100-p">
+                                <mat-label>{{'ADD-EDIT.PLACE-HOLDER.name' | translate}}</mat-label>
+                                <mat-icon matSuffix class="secondary-text">crop_free</mat-icon>
+                                <input matInput name="id" formControlName="id">
+                            </mat-form-field>
 
-                    <div class="tab-content p-24" fusePerfectScrollbar>
+                            <mat-form-field appearance="outline" class="w-100-p">
+                                <mat-label>{{'ADD-EDIT.PLACE-HOLDER.designation' | translate}}</mat-label>
+                                <mat-icon matSuffix class="secondary-text">crop_free</mat-icon>
+                                <input matInput name="name" formControlName="name">
+                            </mat-form-field>
+                            <span>les ouvrages de cette chaine:</span>
+                            <mat-tree [dataSource]="dataSource" [treeControl]="treeControl" class="example-tree">
+                                <mat-tree-node *matTreeNodeDef="let node" matTreeNodeToggle>
+                                    <li class="mat-tree-node">
+                                        <!-- use a disabled button to provide padding for tree leaf -->
+                                        <button mat-icon-button disabled></button>
+                                        <mat-checkbox  (change)="childSelect(node)"
+                                            [(ngModel)]="node.checked" [ngModelOptions]="{standalone: true}">{{node.description}}</mat-checkbox>
+                                    </li>
+                                </mat-tree-node>
+                                <mat-nested-tree-node *matTreeNodeDef="let node; when: hasChild">
+                                    <li>
+                                        <div class="mat-tree-node">
+                                            <button mat-icon-button matTreeNodeToggle
+                                                [attr.aria-label]="'toggle ' + node.name">
+                                                <mat-icon class="mat-icon-rtl-mirror">
+                                                    {{treeControl.isExpanded(node) ? 'expand_more' : 'chevron_right'}}
+                                                </mat-icon>
+                                            </button>
+                                            <mat-checkbox  (change)="parentSelect(node)"
+                                                [(ngModel)]="node.checked" [ngModelOptions]="{standalone: true}">{{node.description}}
+                                            </mat-checkbox>
+                                        </div>
+                                        <ul [class.example-tree-invisible]="!treeControl.isExpanded(node)">
+                                            <ng-container matTreeNodeOutlet></ng-container>
+                                        </ul>
+                                    </li>
+                                </mat-nested-tree-node>
+                            </mat-tree>
+                            <!-- <mat-form-field appearance="outline" class="w-100-p">
+                                <mat-label>{{'ADD-EDIT.PLACE-HOLDER.permissions' | translate}}</mat-label>
+                                <mat-icon matSuffix class="secondary-text">lock_open</mat-icon>
+                                <mat-chip-list #chipList>
+                                    <mat-chip *ngFor="let permission of chain.authorities" [selectable]="selectable"
+                                        [removable]="removable" (removed)="remove(permission)">
+                                        {{permission.description}}
+                                        <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+                                    </mat-chip>
 
-                        <div fxLayout="column" fxLayout.gt-sm="row">
-                            <div class="mr-sm-12 ml-sm-12" fxFlex>
+                                    <input #chainInput formControlName="authorities" [matAutocomplete]="auto"
+                                        [matChipInputFor]="chipList"
+                                        [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                                        [matChipInputAddOnBlur]="addOnBlur" (matChipInputTokenEnd)="add($event)">
+                                </mat-chip-list>
 
-                                <fieldset class="myfieldset">
-                                    <legend>{{'ADD.LEGENDS.general' | translate}}</legend>
+                                <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)">
+                                    <mat-option *ngFor="let permission of filteredPermissions | async"
+                                        [value]="permission">
+                                        {{permission.description}}
+                                    </mat-option>
+                                </mat-autocomplete>
 
-                                    <mat-form-field appearance="outline" class="w-100-p">
-                                        <mat-label>{{'ADD.PLACE-HOLDER.type' | translate}}</mat-label>
-                                        <mat-select formControlName="type" required #typeouv>
-                                            <mat-option value="StationTraitementConventionelle" (click)="initFormStationTC()">Station de Traitement Conventionelle</mat-option>
-                                            <mat-option value="StationTraitementNonConventionelle" (click)="initFormStationTNC()">Station de Traitement Non Conventionelle</mat-option>
-                                            <mat-option value="Reservoir" (click)="initFormReservoir()">Reservoir</mat-option>
-                                            <mat-option value="Forage" (click)="initFormForage()">Forage, Puit, Source</mat-option>
-                                            <mat-option value="StationPompage" (click)="initFormStationPompage()">Station de Pompage</mat-option>
-                                            <mat-option value="BriseCharge" (click)="initFormBriseCharge()">Brise Charge</mat-option>
-                                        </mat-select>
-                                        <mat-icon matSuffix class="secondary-text">domain</mat-icon>
-                                    </mat-form-field>
-
-                                    <mat-form-field appearance="outline" class="w-100-p" >
-                                        <mat-label>{{'ADD.PLACE-HOLDER.name' | translate}}</mat-label>
-                                        <mat-icon matSuffix class="secondary-text">keyboard</mat-icon>
-                                        <input matInput name="name" formControlName="name" required (click)="test()">
-                                    </mat-form-field>
-
-
-                                    <mat-form-field appearance="outline" class="w-100-p">
-                                        <mat-label>{{'ADD.PLACE-HOLDER.code' | translate}}</mat-label>
-                                        <mat-icon matSuffix class="secondary-text">keyboard</mat-icon>
-                                        <input matInput name="code" formControlName="code" required>
-                                    </mat-form-field>
-
-                                    <mat-form-field appearance="outline" class="w-100-p">
-                                        <mat-label>{{'ADD.PLACE-HOLDER.state' | translate}}</mat-label>
-                                        <mat-select formControlName="state" required>
-                                            <mat-option value="Bon">Bon</mat-option>
-                                            <mat-option value="Moyen">Moyen</mat-option>
-                                            <mat-option value="Mauvais">Mauvais</mat-option>
-                                        </mat-select>
-                                        <mat-icon matSuffix class="secondary-text">keyboard</mat-icon>
-                                    </mat-form-field>
-
-
-                                    <div>
-                                        <mat-slide-toggle matInput name="enabled" formControlName="enabled"
-                                                          class="mt-20" required [checked]="ouvrage.enabled" (change)="toggleEnabled()">
-                                            <span *ngIf="ouvrage.enabled">
-                                                {{ 'ADD.PLACE-HOLDER.enabledActive' | translate }}
-                                            </span>
-                                            <span *ngIf="!ouvrage.enabled">
-                                                {{ 'ADD.PLACE-HOLDER.enabledInactive' | translate }}
-                                            </span>
-                                        </mat-slide-toggle>
-                                    </div>
-
-                                    <div>
-                                        <mat-form-field appearance="outline" class="w-100-p" *ngIf="typeouv.value =='Reservoir'">
-                                            <mat-label>{{'ADD.PLACE-HOLDER.form' | translate}}</mat-label>
-                                            <mat-select formControlName="form" required >
-                                                <mat-option value="Carre">Carre</mat-option>
-                                                <mat-option value="Rectangulaire">Rectangulaire</mat-option>
-                                                <mat-option value="Circulaire">Circulaire</mat-option>
-                                            </mat-select>
-                                            <mat-icon matSuffix class="secondary-text">domain</mat-icon>
-                                        </mat-form-field>
-                                    </div>
-
-
-                                    <mat-form-field appearance="outline" class="w-100-p"  *ngIf="typeouv.value =='StationTraitementConventionelle'">
-                                        <mat-label>{{'ADD.PLACE-HOLDER.process' | translate}}</mat-label>
-                                        <mat-select formControlName="process" required>
-                                            <mat-option value="TraitementEauxSurface">Traitement des eaux de surface</mat-option>
-                                            <mat-option value="Déminéralisation">Déminéralisation</mat-option>
-                                            <mat-option value="Deférrisation">Deférrisation</mat-option>
-                                        </mat-select>
-                                        <mat-icon matSuffix class="secondary-text">keyboard</mat-icon>
-                                    </mat-form-field>
-
-                                    <mat-form-field appearance="outline" class="w-100-p">
-                                        <mat-label>{{'ADD.PLACE-HOLDER.constructionType' | translate}}</mat-label>
-                                        <mat-icon matSuffix class="secondary-text">keyboard</mat-icon>
-                                        <input matInput name="constructionType" formControlName="constructionType" required>
-                                    </mat-form-field>
-
-                                    <mat-form-field appearance="outline" class="w-100-p" *ngIf="typeouv.value == 'StationTraitementConventionelle' || typeouv.value == 'BriseCharge'">
-                                        <mat-label>{{'ADD.PLACE-HOLDER.waterSource' | translate}}</mat-label>
-                                        <mat-select formControlName="waterSource" required>
-                                            <mat-option value="Barrage">Barrage</mat-option>
-                                            <mat-option value="Oued">Oued</mat-option>
-                                            <mat-option value="Source">Source</mat-option>
-                                            <mat-option value="Forage">Forage</mat-option>
-                                        </mat-select>
-                                        <mat-icon matSuffix class="secondary-text">keyboard</mat-icon>
-                                    </mat-form-field>
-
-                                    <mat-form-field appearance="outline" class="w-100-p">
-                                        <mat-label>{{'ADD.PLACE-HOLDER.commissioningDate' | translate}}</mat-label>
-                                        <input matInput [matDatepicker]="picker1" name="commissioningDate" formControlName="commissioningDate" required>
-                                        <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
-                                        <mat-datepicker #picker1></mat-datepicker>
-                                    </mat-form-field>
-
-                                    <mat-form-field appearance="outline" class="w-100-p">
-                                        <mat-label>{{'ADD.PLACE-HOLDER.operatingDate' | translate}}</mat-label>
-                                        <input matInput [matDatepicker]="picker2" name="operatingDate" formControlName="operatingDate" required>
-                                        <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
-                                        <mat-datepicker #picker2></mat-datepicker>
-                                    </mat-form-field>
-
-                                    <mat-form-field appearance="outline" class="w-100-p">
-                                        <mat-label>{{'ADD.PLACE-HOLDER.maitreOuvrage' | translate}}</mat-label>
-                                        <mat-icon matSuffix class="secondary-text">keyboard</mat-icon>
-                                        <input matInput name="maitreOuvrage" formControlName="maitreOuvrage" required>
-                                    </mat-form-field>
-
-                                    <mat-form-field appearance="outline" class="w-100-p">
-                                        <mat-label>{{'ADD.PLACE-HOLDER.realizationCost' | translate}}</mat-label>
-                                        <mat-icon matSuffix class="secondary-text">keyboard</mat-icon>
-                                        <input matInput name="realizationCost" formControlName="realizationCost" required>
-                                    </mat-form-field>
-
-                                    <mat-form-field appearance="outline" class="w-100-p">
-                                        <mat-label>{{'ADD.PLACE-HOLDER.totalWorkforce' | translate}}</mat-label>
-                                        <mat-icon matSuffix class="secondary-text">keyboard</mat-icon>
-                                        <input matInput name="totalWorkforce" formControlName="totalWorkforce" required>
-                                    </mat-form-field>
-
-                                    <mat-form-field appearance="outline" class="w-100-p" *ngIf="typeouv.value === 'StationTraitementConventionelle' || typeouv.value == 'StationTraitementNonConventionelle'">
-                                        <mat-label>{{'ADD.PLACE-HOLDER.treatmentStationType' | translate}}</mat-label>
-                                        <mat-select formControlName="treatmentStationType" required>
-                                            <mat-option value="Monoblocs">Monoblocs</mat-option>
-                                            <mat-option value="Endur">Endur</mat-option>
-                                        </mat-select>
-                                        <mat-icon matSuffix class="secondary-text">keyboard</mat-icon>
-                                    </mat-form-field>
-
-                                    <mat-form-field appearance="outline" class="w-100-p" *ngIf="typeouv.value == 'Reservoir'">
-                                        <mat-label>{{'ADD.PLACE-HOLDER.tankCapacity1' | translate}}</mat-label>
-                                        <mat-icon matSuffix class="secondary-text">keyboard</mat-icon>
-                                        <input matInput name="tankCapacity1" formControlName="tankCapacity1" required>
-                                    </mat-form-field>
-
-                                    <mat-form-field appearance="outline" class="w-100-p" *ngIf="typeouv.value == 'Reservoir'">
-                                        <mat-label>{{'ADD.PLACE-HOLDER.tankType' | translate}}</mat-label>
-                                        <mat-select formControlName="tankType" required>
-                                            <mat-option value="Entiri">Entiré</mat-option>
-                                            <mat-option value="SemiEntiri">Semi entiré</mat-option>
-                                            <mat-option value="Surleve">Surleve</mat-option>
-                                        </mat-select>
-                                        <mat-icon matSuffix class="secondary-text">keyboard</mat-icon>
-                                    </mat-form-field>
-
-                                    <mat-form-field appearance="outline" class="w-100-p" *ngIf="typeouv.value == 'Reservoir'">
-                                        <mat-label>{{'ADD.PLACE-HOLDER.tankRole' | translate}}</mat-label>
-                                        <mat-select formControlName="tankRole" required>
-                                            <mat-option value="Tampon">Tampon</mat-option>
-                                            <mat-option value="Distribution">Distribution</mat-option>
-                                            <mat-option value="Bacheahaut">Bacheahaut</mat-option>
-                                        </mat-select>
-                                        <mat-icon matSuffix class="secondary-text">keyboard</mat-icon>
-                                    </mat-form-field>
-
-                                    <mat-form-field appearance="outline" class="w-100-p" *ngIf="typeouv.value == 'StationTraitementConventionelle' || typeouv.value == 'StationTraitementNonConventionelle'">
-                                        <mat-label>{{'ADD.PLACE-HOLDER.chemicalMonthlyBill' | translate}}</mat-label>
-                                        <mat-icon matSuffix class="secondary-text">keyboard</mat-icon>
-                                        <input matInput name="chemicalMonthlyBill" formControlName="chemicalMonthlyBill" required>
-                                    </mat-form-field>
-
-                                    <div>
-                                        <mat-slide-toggle matInput name="electricAlimentation" formControlName="electricAlimentation"
-                                                          class="mt-20" required [checked]="ouvrage.electricAlimentation" (change)="toggleElectricAlimentation()" *ngIf="typeouv.value == 'Reservoir' || typeouv.value =='BriseCharge'">
-                                            <span *ngIf="ouvrage.electricAlimentation">
-                                                {{ 'ADD.PLACE-HOLDER.electricAlimentationActive' | translate }}
-                                            </span>
-                                            <span *ngIf="!ouvrage.electricAlimentation">
-                                                {{ 'ADD.PLACE-HOLDER.electricAlimentationInactive' | translate }}
-                                            </span>
-                                        </mat-slide-toggle>
-                                    </div>
-
-                                </fieldset>
-                            </div>
-
-                            <div class="mr-sm-12 ml-sm-12" fxFlex>
-                                <fieldset class="myfieldset">
-                                    <legend>{{'ADD.LEGENDS.technical' | translate}}</legend>
-
-                                    <mat-form-field appearance="outline" class="w-100-p">
-                                        <mat-label>{{'ADD.PLACE-HOLDER.nbCompartment' | translate}}</mat-label>
-                                        <mat-icon matSuffix class="secondary-text">keyboard</mat-icon>
-                                        <input matInput name="nbCompartment" formControlName="nbCompartment" required>
-                                    </mat-form-field>
-
-                                    <mat-form-field appearance="outline" class="w-100-p" *ngIf="typeouv.value == 'Reservoir'">
-                                        <mat-label>{{'ADD.PLACE-HOLDER.raftRating' | translate}}</mat-label>
-                                        <mat-icon matSuffix class="secondary-text">keyboard</mat-icon>
-                                        <input matInput name="raftRating" formControlName="raftRating" required>
-                                    </mat-form-field>
-
-                                    <mat-form-field appearance="outline" class="w-100-p" *ngIf="typeouv.value == 'Reservoir'">
-                                        <mat-label>{{'ADD.PLACE-HOLDER.coteTropFull' | translate}}</mat-label>
-                                        <mat-icon matSuffix class="secondary-text">keyboard</mat-icon>
-                                        <input matInput name="coteTropFull" formControlName="coteTropFull" required>
-                                    </mat-form-field>
-
-                                    <mat-form-field appearance="outline" class="w-100-p" *ngIf="typeouv.value == 'StationPompage'">
-                                        <mat-label>{{'ADD.PLACE-HOLDER.installedCapacity' | translate}}</mat-label>
-                                        <mat-icon matSuffix class="secondary-text">keyboard</mat-icon>
-                                        <input matInput name="installedCapacity" formControlName="installedCapacity" required>
-                                    </mat-form-field>
-
-                                    <mat-form-field appearance="outline" class="w-100-p" *ngIf="typeouv.value == 'StationPompage'">
-                                        <mat-label>{{'ADD.PLACE-HOLDER.currentCapacity' | translate}}</mat-label>
-                                        <mat-icon matSuffix class="secondary-text">keyboard</mat-icon>
-                                        <input matInput name="currentCapacity" formControlName="currentCapacity" required>
-                                    </mat-form-field>
-
-
-                                    <mat-form-field appearance="outline" class="w-100-p" *ngIf="typeouv.value == 'StationPompage' || typeouv.value =='Forage'">
-                                        <mat-label>{{'ADD.PLACE-HOLDER.hmt' | translate}}</mat-label>
-                                        <mat-icon matSuffix class="secondary-text">keyboard</mat-icon>
-                                        <input matInput name="hmt" formControlName="hmt" required>
-                                    </mat-form-field>
-
-                                    <mat-form-field appearance="outline" class="w-100-p" *ngIf="typeouv.value == 'StationPompage' || typeouv.value =='Forage'">
-                                        <mat-label>{{'ADD.PLACE-HOLDER.power' | translate}}</mat-label>
-                                        <mat-icon matSuffix class="secondary-text">keyboard</mat-icon>
-                                        <input matInput name="power" formControlName="power" required>
-                                    </mat-form-field>
-
-                                    <mat-form-field appearance="outline" class="w-100-p" *ngIf="typeouv.value == 'StationPompage'">
-                                        <mat-label>{{'ADD.PLACE-HOLDER.nbPump' | translate}}</mat-label>
-                                        <mat-icon matSuffix class="secondary-text">keyboard</mat-icon>
-                                        <input matInput name="nbPump" formControlName="nbPump" required>
-                                    </mat-form-field>
-
-                                    <mat-form-field appearance="outline" class="w-100-p" *ngIf="typeouv.value == 'StationPompage'">
-                                        <mat-label>{{'ADD.PLACE-HOLDER.pumpDebit' | translate}}</mat-label>
-                                        <mat-icon matSuffix class="secondary-text">keyboard</mat-icon>
-                                        <input matInput name="pumpDebit" formControlName="pumpDebit" required>
-                                    </mat-form-field>
-
-                                    <mat-form-field appearance="outline" class="w-100-p" *ngIf="typeouv.value == 'Forage'">
-                                        <mat-label>{{'ADD.PLACE-HOLDER.exploitationDebit' | translate}}</mat-label>
-                                        <mat-icon matSuffix class="secondary-text">keyboard</mat-icon>
-                                        <input matInput name="exploitationDebit" formControlName="exploitationDebit" required>
-                                    </mat-form-field>
-
-                                    <mat-form-field appearance="outline" class="w-100-p" *ngIf="typeouv.value == 'Forage'">
-                                        <mat-label>{{'ADD.PLACE-HOLDER.currentDebit' | translate}}</mat-label>
-                                        <mat-icon matSuffix class="secondary-text">keyboard</mat-icon>
-                                        <input matInput name="currentDebit" formControlName="currentDebit" required>
-                                    </mat-form-field>
-
-                                    <mat-form-field appearance="outline" class="w-100-p" *ngIf="typeouv.value == 'BriseCharge'">
-                                        <mat-label>{{'ADD.PLACE-HOLDER.chargesAmontEtAval' | translate}}</mat-label>
-                                        <mat-icon matSuffix class="secondary-text">keyboard</mat-icon>
-                                        <input matInput name="chargesAmontEtAval" formControlName="chargesAmontEtAval" required>
-                                    </mat-form-field>
-
-                                    <mat-form-field appearance="outline" class="w-100-p" *ngIf="typeouv.value == 'BriseCharge'">
-                                        <mat-label>{{'ADD.PLACE-HOLDER.debitLoadBreaker' | translate}}</mat-label>
-                                        <mat-icon matSuffix class="secondary-text">keyboard</mat-icon>
-                                        <input matInput name="debitLoadBreaker" formControlName="debitLoadBreaker" required>
-                                    </mat-form-field>
-
-                                    <mat-form-field appearance="outline" class="w-100-p" *ngIf="typeouv.value == 'BriseCharge'">
-                                        <mat-label>{{'ADD.PLACE-HOLDER.coteTn' | translate}}</mat-label>
-                                        <mat-icon matSuffix class="secondary-text">keyboard</mat-icon>
-                                        <input matInput name="coteTn" formControlName="coteTn" required>
-                                    </mat-form-field>
-
-                                    <div>
-                                        <mat-slide-toggle matInput name="remoteManagement" formControlName="remoteManagement"
-                                                          class="mt-20" required [checked]="ouvrage.remoteManagement" (change)="toggleRemoteManagement()">
-                                            <span *ngIf="ouvrage.remoteManagement">
-                                                {{ 'ADD.PLACE-HOLDER.remoteManagementActive' | translate }}
-                                            </span>
-                                            <span *ngIf="!ouvrage.remoteManagement">
-                                                {{ 'ADD.PLACE-HOLDER.remoteManagementInactive' | translate }}
-                                            </span>
-                                        </mat-slide-toggle>
-                                    </div>
-
-                                    <div>
-                                        <mat-slide-toggle matInput name="waterTank" formControlName="waterTank"
-                                                          class="mt-20" required [checked]="ouvrage.waterTank" (change)="toggleWaterTank()" *ngIf="typeouv.value == 'StationPompage'">
-                                            <span *ngIf="ouvrage.waterTank">
-                                                {{ 'ADD.PLACE-HOLDER.waterTankActive' | translate }}
-                                            </span>
-                                            <span *ngIf="!ouvrage.waterTank">
-                                                {{ 'ADD.PLACE-HOLDER.waterTankInactive' | translate }}
-                                            </span>
-                                        </mat-slide-toggle>
-                                    </div>
-
-
-                                    <div>
-                                        <mat-form-field appearance="outline" class="w-100-p" *ngIf="typeouv.value == 'StationPompage'">
-                                            <mat-label>{{'ADD.PLACE-HOLDER.tankCapacity2' | translate}}</mat-label>
-                                            <mat-icon matSuffix class="secondary-text">keyboard</mat-icon>
-                                            <input matInput name="tankCapacity2" formControlName="tankCapacity2" required>
-                                        </mat-form-field>
-                                    </div>
-
-                                    <div>
-                                        <mat-slide-toggle matInput name="specializedLine" formControlName="specializedLine"
-                                                          class="mt-20" required [checked]="ouvrage.specializedLine" (change)="toggleSpecializedLine()">
-                                            <span *ngIf="ouvrage.specializedLine">
-                                                {{ 'ADD.PLACE-HOLDER.specializedLineActive' | translate }}
-                                            </span>
-                                            <span *ngIf="!ouvrage.specializedLine">
-                                                {{ 'ADD.PLACE-HOLDER.specializedLineInactive' | translate }}
-                                            </span>
-                                        </mat-slide-toggle>
-                                    </div>
-
-
-                                    <div>
-                                        <mat-slide-toggle matInput name="abri" formControlName="abri"
-                                                          class="mt-20" required [checked]="ouvrage.abri" (change)="toggleAbri()" *ngIf="typeouv.value == 'Forage'">
-                                            <span *ngIf="ouvrage.abri">
-                                                {{ 'ADD.PLACE-HOLDER.abriActive' | translate }}
-                                            </span>
-                                            <span *ngIf="!ouvrage.abri">
-                                                {{ 'ADD.PLACE-HOLDER.abriInactive' | translate }}
-                                            </span>
-                                        </mat-slide-toggle>
-                                    </div>
-
-
-
-                                    <div>
-                                        <mat-form-field appearance="outline" class="w-100-p">
-                                            <mat-label>{{'ADD.PLACE-HOLDER.energyMonthlyBill' | translate}}</mat-label>
-                                            <mat-icon matSuffix class="secondary-text">keyboard</mat-icon>
-                                            <input matInput name="energyMonthlyBill" formControlName="energyMonthlyBill" required>
-                                        </mat-form-field>
-                                    </div>
-
-                                    <div>
-                                        <mat-slide-toggle matInput name="distribution" formControlName="distribution"
-                                                          class="mt-20" required [checked]="ouvrage.distribution" (change)="toggleDistribution()">
-                                            <span *ngIf="ouvrage.distribution">
-                                                {{ 'ADD.PLACE-HOLDER.distributionActive' | translate }}
-                                            </span>
-                                            <span *ngIf="!ouvrage.distribution">
-                                                {{ 'ADD.PLACE-HOLDER.distributionInactive' | translate }}
-                                            </span>
-                                        </mat-slide-toggle>
-                                    </div>
-
-
-                                    <div>
-                                        <mat-form-field appearance="outline" class="w-100-p" *ngIf="ouvrage.distribution">
-                                            <mat-label>{{'ADD.PLACE-HOLDER.populationServed' | translate}}</mat-label>
-                                            <mat-icon matSuffix class="secondary-text">keyboard</mat-icon>
-                                            <input matInput name="populationServed" formControlName="populationServed" required>
-                                        </mat-form-field>
-                                    </div>
-
-
-                                </fieldset>
-                            </div>
+                            </mat-form-field> -->
 
                         </div>
 
+                    </form>
 
-                        <div fxLayout="column" class="mr-sm-12 ml-sm-12">
-                            <fieldset class="myfieldset2">
-
-                                <legend>{{'ADD.LEGENDS.location' | translate}}</legend>
-
-                                <div>
-                                    <mat-slide-toggle matInput
-                                                      class="mt-20" (change)="toggleCordonates()">
-                                            <span *ngIf="autoCordinate">
-                                                {{ 'ADD.PLACE-HOLDER.autocordinateActive' | translate }}
-                                            </span>
-                                        <span *ngIf="!autoCordinate">
-                                                {{ 'ADD.PLACE-HOLDER.autocordinateInactive' | translate }}
-                                            </span>
-                                    </mat-slide-toggle>
-                                </div>
-
-
-                                <mat-form-field appearance="outline" class="w-100-p">
-                                    <mat-label>{{'ADD.PLACE-HOLDER.coordinateX' | translate}}</mat-label>
-                                    <mat-icon matSuffix class="secondary-text">place</mat-icon>
-                                    <input matInput name="coordinateX" formControlName="coordinateX" required #locx>
-                                </mat-form-field>
-
-                                <mat-form-field appearance="outline" class="w-100-p">
-                                    <mat-label>{{'ADD.PLACE-HOLDER.coordinateY' | translate}}</mat-label>
-                                    <mat-icon matSuffix class="secondary-text">place</mat-icon>
-                                    <input matInput name="coordinateY" formControlName="coordinateY" required #locy>
-                                </mat-form-field>
-
-                                <mat-form-field appearance="outline" class="w-100-p">
-                                    <mat-label>{{'ADD.PLACE-HOLDER.coordinateZ' | translate}}</mat-label>
-                                    <mat-icon matSuffix class="secondary-text">place</mat-icon>
-                                    <input matInput name="coordinateZ" formControlName="coordinateZ" required #locz>
-                                </mat-form-field>
-
-                                <mat-form-field appearance="outline" class="w-100-p">
-                                    <mat-label>{{'ADD.PLACE-HOLDER.area' | translate}}</mat-label>
-                                    <mat-icon matSuffix class="secondary-text">domain</mat-icon>
-                                    <input matInput name="area" formControlName="area" required>
-                                </mat-form-field>
-
-
-                            </fieldset>
-                        </div>
-                    </div>
-
-                </form>
+                </div>
+                <!-- / CONTENT -->
 
             </div>
-            <!-- / CONTENT -->
+            <!-- / CONTENT CARD -->
 
         </div>
-        <!-- / CONTENT CARD -->
-
+        <!-- / CENTER -->
     </div>
-    <!-- / CENTER -->
-</div>
+</ng-container>

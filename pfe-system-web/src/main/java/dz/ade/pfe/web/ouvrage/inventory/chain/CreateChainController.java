@@ -31,7 +31,7 @@ import java.util.Set;
 @RequiredArgsConstructor
 public class CreateChainController {
     private final CreateChainQuery createChainQuery;
-    @PostMapping
+    @PostMapping(value = "/chain")
     @ApiOperation(value = "Add new chain")
     @ApiResponses(value = {
             @ApiResponse(code = 201, message = "Successfully created a chain"),

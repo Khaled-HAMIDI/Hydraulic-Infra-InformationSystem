@@ -23,6 +23,7 @@ import { MatTableModule } from '@angular/material/table';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatListModule } from '@angular/material/list';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import {MatTreeModule} from '@angular/material/tree';
 import { AuthenticationGuard } from 'app/guards/authentication.guard';
 import { ChainListComponent } from './list/chain-list/chain-list.component';
 import { ChainListService } from './list/chain-list/chain-list.service';
@@ -93,6 +94,7 @@ const routes: Routes = [
         MatListModule,
         MatToolbarModule,
         AyamsModule,
+        MatTreeModule,
         NgxMaskModule.forRoot(options),
         MatDatepickerModule,
     ]
