@@ -1,0 +1,35 @@
+<div class="page-layout carded fullwidth inner-scroll">
+
+    <!-- CENTER -->
+    <div class="center">
+
+        <div class="content-card">
+
+            <!-- CONTENT -->
+            <div class="content p-20" fxLayout="column">
+
+                <!-- EXAMPLE 1 EXAMLPE FOR UPLOAD AND SHOW AND UPDATE FILES-->
+                <div fxLayout="column">
+                    <h2> EXAMLPE FOR UPLOAD AND SHOW AND UPDATE FILES</h2>
+                    <ayams-file-uploader fxFlex [uploadFiles]="filesToBeAttached" [showAndUpdate]="true"
+                        [events]="onUploadEventSubject.asObservable()" (errorUpload)="errorUploadFiles()"
+                        (allRequiredAttached)="onAllRequiredAttached($event)" (successUpload)="successUploadFiles()">
+                    </ayams-file-uploader>
+
+                    <button [disabled]="!isFilesValid" (click)="onSubmitFiles()" mat-raised-button
+                        color="accent">Upload</button>
+
+                </div>
+
+                <!-- EXAMPLE 2 FOR SHOW FILES ONLY-->
+                <div fxLayout="column">
+                    <h2> EXAMLPE FOR SHOW FILES ONLY</h2>
+                    <ayams-file-uploader fxFlex [uploadFiles]="filesToBeShowed"></ayams-file-uploader>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+</div>

@@ -7,12 +7,7 @@ export const locale = {
             'error-format': 'نوع الملف غير مناسب',
         },
         'ENTITY-ENUM':{
-        'SUBSCRIBER': 'زبون',
-        'REQUEST': 'الطلب',
-        'CONTRACT': 'العقد',
-        'PLACE_OF_CONSUMPTION': 'مكان الاستهلاك',
-        'INVOICE': 'الفاتورة',
-        'CASH_BOX_SESSION': 'صندوق النقود'
+        'OUVRAGE': 'Documents de l\'ouvrage',
         }
     }
 };
