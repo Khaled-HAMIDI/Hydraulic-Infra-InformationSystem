@@ -23,7 +23,6 @@ import javax.validation.Valid;
 public class CreateOuvrageController {
 
     private final CreateOuvrageQuery createOuvrageQuery;
-    private OuvrageOuvrageDtoMapper ouvrageOuvrageDtoMapper;
 
 
     @PostMapping(value = "/ouvrage")
@@ -35,60 +34,6 @@ public class CreateOuvrageController {
             @ApiResponse(code = 404, message = "The resource you were trying to reach is not found")
     })
     public Ouvrage createOuvrage(@RequestBody OuvrageAddDto ouvrageAddDto) {
-        Ouvrage ouvrage = new Ouvrage();
-
-        ouvrage.setCode(ouvrageAddDto.getCode());
-        ouvrage.setName(ouvrageAddDto.getName());
-        ouvrage.setType(ouvrageAddDto.getType());
-        ouvrage.setEnabled(ouvrageAddDto.getEnabled());
-        ouvrage.setForm(ouvrageAddDto.getForm());
-        ouvrage.setState(ouvrageAddDto.getState());
-        ouvrage.setProcess(ouvrageAddDto.getProcess());
-        ouvrage.setNbCompartment(ouvrageAddDto.getNbCompartment());
-        ouvrage.setRaftRating(ouvrageAddDto.getRaftRating());
-        ouvrage.setCoteTropFull(ouvrageAddDto.getCoteTropFull());
-        ouvrage.setCoordinateX(ouvrageAddDto.getCoordinateX());
-        ouvrage.setCoordinateY(ouvrageAddDto.getCoordinateY());
-        ouvrage.setCoordinateZ(ouvrageAddDto.getCoordinateZ());
-        ouvrage.setArea(ouvrageAddDto.getArea());
-        ouvrage.setInstalledCapacity(ouvrageAddDto.getInstalledCapacity());
-        ouvrage.setCurrentCapacity(ouvrageAddDto.getCurrentCapacity());
-        ouvrage.setHmt(ouvrageAddDto.getHmt());
-        ouvrage.setPower(ouvrageAddDto.getPower());
-        ouvrage.setNbPump(ouvrageAddDto.getNbPump());
-        ouvrage.setPumpDebit(ouvrageAddDto.getPumpDebit());
-        ouvrage.setConstructionType(ouvrageAddDto.getConstructionType());
-        ouvrage.setWaterSource(ouvrageAddDto.getWaterSource());
-        ouvrage.setCommissioningDate(ouvrageAddDto.getCommissioningDate());
-        ouvrage.setOperatingDate(ouvrageAddDto.getOperatingDate());
-        ouvrage.setMaitreOuvrage(ouvrageAddDto.getMaitreOuvrage());
-        ouvrage.setRealizationCost(ouvrageAddDto.getRealizationCost());
-        ouvrage.setRemoteManagement(ouvrageAddDto.getRemoteManagement());
-        ouvrage.setWaterTank(ouvrageAddDto.getWaterTank());
-        ouvrage.setTankCapacity1(ouvrageAddDto.getTankCapacity1());
-        ouvrage.setTankCapacity2(ouvrageAddDto.getTankCapacity2());
-        ouvrage.setSpecializedLine(ouvrageAddDto.getSpecializedLine());
-        ouvrage.setAbri(ouvrageAddDto.getAbri());
-        ouvrage.setEnergyMonthlyBill(ouvrageAddDto.getEnergyMonthlyBill());
-        ouvrage.setTotalWorkforce(ouvrageAddDto.getTotalWorkforce());
-        ouvrage.setDistribution(ouvrageAddDto.getDistribution());
-        ouvrage.setPopulationServed(ouvrageAddDto.getPopulationServed());
-        ouvrage.setChemicalMonthlyBill(ouvrageAddDto.getChemicalMonthlyBill());
-        ouvrage.setCoteTn(ouvrageAddDto.getCoteTn());
-        ouvrage.setDebitLoadBreaker(ouvrageAddDto.getDebitLoadBreaker());
-        ouvrage.setChargesAmontEtAval(ouvrageAddDto.getChargesAmontEtAval());
-        ouvrage.setCurrentDebit(ouvrageAddDto.getCurrentDebit());
-        ouvrage.setElectricAlimentation(ouvrageAddDto.getElectricAlimentation());
-        ouvrage.setExploitationDebit(ouvrageAddDto.getExploitationDebit());
-        ouvrage.setTankType(ouvrageAddDto.getTankType());
-        ouvrage.setTankRole(ouvrageAddDto.getTankRole());
-        ouvrage.setTreatmentStationType(ouvrageAddDto.getTreatmentStationType());
-
-
-
-
-
-
-        return createOuvrageQuery.createOuvrage(ouvrage);
+        return createOuvrageQuery.createOuvrage(ouvrageAddDto);
     }
 }
