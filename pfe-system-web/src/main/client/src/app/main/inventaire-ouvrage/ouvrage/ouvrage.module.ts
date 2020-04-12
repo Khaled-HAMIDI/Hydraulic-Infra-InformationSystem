@@ -24,14 +24,14 @@ import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatListModule} from '@angular/material/list';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import { AuthenticationGuard } from 'app/guards/authentication.guard';
-import { OuvrageListComponent } from './list/ouvrage-list/ouvrage-list.component';
-import { OuvrageListService } from './list/ouvrage-list/ouvrage-list.service';
+// import { OuvrageListComponent } from './list/ouvrage-list/ouvrage-list.component';
+// import { OuvrageListService } from './list/ouvrage-list/ouvrage-list.service';
 import { AyamsModule } from '@ayams/ayams.module';
 import { IConfig, NgxMaskModule } from 'ngx-mask';
 import { OuvrageAddComponent } from './ouvrage-add/ouvrage-add.component';
 import { OuvrageEditComponent } from './ouvrage-edit/ouvrage-edit.component';
 import {MatDatepickerModule} from "@angular/material/datepicker";
-import { OuvrageShowComponent } from './ouvrage-show/ouvrage-show.component';
+// import { OuvrageShowComponent } from './ouvrage-show/ouvrage-show.component';
 import { StationTraitementConvComponent } from './ouvrage-add/Type/station-traitement-conv/station-traitement-conv.component';
 import { StationPompageComponent } from './ouvrage-add/Type/station-pompage/station-pompage.component';
 import { ReservoirComponent } from './ouvrage-add/Type/reservoir/reservoir.component';
@@ -82,19 +82,20 @@ const routes: Routes = [
         component: OuvrageEditComponent,
         data: {action: 'edit'}
     },
-    {
-        path: ':code/show',
-        component: OuvrageShowComponent
-    },
-  {
-    path: '**',
-    component: OuvrageListComponent,
-    resolve: {data: OuvrageListService}
-}
+//     {
+//         path: ':code/show',
+//         component: OuvrageShowComponent
+//     },
+//   {
+//     path: '**',
+//     component: OuvrageListComponent,
+//     resolve: {data: OuvrageListService}
+// }
 ];
 
 @NgModule({
-  declarations: [OuvrageListComponent, OuvrageAddComponent, OuvrageEditComponent, OuvrageShowComponent, StationTraitementConvComponent, StationPompageComponent, ReservoirComponent, ForageComponent, BriseChargeComponent, StationNonConvComponent],
+//   declarations: [OuvrageListComponent, OuvrageAddComponent, OuvrageEditComponent, OuvrageShowComponent, StationTraitementConvComponent, StationPompageComponent, ReservoirComponent, ForageComponent, BriseChargeComponent, StationNonConvComponent],
+declarations: [OuvrageAddComponent, OuvrageEditComponent, StationTraitementConvComponent, StationPompageComponent, ReservoirComponent, ForageComponent, BriseChargeComponent, StationNonConvComponent],
     imports: [
         CommonModule,
         RouterModule.forChild(routes),
