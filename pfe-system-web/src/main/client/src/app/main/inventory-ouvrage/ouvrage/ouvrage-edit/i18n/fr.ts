@@ -3,7 +3,7 @@ export const locale = {
     data: {
         'EDIT': {
             'HEADER': {
-                'title-edit': 'Modifier l\'ouvrage',
+                'title-edit': 'Modifier l\'ouvrage ',
             },
             'BUTTON': {
                 'edit': 'Modifier',

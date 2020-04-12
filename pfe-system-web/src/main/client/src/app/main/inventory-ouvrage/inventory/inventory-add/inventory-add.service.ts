@@ -4,13 +4,13 @@ import { API } from 'config/api.config';
 import {  Router } from '@angular/router';
 import { ToolsService } from '@ayams/services/tools.service';
 
-const OUVRAGE_API = API + '/ouvrage';
+const INVENTORY_API = API + '/inventory';
 
 @Injectable({
     providedIn: 'root'
 })
 
-export class OuvrageAddService {
+export class InventoryAddService {
 
     constructor(private router: Router,
                 private http: HttpClient,
@@ -22,9 +22,9 @@ export class OuvrageAddService {
     // -----------------------------------------------------------------------------------------------------
 
 
-    save(ouvrage): Promise<any> {
+    save(inventory): Promise<any> {
         return new Promise((resolve, reject) => {
-            this.http.post(OUVRAGE_API, ouvrage)
+            this.http.post(INVENTORY_API, inventory)
                 .subscribe((response: any) => {
                     resolve(response);
                 }, (error : any) => {
@@ -37,10 +37,10 @@ export class OuvrageAddService {
 
 
 
-    saveOuvrage(ouvrage) {
+    saveInventory(inventory) {
         return new Promise((resolve, reject) => {
             this.toolsService.showProgressBar();
-            this.save(ouvrage).then((response) => {
+            this.save(inventory).then((response) => {
 
                     this.toolsService.hideProgressBar();
                     this.toolsService.showSuccess('ADD.TOAST-ADD.success');

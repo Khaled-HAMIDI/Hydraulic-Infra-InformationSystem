@@ -66,7 +66,7 @@ export const navigation: FuseNavigation[] = [
                         title: 'Lancer inventaire',
                         translate: 'NAV.INVENTORY.ITEMS.START',
                         type: 'item',
-                        url: 'pasencore'
+                        url: 'patrimony/inventory/add'
                     },
                     {
                         id   : 'suivre',

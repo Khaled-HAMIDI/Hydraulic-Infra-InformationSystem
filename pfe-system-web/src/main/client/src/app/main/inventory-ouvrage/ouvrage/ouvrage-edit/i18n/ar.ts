@@ -3,56 +3,57 @@ export const locale = {
     data: {
         'EDIT': {
             'HEADER': {
-                'title-edit': 'تحديث منشأة',
+                'title-edit': 'Modifier l\'ouvrage ',
             },
             'BUTTON': {
-                'edit': 'تحديث',
+                'edit': 'Modifier',
             },
             'PLACE-HOLDER': {
-                'enabled': 'سير العمل',
-                'state': 'حالة المنشأة',
-                'currentCapacity'  : 'القدرة الحالية',
-                'power' : "القوة",
-                'pumpDebit': 'تدفق المضخة',
-                'abri': "المأوى",
-                'remoteManagement' : 'الإدارة عن بعد',
-                'specializedLine':'خط متخصص',
-                'energyMonthlyBill': 'فاتورة الطاقة',
-                'totalWorkforce': 'إجمالي القوى العاملة',
 
-                'chemicalMonthlyBill': 'فاتورة كيميائية',
+                'enabled': 'Fonctionnement',
+                'state': 'Etat',
+                'currentCapacity'  : 'Capacité actuelle',
+                'power' : "Puissance",
+                'abri': "Abri",
+                'pumpDebit': 'Débit de pompes',
+                'remoteManagement' : 'Télégestion',
+                'specializedLine':'Ligne specialisée',
+                'energyMonthlyBill': 'Facture monsulle d\'énergie',
+                'totalWorkforce': 'Effectif total',
+
+                'chemicalMonthlyBill': 'Facture monsuelle des produits chimiques',
                 'coteTn' : 'coteTn',
-                'debitLoadBreaker': 'تدفق كسارة الشحن',
+                'debitLoadBreaker': 'Débit de brise charge',
                 'chargesAmontEtAval': 'Charges amont et aval ',
-                'currentDebit':'التدفق الحالي',
-                'electricAlimentation': 'تغذية كهربائية',
+                'currentDebit':'Débit courant',
+                'electricAlimentation': 'Alimentation électrique',
 
-                'enabledActive' : 'قيد العمل',
-                'enabledInactive' : 'متوقف',
-                'remoteManagementActive' : 'الإدارة عن بُعد متوفرة',
-                'remoteManagementInactive' : 'الإدارة عن بُعد غير متوفرة',
-                'specializedLineActive' : 'مدعوم من خط كهرباء متخصص',
-                'specializedLineInactive' : 'مدعوم من خط كهرباء عادي',
-                'abriActive' : 'وجود ملجأ',
-                'abriInactive' : 'لا يوجد مأوى',
-                'electricAlimentationActive' : 'مدعوم من خط الكهرباء',
-                'electricAlimentationInactive' : 'لا يعمل بواسطة خط كهرباء'
+                'enabledActive' : 'En marche',
+                'enabledInactive' : 'En arret',
+                'remoteManagementActive' : 'Télégestion mise en place',
+                'remoteManagementInactive' : 'Télégestion n\'est pas mise en place',
+                'specializedLineActive' : 'Alimenté par une ligne électrique spécialisée',
+                'specializedLineInactive' : 'Alimenté par une ligne électrique simple',
+                'abriActive' : 'Existance d\'un abri',
+                'abriInactive' : 'Non existance d\'un abri',
+                'electricAlimentationActive' : 'Alimenté par une ligne électrique',
+                'electricAlimentationInactive' : 'Non alimmenté par une ligne électrique'
             },
             'TOAST-EDIT': {
-                'title': 'تحديث المنشأة',
+                'title': 'Modification d\'ouvrage',
                 'success': {
-                    'before-var': ' حدثت',
-                    'after-var': 'المنشأة '
+                    'before-var': 'L\'ouvrage ',
+                    'after-var': ' a été  modifié'
                 },
                 'error': {
-                    'before-var': ' لم تحدث',
-                    'after-var': 'المنشأة '
+                    'before-var': 'L\'ouvrage ',
+                    'after-var': ' n\'a pas été modifié'
                 }
             },
             "LEGENDS": {
-                'general': 'معلومات عامة',
-                'technical': 'معلومات تقنية',
-                'location': 'الموقع'
+                'general': 'Information générales',
+                'technical': 'Information techniques',
+                'location': 'Emplacement'
             }
         },
     }
