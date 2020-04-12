@@ -18,6 +18,14 @@ export const navigation: FuseNavigation[] = [
         ]
     },
     {
+        id: 'upload',
+        title: 'Upload Example',
+        translate: 'Upload Example',
+        type: 'item',
+        icon: 'file',
+        url: '/uploadExample'
+    },    
+    {
         id: 'business',
         title: 'Matier',
         translate: 'NAV.BUSINESS.TITLE',
