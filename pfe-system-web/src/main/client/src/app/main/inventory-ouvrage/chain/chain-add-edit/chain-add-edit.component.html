@@ -64,7 +64,44 @@
                                 <mat-icon matSuffix class="secondary-text">crop_free</mat-icon>
                                 <input matInput name="name" formControlName="name">
                             </mat-form-field>
-                            <span>les ouvrages de cette chaine:</span>
+                            <span>Selectionner les ouvrages de cette chaine:</span>
+                            <div class="example-container mat-white-bg">
+
+                                <table mat-table [dataSource]="dataSource">
+
+                                    <!-- Checkbox Column -->
+                                    <ng-container matColumnDef="type">
+                                        <th mat-header-cell *matHeaderCellDef>
+                                            Types
+                                        </th>
+                                        <td mat-cell *matCellDef="let ouvrageChain">
+                                            <p class="text-truncate">{{ouvrageChain.type}}</p>
+                                        </td>
+                                    </ng-container>
+
+                                    <!-- Code Column -->
+                                    <ng-container matColumnDef="ouvrage">
+                                        <th mat-header-cell *matHeaderCellDef>Actions
+                                        </th>
+                                        <td mat-cell *matCellDef="let ouvrageChain">
+                                            <div class="flex-container">
+                                                <mat-checkbox *ngFor="let ouvrage of ouvrageChain.ouvrages;let i=index"
+                                                    [(ngModel)]="ouvrageChain.ouvrages[i].checked"
+                                                    [ngModelOptions]="{standalone: true}">
+                                                    <p class="text-truncate">{{ouvrage.name}}</p>
+                                                </mat-checkbox>
+                                            </div>
+                                        </td>
+                                    </ng-container>
+                                    <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky:true"></tr>
+                                    <ng-container *ayamsHasAnyPermissions="['chains:show','chains:*','*:show','*:*']">
+                                        <tr mat-row *matRowDef="let chain; columns: displayedColumns;" class="chain"
+                                            matRipple>
+                                        </tr>
+                                    </ng-container>
+                                </table>
+
+                            </div>
                             <!-- <mat-form-field appearance="outline" class="w-100-p">
                                 <mat-label>{{'ADD-EDIT.PLACE-HOLDER.permissions' | translate}}</mat-label>
                                 <mat-icon matSuffix class="secondary-text">lock_open</mat-icon>

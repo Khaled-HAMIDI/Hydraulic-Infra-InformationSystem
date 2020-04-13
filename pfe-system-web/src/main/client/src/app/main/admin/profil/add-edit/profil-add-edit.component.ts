@@ -16,9 +16,11 @@ import sortBy from 'lodash/sortBy';
 import pullAllWith from 'lodash/pullAllWith';
 import isEqual from 'lodash/isEqual';
 import { AllPermissions } from './permission'
-import { NestedTreeControl } from '@angular/cdk/tree';
-import { MatTreeNestedDataSource } from '@angular/material/tree';
-
+import { MatTableDataSource } from '@angular/material/table';
+const COLUMN_NAMES: string[] = [
+    'domain',
+    'action'
+  ];
 @Component({
     selector: 'profil-add-edit',
     templateUrl: './profil-add-edit.component.html',
@@ -34,8 +36,8 @@ export class ProfilAddEditComponent implements OnInit, OnDestroy {
     pageType: string;
     profilForm: FormGroup;
     AllPermissions = []
-    dataSource = new MatTreeNestedDataSource<any>();
-    treeControl = new NestedTreeControl<any>(node => node.children);
+    dataSource : MatTableDataSource<any>;
+    displayedColumns: string[];
 
     constructor(
         private profilAddEditService: ProfilAddEditService,
@@ -49,7 +51,7 @@ export class ProfilAddEditComponent implements OnInit, OnDestroy {
         this.profil = new Role();
         this.fuseTranslationLoader.loadTranslations(french, arabic);
         this.AllPermissions = AllPermissions;
-        this.dataSource.data = this.AllPermissions;
+        this.displayedColumns =  COLUMN_NAMES;
     }
 
     hasChild = (_: number, node) => !!node.children && node.children.length > 0;
@@ -59,7 +61,7 @@ export class ProfilAddEditComponent implements OnInit, OnDestroy {
             (response) => {
                 this.allPermissions = response.data[1];
                 this.initForm(response.data[0], response.action);
-
+                this.initTable(this.AllPermissions);
             },
             (error) => {
                 console.log(error);
@@ -67,6 +69,10 @@ export class ProfilAddEditComponent implements OnInit, OnDestroy {
         );
     }
 
+    initTable(columnData) {
+        // Init DataSource
+        this.dataSource = new MatTableDataSource(columnData);
+    }
     createProfilForm(): FormGroup {
 
         let obj = {

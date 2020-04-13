@@ -15,7 +15,12 @@ import { ENTER, COMMA } from '@angular/cdk/keycodes';
 import { Authority } from 'app/main/model/admin.model';
 import { MatChipInputEvent, MatAutocompleteSelectedEvent, MatTreeNestedDataSource } from '@angular/material';
 import { NestedTreeControl } from '@angular/cdk/tree';
-
+import { MatTableDataSource } from '@angular/material/table';
+import{allOuvrages} from './ouvrages'
+const COLUMN_NAMES: string[] = [
+    'type',
+    'ouvrage',
+  ];
 
 
 /* A appliquer pour le code des chains
@@ -33,10 +38,11 @@ export class ChainAddEditComponent implements OnInit, OnDestroy {
     chain: Chain;
     allPermissions=[];
     pageType: string;
-    AllOuvrages = []
+    AllOuvrages = [];
     chainForm: FormGroup;
-    dataSource = new MatTreeNestedDataSource<any>();
-    treeControl = new NestedTreeControl<any>(node => node.children);
+    dataSource: MatTableDataSource<any>;
+    displayedColumns: string[];
+
     constructor(
         private chainAddEditService: ChainAddEditService,
         private formBuilder: FormBuilder,
@@ -48,6 +54,8 @@ export class ChainAddEditComponent implements OnInit, OnDestroy {
         this._unsubscribeAll = new Subject();
         this.chain = new Chain();
         this.fuseTranslationLoader.loadTranslations(french, arabic);
+        this.AllOuvrages = allOuvrages;
+        this.displayedColumns =  COLUMN_NAMES;
     }
 
     /**
@@ -57,12 +65,17 @@ export class ChainAddEditComponent implements OnInit, OnDestroy {
         this.route.data.pipe(takeUntil(this._unsubscribeAll)).subscribe(
             (response) => {
                 this.initForm(response.data[0], response.action);
-
+                this.initTable(this.AllOuvrages);
             },
             (error) => {
                 console.log(error);
             }
         );
+    }
+
+    initTable(columnData) {
+        // Init DataSource
+        this.dataSource = new MatTableDataSource(columnData);
     }
 
     createChainForm(): FormGroup {
