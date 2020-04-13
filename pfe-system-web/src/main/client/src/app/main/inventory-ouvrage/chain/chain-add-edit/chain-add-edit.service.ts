@@ -51,16 +51,16 @@ export class ChainAddEditService {
         });
     }
 
-    save(profil): Promise<any> {
-        if (profil.id) return new Promise((resolve, reject) => {
-            this.http.put(CHAIN_API + '/' + profil.id, profil)
-                .subscribe((response: any) => {
-                    resolve(response);
-                }, reject);
-        });
-
+    save(chain): Promise<any> {
+        // if (chain.id) return new Promise((resolve, reject) => {
+        //     this.http.put(CHAIN_API + '/' + chain.id, chain)
+        //         .subscribe((response: any) => {
+        //             resolve(response);
+        //         }, reject);
+        // });
+        console.log(chain);
         return new Promise((resolve, reject) => {
-            this.http.post(CHAIN_API, profil)
+            this.http.post(CHAIN_API, chain)
                 .subscribe((response: any) => {
                     resolve(response);
                 }, reject);
@@ -84,26 +84,26 @@ export class ChainAddEditService {
     }
 
 
-    saveChain(profil) {
+    saveChain(chain) {
         return new Promise((resolve, reject) => {
             this.toolsService.showProgressBar();
-            this.save(profil).then((responce) => {
+            this.save(chain).then((responce) => {
                 this.toolsService.hideProgressBar();
-                if (profil.id) {
+                if (chain.id) {
                     let msg = this.toolsService.getTranslation('ADD-EDIT.TOAST-EDIT.success.before-var') 
-                             + profil.role + this.toolsService.getTranslation('ADD-EDIT.TOAST-EDIT.success.after-var');
+                             + chain.name + this.toolsService.getTranslation('ADD-EDIT.TOAST-EDIT.success.after-var');
                     this.toolsService.showSuccess(msg);
                 } else {
                     this.toolsService.showSuccess('ADD-EDIT.TOAST-ADD.success');
                 }
-                resolve(profil);
+                resolve(chain);
             },
                 (error) => {
                     console.log(error);
                     this.toolsService.hideProgressBar();
-                    if (profil.id){
+                    if (chain.id){
                         let msg = this.toolsService.getTranslation('ADD-EDIT.TOAST-EDIT.error.before-var') 
-                             + profil.role + this.toolsService.getTranslation('ADD-EDIT.TOAST-EDIT.error.after-var');
+                             + chain.name + this.toolsService.getTranslation('ADD-EDIT.TOAST-EDIT.error.after-var');
                         this.toolsService.showError(msg);
                     }
                        else{

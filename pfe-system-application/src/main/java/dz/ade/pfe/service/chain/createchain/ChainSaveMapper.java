@@ -7,8 +7,6 @@ import org.mapstruct.Mappings;
 
 @Mapper(componentModel = "spring")
 public interface ChainSaveMapper {
-    @Mappings({
-            @Mapping(source = "id", target = "code")
-    })
+
     Chain chainSaveToChain(ChainSaveDto chain);
 }

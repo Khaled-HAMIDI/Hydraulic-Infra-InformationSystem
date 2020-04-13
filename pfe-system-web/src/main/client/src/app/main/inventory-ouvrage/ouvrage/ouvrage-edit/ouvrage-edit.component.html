@@ -21,14 +21,14 @@
                     <div fxLayout="column" fxLayoutAlign="start start"
                          [@animate]="{value:'*',params:{delay:'100ms',x:'-25px'}}">
                         <div class="h2" >
-                            {{'EDIT.HEADER.title-edit' | translate}} {{ouvrage.code}}
+                            {{'EDIT.HEADER.title-edit' | translate}} {{ouvrage.name}}
                         </div>
                     </div>
                 </div>
 
 
                 <button mat-raised-button class="save-agency-button mat-white-bg"
-                         (click)="onSave()">
+                         (click)="onSave()" [disabled]="ouvrageForm.invalid">
                     <span>{{'EDIT.BUTTON.edit' | translate}}</span>
                 </button>
             </div>

@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Routes, RouterModule } from '@angular/router';
 import { AuthenticationGuard } from 'app/guards/authentication.guard';
+import { InventoryAddComponent } from './inventory/inventory-add/inventory-add.component';
 
 
 const routes: Routes = [
@@ -19,7 +20,11 @@ const routes: Routes = [
     path: 'chain',
     loadChildren: () => import('./chain/chain.module').then(m => m.ChainModule),
     canActivate: [AuthenticationGuard]
-  }
+  }, {
+        path: 'inventory',
+        loadChildren: () => import('./inventory/inventory.module').then(m => m.InventoryModule),
+        canActivate: [AuthenticationGuard]
+    }
 ];
 
 @NgModule({

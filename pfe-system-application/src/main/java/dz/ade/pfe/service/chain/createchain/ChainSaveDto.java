@@ -11,7 +11,7 @@ import javax.validation.constraints.NotBlank;
 @NoArgsConstructor
 public class ChainSaveDto {
     @NotBlank
-    private String id;
+    private String code;
     @NotBlank
     private String name;
 }

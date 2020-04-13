@@ -31,9 +31,14 @@ import { AyamsModule } from '@ayams/ayams.module';
 import { IConfig, NgxMaskModule } from 'ngx-mask';
 import { OuvrageAddComponent } from './ouvrage-add/ouvrage-add.component';
 import { OuvrageEditComponent } from './ouvrage-edit/ouvrage-edit.component';
-import { OuvrageAddService } from "./ouvrage-add/ouvrage-add.service";
 import { MatDatepickerModule } from "@angular/material/datepicker";
 import { OuvrageShowComponent } from './ouvrage-show/ouvrage-show.component';
+import {StationTraitementConvComponent} from "./ouvrage-add/Type/station-traitement-conv/station-traitement-conv.component";
+import {ReservoirComponent} from "./ouvrage-add/Type/reservoir/reservoir.component";
+import {ForageComponent} from "./ouvrage-add/Type/forage/forage.component";
+import {StationPompageComponent} from "./ouvrage-add/Type/station-pompage/station-pompage.component";
+import {BriseChargeComponent} from "./ouvrage-add/Type/brise-charge/brise-charge.component";
+import {StationNonConvComponent} from "./ouvrage-add/Type/station-non-conv/station-non-conv.component";
 
 export const options: Partial<IConfig> | (() => Partial<IConfig>) = null;
 
@@ -41,7 +46,37 @@ const routes: Routes = [
     {
         path: 'add',
         component: OuvrageAddComponent,
-        data: { action: 'add' }
+        data: {action: 'add'}
+    },
+    {
+        path: 'add/StationTraitementConventionelle',
+        component: StationTraitementConvComponent,
+        data: {action: 'add'}
+    },
+    {
+        path: 'add/Reservoir',
+        component: ReservoirComponent,
+        data: {action: 'add'}
+    },
+    {
+        path: 'add/Forage',
+        component: ForageComponent,
+        data: {action: 'add'}
+    },
+    {
+        path: 'add/StationPompage',
+        component: StationPompageComponent,
+        data: {action: 'add'}
+    },
+    {
+        path: 'add/BriseCharge',
+        component: BriseChargeComponent,
+        data: {action: 'add'}
+    },
+    {
+        path: 'add/StationTraitementNonConventionelle',
+        component: StationNonConvComponent,
+        data: {action: 'add'}
     },
     {
         path: ':code/edit',
@@ -60,7 +95,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-    declarations: [OuvrageListComponent, OuvrageAddComponent, OuvrageEditComponent, OuvrageShowComponent],
+    declarations: [OuvrageListComponent, OuvrageAddComponent, OuvrageEditComponent, OuvrageShowComponent, StationTraitementConvComponent, StationPompageComponent, ReservoirComponent, ForageComponent, BriseChargeComponent, StationNonConvComponent],
     imports: [
         CommonModule,
         RouterModule.forChild(routes),

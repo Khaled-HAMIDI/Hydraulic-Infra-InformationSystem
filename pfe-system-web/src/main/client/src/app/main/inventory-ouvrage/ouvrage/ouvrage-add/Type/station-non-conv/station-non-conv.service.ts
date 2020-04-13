@@ -10,7 +10,7 @@ const OUVRAGE_API = API + '/ouvrage';
     providedIn: 'root'
 })
 
-export class OuvrageAddService {
+export class StationNonConvService {
 
     constructor(private router: Router,
                 private http: HttpClient,

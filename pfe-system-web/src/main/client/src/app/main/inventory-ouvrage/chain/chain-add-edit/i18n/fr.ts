@@ -12,7 +12,7 @@ export const locale = {
             },
             'PLACE-HOLDER': {
                 'name': 'Nom',
-                'permissions': 'Permissions',
+                'id': 'Code',
                 'designation': 'Designation'
             },
             'TOAST-EDIT': {

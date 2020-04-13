@@ -13,7 +13,8 @@ import { pullAllWith, sortBy } from 'lodash-es';
 import { isEqual } from 'date-fns';
 import { ENTER, COMMA } from '@angular/cdk/keycodes';
 import { Authority } from 'app/main/model/admin.model';
-import { MatChipInputEvent, MatAutocompleteSelectedEvent } from '@angular/material';
+import { MatChipInputEvent, MatAutocompleteSelectedEvent, MatTreeNestedDataSource } from '@angular/material';
+import { NestedTreeControl } from '@angular/cdk/tree';
 
 
 
@@ -34,6 +35,8 @@ export class ChainAddEditComponent implements OnInit, OnDestroy {
     pageType: string;
     AllOuvrages = []
     chainForm: FormGroup;
+    dataSource = new MatTreeNestedDataSource<any>();
+    treeControl = new NestedTreeControl<any>(node => node.children);
     constructor(
         private chainAddEditService: ChainAddEditService,
         private formBuilder: FormBuilder,
@@ -65,7 +68,7 @@ export class ChainAddEditComponent implements OnInit, OnDestroy {
     createChainForm(): FormGroup {
 
         let obj = {
-            id: [this.chain.id],
+            code: [this.chain.code],
             name: [this.chain.name, Validators.required],
             ouvrages: [this.chain.ouvrages]
         };
@@ -75,29 +78,30 @@ export class ChainAddEditComponent implements OnInit, OnDestroy {
 
     onSave(): void {
         const chain = this.chainForm.getRawValue();
-        var permissionIds = [];
-        // this.chain.ouvrages.forEach((perm) => { permissionIds.push(perm.id) });
-        this.AllOuvrages.forEach((perm)=>{
-            if(perm.checked) permissionIds.push(perm.id)
-            else {
-                if(perm.children)
-                {
-                    perm.children.forEach((perm)=> {
-                        if(perm.checked) permissionIds.push(perm.id)
-                    })
-                }
-            }
-        })
-        chain.ouvrages = permissionIds;
+        delete chain.ouvrages;
+        // var permissionIds = [];
+        // // this.chain.ouvrages.forEach((perm) => { permissionIds.push(perm.id) });
+        // this.AllOuvrages.forEach((perm)=>{
+        //     if(perm.checked) permissionIds.push(perm.id)
+        //     else {
+        //         if(perm.children)
+        //         {
+        //             perm.children.forEach((perm)=> {
+        //                 if(perm.checked) permissionIds.push(perm.id)
+        //             })
+        //         }
+        //     }
+        // })
+        // chain.ouvrages = permissionIds;
 
         this.chainAddEditService.saveChain(chain)
             .then(() => {
 
                 if (chain.id) {
-                    this.router.navigate(['/patrimony/chains']);
+                    this.router.navigate(['/patrimony/chains/list']);
                 }
                 else {
-                    this.router.navigate(['/patrimony/chains']);
+                    this.router.navigate(['/patrimony/chains/list']);
                 }
             });
     }
