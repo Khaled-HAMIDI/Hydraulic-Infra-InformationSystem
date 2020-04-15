@@ -1,0 +1,23 @@
+package dz.ade.pfe.service.ouvrage.getouvragelist;
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+
+public class OuvrageListDto {
+    private String id;
+
+    private String type;
+
+    private Boolean enabled;
+
+    private String state;
+
+    private Double installedCapacity;
+
+    private Double currentCapacity;
+}

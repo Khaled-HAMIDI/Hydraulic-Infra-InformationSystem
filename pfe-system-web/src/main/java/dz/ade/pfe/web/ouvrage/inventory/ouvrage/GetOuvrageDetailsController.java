@@ -1,7 +1,7 @@
 package dz.ade.pfe.web.ouvrage.inventory.ouvrage;
 
-import dz.ade.pfe.port.in.getouvragedetails.GetOuvrageDetailsQuery;
-import dz.ade.pfe.service.getouvragedetails.OuvrageDto;
+import dz.ade.pfe.port.in.ouvrage.getouvragedetails.GetOuvrageDetailsQuery;
+import dz.ade.pfe.service.ouvrage.getouvragedetails.OuvrageDto;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
@@ -12,8 +12,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
-import java.util.List;
 
 @RestController
 @RequestMapping(value = "/api")

@@ -1,8 +1,8 @@
 package dz.ade.pfe.ouvrage.inventory.ouvrage;
 
 import dz.ade.pfe.domain.ouvrage.Ouvrage;
-import dz.ade.pfe.port.out.getouvragedetails.LoadOuvrageDetails;
-import dz.ade.pfe.port.out.getouvragelist.LoadOuvrageList;
+import dz.ade.pfe.port.out.ouvrage.getouvragedetails.LoadOuvrageDetails;
+import dz.ade.pfe.port.out.ouvrage.getouvragelist.LoadOuvrageList;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 

@@ -1,9 +1,9 @@
 package dz.ade.pfe.ouvrage.inventory.chain;
 
 import dz.ade.pfe.domain.ouvrage.Chain;
-import dz.ade.pfe.port.out.createchain.SaveNewChain;
-import dz.ade.pfe.port.out.getchaindetails.LoadChainDetails;
-import dz.ade.pfe.port.out.getchainlist.LoadChainList;
+import dz.ade.pfe.port.out.chain.createchain.SaveNewChain;
+import dz.ade.pfe.port.out.chain.getchaindetails.LoadChainDetails;
+import dz.ade.pfe.port.out.chain.getchainlist.LoadChainList;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
