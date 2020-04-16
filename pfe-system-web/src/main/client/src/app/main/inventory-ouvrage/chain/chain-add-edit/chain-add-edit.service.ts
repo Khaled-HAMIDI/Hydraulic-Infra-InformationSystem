@@ -4,10 +4,10 @@ import { API } from 'config/api.config';
 import {  Router, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
 import { ToolsService } from '@ayams/services/tools.service';
 import { Observable } from 'rxjs';
-import { Chain } from './model/chain.model';
+import { Chain, Ouvrage } from './model/chain.model';
 
 const CHAIN_API = API + '/chain';
-
+const OUVRAGES_API = API + '/ouvrages' ;
 @Injectable({
     providedIn: 'root'
 })
@@ -22,6 +22,15 @@ export class ChainAddEditService {
     get(id: number) {
         return new Promise((resolve, reject) => {
             this.http.get(CHAIN_API + '/' + id)
+                .subscribe((response: any) => {
+                    resolve(response);
+                }, reject);
+        });
+    }
+
+    getAllOuvrages(): Promise<Ouvrage[]> {
+        return new Promise((resolve, reject) => {
+            this.http.get(OUVRAGES_API)
                 .subscribe((response: any) => {
                     resolve(response);
                 }, reject);
@@ -52,13 +61,12 @@ export class ChainAddEditService {
     }
 
     save(chain): Promise<any> {
-        // if (chain.id) return new Promise((resolve, reject) => {
-        //     this.http.put(CHAIN_API + '/' + chain.id, chain)
-        //         .subscribe((response: any) => {
-        //             resolve(response);
-        //         }, reject);
-        // });
-        console.log(chain);
+        if (chain.id) return new Promise((resolve, reject) => {
+            this.http.put(CHAIN_API + '/' + chain.id, chain)
+                .subscribe((response: any) => {
+                    resolve(response);
+                }, reject);
+        });
         return new Promise((resolve, reject) => {
             this.http.post(CHAIN_API, chain)
                 .subscribe((response: any) => {
@@ -72,7 +80,8 @@ export class ChainAddEditService {
         return new Promise((resolve, reject) => {
 
             Promise.all([
-                this.getExist(route)
+                this.getExist(route),
+                this.getAllOuvrages(),
             ]).then(
                 (data) => {
                     resolve(data);
@@ -113,4 +122,5 @@ export class ChainAddEditService {
                 , reject
         });
     }
+
 }

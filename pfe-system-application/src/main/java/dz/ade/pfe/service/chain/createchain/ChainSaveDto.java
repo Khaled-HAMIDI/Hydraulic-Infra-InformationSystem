@@ -5,6 +5,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
+import java.util.List;
 
 @Data
 @AllArgsConstructor
@@ -14,4 +16,6 @@ public class ChainSaveDto {
     private String code;
     @NotBlank
     private String name;
+    @NotEmpty
+    private List<@NotBlank String> ouvrages;
 }

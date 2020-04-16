@@ -38,6 +38,7 @@ export class ProfilAddEditComponent implements OnInit, OnDestroy {
     AllPermissions = []
     dataSource : MatTableDataSource<any>;
     displayedColumns: string[];
+    selectedOuvrages:any[]
 
     constructor(
         private profilAddEditService: ProfilAddEditService,

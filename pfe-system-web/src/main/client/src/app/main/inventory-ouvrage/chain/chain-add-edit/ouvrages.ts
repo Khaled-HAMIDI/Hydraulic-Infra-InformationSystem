@@ -1,23 +1,26 @@
 export const allOuvrages = [
     {
-        type: "Station",
-        ouvrages : [
-            {
-                name : "ST1",
-                checked:true
-            },
-            {
-                name : "ST2",
-                checked:false
-            },
-            {
-                name : "ST3",
-                checked:false
-            },
-            {
-                name : "ST4",
-                checked:false
-            }
-        ]
+        type: "",
+        ouvrages : []
+    },
+    {
+        type: "Station de traitement NC",
+        ouvrages : []
+    },
+    {
+        type: "Reservoir",
+        ouvrages : []
+    },
+    {
+        type: "Forage",
+        ouvrages : []
+    },
+    {
+        type: "Station de Pompage",
+        ouvrages : []
+    },
+    {
+        type: "Brise charge",
+        ouvrages : []
     }
 ]

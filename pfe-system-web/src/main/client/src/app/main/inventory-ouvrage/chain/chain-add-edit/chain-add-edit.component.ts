@@ -1,5 +1,5 @@
 import {Component, OnInit, OnDestroy, ViewChild, ElementRef, ChangeDetectorRef} from '@angular/core';
-import {Chain} from './model/chain.model';
+import {Chain, generalType, AllOuvrages} from './model/chain.model';
 import { FormGroup, FormBuilder, Validators, ValidatorFn, AbstractControl } from '@angular/forms';
 import { ChainAddEditService } from './chain-add-edit.service';
 import { fuseAnimations } from '@fuse/animations';
@@ -14,9 +14,8 @@ import { isEqual } from 'date-fns';
 import { ENTER, COMMA } from '@angular/cdk/keycodes';
 import { Authority } from 'app/main/model/admin.model';
 import { MatChipInputEvent, MatAutocompleteSelectedEvent, MatTreeNestedDataSource } from '@angular/material';
-import { NestedTreeControl } from '@angular/cdk/tree';
+import {CdkDragDrop, moveItemInArray} from '@angular/cdk/drag-drop';
 import { MatTableDataSource } from '@angular/material/table';
-import{allOuvrages} from './ouvrages'
 const COLUMN_NAMES: string[] = [
     'type',
     'ouvrage',
@@ -42,7 +41,7 @@ export class ChainAddEditComponent implements OnInit, OnDestroy {
     chainForm: FormGroup;
     dataSource: MatTableDataSource<any>;
     displayedColumns: string[];
-
+    selectedOuvrages:any[]
     constructor(
         private chainAddEditService: ChainAddEditService,
         private formBuilder: FormBuilder,
@@ -54,8 +53,8 @@ export class ChainAddEditComponent implements OnInit, OnDestroy {
         this._unsubscribeAll = new Subject();
         this.chain = new Chain();
         this.fuseTranslationLoader.loadTranslations(french, arabic);
-        this.AllOuvrages = allOuvrages;
         this.displayedColumns =  COLUMN_NAMES;
+        this.selectedOuvrages = [];
     }
 
     /**
@@ -64,6 +63,7 @@ export class ChainAddEditComponent implements OnInit, OnDestroy {
     ngOnInit(): void {
         this.route.data.pipe(takeUntil(this._unsubscribeAll)).subscribe(
             (response) => {
+                this.classOuvrages(response.data[1]);
                 this.initForm(response.data[0], response.action);
                 this.initTable(this.AllOuvrages);
             },
@@ -78,6 +78,28 @@ export class ChainAddEditComponent implements OnInit, OnDestroy {
         this.dataSource = new MatTableDataSource(columnData);
     }
 
+    classOuvrages(ouvrages){
+        this.AllOuvrages = this.createAllOuvragesStructure();
+        ouvrages.forEach((ouvrage)=> {
+            if(ouvrage.type === generalType.Reservoir)
+            {
+                ouvrage.checked = false;
+                this.AllOuvrages[2].ouvrages.push(ouvrage)
+            }
+        })
+    }
+    createAllOuvragesStructure(){
+        var allOuvrages : AllOuvrages[]
+        allOuvrages = new Array();
+        allOuvrages.push(new AllOuvrages(generalType.BriseCharge));
+        allOuvrages.push(new AllOuvrages(generalType.Forage));
+        allOuvrages.push(new AllOuvrages(generalType.Reservoir));
+        allOuvrages.push(new AllOuvrages(generalType.StationPompage));
+        allOuvrages.push(new AllOuvrages(generalType.StationTraitementConventionelle));
+        allOuvrages.push(new AllOuvrages(generalType.StationTraitementNonConventionelle));
+        return allOuvrages;
+    }
+
     createChainForm(): FormGroup {
 
         let obj = {
@@ -89,24 +111,20 @@ export class ChainAddEditComponent implements OnInit, OnDestroy {
         return this.formBuilder.group(obj);
     }
 
+    selectOuvrage(ouvrage){
+        if(ouvrage.checked)
+        this.selectedOuvrages.push(ouvrage);
+        else
+        this.selectedOuvrages.splice(this.selectedOuvrages.indexOf(ouvrage),1);
+    }
+
     onSave(): void {
         const chain = this.chainForm.getRawValue();
         delete chain.ouvrages;
-        // var permissionIds = [];
-        // // this.chain.ouvrages.forEach((perm) => { permissionIds.push(perm.id) });
-        // this.AllOuvrages.forEach((perm)=>{
-        //     if(perm.checked) permissionIds.push(perm.id)
-        //     else {
-        //         if(perm.children)
-        //         {
-        //             perm.children.forEach((perm)=> {
-        //                 if(perm.checked) permissionIds.push(perm.id)
-        //             })
-        //         }
-        //     }
-        // })
-        // chain.ouvrages = permissionIds;
-
+        var ouvragesIds = [];
+        this.selectedOuvrages.forEach((ouv) => { ouvragesIds.push(ouv.code) });
+        chain.ouvrages = ouvragesIds;
+        console.log(chain);
         this.chainAddEditService.saveChain(chain)
             .then(() => {
 
@@ -263,7 +281,9 @@ export class ChainAddEditComponent implements OnInit, OnDestroy {
             return !forbidden ? { 'forbiddenName': { value: this.chain } } : null;
         };
     }
-
+    drop(event: CdkDragDrop<string[]>,i) {
+        moveItemInArray(this.selectedOuvrages, event.previousIndex, event.currentIndex);
+      }
     ngOnDestroy(): void {
         this._unsubscribeAll.next();
         this._unsubscribeAll.complete();

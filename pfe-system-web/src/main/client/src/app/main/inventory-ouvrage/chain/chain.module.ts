@@ -34,6 +34,7 @@ import { ChainAddEditService } from "./chain-add-edit/chain-add-edit.service";
 import { MatDatepickerModule } from "@angular/material/datepicker";
 import { ChainShowComponent } from './chain-show/chain-show.component';
 import { ChainShowService } from './chain-show/chain-show.service';
+import {DragDropModule} from '@angular/cdk/drag-drop';
 
 export const options: Partial<IConfig> | (() => Partial<IConfig>) = null;
 
@@ -97,6 +98,7 @@ const routes: Routes = [
         MatTreeModule,
         NgxMaskModule.forRoot(options),
         MatDatepickerModule,
+        DragDropModule
     ]
 })
 export class ChainModule { }

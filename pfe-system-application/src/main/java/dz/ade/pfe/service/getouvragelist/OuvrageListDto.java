@@ -11,6 +11,10 @@ import lombok.NoArgsConstructor;
 public class OuvrageListDto {
     private String id;
 
+    private String code;
+
+    private String name;
+
     private String type;
 
     private Boolean enabled;

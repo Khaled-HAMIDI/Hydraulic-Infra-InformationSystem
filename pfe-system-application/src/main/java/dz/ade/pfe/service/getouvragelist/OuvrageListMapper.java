@@ -10,9 +10,6 @@ import java.util.List;
 @Mapper(componentModel = "spring")
 public interface OuvrageListMapper {
 
-    @Mappings({
-            @Mapping(source = "code", target = "id")
-    })
     OuvrageListDto ouvrageToOuvrageListDto(Ouvrage ouvrage);
     List<OuvrageListDto> ouvrageToOuvrageListDto(List<Ouvrage> ouvrage);
 }

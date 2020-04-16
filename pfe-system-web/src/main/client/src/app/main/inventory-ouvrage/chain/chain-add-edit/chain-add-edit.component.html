@@ -81,11 +81,12 @@
 
                                     <!-- Code Column -->
                                     <ng-container matColumnDef="ouvrage">
-                                        <th mat-header-cell *matHeaderCellDef>Actions
+                                        <th mat-header-cell *matHeaderCellDef>Ouvrage
                                         </th>
                                         <td mat-cell *matCellDef="let ouvrageChain">
                                             <div class="flex-container">
                                                 <mat-checkbox *ngFor="let ouvrage of ouvrageChain.ouvrages;let i=index"
+                                                    (change)="selectOuvrage(ouvrage)"
                                                     [(ngModel)]="ouvrageChain.ouvrages[i].checked"
                                                     [ngModelOptions]="{standalone: true}">
                                                     <p class="text-truncate">{{ouvrage.name}}</p>
@@ -102,6 +103,10 @@
                                 </table>
 
                             </div>
+                            <span *ngIf='selectedOuvrages.length'>Ordonner les ouvrages</span>
+                            <div *ngIf='selectedOuvrages.length' cdkDropList class="example-list" (cdkDropListDropped)="drop($event,i)">
+                                <div class="example-box" *ngFor="let ouvrage of selectedOuvrages" cdkDrag>{{ouvrage.name}}</div>
+                              </div>
                             <!-- <mat-form-field appearance="outline" class="w-100-p">
                                 <mat-label>{{'ADD-EDIT.PLACE-HOLDER.permissions' | translate}}</mat-label>
                                 <mat-icon matSuffix class="secondary-text">lock_open</mat-icon>
