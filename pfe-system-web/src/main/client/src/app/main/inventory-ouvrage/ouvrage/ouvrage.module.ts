@@ -39,6 +39,24 @@ import {ForageComponent} from "./ouvrage-add/Type/forage/forage.component";
 import {StationPompageComponent} from "./ouvrage-add/Type/station-pompage/station-pompage.component";
 import {BriseChargeComponent} from "./ouvrage-add/Type/brise-charge/brise-charge.component";
 import {StationNonConvComponent} from "./ouvrage-add/Type/station-non-conv/station-non-conv.component";
+import { BriseChargeStepperComponent } from './ouvrage-add/steppers/brise-charge-stepper/brise-charge-stepper.component';
+import { ForageStepperComponent } from './ouvrage-add/steppers/forage-stepper/forage-stepper.component';
+import { ReservoirStepperComponent } from './ouvrage-add/steppers/reservoir-stepper/reservoir-stepper.component';
+import { StationNonConvStepperComponent } from './ouvrage-add/steppers/station-non-conv-stepper/station-non-conv-stepper.component';
+import { StationTraitementConvStepperComponent } from './ouvrage-add/steppers/station-traitement-conv-stepper/station-traitement-conv-stepper.component';
+import { StationPompageStepperComponent } from './ouvrage-add/steppers/station-pompage-stepper/station-pompage-stepper.component';
+import {MatStepperModule} from "@angular/material/stepper";
+import { SecurityComponent } from './composant/security/security.component';
+import { PriseEauComponent } from './composant/station-traitement/prise-eau/prise-eau.component';
+import { ReservoirEauBruteComponent } from './composant/station-traitement/reservoir-eau-brute/reservoir-eau-brute.component';
+import { ComposantPretraitementComponent } from './composant/station-traitement/composant-pretraitement/composant-pretraitement.component';
+import { ComposantAerationComponent } from './composant/station-traitement/composant-aeration/composant-aeration.component';
+import { BassinMelangeComponent } from './composant/station-traitement/bassin-melange/bassin-melange.component';
+import { DecanteurComponent } from './composant/station-traitement/decanteur/decanteur.component';
+import { FiltreComponent } from './composant/station-traitement/filtre/filtre.component';
+import { ReservoirEauTraiteComponent } from './composant/station-traitement/reservoir-eau-traite/reservoir-eau-traite.component';
+import { KitMembraneComponent } from './composant/station-traitement/kit-membrane/kit-membrane.component';
+import { StationPhpComponent } from './composant/station-traitement/station-php/station-php.component';
 
 export const options: Partial<IConfig> | (() => Partial<IConfig>) = null;
 
@@ -79,6 +97,36 @@ const routes: Routes = [
         data: {action: 'add'}
     },
     {
+        path: 'add/StationTraitementConventionelle/composants',
+        component: StationTraitementConvStepperComponent,
+        data: {action: 'add'}
+    },
+    {
+        path: 'add/Reservoir/composants',
+        component: ReservoirStepperComponent,
+        data: {action: 'add'}
+    },
+    {
+        path: 'add/Forage/composants',
+        component: ForageStepperComponent,
+        data: {action: 'add'}
+    },
+    {
+        path: 'add/StationPompage/composants',
+        component: StationPompageStepperComponent,
+        data: {action: 'add'}
+    },
+    {
+        path: 'add/BriseCharge/composants',
+        component: BriseChargeStepperComponent,
+        data: {action: 'add'}
+    },
+    {
+        path: 'add/StationTraitementNonConventionelle/composants',
+        component: StationNonConvStepperComponent,
+        data: {action: 'add'}
+    },
+    {
         path: ':code/edit',
         component: OuvrageEditComponent,
         data: { action: 'edit' }
@@ -95,7 +143,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-    declarations: [OuvrageListComponent, OuvrageAddComponent, OuvrageEditComponent, OuvrageShowComponent, StationTraitementConvComponent, StationPompageComponent, ReservoirComponent, ForageComponent, BriseChargeComponent, StationNonConvComponent],
+    declarations: [OuvrageListComponent, OuvrageAddComponent, OuvrageEditComponent, OuvrageShowComponent, StationTraitementConvComponent, StationPompageComponent, ReservoirComponent, ForageComponent, BriseChargeComponent, StationNonConvComponent,  BriseChargeStepperComponent, ForageStepperComponent, ReservoirStepperComponent, StationNonConvStepperComponent, StationTraitementConvStepperComponent, StationPompageStepperComponent, SecurityComponent, PriseEauComponent, ReservoirEauBruteComponent, ComposantPretraitementComponent, ComposantAerationComponent, BassinMelangeComponent, DecanteurComponent, FiltreComponent, ReservoirEauTraiteComponent, KitMembraneComponent, StationPhpComponent],
     imports: [
         CommonModule,
         RouterModule.forChild(routes),
@@ -125,6 +173,7 @@ const routes: Routes = [
         AyamsModule,
         NgxMaskModule.forRoot(options),
         MatDatepickerModule,
+        MatStepperModule,
     ]
 })
 export class OuvrageModule { }
