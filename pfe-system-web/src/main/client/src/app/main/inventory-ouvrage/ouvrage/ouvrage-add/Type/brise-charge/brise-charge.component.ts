@@ -2,7 +2,7 @@ import {Component, OnInit, OnDestroy} from '@angular/core';
 import {Ouvrage} from "../../../../../model/ouvrage.model";
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { fuseAnimations } from '@fuse/animations';
-import { ActivatedRoute } from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import { FuseTranslationLoaderService } from '@fuse/services/translation-loader.service';
 import { locale as french } from './i18n/fr';
 import { locale as arabic } from './i18n/ar';
@@ -28,6 +28,7 @@ export class BriseChargeComponent implements OnInit, OnDestroy {
     autoCordinate: boolean;
 
     constructor(
+        private router :Router,
         private briseChargeService: BriseChargeService,
         private formBuilder: FormBuilder,
         private route: ActivatedRoute,
@@ -141,6 +142,7 @@ export class BriseChargeComponent implements OnInit, OnDestroy {
         this.briseChargeService.saveOuvrage(this.ouvrageAdd)
             .then((response) => {
                     console.log("It worked");
+                    this.router.navigate(['composants'],{relativeTo:this.route});
                 },
                 (error) => {
                     console.log("No")

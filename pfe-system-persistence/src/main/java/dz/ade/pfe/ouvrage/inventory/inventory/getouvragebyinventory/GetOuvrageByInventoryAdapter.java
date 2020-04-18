@@ -12,6 +12,8 @@ import java.util.List;
 @RequiredArgsConstructor
 public class GetOuvrageByInventoryAdapter implements LoadOuvrageByInventory {
 
+    /* just for now*/
+
     private final OuvrageRepository ouvrageRepository;
     @Override
     public List<Ouvrage> loadOuvrageByInventory(String code){

@@ -12,6 +12,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class GetCompletedInventoryAdapter implements LoadCompletedInventory {
 
+    /* just for now*/
     private final InventoryRepository inventoryRepository;
     @Override
     public List<Inventory> loadCompletedInventory(){

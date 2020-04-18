@@ -57,6 +57,33 @@ import { FiltreComponent } from './composant/station-traitement/filtre/filtre.co
 import { ReservoirEauTraiteComponent } from './composant/station-traitement/reservoir-eau-traite/reservoir-eau-traite.component';
 import { KitMembraneComponent } from './composant/station-traitement/kit-membrane/kit-membrane.component';
 import { StationPhpComponent } from './composant/station-traitement/station-php/station-php.component';
+import { LocalStockageChimiqueComponent } from './composant/station-traitement/local-stockage-chimique/local-stockage-chimique.component';
+import { PostPrepInjectionComponent } from './composant/station-traitement/post-prep-injection/post-prep-injection.component';
+import { PostRecyclageBouesComponent } from './composant/station-traitement/post-recyclage-boues/post-recyclage-boues.component';
+import { PostRecyclageEauLavavgeComponent } from './composant/station-traitement/post-recyclage-eau-lavavge/post-recyclage-eau-lavavge.component';
+import { BatimentElectriqueComponent } from './composant/station-traitement/batiment-electrique/batiment-electrique.component';
+import { GroupeElectrogeneComponent } from './composant/station-traitement/groupe-electrogene/groupe-electrogene.component';
+import { PostTransElecComponent } from './composant/station-pompage-et-forage/post-trans-elec/post-trans-elec.component';
+import { GroupeElecPompPompComponent } from './composant/station-pompage-et-forage/groupe-elec-pomp-pomp/groupe-elec-pomp-pomp.component';
+import { GroupeElecPompMoteurComponent } from './composant/station-pompage-et-forage/groupe-elec-pomp-moteur/groupe-elec-pomp-moteur.component';
+import { ArmoirElecCmdComponent } from './composant/station-pompage-et-forage/armoir-elec-cmd/armoir-elec-cmd.component';
+import { AntiBelierComponent } from './composant/station-pompage-et-forage/anti-belier/anti-belier.component';
+import { SoupageDechargeComponent } from './composant/station-pompage-et-forage/soupage-decharge/soupage-decharge.component';
+import { VannePompageComponent } from './composant/station-pompage-et-forage/vanne-pompage/vanne-pompage.component';
+import { ClapetAntiRetourComponent } from './composant/station-pompage-et-forage/clapet-anti-retour/clapet-anti-retour.component';
+import { VenteuseComponent } from './composant/station-pompage-et-forage/venteuse/venteuse.component';
+import { JointDemantageComponent } from './composant/station-pompage-et-forage/joint-demantage/joint-demantage.component';
+import { CompteurComponent } from './composant/station-pompage-et-forage/compteur/compteur.component';
+import { CollecteurAspirationComponent } from './composant/station-pompage-et-forage/collecteur-aspiration/collecteur-aspiration.component';
+import { CollecteurReffoullementComponent } from './composant/station-pompage-et-forage/collecteur-reffoullement/collecteur-reffoullement.component';
+import { VanneArriveeComponent } from './composant/reservoir/vanne-arrivee/vanne-arrivee.component';
+import { VanneSortieComponent } from './composant/reservoir/vanne-sortie/vanne-sortie.component';
+import { FlotteurComponent } from './composant/reservoir/flotteur/flotteur.component';
+import { EchelleComponent } from './composant/reservoir/echelle/echelle.component';
+import { ConduiteTropPleinComponent } from './composant/reservoir/conduite-trop-plein/conduite-trop-plein.component';
+import { ConduiteVidangeComponent } from './composant/reservoir/conduite-vidange/conduite-vidange.component';
+import { PosteChlorationComponent } from './composant/reservoir/poste-chloration/poste-chloration.component';
+import { ColonnesMontantesComponent } from './composant/station-pompage-et-forage/colonnes-montantes/colonnes-montantes.component';
 
 export const options: Partial<IConfig> | (() => Partial<IConfig>) = null;
 
@@ -143,7 +170,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-    declarations: [OuvrageListComponent, OuvrageAddComponent, OuvrageEditComponent, OuvrageShowComponent, StationTraitementConvComponent, StationPompageComponent, ReservoirComponent, ForageComponent, BriseChargeComponent, StationNonConvComponent,  BriseChargeStepperComponent, ForageStepperComponent, ReservoirStepperComponent, StationNonConvStepperComponent, StationTraitementConvStepperComponent, StationPompageStepperComponent, SecurityComponent, PriseEauComponent, ReservoirEauBruteComponent, ComposantPretraitementComponent, ComposantAerationComponent, BassinMelangeComponent, DecanteurComponent, FiltreComponent, ReservoirEauTraiteComponent, KitMembraneComponent, StationPhpComponent],
+    declarations: [OuvrageListComponent, OuvrageAddComponent, OuvrageEditComponent, OuvrageShowComponent, StationTraitementConvComponent, StationPompageComponent, ReservoirComponent, ForageComponent, BriseChargeComponent, StationNonConvComponent,  BriseChargeStepperComponent, ForageStepperComponent, ReservoirStepperComponent, StationNonConvStepperComponent, StationTraitementConvStepperComponent, StationPompageStepperComponent, SecurityComponent, PriseEauComponent, ReservoirEauBruteComponent, ComposantPretraitementComponent, ComposantAerationComponent, BassinMelangeComponent, DecanteurComponent, FiltreComponent, ReservoirEauTraiteComponent, KitMembraneComponent, StationPhpComponent, LocalStockageChimiqueComponent, PostPrepInjectionComponent, PostRecyclageBouesComponent, PostRecyclageEauLavavgeComponent, BatimentElectriqueComponent, GroupeElectrogeneComponent, PostTransElecComponent, GroupeElecPompPompComponent, GroupeElecPompMoteurComponent, ArmoirElecCmdComponent, AntiBelierComponent, SoupageDechargeComponent, VannePompageComponent, ClapetAntiRetourComponent, VenteuseComponent, JointDemantageComponent, CompteurComponent, CollecteurAspirationComponent, CollecteurReffoullementComponent, VanneArriveeComponent, VanneSortieComponent, FlotteurComponent, EchelleComponent, ConduiteTropPleinComponent, ConduiteVidangeComponent, PosteChlorationComponent, ColonnesMontantesComponent],
     imports: [
         CommonModule,
         RouterModule.forChild(routes),

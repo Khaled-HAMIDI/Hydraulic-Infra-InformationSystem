@@ -8,6 +8,7 @@ export const locale = {
             },
             "FIELD" :{
                 'type': 'Type',
+                'area':'Superficie',
                 'enabledActive': 'En marche',
                 'enabledInactive': 'En arret',
                 'state': 'Etat',
@@ -19,7 +20,20 @@ export const locale = {
                 'puissance': 'Puissance',
                 'hmt': 'HMT',
                 'debit':'Débit',
-                'caracteristique':'Caractéristiques'
+                'caracteristique':'Caractéristiques',
+                'arrangement' : 'Arrangement',
+                'dosagePompe': 'Dosage  et injection',
+                'statePompe': 'Etat de la pompe doseuse',
+                'typePompe':'Type de la pompe doseuse ',
+                'debitPompe': 'Débit de la pompe doseuse',
+                'hmtPompe': 'HMT de la pompe doseuse',
+                'puissancePompe':'Puissance de la pompe doseuse',
+                'nombrePompe':'Nombre de pompes doseuses',
+                'fonctionnementPompe' : 'Fonctionnement de la pompe doseuse',
+                'pointInjectPompe':'Point d\'injection',
+                'enabledActivePompe': 'Pompes en marche',
+                'enabledInactivePompe': 'Pompes en arret',
+                'cuve':'Cuve de stockage'
             }
         },
 };

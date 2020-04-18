@@ -11,6 +11,9 @@ import java.util.List;
 @Component
 @RequiredArgsConstructor
 public class GetComposantByOuvrageAdapter implements LoadComposantByOuvrage {
+
+    /* just for now*/
+
     private final OuvrageComposantRepository ouvrageComposantRepository;
     @Override
     public List<OuvrageComponent> loadComposantByOuvrage(String code){
