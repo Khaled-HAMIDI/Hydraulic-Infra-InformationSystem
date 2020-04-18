@@ -6,9 +6,10 @@ export class Chain {
     ouvrages : any[]
     constructor(chain?){
         chain = chain || {};
-        this.id = chain.id || '';
+        this.id = chain.id || null;
         this.code = chain.code || '';
         this.name = chain.name || '';
+        this.ouvrages = chain.ouvrages || []
         this.enabled = chain.enabled || false;
     }
 }

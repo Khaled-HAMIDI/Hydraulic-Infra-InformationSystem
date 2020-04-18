@@ -9,14 +9,6 @@ import java.util.List;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class ChainDto {
-    private String id;
-
-    private String code;
-
-    private String name;
-
-    private Integer ouvragesNumber;
-
-    private List<OuvrageDto> ouvrages;
+public class OuvrageChainDto {
+    List<String> ouvrages;
 }

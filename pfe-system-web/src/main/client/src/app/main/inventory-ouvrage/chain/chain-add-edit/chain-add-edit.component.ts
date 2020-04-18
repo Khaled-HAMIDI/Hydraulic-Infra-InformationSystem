@@ -63,8 +63,9 @@ export class ChainAddEditComponent implements OnInit, OnDestroy {
     ngOnInit(): void {
         this.route.data.pipe(takeUntil(this._unsubscribeAll)).subscribe(
             (response) => {
-                this.classOuvrages(response.data[1]);
+                console.log(response.data[0]);
                 this.initForm(response.data[0], response.action);
+                this.classOuvrages(response.data[1],response.action);
                 this.initTable(this.AllOuvrages);
             },
             (error) => {
@@ -78,12 +79,25 @@ export class ChainAddEditComponent implements OnInit, OnDestroy {
         this.dataSource = new MatTableDataSource(columnData);
     }
 
-    classOuvrages(ouvrages){
+    classOuvrages(ouvrages,type){
         this.AllOuvrages = this.createAllOuvragesStructure();
         ouvrages.forEach((ouvrage)=> {
+            if (type == 'edit'){
+                var i = this.chain.ouvrages.findIndex((item)=>{
+                    return item.code === ouvrage.code
+                })
+                if(i != -1)
+                {
+                    ouvrage.checked = true;
+                    this.selectedOuvrages[this.chain.ouvrages[i].position] = ouvrage;
+                }
+                else
+                ouvrage.checked = false;
+            }
+            else
+            ouvrage.checked = false;
             if(ouvrage.type === generalType.Reservoir)
             {
-                ouvrage.checked = false;
                 this.AllOuvrages[2].ouvrages.push(ouvrage)
             }
         })
@@ -103,6 +117,7 @@ export class ChainAddEditComponent implements OnInit, OnDestroy {
     createChainForm(): FormGroup {
 
         let obj = {
+            id: [this.chain.id],
             code: [this.chain.code],
             name: [this.chain.name, Validators.required],
             ouvrages: [this.chain.ouvrages]
@@ -129,10 +144,10 @@ export class ChainAddEditComponent implements OnInit, OnDestroy {
             .then(() => {
 
                 if (chain.id) {
-                    this.router.navigate(['/patrimony/chains/list']);
+                    this.router.navigate(['/patrimony/chain/list']);
                 }
                 else {
-                    this.router.navigate(['/patrimony/chains/list']);
+                    this.router.navigate(['/patrimony/chain/list']);
                 }
             });
     }
@@ -142,6 +157,7 @@ export class ChainAddEditComponent implements OnInit, OnDestroy {
 
         if (type == 'edit') {
             this.chain = new Chain(chain);
+            this.selectedOuvrages = new Array(this.chain.ouvrages.length)
             this.allPermissions = pullAllWith(this.allPermissions, this.chain.ouvrages, isEqual);
         } else {
             this.chain = new Chain();

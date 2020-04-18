@@ -27,7 +27,7 @@ public class OuvrageChain extends Auditing{
     private Ouvrage ouvrage;
 
     @Column(name = "position")
-    private double position;
+    private Integer position;
 
 }
 

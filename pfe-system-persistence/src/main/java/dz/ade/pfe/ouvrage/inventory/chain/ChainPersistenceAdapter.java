@@ -2,18 +2,22 @@ package dz.ade.pfe.ouvrage.inventory.chain;
 
 import dz.ade.pfe.domain.ouvrage.Chain;
 import dz.ade.pfe.domain.ouvrage.OuvrageChain;
+import dz.ade.pfe.port.out.DeleteChainOuvrage.DeleteChainOuvrage;
 import dz.ade.pfe.port.out.createchain.SaveNewChain;
 import dz.ade.pfe.port.out.getchaindetails.LoadChainDetails;
 import dz.ade.pfe.port.out.getchainlist.LoadChainList;
 import dz.ade.pfe.port.out.savechainouvrage.SaveChainOuvrage;
+import dz.ade.pfe.port.out.updatechain.ModifyChain;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
+import serilogj.Log;
 
 import java.util.List;
 
 @Component
 @RequiredArgsConstructor
-public class ChainPersistenceAdapter implements LoadChainList, LoadChainDetails, SaveNewChain, SaveChainOuvrage {
+public class ChainPersistenceAdapter implements LoadChainList, LoadChainDetails, SaveNewChain, SaveChainOuvrage, ModifyChain, DeleteChainOuvrage {
 
     private final ChainRepository chainRepository;
     private final OuvrageChainRepository ouvrageChainRepository;
@@ -36,5 +40,16 @@ public class ChainPersistenceAdapter implements LoadChainList, LoadChainDetails,
     @Override
     public OuvrageChain saveChainOuvrage(OuvrageChain ouvragechain) {
         return ouvrageChainRepository.save(ouvragechain);
+    }
+
+    @Override
+    public Chain modifyChain(Chain chain) {
+        return  chainRepository.save(chain);
+    }
+
+    @Transactional
+    @Override
+    public void deleteChainOuvrage(List<Long> ids) {
+        ouvrageChainRepository.deleteByIdIn(ids);
     }
 }

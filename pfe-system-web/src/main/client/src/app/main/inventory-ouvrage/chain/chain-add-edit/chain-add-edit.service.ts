@@ -62,7 +62,7 @@ export class ChainAddEditService {
 
     save(chain): Promise<any> {
         if (chain.id) return new Promise((resolve, reject) => {
-            this.http.put(CHAIN_API + '/' + chain.id, chain)
+            this.http.put(CHAIN_API + '/' + chain.code, chain)
                 .subscribe((response: any) => {
                     resolve(response);
                 }, reject);

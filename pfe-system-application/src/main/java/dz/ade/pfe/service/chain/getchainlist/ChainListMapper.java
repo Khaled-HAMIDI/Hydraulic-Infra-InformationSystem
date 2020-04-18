@@ -7,11 +7,9 @@ import org.mapstruct.Mappings;
 
 import java.util.List;
 
-@Mapper(componentModel = "spring")
+
 public interface ChainListMapper {
-    @Mappings({
-            @Mapping(source = "code", target = "id")
-    })
+
     ChainListDto chainToChainListDto(Chain chain);
 
     List<ChainListDto> chainToChainListDto(List<Chain> chain);

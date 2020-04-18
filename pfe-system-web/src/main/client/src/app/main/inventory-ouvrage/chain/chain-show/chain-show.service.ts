@@ -43,6 +43,7 @@ export class ChainShowService implements Resolve<any> {
                     resolve(data);
                 },
                 (error) => {
+                    console.log(error);
                     this.router.navigate(['**']);
                     resolve();
                 }

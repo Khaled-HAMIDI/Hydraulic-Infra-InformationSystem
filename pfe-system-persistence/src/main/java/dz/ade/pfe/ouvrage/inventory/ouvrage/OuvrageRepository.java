@@ -10,7 +10,9 @@ import java.util.List;
 import java.util.Set;
 
 public interface OuvrageRepository extends JpaRepository<Ouvrage, Long> {
+
     Ouvrage findByCode(String code);
+
     @Query("SELECT ouvrage FROM Ouvrage ouvrage WHERE ouvrage.code IN :ouvrages")
     List<Ouvrage> loadAllOuvrages(@Param("ouvrages") List<String> ouvrages);
 }

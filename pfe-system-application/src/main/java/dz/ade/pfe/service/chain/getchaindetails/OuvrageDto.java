@@ -4,19 +4,12 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.List;
-
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class ChainDto {
-    private String id;
+public class OuvrageDto {
 
     private String code;
+    private Integer position;
 
-    private String name;
-
-    private Integer ouvragesNumber;
-
-    private List<OuvrageDto> ouvrages;
 }
