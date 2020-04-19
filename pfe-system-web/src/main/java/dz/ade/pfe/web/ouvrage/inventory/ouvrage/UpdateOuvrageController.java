@@ -2,9 +2,8 @@ package dz.ade.pfe.web.ouvrage.inventory.ouvrage;
 
 
 import dz.ade.pfe.domain.ouvrage.Ouvrage;
-import dz.ade.pfe.port.in.updateouvrage.UpdateOuvrageQuery;
-import dz.ade.pfe.service.createouvrage.OuvrageAddDto;
-import dz.ade.pfe.service.updateouvrage.OuvrageUpdateDto;
+import dz.ade.pfe.port.in.ouvrage.updateouvrage.UpdateOuvrageQuery;
+import dz.ade.pfe.service.ouvrage.updateouvrage.OuvrageUpdateDto;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;

@@ -1,9 +1,8 @@
 package dz.ade.pfe.web.ouvrage.inventory.ouvrage;
 
 import dz.ade.pfe.domain.ouvrage.Ouvrage;
-import dz.ade.pfe.port.in.createouvrage.CreateOuvrageQuery;
-import dz.ade.pfe.service.createouvrage.OuvrageAddDto;
-import dz.ade.pfe.service.createouvrage.OuvrageOuvrageDtoMapper;
+import dz.ade.pfe.port.in.ouvrage.createouvrage.CreateOuvrageQuery;
+import dz.ade.pfe.service.ouvrage.createouvrage.OuvrageAddDto;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
@@ -11,8 +10,6 @@ import io.swagger.annotations.ApiResponses;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.*;
-
-import javax.validation.Valid;
 
 
 @RestController

@@ -1,0 +1,130 @@
+<div id="addOuvrage" class="page-layout carded fullwidth inner-scroll">
+
+    <!-- TOP BACKGROUND -->
+    <div class="top-bg accent"></div>
+    <!-- / TOP BACKGROUND -->
+
+    <!-- CENTER -->
+    <div class="center">
+
+        <!-- HEADER -->
+        <div class="header accent" fxLayout="row" fxLayoutAlign="space-between center">
+
+            <!-- APP TITLE -->
+            <div fxLayout="row" fxLayoutAlign="start center">
+
+                <div fxLayout="column" fxLayoutAlign="start start"
+                     [@animate]="{value:'*',params:{delay:'100ms',x:'-25px'}}">
+                    <div class="h2" >
+                        {{'HEADER.title' | translate}}
+                    </div>
+                </div>
+            </div>
+            <!-- / APP TITLE -->
+
+
+        </div>
+        <!-- / HEADER -->
+
+        <!-- CONTENT CARD -->
+        <div class="content-card mat-white-bg">
+
+            <!-- CONTENT -->
+            <div class="content">
+                <div class="tab-content p-24" fusePerfectScrollbar>
+                    <div class="mr-sm-12 ml-sm-12" fxFlex>
+
+                        <mat-vertical-stepper [linear]="false" #stepper>
+
+                            <mat-step >
+                                <ng-template matStepLabel>Sécurité</ng-template>
+                                <app-security></app-security>
+                            </mat-step>
+
+                            <mat-step >
+                                <ng-template matStepLabel>Poste transformation électrique</ng-template>
+                                <app-post-trans-elec></app-post-trans-elec>
+                            </mat-step>
+
+                            <mat-step >
+                                <ng-template matStepLabel>Groupe électrogène </ng-template>
+                                <app-groupe-electrogene></app-groupe-electrogene>
+                            </mat-step>
+
+                            <mat-step >
+                                <ng-template matStepLabel>Groupe électropompe:Partie pompe</ng-template>
+                                <app-groupe-elec-pomp-pomp></app-groupe-elec-pomp-pomp>
+                            </mat-step>
+
+                            <mat-step >
+                                <ng-template matStepLabel>Groupe électropompe:Partie moteur</ng-template>
+                                <app-groupe-elec-pomp-moteur></app-groupe-elec-pomp-moteur>
+                            </mat-step>
+
+                            <mat-step >
+                                <ng-template matStepLabel>Armoire Électrique de commande</ng-template>
+                                <app-armoir-elec-cmd></app-armoir-elec-cmd>
+                            </mat-step>
+
+                            <mat-step >
+                                <ng-template matStepLabel>Anti-bélier</ng-template>
+                                <app-anti-belier></app-anti-belier>
+                            </mat-step>
+
+                            <mat-step >
+                                <ng-template matStepLabel>Soupape de décharge</ng-template>
+                                <app-soupage-decharge></app-soupage-decharge>
+                            </mat-step>
+
+                            <mat-step >
+                                <ng-template matStepLabel>Vanne</ng-template>
+                                <app-vanne-pompage></app-vanne-pompage>
+                            </mat-step>
+
+                            <mat-step >
+                                <ng-template matStepLabel>Clapet anti retour </ng-template>
+                                <app-clapet-anti-retour></app-clapet-anti-retour>
+                            </mat-step>
+
+                            <mat-step >
+                                <ng-template matStepLabel>Ventouse  </ng-template>
+                                <app-venteuse></app-venteuse>
+                            </mat-step>
+
+                            <mat-step >
+                                <ng-template matStepLabel>Joint de démontage  </ng-template>
+                                <app-joint-demantage></app-joint-demantage>
+                            </mat-step>
+
+                            <mat-step >
+                                <ng-template matStepLabel>Compteur/débitmètre</ng-template>
+                                <app-compteur></app-compteur>
+                            </mat-step>
+
+                            <mat-step >
+                                <ng-template matStepLabel>Collecteur d’aspiration </ng-template>
+                                <app-collecteur-aspiration></app-collecteur-aspiration>
+                            </mat-step>
+
+                            <mat-step >
+                                <ng-template matStepLabel>Collecteur de refoulement  </ng-template>
+                                <app-collecteur-reffoullement></app-collecteur-reffoullement>
+                            </mat-step>
+
+                        </mat-vertical-stepper>
+
+                    </div>
+                </div>
+            </div>
+            <!-- / CONTENT -->
+
+        </div>
+        <!-- / CONTENT CARD -->
+
+    </div>
+    <!-- / CENTER -->
+</div>
+
+
+
+

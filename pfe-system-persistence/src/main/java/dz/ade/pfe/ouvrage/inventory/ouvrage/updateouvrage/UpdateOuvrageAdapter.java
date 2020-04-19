@@ -2,9 +2,8 @@ package dz.ade.pfe.ouvrage.inventory.ouvrage.updateouvrage;
 
 import dz.ade.pfe.domain.ouvrage.Ouvrage;
 import dz.ade.pfe.ouvrage.inventory.ouvrage.OuvrageRepository;
-import dz.ade.pfe.port.out.updateouvrage.UpdateSaveOuvrage;
-import dz.ade.pfe.service.createouvrage.OuvrageAddDto;
-import dz.ade.pfe.service.updateouvrage.OuvrageUpdateDto;
+import dz.ade.pfe.port.out.ouvrage.updateouvrage.UpdateSaveOuvrage;
+import dz.ade.pfe.service.ouvrage.updateouvrage.OuvrageUpdateDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 

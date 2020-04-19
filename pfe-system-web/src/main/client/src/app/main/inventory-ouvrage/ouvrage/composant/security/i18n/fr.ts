@@ -1,0 +1,22 @@
+export const locale = {
+    lang: 'fr',
+    data: {
+
+            'BUTTON': {
+                'dis': 'Il n\' y a pas de sécurité',
+                'next':'Sauvgarder le composant'
+            },
+            "FIELD" :{
+                'state': 'Etat de l\'acces',
+                'clotureActive': 'Cloture existante',
+                'clotureInactive': 'Il n\' y a pas de cloture',
+                'telsurveillanceActive': 'Télésurveillance existante',
+                'telsurveillanceInactive': 'Il n\' y a pas de télésurveillance',
+                'guerites': 'Nombre de guérite',
+                'agents': 'Nombre d\'agents de sécurité',
+                'nature': 'Nature',
+                'armementActive':'Armement existant',
+                'armementInactive': 'Il n\' y a pas d\' armement'
+            }
+        },
+};

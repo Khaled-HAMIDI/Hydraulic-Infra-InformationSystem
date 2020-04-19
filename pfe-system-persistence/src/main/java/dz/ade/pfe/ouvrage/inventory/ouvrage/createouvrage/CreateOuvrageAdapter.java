@@ -2,7 +2,7 @@ package dz.ade.pfe.ouvrage.inventory.ouvrage.createouvrage;
 
 import dz.ade.pfe.domain.ouvrage.Ouvrage;
 import dz.ade.pfe.ouvrage.inventory.ouvrage.OuvrageRepository;
-import dz.ade.pfe.port.out.createouvrage.SaveOuvrage;
+import dz.ade.pfe.port.out.ouvrage.createouvrage.SaveOuvrage;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 

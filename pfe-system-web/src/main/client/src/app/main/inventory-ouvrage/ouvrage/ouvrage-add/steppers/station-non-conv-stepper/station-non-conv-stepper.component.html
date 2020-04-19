@@ -1,0 +1,125 @@
+<div id="addOuvrage" class="page-layout carded fullwidth inner-scroll">
+
+    <!-- TOP BACKGROUND -->
+    <div class="top-bg accent"></div>
+    <!-- / TOP BACKGROUND -->
+
+    <!-- CENTER -->
+    <div class="center">
+
+        <!-- HEADER -->
+        <div class="header accent" fxLayout="row" fxLayoutAlign="space-between center">
+
+            <!-- APP TITLE -->
+            <div fxLayout="row" fxLayoutAlign="start center">
+
+                <div fxLayout="column" fxLayoutAlign="start start"
+                     [@animate]="{value:'*',params:{delay:'100ms',x:'-25px'}}">
+                    <div class="h2" >
+                        {{'HEADER.title' | translate}}
+                    </div>
+                </div>
+            </div>
+            <!-- / APP TITLE -->
+
+
+        </div>
+        <!-- / HEADER -->
+
+        <!-- CONTENT CARD -->
+        <div class="content-card mat-white-bg">
+
+            <!-- CONTENT -->
+            <div class="content">
+                <div class="tab-content p-24" fusePerfectScrollbar>
+                    <div class="mr-sm-12 ml-sm-12" fxFlex>
+
+                        <mat-vertical-stepper [linear]="false" #stepper>
+
+                            <mat-step >
+                                <ng-template matStepLabel>Sécurité</ng-template>
+                                <app-security></app-security>
+                            </mat-step>
+
+                            <mat-step >
+                                <ng-template matStepLabel>Prise d'eau brute</ng-template>
+                                <app-reservoir-eau-brute></app-reservoir-eau-brute>
+                            </mat-step>
+
+                            <mat-step >
+                                <ng-template matStepLabel>Equipement de prétraitement</ng-template>
+                                <app-composant-pretraitement></app-composant-pretraitement>
+                            </mat-step>
+
+                            <mat-step >
+                                <ng-template matStepLabel>Bassin de mélange</ng-template>
+                                <app-bassin-melange></app-bassin-melange>
+                            </mat-step>
+
+                            <mat-step >
+                                <ng-template matStepLabel>Filtre</ng-template>
+                                <app-filtre></app-filtre>
+                            </mat-step>
+
+                            <mat-step >
+                                <ng-template matStepLabel>Réservoir d'eau traité </ng-template>
+                                <app-reservoir-eau-traite></app-reservoir-eau-traite>
+                            </mat-step>
+
+                            <mat-step >
+                                <ng-template matStepLabel>Kit de membrane</ng-template>
+                                <app-kit-membrane></app-kit-membrane>
+                            </mat-step>
+
+                            <mat-step >
+                                <ng-template matStepLabel>Station PHP</ng-template>
+                                <app-station-php></app-station-php>
+                            </mat-step>
+
+                            <mat-step >
+                                <ng-template matStepLabel>Local de stockage des produits chimiques</ng-template>
+                                <app-local-stockage-chimique></app-local-stockage-chimique>
+                            </mat-step>
+
+                            <mat-step >
+                                <ng-template matStepLabel>Poste de préparation et d’injection </ng-template>
+                                <app-post-prep-injection></app-post-prep-injection>
+                            </mat-step>
+
+                            <mat-step >
+                                <ng-template matStepLabel>Poste de recyclage de boues </ng-template>
+                                <app-post-recyclage-boues></app-post-recyclage-boues>
+                            </mat-step>
+
+                            <mat-step >
+                                <ng-template matStepLabel>Poste de recyclage des eaux de lavage  </ng-template>
+                                <app-post-recyclage-eau-lavavge></app-post-recyclage-eau-lavavge>
+                            </mat-step>
+
+                            <mat-step >
+                                <ng-template matStepLabel>Bâtiment électrique </ng-template>
+                                <app-batiment-electrique></app-batiment-electrique>
+                            </mat-step>
+
+                            <mat-step >
+                                <ng-template matStepLabel>Groupe électrogène </ng-template>
+                                <app-groupe-electrogene></app-groupe-electrogene>
+                            </mat-step>
+
+                        </mat-vertical-stepper>
+
+                    </div>
+                </div>
+            </div>
+            <!-- / CONTENT -->
+
+        </div>
+        <!-- / CONTENT CARD -->
+
+    </div>
+    <!-- / CENTER -->
+</div>
+
+
+
+

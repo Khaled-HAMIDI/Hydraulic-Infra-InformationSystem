@@ -2,7 +2,7 @@ package dz.ade.pfe.service.chain.getchainlist;
 
 import dz.ade.pfe.domain.ouvrage.Chain;
 import dz.ade.pfe.port.in.chain.getchainlist.GetChainListQuery;
-import dz.ade.pfe.port.out.getchainlist.LoadChainList;
+import dz.ade.pfe.port.out.chain.getchainlist.LoadChainList;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

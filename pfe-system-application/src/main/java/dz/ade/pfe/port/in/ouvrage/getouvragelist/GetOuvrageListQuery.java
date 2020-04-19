@@ -1,0 +1,10 @@
+package dz.ade.pfe.port.in.ouvrage.getouvragelist;
+
+
+import dz.ade.pfe.service.ouvrage.getouvragelist.OuvrageListDto;
+
+import java.util.List;
+
+public interface GetOuvrageListQuery {
+    List<OuvrageListDto> getOuvrageList();
+}
