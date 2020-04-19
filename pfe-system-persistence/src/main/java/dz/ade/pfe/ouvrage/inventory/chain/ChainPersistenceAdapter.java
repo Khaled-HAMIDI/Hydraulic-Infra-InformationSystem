@@ -4,6 +4,7 @@ import dz.ade.pfe.domain.ouvrage.Chain;
 import dz.ade.pfe.domain.ouvrage.OuvrageChain;
 import dz.ade.pfe.port.out.DeleteChainOuvrage.DeleteChainOuvrage;
 import dz.ade.pfe.port.out.createchain.SaveNewChain;
+import dz.ade.pfe.port.out.getchainbycode.LoadChainByCode;
 import dz.ade.pfe.port.out.getchaindetails.LoadChainDetails;
 import dz.ade.pfe.port.out.getchainlist.LoadChainList;
 import dz.ade.pfe.port.out.savechainouvrage.SaveChainOuvrage;
@@ -14,10 +15,11 @@ import org.springframework.transaction.annotation.Transactional;
 import serilogj.Log;
 
 import java.util.List;
+import java.util.Optional;
 
 @Component
 @RequiredArgsConstructor
-public class ChainPersistenceAdapter implements LoadChainList, LoadChainDetails, SaveNewChain, SaveChainOuvrage, ModifyChain, DeleteChainOuvrage {
+public class ChainPersistenceAdapter implements LoadChainList, LoadChainDetails, SaveNewChain, SaveChainOuvrage, ModifyChain, DeleteChainOuvrage, LoadChainByCode {
 
     private final ChainRepository chainRepository;
     private final OuvrageChainRepository ouvrageChainRepository;
@@ -28,7 +30,7 @@ public class ChainPersistenceAdapter implements LoadChainList, LoadChainDetails,
     }
 
     @Override
-    public Chain loadChainDetails(String code) {
+    public Optional<Chain> loadChainDetails(String code) {
         return chainRepository.findByCode(code);
     }
 
@@ -51,5 +53,10 @@ public class ChainPersistenceAdapter implements LoadChainList, LoadChainDetails,
     @Override
     public void deleteChainOuvrage(List<Long> ids) {
         ouvrageChainRepository.deleteByIdIn(ids);
+    }
+
+    @Override
+    public Optional<Chain> getChainByCode(String code) {
+        return chainRepository.findByCode(code);
     }
 }

@@ -1,5 +1,6 @@
 package dz.ade.pfe.service.chain.updatechain;
 
+import dz.ade.pfe.domain.exceptions.ResourceNotFoundException;
 import dz.ade.pfe.domain.ouvrage.Chain;
 import dz.ade.pfe.domain.ouvrage.Ouvrage;
 import dz.ade.pfe.domain.ouvrage.OuvrageChain;
@@ -13,11 +14,13 @@ import dz.ade.pfe.service.chain.getchaindetails.ChainDetailsMapper;
 import dz.ade.pfe.service.chain.getchaindetails.ChainDto;
 import dz.ade.pfe.service.chain.getchainlist.ChainListDto;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import serilogj.Log;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -32,7 +35,11 @@ public class UpdateChainService implements UpdateChainQuery {
 
     @Override
     public ChainDto updateChain(UpdateChainDto chain) {
-        Chain chain1 = loadChainDetails.loadChainDetails(chain.getCode());
+        Optional<Chain> ch = loadChainDetails.loadChainDetails(chain.getCode());
+        if (!ch.isPresent()) {
+            throw new ResourceNotFoundException(String.format("No chain found with code '%s'.", chain.getCode()));
+        }
+        Chain chain1 = ch.get();
         List<Long> ids = chain1.getOuvrages().stream()
                  .map(OuvrageChain::getId)
                 .collect(Collectors.toList());

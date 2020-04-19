@@ -7,12 +7,9 @@ import dz.ade.pfe.port.in.chain.createchain.CreateChainQuery;
 import dz.ade.pfe.port.out.createchain.SaveNewChain;
 import dz.ade.pfe.port.out.getouvragesbycodes.LoadOuvragesByCodes;
 import dz.ade.pfe.port.out.savechainouvrage.SaveChainOuvrage;
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import serilogj.Log;
 
 import java.util.List;
 
