@@ -5,6 +5,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 import { FuseTranslationLoaderService } from '@fuse/services/translation-loader.service';
 import { locale as french } from '../i18n/fr';
 import { locale as arabic } from '../i18n/ar';
+import {ComposantService} from "../../composant.service";
 
 @Component({
   selector: 'app-echelle',
@@ -17,6 +18,7 @@ export class EchelleComponent implements OnInit{
     equipementHydroMecaForm: FormGroup;
 
     constructor(
+        private composantService : ComposantService,
         private formBuilder: FormBuilder,
         private router :Router,
         private route: ActivatedRoute,
@@ -37,6 +39,8 @@ export class EchelleComponent implements OnInit{
 
     createForm(): FormGroup {
         let obj = {
+            typeComposant:['ComposantHydroMecanique'],
+            equipementType:['Echellle'],
             dn: ['',Validators.required],
             pn:['',Validators.required],
             state:['',Validators.required],
@@ -52,6 +56,19 @@ export class EchelleComponent implements OnInit{
 
     initForm(){
         this.equipementHydroMecaForm = this.createForm();
+    }
+
+    onSave(): void {
+
+        const equipementHydroMeca = this.equipementHydroMecaForm.getRawValue();
+
+        this.composantService.saveHydroMeca(equipementHydroMeca)
+            .then((response) => {
+                    console.log("It worked");
+                },
+                (error) => {
+                    console.log("No")
+                });
     }
 
 

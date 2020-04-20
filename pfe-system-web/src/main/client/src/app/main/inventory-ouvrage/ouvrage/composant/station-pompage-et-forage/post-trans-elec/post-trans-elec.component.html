@@ -119,7 +119,7 @@
         </div>
         <hr>
         <div>
-            <button mat-raised-button class=" mat-white-bg" matStepperNext [disabled]="postTransElecForm.invalid">
+            <button mat-raised-button class=" mat-white-bg" matStepperNext [disabled]="postTransElecForm.invalid" (click)="onSave()">
                 <span>{{'BUTTON.next' | translate}}</span>
             </button>
         </div>

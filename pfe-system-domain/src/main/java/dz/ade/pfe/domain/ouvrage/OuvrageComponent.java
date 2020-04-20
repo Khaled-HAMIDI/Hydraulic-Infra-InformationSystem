@@ -19,24 +19,8 @@ public class OuvrageComponent extends Auditing{
     protected Long id;
 
 
-    @Column(name = "capacity")
-    private double capacity;
+    @Column(name = "type_composant")
+    private String typeComposant;
 
-    @Column(name = "type")
-    private String type;
 
-    @Column(name = "form")
-    @Enumerated(EnumType.STRING)
-    private EnumForm form;
-
-    /* Normalement on laisse soit type soit nature*/
-    @Column(name = "nature")
-    private String nature;
-
-    @Column(name = "state")
-    @Enumerated(EnumType.STRING)
-    private EnumEtat state;
-
-    @Column(name = "enabled")
-    private boolean enabled;
 }

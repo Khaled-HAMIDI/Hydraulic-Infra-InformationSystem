@@ -21,20 +21,11 @@ public class ElectroGroupPump  extends Auditing{
     @SequenceGenerator(name = "groupe_electro_pompe_gen", sequenceName = "groupe_electro_pompe_seq", schema = "pfe", allocationSize = 1)
     protected Long id;
 
-    @Column(name = "gepi")
-    private double gepi;
-
     @Column(name = "brand")
     private String brand;
 
-    @Column(name = "power")
-    private double power;
-
     @Column(name = "hmt")
     private double hmt;
-
-    @Column(name = "debit")
-    private double debit;
 
     @Column(name = "state")
     @Enumerated(EnumType.STRING)
@@ -42,4 +33,22 @@ public class ElectroGroupPump  extends Auditing{
 
     @Column(name = "date")
     private LocalDate date;
+
+    @Column(name = "npsh")
+    private double npsh;
+
+    @Column(name = "rotation_speed")
+    private double rotationSpeed;
+
+    @Column(name = "debit")
+    private double debit;
+
+    @Column(name = "functionning_number")
+    private double functionningNumber;
+
+    @Column(name = "secours_number")
+    private double secoursNumber;
+
+    @Column(name = "genre")
+    private String genre;
 }

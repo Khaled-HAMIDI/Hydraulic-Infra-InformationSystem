@@ -86,7 +86,7 @@
 
         <hr>
         <div>
-            <button mat-raised-button class=" mat-white-bg" matStepperNext [disabled]="filterForm.invalid">
+            <button mat-raised-button class=" mat-white-bg" matStepperNext [disabled]="filterForm.invalid" (click)="onSave()">
                 <span>{{'BUTTON.next' | translate}}</span>
             </button>
         </div>

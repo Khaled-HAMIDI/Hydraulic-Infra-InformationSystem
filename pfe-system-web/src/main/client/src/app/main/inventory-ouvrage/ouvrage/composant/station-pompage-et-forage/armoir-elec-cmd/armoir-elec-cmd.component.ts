@@ -5,6 +5,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 import { FuseTranslationLoaderService } from '@fuse/services/translation-loader.service';
 import { locale as french } from '../i18n/fr';
 import { locale as arabic } from '../i18n/ar';
+import {ComposantService} from "../../composant.service";
 
 @Component({
   selector: 'app-armoir-elec-cmd',
@@ -17,6 +18,7 @@ export class ArmoirElecCmdComponent implements OnInit{
     armoirElecForm: FormGroup;
 
     constructor(
+        private composantService : ComposantService,
         private formBuilder: FormBuilder,
         private router :Router,
         private route: ActivatedRoute,
@@ -37,6 +39,7 @@ export class ArmoirElecCmdComponent implements OnInit{
 
     createForm(): FormGroup {
         let obj = {
+            typeComposant:['ArmoireElectrique'],
             puissance:['',Validators.required],
             number: ['',Validators.required],
             state:['',Validators.required],
@@ -50,6 +53,19 @@ export class ArmoirElecCmdComponent implements OnInit{
 
     initForm(){
         this.armoirElecForm = this.createForm();
+    }
+
+    onSave(): void {
+
+        const armoire = this.armoirElecForm.getRawValue();
+
+        this.composantService.saveArmoire(armoire)
+            .then((response) => {
+                    console.log("It worked");
+                },
+                (error) => {
+                    console.log("No")
+                });
     }
 
 

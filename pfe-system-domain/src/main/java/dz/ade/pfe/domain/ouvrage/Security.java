@@ -38,6 +38,7 @@ public class Security extends Auditing{
     private boolean remoteMonitoring;
 
     @Column(name = "access")
-    private String access;
+    @Enumerated(EnumType.STRING)
+    private EnumEtat access;
 
 }

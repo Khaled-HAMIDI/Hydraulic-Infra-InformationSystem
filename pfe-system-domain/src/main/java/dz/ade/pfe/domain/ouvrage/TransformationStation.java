@@ -24,9 +24,6 @@ public class TransformationStation extends Auditing{
     @Column(name = "power")
     private double power;
 
-    @Column(name = "location")
-    private String location;
-
     @Column(name = "up_us")
     private double up_us;
 

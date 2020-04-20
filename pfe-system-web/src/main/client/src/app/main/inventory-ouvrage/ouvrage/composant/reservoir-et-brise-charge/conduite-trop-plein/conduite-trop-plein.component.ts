@@ -5,18 +5,20 @@ import {ActivatedRoute, Router} from '@angular/router';
 import { FuseTranslationLoaderService } from '@fuse/services/translation-loader.service';
 import { locale as french } from '../i18n/fr';
 import { locale as arabic } from '../i18n/ar';
+import {ComposantService} from "../../composant.service";
 
 @Component({
-  selector: 'app-vanne-arrivee',
-  templateUrl: './vanne-arrivee.component.html',
-  styleUrls: ['./vanne-arrivee.component.scss'],
+  selector: 'app-conduite-trop-plein',
+  templateUrl: './conduite-trop-plein.component.html',
+  styleUrls: ['./conduite-trop-plein.component.scss'],
     animations: fuseAnimations
 })
-export class VanneArriveeComponent implements OnInit{
+export class ConduiteTropPleinComponent implements OnInit{
 
-    vanneArriveForm: FormGroup;
+    equipementHydroMecaForm: FormGroup;
 
     constructor(
+        private composantService : ComposantService,
         private formBuilder: FormBuilder,
         private router :Router,
         private route: ActivatedRoute,
@@ -37,14 +39,15 @@ export class VanneArriveeComponent implements OnInit{
 
     createForm(): FormGroup {
         let obj = {
-            typeVanne:['',Validators.required],
+            typeComposant:['ComposantHydroMecanique'],
+            equipementType:['ConduiteTropPlein'],
             dn: ['',Validators.required],
             pn:['',Validators.required],
             state:['',Validators.required],
             materiaux:['',Validators.required],
             lieuImplantation:['',Validators.required],
             type:['',Validators.required],
-            number:['',Validators.required],
+            number:['',Validators.required]
         };
 
         return this.formBuilder.group(obj);
@@ -52,7 +55,20 @@ export class VanneArriveeComponent implements OnInit{
     }
 
     initForm(){
-        this.vanneArriveForm = this.createForm();
+        this.equipementHydroMecaForm = this.createForm();
+    }
+
+    onSave(): void {
+
+        const equipementHydroMeca = this.equipementHydroMecaForm.getRawValue();
+
+        this.composantService.saveHydroMeca(equipementHydroMeca)
+            .then((response) => {
+                    console.log("It worked");
+                },
+                (error) => {
+                    console.log("No")
+                });
     }
 
 

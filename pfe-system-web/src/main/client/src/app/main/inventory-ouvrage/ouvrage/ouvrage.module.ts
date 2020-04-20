@@ -68,7 +68,7 @@ import { GroupeElecPompPompComponent } from './composant/station-pompage-et-fora
 import { GroupeElecPompMoteurComponent } from './composant/station-pompage-et-forage/groupe-elec-pomp-moteur/groupe-elec-pomp-moteur.component';
 import { ArmoirElecCmdComponent } from './composant/station-pompage-et-forage/armoir-elec-cmd/armoir-elec-cmd.component';
 import { AntiBelierComponent } from './composant/station-pompage-et-forage/anti-belier/anti-belier.component';
-import { SoupageDechargeComponent } from './composant/station-pompage-et-forage/soupage-decharge/soupage-decharge.component';
+import { SoupageDechargeComponent } from './composant/station-pompage-et-forage/soupape-decharge/soupage-decharge.component';
 import { VannePompageComponent } from './composant/station-pompage-et-forage/vanne-pompage/vanne-pompage.component';
 import { ClapetAntiRetourComponent } from './composant/station-pompage-et-forage/clapet-anti-retour/clapet-anti-retour.component';
 import { VenteuseComponent } from './composant/station-pompage-et-forage/venteuse/venteuse.component';
@@ -76,13 +76,13 @@ import { JointDemantageComponent } from './composant/station-pompage-et-forage/j
 import { CompteurComponent } from './composant/station-pompage-et-forage/compteur/compteur.component';
 import { CollecteurAspirationComponent } from './composant/station-pompage-et-forage/collecteur-aspiration/collecteur-aspiration.component';
 import { CollecteurReffoullementComponent } from './composant/station-pompage-et-forage/collecteur-reffoullement/collecteur-reffoullement.component';
-import { VanneArriveeComponent } from './composant/reservoir/vanne-arrivee/vanne-arrivee.component';
-import { VanneSortieComponent } from './composant/reservoir/vanne-sortie/vanne-sortie.component';
-import { FlotteurComponent } from './composant/reservoir/flotteur/flotteur.component';
-import { EchelleComponent } from './composant/reservoir/echelle/echelle.component';
-import { ConduiteTropPleinComponent } from './composant/reservoir/conduite-trop-plein/conduite-trop-plein.component';
-import { ConduiteVidangeComponent } from './composant/reservoir/conduite-vidange/conduite-vidange.component';
-import { PosteChlorationComponent } from './composant/reservoir/poste-chloration/poste-chloration.component';
+import { VanneArriveeComponent } from './composant/reservoir-et-brise-charge/vanne-arrivee/vanne-arrivee.component';
+import { VanneSortieComponent } from './composant/reservoir-et-brise-charge/vanne-sortie/vanne-sortie.component';
+import { FlotteurComponent } from './composant/reservoir-et-brise-charge/flotteur/flotteur.component';
+import { EchelleComponent } from './composant/reservoir-et-brise-charge/echelle/echelle.component';
+import { ConduiteTropPleinComponent } from './composant/reservoir-et-brise-charge/conduite-trop-plein/conduite-trop-plein.component';
+import { ConduiteVidangeComponent } from './composant/reservoir-et-brise-charge/conduite-vidange/conduite-vidange.component';
+import { PosteChlorationComponent } from './composant/reservoir-et-brise-charge/poste-chloration/poste-chloration.component';
 import { ColonnesMontantesComponent } from './composant/station-pompage-et-forage/colonnes-montantes/colonnes-montantes.component';
 
 export const options: Partial<IConfig> | (() => Partial<IConfig>) = null;

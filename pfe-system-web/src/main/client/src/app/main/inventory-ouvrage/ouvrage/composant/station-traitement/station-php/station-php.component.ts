@@ -5,6 +5,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 import { FuseTranslationLoaderService } from '@fuse/services/translation-loader.service';
 import { locale as french } from '../i18n/fr';
 import { locale as arabic } from '../i18n/ar';
+import {ComposantService} from "../../composant.service";
 
 
 @Component({
@@ -18,6 +19,7 @@ export class StationPhpComponent implements OnInit{
     stationPhpForm: FormGroup;
 
     constructor(
+        private composantService : ComposantService,
         private formBuilder: FormBuilder,
         private router :Router,
         private route: ActivatedRoute,
@@ -38,6 +40,7 @@ export class StationPhpComponent implements OnInit{
 
     createForm(): FormGroup {
         let obj = {
+            typeComposant:['StationPHP'],
             puissance: ['',Validators.required],
             hmt: ['',Validators.required],
             nombre:['',Validators.required],
@@ -50,6 +53,19 @@ export class StationPhpComponent implements OnInit{
 
     initForm(){
         this.stationPhpForm = this.createForm();
+    }
+
+    onSave(): void {
+
+        const stationPhp = this.stationPhpForm.getRawValue();
+
+        this.composantService.saveStationPhp(stationPhp)
+            .then((response) => {
+                    console.log("It worked");
+                },
+                (error) => {
+                    console.log("No")
+                });
     }
 
 

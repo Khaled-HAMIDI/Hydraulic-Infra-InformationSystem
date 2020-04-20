@@ -40,4 +40,23 @@ public class ElectroGroupMotor extends Auditing{
 
     @Column(name = "date")
     private LocalDate date;
+
+    @Column(name = "functionning_number")
+    private double functionningNumber;
+
+    @Column(name = "secours_number")
+    private double secoursNumber;
+
+    @Column(name = "alimentation_tension")
+    private double alimentationTension;
+
+    @Column(name = "nominale_intensite")
+    private double nominaleIntensite;
+
+    @Column(name = "speed")
+    private double speed;
+
+
+
+
 }

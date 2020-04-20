@@ -5,6 +5,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 import { FuseTranslationLoaderService } from '@fuse/services/translation-loader.service';
 import { locale as french } from '../i18n/fr';
 import { locale as arabic } from '../i18n/ar';
+import {ComposantService} from "../../composant.service";
 
 @Component({
   selector: 'app-groupe-electrogene',
@@ -17,6 +18,7 @@ export class GroupeElectrogeneComponent implements OnInit{
     groupeElectrogeneForm: FormGroup;
 
     constructor(
+        private composantService : ComposantService,
         private formBuilder: FormBuilder,
         private router :Router,
         private route: ActivatedRoute,
@@ -37,6 +39,7 @@ export class GroupeElectrogeneComponent implements OnInit{
 
     createForm(): FormGroup {
         let obj = {
+            typeComposant:['GroupeElectrogene'],
             puissance: ['',Validators.required],
             cuve: ['',Validators.required],
             number:['',Validators.required],
@@ -49,6 +52,19 @@ export class GroupeElectrogeneComponent implements OnInit{
 
     initForm(){
         this.groupeElectrogeneForm = this.createForm();
+    }
+
+    onSave(): void {
+
+        const groupe = this.groupeElectrogeneForm.getRawValue();
+
+        this.composantService.saveGroupeElectrogene(groupe)
+            .then((response) => {
+                    console.log("It worked");
+                },
+                (error) => {
+                    console.log("No")
+                });
     }
 
 

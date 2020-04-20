@@ -5,6 +5,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 import { FuseTranslationLoaderService } from '@fuse/services/translation-loader.service';
 import { locale as french } from './i18n/fr';
 import { locale as arabic } from './i18n/ar';
+import {ComposantService} from "../composant.service";
 
 @Component({
   selector: 'app-security',
@@ -17,6 +18,7 @@ export class SecurityComponent implements OnInit{
     securityForm: FormGroup;
 
     constructor(
+        private composantService : ComposantService,
         private formBuilder: FormBuilder,
         private router :Router,
         private route: ActivatedRoute,
@@ -37,8 +39,9 @@ export class SecurityComponent implements OnInit{
 
     createForm(): FormGroup {
         let obj = {
+            typeComposant:['Security'],
             state: ['',Validators.required],
-            cloture: [true,Validators.required],
+            closing: [true,Validators.required],
             telsurveillance:[true,Validators.required],
             guerites: ['',Validators.required],
             agents: ['' ,Validators.required],
@@ -54,5 +57,18 @@ export class SecurityComponent implements OnInit{
         this.securityForm = this.createForm();
     }
 
+    onSave(): void {
+
+        const security = this.securityForm.getRawValue();
+        console.log(security);
+
+        this.composantService.saveSecurity(security)
+            .then((response) => {
+                    console.log("It worked");
+                },
+                (error) => {
+                    console.log("No")
+                });
+    }
 
 }

@@ -5,6 +5,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 import { FuseTranslationLoaderService } from '@fuse/services/translation-loader.service';
 import { locale as french } from '../i18n/fr';
 import { locale as arabic } from '../i18n/ar';
+import {ComposantService} from "../../composant.service";
 
 
 @Component({
@@ -18,6 +19,7 @@ export class BassinMelangeComponent implements OnInit{
     BassinMealngeForm: FormGroup;
 
     constructor(
+        private composantService : ComposantService,
         private formBuilder: FormBuilder,
         private router :Router,
         private route: ActivatedRoute,
@@ -38,6 +40,8 @@ export class BassinMelangeComponent implements OnInit{
 
     createForm(): FormGroup {
         let obj = {
+            typeComposant:['EquipementStationTraitement'],
+            typeEquipement:['BassinMelange'],
             state: ['',Validators.required],
             type: ['',Validators.required],
             form:['',Validators.required],
@@ -54,6 +58,20 @@ export class BassinMelangeComponent implements OnInit{
     initForm(){
         this.BassinMealngeForm = this.createForm();
     }
+
+    onSave(): void {
+
+        const equipement = this.BassinMealngeForm.getRawValue();
+
+        this.composantService.saveEquipementStationTraitement(equipement)
+            .then((response) => {
+                    console.log("It worked");
+                },
+                (error) => {
+                    console.log("No")
+                });
+    }
+
 
 
 }

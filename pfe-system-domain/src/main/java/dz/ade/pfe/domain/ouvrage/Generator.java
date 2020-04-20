@@ -22,11 +22,13 @@ public class Generator extends Auditing{
     private double storageTank;
 
     @Column(name = "nature")
-    @Enumerated(EnumType.STRING)
-    private EnumTypeGeneral nature;
+    private String nature;
 
     @Column(name = "power")
     private double power;
+
+    @Column(name = "number")
+    private double number;
 
 
 }

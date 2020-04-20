@@ -5,18 +5,20 @@ import {ActivatedRoute, Router} from '@angular/router';
 import { FuseTranslationLoaderService } from '@fuse/services/translation-loader.service';
 import { locale as french } from '../i18n/fr';
 import { locale as arabic } from '../i18n/ar';
+import {ComposantService} from "../../composant.service";
 
 @Component({
-  selector: 'app-conduite-trop-plein',
-  templateUrl: './conduite-trop-plein.component.html',
-  styleUrls: ['./conduite-trop-plein.component.scss'],
+  selector: 'app-vanne-arrivee',
+  templateUrl: './vanne-arrivee.component.html',
+  styleUrls: ['./vanne-arrivee.component.scss'],
     animations: fuseAnimations
 })
-export class ConduiteTropPleinComponent implements OnInit{
+export class VanneArriveeComponent implements OnInit{
 
-    equipementHydroMecaForm: FormGroup;
+    vanneArriveForm: FormGroup;
 
     constructor(
+        private composantService : ComposantService,
         private formBuilder: FormBuilder,
         private router :Router,
         private route: ActivatedRoute,
@@ -37,13 +39,15 @@ export class ConduiteTropPleinComponent implements OnInit{
 
     createForm(): FormGroup {
         let obj = {
+            typeComposant:['ComposantHydroMecanique'],
+            equipementType:['VanneArrivee'],
             dn: ['',Validators.required],
             pn:['',Validators.required],
             state:['',Validators.required],
             materiaux:['',Validators.required],
             lieuImplantation:['',Validators.required],
             type:['',Validators.required],
-            number:['',Validators.required]
+            number:['',Validators.required],
         };
 
         return this.formBuilder.group(obj);
@@ -51,7 +55,20 @@ export class ConduiteTropPleinComponent implements OnInit{
     }
 
     initForm(){
-        this.equipementHydroMecaForm = this.createForm();
+        this.vanneArriveForm = this.createForm();
+    }
+
+    onSave(): void {
+
+        const equipementHydroMeca = this.vanneArriveForm.getRawValue();
+
+        this.composantService.saveHydroMeca(equipementHydroMeca)
+            .then((response) => {
+                    console.log("It worked");
+                },
+                (error) => {
+                    console.log("No")
+                });
     }
 
 

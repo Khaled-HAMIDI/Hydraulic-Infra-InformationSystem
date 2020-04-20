@@ -5,6 +5,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 import { FuseTranslationLoaderService } from '@fuse/services/translation-loader.service';
 import { locale as french } from '../i18n/fr';
 import { locale as arabic } from '../i18n/ar';
+import {ComposantService} from "../../composant.service";
 
 @Component({
   selector: 'app-anti-belier',
@@ -17,6 +18,7 @@ export class AntiBelierComponent implements OnInit{
     antiBelierForm: FormGroup;
 
     constructor(
+        private composantService : ComposantService,
         private formBuilder: FormBuilder,
         private router :Router,
         private route: ActivatedRoute,
@@ -37,6 +39,7 @@ export class AntiBelierComponent implements OnInit{
 
     createForm(): FormGroup {
         let obj = {
+            typeComposant:['AntiBelier'],
             marque:['',Validators.required],
             type: ['',Validators.required],
             capacity:['',Validators.required],
@@ -52,6 +55,19 @@ export class AntiBelierComponent implements OnInit{
 
     initForm(){
         this.antiBelierForm = this.createForm();
+    }
+
+    onSave(): void {
+
+        const antiBelier = this.antiBelierForm.getRawValue();
+
+        this.composantService.saveAntiBelier(antiBelier)
+            .then((response) => {
+                    console.log("It worked");
+                },
+                (error) => {
+                    console.log("No")
+                });
     }
 
 

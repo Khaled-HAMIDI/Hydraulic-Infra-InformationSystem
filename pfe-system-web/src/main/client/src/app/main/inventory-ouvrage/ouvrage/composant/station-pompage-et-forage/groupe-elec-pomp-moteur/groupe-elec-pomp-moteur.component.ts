@@ -5,6 +5,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 import { FuseTranslationLoaderService } from '@fuse/services/translation-loader.service';
 import { locale as french } from '../i18n/fr';
 import { locale as arabic } from '../i18n/ar';
+import {ComposantService} from "../../composant.service";
 
 @Component({
   selector: 'app-groupe-elec-pomp-moteur',
@@ -17,6 +18,7 @@ export class GroupeElecPompMoteurComponent implements OnInit{
     grouprElecPMForm: FormGroup;
 
     constructor(
+        private composantService : ComposantService,
         private formBuilder: FormBuilder,
         private router :Router,
         private route: ActivatedRoute,
@@ -37,6 +39,7 @@ export class GroupeElecPompMoteurComponent implements OnInit{
 
     createForm(): FormGroup {
         let obj = {
+            typeComposant:['GroupeElecPompe-Moteur'],
             nbService: ['',Validators.required],
             nbSecours: ['',Validators.required],
             puissance:['',Validators.required],
@@ -57,6 +60,21 @@ export class GroupeElecPompMoteurComponent implements OnInit{
     initForm(){
         this.grouprElecPMForm = this.createForm();
     }
+
+    onSave(): void {
+
+        const moteur = this.grouprElecPMForm.getRawValue();
+
+        this.composantService.saveMoteur(moteur)
+            .then((response) => {
+                    console.log("It worked");
+                },
+                (error) => {
+                    console.log("No")
+                });
+    }
+
+
 
 
 }

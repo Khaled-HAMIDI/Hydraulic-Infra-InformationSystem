@@ -5,6 +5,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 import { FuseTranslationLoaderService } from '@fuse/services/translation-loader.service';
 import { locale as french } from '../i18n/fr';
 import { locale as arabic } from '../i18n/ar';
+import {ComposantService} from "../../composant.service";
 
 @Component({
   selector: 'app-post-prep-injection',
@@ -17,6 +18,7 @@ export class PostPrepInjectionComponent implements OnInit{
     postPrepInjectForm: FormGroup;
 
     constructor(
+        private composantService : ComposantService,
         private formBuilder: FormBuilder,
         private router :Router,
         private route: ActivatedRoute,
@@ -37,11 +39,15 @@ export class PostPrepInjectionComponent implements OnInit{
 
     createForm(): FormGroup {
         let obj = {
+            typeComposant: ['PosteChimique'],
+            postType: ['PreparationInjection'],
+            lieuImplantation:[''],
             type: ['',Validators.required],
             form:['',Validators.required],
             dimension: ['',Validators.required],
             number:['',Validators.required],
             dosagePompe:['',Validators.required],
+            modePompe:['',Validators.required],
             statePompe: ['',Validators.required],
             typePompe:['',Validators.required],
             debitPompe: ['',Validators.required],
@@ -58,6 +64,19 @@ export class PostPrepInjectionComponent implements OnInit{
 
     initForm(){
         this.postPrepInjectForm = this.createForm();
+    }
+
+    onSave(): void {
+
+        const post = this.postPrepInjectForm.getRawValue();
+
+        this.composantService.savePostChimique(post)
+            .then((response) => {
+                    console.log("It worked");
+                },
+                (error) => {
+                    console.log("No")
+                });
     }
 
 

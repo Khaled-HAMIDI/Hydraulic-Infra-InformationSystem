@@ -19,8 +19,12 @@ public class WaterIntake extends Auditing{
     protected Long id;
 
     @Column(name = "type")
-    private String type;
+    @Enumerated(EnumType.STRING)
+    private EnumTypePriseEau type;
 
     @Column(name = "dimension")
     private String dimension;
+
+    @Column(name = "nature")
+    private String nature;
 }

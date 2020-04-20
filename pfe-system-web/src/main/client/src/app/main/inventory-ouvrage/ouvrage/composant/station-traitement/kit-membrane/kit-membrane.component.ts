@@ -5,6 +5,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 import { FuseTranslationLoaderService } from '@fuse/services/translation-loader.service';
 import { locale as french } from '../i18n/fr';
 import { locale as arabic } from '../i18n/ar';
+import {ComposantService} from "../../composant.service";
 
 
 @Component({
@@ -18,6 +19,7 @@ export class KitMembraneComponent implements OnInit{
     kitMembraneForm: FormGroup;
 
     constructor(
+        private composantService : ComposantService,
         private formBuilder: FormBuilder,
         private router :Router,
         private route: ActivatedRoute,
@@ -38,6 +40,7 @@ export class KitMembraneComponent implements OnInit{
 
     createForm(): FormGroup {
         let obj = {
+            typeComposant:['KitMembrane'],
             nombre: ['',Validators.required],
             caracteristique: ['',Validators.required]
         };
@@ -48,6 +51,19 @@ export class KitMembraneComponent implements OnInit{
 
     initForm(){
         this.kitMembraneForm = this.createForm();
+    }
+
+    onSave(): void {
+
+        const kit = this.kitMembraneForm.getRawValue();
+
+        this.composantService.saveKitMembrane(kit)
+            .then((response) => {
+                    console.log("It worked");
+                },
+                (error) => {
+                    console.log("No")
+                });
     }
 
 

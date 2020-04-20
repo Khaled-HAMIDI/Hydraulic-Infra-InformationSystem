@@ -16,11 +16,21 @@
                 <fieldset class="myfieldset">
 
                     <mat-form-field appearance="outline" class="w-100-p">
-                        <mat-label>{{'FIELD.typeVanne' | translate}}</mat-label>
-                        <mat-select formControlName="typeVanne" required>
+                        <mat-label>{{'FIELD.type' | translate}}</mat-label>
+                        <mat-select formControlName="type" required>
                             <mat-option value="AOpercule">A opercule</mat-option>
                             <mat-option value="Papillon">Papillon</mat-option>
                             <mat-option value="Altimetrique">Altimétrique</mat-option>
+                        </mat-select>
+                        <mat-icon matSuffix class="secondary-text">keyboard</mat-icon>
+                    </mat-form-field>
+
+                    <mat-form-field appearance="outline" class="w-100-p">
+                        <mat-label>{{'FIELD.state' | translate}}</mat-label>
+                        <mat-select formControlName="state" required>
+                            <mat-option value="Bon">Bon</mat-option>
+                            <mat-option value="Moyen">Moyen</mat-option>
+                            <mat-option value="Mauvais">Mauvais</mat-option>
                         </mat-select>
                         <mat-icon matSuffix class="secondary-text">keyboard</mat-icon>
                     </mat-form-field>
@@ -39,27 +49,12 @@
                         <input matInput name="pn" formControlName="pn" required>
                     </mat-form-field>
 
-                    <mat-form-field appearance="outline" class="w-100-p" >
-                        <mat-label>{{'FIELD.type' | translate}}</mat-label>
-                        <mat-icon matSuffix class="secondary-text">keyboard</mat-icon>
-                        <input matInput name="type" formControlName="type" required>
-                    </mat-form-field>
 
                 </fieldset>
             </div>
 
             <div class="mr-sm-12 ml-sm-12" fxFlex>
                 <fieldset class="myfieldset">
-
-                    <mat-form-field appearance="outline" class="w-100-p">
-                        <mat-label>{{'FIELD.state' | translate}}</mat-label>
-                        <mat-select formControlName="state" required>
-                            <mat-option value="Bon">Bon</mat-option>
-                            <mat-option value="Moyen">Moyen</mat-option>
-                            <mat-option value="Mauvais">Mauvais</mat-option>
-                        </mat-select>
-                        <mat-icon matSuffix class="secondary-text">keyboard</mat-icon>
-                    </mat-form-field>
 
 
                     <mat-form-field appearance="outline" class="w-100-p" >
@@ -87,7 +82,7 @@
         </div>
         <hr>
         <div>
-            <button mat-raised-button class=" mat-white-bg" matStepperNext [disabled]="vanneArriveForm.invalid">
+            <button mat-raised-button class=" mat-white-bg" matStepperNext [disabled]="vanneArriveForm.invalid" (click)="onSave()">
                 <span>{{'BUTTON.next' | translate}}</span>
             </button>
         </div>

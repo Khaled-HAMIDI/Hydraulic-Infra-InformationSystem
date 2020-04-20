@@ -5,6 +5,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 import { FuseTranslationLoaderService } from '@fuse/services/translation-loader.service';
 import { locale as french } from '../i18n/fr';
 import { locale as arabic } from '../i18n/ar';
+import {ComposantService} from "../../composant.service";
 
 @Component({
   selector: 'app-soupage-decharge',
@@ -17,6 +18,7 @@ export class SoupageDechargeComponent implements OnInit{
     soupageDechargerForm: FormGroup;
 
     constructor(
+        private composantService : ComposantService,
         private formBuilder: FormBuilder,
         private router :Router,
         private route: ActivatedRoute,
@@ -37,6 +39,7 @@ export class SoupageDechargeComponent implements OnInit{
 
     createForm(): FormGroup {
         let obj = {
+            typeComposant:['SoupapeDecharge'],
             marque:['',Validators.required],
             type: ['',Validators.required],
             presseionTarage:['',Validators.required],
@@ -50,6 +53,19 @@ export class SoupageDechargeComponent implements OnInit{
 
     initForm(){
         this.soupageDechargerForm = this.createForm();
+    }
+
+    onSave(): void {
+
+        const soupape = this.soupageDechargerForm.getRawValue();
+
+        this.composantService.saveSoupape(soupape)
+            .then((response) => {
+                    console.log("It worked");
+                },
+                (error) => {
+                    console.log("No")
+                });
     }
 
 

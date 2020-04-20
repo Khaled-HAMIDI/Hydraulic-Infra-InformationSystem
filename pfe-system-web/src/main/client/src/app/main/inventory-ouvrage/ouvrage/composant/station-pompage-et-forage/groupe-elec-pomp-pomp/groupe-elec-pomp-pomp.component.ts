@@ -5,6 +5,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 import { FuseTranslationLoaderService } from '@fuse/services/translation-loader.service';
 import { locale as french } from '../i18n/fr';
 import { locale as arabic } from '../i18n/ar';
+import {ComposantService} from "../../composant.service";
 
 @Component({
   selector: 'app-groupe-elec-pomp-pomp',
@@ -17,6 +18,7 @@ export class GroupeElecPompPompComponent implements OnInit{
     grouprElecPPForm: FormGroup;
 
     constructor(
+        private composantService : ComposantService,
         private formBuilder: FormBuilder,
         private router :Router,
         private route: ActivatedRoute,
@@ -37,6 +39,7 @@ export class GroupeElecPompPompComponent implements OnInit{
 
     createForm(): FormGroup {
         let obj = {
+            typeComposant:['GroupeElecPompe-Pompe'],
             nbService: ['',Validators.required],
             nbSecours: ['',Validators.required],
             genre:['',Validators.required],
@@ -55,6 +58,19 @@ export class GroupeElecPompPompComponent implements OnInit{
 
     initForm(){
         this.grouprElecPPForm = this.createForm();
+    }
+
+    onSave(): void {
+
+        const pompe = this.grouprElecPPForm.getRawValue();
+
+        this.composantService.savePompe(pompe)
+            .then((response) => {
+                    console.log("It worked");
+                },
+                (error) => {
+                    console.log("No")
+                });
     }
 
 

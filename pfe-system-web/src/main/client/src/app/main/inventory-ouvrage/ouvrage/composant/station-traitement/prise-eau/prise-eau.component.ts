@@ -5,6 +5,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 import { FuseTranslationLoaderService } from '@fuse/services/translation-loader.service';
 import { locale as french } from '../i18n/fr';
 import { locale as arabic } from '../i18n/ar';
+import {ComposantService} from "../../composant.service";
 
 @Component({
   selector: 'app-prise-eau',
@@ -17,6 +18,7 @@ export class PriseEauComponent implements OnInit{
     priseEauForm: FormGroup;
 
     constructor(
+        private composantService : ComposantService,
         private formBuilder: FormBuilder,
         private router :Router,
         private route: ActivatedRoute,
@@ -37,6 +39,7 @@ export class PriseEauComponent implements OnInit{
 
     createForm(): FormGroup {
         let obj = {
+            typeComposant:['PriseEau'],
             type: ['',Validators.required],
             dimension: ['',Validators.required],
             nature:['',Validators.required]
@@ -48,6 +51,19 @@ export class PriseEauComponent implements OnInit{
 
     initForm(){
         this.priseEauForm = this.createForm();
+    }
+
+    onSave(): void {
+
+        const priseEau = this.priseEauForm.getRawValue();
+
+        this.composantService.savePriseEau(priseEau)
+            .then((response) => {
+                    console.log("It worked");
+                },
+                (error) => {
+                    console.log("No")
+                });
     }
 
 

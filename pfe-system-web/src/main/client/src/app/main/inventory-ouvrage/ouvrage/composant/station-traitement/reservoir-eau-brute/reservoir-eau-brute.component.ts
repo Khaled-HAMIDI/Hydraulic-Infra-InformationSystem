@@ -5,6 +5,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 import { FuseTranslationLoaderService } from '@fuse/services/translation-loader.service';
 import { locale as french } from '../i18n/fr';
 import { locale as arabic } from '../i18n/ar';
+import {ComposantService} from "../../composant.service";
 
 
 @Component({
@@ -18,6 +19,7 @@ export class ReservoirEauBruteComponent implements OnInit{
     reservoirEauBruteForm: FormGroup;
 
     constructor(
+        private composantService : ComposantService,
         private formBuilder: FormBuilder,
         private router :Router,
         private route: ActivatedRoute,
@@ -38,6 +40,8 @@ export class ReservoirEauBruteComponent implements OnInit{
 
     createForm(): FormGroup {
         let obj = {
+            typeComposant:['EquipementStationTraitement'],
+            typeEquipement:['ReservoirEauBrute'],
             state: ['',Validators.required],
             type: ['',Validators.required],
             form:['',Validators.required],
@@ -53,6 +57,19 @@ export class ReservoirEauBruteComponent implements OnInit{
 
     initForm(){
         this.reservoirEauBruteForm = this.createForm();
+    }
+
+    onSave(): void {
+
+        const equipement = this.reservoirEauBruteForm.getRawValue();
+
+        this.composantService.saveEquipementStationTraitement(equipement)
+            .then((response) => {
+                    console.log("It worked");
+                },
+                (error) => {
+                    console.log("No")
+                });
     }
 
 

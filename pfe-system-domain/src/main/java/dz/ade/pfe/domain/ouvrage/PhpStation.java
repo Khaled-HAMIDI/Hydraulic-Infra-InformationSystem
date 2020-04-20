@@ -27,5 +27,8 @@ public class PhpStation extends Auditing{
     @Column(name = "power")
     private double power;
 
+    @Column(name = "number")
+    private double number;
+
 
 }

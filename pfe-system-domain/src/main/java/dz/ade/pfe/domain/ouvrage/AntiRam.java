@@ -26,7 +26,7 @@ public class AntiRam extends Auditing {
     private double capacity;
 
     @Column(name = "service_pressure")
-        private double servicePressure;
+    private double servicePressure;
 
     @Column(name = "test_pressure")
     private double testPressure;
@@ -35,8 +35,7 @@ public class AntiRam extends Auditing {
     private double inflationPressure;
 
     @Column(name = "type")
-    @Enumerated(EnumType.STRING)
-    private EnumTypeGeneral type;
+    private String type;
 
     @Column(name = "compressor")
     private boolean compressor;

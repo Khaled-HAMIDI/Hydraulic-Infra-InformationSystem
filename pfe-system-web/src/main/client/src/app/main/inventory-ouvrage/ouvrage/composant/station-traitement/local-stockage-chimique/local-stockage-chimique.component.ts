@@ -5,6 +5,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 import { FuseTranslationLoaderService } from '@fuse/services/translation-loader.service';
 import { locale as french } from '../i18n/fr';
 import { locale as arabic } from '../i18n/ar';
+import {ComposantService} from "../../composant.service";
 
 @Component({
   selector: 'app-local-stockage-chimique',
@@ -17,6 +18,7 @@ export class LocalStockageChimiqueComponent implements OnInit{
     localStockageChimiqueForm: FormGroup;
 
     constructor(
+        private composantService : ComposantService,
         private formBuilder: FormBuilder,
         private router :Router,
         private route: ActivatedRoute,
@@ -37,6 +39,7 @@ export class LocalStockageChimiqueComponent implements OnInit{
 
     createForm(): FormGroup {
         let obj = {
+            typeComposant:['LocalStockageChimique'],
             state: ['',Validators.required],
             type: ['',Validators.required],
             form:['',Validators.required],
@@ -51,6 +54,19 @@ export class LocalStockageChimiqueComponent implements OnInit{
 
     initForm(){
         this.localStockageChimiqueForm = this.createForm();
+    }
+
+    onSave(): void {
+
+        const local = this.localStockageChimiqueForm.getRawValue();
+
+        this.composantService.saveLocalStockageChimique(local)
+            .then((response) => {
+                    console.log("It worked");
+                },
+                (error) => {
+                    console.log("No")
+                });
     }
 
 

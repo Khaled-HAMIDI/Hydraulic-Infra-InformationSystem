@@ -5,6 +5,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 import { FuseTranslationLoaderService } from '@fuse/services/translation-loader.service';
 import { locale as french } from '../i18n/fr';
 import { locale as arabic } from '../i18n/ar';
+import {ComposantService} from "../../composant.service";
 
 @Component({
   selector: 'app-vanne-sortie',
@@ -17,6 +18,7 @@ export class VanneSortieComponent implements OnInit{
     vanneSortieForm: FormGroup;
 
     constructor(
+        private composantService : ComposantService,
         private formBuilder: FormBuilder,
         private router :Router,
         private route: ActivatedRoute,
@@ -37,7 +39,8 @@ export class VanneSortieComponent implements OnInit{
 
     createForm(): FormGroup {
         let obj = {
-            typeVanne:['',Validators.required],
+            typeComposant:['ComposantHydroMecanique'],
+            equipementType:['VanneDistribution'],
             dn: ['',Validators.required],
             pn:['',Validators.required],
             state:['',Validators.required],
@@ -55,5 +58,17 @@ export class VanneSortieComponent implements OnInit{
         this.vanneSortieForm = this.createForm();
     }
 
+    onSave(): void {
+
+        const equipementHydroMeca = this.vanneSortieForm.getRawValue();
+
+        this.composantService.saveHydroMeca(equipementHydroMeca)
+            .then((response) => {
+                    console.log("It worked");
+                },
+                (error) => {
+                    console.log("No")
+                });
+    }
 
 }

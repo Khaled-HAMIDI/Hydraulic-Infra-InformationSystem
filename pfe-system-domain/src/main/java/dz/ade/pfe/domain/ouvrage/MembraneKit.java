@@ -20,4 +20,7 @@ public class MembraneKit extends Auditing{
 
     @Column(name = "characteristic")
     private String characteristic;
+
+    @Column(name = "number")
+    private Double number;
 }

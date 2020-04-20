@@ -5,6 +5,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 import { FuseTranslationLoaderService } from '@fuse/services/translation-loader.service';
 import { locale as french } from '../i18n/fr';
 import { locale as arabic } from '../i18n/ar';
+import {ComposantService} from "../../composant.service";
 
 @Component({
   selector: 'app-poste-chloration',
@@ -17,6 +18,7 @@ export class PosteChlorationComponent implements OnInit{
     postChlorationForm: FormGroup;
 
     constructor(
+        private composantService : ComposantService,
         private formBuilder: FormBuilder,
         private router :Router,
         private route: ActivatedRoute,
@@ -37,6 +39,7 @@ export class PosteChlorationComponent implements OnInit{
 
     createForm(): FormGroup {
         let obj = {
+            typeComposant:['PosteChloration'],
             abri: [true,Validators.required],
             type:['',Validators.required],
             dimension: ['',Validators.required],
@@ -48,7 +51,7 @@ export class PosteChlorationComponent implements OnInit{
             puissancePompe: ['',Validators.required],
             nombrePompe:['',Validators.required],
             fonctionnementPompe: [true,Validators.required],
-            pointInjectPompe: ['',Validators.required],
+            pointInjectPompe: [''],
         };
 
         return this.formBuilder.group(obj);
@@ -57,6 +60,19 @@ export class PosteChlorationComponent implements OnInit{
 
     initForm(){
         this.postChlorationForm = this.createForm();
+    }
+
+    onSave(): void {
+
+        const postChloration = this.postChlorationForm.getRawValue();
+
+        this.composantService.savePostChloration(postChloration)
+            .then((response) => {
+                    console.log("It worked");
+                },
+                (error) => {
+                    console.log("No")
+                });
     }
 
 

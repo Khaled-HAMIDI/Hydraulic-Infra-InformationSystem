@@ -19,6 +19,15 @@ public class HedromecaEquipment extends Auditing{
     @SequenceGenerator(name = "equipement_hedromeca_gen", sequenceName = "equipement_hedromeca_seq", schema = "pfe", allocationSize = 1)
     protected Long id;
 
+    @Column(name = "equipement_type")
+    private String equipementType;
+
+    @Column(name = "type")
+    private String type;
+
+    @Column(name = "number")
+    private double number;
+
     @Column(name = "dn")
     private double dn;
 

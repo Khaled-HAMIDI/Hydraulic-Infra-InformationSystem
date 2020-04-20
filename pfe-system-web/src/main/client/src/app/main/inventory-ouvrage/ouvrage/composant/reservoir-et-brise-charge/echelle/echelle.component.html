@@ -77,7 +77,7 @@
         </div>
         <hr>
         <div>
-            <button mat-raised-button class=" mat-white-bg" matStepperNext [disabled]="equipementHydroMecaForm.invalid">
+            <button mat-raised-button class=" mat-white-bg" matStepperNext [disabled]="equipementHydroMecaForm.invalid" (click)="onSave()">
                 <span>{{'BUTTON.next' | translate}}</span>
             </button>
         </div>

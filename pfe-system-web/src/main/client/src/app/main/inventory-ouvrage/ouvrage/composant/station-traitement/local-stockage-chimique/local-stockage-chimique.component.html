@@ -76,7 +76,7 @@
         </div>
         <hr>
         <div>
-            <button mat-raised-button class=" mat-white-bg" matStepperNext [disabled]="localStockageChimiqueForm.invalid">
+            <button mat-raised-button class=" mat-white-bg" matStepperNext [disabled]="localStockageChimiqueForm.invalid" (click)="onSave()">
                 <span>{{'BUTTON.next' | translate}}</span>
             </button>
         </div>

@@ -5,6 +5,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 import { FuseTranslationLoaderService } from '@fuse/services/translation-loader.service';
 import { locale as french } from '../i18n/fr';
 import { locale as arabic } from '../i18n/ar';
+import {ComposantService} from "../../composant.service";
 
 @Component({
   selector: 'app-post-recyclage-eau-lavavge',
@@ -17,6 +18,7 @@ export class PostRecyclageEauLavavgeComponent implements OnInit{
     postRecyEauLavageForm: FormGroup;
 
     constructor(
+        private composantService : ComposantService,
         private formBuilder: FormBuilder,
         private router :Router,
         private route: ActivatedRoute,
@@ -37,8 +39,15 @@ export class PostRecyclageEauLavavgeComponent implements OnInit{
 
     createForm(): FormGroup {
         let obj = {
+            ypeComposant: ['PosteChimique'],
+            postType: ['RecyclageEauLavage'],
             lieuImplantation:['',Validators.required],
+            type: [''],
+            form:[''],
+            dimension: [''],
+            number:[''],
             dosagePompe:['',Validators.required],
+            modePompe:['',Validators.required],
             statePompe: ['',Validators.required],
             typePompe:['',Validators.required],
             debitPompe: ['',Validators.required],
@@ -56,6 +65,20 @@ export class PostRecyclageEauLavavgeComponent implements OnInit{
     initForm(){
         this.postRecyEauLavageForm = this.createForm();
     }
+
+    onSave(): void {
+
+        const post = this.postRecyEauLavageForm.getRawValue();
+
+        this.composantService.savePostChimique(post)
+            .then((response) => {
+                    console.log("It worked");
+                },
+                (error) => {
+                    console.log("No")
+                });
+    }
+
 
 
 }

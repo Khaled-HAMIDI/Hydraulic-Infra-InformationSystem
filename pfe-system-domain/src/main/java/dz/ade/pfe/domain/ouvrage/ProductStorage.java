@@ -19,8 +19,7 @@ public class ProductStorage extends Auditing{
     protected Long id;
 
     @Column(name = "type")
-    @Enumerated(EnumType.STRING)
-    private EnumTypeReservoir type;
+    private String type;
 
     @Column(name = "form")
     private String form;
@@ -30,6 +29,9 @@ public class ProductStorage extends Auditing{
 
     @Column(name = "arrangement")
     private String arrangement;
+
+    @Column(name = "number")
+    private double number;
 
     @Column(name = "state")
     @Enumerated(EnumType.STRING)

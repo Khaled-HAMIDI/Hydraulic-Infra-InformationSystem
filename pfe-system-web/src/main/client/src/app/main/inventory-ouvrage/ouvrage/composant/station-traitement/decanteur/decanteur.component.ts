@@ -5,6 +5,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 import { FuseTranslationLoaderService } from '@fuse/services/translation-loader.service';
 import { locale as french } from '../i18n/fr';
 import { locale as arabic } from '../i18n/ar';
+import {ComposantService} from "../../composant.service";
 
 @Component({
   selector: 'app-decanteur',
@@ -17,6 +18,7 @@ export class DecanteurComponent implements OnInit{
     decanteurForm: FormGroup;
 
     constructor(
+        private composantService : ComposantService,
         private formBuilder: FormBuilder,
         private router :Router,
         private route: ActivatedRoute,
@@ -38,6 +40,8 @@ export class DecanteurComponent implements OnInit{
 
     createForm(): FormGroup {
         let obj = {
+            typeComposant:['EquipementStationTraitement'],
+            typeEquipement:['Decanteur'],
             state: ['',Validators.required],
             type: ['',Validators.required],
             form:['',Validators.required],
@@ -53,6 +57,19 @@ export class DecanteurComponent implements OnInit{
 
     initForm(){
         this.decanteurForm = this.createForm();
+    }
+
+    onSave(): void {
+
+        const equipement = this.decanteurForm.getRawValue();
+
+        this.composantService.saveEquipementStationTraitement(equipement)
+            .then((response) => {
+                    console.log("It worked");
+                },
+                (error) => {
+                    console.log("No")
+                });
     }
 
 
