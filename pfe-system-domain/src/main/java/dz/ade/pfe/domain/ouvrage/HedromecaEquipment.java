@@ -12,8 +12,7 @@ import java.awt.*;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder
-public class HedromecaEquipment extends Auditing{
+public class HedromecaEquipment extends OuvrageComponent{
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "equipement_hedromeca_gen")
     @SequenceGenerator(name = "equipement_hedromeca_gen", sequenceName = "equipement_hedromeca_seq", schema = "pfe", allocationSize = 1)

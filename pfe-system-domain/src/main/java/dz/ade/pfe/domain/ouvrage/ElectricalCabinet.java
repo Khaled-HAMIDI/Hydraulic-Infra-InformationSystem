@@ -13,8 +13,7 @@ import dz.ade.pfe.domain.commons.Auditing;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder
-public class ElectricalCabinet extends Auditing{
+public class ElectricalCabinet extends OuvrageComponent{
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "electrical_cabinet_gen")
     @SequenceGenerator(name = "electrical_cabinet_gen", sequenceName = "electrical_cabinet_seq", schema = "pfe", allocationSize = 1)

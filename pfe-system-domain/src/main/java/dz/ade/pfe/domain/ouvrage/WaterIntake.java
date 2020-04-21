@@ -11,8 +11,7 @@ import dz.ade.pfe.domain.commons.Auditing;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder
-public class WaterIntake extends Auditing{
+public class WaterIntake extends OuvrageComponent{
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "prise_eau_gen")
     @SequenceGenerator(name = "prise_eau_gen", sequenceName = "prise_eau_seq", schema = "pfe", allocationSize = 1)

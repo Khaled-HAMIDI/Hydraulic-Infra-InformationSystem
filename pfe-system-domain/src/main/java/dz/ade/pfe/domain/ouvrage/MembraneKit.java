@@ -11,8 +11,7 @@ import dz.ade.pfe.domain.commons.Auditing;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder
-public class MembraneKit extends Auditing{
+public class MembraneKit extends OuvrageComponent{
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "kit_gen")
     @SequenceGenerator(name = "kit_gen", sequenceName = "kit_seq", schema = "pfe", allocationSize = 1)

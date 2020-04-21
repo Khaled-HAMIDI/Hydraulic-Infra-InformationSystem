@@ -12,8 +12,7 @@ import java.util.Date;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder
-public class ReliefValve extends Auditing {
+public class ReliefValve extends OuvrageComponent {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "relief_valve_gen")
     @SequenceGenerator(name = "relief_valve_gen", sequenceName = "relief_valve_seq", schema = "pfe", allocationSize = 1)

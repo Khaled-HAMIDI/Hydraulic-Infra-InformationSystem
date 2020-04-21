@@ -4,14 +4,17 @@ import lombok.*;
 
 import javax.persistence.*;
 import dz.ade.pfe.domain.commons.Auditing;
+import lombok.experimental.SuperBuilder;
 
 @Entity
 @Table(name = "ouvrage_component", schema = "pfe")
+@Inheritance(strategy=InheritanceType.TABLE_PER_CLASS)
+@DiscriminatorColumn(name="type_composant")
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder
+@SuperBuilder
 public class OuvrageComponent extends Auditing{
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "composant_ouvrage_gen")

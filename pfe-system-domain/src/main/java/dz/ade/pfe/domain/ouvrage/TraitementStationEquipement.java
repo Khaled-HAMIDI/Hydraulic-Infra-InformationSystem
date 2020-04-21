@@ -11,8 +11,7 @@ import dz.ade.pfe.domain.commons.Auditing;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder
-public class TraitementStationEquipement extends Auditing{
+public class TraitementStationEquipement extends OuvrageComponent{
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "traitement_station_equipement_gen")
     @SequenceGenerator(name = "traitement_station_equipement_gen", sequenceName = "traitement_station_equipement_seq", schema = "pfe", allocationSize = 1)

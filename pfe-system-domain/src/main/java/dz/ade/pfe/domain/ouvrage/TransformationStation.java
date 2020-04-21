@@ -11,8 +11,7 @@ import dz.ade.pfe.domain.commons.Auditing;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder
-public class TransformationStation extends Auditing{
+public class TransformationStation extends OuvrageComponent{
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "post_transformation_gen")
     @SequenceGenerator(name = "post_transformation_gen", sequenceName = "post_transformation_seq", schema = "pfe", allocationSize = 1)

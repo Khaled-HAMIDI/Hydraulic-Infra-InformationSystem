@@ -11,8 +11,7 @@ import dz.ade.pfe.domain.commons.Auditing;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder
-public class Generator extends Auditing{
+public class Generator extends OuvrageComponent{
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "groupe_electrogene_gen")
     @SequenceGenerator(name = "groupe_electrogene_gen", sequenceName = "groupe_electrogene_seq", schema = "pfe", allocationSize = 1)

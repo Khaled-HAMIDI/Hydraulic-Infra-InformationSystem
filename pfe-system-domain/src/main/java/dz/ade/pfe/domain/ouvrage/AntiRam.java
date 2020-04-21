@@ -12,8 +12,7 @@ import java.util.Date;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder
-public class AntiRam extends Auditing {
+public class AntiRam extends OuvrageComponent {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "anti_belier_gen")
     @SequenceGenerator(name = "anti_belier_gen", sequenceName = "anti_belier_seq", schema = "pfe", allocationSize = 1)
