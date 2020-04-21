@@ -16,5 +16,5 @@ public class ChainSaveDto {
     private String code;
     @NotBlank
     private String name;
-    private List<String> ouvragesCodes;
+    private List<String> ouvragesCode;
 }

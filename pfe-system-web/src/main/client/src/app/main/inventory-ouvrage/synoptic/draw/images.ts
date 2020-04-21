@@ -1,9 +1,8 @@
-// const path = 'assets/images/ouvrages/'
-// export const images = {
-//     'SP': path + 'sp.png',
-//     'R': path + 'reservoir.png',
-//     'F': path + 'forage.png'
-// }
+const path = 'assets/images/ouvrages/'
+export enum images  {
+  SP= 'assets/images/ouvrages/pump.png',
+  R= 'assets/images/ouvrages/tank.png',
+}
 
 
 export const nodes = {
@@ -19,7 +18,7 @@ export const nodes = {
   "links": [
     {
       "source": "STKharrouba-", "target": "SR1-SP1",
-      "meta": {"interface": { "source": "100", "target": "96" } }
+      "meta": { "interface": { "source": "100", "target": "96" } }
     },
     { "source": "STKharrouba-", "target": "SR2-SP2" },
     { "source": "SR1-R2", "target": "R1-" },
@@ -28,4 +27,29 @@ export const nodes = {
     { "source": "SR2-SP2", "target": "SR2-R3" },
     { "source": "R1-", "target": "POPU-" },
   ]
+}
+
+export class node {
+  name: string;
+  icon: string;
+  meta: any;
+  constructor(node?) {
+    node = node || {};
+    this.name = node.name || '';
+    this.icon = node.icon || '';
+    this.meta = node.meta || {};
+  }
+}
+
+export class link {
+  source: string;
+  target: string;
+  meta: any;
+  constructor(link?) {
+    link = link || {};
+    this.source = link.source || '';
+    this.target = link.target || '';
+    
+    this.meta = link.meta || {};
+  }
 }

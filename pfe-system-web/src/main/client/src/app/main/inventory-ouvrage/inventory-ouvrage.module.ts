@@ -19,11 +19,11 @@ const routes: Routes = [
     path: 'chain',
     loadChildren: () => import('./chain/chain.module').then(m => m.ChainModule),
     canActivate: [AuthenticationGuard]
-  },{
-        path: 'inventory',
-        loadChildren: () => import('./inventory/inventory.module').then(m => m.InventoryModule),
-        canActivate: [AuthenticationGuard]
-    }
+  }, {
+    path: 'inventory',
+    loadChildren: () => import('./inventory/inventory.module').then(m => m.InventoryModule),
+    canActivate: [AuthenticationGuard]
+  }
 ];
 
 @NgModule({

@@ -1,1 +1,32 @@
-<div id="diagram"></div>
+    <div id="chain" class="page-layout carded fullwidth inner-scroll">
+        <!-- TOP BACKGROUND -->
+        <div class="top-bg accent"></div>
+        <!-- / TOP BACKGROUND -->
+        <div class="center">
+            <!-- HEADER -->
+            <div class="header accent" fxLayout="row" fxLayoutAlign="space-between center">
+
+                <!-- APP TITLE -->
+                <div fxLayout="row" fxLayoutAlign="start center">
+
+                    <button mat-icon-button class="mr-0 mr-sm-16" [routerLink]="'/patrimony/chain/list'">
+                        <mat-icon>arrow_back</mat-icon>
+                    </button>
+
+
+                    <div fxLayout="column" fxLayoutAlign="start start"
+                        [@animate]="{value:'*',params:{delay:'100ms',x:'-25px'}}">
+                        <div class="h2">
+                            Synoptic
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- / HEADER -->
+            <div class="content-card mat-white-bg">
+                <!-- CONTENT -->
+                <div id="diagram"></div>
+            </div>
+        </div>
+    </div>
+

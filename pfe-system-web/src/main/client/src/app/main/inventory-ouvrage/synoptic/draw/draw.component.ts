@@ -1,24 +1,112 @@
-import { Component, OnInit, ViewChild, ElementRef, ViewEncapsulation } from '@angular/core';
-import { nodes } from './images'
-import { repeat } from 'rxjs/operators';
+import { Component, OnInit, ViewChild, ElementRef, ViewEncapsulation, OnDestroy } from '@angular/core';
+import { nodes, node, link, images } from './images'
+import { repeat, takeUntil } from 'rxjs/operators';
+import { fuseAnimations } from '@fuse/animations';
+import { Subject } from 'rxjs';
+import { ActivatedRoute, Router } from '@angular/router';
+import { FuseTranslationLoaderService } from '@fuse/services/translation-loader.service';
 declare var Diagram: any;
 declare var cola: any;
 declare var d3: any;
+
 
 @Component({
   selector: 'app-draw',
   templateUrl: './draw.component.html',
   styleUrls: ['./draw.component.scss'],
+  animations: fuseAnimations,
   encapsulation: ViewEncapsulation.None,
 })
-export class DrawComponent implements OnInit {
-  ctx;
-  @ViewChild('canvas', { static: true })
-  canvas: ElementRef<HTMLCanvasElement>;
-  constructor() { }
+export class DrawComponent implements OnInit, OnDestroy {
+  private _unsubscribeAll: Subject<any>;
+  ouvrages = [];
+  links = [];
+
+  constructor(
+    private route: ActivatedRoute,
+    private router: Router,
+    private fuseTranslationLoader: FuseTranslationLoaderService
+  ) {
+    this._unsubscribeAll = new Subject();
+    //this.fuseTranslationLoader.loadTranslations(french, arabic);
+  }
 
   ngOnInit() {
-    var diagram = new Diagram('#diagram', nodes, { pop: /^([^\s-]+)-/, bundle: true });
+    this.route.data.pipe(takeUntil(this._unsubscribeAll)).subscribe(
+      (response) => {
+        console.log(response.data);
+        this.initSynopticStructure(response.data[0], response.data[1]);
+        this.drawSchema();
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
+
+
+  }
+
+  initSynopticStructure(chains, ouvrages) {
+    ouvrages.forEach((ouv) => {
+      var n = new node();
+      ouv.name = ouv.name.replace(' ', '')
+      n.name = ouv.name + '-';
+      n.icon = images.SP;
+      n.meta = {
+        title: ouv.name
+      }
+      this.ouvrages.push(n);
+    })
+    chains.forEach((chain) => {
+      chain.ouvrages.sort(this.compare);
+      var l;
+      for (var i = 0; i < chain.ouvrages.length-1; i++) {
+        l = new link();
+        l.source = chain.ouvrages[i].name.replace(' ', '') + '-';
+        l.target = chain.ouvrages[i+1].name.replace(' ', '') + '-';
+        var ind =this.links.findIndex((link)=>{
+          return ((link.source === l.source) && (link.target === l.target))
+        });
+        //if (ind != 1)
+        this.links.push(l);
+      }
+    })
+  }
+  compare(a, b) {
+    if (a.position < b.position) {
+      return -1;
+    }
+    if (a.position > b.position) {
+      return 1;
+    }
+    return 0;
+  }
+
+  SetTooltips(div) {
+    d3.selectAll("g.node")
+      .on("mouseover", function (d) {
+        div.transition()
+          .duration(200)
+          .style("opacity", .9);
+        div.html(`<span class="tooltiptext">Nom : Station Kharrouba</span><br>
+        <span class="tooltiptext">Débit Actuel : 100 l/s</span><br>
+        <span class="tooltiptext">Date mes : 11/12/2000</span><br>
+        <span class="tooltiptext">Etat : Bon</span><br>
+        `)
+          .style("left", (d3.event.pageX + 28) + "px")
+          .style("top", (d3.event.pageY - 28) + "px");
+      })
+      .on("mouseout", function (d) {
+        div.transition()
+          .duration(500)
+          .style("opacity", 0);
+      });
+  }
+
+  drawSchema() {
+    var n = { nodes: this.ouvrages, links: this.links}
+    d3.select("#diagram").attr('class','hello');
+    var diagram = new Diagram('#diagram', n, { pop: /^([^\s-]+)-/ });
     diagram.on('rendered', () => {
       // d3.selectAll('line').on('mouseover', function (d) {
       //   // Hide all labels
@@ -71,38 +159,20 @@ export class DrawComponent implements OnInit {
     function currentScale() {
       return d3.transform(diagram.svg.attr('transform')).scale[0];
     }
-    diagram.init('title','bandwidth','interface');
-
-  }
-
-  SetTooltips(div) {
-    d3.selectAll("g.node")
-      .on("mouseover", function (d) {
-        div.transition()
-          .duration(200)
-          .style("opacity", .9);
-        div.html(`<span class="tooltiptext">Nom : Station Kharrouba</span><br>
-        <span class="tooltiptext">Débit Actuel : 100 l/s</span><br>
-        <span class="tooltiptext">Date mes : 11/12/2000</span><br>
-        <span class="tooltiptext">Etat : Bon</span><br>
-        `)
-          .style("left", (d3.event.pageX + 28) + "px")
-          .style("top", (d3.event.pageY - 28) + "px");
-      })
-      .on("mouseout", function (d) {
-        div.transition()
-          .duration(500)
-          .style("opacity", 0);
-      });
-  }
-
-  drawSchema() {
+    diagram.init('title', 'bandwidth', 'interface');
 
   }
   filter(code, ouvrages): Array<any> {
     return ouvrages.filter((ouvrage) => {
       return ouvrage['code'] == code
     })
+  }
+
+  ngOnDestroy(): void {
+    d3.selectAll("path").transition();
+    //d3.selectAll("svg > *").remove();
+    this._unsubscribeAll.next();
+    this._unsubscribeAll.complete();
   }
 
 }

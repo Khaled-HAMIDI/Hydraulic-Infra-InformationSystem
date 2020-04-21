@@ -13,7 +13,7 @@ export const locale = {
                 'ITEMS':{
                     'INTEGRATE':'Intégrer un ouvrage',
                     'LIST':'Liste des ouvrages',
-                    'CHAIN' :'Chaines'
+                    'CHAIN' :'Liste des chaines'
                 }
             },
             'INVENTORY': {

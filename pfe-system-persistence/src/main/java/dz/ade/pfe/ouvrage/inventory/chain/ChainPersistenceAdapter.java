@@ -4,6 +4,7 @@ import dz.ade.pfe.domain.ouvrage.Chain;
 import dz.ade.pfe.domain.ouvrage.OuvrageChain;
 import dz.ade.pfe.port.out.chain.DeleteChainOuvrage.DeleteChainOuvrage;
 import dz.ade.pfe.port.out.chain.getchainbycode.LoadChainByCode;
+import dz.ade.pfe.port.out.chain.getchainsynoptic.LoadChainSynoptic;
 import dz.ade.pfe.port.out.chain.savechainouvrage.SaveChainOuvrage;
 import dz.ade.pfe.port.out.chain.updatechain.ModifyChain;
 import dz.ade.pfe.port.out.chain.createchain.SaveNewChain;
@@ -18,7 +19,7 @@ import java.util.Optional;
 
 @Component
 @RequiredArgsConstructor
-public class ChainPersistenceAdapter implements LoadChainList, LoadChainDetails, SaveNewChain, SaveChainOuvrage, ModifyChain, DeleteChainOuvrage, LoadChainByCode {
+public class ChainPersistenceAdapter implements LoadChainList, LoadChainDetails, SaveNewChain, SaveChainOuvrage, ModifyChain, DeleteChainOuvrage, LoadChainByCode, LoadChainSynoptic {
 
     private final ChainRepository chainRepository;
     private final OuvrageChainRepository ouvrageChainRepository;
@@ -57,5 +58,10 @@ public class ChainPersistenceAdapter implements LoadChainList, LoadChainDetails,
     @Override
     public Optional<Chain> getChainByCode(String code) {
         return chainRepository.findByCode(code);
+    }
+
+    @Override
+    public List<Chain> loadChainSynoptic() {
+        return chainRepository.findAll();
     }
 }

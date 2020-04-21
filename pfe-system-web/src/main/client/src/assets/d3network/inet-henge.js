@@ -22425,7 +22425,7 @@ var Diagram = function () {
     this.options.color = d3.scale.category20();
     this.options.max_ticks = options.ticks || 1000;
     // NOTE: true or 'fixed' (experimental) affects behavior
-    this.options.position_cache = 'positionCache' in options ? options.positionCache : true;
+    this.options.position_cache = 'positionCache' in options ? options.positionCache : false;
     // NOTE: This is an experimental option
     this.options.bundle = 'bundle' in options ? options.bundle : false;
 
