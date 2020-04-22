@@ -4,6 +4,7 @@ import lombok.*;
 
 import javax.persistence.*;
 import dz.ade.pfe.domain.commons.Auditing;
+import lombok.experimental.SuperBuilder;
 
 @Entity
 @Table(name = "chloration_post", schema = "pfe")
@@ -11,6 +12,7 @@ import dz.ade.pfe.domain.commons.Auditing;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@SuperBuilder
 public class ChlorationPost extends OuvrageComponent{
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "chloration_post_gen")
@@ -18,7 +20,7 @@ public class ChlorationPost extends OuvrageComponent{
     protected Long id;
 
     @Column(name = "abri")
-        private boolean abri;
+    private boolean abri;
 
     @Column(name = "type")
     private String type;

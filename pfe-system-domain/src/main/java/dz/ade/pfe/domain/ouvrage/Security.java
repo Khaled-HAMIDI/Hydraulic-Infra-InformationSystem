@@ -4,6 +4,7 @@ import lombok.*;
 
 import javax.persistence.*;
 import dz.ade.pfe.domain.commons.Auditing;
+import lombok.experimental.SuperBuilder;
 
 @Entity
 @Table(name = "security", schema = "pfe")
@@ -11,6 +12,7 @@ import dz.ade.pfe.domain.commons.Auditing;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@SuperBuilder
 public class Security extends OuvrageComponent{
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "securite_gen")

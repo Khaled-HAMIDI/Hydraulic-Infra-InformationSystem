@@ -4,6 +4,7 @@ import lombok.*;
 
 import javax.persistence.*;
 import dz.ade.pfe.domain.commons.Auditing;
+import lombok.experimental.SuperBuilder;
 
 @Entity
 @Table(name = "php_station", schema = "pfe")
@@ -11,6 +12,7 @@ import dz.ade.pfe.domain.commons.Auditing;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@SuperBuilder
 public class PhpStation extends OuvrageComponent{
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "station_php_gen")

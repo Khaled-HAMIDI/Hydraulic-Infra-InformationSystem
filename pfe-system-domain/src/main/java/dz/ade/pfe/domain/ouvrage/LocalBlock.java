@@ -4,6 +4,7 @@ import lombok.*;
 
 import javax.persistence.*;
 import dz.ade.pfe.domain.commons.Auditing;
+import lombok.experimental.SuperBuilder;
 
 
 @Entity
@@ -12,6 +13,7 @@ import dz.ade.pfe.domain.commons.Auditing;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@SuperBuilder
 public class LocalBlock extends OuvrageComponent {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "bloc_local_gen")

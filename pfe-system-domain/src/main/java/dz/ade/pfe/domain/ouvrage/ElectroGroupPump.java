@@ -6,6 +6,8 @@ import javax.persistence.*;
 import java.sql.Timestamp;
 import java.time.LocalDate;
 import dz.ade.pfe.domain.commons.Auditing;
+import lombok.experimental.SuperBuilder;
+
 import java.util.Date;
 
 @Entity
@@ -14,6 +16,7 @@ import java.util.Date;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@SuperBuilder
 public class ElectroGroupPump  extends OuvrageComponent{
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "groupe_electro_pompe_gen")
