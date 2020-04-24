@@ -4,10 +4,8 @@ import lombok.*;
 
 import javax.persistence.*;
 import java.time.LocalDate;
-import dz.ade.pfe.domain.commons.Auditing;
-import lombok.experimental.SuperBuilder;
 
-import java.util.Date;
+import lombok.experimental.SuperBuilder;
 
 @Entity
 @Table(name = "electro_group_motor", schema = "pfe")
@@ -16,7 +14,7 @@ import java.util.Date;
 @NoArgsConstructor
 @AllArgsConstructor
 @SuperBuilder
-public class ElectroGroupMotor extends OuvrageComponent{
+public class ElectroGroupMotor extends Component {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "groupe_electro_moteur_gen")
     @SequenceGenerator(name = "groupe_electro_moteur_gen", sequenceName = "groupe_electro_moteur_seq", schema = "pfe", allocationSize = 1)

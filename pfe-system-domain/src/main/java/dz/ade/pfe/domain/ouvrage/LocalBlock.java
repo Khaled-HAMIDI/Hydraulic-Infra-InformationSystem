@@ -3,7 +3,7 @@ package dz.ade.pfe.domain.ouvrage;
 import lombok.*;
 
 import javax.persistence.*;
-import dz.ade.pfe.domain.commons.Auditing;
+
 import lombok.experimental.SuperBuilder;
 
 
@@ -14,7 +14,7 @@ import lombok.experimental.SuperBuilder;
 @NoArgsConstructor
 @AllArgsConstructor
 @SuperBuilder
-public class LocalBlock extends OuvrageComponent {
+public class LocalBlock extends Component {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "bloc_local_gen")
     @SequenceGenerator(name = "bloc_local_gen", sequenceName = "bloc_local_seq", schema = "pfe", allocationSize = 1)

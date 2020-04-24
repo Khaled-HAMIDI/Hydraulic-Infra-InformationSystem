@@ -1,10 +1,10 @@
 package dz.ade.pfe.port.in.ouvrage.getcomposantbyouvrage;
 
-import dz.ade.pfe.domain.ouvrage.OuvrageComponent;
+import dz.ade.pfe.domain.ouvrage.Component;
 
 import java.util.List;
 
 public interface GetComposantByOuvrageQuery {
-    List<OuvrageComponent> getComposantByOuvrage(String code);
+    List<Component> getComposantByOuvrage(String code);
 }
 

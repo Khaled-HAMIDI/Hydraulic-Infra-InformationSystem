@@ -4,23 +4,23 @@ import { API } from 'config/api.config';
 import {  Router } from '@angular/router';
 import { ToolsService } from '@ayams/services/tools.service';
 
-const Security_API = API + '/composants/security';
-const PriseEau_API = API + '/composants/priseEau';
-const EquipementStationTraitement_API = API + '/composants/equipementStationTraitement';
-const KitMembrane_API = API + '/composants/kitMembrane';
-const StationPhp_API = API + '/composants/stationPhp';
-const LocalStockageChimique_API = API + '/composants/localStockage';
-const BatimentElectrique_API  = API + '/composants/batimentElectrique';
-const GroupeElectrogene_API  = API + '/composants/groupeElectrogene';
-const PosteChimique_API  = API + '/composants/postChimique';
-const PosteTransformationElectrique_API = API + '/composants/postTransformationElectrique';
-const GroupeElectroPompePompe_API = API + '/composants/groupeElectroPompePompe';
-const GroupeElectroPompeMoteur_API = API + '/composants/groupeElectroPompeMoteur';
-const ArmoireElectrique_API = API + '/composants/armoireElectrique';
-const AntiBelier_API = API + '/composants/antiBelier';
-const SoupapeDecharge_API = API + '/composants/soupapaeDecharge';
-const EquipementHydroMeca_API = API + '/composants/equipementHydroMeca';
-const PostChloration_API = API + '/composants/postChloration';
+const Security_API = API + '/composants/security/';
+const PriseEau_API = API + '/composants/priseEau/';
+const EquipementStationTraitement_API = API + '/composants/equipementStationTraitement/';
+const KitMembrane_API = API + '/composants/kitMembrane/';
+const StationPhp_API = API + '/composants/stationPhp/';
+const LocalStockageChimique_API = API + '/composants/localStockage/';
+const BatimentElectrique_API  = API + '/composants/batimentElectrique/';
+const GroupeElectrogene_API  = API + '/composants/groupeElectrogene/';
+const PosteChimique_API  = API + '/composants/postChimique/';
+const PosteTransformationElectrique_API = API + '/composants/postTransformationElectrique/';
+const GroupeElectroPompePompe_API = API + '/composants/groupeElectroPompePompe/';
+const GroupeElectroPompeMoteur_API = API + '/composants/groupeElectroPompeMoteur/';
+const ArmoireElectrique_API = API + '/composants/armoireElectrique/';
+const AntiBelier_API = API + '/composants/antiBelier/';
+const SoupapeDecharge_API = API + '/composants/soupapaeDecharge/';
+const EquipementHydroMeca_API = API + '/composants/equipementHydroMeca/';
+const PostChloration_API = API + '/composants/postChloration/';
 
 @Injectable({
     providedIn: 'root'
@@ -38,11 +38,11 @@ export class ComposantService {
     // -----------------------------------------------------------------------------------------------------
 
 
-    saveSecurity(security) {
+    saveSecurity(security,code) {
         return new Promise((resolve, reject) => {
             this.toolsService.showProgressBar();
 
-            this.http.post(Security_API, security)
+            this.http.post(Security_API + code, security)
                 .subscribe((response: any) => {
                     this.toolsService.hideProgressBar();
                     this.toolsService.showSuccess('TOAST.success.security');
@@ -56,11 +56,11 @@ export class ComposantService {
 
     }
 
-    savePriseEau(priseEau){
+    savePriseEau(priseEau,code){
         return new Promise((resolve, reject) => {
             this.toolsService.showProgressBar();
 
-            this.http.post(PriseEau_API, priseEau)
+            this.http.post(PriseEau_API+ code, priseEau)
                 .subscribe((response: any) => {
                     this.toolsService.hideProgressBar();
                     this.toolsService.showSuccess('TOAST.success.priseEau');
@@ -73,11 +73,11 @@ export class ComposantService {
         });
 
     }
-    saveEquipementStationTraitement(equipement){
+    saveEquipementStationTraitement(equipement,code){
         return new Promise((resolve, reject) => {
             this.toolsService.showProgressBar();
 
-            this.http.post(EquipementStationTraitement_API, equipement)
+            this.http.post(EquipementStationTraitement_API+ code, equipement)
                 .subscribe((response: any) => {
                     this.toolsService.hideProgressBar();
                     this.toolsService.showSuccess('TOAST.success.equipement');
@@ -91,11 +91,11 @@ export class ComposantService {
 
     }
 
-    saveKitMembrane(kit){
+    saveKitMembrane(kit,code){
         return new Promise((resolve, reject) => {
             this.toolsService.showProgressBar();
 
-            this.http.post(KitMembrane_API, kit)
+            this.http.post(KitMembrane_API+ code, kit)
                 .subscribe((response: any) => {
                     this.toolsService.hideProgressBar();
                     this.toolsService.showSuccess('TOAST.success.kit');
@@ -109,11 +109,11 @@ export class ComposantService {
 
     }
 
-    saveStationPhp(station){
+    saveStationPhp(station,code){
         return new Promise((resolve, reject) => {
             this.toolsService.showProgressBar();
 
-            this.http.post(StationPhp_API, station)
+            this.http.post(StationPhp_API+ code, station)
                 .subscribe((response: any) => {
                     this.toolsService.hideProgressBar();
                     this.toolsService.showSuccess('TOAST.success.station');
@@ -127,11 +127,11 @@ export class ComposantService {
 
     }
 
-    saveLocalStockageChimique(local){
+    saveLocalStockageChimique(local,code){
         return new Promise((resolve, reject) => {
             this.toolsService.showProgressBar();
 
-            this.http.post(LocalStockageChimique_API, local)
+            this.http.post(LocalStockageChimique_API + code, local)
                 .subscribe((response: any) => {
                     this.toolsService.hideProgressBar();
                     this.toolsService.showSuccess('TOAST.success.local');
@@ -145,11 +145,11 @@ export class ComposantService {
 
     }
 
-    saveBatimentElectrique(batiment){
+    saveBatimentElectrique(batiment,code){
         return new Promise((resolve, reject) => {
             this.toolsService.showProgressBar();
 
-            this.http.post(BatimentElectrique_API, batiment)
+            this.http.post(BatimentElectrique_API + code, batiment)
                 .subscribe((response: any) => {
                     this.toolsService.hideProgressBar();
                     this.toolsService.showSuccess('TOAST.success.batiment');
@@ -163,11 +163,11 @@ export class ComposantService {
 
     }
 
-    saveGroupeElectrogene(groupe){
+    saveGroupeElectrogene(groupe,code){
         return new Promise((resolve, reject) => {
             this.toolsService.showProgressBar();
 
-            this.http.post(GroupeElectrogene_API, groupe)
+            this.http.post(GroupeElectrogene_API + code, groupe)
                 .subscribe((response: any) => {
                     this.toolsService.hideProgressBar();
                     this.toolsService.showSuccess('TOAST.success.groupe');
@@ -181,11 +181,11 @@ export class ComposantService {
 
     }
 
-    savePostChimique(post){
+    savePostChimique(post,code){
         return new Promise((resolve, reject) => {
             this.toolsService.showProgressBar();
 
-            this.http.post(PosteChimique_API, post)
+            this.http.post(PosteChimique_API + code, post)
                 .subscribe((response: any) => {
                     this.toolsService.hideProgressBar();
                     this.toolsService.showSuccess('TOAST.success.postChimique');
@@ -199,11 +199,11 @@ export class ComposantService {
 
     }
 
-    savePostTrandformationElectrique(post){
+    savePostTrandformationElectrique(post,code){
         return new Promise((resolve, reject) => {
             this.toolsService.showProgressBar();
 
-            this.http.post(PosteTransformationElectrique_API, post)
+            this.http.post(PosteTransformationElectrique_API + code, post)
                 .subscribe((response: any) => {
                     this.toolsService.hideProgressBar();
                     this.toolsService.showSuccess('TOAST.success.postElectrique');
@@ -217,11 +217,11 @@ export class ComposantService {
 
     }
 
-    savePompe(pompe){
+    savePompe(pompe,code){
         return new Promise((resolve, reject) => {
             this.toolsService.showProgressBar();
 
-            this.http.post(GroupeElectroPompePompe_API, pompe)
+            this.http.post(GroupeElectroPompePompe_API + code, pompe)
                 .subscribe((response: any) => {
                     this.toolsService.hideProgressBar();
                     this.toolsService.showSuccess('TOAST.success.pompe');
@@ -235,11 +235,11 @@ export class ComposantService {
 
     }
 
-    saveMoteur(moteur){
+    saveMoteur(moteur,code){
         return new Promise((resolve, reject) => {
             this.toolsService.showProgressBar();
 
-            this.http.post(GroupeElectroPompeMoteur_API, moteur)
+            this.http.post(GroupeElectroPompeMoteur_API + code, moteur)
                 .subscribe((response: any) => {
                     this.toolsService.hideProgressBar();
                     this.toolsService.showSuccess('TOAST.success.moteur');
@@ -253,11 +253,11 @@ export class ComposantService {
 
     }
 
-    saveArmoire(armoire){
+    saveArmoire(armoire,code){
         return new Promise((resolve, reject) => {
             this.toolsService.showProgressBar();
 
-            this.http.post(ArmoireElectrique_API, armoire)
+            this.http.post(ArmoireElectrique_API + code, armoire)
                 .subscribe((response: any) => {
                     this.toolsService.hideProgressBar();
                     this.toolsService.showSuccess('TOAST.success.armoire');
@@ -271,11 +271,11 @@ export class ComposantService {
 
     }
 
-    saveAntiBelier(antiBelier){
+    saveAntiBelier(antiBelier,code){
         return new Promise((resolve, reject) => {
             this.toolsService.showProgressBar();
 
-            this.http.post(AntiBelier_API, antiBelier)
+            this.http.post(AntiBelier_API + code, antiBelier)
                 .subscribe((response: any) => {
                     this.toolsService.hideProgressBar();
                     this.toolsService.showSuccess('TOAST.success.antiBelier');
@@ -289,11 +289,11 @@ export class ComposantService {
 
     }
 
-    saveSoupape(soupape){
+    saveSoupape(soupape,code){
         return new Promise((resolve, reject) => {
             this.toolsService.showProgressBar();
 
-            this.http.post(SoupapeDecharge_API, soupape)
+            this.http.post(SoupapeDecharge_API + code, soupape)
                 .subscribe((response: any) => {
                     this.toolsService.hideProgressBar();
                     this.toolsService.showSuccess('TOAST.success.soupape');
@@ -307,11 +307,11 @@ export class ComposantService {
 
     }
 
-    saveHydroMeca(equipementHydroMeca){
+    saveHydroMeca(equipementHydroMeca,code){
         return new Promise((resolve, reject) => {
             this.toolsService.showProgressBar();
 
-            this.http.post(EquipementHydroMeca_API, equipementHydroMeca)
+            this.http.post(EquipementHydroMeca_API + code, equipementHydroMeca)
                 .subscribe((response: any) => {
                     this.toolsService.hideProgressBar();
                     this.toolsService.showSuccess('TOAST.success.equipementHydroMeca');
@@ -325,11 +325,11 @@ export class ComposantService {
 
     }
 
-    savePostChloration(postChloration){
+    savePostChloration(postChloration,code){
         return new Promise((resolve, reject) => {
             this.toolsService.showProgressBar();
 
-            this.http.post(PostChloration_API, postChloration)
+            this.http.post(PostChloration_API + code, postChloration)
                 .subscribe((response: any) => {
                     this.toolsService.hideProgressBar();
                     this.toolsService.showSuccess('TOAST.success.postChloration');

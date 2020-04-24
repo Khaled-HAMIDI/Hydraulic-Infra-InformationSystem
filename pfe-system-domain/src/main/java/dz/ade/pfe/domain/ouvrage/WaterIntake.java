@@ -3,7 +3,7 @@ package dz.ade.pfe.domain.ouvrage;
 import lombok.*;
 
 import javax.persistence.*;
-import dz.ade.pfe.domain.commons.Auditing;
+
 import lombok.experimental.SuperBuilder;
 
 @Entity
@@ -13,7 +13,7 @@ import lombok.experimental.SuperBuilder;
 @NoArgsConstructor
 @AllArgsConstructor
 @SuperBuilder
-public class WaterIntake extends OuvrageComponent{
+public class WaterIntake extends Component {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "prise_eau_gen")
     @SequenceGenerator(name = "prise_eau_gen", sequenceName = "prise_eau_seq", schema = "pfe", allocationSize = 1)

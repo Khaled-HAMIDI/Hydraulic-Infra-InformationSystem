@@ -62,7 +62,7 @@ export class FiltreComponent implements OnInit{
 
         const equipement = this.filterForm.getRawValue();
 
-        this.composantService.saveEquipementStationTraitement(equipement)
+        this.composantService.saveEquipementStationTraitement(equipement,this.route.snapshot.params['code'])
             .then((response) => {
                     console.log("It worked");
                 },

@@ -60,7 +60,7 @@ export class LocalStockageChimiqueComponent implements OnInit{
 
         const local = this.localStockageChimiqueForm.getRawValue();
 
-        this.composantService.saveLocalStockageChimique(local)
+        this.composantService.saveLocalStockageChimique(local,this.route.snapshot.params['code'])
             .then((response) => {
                     console.log("It worked");
                 },

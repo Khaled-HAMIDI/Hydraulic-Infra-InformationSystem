@@ -61,7 +61,7 @@ export class AntiBelierComponent implements OnInit{
 
         const antiBelier = this.antiBelierForm.getRawValue();
 
-        this.composantService.saveAntiBelier(antiBelier)
+        this.composantService.saveAntiBelier(antiBelier,this.route.snapshot.params['code'])
             .then((response) => {
                     console.log("It worked");
                 },

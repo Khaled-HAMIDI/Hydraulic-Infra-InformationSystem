@@ -70,7 +70,7 @@ export class PostRecyclageBouesComponent implements OnInit{
 
         const post = this.postRecyBouForm.getRawValue();
 
-        this.composantService.savePostChimique(post)
+        this.composantService.savePostChimique(post,this.route.snapshot.params['code'])
             .then((response) => {
                     console.log("It worked");
                 },

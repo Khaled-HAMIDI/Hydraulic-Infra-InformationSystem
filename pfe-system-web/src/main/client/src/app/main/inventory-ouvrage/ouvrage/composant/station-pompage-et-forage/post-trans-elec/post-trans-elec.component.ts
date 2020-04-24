@@ -68,7 +68,7 @@ export class PostTransElecComponent implements OnInit{
 
         const post = this.postTransElecForm.getRawValue();
 
-        this.composantService.savePostTrandformationElectrique(post)
+        this.composantService.savePostTrandformationElectrique(post,this.route.snapshot.params['code'])
             .then((response) => {
                     console.log("It worked");
                 },

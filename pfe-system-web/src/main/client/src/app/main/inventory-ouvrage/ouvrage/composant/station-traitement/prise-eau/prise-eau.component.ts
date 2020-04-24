@@ -57,7 +57,7 @@ export class PriseEauComponent implements OnInit{
 
         const priseEau = this.priseEauForm.getRawValue();
 
-        this.composantService.savePriseEau(priseEau)
+        this.composantService.savePriseEau(priseEau,this.route.snapshot.params['code'])
             .then((response) => {
                     console.log("It worked");
                 },

@@ -145,7 +145,7 @@ export class ReservoirComponent implements OnInit, OnDestroy {
         this.reservoirService.saveOuvrage(this.ouvrageAdd)
             .then((response) => {
                     console.log("It worked");
-                    this.router.navigate(['composants'],{relativeTo:this.route});
+                    this.router.navigate(['composants/'+this.ouvrageAdd.code],{relativeTo:this.route});
                 },
                 (error) => {
                     console.log("No")

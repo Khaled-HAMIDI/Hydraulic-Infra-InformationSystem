@@ -3,7 +3,7 @@ package dz.ade.pfe.domain.ouvrage;
 import lombok.*;
 
 import javax.persistence.*;
-import dz.ade.pfe.domain.commons.Auditing;
+
 import lombok.experimental.SuperBuilder;
 
 @Entity
@@ -13,7 +13,7 @@ import lombok.experimental.SuperBuilder;
 @NoArgsConstructor
 @AllArgsConstructor
 @SuperBuilder
-public class ElectricBuilding extends OuvrageComponent{
+public class ElectricBuilding extends Component {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "batiment_electrique_gen")
     @SequenceGenerator(name = "batiment_electrique_gen", sequenceName = "batiment_electrique_seq", schema = "pfe", allocationSize = 1)

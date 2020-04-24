@@ -59,7 +59,7 @@ export class StationPhpComponent implements OnInit{
 
         const stationPhp = this.stationPhpForm.getRawValue();
 
-        this.composantService.saveStationPhp(stationPhp)
+        this.composantService.saveStationPhp(stationPhp,this.route.snapshot.params['code'])
             .then((response) => {
                     console.log("It worked");
                 },

@@ -57,7 +57,7 @@ export class KitMembraneComponent implements OnInit{
 
         const kit = this.kitMembraneForm.getRawValue();
 
-        this.composantService.saveKitMembrane(kit)
+        this.composantService.saveKitMembrane(kit,this.route.snapshot.params['code'])
             .then((response) => {
                     console.log("It worked");
                 },

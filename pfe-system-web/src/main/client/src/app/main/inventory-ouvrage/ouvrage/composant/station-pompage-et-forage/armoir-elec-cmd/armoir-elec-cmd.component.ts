@@ -59,7 +59,7 @@ export class ArmoirElecCmdComponent implements OnInit{
 
         const armoire = this.armoirElecForm.getRawValue();
 
-        this.composantService.saveArmoire(armoire)
+        this.composantService.saveArmoire(armoire,this.route.snapshot.params['code'])
             .then((response) => {
                     console.log("It worked");
                 },

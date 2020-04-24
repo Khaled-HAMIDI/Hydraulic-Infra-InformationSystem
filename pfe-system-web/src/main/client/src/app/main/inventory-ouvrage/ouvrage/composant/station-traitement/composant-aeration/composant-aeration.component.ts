@@ -64,7 +64,7 @@ export class ComposantAerationComponent implements OnInit{
 
         const equipement = this.composantAerationForm.getRawValue();
 
-        this.composantService.saveEquipementStationTraitement(equipement)
+        this.composantService.saveEquipementStationTraitement(equipement,this.route.snapshot.params['code'])
             .then((response) => {
                     console.log("It worked");
                 },

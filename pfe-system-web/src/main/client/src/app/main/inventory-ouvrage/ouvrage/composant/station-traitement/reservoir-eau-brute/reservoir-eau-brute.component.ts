@@ -63,7 +63,7 @@ export class ReservoirEauBruteComponent implements OnInit{
 
         const equipement = this.reservoirEauBruteForm.getRawValue();
 
-        this.composantService.saveEquipementStationTraitement(equipement)
+        this.composantService.saveEquipementStationTraitement(equipement,this.route.snapshot.params['code'])
             .then((response) => {
                     console.log("It worked");
                 },

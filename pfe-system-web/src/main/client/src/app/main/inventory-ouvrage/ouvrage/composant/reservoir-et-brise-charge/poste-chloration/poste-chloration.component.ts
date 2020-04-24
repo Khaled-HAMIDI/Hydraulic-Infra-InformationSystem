@@ -66,7 +66,7 @@ export class PosteChlorationComponent implements OnInit{
 
         const postChloration = this.postChlorationForm.getRawValue();
 
-        this.composantService.savePostChloration(postChloration)
+        this.composantService.savePostChloration(postChloration,this.route.snapshot.params['code'])
             .then((response) => {
                     console.log("It worked");
                 },

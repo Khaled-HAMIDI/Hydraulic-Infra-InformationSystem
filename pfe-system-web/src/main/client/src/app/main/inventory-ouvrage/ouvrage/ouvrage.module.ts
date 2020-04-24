@@ -124,32 +124,32 @@ const routes: Routes = [
         data: {action: 'add'}
     },
     {
-        path: 'add/StationTraitementConventionelle/composants',
+        path: 'add/StationTraitementConventionelle/composants/:code',
         component: StationTraitementConvStepperComponent,
         data: {action: 'add'}
     },
     {
-        path: 'add/Reservoir/composants',
+        path: 'add/Reservoir/composants/:code',
         component: ReservoirStepperComponent,
         data: {action: 'add'}
     },
     {
-        path: 'add/Forage/composants',
+        path: 'add/Forage/composants/:code',
         component: ForageStepperComponent,
         data: {action: 'add'}
     },
     {
-        path: 'add/StationPompage/composants',
+        path: 'add/StationPompage/composants/:code',
         component: StationPompageStepperComponent,
         data: {action: 'add'}
     },
     {
-        path: 'add/BriseCharge/composants',
+        path: 'add/BriseCharge/composants/:code',
         component: BriseChargeStepperComponent,
         data: {action: 'add'}
     },
     {
-        path: 'add/StationTraitementNonConventionelle/composants',
+        path: 'add/StationTraitementNonConventionelle/composants/:code',
         component: StationNonConvStepperComponent,
         data: {action: 'add'}
     },

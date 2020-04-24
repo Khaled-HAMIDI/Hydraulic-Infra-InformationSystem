@@ -59,7 +59,7 @@ export class SoupageDechargeComponent implements OnInit{
 
         const soupape = this.soupageDechargerForm.getRawValue();
 
-        this.composantService.saveSoupape(soupape)
+        this.composantService.saveSoupape(soupape,this.route.snapshot.params['code'])
             .then((response) => {
                     console.log("It worked");
                 },

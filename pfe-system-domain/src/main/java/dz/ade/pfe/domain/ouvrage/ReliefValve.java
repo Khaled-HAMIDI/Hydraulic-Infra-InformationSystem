@@ -3,10 +3,8 @@ package dz.ade.pfe.domain.ouvrage;
 import lombok.*;
 
 import javax.persistence.*;
-import dz.ade.pfe.domain.commons.Auditing;
-import lombok.experimental.SuperBuilder;
 
-import java.util.Date;
+import lombok.experimental.SuperBuilder;
 
 @Entity
 @Table(name = "relief_valve", schema = "pfe")
@@ -15,7 +13,7 @@ import java.util.Date;
 @NoArgsConstructor
 @AllArgsConstructor
 @SuperBuilder
-public class ReliefValve extends OuvrageComponent {
+public class ReliefValve extends Component {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "relief_valve_gen")
     @SequenceGenerator(name = "relief_valve_gen", sequenceName = "relief_valve_seq", schema = "pfe", allocationSize = 1)

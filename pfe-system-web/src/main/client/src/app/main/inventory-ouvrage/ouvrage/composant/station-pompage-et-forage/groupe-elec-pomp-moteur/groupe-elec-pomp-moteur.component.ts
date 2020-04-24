@@ -65,7 +65,7 @@ export class GroupeElecPompMoteurComponent implements OnInit{
 
         const moteur = this.grouprElecPMForm.getRawValue();
 
-        this.composantService.saveMoteur(moteur)
+        this.composantService.saveMoteur(moteur,this.route.snapshot.params['code'])
             .then((response) => {
                     console.log("It worked");
                 },

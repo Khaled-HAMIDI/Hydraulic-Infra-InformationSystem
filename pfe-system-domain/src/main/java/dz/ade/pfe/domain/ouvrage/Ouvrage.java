@@ -1,5 +1,6 @@
 package dz.ade.pfe.domain.ouvrage;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import dz.ade.pfe.domain.admin.User;
 import lombok.*;
 
@@ -190,6 +191,11 @@ public class Ouvrage extends Auditing{
     @OneToMany(mappedBy = "ouvrage", cascade = CascadeType.ALL)
     @Builder.Default
     protected List<OuvrageChain> chains = new ArrayList<>();
+
+    @OneToMany(mappedBy = "ouvrage", cascade = CascadeType.ALL)
+    @Builder.Default
+    @JsonIgnore
+    protected List<Component> components = new ArrayList<>();
 
 }
 

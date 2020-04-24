@@ -57,7 +57,7 @@ export class BatimentElectriqueComponent implements OnInit{
 
         const batiment = this.batimentElectForm.getRawValue();
 
-        this.composantService.saveBatimentElectrique(batiment)
+        this.composantService.saveBatimentElectrique(batiment,this.route.snapshot.params['code'])
             .then((response) => {
                     console.log("It worked");
                 },

@@ -58,7 +58,7 @@ export class GroupeElectrogeneComponent implements OnInit{
 
         const groupe = this.groupeElectrogeneForm.getRawValue();
 
-        this.composantService.saveGroupeElectrogene(groupe)
+        this.composantService.saveGroupeElectrogene(groupe,this.route.snapshot.params['code'])
             .then((response) => {
                     console.log("It worked");
                 },

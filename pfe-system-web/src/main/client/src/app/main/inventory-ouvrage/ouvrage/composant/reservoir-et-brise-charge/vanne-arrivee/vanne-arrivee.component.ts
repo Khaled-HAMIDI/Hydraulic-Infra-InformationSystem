@@ -62,7 +62,7 @@ export class VanneArriveeComponent implements OnInit{
 
         const equipementHydroMeca = this.vanneArriveForm.getRawValue();
 
-        this.composantService.saveHydroMeca(equipementHydroMeca)
+        this.composantService.saveHydroMeca(equipementHydroMeca,this.route.snapshot.params['code'])
             .then((response) => {
                     console.log("It worked");
                 },

@@ -64,7 +64,7 @@ export class GroupeElecPompPompComponent implements OnInit{
 
         const pompe = this.grouprElecPPForm.getRawValue();
 
-        this.composantService.savePompe(pompe)
+        this.composantService.savePompe(pompe,this.route.snapshot.params['code'])
             .then((response) => {
                     console.log("It worked");
                 },

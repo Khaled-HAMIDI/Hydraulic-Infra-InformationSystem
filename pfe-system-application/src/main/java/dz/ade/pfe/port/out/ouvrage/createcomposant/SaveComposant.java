@@ -4,39 +4,39 @@ import dz.ade.pfe.domain.ouvrage.*;
 
 public interface SaveComposant {
 
-    Security saveSecurity(Security security);
+    Security saveSecurity(Security security,String code);
 
-    AntiRam saveAntiRam(AntiRam antiRam);
+    AntiRam saveAntiRam(AntiRam antiRam,String code);
 
-    ChemicalPosts saveChemicalPosts(ChemicalPosts chemicalPosts);
+    ChemicalPosts saveChemicalPosts(ChemicalPosts chemicalPosts,String code);
 
-    ChlorationPost saveChlorationPost(ChlorationPost chlorationPost);
+    ChlorationPost saveChlorationPost(ChlorationPost chlorationPost,String code);
 
-    ElectricalCabinet saveElectricalCabinet(ElectricalCabinet electricalCabinet);
+    ElectricalCabinet saveElectricalCabinet(ElectricalCabinet electricalCabinet,String code);
 
-    ElectricBuilding saveElectricBuilding(ElectricBuilding electricBuilding);
+    ElectricBuilding saveElectricBuilding(ElectricBuilding electricBuilding,String code);
 
-    ElectroGroupMotor saveElectroGroupMotor(ElectroGroupMotor electroGroupMotor);
+    ElectroGroupMotor saveElectroGroupMotor(ElectroGroupMotor electroGroupMotor,String code);
 
-    ElectroGroupPump saveElectroGroupPump(ElectroGroupPump electroGroupPump);
+    ElectroGroupPump saveElectroGroupPump(ElectroGroupPump electroGroupPump,String code);
 
-    Generator saveGenerator(Generator generator);
+    Generator saveGenerator(Generator generator,String code);
 
-    HedromecaEquipment saveHedromecaEquipment(HedromecaEquipment hedromecaEquipment);
+    HedromecaEquipment saveHedromecaEquipment(HedromecaEquipment hedromecaEquipment,String code);
 
-    LocalBlock saveLocalBlock(LocalBlock localBlock);
+    LocalBlock saveLocalBlock(LocalBlock localBlock,String code);
 
-    MembraneKit saveMembraneKit(MembraneKit membraneKit);
+    MembraneKit saveMembraneKit(MembraneKit membraneKit,String code);
 
-    PhpStation savePhpStation(PhpStation phpStation);
+    PhpStation savePhpStation(PhpStation phpStation,String code);
 
-    ProductStorage saveProductStorage(ProductStorage productStorage);
+    ProductStorage saveProductStorage(ProductStorage productStorage,String code);
 
-    ReliefValve saveReliefValve(ReliefValve reliefValve);
+    ReliefValve saveReliefValve(ReliefValve reliefValve,String code);
 
-    TransformationStation saveTransformationStation(TransformationStation transformationStation);
+    TransformationStation saveTransformationStation(TransformationStation transformationStation,String code);
 
-    TraitementStationEquipement saveTraitementStationEquipement(TraitementStationEquipement traitementStationEquipement);
+    TraitementStationEquipement saveTraitementStationEquipement(TraitementStationEquipement traitementStationEquipement,String code);
 
-    WaterIntake saveWaterIntake(WaterIntake waterIntake);
+    WaterIntake saveWaterIntake(WaterIntake waterIntake,String code);
 }

@@ -63,7 +63,7 @@ export class BassinMelangeComponent implements OnInit{
 
         const equipement = this.BassinMealngeForm.getRawValue();
 
-        this.composantService.saveEquipementStationTraitement(equipement)
+        this.composantService.saveEquipementStationTraitement(equipement,this.route.snapshot.params['code'])
             .then((response) => {
                     console.log("It worked");
                 },

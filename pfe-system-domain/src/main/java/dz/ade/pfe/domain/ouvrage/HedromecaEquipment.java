@@ -3,10 +3,8 @@ package dz.ade.pfe.domain.ouvrage;
 import lombok.*;
 
 import javax.persistence.*;
-import dz.ade.pfe.domain.commons.Auditing;
-import lombok.experimental.SuperBuilder;
 
-import java.awt.*;
+import lombok.experimental.SuperBuilder;
 
 @Entity
 @Table(name = "hedromeca_equipment", schema = "pfe")
@@ -15,7 +13,7 @@ import java.awt.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @SuperBuilder
-public class HedromecaEquipment extends OuvrageComponent{
+public class HedromecaEquipment extends Component {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "equipement_hedromeca_gen")
     @SequenceGenerator(name = "equipement_hedromeca_gen", sequenceName = "equipement_hedromeca_seq", schema = "pfe", allocationSize = 1)

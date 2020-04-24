@@ -4,7 +4,7 @@ import lombok.*;
 
 
 import javax.persistence.*;
-import dz.ade.pfe.domain.commons.Auditing;
+
 import lombok.experimental.SuperBuilder;
 
 
@@ -15,7 +15,7 @@ import lombok.experimental.SuperBuilder;
 @NoArgsConstructor
 @AllArgsConstructor
 @SuperBuilder
-public class ElectricalCabinet extends OuvrageComponent{
+public class ElectricalCabinet extends Component {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "electrical_cabinet_gen")
     @SequenceGenerator(name = "electrical_cabinet_gen", sequenceName = "electrical_cabinet_seq", schema = "pfe", allocationSize = 1)

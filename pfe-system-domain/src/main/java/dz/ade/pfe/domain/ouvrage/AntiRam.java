@@ -3,10 +3,8 @@ package dz.ade.pfe.domain.ouvrage;
 import lombok.*;
 
 import javax.persistence.*;
-import dz.ade.pfe.domain.commons.Auditing;
-import lombok.experimental.SuperBuilder;
 
-import java.util.Date;
+import lombok.experimental.SuperBuilder;
 
 @Entity
 @Table(name = "anti_ram", schema = "pfe")
@@ -15,7 +13,7 @@ import java.util.Date;
 @NoArgsConstructor
 @AllArgsConstructor
 @SuperBuilder
-public class AntiRam extends OuvrageComponent {
+public class AntiRam extends Component {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "anti_belier_gen")
     @SequenceGenerator(name = "anti_belier_gen", sequenceName = "anti_belier_seq", schema = "pfe", allocationSize = 1)
