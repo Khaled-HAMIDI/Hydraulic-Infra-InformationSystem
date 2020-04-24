@@ -18,7 +18,8 @@ export const locale = {
               'error': 'L\'inventaire n\'a pas été crée'
             },
             "LEGENDS": {
-                'svp': 'Remplissez ces infos afin de lancer un inventaire'
+                'svp': 'Remplissez ces infos afin de lancer un inventaire',
+                'headOfTheInventory' : 'Coordonnées du responsable d\'inventaire'
             }
         },
     }

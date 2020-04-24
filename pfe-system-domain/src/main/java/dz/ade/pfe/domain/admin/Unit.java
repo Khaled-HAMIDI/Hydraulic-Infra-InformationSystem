@@ -35,6 +35,10 @@ public class Unit extends OrganisationalStructure {
     @Builder.Default
     private List<Center> centers = new ArrayList<>();
 
+    @OneToMany(mappedBy = "unit", cascade = CascadeType.ALL)
+    @Builder.Default
+    private List<Center> inventories = new ArrayList<>();
+
     public void addCenter(Center center) {
         centers.add(center);
         center.setUnit(this);

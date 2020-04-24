@@ -1,6 +1,7 @@
 package dz.ade.pfe.domain.admin;
 
 import dz.ade.pfe.domain.commons.Auditing;
+import dz.ade.pfe.domain.ouvrage.Inventory;
 import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -65,6 +66,10 @@ public class User extends Auditing implements UserDetails {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "organisational_structure_id")
     private OrganisationalStructure organisationalStructure;
+
+    @OneToMany(mappedBy = "headOfTheInventory", cascade = CascadeType.ALL)
+    @Builder.Default
+    protected List<Inventory> inventories = new ArrayList<>();
 
     @ManyToMany(fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     @JoinTable(name = "user_role", schema = "pfe",

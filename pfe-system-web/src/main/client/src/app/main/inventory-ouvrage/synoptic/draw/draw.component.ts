@@ -60,11 +60,11 @@ export class DrawComponent implements OnInit, OnDestroy {
     chains.forEach((chain) => {
       chain.ouvrages.sort(this.compare);
       var l;
-      for (var i = 0; i < chain.ouvrages.length-1; i++) {
+      for (var i = 0; i < chain.ouvrages.length - 1; i++) {
         l = new link();
         l.source = chain.ouvrages[i].name.replace(' ', '') + '-';
-        l.target = chain.ouvrages[i+1].name.replace(' ', '') + '-';
-        var ind =this.links.findIndex((link)=>{
+        l.target = chain.ouvrages[i + 1].name.replace(' ', '') + '-';
+        var ind = this.links.findIndex((link) => {
           return ((link.source === l.source) && (link.target === l.target))
         });
         //if (ind != 1)
@@ -93,8 +93,8 @@ export class DrawComponent implements OnInit, OnDestroy {
         <span class="tooltiptext">Date mes : 11/12/2000</span><br>
         <span class="tooltiptext">Etat : Bon</span><br>
         `)
-          .style("left", (d3.event.pageX + 28) + "px")
-          .style("top", (d3.event.pageY - 28) + "px");
+          .style("left", (d3.event.pageX) + "px")
+          .style("top", (d3.event.pageY) + "px");
       })
       .on("mouseout", function (d) {
         div.transition()
@@ -104,8 +104,8 @@ export class DrawComponent implements OnInit, OnDestroy {
   }
 
   drawSchema() {
-    var n = { nodes: this.ouvrages, links: this.links}
-    d3.select("#diagram").attr('class','hello');
+    var n = { nodes: this.ouvrages, links: this.links }
+    d3.select("#diagram").attr('class', 'hello');
     var diagram = new Diagram('#diagram', n, { pop: /^([^\s-]+)-/ });
     diagram.on('rendered', () => {
       // d3.selectAll('line').on('mouseover', function (d) {
@@ -124,7 +124,7 @@ export class DrawComponent implements OnInit, OnDestroy {
       //   }
       // });
       // Define the div for the tooltip
-      var div = d3.select("body").append("div")
+      var div = d3.select(".content-card").append("div")
         .attr("class", "tooltip")
         .style("opacity", 0);
       // You can also change label position, which is, how far it is from the node along the link line
@@ -140,18 +140,20 @@ export class DrawComponent implements OnInit, OnDestroy {
         repeat(i)
       })
       function repeat(i) {
-        var line = d3.select("#path" + i)
-        var totalLength = line.node().getTotalLength();
-        line.attr("stroke-dasharray", totalLength + " " + totalLength)
-          .attr("stroke-dashoffset", totalLength)
-          .transition()
-          .duration(8000)
-          // .delay(100)
-          .ease("linear") //Try linear, quad, bounce... see other examples here - http://bl.ocks.org/hunzy/9929724
-          .attr("stroke-dashoffset", 0)
-          // .style("stroke-dasharray","5")
-          .style("stroke-width", 2.5)
-          .each("end", () => repeat(i))
+        var line = d3.select("#path" + i);
+        if (line.node()) {
+          var totalLength = line.node().getTotalLength();
+          line.attr("stroke-dasharray", totalLength + " " + totalLength)
+            .attr("stroke-dashoffset", totalLength)
+            .transition()
+            .duration(8000)
+            // .delay(100)
+            .ease("linear") //Try linear, quad, bounce... see other examples here - http://bl.ocks.org/hunzy/9929724
+            .attr("stroke-dashoffset", 0)
+            // .style("stroke-dasharray","5")
+            .style("stroke-width", 2.5)
+            .each("end", () => repeat(i))
+        }
       }
 
     });

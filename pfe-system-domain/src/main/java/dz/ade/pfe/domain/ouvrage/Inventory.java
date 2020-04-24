@@ -1,5 +1,7 @@
 package dz.ade.pfe.domain.ouvrage;
 
+import dz.ade.pfe.domain.admin.Unit;
+import dz.ade.pfe.domain.admin.User;
 import lombok.*;
 
 import javax.persistence.*;
@@ -23,16 +25,19 @@ public class Inventory extends Auditing{
     @Column(name = "code")
     private String code;
 
-    @Column(name = "responsable")
-    private Long responsable;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id")
+    private User headOfTheInventory;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "unit_id")
+    private Unit unit;
 
     @Column(name = "date")
     private LocalDate date;
 
     @Column(name = "completed")
-    private boolean completed;
-
-
+    private Boolean completed;
 
 }
 

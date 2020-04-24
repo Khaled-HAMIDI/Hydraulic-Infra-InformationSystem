@@ -1,7 +1,7 @@
 export class Inventory {
 
     code: string;
-    responsable: number;
+    responsable: any;
     date: string;
     completed: boolean;
 

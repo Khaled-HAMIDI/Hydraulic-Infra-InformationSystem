@@ -27,6 +27,7 @@ import { AyamsModule } from '@ayams/ayams.module';
 import { IConfig, NgxMaskModule } from 'ngx-mask';
 import { MatDatepickerModule } from "@angular/material/datepicker";
 import {InventoryAddComponent} from "./inventory-add/inventory-add.component";
+import { InventoryAddService } from './inventory-add/inventory-add.service';
 
 
 export const options: Partial<IConfig> | (() => Partial<IConfig>) = null;
@@ -35,7 +36,10 @@ const routes: Routes = [
     {
         path: 'add',
         component: InventoryAddComponent,
-        data: {action: 'add'}
+        data: {action: 'add'},
+        resolve: {
+            data: InventoryAddService
+        }
     }
 ];
 

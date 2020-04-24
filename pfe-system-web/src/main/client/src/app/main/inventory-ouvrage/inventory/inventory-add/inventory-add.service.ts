@@ -1,20 +1,22 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { API } from 'config/api.config';
-import {  Router } from '@angular/router';
+import { Router, Resolve, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
 import { ToolsService } from '@ayams/services/tools.service';
+import { Observable } from 'rxjs';
 
 const INVENTORY_API = API + '/inventory';
+const USERS_API = API + '/users';
 
 @Injectable({
     providedIn: 'root'
 })
 
-export class InventoryAddService {
+export class InventoryAddService implements Resolve<any>{
 
     constructor(private router: Router,
-                private http: HttpClient,
-                private toolsService: ToolsService) {
+        private http: HttpClient,
+        private toolsService: ToolsService) {
     }
 
     // -----------------------------------------------------------------------------------------------------
@@ -22,15 +24,43 @@ export class InventoryAddService {
     // -----------------------------------------------------------------------------------------------------
 
 
+    getUsers() {
+        return new Promise((resolve, reject) => {
+            this.http.get(USERS_API)
+                .subscribe((response: any) => {
+                    resolve(response);
+                }, reject);
+        });
+
+    }
+
     save(inventory): Promise<any> {
         return new Promise((resolve, reject) => {
             this.http.post(INVENTORY_API, inventory)
                 .subscribe((response: any) => {
                     resolve(response);
-                }, (error : any) => {
+                }, (error: any) => {
                     console.log(error);
                     reject(error);
                 });
+        });
+
+    }
+
+
+    resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<any> | Promise<any> | any {
+
+        return new Promise((resolve, reject) => {
+
+            Promise.all([
+                this.getUsers()
+            ]).then(
+                (data) => {
+                    resolve(data);
+
+                },
+                reject
+            );
         });
 
     }
@@ -42,10 +72,10 @@ export class InventoryAddService {
             this.toolsService.showProgressBar();
             this.save(inventory).then((response) => {
 
-                    this.toolsService.hideProgressBar();
-                    this.toolsService.showSuccess('ADD.TOAST-ADD.success');
-                    resolve(response);
-                },
+                this.toolsService.hideProgressBar();
+                this.toolsService.showSuccess('ADD.TOAST-ADD.success');
+                resolve(response);
+            },
                 (error) => {
                     console.log(error);
                     this.toolsService.hideProgressBar();

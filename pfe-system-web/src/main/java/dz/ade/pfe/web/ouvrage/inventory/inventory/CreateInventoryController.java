@@ -1,8 +1,9 @@
 package dz.ade.pfe.web.ouvrage.inventory.inventory;
 
-import dz.ade.pfe.domain.ouvrage.Inventory;
 import dz.ade.pfe.port.in.inventory.createinventory.CreateInventoryQuery;
 import dz.ade.pfe.service.inventory.createinventory.InventoryAddDto;
+import dz.ade.pfe.service.inventory.createinventory.InventoryShowDto;
+import dz.ade.pfe.web.utils.ProfileManager;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
@@ -22,7 +23,7 @@ import org.springframework.web.bind.annotation.*;
 public class CreateInventoryController {
 
     private final CreateInventoryQuery createInventoryQuery;
-
+    private final ProfileManager profileManager;
 
     @PostMapping(value = "/inventory")
     @ApiOperation(value = "Save an inventory")
@@ -32,7 +33,7 @@ public class CreateInventoryController {
             @ApiResponse(code = 403, message = "Accessing the resource you were trying to reach is forbidden"),
             @ApiResponse(code = 404, message = "The resource you were trying to reach is not found")
     })
-    public Inventory createInventory(@RequestBody InventoryAddDto inventoryAddDto) {
-        return createInventoryQuery.createInventory(inventoryAddDto);
+    public InventoryShowDto createInventory(@RequestBody InventoryAddDto inventoryAddDto) {
+        return createInventoryQuery.createInventory(inventoryAddDto,profileManager.getDeployedUnitCode());
     }
 }

@@ -9,14 +9,8 @@ import java.time.LocalDate;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class InventoryAddDto {
-
+public class InventoryShowDto {
     private String code;
     private LocalDate date;
-    private String responsable;
-    private boolean completed;
-
-    public boolean getCompleted() {
-        return this.completed;
-    }
+    private Boolean completed;
 }

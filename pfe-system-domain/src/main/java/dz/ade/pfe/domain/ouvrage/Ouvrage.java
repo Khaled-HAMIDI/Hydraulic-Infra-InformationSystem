@@ -194,7 +194,6 @@ public class Ouvrage extends Auditing{
 
     @OneToMany(mappedBy = "ouvrage", cascade = CascadeType.ALL)
     @Builder.Default
-    @JsonIgnore
     protected List<Component> components = new ArrayList<>();
 
 }

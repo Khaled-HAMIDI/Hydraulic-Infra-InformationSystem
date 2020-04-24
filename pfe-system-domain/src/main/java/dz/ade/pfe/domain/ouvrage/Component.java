@@ -32,7 +32,6 @@ public class Component extends Auditing{
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "ouvrage_id")
-    @JsonIgnore
     private Ouvrage ouvrage;
 
 }
