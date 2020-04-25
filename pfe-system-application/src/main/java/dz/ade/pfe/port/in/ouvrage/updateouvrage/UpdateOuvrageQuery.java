@@ -5,5 +5,4 @@ import dz.ade.pfe.service.ouvrage.updateouvrage.OuvrageUpdateDto;
 
 public interface UpdateOuvrageQuery {
    Ouvrage updateOuvrage(OuvrageUpdateDto ouvrageUpdateDto, String code);
-   Ouvrage getUpdatedOuvrage(String code);
 }

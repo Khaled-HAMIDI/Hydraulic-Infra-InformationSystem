@@ -19,11 +19,4 @@ public class UpdateOuvrageService implements UpdateOuvrageQuery {
         return updateSaveOuvrage.updateSaveOuvrage(ouvrageUpdateDto,code);
     }
 
-    @Override
-    public Ouvrage getUpdatedOuvrage(String code){
-
-        return updateSaveOuvrage.getUpdatedOuvrage(code);
-    }
-
-
 }

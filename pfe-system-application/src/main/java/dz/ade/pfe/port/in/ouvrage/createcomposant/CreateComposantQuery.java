@@ -6,37 +6,37 @@ import dz.ade.pfe.service.ouvrage.createcomposant.Dtos.*;
 
 public interface CreateComposantQuery {
 
-    Security createSecurity(SecurityAddDto ouvrageAddDto,String code);
+    ComponentResponseDto createSecurity(SecurityAddDto ouvrageAddDto,String code);
 
-    WaterIntake createWaterIntake(WaterIntakeAddDto waterIntakeAddDto,String code);
+    ComponentResponseDto createWaterIntake(WaterIntakeAddDto waterIntakeAddDto,String code);
 
-    TraitementStationEquipement createTraitementStationEquipement(TraitementStationEquipementAddDto traitementStationEquipementAddDto,String code);
+    ComponentResponseDto createTraitementStationEquipement(TraitementStationEquipementAddDto traitementStationEquipementAddDto,String code);
 
-    MembraneKit createMembraneKit(MembraneKitAddDto membraneKitAddDto,String code);
+    ComponentResponseDto createMembraneKit(MembraneKitAddDto membraneKitAddDto,String code);
 
-    PhpStation createPhpStation(PhpStationAddDto phpStationAddDto,String code);
+    ComponentResponseDto createPhpStation(PhpStationAddDto phpStationAddDto,String code);
 
-    ProductStorage createProductStorage(ProductStorageAddDto productStorageAddDto,String code);
+    ComponentResponseDto createProductStorage(ProductStorageAddDto productStorageAddDto,String code);
 
-    ElectricBuilding createElectricBuilding(ElectricBuildingAddDto electricBuildingAddDto,String code);
+    ComponentResponseDto createElectricBuilding(ElectricBuildingAddDto electricBuildingAddDto,String code);
 
-    Generator createGenerator(GeneratorAddDto generatorAddDto,String code);
+    ComponentResponseDto createGenerator(GeneratorAddDto generatorAddDto,String code);
 
-    ChemicalPosts createChemicalPosts(ChemicalPostsAddDto chemicalPostsAddDto,String code);
+    ComponentResponseDto createChemicalPosts(ChemicalPostsAddDto chemicalPostsAddDto,String code);
 
-    TransformationStation createTransformationStation(TransformationStationAddDto transformationStationAddDto,String code);
+    ComponentResponseDto createTransformationStation(TransformationStationAddDto transformationStationAddDto,String code);
 
-    ElectroGroupPump createElectroGroupPumpAddDto(ElectroGroupPumpAddDto electroGroupPumpAddDto,String code);
+    ComponentResponseDto createElectroGroupPumpAddDto(ElectroGroupPumpAddDto electroGroupPumpAddDto,String code);
 
-    ElectroGroupMotor createElectroGroupMotor(ElectroGroupMotorAddDto electroGroupMotorAddDto,String code);
+    ComponentResponseDto createElectroGroupMotor(ElectroGroupMotorAddDto electroGroupMotorAddDto,String code);
 
-    ElectricalCabinet createElectricalCabinet(ElectricalCabinetAddDto electricalCabinetAddDto,String code);
+    ComponentResponseDto createElectricalCabinet(ElectricalCabinetAddDto electricalCabinetAddDto,String code);
 
-    AntiRam createAntiRam(AntiRamAddDto antiRamAddDto,String code);
+    ComponentResponseDto createAntiRam(AntiRamAddDto antiRamAddDto,String code);
 
-    ReliefValve createReliefValve(ReliefValveAddDto reliefValveAddDto,String code);
+    ComponentResponseDto createReliefValve(ReliefValveAddDto reliefValveAddDto,String code);
 
-    HedromecaEquipment createHedromecaEquipment(HedromecaEquipmentAddDto hedromecaEquipmentAddDto,String code);
+    ComponentResponseDto createHedromecaEquipment(HedromecaEquipmentAddDto hedromecaEquipmentAddDto,String code);
 
-    ChlorationPost createChlorationPost(ChlorationPostAddDto chlorationPostAddDto,String code);
+    ComponentResponseDto createChlorationPost(ChlorationPostAddDto chlorationPostAddDto,String code);
 }

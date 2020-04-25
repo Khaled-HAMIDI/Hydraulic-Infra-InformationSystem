@@ -7,6 +7,6 @@ public interface UpdateSaveOuvrage {
 
     Ouvrage updateSaveOuvrage(OuvrageUpdateDto ouvrageUpdateDto, String code);
 
-    Ouvrage getUpdatedOuvrage(String code);
+
 
 }

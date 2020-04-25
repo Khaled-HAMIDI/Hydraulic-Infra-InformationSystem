@@ -20,87 +20,87 @@ public class CreateComposantController {
 
 
     @PostMapping(value = "/composants/security/{code}")
-    public Security createSecurity(@RequestBody SecurityAddDto securityAddDto,@PathVariable(value="code") String code) {
+    public ComponentResponseDto createSecurity(@RequestBody SecurityAddDto securityAddDto,@PathVariable(value="code") String code) {
         return createComposantQuery.createSecurity(securityAddDto,code);
     }
 
     @PostMapping(value = "/composants/priseEau/{code}")
-    public WaterIntake createWaterIntake(@RequestBody WaterIntakeAddDto waterIntakeAddDto,@PathVariable(value="code") String code) {
+    public ComponentResponseDto createWaterIntake(@RequestBody WaterIntakeAddDto waterIntakeAddDto,@PathVariable(value="code") String code) {
         return createComposantQuery.createWaterIntake(waterIntakeAddDto,code);
     }
 
     @PostMapping(value = "/composants/equipementStationTraitement/{code}")
-    public TraitementStationEquipement createTraitementStationEquipement(@RequestBody TraitementStationEquipementAddDto traitementStationEquipementAddDto,@PathVariable(value="code") String code) {
+    public ComponentResponseDto createTraitementStationEquipement(@RequestBody TraitementStationEquipementAddDto traitementStationEquipementAddDto,@PathVariable(value="code") String code) {
         return createComposantQuery.createTraitementStationEquipement(traitementStationEquipementAddDto,code);
     }
 
     @PostMapping(value = "/composants/kitMembrane/{code}")
-    public MembraneKit createMembraneKit(@RequestBody MembraneKitAddDto membraneKitAddDto,@PathVariable(value="code") String code) {
+    public ComponentResponseDto createMembraneKit(@RequestBody MembraneKitAddDto membraneKitAddDto,@PathVariable(value="code") String code) {
         return createComposantQuery.createMembraneKit(membraneKitAddDto,code);
     }
 
     @PostMapping(value = "/composants/stationPhp/{code}")
-    public PhpStation createPhpStation(@RequestBody PhpStationAddDto phpStationAddDto,@PathVariable(value="code") String code) {
+    public ComponentResponseDto createPhpStation(@RequestBody PhpStationAddDto phpStationAddDto,@PathVariable(value="code") String code) {
         return createComposantQuery.createPhpStation(phpStationAddDto,code);
     }
 
     @PostMapping(value = "/composants/localStockage/{code}")
-    public ProductStorage createProductStorage(@RequestBody ProductStorageAddDto productStorageAddDto,@PathVariable(value="code") String code) {
+    public ComponentResponseDto createProductStorage(@RequestBody ProductStorageAddDto productStorageAddDto,@PathVariable(value="code") String code) {
         return createComposantQuery.createProductStorage(productStorageAddDto,code);
     }
 
     @PostMapping(value = "/composants/batimentElectrique/{code}")
-    public ElectricBuilding createElectricBuilding(@RequestBody ElectricBuildingAddDto electricBuildingAddDto,@PathVariable(value="code") String code) {
+    public ComponentResponseDto createElectricBuilding(@RequestBody ElectricBuildingAddDto electricBuildingAddDto,@PathVariable(value="code") String code) {
         return createComposantQuery.createElectricBuilding(electricBuildingAddDto,code);
     }
 
     @PostMapping(value = "/composants/groupeElectrogene/{code}")
-    public Generator createGenerator(@RequestBody GeneratorAddDto generatorAddDto,@PathVariable(value="code") String code) {
+    public ComponentResponseDto createGenerator(@RequestBody GeneratorAddDto generatorAddDto,@PathVariable(value="code") String code) {
         return createComposantQuery.createGenerator(generatorAddDto,code);
     }
 
     @PostMapping(value = "/composants/postChimique/{code}")
-    public ChemicalPosts createChemicalPosts(@RequestBody ChemicalPostsAddDto chemicalPostsAddDto,@PathVariable(value="code") String code) {
+    public ComponentResponseDto createChemicalPosts(@RequestBody ChemicalPostsAddDto chemicalPostsAddDto,@PathVariable(value="code") String code) {
         return createComposantQuery.createChemicalPosts(chemicalPostsAddDto,code);
     }
 
     @PostMapping(value = "/composants/postTransformationElectrique/{code}")
-    public TransformationStation createTransformationStation(@RequestBody TransformationStationAddDto transformationStationAddDto,@PathVariable(value="code") String code) {
+    public ComponentResponseDto createTransformationStation(@RequestBody TransformationStationAddDto transformationStationAddDto,@PathVariable(value="code") String code) {
         return createComposantQuery.createTransformationStation(transformationStationAddDto,code);
     }
 
     @PostMapping(value = "/composants/groupeElectroPompePompe/{code}")
-    public ElectroGroupPump createElectroGroupPumpAddDto(@RequestBody ElectroGroupPumpAddDto electroGroupPumpAddDto,@PathVariable(value="code") String code) {
+    public ComponentResponseDto createElectroGroupPumpAddDto(@RequestBody ElectroGroupPumpAddDto electroGroupPumpAddDto,@PathVariable(value="code") String code) {
         return createComposantQuery.createElectroGroupPumpAddDto(electroGroupPumpAddDto,code);
     }
 
     @PostMapping(value = "/composants/groupeElectroPompeMoteur/{code}")
-    public ElectroGroupMotor createElectroGroupMotor(@RequestBody ElectroGroupMotorAddDto electroGroupMotorAddDto,@PathVariable(value="code") String code) {
+    public ComponentResponseDto createElectroGroupMotor(@RequestBody ElectroGroupMotorAddDto electroGroupMotorAddDto,@PathVariable(value="code") String code) {
         return createComposantQuery.createElectroGroupMotor(electroGroupMotorAddDto,code);
     }
 
     @PostMapping(value = "/composants/armoireElectrique/{code}")
-    public ElectricalCabinet createElectricalCabinet(@RequestBody ElectricalCabinetAddDto electricalCabinetAddDto,@PathVariable(value="code") String code) {
+    public ComponentResponseDto createElectricalCabinet(@RequestBody ElectricalCabinetAddDto electricalCabinetAddDto,@PathVariable(value="code") String code) {
         return createComposantQuery.createElectricalCabinet(electricalCabinetAddDto,code);
     }
 
     @PostMapping(value = "/composants/antiBelier/{code}")
-    public AntiRam createAntiRam(@RequestBody AntiRamAddDto antiRamAddDto,@PathVariable(value="code") String code) {
+    public ComponentResponseDto createAntiRam(@RequestBody AntiRamAddDto antiRamAddDto,@PathVariable(value="code") String code) {
         return createComposantQuery.createAntiRam(antiRamAddDto,code);
     }
 
     @PostMapping(value = "/composants/soupapaeDecharge/{code}")
-    public ReliefValve createReliefValve(@RequestBody ReliefValveAddDto reliefValveAddDto,@PathVariable(value="code") String code) {
+    public ComponentResponseDto createReliefValve(@RequestBody ReliefValveAddDto reliefValveAddDto,@PathVariable(value="code") String code) {
         return createComposantQuery.createReliefValve(reliefValveAddDto,code);
     }
 
     @PostMapping(value = "/composants/equipementHydroMeca/{code}")
-    public HedromecaEquipment createHedromecaEquipment(@RequestBody HedromecaEquipmentAddDto hedromecaEquipmentAddDto,@PathVariable(value="code") String code) {
+    public ComponentResponseDto createHedromecaEquipment(@RequestBody HedromecaEquipmentAddDto hedromecaEquipmentAddDto,@PathVariable(value="code") String code) {
         return createComposantQuery.createHedromecaEquipment(hedromecaEquipmentAddDto,code);
     }
 
     @PostMapping(value = "/composants/postChloration/{code}")
-    public ChlorationPost createChlorationPost(@RequestBody ChlorationPostAddDto chlorationPostAddDto,@PathVariable(value="code") String code) {
+    public ComponentResponseDto createChlorationPost(@RequestBody ChlorationPostAddDto chlorationPostAddDto,@PathVariable(value="code") String code) {
         return createComposantQuery.createChlorationPost(chlorationPostAddDto,code);
     }
 

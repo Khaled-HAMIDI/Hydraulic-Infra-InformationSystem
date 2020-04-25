@@ -3,6 +3,7 @@ package dz.ade.pfe.service.ouvrage.getouvragedetails;
 import dz.ade.pfe.domain.ouvrage.Ouvrage;
 import dz.ade.pfe.port.in.ouvrage.getouvragedetails.GetOuvrageDetailsQuery;
 import dz.ade.pfe.port.out.ouvrage.getouvragedetails.LoadOuvrageDetails;
+import dz.ade.pfe.service.ouvrage.OuvrageMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

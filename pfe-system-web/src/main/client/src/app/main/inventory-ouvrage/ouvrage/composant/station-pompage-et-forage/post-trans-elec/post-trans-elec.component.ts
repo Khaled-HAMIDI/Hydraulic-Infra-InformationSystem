@@ -51,7 +51,7 @@ export class PostTransElecComponent implements OnInit{
             pmt: ['',Validators.required],
             pbt:['',Validators.required],
             pmd: ['',Validators.required],
-            tarif: [true ,Validators.required],
+            tarif: ['' ,Validators.required],
             pma:['',Validators.required],
             typeComptage:['',Validators.required]
         };

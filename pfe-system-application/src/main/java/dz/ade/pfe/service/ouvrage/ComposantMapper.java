@@ -1,4 +1,4 @@
-package dz.ade.pfe.service.ouvrage.createcomposant;
+package dz.ade.pfe.service.ouvrage;
 
 import dz.ade.pfe.domain.ouvrage.*;
 import dz.ade.pfe.service.ouvrage.createcomposant.Dtos.*;
@@ -6,8 +6,15 @@ import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.Mappings;
 
+import java.util.List;
+
 @Mapper(componentModel = "spring")
 public interface ComposantMapper {
+
+   ComponentResponseDto componentToComponentResponse(Component component);
+
+   List<ComponentResponseDto> componentToComponentResponse(List<Component> component);
+
 
    @Mappings({
            @Mapping(source = "guerites", target = "entryBox"),

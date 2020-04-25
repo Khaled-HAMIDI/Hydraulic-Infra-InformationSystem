@@ -3,7 +3,6 @@ package dz.ade.pfe.ouvrage.inventory.ouvrage.createcomposant;
 import dz.ade.pfe.domain.ouvrage.*;
 import dz.ade.pfe.ouvrage.inventory.ouvrage.ComponentRepository;
 import dz.ade.pfe.ouvrage.inventory.ouvrage.OuvrageRepository;
-import dz.ade.pfe.ouvrage.inventory.ouvrage.createcomposant.repositories.*;
 import dz.ade.pfe.port.out.ouvrage.createcomposant.SaveComposant;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
@@ -13,24 +12,6 @@ import org.springframework.stereotype.Component;
 @RequiredArgsConstructor
 public class CreateComposantAdapter implements SaveComposant {
 
-    private final SecurityRepository securityRepository;
-    private final AntiRamRepository antiRamRepository;
-    private final ChemicalPostsRepository chemicalPostsRepository;
-    private final ChlorationPostRepository chlorationPostRepository;
-    private final ElectricBuildingRepository electricBuildingRepository;
-    private final ElectricalCabinetRepository electricalCabinetRepository ;
-    private final ElectroGroupMotorRepository electroGroupMotorRepository ;
-    private final ElectroGroupPumpRepository electroGroupPumpRepository ;
-    private final GeneratorRepository generatorRepository ;
-    private final HedromeacaEquipementRepository hedromeacaEquipementRepository ;
-    private final LocalBlockRepository localBlockRepository ;
-    private final MembraneKitRepository membraneKitRepository ;
-    private final PhpStationRepository phpStationRepository ;
-    private final ProductStorageRepository productStorageRepository ;
-    private final ReliefValveRepository reliefValveRepository ;
-    private final TraitementStationEquipementRepository traitementStationEquipementRepository ;
-    private final TransformationStationRepository transformationStationRepository ;
-    private final WaterIntakeRepository waterIntakeRepository ;
     private final OuvrageRepository ouvrageRepository ;
     private final ComponentRepository componentRepository;
 
