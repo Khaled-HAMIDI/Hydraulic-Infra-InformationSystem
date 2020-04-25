@@ -7,27 +7,21 @@ import javax.persistence.*;
 import lombok.experimental.SuperBuilder;
 
 @Entity
-@Table(name = "electric_building", schema = "pfe")
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @SuperBuilder
 public class ElectricBuilding extends Component {
-    @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "batiment_electrique_gen")
-    @SequenceGenerator(name = "batiment_electrique_gen", sequenceName = "batiment_electrique_seq", schema = "pfe", allocationSize = 1)
-    protected Long id;
 
-
-    @Column(name = "state")
+    @Column(name = "state_ElectricBuilding")
     @Enumerated(EnumType.STRING)
     private EnumEtat state;
 
-    @Column(name = "nature")
+    @Column(name = "nature_ElectricBuilding")
     private String nature;
 
-    @Column(name = "area")
+    @Column(name = "area_ElectricBuilding")
     private double area;
 
 

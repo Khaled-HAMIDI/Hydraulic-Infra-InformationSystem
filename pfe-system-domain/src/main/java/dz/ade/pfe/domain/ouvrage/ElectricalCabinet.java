@@ -9,32 +9,27 @@ import lombok.experimental.SuperBuilder;
 
 
 @Entity
-@Table(name = "electrical_cabinet", schema = "pfe")
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @SuperBuilder
 public class ElectricalCabinet extends Component {
-    @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "electrical_cabinet_gen")
-    @SequenceGenerator(name = "electrical_cabinet_gen", sequenceName = "electrical_cabinet_seq", schema = "pfe", allocationSize = 1)
-    protected Long id;
 
-    @Column(name = "power")
+    @Column(name = "power_ElectricalCabinet")
     private double power;
 
-    @Column(name = "number")
+    @Column(name = "number_ElectricalCabinet")
     private double number;
 
-    @Column(name = "observation")
+    @Column(name = "observation_ElectricalCabinet")
     private String observation;
 
-    @Column(name = "state")
+    @Column(name = "state_ElectricalCabinet")
     @Enumerated(EnumType.STRING)
     private EnumEtat state;
 
-    @Column(name = "brand")
+    @Column(name = "brand_ElectricalCabinet")
     private String brand;
 
 

@@ -7,21 +7,16 @@ import javax.persistence.*;
 import lombok.experimental.SuperBuilder;
 
 @Entity
-@Table(name = "membrane_kit", schema = "pfe")
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @SuperBuilder
 public class MembraneKit extends Component {
-    @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "kit_gen")
-    @SequenceGenerator(name = "kit_gen", sequenceName = "kit_seq", schema = "pfe", allocationSize = 1)
-    protected Long id;
 
-    @Column(name = "characteristic")
+    @Column(name = "characteristic_MembraneKit")
     private String characteristic;
 
-    @Column(name = "number")
+    @Column(name = "number_MembraneKit")
     private Double number;
 }

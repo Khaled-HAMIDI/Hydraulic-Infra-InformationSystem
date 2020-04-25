@@ -2,6 +2,7 @@ package dz.ade.pfe.service.ouvrage;
 
 import dz.ade.pfe.domain.ouvrage.*;
 import dz.ade.pfe.service.ouvrage.createcomposant.Dtos.*;
+import dz.ade.pfe.service.ouvrage.getcomposantbyouvrage.ComponentShowDto;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.Mappings;
@@ -14,6 +15,10 @@ public interface ComposantMapper {
    ComponentResponseDto componentToComponentResponse(Component component);
 
    List<ComponentResponseDto> componentToComponentResponse(List<Component> component);
+
+   ComponentShowDto componentToComponentShow(Component component);
+
+   List<ComponentShowDto> componentToComponentShow(List<Component> component);
 
 
    @Mappings({

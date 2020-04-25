@@ -8,46 +8,41 @@ import java.time.LocalDate;
 import lombok.experimental.SuperBuilder;
 
 @Entity
-@Table(name = "electro_group_pump", schema = "pfe")
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @SuperBuilder
 public class ElectroGroupPump  extends Component {
-    @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "groupe_electro_pompe_gen")
-    @SequenceGenerator(name = "groupe_electro_pompe_gen", sequenceName = "groupe_electro_pompe_seq", schema = "pfe", allocationSize = 1)
-    protected Long id;
 
-    @Column(name = "brand")
+    @Column(name = "brand_ElectroGroupPump")
     private String brand;
 
-    @Column(name = "hmt")
+    @Column(name = "hmt_ElectroGroupPump")
     private double hmt;
 
-    @Column(name = "state")
+    @Column(name = "state_ElectroGroupPump")
     @Enumerated(EnumType.STRING)
     private EnumEtat state;
 
-    @Column(name = "date")
+    @Column(name = "date_ElectroGroupPump")
     private LocalDate date;
 
-    @Column(name = "npsh")
+    @Column(name = "npsh_ElectroGroupPump")
     private double npsh;
 
-    @Column(name = "rotation_speed")
+    @Column(name = "rotation_speed_ElectroGroupPump")
     private double rotationSpeed;
 
-    @Column(name = "debit")
+    @Column(name = "debit_ElectroGroupPump")
     private double debit;
 
-    @Column(name = "functionning_number")
+    @Column(name = "functionning_number_ElectroGroupPump")
     private double functionningNumber;
 
-    @Column(name = "secours_number")
+    @Column(name = "secours_number_ElectroGroupPump")
     private double secoursNumber;
 
-    @Column(name = "genre")
+    @Column(name = "genre_ElectroGroupPump")
     private String genre;
 }

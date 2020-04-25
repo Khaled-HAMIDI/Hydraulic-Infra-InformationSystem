@@ -7,38 +7,33 @@ import javax.persistence.*;
 import lombok.experimental.SuperBuilder;
 
 @Entity
-@Table(name = "security", schema = "pfe")
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @SuperBuilder
 public class Security extends Component {
-    @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "securite_gen")
-    @SequenceGenerator(name = "securite_gen", sequenceName = "securite_seq", schema = "pfe", allocationSize = 1)
-    protected Long id;
 
-    @Column(name = "closing")
+    @Column(name = "closing_Security")
     private boolean closing;
 
-    @Column(name = "nature")
+    @Column(name = "nature_Security")
     @Enumerated(EnumType.STRING)
     private EnumNatureSecurity nature;
 
-    @Column(name = "entry_box")
+    @Column(name = "entry_box_Security")
     private double entryBox;
 
-    @Column(name = "nb_agents")
+    @Column(name = "nb_agents_Security")
     private double nbAgents;
 
-    @Column(name = "weaponry")
+    @Column(name = "weaponry_Security")
     private boolean weaponry;
 
-    @Column(name = "remote_monitoring")
+    @Column(name = "remote_monitoring_Security")
     private boolean remoteMonitoring;
 
-    @Column(name = "access")
+    @Column(name = "access_Security")
     @Enumerated(EnumType.STRING)
     private EnumEtat access;
 

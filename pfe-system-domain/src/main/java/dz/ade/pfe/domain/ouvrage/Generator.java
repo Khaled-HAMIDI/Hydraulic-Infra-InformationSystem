@@ -7,28 +7,23 @@ import javax.persistence.*;
 import lombok.experimental.SuperBuilder;
 
 @Entity
-@Table(name = "generator", schema = "pfe")
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @SuperBuilder
 public class Generator extends Component {
-    @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "groupe_electrogene_gen")
-    @SequenceGenerator(name = "groupe_electrogene_gen", sequenceName = "groupe_electrogene_seq", schema = "pfe", allocationSize = 1)
-    protected Long id;
 
-    @Column(name = "storage_tank")
+    @Column(name = "storage_tank_Generator")
     private double storageTank;
 
-    @Column(name = "nature")
+    @Column(name = "nature_Generator")
     private String nature;
 
-    @Column(name = "power")
+    @Column(name = "power_Generator")
     private double power;
 
-    @Column(name = "number")
+    @Column(name = "number_Generator")
     private double number;
 
 

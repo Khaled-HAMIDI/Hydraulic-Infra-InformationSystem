@@ -12,8 +12,11 @@ import java.util.List;
 
 @Entity
 @Table(name = "component", schema = "pfe")
-@Inheritance(strategy=InheritanceType.TABLE_PER_CLASS)
-@DiscriminatorColumn(name="type_composant")
+@Inheritance(strategy=InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(
+        name="discriminator",
+        discriminatorType=DiscriminatorType.STRING
+)
 @Getter
 @Setter
 @NoArgsConstructor
@@ -21,8 +24,8 @@ import java.util.List;
 @SuperBuilder
 public class Component extends Auditing{
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "composant_ouvrage_gen")
-    @SequenceGenerator(name = "composant_ouvrage_gen", sequenceName = "composant_ouvrage_seq", schema = "pfe", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "component_gen")
+    @SequenceGenerator(name = "component_gen", sequenceName = "component_seq", schema = "pfe", allocationSize = 1)
     protected Long id;
 
 

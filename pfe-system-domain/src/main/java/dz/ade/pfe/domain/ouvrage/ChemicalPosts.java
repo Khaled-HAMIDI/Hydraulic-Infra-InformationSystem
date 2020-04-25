@@ -7,66 +7,61 @@ import javax.persistence.*;
 import lombok.experimental.SuperBuilder;
 
 @Entity
-@Table(name = "chemical_post", schema = "pfe")
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @SuperBuilder
 public class ChemicalPosts extends Component {
-    @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "chemical_post_gen")
-    @SequenceGenerator(name = "chemical_post_gen", sequenceName = "chemical_post_seq", schema = "pfe", allocationSize = 1)
-    protected Long id;
 
-    @Column(name = "post_type")
+    @Column(name = "post_type_ChemicalPosts")
     private String postType;
 
-    @Column(name = "type")
+    @Column(name = "type_ChemicalPosts")
     private String type;
 
-    @Column(name = "dimension")
+    @Column(name = "dimension_ChemicalPosts")
     private double dimension;
 
-    @Column(name = "form")
+    @Column(name = "form_ChemicalPosts")
     private String form;
 
-    @Column(name = "post_number")
+    @Column(name = "post_number_ChemicalPosts")
     private double postNumber;
 
-    @Column(name = "implantation_place")
+    @Column(name = "implantation_place_ChemicalPosts")
     private String implantaionPlace;
 
-    @Column(name = "injection_point")
+    @Column(name = "injection_point_ChemicalPosts")
     private String injectionPoint;
 
-    @Column(name = "injection")
+    @Column(name = "injection_ChemicalPosts")
     @Enumerated(EnumType.STRING)
     private EnumModePompe injection;
 
-    @Column(name = "pump_type")
+    @Column(name = "pump_type_ChemicalPosts")
     private String pumpType;
 
-    @Column(name = "debit")
+    @Column(name = "debit_ChemicalPosts")
     private double debit;
 
-    @Column(name = "hmt")
+    @Column(name = "hmt_ChemicalPosts")
     private double hmt;
 
-    @Column(name = "power")
+    @Column(name = "power_ChemicalPosts")
     private double power;
 
-    @Column(name = "pump_number")
+    @Column(name = "pump_number_ChemicalPosts")
     private double pumpNumber;
 
-    @Column(name = "enabled")
+    @Column(name = "enabled_ChemicalPosts")
     private boolean enabled;
 
-    @Column(name = "mode")
+    @Column(name = "mode_ChemicalPosts")
     @Enumerated(EnumType.STRING)
     private EnumModePompe mode;
 
-    @Column(name = "state")
+    @Column(name = "state_ChemicalPosts")
     @Enumerated(EnumType.STRING)
     private EnumEtat state;
 }

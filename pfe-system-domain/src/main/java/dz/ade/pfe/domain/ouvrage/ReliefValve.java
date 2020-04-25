@@ -7,31 +7,26 @@ import javax.persistence.*;
 import lombok.experimental.SuperBuilder;
 
 @Entity
-@Table(name = "relief_valve", schema = "pfe")
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @SuperBuilder
 public class ReliefValve extends Component {
-    @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "relief_valve_gen")
-    @SequenceGenerator(name = "relief_valve_gen", sequenceName = "relief_valve_seq", schema = "pfe", allocationSize = 1)
-    protected Long id;
 
-    @Column(name = "brand")
+    @Column(name = "brand_ReliefValve")
     private String brand;
 
-    @Column(name = "service_pressure")
+    @Column(name = "service_pressure_ReliefValve")
     private double servicePressure;
 
-    @Column(name = "etancheite_pressure")
+    @Column(name = "etancheite_pressure_ReliefValve")
     private double etancheitePressure;
 
-    @Column(name = "tarage_pressure")
+    @Column(name = "tarage_pressure_ReliefValve")
     private double taragePressure;
 
-    @Column(name = "type")
+    @Column(name = "type_ReliefValve")
     private String type;
 
 }

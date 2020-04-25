@@ -7,28 +7,23 @@ import javax.persistence.*;
 import lombok.experimental.SuperBuilder;
 
 @Entity
-@Table(name = "php_station", schema = "pfe")
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @SuperBuilder
 public class PhpStation extends Component {
-    @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "station_php_gen")
-    @SequenceGenerator(name = "station_php_gen", sequenceName = "station_php_seq", schema = "pfe", allocationSize = 1)
-    protected Long id;
 
-    @Column(name = "debit")
+    @Column(name = "debit_PhpStation")
     private double debit;
 
-    @Column(name = "hmt")
+    @Column(name = "hmt_PhpStation")
     private double hmt;
 
-    @Column(name = "power")
+    @Column(name = "power_PhpStation")
     private double power;
 
-    @Column(name = "number")
+    @Column(name = "number_PhpStation")
     private double number;
 
 

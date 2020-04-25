@@ -7,36 +7,31 @@ import javax.persistence.*;
 import lombok.experimental.SuperBuilder;
 
 @Entity
-@Table(name = "anti_ram", schema = "pfe")
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @SuperBuilder
 public class AntiRam extends Component {
-    @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "anti_belier_gen")
-    @SequenceGenerator(name = "anti_belier_gen", sequenceName = "anti_belier_seq", schema = "pfe", allocationSize = 1)
-    protected Long id;
 
-    @Column(name = "brand")
+    @Column(name = "brand_AntiRam")
     private String brand;
 
-    @Column(name = "capacity")
+    @Column(name = "capacity_AntiRam")
     private double capacity;
 
-    @Column(name = "service_pressure")
+    @Column(name = "service_pressure_AntiRam")
     private double servicePressure;
 
-    @Column(name = "test_pressure")
+    @Column(name = "test_pressure_AntiRam")
     private double testPressure;
 
-    @Column(name = "inflation_pressure")
+    @Column(name = "inflation_pressure_AntiRam")
     private double inflationPressure;
 
-    @Column(name = "type")
+    @Column(name = "type_AntiRam")
     private String type;
 
-    @Column(name = "compressor")
+    @Column(name = "compressor_AntiRam")
     private boolean compressor;
 }

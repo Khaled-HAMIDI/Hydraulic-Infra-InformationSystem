@@ -8,26 +8,21 @@ import lombok.experimental.SuperBuilder;
 
 
 @Entity
-@Table(name = "local_block", schema = "pfe")
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @SuperBuilder
 public class LocalBlock extends Component {
-    @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "bloc_local_gen")
-    @SequenceGenerator(name = "bloc_local_gen", sequenceName = "bloc_local_seq", schema = "pfe", allocationSize = 1)
-    protected Long id;
 
-    @Column(name = "area")
+    @Column(name = "area_LocalBlock")
     private double area;
 
-    @Column(name = "nature")
+    @Column(name = "nature_LocalBlock")
     @Enumerated(EnumType.STRING)
     private EnumNatureBlocLocal nature;
 
-    @Column(name = "state")
+    @Column(name = "state_LocalBlock")
     @Enumerated(EnumType.STRING)
     private EnumEtat state;
 

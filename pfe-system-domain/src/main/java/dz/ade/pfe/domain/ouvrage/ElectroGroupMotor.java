@@ -8,52 +8,47 @@ import java.time.LocalDate;
 import lombok.experimental.SuperBuilder;
 
 @Entity
-@Table(name = "electro_group_motor", schema = "pfe")
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @SuperBuilder
 public class ElectroGroupMotor extends Component {
-    @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "groupe_electro_moteur_gen")
-    @SequenceGenerator(name = "groupe_electro_moteur_gen", sequenceName = "groupe_electro_moteur_seq", schema = "pfe", allocationSize = 1)
-    protected Long id;
 
-    @Column(name = "brand")
+    @Column(name = "brand_ElectroGroupMotor")
     private String brand;
 
-    @Column(name = "power")
+    @Column(name = "power_ElectroGroupMotor")
     private double power;
 
-    @Column(name = "state")
+    @Column(name = "state_ElectroGroupMotor")
     @Enumerated(EnumType.STRING)
     private EnumEtat state;
 
-    @Column(name = "mode")
+    @Column(name = "mode_ElectroGroupMotor")
     @Enumerated(EnumType.STRING)
     private EnumModeDemarageGrp mode;
 
-    @Column(name = "type")
+    @Column(name = "type_ElectroGroupMotor")
     @Enumerated(EnumType.STRING)
     private EnumTypeGrpElectro type;
 
-    @Column(name = "date")
+    @Column(name = "date_ElectroGroupMotor")
     private LocalDate date;
 
-    @Column(name = "functionning_number")
+    @Column(name = "functionning_number_ElectroGroupMotor")
     private double functionningNumber;
 
-    @Column(name = "secours_number")
+    @Column(name = "secours_number_ElectroGroupMotor")
     private double secoursNumber;
 
-    @Column(name = "alimentation_tension")
+    @Column(name = "alimentation_tension_ElectroGroupMotor")
     private double alimentationTension;
 
-    @Column(name = "nominale_intensite")
+    @Column(name = "nominale_intensite_ElectroGroupMotor")
     private double nominaleIntensite;
 
-    @Column(name = "speed")
+    @Column(name = "speed_ElectroGroupMotor")
     private double speed;
 
 

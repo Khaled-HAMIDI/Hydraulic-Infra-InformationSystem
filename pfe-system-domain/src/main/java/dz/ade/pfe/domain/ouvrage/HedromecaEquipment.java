@@ -7,40 +7,35 @@ import javax.persistence.*;
 import lombok.experimental.SuperBuilder;
 
 @Entity
-@Table(name = "hedromeca_equipment", schema = "pfe")
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @SuperBuilder
 public class HedromecaEquipment extends Component {
-    @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "equipement_hedromeca_gen")
-    @SequenceGenerator(name = "equipement_hedromeca_gen", sequenceName = "equipement_hedromeca_seq", schema = "pfe", allocationSize = 1)
-    protected Long id;
 
-    @Column(name = "equipement_type")
+    @Column(name = "equipement_type_HedromecaEquipment")
     private String equipementType;
 
-    @Column(name = "type")
+    @Column(name = "type_HedromecaEquipment")
     private String type;
 
-    @Column(name = "number")
+    @Column(name = "number_HedromecaEquipment")
     private double number;
 
-    @Column(name = "dn")
+    @Column(name = "dn_HedromecaEquipment")
     private double dn;
 
-    @Column(name = "pn")
+    @Column(name = "pn_HedromecaEquipment")
     private double pn;
 
-    @Column(name = "materials")
+    @Column(name = "materials_HedromecaEquipment")
     private String materials;
 
-    @Column(name = "state")
+    @Column(name = "state_HedromecaEquipment")
     @Enumerated(EnumType.STRING)
     private EnumEtat state;
 
-    @Column(name = "observation")
+    @Column(name = "observation_HedromecaEquipment")
     private String observation;
 }

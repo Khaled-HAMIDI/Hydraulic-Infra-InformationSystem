@@ -7,57 +7,52 @@ import javax.persistence.*;
 import lombok.experimental.SuperBuilder;
 
 @Entity
-@Table(name = "transformation_station", schema = "pfe")
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @SuperBuilder
 public class TransformationStation extends Component {
-    @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "post_transformation_gen")
-    @SequenceGenerator(name = "post_transformation_gen", sequenceName = "post_transformation_seq", schema = "pfe", allocationSize = 1)
-    protected Long id;
 
-    @Column(name = "brand")
+    @Column(name = "brand_TransformationStation")
     private String brand;
 
-    @Column(name = "power")
+    @Column(name = "power_TransformationStation")
     private double power;
 
-    @Column(name = "up_us")
+    @Column(name = "up_us_TransformationStation")
     private double up_us;
 
-    @Column(name = "ip_is")
+    @Column(name = "ip_is_TransformationStation")
     private double ip_is;
 
-    @Column(name = "ucc")
+    @Column(name = "ucc_TransformationStation")
     private double ucc;
 
-    @Column(name = "coupling")
+    @Column(name = "coupling_TransformationStation")
     private String coupling;
 
-    @Column(name = "oil_nature")
+    @Column(name = "oil_nature_TransformationStation")
     private String oilNature;
 
-    @Column(name = "abri_nature")
+    @Column(name = "abri_nature_TransformationStation")
     private String abriNature;
 
-    @Column(name = "pmt")
+    @Column(name = "pmt_TransformationStation")
     private double pmt;
 
-    @Column(name = "pbt")
+    @Column(name = "pbt_TransformationStation")
     private double pbt;
 
-    @Column(name = "pmd")
+    @Column(name = "pmd_TransformationStation")
     private double pmd;
 
-    @Column(name = "tarif")
+    @Column(name = "tarif_TransformationStation")
     private double tarif;
 
-    @Column(name = "pma")
+    @Column(name = "pma_TransformationStation")
     private double pma;
 
-    @Column(name = "tcomptage")
+    @Column(name = "tcomptage_TransformationStation")
     private String tcomptage;
 }

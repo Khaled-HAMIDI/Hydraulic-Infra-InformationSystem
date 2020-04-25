@@ -25,7 +25,7 @@ public class GetOuvrageController {
     private final GetOuvrageQuery getOuvrageQuery;
 
 
-    @GetMapping(value = "/ouvrage/edit/{code}")
+    @GetMapping(value = "/ouvrage/show/{code}")
     @ApiOperation(value = "get an ouvrage")
     @ApiResponses(value = {
             @ApiResponse(code = 200, message = "Successfully retrieved an ouvrage"),

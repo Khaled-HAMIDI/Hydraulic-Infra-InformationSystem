@@ -7,54 +7,49 @@ import javax.persistence.*;
 import lombok.experimental.SuperBuilder;
 
 @Entity
-@Table(name = "chloration_post", schema = "pfe")
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @SuperBuilder
 public class ChlorationPost extends Component {
-    @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "chloration_post_gen")
-    @SequenceGenerator(name = "chloration_post_gen", sequenceName = "chloration_post_seq", schema = "pfe", allocationSize = 1)
-    protected Long id;
 
-    @Column(name = "abri")
+    @Column(name = "abri_ChlorationPost")
     private boolean abri;
 
-    @Column(name = "type")
+    @Column(name = "type_ChlorationPost")
     private String type;
 
-    @Column(name = "dimension")
+    @Column(name = "dimension_ChlorationPost")
     private double dimension;
 
 
-    @Column(name = "dosage")
+    @Column(name = "dosage_ChlorationPost")
     private String dosage;
 
-    @Column(name = "injection_point")
+    @Column(name = "injection_point_ChlorationPost")
     private String injectionPoint;
 
 
-    @Column(name = "pump_type")
+    @Column(name = "pump_type_ChlorationPost")
     private String pumpType;
 
-    @Column(name = "debit")
+    @Column(name = "debit_ChlorationPost")
     private double debit;
 
-    @Column(name = "hmt")
+    @Column(name = "hmt_ChlorationPost")
     private double hmt;
 
-    @Column(name = "power")
+    @Column(name = "power_ChlorationPost")
     private double power;
 
-    @Column(name = "pump_number")
+    @Column(name = "pump_number_ChlorationPost")
     private double pumpNumber;
 
-    @Column(name = "enabled")
+    @Column(name = "enabled_ChlorationPost")
     private boolean enabled;
 
-    @Column(name = "state")
+    @Column(name = "state_ChlorationPost")
     @Enumerated(EnumType.STRING)
     private EnumEtat state;
 }

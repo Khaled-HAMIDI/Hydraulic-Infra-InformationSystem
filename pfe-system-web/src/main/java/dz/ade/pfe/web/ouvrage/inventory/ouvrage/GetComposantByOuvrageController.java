@@ -4,6 +4,7 @@ package dz.ade.pfe.web.ouvrage.inventory.ouvrage;
 import dz.ade.pfe.domain.ouvrage.Component;
 import dz.ade.pfe.port.in.ouvrage.getcomposantbyouvrage.GetComposantByOuvrageQuery;
 import dz.ade.pfe.service.ouvrage.createcomposant.Dtos.ComponentResponseDto;
+import dz.ade.pfe.service.ouvrage.getcomposantbyouvrage.ComponentShowDto;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
@@ -33,7 +34,7 @@ public class GetComposantByOuvrageController {
             @ApiResponse(code = 403, message = "Accessing the resource you were trying to reach is forbidden"),
             @ApiResponse(code = 404, message = "The resource you were trying to reach is not found")
     })
-    public List<ComponentResponseDto> getComposantByOuvrage(@PathVariable(value = "code") String code) {
+    public List<ComponentShowDto> getComposantByOuvrage(@PathVariable(value = "code") String code) {
         return getComposantByOuvrage.getComposantByOuvrage(code);
     }
 }

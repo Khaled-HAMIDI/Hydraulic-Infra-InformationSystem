@@ -18,7 +18,7 @@ public class GetComposantByOuvrage implements GetComposantByOuvrageQuery{
     private final ComposantMapper composantMapper;
 
     @Override
-    public List<ComponentResponseDto> getComposantByOuvrage(String code) {
-        return composantMapper.componentToComponentResponse(loadComposantByOuvrage.loadComposantByOuvrage(code));
+    public List<ComponentShowDto> getComposantByOuvrage(String code) {
+        return composantMapper.componentToComponentShow(loadComposantByOuvrage.loadComposantByOuvrage(code));
     }
 }

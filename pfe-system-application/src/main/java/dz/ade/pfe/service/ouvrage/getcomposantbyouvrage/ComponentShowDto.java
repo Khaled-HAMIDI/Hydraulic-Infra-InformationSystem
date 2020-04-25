@@ -1,4 +1,4 @@
-package dz.ade.pfe.service.ouvrage.createcomposant.Dtos;
+package dz.ade.pfe.service.ouvrage.getcomposantbyouvrage;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -7,7 +7,8 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class ComponentResponseDto {
+public class ComponentShowDto {
 
+    /*Just for now */
     private String typeComposant;
 }
