@@ -7,6 +7,8 @@ import org.mapstruct.Mappings;
 
 @Mapper(componentModel = "spring")
 public interface ChainSaveMapper {
-
+    @Mappings({
+            @Mapping(target = "ouvrages", ignore = true)
+    })
     Chain chainSaveToChain(ChainSaveDto chain);
 }

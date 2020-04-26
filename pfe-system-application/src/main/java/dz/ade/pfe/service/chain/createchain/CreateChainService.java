@@ -25,7 +25,7 @@ public class CreateChainService implements CreateChainQuery {
     public Chain createChain(ChainSaveDto chain) {
         Chain chain1 = chainSaveMapper.chainSaveToChain(chain);
         Chain chain2 = saveNewChain.saveChain(chain1);
-        List<String> ouvragesCode = chain.getOuvragesCode();
+        List<String> ouvragesCode = chain.getOuvrages();
         if(ouvragesCode.size()>0)
         convertStringsToOuvrages(ouvragesCode).stream()
                 .forEach((ouvrage) ->{

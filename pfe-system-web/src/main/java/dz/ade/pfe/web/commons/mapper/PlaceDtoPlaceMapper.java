@@ -9,7 +9,8 @@ import org.mapstruct.Mappings;
 import java.util.List;
 
 @Mapper(componentModel = "spring")
-public interface PlaceDtoPlaceMapper {
+public interface
+PlaceDtoPlaceMapper {
 
     @Mappings({
             @Mapping(source = "code", target = "id")
