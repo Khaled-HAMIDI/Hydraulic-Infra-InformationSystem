@@ -15,14 +15,14 @@ import lombok.experimental.SuperBuilder;
 @SuperBuilder
 public class LocalBlock extends Component {
 
-    @Column(name = "area_LocalBlock")
+    @Column(name = "area_local_block")
     private double area;
 
-    @Column(name = "nature_LocalBlock")
+    @Column(name = "nature_local_block")
     @Enumerated(EnumType.STRING)
     private EnumNatureBlocLocal nature;
 
-    @Column(name = "state_LocalBlock")
+    @Column(name = "state_local_block")
     @Enumerated(EnumType.STRING)
     private EnumEtat state;
 

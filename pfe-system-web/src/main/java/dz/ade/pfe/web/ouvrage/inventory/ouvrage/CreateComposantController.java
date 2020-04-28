@@ -89,7 +89,7 @@ public class CreateComposantController {
         return createComposantQuery.createAntiRam(antiRamAddDto,code);
     }
 
-    @PostMapping(value = "/composants/soupapaeDecharge/{code}")
+    @PostMapping(value = "/composants/soupapeDecharge/{code}")
     public ComponentResponseDto createReliefValve(@RequestBody ReliefValveAddDto reliefValveAddDto,@PathVariable(value="code") String code) {
         return createComposantQuery.createReliefValve(reliefValveAddDto,code);
     }

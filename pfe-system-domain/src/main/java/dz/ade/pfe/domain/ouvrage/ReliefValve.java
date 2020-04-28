@@ -14,19 +14,19 @@ import lombok.experimental.SuperBuilder;
 @SuperBuilder
 public class ReliefValve extends Component {
 
-    @Column(name = "brand_ReliefValve")
+    @Column(name = "brand_relief_valve")
     private String brand;
 
-    @Column(name = "service_pressure_ReliefValve")
+    @Column(name = "service_pressure_relief_valve")
     private double servicePressure;
 
-    @Column(name = "etancheite_pressure_ReliefValve")
+    @Column(name = "etancheite_pressure_relief_valve")
     private double etancheitePressure;
 
-    @Column(name = "tarage_pressure_ReliefValve")
+    @Column(name = "tarage_pressure_relief_valve")
     private double taragePressure;
 
-    @Column(name = "type_ReliefValve")
+    @Column(name = "type_relief_valve")
     private String type;
 
 }

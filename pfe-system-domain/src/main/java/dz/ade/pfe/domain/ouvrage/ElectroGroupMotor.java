@@ -15,40 +15,40 @@ import lombok.experimental.SuperBuilder;
 @SuperBuilder
 public class ElectroGroupMotor extends Component {
 
-    @Column(name = "brand_ElectroGroupMotor")
+    @Column(name = "brand_electro_group_motor")
     private String brand;
 
-    @Column(name = "power_ElectroGroupMotor")
+    @Column(name = "power_electro_group_motor")
     private double power;
 
-    @Column(name = "state_ElectroGroupMotor")
+    @Column(name = "state_electro_group_motor")
     @Enumerated(EnumType.STRING)
     private EnumEtat state;
 
-    @Column(name = "mode_ElectroGroupMotor")
+    @Column(name = "mode_electro_group_motor")
     @Enumerated(EnumType.STRING)
     private EnumModeDemarageGrp mode;
 
-    @Column(name = "type_ElectroGroupMotor")
+    @Column(name = "type_electro_group_motor")
     @Enumerated(EnumType.STRING)
     private EnumTypeGrpElectro type;
 
-    @Column(name = "date_ElectroGroupMotor")
+    @Column(name = "date_electro_group_motor")
     private LocalDate date;
 
-    @Column(name = "functionning_number_ElectroGroupMotor")
+    @Column(name = "functionning_number_electro_group_motor")
     private double functionningNumber;
 
-    @Column(name = "secours_number_ElectroGroupMotor")
+    @Column(name = "secours_number_electro_group_motor")
     private double secoursNumber;
 
-    @Column(name = "alimentation_tension_ElectroGroupMotor")
+    @Column(name = "alimentation_tension_electro_group_motor")
     private double alimentationTension;
 
-    @Column(name = "nominale_intensite_ElectroGroupMotor")
+    @Column(name = "nominale_intensite_electro_group_motor")
     private double nominaleIntensite;
 
-    @Column(name = "speed_ElectroGroupMotor")
+    @Column(name = "speed_electro_group_motor")
     private double speed;
 
 

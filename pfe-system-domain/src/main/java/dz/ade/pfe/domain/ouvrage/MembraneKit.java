@@ -14,9 +14,9 @@ import lombok.experimental.SuperBuilder;
 @SuperBuilder
 public class MembraneKit extends Component {
 
-    @Column(name = "characteristic_MembraneKit")
+    @Column(name = "characteristic_membrane_kit")
     private String characteristic;
 
-    @Column(name = "number_MembraneKit")
+    @Column(name = "number_membrane_kit")
     private Double number;
 }

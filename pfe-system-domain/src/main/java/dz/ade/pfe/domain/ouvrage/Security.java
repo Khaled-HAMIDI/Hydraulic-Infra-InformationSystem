@@ -14,26 +14,26 @@ import lombok.experimental.SuperBuilder;
 @SuperBuilder
 public class Security extends Component {
 
-    @Column(name = "closing_Security")
+    @Column(name = "closing_security")
     private boolean closing;
 
-    @Column(name = "nature_Security")
+    @Column(name = "nature_security")
     @Enumerated(EnumType.STRING)
     private EnumNatureSecurity nature;
 
-    @Column(name = "entry_box_Security")
+    @Column(name = "entry_box_security")
     private double entryBox;
 
-    @Column(name = "nb_agents_Security")
+    @Column(name = "nb_agents_security")
     private double nbAgents;
 
-    @Column(name = "weaponry_Security")
+    @Column(name = "weaponry_security")
     private boolean weaponry;
 
-    @Column(name = "remote_monitoring_Security")
+    @Column(name = "remote_monitoring_security")
     private boolean remoteMonitoring;
 
-    @Column(name = "access_Security")
+    @Column(name = "access_security")
     @Enumerated(EnumType.STRING)
     private EnumEtat access;
 

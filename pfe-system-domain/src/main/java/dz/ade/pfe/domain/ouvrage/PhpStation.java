@@ -14,16 +14,16 @@ import lombok.experimental.SuperBuilder;
 @SuperBuilder
 public class PhpStation extends Component {
 
-    @Column(name = "debit_PhpStation")
+    @Column(name = "debit_php_station")
     private double debit;
 
-    @Column(name = "hmt_PhpStation")
+    @Column(name = "hmt_php_station")
     private double hmt;
 
-    @Column(name = "power_PhpStation")
+    @Column(name = "power_php_station")
     private double power;
 
-    @Column(name = "number_PhpStation")
+    @Column(name = "number_php_station")
     private double number;
 
 

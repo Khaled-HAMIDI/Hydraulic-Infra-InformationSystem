@@ -14,16 +14,16 @@ import lombok.experimental.SuperBuilder;
 @SuperBuilder
 public class Generator extends Component {
 
-    @Column(name = "storage_tank_Generator")
+    @Column(name = "storage_tank_generator")
     private double storageTank;
 
-    @Column(name = "nature_Generator")
+    @Column(name = "nature_generator")
     private String nature;
 
-    @Column(name = "power_Generator")
+    @Column(name = "power_generator")
     private double power;
 
-    @Column(name = "number_Generator")
+    @Column(name = "number_generator")
     private double number;
 
 

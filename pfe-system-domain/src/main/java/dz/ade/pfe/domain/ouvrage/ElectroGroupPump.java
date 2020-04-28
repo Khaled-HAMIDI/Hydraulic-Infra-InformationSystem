@@ -15,34 +15,34 @@ import lombok.experimental.SuperBuilder;
 @SuperBuilder
 public class ElectroGroupPump  extends Component {
 
-    @Column(name = "brand_ElectroGroupPump")
+    @Column(name = "brand_electro_group_pump")
     private String brand;
 
-    @Column(name = "hmt_ElectroGroupPump")
+    @Column(name = "hmt_electro_group_pump")
     private double hmt;
 
-    @Column(name = "state_ElectroGroupPump")
+    @Column(name = "state_electro_group_pump")
     @Enumerated(EnumType.STRING)
     private EnumEtat state;
 
-    @Column(name = "date_ElectroGroupPump")
+    @Column(name = "date_electro_group_pump")
     private LocalDate date;
 
-    @Column(name = "npsh_ElectroGroupPump")
+    @Column(name = "npsh_electro_group_pump")
     private double npsh;
 
-    @Column(name = "rotation_speed_ElectroGroupPump")
+    @Column(name = "rotation_speed_electro_group_pump")
     private double rotationSpeed;
 
-    @Column(name = "debit_ElectroGroupPump")
+    @Column(name = "debit_electro_group_pump")
     private double debit;
 
-    @Column(name = "functionning_number_ElectroGroupPump")
+    @Column(name = "functionning_number_electro_group_pump")
     private double functionningNumber;
 
-    @Column(name = "secours_number_ElectroGroupPump")
+    @Column(name = "secours_number_electro_group_pump")
     private double secoursNumber;
 
-    @Column(name = "genre_ElectroGroupPump")
+    @Column(name = "genre_electro_group_pump")
     private String genre;
 }

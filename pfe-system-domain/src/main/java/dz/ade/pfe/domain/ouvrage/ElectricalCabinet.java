@@ -16,20 +16,20 @@ import lombok.experimental.SuperBuilder;
 @SuperBuilder
 public class ElectricalCabinet extends Component {
 
-    @Column(name = "power_ElectricalCabinet")
+    @Column(name = "power_electrical_cabinet")
     private double power;
 
-    @Column(name = "number_ElectricalCabinet")
+    @Column(name = "number_electrical_cabinet")
     private double number;
 
-    @Column(name = "observation_ElectricalCabinet")
+    @Column(name = "observation_electrical_cabinet")
     private String observation;
 
-    @Column(name = "state_ElectricalCabinet")
+    @Column(name = "state_electrical_cabinet")
     @Enumerated(EnumType.STRING)
     private EnumEtat state;
 
-    @Column(name = "brand_ElectricalCabinet")
+    @Column(name = "brand_electrical_cabinet")
     private String brand;
 
 

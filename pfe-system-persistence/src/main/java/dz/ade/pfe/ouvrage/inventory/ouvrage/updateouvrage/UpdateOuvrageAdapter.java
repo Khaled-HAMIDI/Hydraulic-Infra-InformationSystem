@@ -27,7 +27,6 @@ public class UpdateOuvrageAdapter implements UpdateSaveOuvrage {
         existingOuvrage.setSpecializedLine(ouvrageUpdateDto.getSpecializedLine());
         existingOuvrage.setRemoteManagement(ouvrageUpdateDto.getRemoteManagement());
         existingOuvrage.setAbri(ouvrageUpdateDto.getAbri());
-
         existingOuvrage.setChemicalMonthlyBill(ouvrageUpdateDto.getChemicalMonthlyBill());
         existingOuvrage.setCoteTn(ouvrageUpdateDto.getCoteTn());
         existingOuvrage.setDebitLoadBreaker(ouvrageUpdateDto.getDebitLoadBreaker());

@@ -14,22 +14,22 @@ import lombok.experimental.SuperBuilder;
 @SuperBuilder
 public class ProductStorage extends Component {
 
-    @Column(name = "type_ProductStorage")
+    @Column(name = "type_product_storage")
     private String type;
 
-    @Column(name = "form_ProductStorage")
+    @Column(name = "form_product_storage")
     private String form;
 
-    @Column(name = "dimention_ProductStorage")
+    @Column(name = "dimention_product_storage")
     private String dimention;
 
-    @Column(name = "arrangement_ProductStorage")
+    @Column(name = "arrangement_product_storage")
     private String arrangement;
 
-    @Column(name = "number_ProductStorage")
+    @Column(name = "number_product_storage")
     private double number;
 
-    @Column(name = "state_ProductStorage")
+    @Column(name = "state_product_storage")
     @Enumerated(EnumType.STRING)
     private EnumEtat state;
 }

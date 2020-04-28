@@ -21,12 +21,6 @@ public class CreateComposantAdapter implements SaveComposant {
         Ouvrage ouvrage = ouvrageRepository.findByCode(code);
         security.setOuvrage(ouvrage);
 
-        /*
-        dz.ade.pfe.domain.ouvrage.Component component=new dz.ade.pfe.domain.ouvrage.Component();
-        component.setOuvrage(ouvrage);
-        componentRepository.save(component);
-        */
-
         componentRepository.save(security);
 
         return security;

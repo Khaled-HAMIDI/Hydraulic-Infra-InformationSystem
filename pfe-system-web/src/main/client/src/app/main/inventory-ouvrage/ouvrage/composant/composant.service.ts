@@ -18,7 +18,7 @@ const GroupeElectroPompePompe_API = API + '/composants/groupeElectroPompePompe/'
 const GroupeElectroPompeMoteur_API = API + '/composants/groupeElectroPompeMoteur/';
 const ArmoireElectrique_API = API + '/composants/armoireElectrique/';
 const AntiBelier_API = API + '/composants/antiBelier/';
-const SoupapeDecharge_API = API + '/composants/soupapaeDecharge/';
+const SoupapeDecharge_API = API + '/composants/soupapeDecharge/';
 const EquipementHydroMeca_API = API + '/composants/equipementHydroMeca/';
 const PostChloration_API = API + '/composants/postChloration/';
 

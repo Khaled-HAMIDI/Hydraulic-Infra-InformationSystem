@@ -14,13 +14,13 @@ import lombok.experimental.SuperBuilder;
 @SuperBuilder
 public class WaterIntake extends Component {
 
-    @Column(name = "type_WaterIntake")
+    @Column(name = "type_water_intake")
     @Enumerated(EnumType.STRING)
     private EnumTypePriseEau type;
 
-    @Column(name = "dimension_WaterIntake")
+    @Column(name = "dimension_water_intake")
     private String dimension;
 
-    @Column(name = "nature_WaterIntake")
+    @Column(name = "nature_water_intake")
     private String nature;
 }

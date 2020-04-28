@@ -14,45 +14,45 @@ import lombok.experimental.SuperBuilder;
 @SuperBuilder
 public class TransformationStation extends Component {
 
-    @Column(name = "brand_TransformationStation")
+    @Column(name = "brand_transformation_station")
     private String brand;
 
-    @Column(name = "power_TransformationStation")
+    @Column(name = "power_transformation_station")
     private double power;
 
-    @Column(name = "up_us_TransformationStation")
+    @Column(name = "up_us_transformation_station")
     private double up_us;
 
-    @Column(name = "ip_is_TransformationStation")
+    @Column(name = "ip_is_transformation_station")
     private double ip_is;
 
-    @Column(name = "ucc_TransformationStation")
+    @Column(name = "ucc_transformation_station")
     private double ucc;
 
-    @Column(name = "coupling_TransformationStation")
+    @Column(name = "coupling_transformation_station")
     private String coupling;
 
-    @Column(name = "oil_nature_TransformationStation")
+    @Column(name = "oil_nature_transformation_station")
     private String oilNature;
 
-    @Column(name = "abri_nature_TransformationStation")
+    @Column(name = "abri_nature_transformation_station")
     private String abriNature;
 
-    @Column(name = "pmt_TransformationStation")
+    @Column(name = "pmt_transformation_station")
     private double pmt;
 
-    @Column(name = "pbt_TransformationStation")
+    @Column(name = "pbt_transformation_station")
     private double pbt;
 
-    @Column(name = "pmd_TransformationStation")
+    @Column(name = "pmd_transformation_station")
     private double pmd;
 
-    @Column(name = "tarif_TransformationStation")
+    @Column(name = "tarif_transformation_station")
     private double tarif;
 
-    @Column(name = "pma_TransformationStation")
+    @Column(name = "pma_transformation_station")
     private double pma;
 
-    @Column(name = "tcomptage_TransformationStation")
+    @Column(name = "tcomptage_transformation_station")
     private String tcomptage;
 }

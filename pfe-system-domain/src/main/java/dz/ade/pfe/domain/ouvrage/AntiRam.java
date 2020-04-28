@@ -14,24 +14,24 @@ import lombok.experimental.SuperBuilder;
 @SuperBuilder
 public class AntiRam extends Component {
 
-    @Column(name = "brand_AntiRam")
+    @Column(name = "brand_anti_ram")
     private String brand;
 
-    @Column(name = "capacity_AntiRam")
+    @Column(name = "capacity_anti_ram")
     private double capacity;
 
-    @Column(name = "service_pressure_AntiRam")
+    @Column(name = "service_pressure_anti_ram")
     private double servicePressure;
 
-    @Column(name = "test_pressure_AntiRam")
+    @Column(name = "test_pressure_anti_ram")
     private double testPressure;
 
-    @Column(name = "inflation_pressure_AntiRam")
+    @Column(name = "inflation_pressure_anti_ram")
     private double inflationPressure;
 
-    @Column(name = "type_AntiRam")
+    @Column(name = "type_anti_ram")
     private String type;
 
-    @Column(name = "compressor_AntiRam")
+    @Column(name = "compressor_anti_ram")
     private boolean compressor;
 }

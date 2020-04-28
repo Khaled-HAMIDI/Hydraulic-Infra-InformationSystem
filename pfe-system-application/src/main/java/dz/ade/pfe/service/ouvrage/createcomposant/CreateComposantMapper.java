@@ -1,8 +1,7 @@
-package dz.ade.pfe.service.ouvrage;
+package dz.ade.pfe.service.ouvrage.createcomposant;
 
 import dz.ade.pfe.domain.ouvrage.*;
 import dz.ade.pfe.service.ouvrage.createcomposant.Dtos.*;
-import dz.ade.pfe.service.ouvrage.getcomposantbyouvrage.ComponentShowDto;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.Mappings;
@@ -10,15 +9,11 @@ import org.mapstruct.Mappings;
 import java.util.List;
 
 @Mapper(componentModel = "spring")
-public interface ComposantMapper {
+public interface CreateComposantMapper {
 
    ComponentResponseDto componentToComponentResponse(Component component);
 
    List<ComponentResponseDto> componentToComponentResponse(List<Component> component);
-
-   ComponentShowDto componentToComponentShow(Component component);
-
-   List<ComponentShowDto> componentToComponentShow(List<Component> component);
 
 
    @Mappings({
@@ -29,7 +24,6 @@ public interface ComposantMapper {
            @Mapping(source = "state", target = "access")
    })
    Security securityAddToSecurity(SecurityAddDto securityAddDto);
-
 
    @Mappings({
            @Mapping(source = "marque", target = "brand"),

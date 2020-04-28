@@ -14,28 +14,28 @@ import lombok.experimental.SuperBuilder;
 @SuperBuilder
 public class HedromecaEquipment extends Component {
 
-    @Column(name = "equipement_type_HedromecaEquipment")
+    @Column(name = "equipement_type_hedromeca_equipment")
     private String equipementType;
 
-    @Column(name = "type_HedromecaEquipment")
+    @Column(name = "type_hedromeca_equipment")
     private String type;
 
-    @Column(name = "number_HedromecaEquipment")
+    @Column(name = "number_hedromeca_equipment")
     private double number;
 
-    @Column(name = "dn_HedromecaEquipment")
+    @Column(name = "dn_hedromeca_equipment")
     private double dn;
 
-    @Column(name = "pn_HedromecaEquipment")
+    @Column(name = "pn_hedromeca_equipment")
     private double pn;
 
-    @Column(name = "materials_HedromecaEquipment")
+    @Column(name = "materials_hedromeca_equipment")
     private String materials;
 
-    @Column(name = "state_HedromecaEquipment")
+    @Column(name = "state_hedromeca_equipment")
     @Enumerated(EnumType.STRING)
     private EnumEtat state;
 
-    @Column(name = "observation_HedromecaEquipment")
+    @Column(name = "observation_hedromeca_equipment")
     private String observation;
 }
