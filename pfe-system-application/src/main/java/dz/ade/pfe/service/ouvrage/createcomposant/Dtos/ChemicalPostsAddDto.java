@@ -2,6 +2,7 @@ package dz.ade.pfe.service.ouvrage.createcomposant.Dtos;
 
 
 import dz.ade.pfe.domain.ouvrage.EnumEtat;
+import dz.ade.pfe.domain.ouvrage.EnumInjectionType;
 import dz.ade.pfe.domain.ouvrage.EnumModePompe;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -32,7 +33,7 @@ public class ChemicalPostsAddDto {
     private String pointInjectPompe;
 
     @Enumerated(EnumType.STRING)
-    private EnumModePompe dosagePompe;
+    private EnumInjectionType dosagePompe;
 
     private String typePompe;
 

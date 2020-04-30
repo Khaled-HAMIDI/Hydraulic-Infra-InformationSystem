@@ -1,0 +1,111 @@
+<p class="myp" *ngIf="!exist">{{'FIELD.groupeElectroPompeMoteurInexistante' | translate}}</p>
+<div class="tab-content p-24" fusePerfectScrollbar *ngIf="exist">
+    <div fxLayout="column" fxLayout.gt-sm="row">
+        <div class="mr-sm-12 ml-sm-12" fxFlex>
+
+            <fieldset class="myfieldset">
+
+                <div class="mr-sm-24" fxFlex>
+                    <p class="myLabel">{{'FIELD.nbService' | translate}}</p>
+                    <p class="myp">
+                        <mat-icon matPrefix class="mr-12 s-20" color="accent">keyboard</mat-icon>
+                        <span>{{groupe.nbService}}</span>
+                    </p>
+                </div>
+
+                <div class="mr-sm-24" fxFlex>
+                    <p class="myLabel">{{'FIELD.nbSecours' | translate}}</p>
+                    <p class="myp">
+                        <mat-icon matPrefix class="mr-12 s-20" color="accent">keyboard</mat-icon>
+                        <span>{{groupe.nbSecours}}</span>
+                    </p>
+                </div>
+
+                <div class="mr-sm-24" fxFlex>
+                    <p class="myLabel">{{'FIELD.marque' | translate}}</p>
+                    <p class="myp">
+                        <mat-icon matPrefix class="mr-12 s-20" color="accent">keyboard</mat-icon>
+                        <span>{{groupe.marque}}</span>
+                    </p>
+                </div>
+
+                <div class="mr-sm-24" fxFlex>
+                    <p class="myLabel">{{'FIELD.puissance' | translate}}</p>
+                    <p class="myp">
+                        <mat-icon matPrefix class="mr-12 s-20" color="accent">keyboard</mat-icon>
+                        <span>{{groupe.puissance}}</span>
+                    </p>
+                </div>
+
+                <div class="mr-sm-24" fxFlex>
+                    <p class="myLabel">{{'FIELD.type' | translate}}</p>
+                    <p class="myp">
+                        <mat-icon matPrefix class="mr-12 s-20" color="accent">keyboard</mat-icon>
+                        <span>{{groupe.type}}</span>
+                    </p>
+                </div>
+
+                <div class="mr-sm-24" fxFlex>
+                    <p class="myLabel">{{'FIELD.tensionAlimentation' | translate}}</p>
+                    <p class="myp">
+                        <mat-icon matPrefix class="mr-12 s-20" color="accent">keyboard</mat-icon>
+                        <span>{{groupe.tensionAlimentation}}</span>
+                    </p>
+                </div>
+
+            </fieldset>
+        </div>
+
+        <div class="mr-sm-12 ml-sm-12" fxFlex>
+            <fieldset class="myfieldset">
+
+                <div class="mr-sm-24" fxFlex>
+                    <p class="myLabel">{{'FIELD.operatingDate' | translate}}</p>
+                    <p class="myp">
+                        <mat-icon matPrefix class="mr-12 s-20" color="accent">keyboard</mat-icon>
+                        <span>{{groupe.operatingDate}}</span>
+                    </p>
+                </div>
+
+                <div class="mr-sm-24" fxFlex>
+                    <p class="myLabel">{{'FIELD.intensite' | translate}}</p>
+                    <p class="myp">
+                        <mat-icon matPrefix class="mr-12 s-20" color="accent">keyboard</mat-icon>
+                        <span>{{groupe.intensite}}</span>
+                    </p>
+                </div>
+
+                <div class="mr-sm-24" fxFlex>
+                    <p class="myLabel">{{'FIELD.modeDemarrage' | translate}}</p>
+                    <p class="myp">
+                        <mat-icon matPrefix class="mr-12 s-20" color="accent">keyboard</mat-icon>
+                        <span>{{groupe.modeDemarrage}}</span>
+                    </p>
+                </div>
+
+
+                <div class="mr-sm-24" fxFlex>
+                    <p class="myLabel">{{'FIELD.state' | translate}}</p>
+                    <p class="myp">
+                        <mat-icon matPrefix class="mr-12 s-20" color="accent">keyboard</mat-icon>
+                        <span>{{groupe.state}}</span>
+                    </p>
+                </div>
+
+                <div class="mr-sm-24" fxFlex>
+                    <p class="myLabel">{{'FIELD.speed' | translate}}</p>
+                    <p class="myp">
+                        <mat-icon matPrefix class="mr-12 s-20" color="accent">keyboard</mat-icon>
+                        <span>{{groupe.speed}}</span>
+                    </p>
+                </div>
+
+
+            </fieldset>
+        </div>
+
+
+    </div>
+</div>
+
+

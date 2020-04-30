@@ -1,0 +1,126 @@
+<div class="page-layout carded fullwidth inner-scroll">
+
+    <!-- TOP BACKGROUND -->
+    <div class="top-bg accent"></div>
+    <!-- / TOP BACKGROUND -->
+
+    <!-- CENTER -->
+    <div class="center">
+
+        <!-- HEADER -->
+        <div class="header accent" fxLayout="row" fxLayoutAlign="space-between center">
+
+            <!-- APP TITLE -->
+            <div fxLayout="row" fxLayoutAlign="start center">
+
+                <div fxLayout="column" fxLayoutAlign="start start"
+                     [@animate]="{value:'*',params:{delay:'100ms',x:'-25px'}}">
+                    <div class="h2" >
+                        {{'HEADER.title' | translate}}
+                    </div>
+                </div>
+            </div>
+            <!-- / APP TITLE -->
+
+
+        </div>
+        <!-- / HEADER -->
+
+        <!-- CONTENT CARD -->
+        <div class="content-card mat-white-bg">
+
+            <!-- CONTENT -->
+            <div class="content">
+                <div class="tab-content p-24" fusePerfectScrollbar>
+                    <div class="mr-sm-12 ml-sm-12" fxFlex>
+
+                        <mat-vertical-stepper #stepper>
+
+                            <mat-step >
+                                <ng-template matStepLabel>Sécurité</ng-template>
+                                <app-security-show></app-security-show>
+                            </mat-step>
+
+                            <mat-step >
+                                <ng-template matStepLabel>Vanne d'arrivée</ng-template>
+                                <app-vanne-arrivee-show></app-vanne-arrivee-show>
+                            </mat-step>
+
+                            <mat-step >
+                                <ng-template matStepLabel>Joint de démontage arrivée </ng-template>
+                                <app-joint-demantage-show></app-joint-demantage-show>
+                            </mat-step>
+
+                            <mat-step >
+                                <ng-template matStepLabel>Compteur/débitmètre arrivée</ng-template>
+                                <app-compteur-show></app-compteur-show>
+                            </mat-step>
+
+                            <mat-step >
+                                <ng-template matStepLabel>Flotteur </ng-template>
+                                <app-flotteur-show></app-flotteur-show>
+                            </mat-step>
+
+                            <mat-step >
+                                <ng-template matStepLabel>Échelle arrivée</ng-template>
+                                <app-echelle-show></app-echelle-show>
+                            </mat-step>
+
+                            <mat-step >
+                                <ng-template matStepLabel>Vanne de distribution</ng-template>
+                                <app-vanne-sortie-show></app-vanne-sortie-show>
+                            </mat-step>
+
+                            <mat-step >
+                                <ng-template matStepLabel>Ventouse  </ng-template>
+                                <app-venteuse-show></app-venteuse-show>
+                            </mat-step>
+
+                            <mat-step >
+                                <ng-template matStepLabel>Joint de démontage distribution </ng-template>
+                                <app-joint-demantage-show></app-joint-demantage-show>
+                            </mat-step>
+
+                            <mat-step >
+                                <ng-template matStepLabel>Compteur/débitmètre distribution</ng-template>
+                                <app-compteur-show></app-compteur-show>
+                            </mat-step>
+
+                            <mat-step >
+                                <ng-template matStepLabel>Conduite trop plein</ng-template>
+                                <app-conduite-trop-plein-show></app-conduite-trop-plein-show>
+                            </mat-step>
+
+                            <mat-step >
+                                <ng-template matStepLabel>Conduite vidange</ng-template>
+                                <app-conduite-vidange-show></app-conduite-vidange-show>
+                            </mat-step>
+
+                            <mat-step >
+                                <ng-template matStepLabel>Échelle distribution</ng-template>
+                                <app-echelle-show></app-echelle-show>
+                            </mat-step>
+
+                            <mat-step >
+                                <ng-template matStepLabel>Poste de Chloration</ng-template>
+                                <app-poste-chloration-show></app-poste-chloration-show>
+                            </mat-step>
+
+
+                        </mat-vertical-stepper>
+
+                    </div>
+                </div>
+            </div>
+            <!-- / CONTENT -->
+
+        </div>
+        <!-- / CONTENT CARD -->
+
+    </div>
+    <!-- / CENTER -->
+</div>
+
+
+
+

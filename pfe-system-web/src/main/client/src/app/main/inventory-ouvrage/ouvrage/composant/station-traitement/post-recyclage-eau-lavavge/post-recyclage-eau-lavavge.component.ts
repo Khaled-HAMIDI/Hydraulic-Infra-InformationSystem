@@ -39,7 +39,7 @@ export class PostRecyclageEauLavavgeComponent implements OnInit{
 
     createForm(): FormGroup {
         let obj = {
-            ypeComposant: ['PosteChimique'],
+            typeComposant: ['PosteChimique'],
             postType: ['RecyclageEauLavage'],
             lieuImplantation:['',Validators.required],
             type: [''],
@@ -54,7 +54,7 @@ export class PostRecyclageEauLavavgeComponent implements OnInit{
             hmtPompe:['',Validators.required],
             puissancePompe: ['',Validators.required],
             nombrePompe:['',Validators.required],
-            fonctionnementPompe: ['',Validators.required],
+            fonctionnementPompe: [true,Validators.required],
             pointInjectPompe: ['',Validators.required],
         };
 

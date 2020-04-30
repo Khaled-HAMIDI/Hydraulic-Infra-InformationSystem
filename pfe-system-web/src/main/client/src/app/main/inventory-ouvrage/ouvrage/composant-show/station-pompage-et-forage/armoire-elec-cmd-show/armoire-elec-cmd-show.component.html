@@ -1,0 +1,62 @@
+<p class="myp" *ngIf="!exist">{{'FIELD.armoireElectriqueInexistante' | translate}}</p>
+<div class="tab-content p-24" fusePerfectScrollbar *ngIf="exist">
+    <div fxLayout="column" fxLayout.gt-sm="row">
+        <div class="mr-sm-12 ml-sm-12" fxFlex>
+
+            <fieldset class="myfieldset">
+
+                <div class="mr-sm-24" fxFlex>
+                    <p class="myLabel">{{'FIELD.state' | translate}}</p>
+                    <p class="myp">
+                        <mat-icon matPrefix class="mr-12 s-20" color="accent">keyboard</mat-icon>
+                        <span>{{armoire.state}}</span>
+                    </p>
+                </div>
+
+                <div class="mr-sm-24" fxFlex>
+                    <p class="myLabel">{{'FIELD.puissance' | translate}}</p>
+                    <p class="myp">
+                        <mat-icon matPrefix class="mr-12 s-20" color="accent">keyboard</mat-icon>
+                        <span>{{armoire.puissance}}</span>
+                    </p>
+                </div>
+
+                <div class="mr-sm-24" fxFlex>
+                    <p class="myLabel">{{'FIELD.number' | translate}}</p>
+                    <p class="myp">
+                        <mat-icon matPrefix class="mr-12 s-20" color="accent">keyboard</mat-icon>
+                        <span>{{armoire.number}}</span>
+                    </p>
+                </div>
+
+
+            </fieldset>
+        </div>
+
+        <div class="mr-sm-12 ml-sm-12" fxFlex>
+            <fieldset class="myfieldset">
+
+                <div class="mr-sm-24" fxFlex>
+                    <p class="myLabel">{{'FIELD.marque' | translate}}</p>
+                    <p class="myp">
+                        <mat-icon matPrefix class="mr-12 s-20" color="accent">keyboard</mat-icon>
+                        <span>{{armoire.marque}}</span>
+                    </p>
+                </div>
+
+                <div class="mr-sm-24" fxFlex>
+                    <p class="myLabel">{{'FIELD.observation' | translate}}</p>
+                    <p class="myp">
+                        <mat-icon matPrefix class="mr-12 s-20" color="accent">keyboard</mat-icon>
+                        <span>{{armoire.observation}}</span>
+                    </p>
+                </div>
+
+            </fieldset>
+        </div>
+
+
+    </div>
+</div>
+
+

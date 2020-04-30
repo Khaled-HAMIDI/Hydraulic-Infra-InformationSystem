@@ -27,6 +27,7 @@ export const locale = {
                 'typePompe':'Type de la pompe doseuse ',
                 'debitPompe': 'Débit de la pompe doseuse',
                 'hmtPompe': 'HMT de la pompe doseuse',
+                'modePompe':'Mode de pompe',
                 'puissancePompe':'Puissance de la pompe doseuse',
                 'nombrePompe':'Nombre de pompes doseuses',
                 'fonctionnementPompe' : 'Fonctionnement de la pompe doseuse',

@@ -21,7 +21,7 @@ public class ProductStorage extends Component {
     private String form;
 
     @Column(name = "dimention_product_storage")
-    private String dimention;
+    private String dimension;
 
     @Column(name = "arrangement_product_storage")
     private String arrangement;

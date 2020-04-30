@@ -1,0 +1,128 @@
+<p class="myp" *ngIf="!exist">{{'FIELD.postPrepInjecInexistante' | translate}}</p>
+<div class="tab-content p-24" fusePerfectScrollbar *ngIf="exist">
+     <div fxLayout="column" fxLayout.gt-sm="row">
+            <div class="mr-sm-12 ml-sm-12" fxFlex>
+
+                <fieldset class="myfieldset">
+
+                    <div class="mr-sm-24" fxFlex>
+                        <p class="myLabel">{{'FIELD.type' | translate}}</p>
+                        <p class="myp">
+                            <mat-icon matPrefix class="mr-12 s-20" color="accent">keyboard</mat-icon>
+                            <span>{{post.type}}</span>
+                        </p>
+                    </div>
+
+                    <div class="mr-sm-24" fxFlex>
+                        <p class="myLabel">{{'FIELD.number' | translate}}</p>
+                        <p class="myp">
+                            <mat-icon matPrefix class="mr-12 s-20" color="accent">keyboard</mat-icon>
+                            <span>{{post.number}}</span>
+                        </p>
+                    </div>
+
+                    <div class="mr-sm-24" fxFlex>
+                        <p class="myLabel">{{'FIELD.form' | translate}}</p>
+                        <p class="myp">
+                            <mat-icon matPrefix class="mr-12 s-20" color="accent">keyboard</mat-icon>
+                            <span>{{post.form}}</span>
+                        </p>
+                    </div>
+
+                    <div class="mr-sm-24" fxFlex>
+                        <p class="myLabel">{{'FIELD.dimension' | translate}}</p>
+                        <p class="myp">
+                            <mat-icon matPrefix class="mr-12 s-20" color="accent">keyboard</mat-icon>
+                            <span>{{post.dimension}}</span>
+                        </p>
+                    </div>
+
+                    <div class="mr-sm-24" fxFlex>
+                        <p class="myLabel">{{'FIELD.dosagePompe' | translate}}</p>
+                        <p class="myp">
+                            <mat-icon matPrefix class="mr-12 s-20" color="accent">keyboard</mat-icon>
+                            <span>{{post.dosagePompe}}</span>
+                        </p>
+                    </div>
+
+                    <div class="mr-sm-24" fxFlex>
+                        <p class="myLabel">{{'FIELD.nombrePompe' | translate}}</p>
+                        <p class="myp">
+                            <mat-icon matPrefix class="mr-12 s-20" color="accent">keyboard</mat-icon>
+                            <span>{{post.nombrePompe}}</span>
+                        </p>
+                    </div>
+
+                    <div class="mr-sm-24" fxFlex>
+                        <p class="myLabel">{{'FIELD.fonctionnementPompe' | translate}}</p>
+                        <p class="myp">
+                            <mat-icon matPrefix class="mr-12 s-20" color="accent">keyboard</mat-icon>
+                            <span *ngIf="post.fonctionnementPompe">{{ 'FIELD.enabledActivePompe' | translate }}</span>
+                            <span *ngIf="!post.fonctionnementPompe">{{ 'FIELD.enabledActivePompe' | translate }}</span>
+                        </p>
+                    </div>
+
+                </fieldset>
+            </div>
+
+            <div class="mr-sm-12 ml-sm-12" fxFlex>
+                <fieldset class="myfieldset">
+
+                    <div class="mr-sm-24" fxFlex>
+                        <p class="myLabel">{{'FIELD.modePompe' | translate}}</p>
+                        <p class="myp">
+                            <mat-icon matPrefix class="mr-12 s-20" color="accent">keyboard</mat-icon>
+                            <span>{{post.modePompe}}</span>
+                        </p>
+                    </div>
+
+                    <div class="mr-sm-24" fxFlex>
+                        <p class="myLabel">{{'FIELD.statePompe' | translate}}</p>
+                        <p class="myp">
+                            <mat-icon matPrefix class="mr-12 s-20" color="accent">keyboard</mat-icon>
+                            <span>{{post.statePompe}}</span>
+                        </p>
+                    </div>
+
+                    <div class="mr-sm-24" fxFlex>
+                        <p class="myLabel">{{'FIELD.typePompe' | translate}}</p>
+                        <p class="myp">
+                            <mat-icon matPrefix class="mr-12 s-20" color="accent">keyboard</mat-icon>
+                            <span>{{post.typePompe}}</span>
+                        </p>
+                    </div>
+
+
+                    <div class="mr-sm-24" fxFlex>
+                        <p class="myLabel">{{'FIELD.debitPompe' | translate}}</p>
+                        <p class="myp">
+                            <mat-icon matPrefix class="mr-12 s-20" color="accent">keyboard</mat-icon>
+                            <span>{{post.debitPompe}}</span>
+                        </p>
+                    </div>
+
+                    <div class="mr-sm-24" fxFlex>
+                        <p class="myLabel">{{'FIELD.hmtPompe' | translate}}</p>
+                        <p class="myp">
+                            <mat-icon matPrefix class="mr-12 s-20" color="accent">keyboard</mat-icon>
+                            <span>{{post.hmtPompe}}</span>
+                        </p>
+                    </div>
+
+
+                    <div class="mr-sm-24" fxFlex>
+                        <p class="myLabel">{{'FIELD.puissancePompe' | translate}}</p>
+                        <p class="myp">
+                            <mat-icon matPrefix class="mr-12 s-20" color="accent">keyboard</mat-icon>
+                            <span>{{post.puissancePompe}}</span>
+                        </p>
+                    </div>
+
+                </fieldset>
+            </div>
+
+
+        </div>
+</div>
+
+

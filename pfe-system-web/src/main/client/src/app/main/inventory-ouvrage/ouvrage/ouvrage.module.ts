@@ -66,7 +66,7 @@ import { GroupeElectrogeneComponent } from './composant/station-traitement/group
 import { PostTransElecComponent } from './composant/station-pompage-et-forage/post-trans-elec/post-trans-elec.component';
 import { GroupeElecPompPompComponent } from './composant/station-pompage-et-forage/groupe-elec-pomp-pomp/groupe-elec-pomp-pomp.component';
 import { GroupeElecPompMoteurComponent } from './composant/station-pompage-et-forage/groupe-elec-pomp-moteur/groupe-elec-pomp-moteur.component';
-import { ArmoirElecCmdComponent } from './composant/station-pompage-et-forage/armoir-elec-cmd/armoir-elec-cmd.component';
+import { ArmoirElecCmdComponent } from './composant/station-pompage-et-forage/armoire-elec-cmd/armoir-elec-cmd.component';
 import { AntiBelierComponent } from './composant/station-pompage-et-forage/anti-belier/anti-belier.component';
 import { SoupageDechargeComponent } from './composant/station-pompage-et-forage/soupape-decharge/soupage-decharge.component';
 import { VannePompageComponent } from './composant/station-pompage-et-forage/vanne-pompage/vanne-pompage.component';
@@ -84,6 +84,50 @@ import { ConduiteTropPleinComponent } from './composant/reservoir-et-brise-charg
 import { ConduiteVidangeComponent } from './composant/reservoir-et-brise-charge/conduite-vidange/conduite-vidange.component';
 import { PosteChlorationComponent } from './composant/reservoir-et-brise-charge/poste-chloration/poste-chloration.component';
 import { ColonnesMontantesComponent } from './composant/station-pompage-et-forage/colonnes-montantes/colonnes-montantes.component';
+import { SecurityShowComponent } from './composant-show/security-show/security-show.component';
+import { ConduiteTropPleinShowComponent } from './composant-show/reservoir-et-brise-charge/conduite-trop-plein-show/conduite-trop-plein-show.component';
+import { ConduiteVidangeShowComponent } from './composant-show/reservoir-et-brise-charge/conduite-vidange-show/conduite-vidange-show.component';
+import { EchelleShowComponent } from './composant-show/reservoir-et-brise-charge/echelle-show/echelle-show.component';
+import { FlotteurShowComponent } from './composant-show/reservoir-et-brise-charge/flotteur-show/flotteur-show.component';
+import { PosteChlorationShowComponent } from './composant-show/reservoir-et-brise-charge/poste-chloration-show/poste-chloration-show.component';
+import { VanneArriveeShowComponent } from './composant-show/reservoir-et-brise-charge/vanne-arrivee-show/vanne-arrivee-show.component';
+import { VanneSortieShowComponent } from './composant-show/reservoir-et-brise-charge/vanne-sortie-show/vanne-sortie-show.component';
+import { AntiBilierShowComponent } from './composant-show/station-pompage-et-forage/anti-bilier-show/anti-bilier-show.component';
+import { ArmoireElecCmdShowComponent } from './composant-show/station-pompage-et-forage/armoire-elec-cmd-show/armoire-elec-cmd-show.component';
+import { ClapetAntiRetourShowComponent } from './composant-show/station-pompage-et-forage/clapet-anti-retour-show/clapet-anti-retour-show.component';
+import { CollecteurAspirationShowComponent } from './composant-show/station-pompage-et-forage/collecteur-aspiration-show/collecteur-aspiration-show.component';
+import { CollecteurReffoullementShowComponent } from './composant-show/station-pompage-et-forage/collecteur-reffoullement-show/collecteur-reffoullement-show.component';
+import { CollonnesMontantesShowComponent } from './composant-show/station-pompage-et-forage/collonnes-montantes-show/collonnes-montantes-show.component';
+import { CompteurShowComponent } from './composant-show/station-pompage-et-forage/compteur-show/compteur-show.component';
+import { GroupeElecPompMoteurShowComponent } from './composant-show/station-pompage-et-forage/groupe-elec-pomp-moteur-show/groupe-elec-pomp-moteur-show.component';
+import { GroupeElecPompPompShowComponent } from './composant-show/station-pompage-et-forage/groupe-elec-pomp-pomp-show/groupe-elec-pomp-pomp-show.component';
+import { JointDemantageShowComponent } from './composant-show/station-pompage-et-forage/joint-demantage-show/joint-demantage-show.component';
+import { PostTransElecShowComponent } from './composant-show/station-pompage-et-forage/post-trans-elec-show/post-trans-elec-show.component';
+import { SoupapeDechargeShowComponent } from './composant-show/station-pompage-et-forage/soupape-decharge-show/soupape-decharge-show.component';
+import { VannePompageShowComponent } from './composant-show/station-pompage-et-forage/vanne-pompage-show/vanne-pompage-show.component';
+import { VenteuseShowComponent } from './composant-show/station-pompage-et-forage/venteuse-show/venteuse-show.component';
+import { BassinMelangeShowComponent } from './composant-show/station-traitement/bassin-melange-show/bassin-melange-show.component';
+import { BatimentElctriqueShowComponent } from './composant-show/station-traitement/batiment-elctrique-show/batiment-elctrique-show.component';
+import { ComposantAerationShowComponent } from './composant-show/station-traitement/composant-aeration-show/composant-aeration-show.component';
+import { ComposantPretraitementShowComponent } from './composant-show/station-traitement/composant-pretraitement-show/composant-pretraitement-show.component';
+import { DecanteurShowComponent } from './composant-show/station-traitement/decanteur-show/decanteur-show.component';
+import { FiltreShowComponent } from './composant-show/station-traitement/filtre-show/filtre-show.component';
+import { GroupeElectrogeneShowComponent } from './composant-show/station-traitement/groupe-electrogene-show/groupe-electrogene-show.component';
+import { KitMembraneShowComponent } from './composant-show/station-traitement/kit-membrane-show/kit-membrane-show.component';
+import { LocalStockageChimiqueShowComponent } from './composant-show/station-traitement/local-stockage-chimique-show/local-stockage-chimique-show.component';
+import { PostPrepInjectionShowComponent } from './composant-show/station-traitement/post-prep-injection-show/post-prep-injection-show.component';
+import { PostRecyclageBouesShowComponent } from './composant-show/station-traitement/post-recyclage-boues-show/post-recyclage-boues-show.component';
+import { PostRecyclageEauLavageShowComponent } from './composant-show/station-traitement/post-recyclage-eau-lavage-show/post-recyclage-eau-lavage-show.component';
+import { PriseEauShowComponent } from './composant-show/station-traitement/prise-eau-show/prise-eau-show.component';
+import { ReservoirEauBruteShowComponent } from './composant-show/station-traitement/reservoir-eau-brute-show/reservoir-eau-brute-show.component';
+import { ReservoirEauTraiteShowComponent } from './composant-show/station-traitement/reservoir-eau-traite-show/reservoir-eau-traite-show.component';
+import { StationPhpShowComponent } from './composant-show/station-traitement/station-php-show/station-php-show.component';
+import { BriseChargeShowStepperComponent } from './ouvrage-show/steppers/brise-charge-show-stepper/brise-charge-show-stepper.component';
+import { ForageShowStepperComponent } from './ouvrage-show/steppers/forage-show-stepper/forage-show-stepper.component';
+import { ReservoirShowStepperComponent } from './ouvrage-show/steppers/reservoir-show-stepper/reservoir-show-stepper.component';
+import { StationNonConvShowStepperComponent } from './ouvrage-show/steppers/station-non-conv-show-stepper/station-non-conv-show-stepper.component';
+import { StationPompageShowStepperComponent } from './ouvrage-show/steppers/station-pompage-show-stepper/station-pompage-show-stepper.component';
+import { StationTraitementConvShowStepperComponent } from './ouvrage-show/steppers/station-traitement-conv-show-stepper/station-traitement-conv-show-stepper.component';
 
 export const options: Partial<IConfig> | (() => Partial<IConfig>) = null;
 
@@ -163,6 +207,30 @@ const routes: Routes = [
         component: OuvrageShowComponent
     },
     {
+        path: 'show/StationTraitementConventionelle/composants/:code',
+        component: StationTraitementConvShowStepperComponent
+    },
+    {
+        path: 'show/Reservoir/composants/:code',
+        component: ReservoirShowStepperComponent
+    },
+    {
+        path: 'show/Forage/composants/:code',
+        component: ForageShowStepperComponent
+    },
+    {
+        path: 'show/StationPompage/composants/:code',
+        component: StationPompageShowStepperComponent
+    },
+    {
+        path: 'show/BriseCharge/composants/:code',
+        component: BriseChargeShowStepperComponent
+    },
+    {
+        path: 'show/StationTraitementNonConventionelle/composants/:code',
+        component: StationNonConvShowStepperComponent
+    },
+    {
         path: 'list',
         component: OuvrageListComponent,
         resolve: { data: OuvrageListService }
@@ -170,7 +238,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-    declarations: [OuvrageListComponent, OuvrageAddComponent, OuvrageEditComponent, OuvrageShowComponent, StationTraitementConvComponent, StationPompageComponent, ReservoirComponent, ForageComponent, BriseChargeComponent, StationNonConvComponent,  BriseChargeStepperComponent, ForageStepperComponent, ReservoirStepperComponent, StationNonConvStepperComponent, StationTraitementConvStepperComponent, StationPompageStepperComponent, SecurityComponent, PriseEauComponent, ReservoirEauBruteComponent, ComposantPretraitementComponent, ComposantAerationComponent, BassinMelangeComponent, DecanteurComponent, FiltreComponent, ReservoirEauTraiteComponent, KitMembraneComponent, StationPhpComponent, LocalStockageChimiqueComponent, PostPrepInjectionComponent, PostRecyclageBouesComponent, PostRecyclageEauLavavgeComponent, BatimentElectriqueComponent, GroupeElectrogeneComponent, PostTransElecComponent, GroupeElecPompPompComponent, GroupeElecPompMoteurComponent, ArmoirElecCmdComponent, AntiBelierComponent, SoupageDechargeComponent, VannePompageComponent, ClapetAntiRetourComponent, VenteuseComponent, JointDemantageComponent, CompteurComponent, CollecteurAspirationComponent, CollecteurReffoullementComponent, VanneArriveeComponent, VanneSortieComponent, FlotteurComponent, EchelleComponent, ConduiteTropPleinComponent, ConduiteVidangeComponent, PosteChlorationComponent, ColonnesMontantesComponent],
+    declarations: [OuvrageListComponent, OuvrageAddComponent, OuvrageEditComponent, OuvrageShowComponent, StationTraitementConvComponent, StationPompageComponent, ReservoirComponent, ForageComponent, BriseChargeComponent, StationNonConvComponent,  BriseChargeStepperComponent, ForageStepperComponent, ReservoirStepperComponent, StationNonConvStepperComponent, StationTraitementConvStepperComponent, StationPompageStepperComponent, SecurityComponent, PriseEauComponent, ReservoirEauBruteComponent, ComposantPretraitementComponent, ComposantAerationComponent, BassinMelangeComponent, DecanteurComponent, FiltreComponent, ReservoirEauTraiteComponent, KitMembraneComponent, StationPhpComponent, LocalStockageChimiqueComponent, PostPrepInjectionComponent, PostRecyclageBouesComponent, PostRecyclageEauLavavgeComponent, BatimentElectriqueComponent, GroupeElectrogeneComponent, PostTransElecComponent, GroupeElecPompPompComponent, GroupeElecPompMoteurComponent, ArmoirElecCmdComponent, AntiBelierComponent, SoupageDechargeComponent, VannePompageComponent, ClapetAntiRetourComponent, VenteuseComponent, JointDemantageComponent, CompteurComponent, CollecteurAspirationComponent, CollecteurReffoullementComponent, VanneArriveeComponent, VanneSortieComponent, FlotteurComponent, EchelleComponent, ConduiteTropPleinComponent, ConduiteVidangeComponent, PosteChlorationComponent, ColonnesMontantesComponent, SecurityShowComponent, ConduiteTropPleinShowComponent, ConduiteVidangeShowComponent, EchelleShowComponent, FlotteurShowComponent, PosteChlorationShowComponent, VanneArriveeShowComponent, VanneSortieShowComponent, AntiBilierShowComponent, ArmoireElecCmdShowComponent, ClapetAntiRetourShowComponent, CollecteurAspirationShowComponent, CollecteurReffoullementShowComponent, CollonnesMontantesShowComponent, CompteurShowComponent, GroupeElecPompMoteurShowComponent, GroupeElecPompPompShowComponent, JointDemantageShowComponent, PostTransElecShowComponent, SoupapeDechargeShowComponent, VannePompageShowComponent, VenteuseShowComponent, BassinMelangeShowComponent, BatimentElctriqueShowComponent, ComposantAerationShowComponent, ComposantPretraitementShowComponent, DecanteurShowComponent, FiltreShowComponent, GroupeElectrogeneShowComponent, KitMembraneShowComponent, LocalStockageChimiqueShowComponent, PostPrepInjectionShowComponent, PostRecyclageBouesShowComponent, PostRecyclageEauLavageShowComponent, PriseEauShowComponent, ReservoirEauBruteShowComponent, ReservoirEauTraiteShowComponent, StationPhpShowComponent, BriseChargeShowStepperComponent, ForageShowStepperComponent, ReservoirShowStepperComponent, StationNonConvShowStepperComponent, StationPompageShowStepperComponent, StationTraitementConvShowStepperComponent],
     imports: [
         CommonModule,
         RouterModule.forChild(routes),

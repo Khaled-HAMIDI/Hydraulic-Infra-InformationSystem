@@ -1,0 +1,85 @@
+
+<p class="myp" *ngIf="!exist">{{'FIELD.SecurityInexistante' | translate}}</p>
+<div class="tab-content p-24" fusePerfectScrollbar *ngIf="exist">
+
+        <div fxLayout="column" fxLayout.gt-sm="row">
+            <div class="mr-sm-12 ml-sm-12" fxFlex>
+                <fieldset class="myfieldset">
+
+                    <div class="mr-sm-24" fxFlex>
+                        <p class="myLabel">{{'FIELD.closing' | translate}}</p>
+                        <p class="myp">
+                            <mat-icon matPrefix class="mr-12 s-20" color="accent">keyboard</mat-icon>
+                            <span *ngIf="security.closing">{{ 'FIELD.closingActive' | translate }}</span>
+                            <span *ngIf="!security.closing">{{ 'FIELD.closingInactive' | translate }}</span>
+                        </p>
+                    </div>
+
+
+                    <div class="mr-sm-24" fxFlex>
+                        <p class="myLabel">{{'FIELD.telsurveillance' | translate}}</p>
+                        <p class="myp">
+                            <mat-icon matPrefix class="mr-12 s-20" color="accent">keyboard</mat-icon>
+                            <span *ngIf="security.telsurveillance">{{ 'FIELD.telsurveillanceActive' | translate }}</span>
+                            <span *ngIf="!security.telsurveillance">{{ 'FIELD.telsurveillanceInactive' | translate }}</span>
+                        </p>
+                    </div>
+
+                    <div class="mr-sm-24" fxFlex>
+                        <p class="myLabel">{{'FIELD.state' | translate}}</p>
+                        <p class="myp">
+                            <mat-icon matPrefix class="mr-12 s-20" color="accent">keyboard</mat-icon>
+                            <span>{{security.state}}</span>
+                        </p>
+                    </div>
+
+                    <div class="mr-sm-24" fxFlex>
+                        <p class="myLabel">{{'FIELD.guerites' | translate}}</p>
+                        <p class="myp">
+                            <mat-icon matPrefix class="mr-12 s-20" color="accent">keyboard</mat-icon>
+                            <span>{{security.guerites}}</span>
+                        </p>
+                    </div>
+
+                </fieldset>
+            </div>
+
+            <div class="mr-sm-12 ml-sm-12" fxFlex>
+                <fieldset class="myfieldset">
+                    <div class="mr-sm-24" fxFlex>
+                        <p class="myLabel">{{'FIELD.nature' | translate}}</p>
+                        <p class="myp">
+                            <mat-icon matPrefix class="mr-12 s-20" color="accent">keyboard</mat-icon>
+                            <span>{{security.nature}}</span>
+                        </p>
+                    </div>
+
+
+                    <div class="mr-sm-24" fxFlex>
+                        <p class="myLabel">{{'FIELD.agents' | translate}}</p>
+                        <p class="myp">
+                            <mat-icon matPrefix class="mr-12 s-20" color="accent">keyboard</mat-icon>
+                            <span>{{security.agents}}</span>
+                        </p>
+                    </div>
+
+
+                    <div class="mr-sm-24" fxFlex>
+                        <p class="myLabel">{{'FIELD.armement' | translate}}</p>
+                        <p class="myp">
+                            <mat-icon matPrefix class="mr-12 s-20" color="accent">keyboard</mat-icon>
+                            <span *ngIf="security.armement">{{ 'FIELD.armementActive' | translate }}</span>
+                            <span *ngIf="!security.armement">{{ 'FIELD.armementInactive' | translate }}</span>
+                        </p>
+                    </div>
+
+                </fieldset>
+            </div>
+
+        </div>
+
+
+ </div>
+
+
+

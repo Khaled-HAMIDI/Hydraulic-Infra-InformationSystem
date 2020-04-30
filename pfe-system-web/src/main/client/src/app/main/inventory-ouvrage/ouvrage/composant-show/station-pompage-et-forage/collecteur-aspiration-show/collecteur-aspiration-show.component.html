@@ -1,0 +1,77 @@
+<p class="myp" *ngIf="!exist">{{'FIELD.collecteurAspirationInexistante' | translate}}</p>
+<div class="tab-content p-24" fusePerfectScrollbar *ngIf="exist">
+    <div fxLayout="column" fxLayout.gt-sm="row">
+        <div class="mr-sm-12 ml-sm-12" fxFlex>
+
+            <fieldset class="myfieldset">
+
+                <div class="mr-sm-24" fxFlex>
+                    <p class="myLabel">{{'FIELD.state' | translate}}</p>
+                    <p class="myp">
+                        <mat-icon matPrefix class="mr-12 s-20" color="accent">keyboard</mat-icon>
+                        <span>{{equipement.state}}</span>
+                    </p>
+                </div>
+
+                <div class="mr-sm-24" fxFlex>
+                    <p class="myLabel">{{'FIELD.dn' | translate}}</p>
+                    <p class="myp">
+                        <mat-icon matPrefix class="mr-12 s-20" color="accent">keyboard</mat-icon>
+                        <span>{{equipement.dn}}</span>
+                    </p>
+                </div>
+
+                <div class="mr-sm-24" fxFlex>
+                    <p class="myLabel">{{'FIELD.pn' | translate}}</p>
+                    <p class="myp">
+                        <mat-icon matPrefix class="mr-12 s-20" color="accent">keyboard</mat-icon>
+                        <span>{{equipement.pn}}</span>
+                    </p>
+                </div>
+
+                <div class="mr-sm-24" fxFlex>
+                    <p class="myLabel">{{'FIELD.number' | translate}}</p>
+                    <p class="myp">
+                        <mat-icon matPrefix class="mr-12 s-20" color="accent">keyboard</mat-icon>
+                        <span>{{equipement.number}}</span>
+                    </p>
+                </div>
+
+            </fieldset>
+        </div>
+
+        <div class="mr-sm-12 ml-sm-12" fxFlex>
+            <fieldset class="myfieldset">
+
+                <div class="mr-sm-24" fxFlex>
+                    <p class="myLabel">{{'FIELD.type' | translate}}</p>
+                    <p class="myp">
+                        <mat-icon matPrefix class="mr-12 s-20" color="accent">keyboard</mat-icon>
+                        <span>{{equipement.type}}</span>
+                    </p>
+                </div>
+
+                <div class="mr-sm-24" fxFlex>
+                    <p class="myLabel">{{'FIELD.materiaux' | translate}}</p>
+                    <p class="myp">
+                        <mat-icon matPrefix class="mr-12 s-20" color="accent">keyboard</mat-icon>
+                        <span>{{equipement.materiaux}}</span>
+                    </p>
+                </div>
+
+                <div class="mr-sm-24" fxFlex>
+                    <p class="myLabel">{{'FIELD.lieuImplantation' | translate}}</p>
+                    <p class="myp">
+                        <mat-icon matPrefix class="mr-12 s-20" color="accent">keyboard</mat-icon>
+                        <span>{{equipement.lieuImplantation}}</span>
+                    </p>
+                </div>
+
+            </fieldset>
+        </div>
+
+
+    </div>
+</div>
+
+

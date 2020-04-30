@@ -1,0 +1,58 @@
+export const locale = {
+    lang: 'fr',
+    data: {
+
+            'BUTTON': {
+                'disponible': 'Cet composant n\'existe pas',
+                'next':'Sauvgarder le composant'
+            },
+            "FIELD" :{
+                'type': 'Type',
+                'area':'Superficie',
+                'enabled':'Fonctionnement',
+                'enabledActive': 'En marche',
+                'enabledInactive': 'En arret',
+                'state': 'Etat',
+                'form': 'Forme',
+                'number': 'Nombre',
+                'nature': 'Nature',
+                'capacity': 'Capacité/dimension',
+                'dimension':'Dimension',
+                'puissance': 'Puissance',
+                'hmt': 'HMT',
+                'debit':'Débit',
+                'caracteristique':'Caractéristiques',
+                'arrangement' : 'Arrangement',
+                'dosagePompe': 'Dosage  et injection',
+                'statePompe': 'Etat de la pompe doseuse',
+                'typePompe':'Type de la pompe doseuse ',
+                'debitPompe': 'Débit de la pompe doseuse',
+                'hmtPompe': 'HMT de la pompe doseuse',
+                'puissancePompe':'Puissance de la pompe doseuse',
+                'nombrePompe':'Nombre de pompes doseuses',
+                'fonctionnementPompe' : 'Fonctionnement de la pompe doseuse',
+                'pointInjectPompe':'Point d\'injection',
+                'enabledActivePompe': 'Pompes en marche',
+                'enabledInactivePompe': 'Pompes en arret',
+                'cuve':'Cuve de stockage',
+
+                'postPrepInjecInexistante':'Cet ouvrage ne contient pas de poste de préparation d\'inejction',
+                'bassinMelangeInexistante':'Cet ouvrage ne contient pas de bassin de mélange',
+                'composantAerationInexistante':'Cet ouvrage ne contient pas de composant d\'aération',
+                'composantPretraitementInexistante':'Cet ouvrage ne contient pas de composant de prétraitement',
+                'decanteurInexistante':'Cet ouvrage ne contient pas de décanteur',
+                'filtreInexistante':'Cet ouvrage ne contient pas de filtre',
+                'reservoirEauBruteInexistante':'Cet ouvrage ne contient pas de réservoir d\'eau brute',
+                'reservoirEauTraiteInexistante':'Cet ouvrage ne contient pas de réservoir d\'eau traité',
+                'postRecyclageEauLavageInexistante':'Cet ouvrage ne contient pas de poste de recyclage des eaux de lavage',
+                'postRecyclageBouesInexistante':'Cet ouvrage ne contient pas de poste de recyclage des boues',
+                'batimentElectriqueInexistante':'Cet ouvrage ne contient pas de batiment électrique',
+                'groupeElectrogeneInexistante':'Cet ouvrage ne contient pas de groupe électrogène',
+                'localStockageInexistante':'Cet ouvrage ne contient pas de local de stockage des produits chimiques',
+                'kitMembraneInexistante':'Cet ouvrage ne contient pas de Kit Membrane',
+                'priseEauInexistante':'Cet ouvrage ne contient pas de prise d\'eau',
+                'stationPhpInexistante':'Cet ouvrage ne contient pas de station Php'
+
+            }
+        },
+};
