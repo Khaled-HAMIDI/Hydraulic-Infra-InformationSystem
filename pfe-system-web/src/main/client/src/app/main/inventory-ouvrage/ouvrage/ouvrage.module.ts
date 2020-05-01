@@ -23,7 +23,7 @@ import { MatTableModule } from '@angular/material/table';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatListModule } from '@angular/material/list';
 import { MatToolbarModule } from '@angular/material/toolbar';
-import {MatTreeModule} from '@angular/material/tree';
+import { MatTreeModule } from '@angular/material/tree';
 import { AuthenticationGuard } from 'app/guards/authentication.guard';
 import { OuvrageListComponent } from './list/ouvrage-list/ouvrage-list.component';
 import { OuvrageListService } from './list/ouvrage-list/ouvrage-list.service';
@@ -33,12 +33,12 @@ import { OuvrageAddComponent } from './ouvrage-add/ouvrage-add.component';
 import { OuvrageEditComponent } from './ouvrage-edit/ouvrage-edit.component';
 import { MatDatepickerModule } from "@angular/material/datepicker";
 import { OuvrageShowComponent } from './ouvrage-show/ouvrage-show.component';
-import {StationTraitementConvComponent} from "./ouvrage-add/Type/station-traitement-conv/station-traitement-conv.component";
-import {ReservoirComponent} from "./ouvrage-add/Type/reservoir/reservoir.component";
-import {ForageComponent} from "./ouvrage-add/Type/forage/forage.component";
-import {StationPompageComponent} from "./ouvrage-add/Type/station-pompage/station-pompage.component";
-import {BriseChargeComponent} from "./ouvrage-add/Type/brise-charge/brise-charge.component";
-import {StationNonConvComponent} from "./ouvrage-add/Type/station-non-conv/station-non-conv.component";
+import { StationTraitementConvComponent } from "./ouvrage-add/Type/station-traitement-conv/station-traitement-conv.component";
+import { ReservoirComponent } from "./ouvrage-add/Type/reservoir/reservoir.component";
+import { ForageComponent } from "./ouvrage-add/Type/forage/forage.component";
+import { StationPompageComponent } from "./ouvrage-add/Type/station-pompage/station-pompage.component";
+import { BriseChargeComponent } from "./ouvrage-add/Type/brise-charge/brise-charge.component";
+import { StationNonConvComponent } from "./ouvrage-add/Type/station-non-conv/station-non-conv.component";
 import { BriseChargeStepperComponent } from './ouvrage-add/steppers/brise-charge-stepper/brise-charge-stepper.component';
 import { ForageStepperComponent } from './ouvrage-add/steppers/forage-stepper/forage-stepper.component';
 import { ReservoirStepperComponent } from './ouvrage-add/steppers/reservoir-stepper/reservoir-stepper.component';
@@ -84,6 +84,7 @@ import { ConduiteTropPleinComponent } from './composant-add-edit/reservoir-et-br
 import { ConduiteVidangeComponent } from './composant-add-edit/reservoir-et-brise-charge/conduite-vidange/conduite-vidange.component';
 import { PosteChlorationComponent } from './composant-add-edit/reservoir-et-brise-charge/poste-chloration/poste-chloration.component';
 import { ColonnesMontantesComponent } from './composant-add-edit/station-pompage-et-forage/colonnes-montantes/colonnes-montantes.component';
+import { OuvragesSelectedBarComponent } from './list/selected-bar/selected-bar.component';
 import { SecurityShowComponent } from './composant-show/security-show/security-show.component';
 import { ConduiteTropPleinShowComponent } from './composant-show/reservoir-et-brise-charge/conduite-trop-plein-show/conduite-trop-plein-show.component';
 import { ConduiteVidangeShowComponent } from './composant-show/reservoir-et-brise-charge/conduite-vidange-show/conduite-vidange-show.component';
@@ -135,67 +136,67 @@ const routes: Routes = [
     {
         path: 'add',
         component: OuvrageAddComponent,
-        data: {action: 'add'}
+        data: { action: 'add' }
     },
     {
         path: 'add/StationTraitementConventionelle',
         component: StationTraitementConvComponent,
-        data: {action: 'add'}
+        data: { action: 'add' }
     },
     {
         path: 'add/Reservoir',
         component: ReservoirComponent,
-        data: {action: 'add'}
+        data: { action: 'add' }
     },
     {
         path: 'add/Forage',
         component: ForageComponent,
-        data: {action: 'add'}
+        data: { action: 'add' }
     },
     {
         path: 'add/StationPompage',
         component: StationPompageComponent,
-        data: {action: 'add'}
+        data: { action: 'add' }
     },
     {
         path: 'add/BriseCharge',
         component: BriseChargeComponent,
-        data: {action: 'add'}
+        data: { action: 'add' }
     },
     {
         path: 'add/StationTraitementNonConventionelle',
         component: StationNonConvComponent,
-        data: {action: 'add'}
+        data: { action: 'add' }
     },
     {
         path: 'add/StationTraitementConventionelle/composants/:code',
         component: StationTraitementConvStepperComponent,
-        data: {action: 'add'}
+        data: { action: 'add' }
     },
     {
         path: 'add/Reservoir/composants/:code',
         component: ReservoirStepperComponent,
-        data: {action: 'add'}
+        data: { action: 'add' }
     },
     {
         path: 'add/Forage/composants/:code',
         component: ForageStepperComponent,
-        data: {action: 'add'}
+        data: { action: 'add' }
     },
     {
         path: 'add/StationPompage/composants/:code',
         component: StationPompageStepperComponent,
-        data: {action: 'add'}
+        data: { action: 'add' }
     },
     {
         path: 'add/BriseCharge/composants/:code',
         component: BriseChargeStepperComponent,
-        data: {action: 'add'}
+        data: { action: 'add' }
     },
     {
         path: 'add/StationTraitementNonConventionelle/composants/:code',
         component: StationNonConvStepperComponent,
-        data: {action: 'add'}
+        data: { action: 'add' }
     },
     {
         path: ':code/edit',
@@ -268,12 +269,12 @@ const routes: Routes = [
 ];
 
 @NgModule({
-    declarations: [OuvrageListComponent, OuvrageAddComponent, OuvrageEditComponent, OuvrageShowComponent, StationTraitementConvComponent, StationPompageComponent, ReservoirComponent, ForageComponent, BriseChargeComponent, StationNonConvComponent,  BriseChargeStepperComponent, ForageStepperComponent, ReservoirStepperComponent, StationNonConvStepperComponent, StationTraitementConvStepperComponent, StationPompageStepperComponent, SecurityComponent, PriseEauComponent, ReservoirEauBruteComponent, ComposantPretraitementComponent, ComposantAerationComponent, BassinMelangeComponent, DecanteurComponent, FiltreComponent, ReservoirEauTraiteComponent, KitMembraneComponent, StationPhpComponent, LocalStockageChimiqueComponent, PostPrepInjectionComponent, PostRecyclageBouesComponent, PostRecyclageEauLavavgeComponent, BatimentElectriqueComponent, GroupeElectrogeneComponent, PostTransElecComponent, GroupeElecPompPompComponent, GroupeElecPompMoteurComponent, ArmoirElecCmdComponent, AntiBelierComponent, SoupageDechargeComponent, VannePompageComponent, ClapetAntiRetourComponent, VenteuseComponent, JointDemantageComponent, CompteurComponent, CollecteurAspirationComponent, CollecteurReffoullementComponent, VanneArriveeComponent, VanneSortieComponent, FlotteurComponent, EchelleComponent, ConduiteTropPleinComponent, ConduiteVidangeComponent, PosteChlorationComponent, ColonnesMontantesComponent, SecurityShowComponent, ConduiteTropPleinShowComponent, ConduiteVidangeShowComponent, EchelleShowComponent, FlotteurShowComponent, PosteChlorationShowComponent, VanneArriveeShowComponent, VanneSortieShowComponent, AntiBilierShowComponent, ArmoireElecCmdShowComponent, ClapetAntiRetourShowComponent, CollecteurAspirationShowComponent, CollecteurReffoullementShowComponent, CollonnesMontantesShowComponent, CompteurShowComponent, GroupeElecPompMoteurShowComponent, GroupeElecPompPompShowComponent, JointDemantageShowComponent, PostTransElecShowComponent, SoupapeDechargeShowComponent, VannePompageShowComponent, VenteuseShowComponent, BassinMelangeShowComponent, BatimentElctriqueShowComponent, ComposantAerationShowComponent, ComposantPretraitementShowComponent, DecanteurShowComponent, FiltreShowComponent, GroupeElectrogeneShowComponent, KitMembraneShowComponent, LocalStockageChimiqueShowComponent, PostPrepInjectionShowComponent, PostRecyclageBouesShowComponent, PostRecyclageEauLavageShowComponent, PriseEauShowComponent, ReservoirEauBruteShowComponent, ReservoirEauTraiteShowComponent, StationPhpShowComponent, BriseChargeShowStepperComponent, ForageShowStepperComponent, ReservoirShowStepperComponent, StationNonConvShowStepperComponent, StationPompageShowStepperComponent, StationTraitementConvShowStepperComponent],
+    declarations: [OuvrageListComponent, OuvrageAddComponent, OuvrageEditComponent, OuvrageShowComponent, StationTraitementConvComponent, StationPompageComponent, ReservoirComponent, ForageComponent, BriseChargeComponent, StationNonConvComponent,  BriseChargeStepperComponent, ForageStepperComponent, ReservoirStepperComponent, StationNonConvStepperComponent, StationTraitementConvStepperComponent, StationPompageStepperComponent, SecurityComponent, PriseEauComponent, ReservoirEauBruteComponent, ComposantPretraitementComponent, ComposantAerationComponent, BassinMelangeComponent, DecanteurComponent, FiltreComponent, ReservoirEauTraiteComponent, KitMembraneComponent, StationPhpComponent, LocalStockageChimiqueComponent, PostPrepInjectionComponent, PostRecyclageBouesComponent, PostRecyclageEauLavavgeComponent, BatimentElectriqueComponent, GroupeElectrogeneComponent, PostTransElecComponent, GroupeElecPompPompComponent, GroupeElecPompMoteurComponent, ArmoirElecCmdComponent, AntiBelierComponent, SoupageDechargeComponent, VannePompageComponent, ClapetAntiRetourComponent, VenteuseComponent, JointDemantageComponent, CompteurComponent, CollecteurAspirationComponent, CollecteurReffoullementComponent, VanneArriveeComponent, VanneSortieComponent, FlotteurComponent, EchelleComponent, ConduiteTropPleinComponent, ConduiteVidangeComponent, PosteChlorationComponent, ColonnesMontantesComponent, SecurityShowComponent, ConduiteTropPleinShowComponent, ConduiteVidangeShowComponent, EchelleShowComponent, FlotteurShowComponent, PosteChlorationShowComponent, VanneArriveeShowComponent, VanneSortieShowComponent, AntiBilierShowComponent, ArmoireElecCmdShowComponent, ClapetAntiRetourShowComponent, CollecteurAspirationShowComponent, CollecteurReffoullementShowComponent, CollonnesMontantesShowComponent, CompteurShowComponent, GroupeElecPompMoteurShowComponent, GroupeElecPompPompShowComponent, JointDemantageShowComponent, PostTransElecShowComponent, SoupapeDechargeShowComponent, VannePompageShowComponent, VenteuseShowComponent, BassinMelangeShowComponent, BatimentElctriqueShowComponent, ComposantAerationShowComponent, ComposantPretraitementShowComponent, DecanteurShowComponent, FiltreShowComponent, GroupeElectrogeneShowComponent, KitMembraneShowComponent, LocalStockageChimiqueShowComponent, PostPrepInjectionShowComponent, PostRecyclageBouesShowComponent, PostRecyclageEauLavageShowComponent, PriseEauShowComponent, ReservoirEauBruteShowComponent, ReservoirEauTraiteShowComponent, StationPhpShowComponent, BriseChargeShowStepperComponent, ForageShowStepperComponent, ReservoirShowStepperComponent, StationNonConvShowStepperComponent, StationPompageShowStepperComponent, StationTraitementConvShowStepperComponent, OuvragesSelectedBarComponent],
     imports: [
         CommonModule,
         RouterModule.forChild(routes),
-        MatSortModule,
         MatTableModule,
+        MatSortModule,
         MatPaginatorModule,
         MatIconModule,
         MatFormFieldModule,

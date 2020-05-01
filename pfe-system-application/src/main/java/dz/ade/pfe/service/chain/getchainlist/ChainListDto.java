@@ -10,6 +10,8 @@ import lombok.NoArgsConstructor;
 public class ChainListDto {
     private String id;
 
+    private String code;
+
     private String name;
 
     private Integer ouvragesNumber;

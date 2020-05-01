@@ -1,6 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Table } from '../Table'
 import { Subject } from 'rxjs';
+import { fuseAnimations } from '@fuse/animations';
 import { MatDialogRef, MatDialog } from '@angular/material';
 import { FuseConfirmDialogComponent } from '@fuse/components/confirm-dialog/confirm-dialog.component';
 import { Router, ActivatedRoute } from '@angular/router';
@@ -22,7 +23,8 @@ const COLUMN_NAMES: string[] = [
 @Component({
   selector: 'app-chain-list',
   templateUrl: './chain-list.component.html',
-  styleUrls: ['./chain-list.component.scss']
+  styleUrls: ['./chain-list.component.scss'],
+  animations: fuseAnimations
 })
 export class ChainListComponent extends Table implements OnInit, OnDestroy {
   private _unsubscribeAll: Subject<any>;
