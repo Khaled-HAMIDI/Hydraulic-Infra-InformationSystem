@@ -62,53 +62,13 @@
         }
     }
 
-    .users-table {
+    .ouvrages-table {
         flex: 1 1 auto;
         border-bottom: 1px solid rgba(0, 0, 0, .12);
         overflow: auto;
         mat-cell:last-child{
             padding: 0;
         }
-        .mat-header-row {
-            min-height: 54px;
-        }
-
-        .user {
-            position: relative;
-            cursor: pointer;
-        }
-
-        .mat-cell {
-            min-width: 0;
-            display: flex;
-            align-items: left;
-        }
-
-        .mat-column-checkbox {
-            flex: 0 1 80px;
-        }
-
-        .mat-column-enabled {
-            flex: 0 1 80px;
-        }
-
-        .mat-column-employeeCode {
-            flex: 0 1 80px;
-        }
-
-        .mat-column-buttons {
-            flex: 0 1 80px;
-        }
-
-        .mat-column-active{
-            flex: 0 1 30px;
-        }
-
-        .mat-column-roles{
-            padding-bottom: 3px;
-            padding-top: 3px;
-        }
-        
     }
             
     .example-container {

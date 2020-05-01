@@ -93,8 +93,8 @@ export class DrawComponent implements OnInit, OnDestroy {
         <span class="tooltiptext">Date mes : 11/12/2000</span><br>
         <span class="tooltiptext">Etat : Bon</span><br>
         `)
-          .style("left", (d3.event.pageX) + "px")
-          .style("top", (d3.event.pageY) + "px");
+          .style("left", (d3.event.pageX) - 180 + "px")
+          .style("top", (d3.event.pageY) - 100  + "px");
       })
       .on("mouseout", function (d) {
         div.transition()
@@ -124,8 +124,7 @@ export class DrawComponent implements OnInit, OnDestroy {
       //   }
       // });
       // Define the div for the tooltip
-      var div = d3.select(".content-card").append("div")
-        .attr("class", "tooltip")
+      var div = d3.select(".tooltip")
         .style("opacity", 0);
       // You can also change label position, which is, how far it is from the node along the link line
       this.SetTooltips(div);

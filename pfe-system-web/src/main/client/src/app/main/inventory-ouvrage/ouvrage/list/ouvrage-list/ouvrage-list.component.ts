@@ -1,6 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Table } from '../Table'
 import { Subject } from 'rxjs';
+import { fuseAnimations } from '@fuse/animations';
 import { MatDialogRef, MatDialog } from '@angular/material';
 import { FuseConfirmDialogComponent } from '@fuse/components/confirm-dialog/confirm-dialog.component';
 import { Router, ActivatedRoute } from '@angular/router';
@@ -13,9 +14,9 @@ import { takeUntil } from 'rxjs/operators';
 const COLUMN_NAMES: string[] = [
   'checkbox',
   'type',
-  'ouvrageCode',
+  'code',
   'commune',
-  'debit',
+  'currentCapacity',
   'enabled',
   'buttons'
 ];
@@ -23,7 +24,8 @@ const COLUMN_NAMES: string[] = [
 @Component({
   selector: 'app-ouvrage-list',
   templateUrl: './ouvrage-list.component.html',
-  styleUrls: ['./ouvrage-list.component.scss']
+  styleUrls: ['./ouvrage-list.component.scss'],
+  animations: fuseAnimations
 })
 export class OuvrageListComponent extends Table implements OnInit, OnDestroy {
   private _unsubscribeAll: Subject<any>;
@@ -38,8 +40,7 @@ export class OuvrageListComponent extends Table implements OnInit, OnDestroy {
     public authorizationService: AuthorizationService,
     public matDialog: MatDialog,
     private toolsService: ToolsService,
-    public router: Router) 
-    {
+    public router: Router) {
     super(COLUMN_NAMES)
     this._unsubscribeAll = new Subject();
     this.ouvragesCheckbox = {};
@@ -62,71 +63,76 @@ export class OuvrageListComponent extends Table implements OnInit, OnDestroy {
     );
     this.ouvrageListService.onSelectedOuvragesChanged.pipe(takeUntil(this._unsubscribeAll)).subscribe(
       (ouvragesSelected) => {
-          this.selectBarDisplayed = ouvragesSelected.length > 0;
+        this.selectBarDisplayed = ouvragesSelected.length > 0;
 
-          for (const id in this.ouvragesCheckbox) {
-              if (!this.ouvragesCheckbox.hasOwnProperty(id)) continue;
-              this.ouvragesCheckbox[id] = ouvragesSelected.includes(id);
-          }
+        for (const id in this.ouvragesCheckbox) {
+          if (!this.ouvragesCheckbox.hasOwnProperty(id)) continue;
+          this.ouvragesCheckbox[id] = ouvragesSelected.includes(id);
+        }
 
       }
-  );
+    );
 
-  this.ouvrageListService.onOuvragesChanged.pipe(takeUntil(this._unsubscribeAll)).subscribe(
+    this.ouvrageListService.onOuvragesChanged.pipe(takeUntil(this._unsubscribeAll)).subscribe(
       (ouvrages) => {
-          this.dataSource.data = ouvrages;
-          this.applyFilter(this.dataSource.filter);
-          this.checkPage();
+        this.dataSource.data = ouvrages;
+        this.applyFilter(this.dataSource.filter);
+        this.checkPage();
       }
-  );
-}
+    );
+  }
 
-initOuvragesSelected(ouvrages) {
-  ouvrages.forEach(
+  initOuvragesSelected(ouvrages) {
+    ouvrages.forEach(
       (ouvrage) => {
-          this.ouvragesCheckbox[ouvrage.id] = false;
+        this.ouvragesCheckbox[ouvrage.id] = false;
       }
-  );
-}
+    );
+  }
 
-// -----------------------------------------------------------------------------------------------------
-// @ Event function
-// -----------------------------------------------------------------------------------------------------
-onSelectedChange(ouvrage): void {
-  this.ouvrageListService.toggleSelectedOuvrage(ouvrage);
-}
+  // -----------------------------------------------------------------------------------------------------
+  // @ Event function
+  // -----------------------------------------------------------------------------------------------------
+  onSelectedChange(ouvrage): void {
+    this.ouvrageListService.toggleSelectedOuvrage(ouvrage);
+  }
 
-onDelete(ouvrage): void {
-  this.confirmDialogRef = this.matDialog.open(FuseConfirmDialogComponent);
 
-  this.confirmDialogRef.componentInstance.confirmMessage = this.toolsService.getTranslation('LIST.CONFIRM-DIALOG.delete');
-  this.confirmDialogRef.afterClosed().pipe(takeUntil(this._unsubscribeAll)).subscribe(result => {
+  onSelectAll(): void {
+    this.ouvrageListService.selectAll();
+  }
+
+  onDelete(ouvrage): void {
+    this.confirmDialogRef = this.matDialog.open(FuseConfirmDialogComponent);
+
+    this.confirmDialogRef.componentInstance.confirmMessage = this.toolsService.getTranslation('LIST.CONFIRM-DIALOG.delete');
+    this.confirmDialogRef.afterClosed().pipe(takeUntil(this._unsubscribeAll)).subscribe(result => {
       if (result) {
-          this.ouvrageListService.deleteOuvrage(ouvrage);
+        this.ouvrageListService.deleteOuvrage(ouvrage);
 
       }
       this.confirmDialogRef = null;
-  });
+    });
 
-}
+  }
 
-// -----------------------------------------------------------------------------------------------------
-// @ Public function
-// -----------------------------------------------------------------------------------------------------
-applyFilter(filterValue: string) {
+  // -----------------------------------------------------------------------------------------------------
+  // @ Public function
+  // -----------------------------------------------------------------------------------------------------
+  applyFilter(filterValue: string) {
 
-  this.filter(filterValue);
-  this.ouvrageListService.setOuvragesByFilter(this.dataSource.filteredData);
-  this.btnExport = this.dataSource['_renderData'].value.length;
-}
+    this.filter(filterValue);
+    this.ouvrageListService.setOuvragesByFilter(this.dataSource.filteredData);
+    this.btnExport = this.dataSource['_renderData'].value.length;
+  }
 
-export() {
-  this.ouvrageListService.exportDataXLS(["id"]);
-}
+  export() {
+    this.ouvrageListService.exportDataXLS(["id"]);
+  }
 
-heightDyn() {
-  return document.getElementById('headerHeight').clientHeight + 'px';
-}
+  heightDyn() {
+    return document.getElementById('headerHeight').clientHeight + 'px';
+  }
 
   ngOnDestroy(): void {
     // Unsubscribe from all subscriptions

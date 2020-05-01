@@ -23,7 +23,8 @@ public class ChainListMapperImpl implements ChainListMapper {
 
         ChainListDto chainListDto = new ChainListDto();
 
-        chainListDto.setId( chain.getCode() );
+        chainListDto.setId( chain.getId().toString() );
+        chainListDto.setCode(chain.getCode());
         chainListDto.setName( chain.getName() );
         chainListDto.setOuvragesNumber(chain.getOuvrages().size());
         return chainListDto;

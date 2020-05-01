@@ -39,6 +39,7 @@ export class ChainListService implements Resolve<any> {
     return new Promise((resolve, reject) => {
       this.http.get(OUVRAGE_API)
         .subscribe((response: any) => {
+          this.chains = response;
           resolve(response);
         }, reject = (err) => { console.log(err) });
     });
@@ -75,10 +76,9 @@ export class ChainListService implements Resolve<any> {
     const chainsToSelect = this.chainsByFilter.length ? this.chainsByFilter : this.chains;
     this.chainsSelected = [];
 
-    // chainsToSelect.forEach(chain => {
-    //   if (!chain.systemEntity)
-    //     this.selectChain(chain.id, false);
-    // })
+    chainsToSelect.forEach(chain => {
+        this.selectChain(chain.id, false);
+    })
     this.onSelectedChainsChanged.next(this.chainsSelected);
   }
 
@@ -199,8 +199,8 @@ export class ChainListService implements Resolve<any> {
     data = JSON.parse(JSON.stringify(data));
 
     this.removeProperties(data, properties);
-    this.replacePorperty(data);
-
+    //this.replacePorperty(data);
+    console.log(data);
     /* generate a worksheet */
     var ws = XLSX.utils.json_to_sheet(data);
 

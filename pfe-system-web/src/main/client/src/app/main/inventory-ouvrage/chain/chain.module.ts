@@ -35,6 +35,7 @@ import { MatDatepickerModule } from "@angular/material/datepicker";
 import { ChainShowComponent } from './chain-show/chain-show.component';
 import { ChainShowService } from './chain-show/chain-show.service';
 import {DragDropModule} from '@angular/cdk/drag-drop';
+import { ChainsSelectedBarComponent } from './list/selected-bar/selected-bar.component';
 
 export const options: Partial<IConfig> | (() => Partial<IConfig>) = null;
 
@@ -68,7 +69,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-    declarations: [ChainListComponent, ChainAddEditComponent, ChainShowComponent],
+    declarations: [ChainListComponent, ChainAddEditComponent, ChainShowComponent,ChainsSelectedBarComponent],
     imports: [
         CommonModule,
         RouterModule.forChild(routes),

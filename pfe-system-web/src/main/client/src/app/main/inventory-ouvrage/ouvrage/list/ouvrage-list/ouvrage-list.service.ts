@@ -39,6 +39,7 @@ export class OuvrageListService implements Resolve<any> {
     return new Promise((resolve, reject) => {
       this.http.get(OUVRAGE_API)
         .subscribe((response: any) => {
+          this.ouvrages = response;
           resolve(response);
         }, reject = (err) => { console.log(err) });
     });
@@ -75,10 +76,9 @@ export class OuvrageListService implements Resolve<any> {
     const ouvragesToSelect = this.ouvragesByFilter.length ? this.ouvragesByFilter : this.ouvrages;
     this.ouvragesSelected = [];
 
-    // ouvragesToSelect.forEach(ouvrage => {
-    //   if (!ouvrage.systemEntity)
-    //     this.selectOuvrage(ouvrage.id, false);
-    // })
+    ouvragesToSelect.forEach(ouvrage => {
+        this.selectOuvrage(ouvrage.id, false);
+    })
     this.onSelectedOuvragesChanged.next(this.ouvragesSelected);
   }
 
@@ -88,80 +88,80 @@ export class OuvrageListService implements Resolve<any> {
   }
 
   // -----------------------------------------------------------------------------------------------------
-    // @ Delete function
-    // -----------------------------------------------------------------------------------------------------
-    deleteOuvrage(ouvrage): void {
-      if (ouvrage.systemEntity) {
-          this.toolsService.hideProgressBar();
-          this.toolsService.showError('LIST.TOAST.error-delete-system-entity');
-          return;
+  // @ Delete function
+  // -----------------------------------------------------------------------------------------------------
+  deleteOuvrage(ouvrage): void {
+    if (ouvrage.systemEntity) {
+      this.toolsService.hideProgressBar();
+      this.toolsService.showError('LIST.TOAST.error-delete-system-entity');
+      return;
+    }
+
+    this.toolsService.showProgressBar();
+    this.delete([ouvrage.id]).then(
+      (response) => {
+
+        const ouvrageIndex = this.ouvrages.indexOf(ouvrage);
+        const indexOuvrageSelected = this.ouvragesSelected.indexOf(ouvrage.id);
+
+        this.deleteFromOuvrages(ouvrageIndex);
+        if (indexOuvrageSelected != -1) this.deselectOuvrage(indexOuvrageSelected);
+
+        this.toolsService.hideProgressBar();
+        this.toolsService.showSuccess('LIST.TOAST.success-delete');
+
+      },
+      (error) => {
+        console.log(error);
+        this.toolsService.hideProgressBar();
+        this.toolsService.showError('LIST.TOAST.error-delete');
       }
-
-      this.toolsService.showProgressBar();
-      this.delete([ouvrage.id]).then(
-          (response) => {
-
-              const ouvrageIndex = this.ouvrages.indexOf(ouvrage);
-              const indexOuvrageSelected = this.ouvragesSelected.indexOf(ouvrage.id);
-
-              this.deleteFromOuvrages(ouvrageIndex);
-              if (indexOuvrageSelected != -1) this.deselectOuvrage(indexOuvrageSelected);
-
-              this.toolsService.hideProgressBar();
-              this.toolsService.showSuccess('LIST.TOAST.success-delete');
-
-          },
-          (error) => {
-              console.log(error);
-              this.toolsService.hideProgressBar();
-              this.toolsService.showError('LIST.TOAST.error-delete');
-          }
-      );
+    );
   }
 
   deleteFromOuvrages(ouvrageIndex, onEvent = true) {
-      this.ouvrages.splice(ouvrageIndex, 1);
-      if (onEvent) this.onOuvragesChanged.next(this.ouvrages);
+    this.ouvrages.splice(ouvrageIndex, 1);
+    if (onEvent) this.onOuvragesChanged.next(this.ouvrages);
   }
 
 
   deleteSelectedOuvrages(): void {
-      this.toolsService.showProgressBar();
+    this.toolsService.showProgressBar();
 
-      this.delete(this.ouvragesSelected).then(
-          (response: any) => {
+    this.delete(this.ouvragesSelected).then(
+      (response: any) => {
 
-              this.deleteFromSelectedOuvrages(this.ouvragesSelected);
-              this.onOuvragesChanged.next(this.ouvrages);
-              this.deselectAll();
+        this.deleteFromSelectedOuvrages(this.ouvragesSelected);
+        this.onOuvragesChanged.next(this.ouvrages);
+        this.deselectAll();
 
-              this.toolsService.hideProgressBar();
-              this.toolsService.showSuccess('LIST.TOAST.success-delete');
+        this.toolsService.hideProgressBar();
+        this.toolsService.showSuccess('LIST.TOAST.success-delete');
 
-          },
-          (error) => {
-              console.log(error);
-              this.toolsService.hideProgressBar();
-              this.toolsService.showError('LIST.TOAST.error-delete');
-          }
-      );
+      },
+      (error) => {
+        console.log(error);
+        this.toolsService.hideProgressBar();
+        this.toolsService.showError('LIST.TOAST.error-delete');
+      }
+    );
 
   }
 
   deleteFromSelectedOuvrages(ids_to_delete) {
-      for (const ouvrageId of ids_to_delete) {
-          const ouvrage = this.ouvrages.find(_ouvrage => {
-              return _ouvrage.id === ouvrageId;
-          });
-          // if (!ouvrage.systemEntity)
-          // this.deleteFromOuvrages(this.ouvrages.indexOf(ouvrage), false);
-      }
+    for (const ouvrageId of ids_to_delete) {
+      const ouvrage = this.ouvrages.find(_ouvrage => {
+        return _ouvrage.id === ouvrageId;
+      });
+      // if (!ouvrage.systemEntity)
+      // this.deleteFromOuvrages(this.ouvrages.indexOf(ouvrage), false);
+    }
   }
-// -----------------------------------------------------------------------------------------------------
-    // @ Setter function
-    // -----------------------------------------------------------------------------------------------------
-    setOuvragesByFilter(ouvragesByFilter: any[]) {
-      this.ouvragesByFilter = ouvragesByFilter;
+  // -----------------------------------------------------------------------------------------------------
+  // @ Setter function
+  // -----------------------------------------------------------------------------------------------------
+  setOuvragesByFilter(ouvragesByFilter: any[]) {
+    this.ouvragesByFilter = ouvragesByFilter;
   }
 
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<any> | Promise<any> | any {
@@ -189,17 +189,17 @@ export class OuvrageListService implements Resolve<any> {
     this.toolsService.showProgressBar();
 
     if (this.ouvragesSelected.length)
-        data = this.getOuvragesSelected();
+      data = this.getOuvragesSelected();
     else if (this.ouvragesByFilter.length)
-        data = this.ouvragesByFilter;
+      data = this.ouvragesByFilter;
     else
-        data = this.ouvrages;
+      data = this.ouvrages;
 
     //remove reference
     data = JSON.parse(JSON.stringify(data));
 
     this.removeProperties(data, properties);
-    this.replacePorperty(data);
+    //this.replacePorperty(data);
 
     /* generate a worksheet */
     var ws = XLSX.utils.json_to_sheet(data);
@@ -212,35 +212,35 @@ export class OuvrageListService implements Resolve<any> {
     XLSX.writeFile(wb, "Ouvrages.xlsx");
 
     this.toolsService.hideProgressBar();
-}
+  }
 
-getOuvragesSelected() {
+  getOuvragesSelected() {
     var tab = [];
 
     for (var i = 0; i < this.ouvragesSelected.length; i++) {
-        const ouvrage = this.ouvrages.find(element => {
-            return element.id === this.ouvragesSelected[i];
-        });
-        tab.push(ouvrage);
+      const ouvrage = this.ouvrages.find(element => {
+        return element.id === this.ouvragesSelected[i];
+      });
+      tab.push(ouvrage);
     }
 
     return tab;
 
-}
+  }
 
-removeProperties(data, properties) {
+  removeProperties(data, properties) {
 
     data.forEach(element => {
-        for (var i = 0; i < properties.length; i++) {
-            delete element[properties[i]];
-        }
+      for (var i = 0; i < properties.length; i++) {
+        delete element[properties[i]];
+      }
     });
-}
+  }
 
-replacePorperty(data) {
+  replacePorperty(data) {
     forEach(data, function (element) {
-        element.authorities = map(element.authorities).join('/');
+      element.authorities = map(element.authorities).join('/');
     });
-}
+  }
 
 }
