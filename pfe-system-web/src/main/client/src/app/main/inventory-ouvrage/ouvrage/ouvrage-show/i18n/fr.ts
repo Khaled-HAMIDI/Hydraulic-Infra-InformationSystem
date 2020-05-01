@@ -2,6 +2,9 @@ export const locale = {
     lang: 'fr',
     data: {
         'SHOW': {
+            'BUTTON':{
+                'composant':'Afficher les composants'
+            },
             'HEADER': {
                 'title': 'Ouvrage',
             },

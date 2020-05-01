@@ -1,0 +1,38 @@
+<p class="myp" *ngIf="!exist">{{'FIELD.priseEauInexistante' | translate}}</p>
+<div class="tab-content p-24" fusePerfectScrollbar *ngIf="exist">
+    <div fxLayout="column" fxLayout.gt-sm="row">
+        <div class="mr-sm-12 ml-sm-12" fxFlex>
+
+            <fieldset class="myfieldset">
+
+                <div class="mr-sm-24" fxFlex>
+                    <p class="myLabel">{{'FIELD.type' | translate}}</p>
+                    <p class="myp">
+                        <mat-icon matPrefix class="mr-12 s-20" color="accent">keyboard</mat-icon>
+                        <span>{{priseEau.type}}</span>
+                    </p>
+                </div>
+
+                <div class="mr-sm-24" fxFlex>
+                    <p class="myLabel">{{'FIELD.dimension' | translate}}</p>
+                    <p class="myp">
+                        <mat-icon matPrefix class="mr-12 s-20" color="accent">keyboard</mat-icon>
+                        <span>{{priseEau.dimension}}</span>
+                    </p>
+                </div>
+
+                <div class="mr-sm-24" fxFlex>
+                    <p class="myLabel">{{'FIELD.nature' | translate}}</p>
+                    <p class="myp">
+                        <mat-icon matPrefix class="mr-12 s-20" color="accent">keyboard</mat-icon>
+                        <span>{{priseEau.nature}}</span>
+                    </p>
+                </div>
+                
+            </fieldset>
+        </div>
+        
+    </div>
+</div>
+
+

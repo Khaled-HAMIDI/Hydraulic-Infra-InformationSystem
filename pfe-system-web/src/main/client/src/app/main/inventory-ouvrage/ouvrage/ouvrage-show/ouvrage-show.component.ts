@@ -1,12 +1,10 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {Ouvrage} from '../../../model/ouvrage.model';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { fuseAnimations } from '@fuse/animations';
 import {ActivatedRoute, Router} from '@angular/router';
 import { FuseTranslationLoaderService } from '@fuse/services/translation-loader.service';
 import { locale as french } from './i18n/fr';
 import { locale as arabic } from './i18n/ar';
-import {OuvrageEditService} from "../ouvrage-edit/ouvrage-edit.service";
 import {OuvrageShowService} from "./ouvrage-show.service";
 
 
@@ -17,10 +15,9 @@ import {OuvrageShowService} from "./ouvrage-show.service";
   styleUrls: ['./ouvrage-show.component.scss'],
     animations: fuseAnimations
 })
-export class OuvrageShowComponent implements OnInit, OnDestroy {
+export class OuvrageShowComponent implements OnInit {
 
     ouvrage: Ouvrage;
-
 
     constructor(
         private ouvrageShowService: OuvrageShowService,
@@ -33,7 +30,6 @@ export class OuvrageShowComponent implements OnInit, OnDestroy {
     ngOnInit(): void {
         this.ouvrageShowService.get(this.route.snapshot.params['code']).then(
             (ouvrage) => {
-                console.log(ouvrage);
                 this.initOuvrage(ouvrage);
             },
             (error) => {
@@ -42,15 +38,9 @@ export class OuvrageShowComponent implements OnInit, OnDestroy {
         );
     }
 
-
-
     initOuvrage(ouvrage) {
         this.ouvrage= new Ouvrage(ouvrage);
 
     }
-
-    ngOnDestroy(): void {
-    }
-
 
 }

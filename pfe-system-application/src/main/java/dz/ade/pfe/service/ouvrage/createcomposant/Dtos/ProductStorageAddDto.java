@@ -19,7 +19,7 @@ public class ProductStorageAddDto {
 
     private String form;
 
-    private String dimention;
+    private String dimension;
 
     private String arrangement;
 

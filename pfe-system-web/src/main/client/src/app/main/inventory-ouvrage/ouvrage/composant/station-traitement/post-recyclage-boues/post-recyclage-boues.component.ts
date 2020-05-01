@@ -54,7 +54,7 @@ export class PostRecyclageBouesComponent implements OnInit{
             hmtPompe:['',Validators.required],
             puissancePompe: ['',Validators.required],
             nombrePompe:['',Validators.required],
-            fonctionnementPompe: ['',Validators.required],
+            fonctionnementPompe: [true,Validators.required],
             pointInjectPompe: ['',Validators.required],
         };
 

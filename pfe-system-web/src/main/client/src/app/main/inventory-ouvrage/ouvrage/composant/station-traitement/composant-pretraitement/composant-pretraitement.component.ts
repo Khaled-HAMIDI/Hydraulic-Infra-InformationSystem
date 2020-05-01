@@ -41,7 +41,7 @@ export class ComposantPretraitementComponent implements OnInit{
     createForm(): FormGroup {
         let obj = {
             typeComposant:['EquipementStationTraitement'],
-            typeEquipement:['Composant de prétraitement'],
+            typeEquipement:['ComposantPretraitement'],
             state: ['',Validators.required],
             type: ['',Validators.required],
             form:['',Validators.required],

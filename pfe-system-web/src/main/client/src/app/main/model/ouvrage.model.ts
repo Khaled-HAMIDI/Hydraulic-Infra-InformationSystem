@@ -36,7 +36,6 @@ export class Ouvrage {
     totalWorkforce: number;
     distribution: boolean;
     populationServed: number;
-
     chemicalMonthlyBill: number;
     coteTn: number;
     debitLoadBreaker:number;
@@ -87,7 +86,6 @@ export class Ouvrage {
         this.totalWorkforce = ouvrage.totalWorkforce ||  '';
         this.distribution = ouvrage.distribution || false ;
         this.populationServed = ouvrage.populationServed ||  '';
-
         this.chemicalMonthlyBill = ouvrage.chemicalMonthlyBill ||  '';
         this.coteTn = ouvrage.coteTn ||  '';
         this.debitLoadBreaker = ouvrage.debitLoadBreaker ||  '';
