@@ -45,45 +45,45 @@ import { ReservoirStepperComponent } from './ouvrage-add/steppers/reservoir-step
 import { StationNonConvStepperComponent } from './ouvrage-add/steppers/station-non-conv-stepper/station-non-conv-stepper.component';
 import { StationTraitementConvStepperComponent } from './ouvrage-add/steppers/station-traitement-conv-stepper/station-traitement-conv-stepper.component';
 import { StationPompageStepperComponent } from './ouvrage-add/steppers/station-pompage-stepper/station-pompage-stepper.component';
-import { MatStepperModule } from "@angular/material/stepper";
-import { SecurityComponent } from './composant/security/security.component';
-import { PriseEauComponent } from './composant/station-traitement/prise-eau/prise-eau.component';
-import { ReservoirEauBruteComponent } from './composant/station-traitement/reservoir-eau-brute/reservoir-eau-brute.component';
-import { ComposantPretraitementComponent } from './composant/station-traitement/composant-pretraitement/composant-pretraitement.component';
-import { ComposantAerationComponent } from './composant/station-traitement/composant-aeration/composant-aeration.component';
-import { BassinMelangeComponent } from './composant/station-traitement/bassin-melange/bassin-melange.component';
-import { DecanteurComponent } from './composant/station-traitement/decanteur/decanteur.component';
-import { FiltreComponent } from './composant/station-traitement/filtre/filtre.component';
-import { ReservoirEauTraiteComponent } from './composant/station-traitement/reservoir-eau-traite/reservoir-eau-traite.component';
-import { KitMembraneComponent } from './composant/station-traitement/kit-membrane/kit-membrane.component';
-import { StationPhpComponent } from './composant/station-traitement/station-php/station-php.component';
-import { LocalStockageChimiqueComponent } from './composant/station-traitement/local-stockage-chimique/local-stockage-chimique.component';
-import { PostPrepInjectionComponent } from './composant/station-traitement/post-prep-injection/post-prep-injection.component';
-import { PostRecyclageBouesComponent } from './composant/station-traitement/post-recyclage-boues/post-recyclage-boues.component';
-import { PostRecyclageEauLavavgeComponent } from './composant/station-traitement/post-recyclage-eau-lavavge/post-recyclage-eau-lavavge.component';
-import { BatimentElectriqueComponent } from './composant/station-traitement/batiment-electrique/batiment-electrique.component';
-import { GroupeElectrogeneComponent } from './composant/station-traitement/groupe-electrogene/groupe-electrogene.component';
-import { PostTransElecComponent } from './composant/station-pompage-et-forage/post-trans-elec/post-trans-elec.component';
-import { GroupeElecPompPompComponent } from './composant/station-pompage-et-forage/groupe-elec-pomp-pomp/groupe-elec-pomp-pomp.component';
-import { GroupeElecPompMoteurComponent } from './composant/station-pompage-et-forage/groupe-elec-pomp-moteur/groupe-elec-pomp-moteur.component';
-import { ArmoirElecCmdComponent } from './composant/station-pompage-et-forage/armoire-elec-cmd/armoir-elec-cmd.component';
-import { AntiBelierComponent } from './composant/station-pompage-et-forage/anti-belier/anti-belier.component';
-import { SoupageDechargeComponent } from './composant/station-pompage-et-forage/soupape-decharge/soupage-decharge.component';
-import { VannePompageComponent } from './composant/station-pompage-et-forage/vanne-pompage/vanne-pompage.component';
-import { ClapetAntiRetourComponent } from './composant/station-pompage-et-forage/clapet-anti-retour/clapet-anti-retour.component';
-import { VenteuseComponent } from './composant/station-pompage-et-forage/venteuse/venteuse.component';
-import { JointDemantageComponent } from './composant/station-pompage-et-forage/joint-demantage/joint-demantage.component';
-import { CompteurComponent } from './composant/station-pompage-et-forage/compteur/compteur.component';
-import { CollecteurAspirationComponent } from './composant/station-pompage-et-forage/collecteur-aspiration/collecteur-aspiration.component';
-import { CollecteurReffoullementComponent } from './composant/station-pompage-et-forage/collecteur-reffoullement/collecteur-reffoullement.component';
-import { VanneArriveeComponent } from './composant/reservoir-et-brise-charge/vanne-arrivee/vanne-arrivee.component';
-import { VanneSortieComponent } from './composant/reservoir-et-brise-charge/vanne-sortie/vanne-sortie.component';
-import { FlotteurComponent } from './composant/reservoir-et-brise-charge/flotteur/flotteur.component';
-import { EchelleComponent } from './composant/reservoir-et-brise-charge/echelle/echelle.component';
-import { ConduiteTropPleinComponent } from './composant/reservoir-et-brise-charge/conduite-trop-plein/conduite-trop-plein.component';
-import { ConduiteVidangeComponent } from './composant/reservoir-et-brise-charge/conduite-vidange/conduite-vidange.component';
-import { PosteChlorationComponent } from './composant/reservoir-et-brise-charge/poste-chloration/poste-chloration.component';
-import { ColonnesMontantesComponent } from './composant/station-pompage-et-forage/colonnes-montantes/colonnes-montantes.component';
+import {MatStepperModule} from "@angular/material/stepper";
+import { SecurityComponent } from './composant-add-edit/security/security.component';
+import { PriseEauComponent } from './composant-add-edit/station-traitement/prise-eau/prise-eau.component';
+import { ReservoirEauBruteComponent } from './composant-add-edit/station-traitement/reservoir-eau-brute/reservoir-eau-brute.component';
+import { ComposantPretraitementComponent } from './composant-add-edit/station-traitement/composant-pretraitement/composant-pretraitement.component';
+import { ComposantAerationComponent } from './composant-add-edit/station-traitement/composant-aeration/composant-aeration.component';
+import { BassinMelangeComponent } from './composant-add-edit/station-traitement/bassin-melange/bassin-melange.component';
+import { DecanteurComponent } from './composant-add-edit/station-traitement/decanteur/decanteur.component';
+import { FiltreComponent } from './composant-add-edit/station-traitement/filtre/filtre.component';
+import { ReservoirEauTraiteComponent } from './composant-add-edit/station-traitement/reservoir-eau-traite/reservoir-eau-traite.component';
+import { KitMembraneComponent } from './composant-add-edit/station-traitement/kit-membrane/kit-membrane.component';
+import { StationPhpComponent } from './composant-add-edit/station-traitement/station-php/station-php.component';
+import { LocalStockageChimiqueComponent } from './composant-add-edit/station-traitement/local-stockage-chimique/local-stockage-chimique.component';
+import { PostPrepInjectionComponent } from './composant-add-edit/station-traitement/post-prep-injection/post-prep-injection.component';
+import { PostRecyclageBouesComponent } from './composant-add-edit/station-traitement/post-recyclage-boues/post-recyclage-boues.component';
+import { PostRecyclageEauLavavgeComponent } from './composant-add-edit/station-traitement/post-recyclage-eau-lavavge/post-recyclage-eau-lavavge.component';
+import { BatimentElectriqueComponent } from './composant-add-edit/station-traitement/batiment-electrique/batiment-electrique.component';
+import { GroupeElectrogeneComponent } from './composant-add-edit/station-traitement/groupe-electrogene/groupe-electrogene.component';
+import { PostTransElecComponent } from './composant-add-edit/station-pompage-et-forage/post-trans-elec/post-trans-elec.component';
+import { GroupeElecPompPompComponent } from './composant-add-edit/station-pompage-et-forage/groupe-elec-pomp-pomp/groupe-elec-pomp-pomp.component';
+import { GroupeElecPompMoteurComponent } from './composant-add-edit/station-pompage-et-forage/groupe-elec-pomp-moteur/groupe-elec-pomp-moteur.component';
+import { ArmoirElecCmdComponent } from './composant-add-edit/station-pompage-et-forage/armoire-elec-cmd/armoir-elec-cmd.component';
+import { AntiBelierComponent } from './composant-add-edit/station-pompage-et-forage/anti-belier/anti-belier.component';
+import { SoupageDechargeComponent } from './composant-add-edit/station-pompage-et-forage/soupape-decharge/soupage-decharge.component';
+import { VannePompageComponent } from './composant-add-edit/station-pompage-et-forage/vanne-pompage/vanne-pompage.component';
+import { ClapetAntiRetourComponent } from './composant-add-edit/station-pompage-et-forage/clapet-anti-retour/clapet-anti-retour.component';
+import { VenteuseComponent } from './composant-add-edit/station-pompage-et-forage/venteuse/venteuse.component';
+import { JointDemantageComponent } from './composant-add-edit/station-pompage-et-forage/joint-demantage/joint-demantage.component';
+import { CompteurComponent } from './composant-add-edit/station-pompage-et-forage/compteur/compteur.component';
+import { CollecteurAspirationComponent } from './composant-add-edit/station-pompage-et-forage/collecteur-aspiration/collecteur-aspiration.component';
+import { CollecteurReffoullementComponent } from './composant-add-edit/station-pompage-et-forage/collecteur-reffoullement/collecteur-reffoullement.component';
+import { VanneArriveeComponent } from './composant-add-edit/reservoir-et-brise-charge/vanne-arrivee/vanne-arrivee.component';
+import { VanneSortieComponent } from './composant-add-edit/reservoir-et-brise-charge/vanne-sortie/vanne-sortie.component';
+import { FlotteurComponent } from './composant-add-edit/reservoir-et-brise-charge/flotteur/flotteur.component';
+import { EchelleComponent } from './composant-add-edit/reservoir-et-brise-charge/echelle/echelle.component';
+import { ConduiteTropPleinComponent } from './composant-add-edit/reservoir-et-brise-charge/conduite-trop-plein/conduite-trop-plein.component';
+import { ConduiteVidangeComponent } from './composant-add-edit/reservoir-et-brise-charge/conduite-vidange/conduite-vidange.component';
+import { PosteChlorationComponent } from './composant-add-edit/reservoir-et-brise-charge/poste-chloration/poste-chloration.component';
+import { ColonnesMontantesComponent } from './composant-add-edit/station-pompage-et-forage/colonnes-montantes/colonnes-montantes.component';
 import { OuvragesSelectedBarComponent } from './list/selected-bar/selected-bar.component';
 import { SecurityShowComponent } from './composant-show/security-show/security-show.component';
 import { ConduiteTropPleinShowComponent } from './composant-show/reservoir-et-brise-charge/conduite-trop-plein-show/conduite-trop-plein-show.component';
@@ -203,6 +203,36 @@ const routes: Routes = [
     {
         path: ':code/edit',
         component: OuvrageEditComponent,
+        data: { action: 'edit' }
+    },
+    {
+        path: 'edit/StationTraitementConventionelle/composants/:code',
+        component: StationTraitementConvStepperComponent,
+        data: { action: 'edit' }
+    },
+    {
+        path: 'edit/Reservoir/composants/:code',
+        component: ReservoirStepperComponent,
+        data: { action: 'edit' }
+    },
+    {
+        path: 'edit/Forage/composants/:code',
+        component: ForageStepperComponent,
+        data: { action: 'edit' }
+    },
+    {
+        path: 'edit/StationPompage/composants/:code',
+        component: StationPompageStepperComponent,
+        data: { action: 'edit' }
+    },
+    {
+        path: 'edit/BriseCharge/composants/:code',
+        component: BriseChargeStepperComponent,
+        data: { action: 'edit' }
+    },
+    {
+        path: 'edit/StationTraitementNonConventionelle/composants/:code',
+        component: StationNonConvStepperComponent,
         data: { action: 'edit' }
     },
     {

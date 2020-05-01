@@ -6,7 +6,8 @@ export const locale = {
                 'title-edit': 'Modifier l\'ouvrage ',
             },
             'BUTTON': {
-                'edit': 'Modifier',
+                'edit': 'Mettre a jour l\'ouvrage',
+                'composant':'Modifier les composants'
             },
             'PLACE-HOLDER': {
 

@@ -25,7 +25,7 @@ public class GetOuvrageController {
     private final GetOuvrageQuery getOuvrageQuery;
 
 
-    @GetMapping(value = "/ouvrage/show/{code}")
+    @GetMapping(value = "/ouvrage/{code}")
     @ApiOperation(value = "get an ouvrage")
     @ApiResponses(value = {
             @ApiResponse(code = 200, message = "Successfully retrieved an ouvrage"),
@@ -33,7 +33,7 @@ public class GetOuvrageController {
             @ApiResponse(code = 403, message = "Accessing the resource you were trying to reach is forbidden"),
             @ApiResponse(code = 404, message = "The resource you were trying to reach is not found")
     })
-    public OuvrageShowDto getUpdatedOuvrage(@PathVariable(value = "code") String code) {
+    public OuvrageShowDto getOuvrage(@PathVariable(value = "code") String code) {
         return getOuvrageQuery.getOuvrage(code);
     }
 }

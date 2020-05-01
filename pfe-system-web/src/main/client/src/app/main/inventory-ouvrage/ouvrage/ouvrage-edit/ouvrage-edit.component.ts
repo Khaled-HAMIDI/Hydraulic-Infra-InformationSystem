@@ -38,6 +38,7 @@ export class OuvrageEditComponent implements OnInit, OnDestroy {
     ngOnInit(): void {
         this.ouvrageEditService.get(this.route.snapshot.params['code']).then(
             (ouvrage) => {
+                console.log(ouvrage);
                 this.ouvrage= new Ouvrage(ouvrage);
                 switch (this.ouvrage.type) {
                     case 'StationTraitementConventionelle':
@@ -62,7 +63,7 @@ export class OuvrageEditComponent implements OnInit, OnDestroy {
 
             },
             (error) => {
-                console.log('Failed');
+                console.log(error);
             }
         );
     }

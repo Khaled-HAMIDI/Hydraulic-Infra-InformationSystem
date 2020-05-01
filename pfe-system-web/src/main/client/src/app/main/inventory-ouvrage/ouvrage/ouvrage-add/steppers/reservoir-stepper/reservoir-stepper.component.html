@@ -1,4 +1,4 @@
-<div id="addOuvrage" class="page-layout carded fullwidth inner-scroll">
+<div class="page-layout carded fullwidth inner-scroll">
 
     <!-- TOP BACKGROUND -->
     <div class="top-bg accent"></div>
@@ -15,9 +15,8 @@
 
                 <div fxLayout="column" fxLayoutAlign="start start"
                      [@animate]="{value:'*',params:{delay:'100ms',x:'-25px'}}">
-                    <div class="h2" >
-                        {{'HEADER.title' | translate}}
-                    </div>
+                    <div class="h2" *ngIf="pageType=='add'"> {{'HEADER.titleAdd' | translate}} </div>
+                    <div class="h2" *ngIf="pageType=='edit'"> {{'HEADER.titleEdit' | translate}} </div>
                 </div>
             </div>
             <!-- / APP TITLE -->
@@ -120,7 +119,6 @@
     </div>
     <!-- / CENTER -->
 </div>
-
 
 
 

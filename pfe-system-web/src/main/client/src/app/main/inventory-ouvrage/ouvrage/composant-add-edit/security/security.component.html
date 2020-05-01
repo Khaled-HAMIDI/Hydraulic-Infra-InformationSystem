@@ -1,0 +1,101 @@
+<p class="myp" *ngIf="!exist">{{'FIELD.SecurityInexistante' | translate}}</p>
+<form name="ouvrageForm" [formGroup]="securityForm" class="w-100-p" fxLayout="column" fxFlex *ngIf="exist">
+
+    <div class="tab-content p-24" fusePerfectScrollbar>
+
+        <div *ngIf="add">
+            <button mat-raised-button class=" mat-white-bg" matStepperNext>
+                <span>{{'BUTTON.disponible' | translate}}</span>
+            </button>
+        </div>
+        <hr>
+
+        <div fxLayout="column" fxLayout.gt-sm="row">
+            <div class="mr-sm-12 ml-sm-12" fxFlex>
+
+                <fieldset class="myfieldset">
+                    <div>
+                        <mat-slide-toggle name="closing" formControlName="closing"
+                                          class="mt-20" required [checked]="security.closing" (change)="toggleClosing()">
+                                <span *ngIf="security.closing"> {{ 'FIELD.closingActive' | translate }}</span>
+                                 <span *ngIf="!security.closing"> {{ 'FIELD.closingInactive' | translate }}</span>
+
+                        </mat-slide-toggle>
+                    </div>
+
+                    <div>
+                        <mat-slide-toggle name="telsurveillance" formControlName="telsurveillance"
+                                          class="mt-20" required [checked]="security.telsurveillance" (change)="toggleTelesurveillance()">
+                            <span *ngIf="security.telsurveillance"> {{ 'FIELD.telsurveillanceActive' | translate }}</span>
+                            <span *ngIf="!security.telsurveillance"> {{ 'FIELD.telsurveillanceInactive' | translate }}</span>
+
+                        </mat-slide-toggle>
+                    </div>
+
+                    <mat-form-field appearance="outline" class="w-100-p">
+                        <mat-label>{{'FIELD.state' | translate}}</mat-label>
+                        <mat-select formControlName="state" required>
+                            <mat-option value="Bon">Bon</mat-option>
+                            <mat-option value="Moyen">Moyen</mat-option>
+                            <mat-option value="Mauvais">Mauvais</mat-option>
+                        </mat-select>
+                        <mat-icon matSuffix class="secondary-text">keyboard</mat-icon>
+                    </mat-form-field>
+
+                    <mat-form-field appearance="outline" class="w-100-p" >
+                        <mat-label>{{'FIELD.guerites' | translate}}</mat-label>
+                        <mat-icon matSuffix class="secondary-text">keyboard</mat-icon>
+                        <input matInput name="guerites" formControlName="guerites" required>
+                    </mat-form-field>
+
+
+                </fieldset>
+            </div>
+
+            <div class="mr-sm-12 ml-sm-12" fxFlex>
+                <fieldset class="myfieldset">
+                    <mat-form-field appearance="outline" class="w-100-p">
+                        <mat-label>{{'FIELD.nature' | translate}}</mat-label>
+                        <mat-select formControlName="nature" required>
+                            <mat-option value="Zemmerman">Zemmerman</mat-option>
+                            <mat-option value="EnDur">En dur</mat-option>
+                            <mat-option value="FilBarbulé">Fil barbulé</mat-option>
+                        </mat-select>
+                        <mat-icon matSuffix class="secondary-text">keyboard</mat-icon>
+                    </mat-form-field>
+
+
+                    <mat-form-field appearance="outline" class="w-100-p" >
+                        <mat-label>{{'FIELD.agents' | translate}}</mat-label>
+                        <mat-icon matSuffix class="secondary-text">keyboard</mat-icon>
+                        <input matInput name="agents" formControlName="agents" required>
+                    </mat-form-field>
+
+                    <div>
+                        <mat-slide-toggle name="armement" formControlName="armement"
+                                          class="mt-20" required [checked]="security.armement" (change)="toggleArmement()">
+                            <span *ngIf="security.armement"> {{ 'FIELD.armementActive' | translate }}</span>
+                            <span *ngIf="!security.armement"> {{ 'FIELD.armementInactive' | translate }}</span>
+
+                        </mat-slide-toggle>
+                    </div>
+
+
+
+                </fieldset>
+            </div>
+
+        </div>
+
+        <hr>
+        <div>
+            <button mat-raised-button class=" mat-white-bg" matStepperNext [disabled]="securityForm.invalid" (click)="onSave()">
+                <span *ngIf="add">{{'BUTTON.add' | translate}}</span>
+                <span *ngIf="!add">{{'BUTTON.update' | translate}}</span>
+            </button>
+        </div>
+
+    </div>
+
+</form>
+

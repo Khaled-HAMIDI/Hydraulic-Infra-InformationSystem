@@ -22,7 +22,7 @@ public class GetOuvrageDetailsController {
 
     private final GetOuvrageDetailsQuery getOuvrageDetailsQuery;
 
-    @GetMapping(value = "/ouvrage/{code}")
+    @GetMapping(value = "/ouvrage/details/{code}")
     @ApiOperation(value = "View a list of available commune by wilaya")
     @ApiResponses(value = {
             @ApiResponse(code = 200, message = "Successfully retrieved a list of commune by wilaya"),
