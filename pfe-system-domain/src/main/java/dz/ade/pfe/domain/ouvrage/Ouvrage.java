@@ -1,7 +1,7 @@
 package dz.ade.pfe.domain.ouvrage;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import dz.ade.pfe.domain.admin.User;
+import dz.ade.pfe.domain.admin.Unit;
 import lombok.*;
 
 import javax.persistence.*;
@@ -195,6 +195,14 @@ public class Ouvrage extends Auditing{
     @OneToMany(mappedBy = "ouvrage", cascade = CascadeType.ALL)
     @Builder.Default
     protected List<Component> components = new ArrayList<>();
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "site_id")
+    private Site site;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "unit_id")
+    private Unit unit;
 
 }
 

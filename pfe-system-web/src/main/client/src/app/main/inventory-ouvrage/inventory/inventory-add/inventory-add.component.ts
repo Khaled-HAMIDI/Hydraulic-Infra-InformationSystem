@@ -85,8 +85,6 @@ export class InventoryAddComponent implements OnInit, OnDestroy {
         this.inventoryAdd.responsable = this.currentchef.id;
         this.inventoryAdd.code = invent.code;
         this.inventoryAdd.completed = false;
-
-        console.log(this.inventoryAdd);
         this.inventoryAddService.saveInventory(this.inventoryAdd)
             .then((response) => {
                 this.router.navigate(['/']);

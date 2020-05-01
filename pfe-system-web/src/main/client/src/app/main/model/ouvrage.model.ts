@@ -3,6 +3,7 @@ export class Ouvrage {
     code: string;
     name: string;
     type: string;
+    site: string;
     enabled: boolean;
     form: string;
     state: string;

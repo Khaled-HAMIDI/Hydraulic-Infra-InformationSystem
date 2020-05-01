@@ -129,6 +129,7 @@ import { ReservoirShowStepperComponent } from './ouvrage-show/steppers/reservoir
 import { StationNonConvShowStepperComponent } from './ouvrage-show/steppers/station-non-conv-show-stepper/station-non-conv-show-stepper.component';
 import { StationPompageShowStepperComponent } from './ouvrage-show/steppers/station-pompage-show-stepper/station-pompage-show-stepper.component';
 import { StationTraitementConvShowStepperComponent } from './ouvrage-show/steppers/station-traitement-conv-show-stepper/station-traitement-conv-show-stepper.component';
+import { OuvrageAddService } from './ouvrage-add/ouvrage-add.service';
 
 export const options: Partial<IConfig> | (() => Partial<IConfig>) = null;
 
@@ -136,7 +137,8 @@ const routes: Routes = [
     {
         path: 'add',
         component: OuvrageAddComponent,
-        data: { action: 'add' }
+        data: { action: 'add' },
+        resolve: { data: OuvrageAddService }
     },
     {
         path: 'add/StationTraitementConventionelle',

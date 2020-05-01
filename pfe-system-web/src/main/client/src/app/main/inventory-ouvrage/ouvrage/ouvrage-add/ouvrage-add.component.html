@@ -19,8 +19,8 @@
 
 
                 <div fxLayout="column" fxLayoutAlign="start start"
-                     [@animate]="{value:'*',params:{delay:'100ms',x:'-25px'}}">
-                    <div class="h2" >
+                    [@animate]="{value:'*',params:{delay:'100ms',x:'-25px'}}">
+                    <div class="h2">
                         {{'ADD.HEADER.title-add' | translate}}
                     </div>
                 </div>
@@ -40,21 +40,23 @@
             <!-- CONTENT -->
             <div class="content">
 
-                <form name="ouvrageForm" [formGroup]="ouvrageForm" class="w-100-p" fxLayout="column" fxFlex>
+                <form name="ouvrageForm" [formGroup]="ouvrageForm" class="w-100-p" fxLayout="column"
+                    class="mr-sm-12 ml-sm-12">
 
                     <div class="tab-content p-24" fusePerfectScrollbar>
 
                         <div fxLayout="column" fxLayout.gt-sm="row">
                             <div class="mr-sm-12 ml-sm-12" fxFlex>
-
                                 <fieldset class="myfieldset">
                                     <legend>{{'ADD.LEGENDS.svp' | translate}}</legend>
 
                                     <mat-form-field appearance="outline" class="w-100-p">
                                         <mat-label>{{'ADD.FIELD.type' | translate}}</mat-label>
-                                        <mat-select formControlName="type" required >
-                                            <mat-option value="StationTraitementConventionelle" #typeouv>Station de Traitement Conventionelle</mat-option>
-                                            <mat-option value="StationTraitementNonConventionelle" >Station de Traitement Non Conventionelle</mat-option>
+                                        <mat-select formControlName="type" required>
+                                            <mat-option value="StationTraitementConventionelle" #typeouv>Station de
+                                                Traitement Conventionelle</mat-option>
+                                            <mat-option value="StationTraitementNonConventionelle">Station de Traitement
+                                                Non Conventionelle</mat-option>
                                             <mat-option value="Reservoir">Reservoir</mat-option>
                                             <mat-option value="Forage">Forage, Puit, Source</mat-option>
                                             <mat-option value="StationPompage">Station de Pompage</mat-option>
@@ -62,12 +64,48 @@
                                         </mat-select>
                                         <mat-icon matSuffix class="secondary-text">domain</mat-icon>
                                     </mat-form-field>
-
                                 </fieldset>
+                                <fieldset class="myfieldset">
+                                    <legend>{{'ADD.LEGENDS.site' | translate}}</legend>
+
+                                    <mat-form-field appearance="outline" class="w-100-p">
+                                        <mat-label>{{'ADD.FIELD.site' | translate}}</mat-label>
+                                        <mat-select formControlName="site" required>
+                                            <mat-option *ngFor="let site of sites"
+                                                [value]="site.id">
+                                                {{site.name}}
+                                            </mat-option>
+                                        </mat-select>
+                                        <mat-icon matSuffix class="secondary-text">domain</mat-icon>
+                                    </mat-form-field>
+                                </fieldset>
+
                             </div>
                         </div>
                     </div>
 
+                </form>
+                <form name="siteForm" [formGroup]="siteForm" class="w-100-p" fxLayout="column"
+                    class="mr-sm-12 ml-sm-12">
+
+                    <div class="tab-content p-24" fusePerfectScrollbar>
+                        <div fxLayout="column" fxLayout.gt-sm="row">
+                            <div class="mr-sm-12 ml-sm-12" fxFlex>
+                                <fieldset class="myfieldset">
+                                    <legend>{{'ADD.LEGENDS.exist' | translate}}</legend>
+                                    <mat-form-field appearance="outline" class="w-100-p">
+                                        <mat-label>{{'ADD.FIELD.name' | translate}}</mat-label>
+                                        <mat-icon matSuffix class="secondary-text">crop_free</mat-icon>
+                                        <input matInput name="site" formControlName="site">
+                                    </mat-form-field>
+                                    <button mat-raised-button class=" mat-blue-bg" [disabled]="siteForm.invalid"
+                                        (click)="onSelectSite()">
+                                        <span>{{'ADD.BUTTON.add' | translate}}</span>
+                                    </button>
+                                </fieldset>
+                            </div>
+                        </div>
+                    </div>
                 </form>
 
             </div>
