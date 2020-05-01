@@ -195,10 +195,16 @@
                             </div>
                         </div>
 
+
                     </form>
                 </div>
                 <!-- / CONTENT -->
-
+                <hr>
+                <div>
+                    <button mat-raised-button class=" mat-white-bg" [routerLink]="'/patrimony/ouvrages/edit/'+ouvrage.type+'/composants/'+ouvrage.code">
+                        <span>{{'EDIT.BUTTON.composant' | translate}}</span>
+                    </button>
+                </div>
             </div>
             <!-- / CONTENT CARD -->
 

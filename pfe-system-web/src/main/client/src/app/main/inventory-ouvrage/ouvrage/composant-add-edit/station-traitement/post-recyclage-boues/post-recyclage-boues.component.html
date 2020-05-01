@@ -1,0 +1,118 @@
+<p class="myp" *ngIf="!exist">{{'FIELD.postRecyclageBouesInexistante' | translate}}</p>
+<form name="ouvrageForm" [formGroup]="postRecyBouForm" class="w-100-p" fxLayout="column" fxFlex *ngIf="exist">
+
+    <div class="tab-content p-24" fusePerfectScrollbar>
+
+        <div *ngIf="add">
+            <button mat-raised-button class=" mat-white-bg" matStepperNext>
+                <span>{{'BUTTON.disponible' | translate}}</span>
+            </button>
+        </div>
+        <hr>
+
+        <div fxLayout="column" fxLayout.gt-sm="row">
+            <div class="mr-sm-12 ml-sm-12" fxFlex>
+
+                <fieldset class="myfieldset">
+
+                    <mat-form-field appearance="outline" class="w-100-p">
+                        <mat-label>{{'FIELD.modePompe' | translate}}</mat-label>
+                        <mat-select formControlName="modePompe" required>
+                            <mat-option value="Mode1">Mode1</mat-option>
+                            <mat-option value="Mode2">Mode2</mat-option>
+                        </mat-select>
+                        <mat-icon matSuffix class="secondary-text">keyboard</mat-icon>
+                    </mat-form-field>
+
+                    <mat-form-field appearance="outline" class="w-100-p">
+                        <mat-label>{{'FIELD.statePompe' | translate}}</mat-label>
+                        <mat-select formControlName="statePompe" required>
+                            <mat-option value="Bon">Bon</mat-option>
+                            <mat-option value="Moyen">Moyen</mat-option>
+                            <mat-option value="Mauvais">Mauvais</mat-option>
+                        </mat-select>
+                        <mat-icon matSuffix class="secondary-text">keyboard</mat-icon>
+                    </mat-form-field>
+
+                    <mat-form-field appearance="outline" class="w-100-p">
+                        <mat-label>{{'FIELD.lieuImplantation' | translate}}</mat-label>
+                        <mat-icon matSuffix class="secondary-text">keyboard</mat-icon>
+                        <input matInput name="lieuImplantation" formControlName="lieuImplantation" required>
+                    </mat-form-field>
+
+                    <mat-form-field appearance="outline" class="w-100-p">
+                        <mat-label>{{'FIELD.dosagePompe' | translate}}</mat-label>
+                        <mat-select formControlName="dosagePompe" required>
+                            <mat-option value="Manuel">Manuel</mat-option>
+                            <mat-option value="Automatique">Automatique</mat-option>
+                        </mat-select>
+                        <mat-icon matSuffix class="secondary-text">keyboard</mat-icon>
+                    </mat-form-field>
+
+                    <mat-form-field appearance="outline" class="w-100-p">
+                        <mat-label>{{'FIELD.nombrePompe' | translate}}</mat-label>
+                        <mat-icon matSuffix class="secondary-text">keyboard</mat-icon>
+                        <input matInput name="nombrePompe" formControlName="nombrePompe" required>
+                    </mat-form-field>
+
+                    <div>
+                        <mat-slide-toggle matInput name="fonctionnementPompe" formControlName="fonctionnementPompe"
+                                          class="mt-20" required [checked]="poste.fonctionnementPompe" (change)="toggleFonctionnementPompe()">
+                            <span *ngIf="poste.fonctionnementPompe"> {{ 'FIELD.enabledActivePompe' | translate }} </span>
+                            <span *ngIf="!poste.fonctionnementPompe"> {{ 'FIELD.enabledInactivePompe' | translate }} </span>
+                        </mat-slide-toggle>
+                    </div>
+
+                </fieldset>
+            </div>
+
+            <div class="mr-sm-12 ml-sm-12" fxFlex>
+                <fieldset class="myfieldset">
+
+                    <mat-form-field appearance="outline" class="w-100-p">
+                        <mat-label>{{'FIELD.typePompe' | translate}}</mat-label>
+                        <mat-icon matSuffix class="secondary-text">keyboard</mat-icon>
+                        <input matInput name="typePompe" formControlName="typePompe" required>
+                    </mat-form-field>
+
+
+                    <mat-form-field appearance="outline" class="w-100-p" >
+                        <mat-label>{{'FIELD.debitPompe' | translate}}</mat-label>
+                        <mat-icon matSuffix class="secondary-text">keyboard</mat-icon>
+                        <input matInput name="debitPompe" formControlName="debitPompe" required>
+                    </mat-form-field>
+
+                    <mat-form-field appearance="outline" class="w-100-p">
+                        <mat-label>{{'FIELD.hmtPompe' | translate}}</mat-label>
+                        <mat-icon matSuffix class="secondary-text">keyboard</mat-icon>
+                        <input matInput name="hmtPompe" formControlName="hmtPompe" required>
+                    </mat-form-field>
+
+                    <mat-form-field appearance="outline" class="w-100-p">
+                        <mat-label>{{'FIELD.puissancePompe' | translate}}</mat-label>
+                        <mat-icon matSuffix class="secondary-text">keyboard</mat-icon>
+                        <input matInput name="puissancePompe" formControlName="puissancePompe" required>
+                    </mat-form-field>
+
+                    <mat-form-field appearance="outline" class="w-100-p">
+                        <mat-label>{{'FIELD.pointInjectPompe' | translate}}</mat-label>
+                        <mat-icon matSuffix class="secondary-text">keyboard</mat-icon>
+                        <input matInput name="pointInjectPompe" formControlName="pointInjectPompe" required>
+                    </mat-form-field>
+
+                </fieldset>
+            </div>
+
+
+        </div>
+        <hr>
+        <div>
+            <button mat-raised-button class=" mat-white-bg" matStepperNext [disabled]="postRecyBouForm.invalid" (click)="onSave()">
+                <span *ngIf="add">{{'BUTTON.add' | translate}}</span>
+                <span *ngIf="!add">{{'BUTTON.update' | translate}}</span>
+            </button>
+        </div>
+    </div>
+
+</form>
+

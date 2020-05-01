@@ -4,7 +4,7 @@ import { API } from 'config/api.config';
 import {  Router } from '@angular/router';
 
 
-const OUVRAGES_API = API + '/ouvrage';
+const OUVRAGES_API = API + '/ouvrage/';
 
 @Injectable({
     providedIn: 'root'
@@ -21,7 +21,7 @@ export class OuvrageShowService {
 
     get(id: number) {
         return new Promise((resolve, reject) => {
-            this.http.get(OUVRAGES_API + '/show/' + id)
+            this.http.get(OUVRAGES_API + id)
                 .subscribe((response: any) => {
                     resolve(response);
                 }, (error) =>{

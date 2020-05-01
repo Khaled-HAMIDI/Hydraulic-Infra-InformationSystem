@@ -5,7 +5,7 @@ import {  Router } from '@angular/router';
 import { ToolsService } from '@ayams/services/tools.service';
 
 
-const OUVRAGES_API = API + '/ouvrage';
+const OUVRAGES_API = API + '/ouvrage/';
 
 @Injectable({
     providedIn: 'root'
@@ -23,7 +23,7 @@ export class OuvrageEditService {
 
     get(id: number) {
         return new Promise((resolve, reject) => {
-            this.http.get(OUVRAGES_API + '/edit/' + id)
+            this.http.get(OUVRAGES_API + id)
                 .subscribe((response: any) => {
                     resolve(response);
                 }, (error) =>{
@@ -37,7 +37,7 @@ export class OuvrageEditService {
 
     save(ouvrage,code): Promise<any> {
         return new Promise((resolve, reject) => {
-            this.http.put(OUVRAGES_API + '/' + code, ouvrage)
+            this.http.put(OUVRAGES_API + code, ouvrage)
                 .subscribe((response: any) => {
                     resolve(response);
                 },(error) =>{

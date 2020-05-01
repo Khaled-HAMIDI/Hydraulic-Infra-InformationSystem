@@ -11,14 +11,14 @@ export class AntiBelier {
 
     constructor(antiBelier?) {
         antiBelier = antiBelier || {};
-        this.typeComposant=antiBelier.typeComposant;
-        this.marque=antiBelier.marque;
-        this.capacity=antiBelier.capacity;
-        this.presseionService=antiBelier.presseionService;
-        this.presseionEpreuve=antiBelier.presseionEpreuve;
-        this.presseionRegonflage=antiBelier.presseionRegonflage;
-        this.type=antiBelier.type;
-        this.compresseur=antiBelier.compresseur;
+        this.typeComposant=antiBelier.typeComposant || '';
+        this.marque=antiBelier.marque || '';
+        this.capacity=antiBelier.capacity || '';
+        this.presseionService=antiBelier.presseionService || '';
+        this.presseionEpreuve=antiBelier.presseionEpreuve || '';
+        this.presseionRegonflage=antiBelier.presseionRegonflage || '';
+        this.type=antiBelier.type || '';
+        this.compresseur=antiBelier.compresseur || false;
     }
 }
 
@@ -35,14 +35,14 @@ export class Security {
 
     constructor(security?) {
         security = security || {};
-        this.typeComposant=security.typeComposant;
-        this.closing=security.closing;
-        this.nature=security.nature;
-        this.guerites=security.guerites;
-        this.agents=security.agents;
-        this.armement=security.armement;
-        this.telsurveillance=security.telsurveillance;
-        this.state=security.state;
+        this.typeComposant=security.typeComposant || '';
+        this.closing=security.closing || false;
+        this.nature=security.nature ||  '';
+        this.guerites=security.guerites ||  '';
+        this.agents=security.agents || '';
+        this.armement=security.armement || false;
+        this.telsurveillance=security.telsurveillance || false;
+        this.state=security.state || '';
     }
 }
 
@@ -55,10 +55,10 @@ export class PriseEau {
 
     constructor(priseEau?) {
         priseEau = priseEau || {};
-        this.typeComposant=priseEau.typeComposant;
-        this.type=priseEau.type;
-        this.dimension=priseEau.dimension;
-        this.nature=priseEau.nature;
+        this.typeComposant=priseEau.typeComposant || '';
+        this.type=priseEau.type || '';
+        this.dimension=priseEau.dimension || '';
+        this.nature=priseEau.nature || '';
     }
 }
 
@@ -76,15 +76,15 @@ export class EquipementStationTraitement {
 
     constructor(equipementStationTratement?) {
         equipementStationTratement = equipementStationTratement || {};
-        this.typeComposant=equipementStationTratement.typeComposant;
-        this.capacity=equipementStationTratement.capacity;
-        this.typeEquipement=equipementStationTratement.typeEquipement;
-        this.type=equipementStationTratement.type;
-        this.number=equipementStationTratement.number;
-        this.form=equipementStationTratement.form;
-        this.nature=equipementStationTratement.nature;
-        this.state=equipementStationTratement.state;
-        this.enabled=equipementStationTratement.enabled;
+        this.typeComposant=equipementStationTratement.typeComposant || '';
+        this.capacity=equipementStationTratement.capacity || '';
+        this.typeEquipement=equipementStationTratement.typeEquipement || '';
+        this.type=equipementStationTratement.type || '';
+        this.number=equipementStationTratement.number || '';
+        this.form=equipementStationTratement.form || '';
+        this.nature=equipementStationTratement.nature || '';
+        this.state=equipementStationTratement.state || '';
+        this.enabled=equipementStationTratement.enabled || false;
     }
     
 }
@@ -97,9 +97,9 @@ export class KitMembrane {
 
     constructor(kitMembrane?) {
         kitMembrane = kitMembrane || {};
-        this.typeComposant=kitMembrane.typeComposant;
-        this.caracteristique=kitMembrane.caracteristique;
-        this.nombre=kitMembrane.nombre;
+        this.typeComposant=kitMembrane.typeComposant || '';
+        this.caracteristique=kitMembrane.caracteristique || '';
+        this.nombre=kitMembrane.nombre || '';
     }
     
 }
@@ -114,11 +114,11 @@ export class StationPhp {
 
     constructor(stationPhp?) {
         stationPhp = stationPhp || {};
-        this.typeComposant=stationPhp.typeComposant;
-        this.debit=stationPhp.debit;
-        this.hmt=stationPhp.hmt;
-        this.puissance=stationPhp.puissance;
-        this.nombre=stationPhp.nombre;
+        this.typeComposant=stationPhp.typeComposant || '';
+        this.debit=stationPhp.debit || '';
+        this.hmt=stationPhp.hmt || '';
+        this.puissance=stationPhp.puissance || '';
+        this.nombre=stationPhp.nombre || '';
     }
 }
 
@@ -134,13 +134,13 @@ export class LocalStockage {
 
     constructor(localStockage?) {
         localStockage = localStockage || {};
-        this.typeComposant=localStockage.typeComposant;
-        this.type=localStockage.type;
-        this.form=localStockage.form;
-        this.dimension=localStockage.dimension;
-        this.arrangement=localStockage.arrangement;
-        this.number=localStockage.number;
-        this.state=localStockage.state;
+        this.typeComposant=localStockage.typeComposant || '';
+        this.type=localStockage.type || '';
+        this.form=localStockage.form || '';
+        this.dimension=localStockage.dimension || '';
+        this.arrangement=localStockage.arrangement || '';
+        this.number=localStockage.number || '';
+        this.state=localStockage.state || '';
     }
 
 }
@@ -154,10 +154,10 @@ export class BatimentElectrique {
 
     constructor(batimentElectrique?) {
         batimentElectrique = batimentElectrique || {};
-        this.typeComposant=batimentElectrique.typeComposant;
-        this.area=batimentElectrique.area;
-        this.nature=batimentElectrique.nature;
-        this.state=batimentElectrique.state;
+        this.typeComposant=batimentElectrique.typeComposant || '';
+        this.area=batimentElectrique.area || '';
+        this.nature=batimentElectrique.nature || '';
+        this.state=batimentElectrique.state || '';
     }
     
 }
@@ -172,11 +172,11 @@ export class GroupeElectrogene {
 
     constructor(groupeElectrogene?) {
         groupeElectrogene = groupeElectrogene || {};
-        this.typeComposant=groupeElectrogene.typeComposant;
-        this.cuve=groupeElectrogene.cuve;
-        this.nature=groupeElectrogene.nature;
-        this.puissance=groupeElectrogene.puissance;
-        this.number=groupeElectrogene.number;
+        this.typeComposant=groupeElectrogene.typeComposant || '';
+        this.cuve=groupeElectrogene.cuve || '';
+        this.nature=groupeElectrogene.nature || '';
+        this.puissance=groupeElectrogene.puissance || '';
+        this.number=groupeElectrogene.number || '';
     }
     
 }
@@ -203,23 +203,23 @@ export class PostChimique {
 
     constructor(postChimique?) {
         postChimique = postChimique || {};
-        this.typeComposant=postChimique.typeComposant;
-        this.postType=postChimique.postType;
-        this.type=postChimique.type;
-        this.dimension=postChimique.dimension;
-        this.form=postChimique.form;
-        this.number=postChimique.number;
-        this.lieuImplantation=postChimique.lieuImplantation;
-        this.pointInjectPompe=postChimique.pointInjectPompe;
-        this.dosagePompe=postChimique.dosagePompe;
-        this.typePompe=postChimique.typePompe;
-        this.debitPompe=postChimique.debitPompe;
-        this.hmtPompe=postChimique.hmtPompe;
-        this.puissancePompe=postChimique.puissancePompe;
-        this.nombrePompe=postChimique.nombrePompe;
-        this.fonctionnementPompe=postChimique.fonctionnementPompe;
-        this.modePompe=postChimique.modePompe;
-        this.statePompe=postChimique.statePompe;
+        this.typeComposant=postChimique.typeComposant || '';
+        this.postType=postChimique.postType || '';
+        this.type=postChimique.type || '';
+        this.dimension=postChimique.dimension || '';
+        this.form=postChimique.form || '';
+        this.number=postChimique.number || '';
+        this.lieuImplantation=postChimique.lieuImplantation || '';
+        this.pointInjectPompe=postChimique.pointInjectPompe || '';
+        this.dosagePompe=postChimique.dosagePompe || '';
+        this.typePompe=postChimique.typePompe || '';
+        this.debitPompe=postChimique.debitPompe || '';
+        this.hmtPompe=postChimique.hmtPompe || '';
+        this.puissancePompe=postChimique.puissancePompe || '';
+        this.nombrePompe=postChimique.nombrePompe || '';
+        this.fonctionnementPompe=postChimique.fonctionnementPompe || false;
+        this.modePompe=postChimique.modePompe || '';
+        this.statePompe=postChimique.statePompe || '';
     }
     
 }
@@ -244,21 +244,21 @@ export class PosteTransformationElectrique {
 
     constructor(posteTransformationElectrique?) {
         posteTransformationElectrique = posteTransformationElectrique || {};
-        this.typeComposant=posteTransformationElectrique.typeComposant;
-        this.marque=posteTransformationElectrique.marque;
-        this.puissance=posteTransformationElectrique.puissance;
-        this.up=posteTransformationElectrique.up;
-        this.is=posteTransformationElectrique.is;
-        this.ucc=posteTransformationElectrique.ucc;
-        this.couplage=posteTransformationElectrique.couplage;
-        this.natureHuile=posteTransformationElectrique.natureHuile;
-        this.natureAbri=posteTransformationElectrique.natureAbri;
-        this.pmt=posteTransformationElectrique.pmt;
-        this.pbt=posteTransformationElectrique.pbt;
-        this.pmd=posteTransformationElectrique.pmd;
-        this.tarif=posteTransformationElectrique.tarif;
-        this.pma=posteTransformationElectrique.pma;
-        this.typeComptage=posteTransformationElectrique.typeComptage;
+        this.typeComposant=posteTransformationElectrique.typeComposant || '';
+        this.marque=posteTransformationElectrique.marque || '';
+        this.puissance=posteTransformationElectrique.puissance || '';
+        this.up=posteTransformationElectrique.up || '';
+        this.is=posteTransformationElectrique.is || '';
+        this.ucc=posteTransformationElectrique.ucc || '';
+        this.couplage=posteTransformationElectrique.couplage || '';
+        this.natureHuile=posteTransformationElectrique.natureHuile || '';
+        this.natureAbri=posteTransformationElectrique.natureAbri || '';
+        this.pmt=posteTransformationElectrique.pmt || '';
+        this.pbt=posteTransformationElectrique.pbt || '';
+        this.pmd=posteTransformationElectrique.pmd || '';
+        this.tarif=posteTransformationElectrique.tarif || '';
+        this.pma=posteTransformationElectrique.pma || '';
+        this.typeComptage=posteTransformationElectrique.typeComptage || '';
     }
 
 }
@@ -279,17 +279,17 @@ export class GroupeElectroPompe {
 
     constructor(groupeElectroPompe?) {
         groupeElectroPompe = groupeElectroPompe || {};
-        this.typeComposant=groupeElectroPompe.typeComposant;
-        this.marque=groupeElectroPompe.marque;
-        this.hmt=groupeElectroPompe.hmt;
-        this.state=groupeElectroPompe.state;
-        this.operatingDate=groupeElectroPompe.operatingDate;
-        this.npsh=groupeElectroPompe.npsh;
-        this.rotationSpeed=groupeElectroPompe.rotationSpeed;
-        this.debit=groupeElectroPompe.debit;
-        this.nbService=groupeElectroPompe.nbService;
-        this.nbSecours=groupeElectroPompe.nbSecours;
-        this.genre=groupeElectroPompe.genre;
+        this.typeComposant=groupeElectroPompe.typeComposant || '';
+        this.marque=groupeElectroPompe.marque || '';
+        this.hmt=groupeElectroPompe.hmt || '';
+        this.state=groupeElectroPompe.state || '';
+        this.operatingDate=groupeElectroPompe.operatingDate || '';
+        this.npsh=groupeElectroPompe.npsh || '';
+        this.rotationSpeed=groupeElectroPompe.rotationSpeed || '';
+        this.debit=groupeElectroPompe.debit || '';
+        this.nbService=groupeElectroPompe.nbService || '';
+        this.nbSecours=groupeElectroPompe.nbSecours || '';
+        this.genre=groupeElectroPompe.genre || '';
     }
 
 }
@@ -311,18 +311,18 @@ export class GroupeElectroMoteur {
 
     constructor(groupeElectroMoteur?) {
         groupeElectroMoteur = groupeElectroMoteur || {};
-        this.typeComposant=groupeElectroMoteur.typeComposant;
-        this.marque=groupeElectroMoteur.marque;
-        this.puissance=groupeElectroMoteur.puissance;
-        this.state=groupeElectroMoteur.state;
-        this.modeDemarrage=groupeElectroMoteur.modeDemarrage;
-        this.type=groupeElectroMoteur.type;
-        this.operatingDate=groupeElectroMoteur.operatingDate;
-        this.nbService=groupeElectroMoteur.nbService;
-        this.nbSecours=groupeElectroMoteur.nbSecours;
-        this.tensionAlimentation=groupeElectroMoteur.tensionAlimentation;
-        this.intensite=groupeElectroMoteur.intensite;
-        this.speed=groupeElectroMoteur.speed;
+        this.typeComposant=groupeElectroMoteur.typeComposant || '';
+        this.marque=groupeElectroMoteur.marque || '';
+        this.puissance=groupeElectroMoteur.puissance || '';
+        this.state=groupeElectroMoteur.state || '';
+        this.modeDemarrage=groupeElectroMoteur.modeDemarrage || '';
+        this.type=groupeElectroMoteur.type || '';
+        this.operatingDate=groupeElectroMoteur.operatingDate || '';
+        this.nbService=groupeElectroMoteur.nbService || '';
+        this.nbSecours=groupeElectroMoteur.nbSecours || '';
+        this.tensionAlimentation=groupeElectroMoteur.tensionAlimentation || '';
+        this.intensite=groupeElectroMoteur.intensite || '';
+        this.speed=groupeElectroMoteur.speed || '';
     }
 
 }
@@ -338,12 +338,12 @@ export class ArmoireElectrique {
 
     constructor(armoireElectrique?) {
         armoireElectrique = armoireElectrique || {};
-        this.typeComposant=armoireElectrique.typeComposant;
-        this.puissance=armoireElectrique.puissance;
-        this.number=armoireElectrique.number;
-        this.observation=armoireElectrique.observation;
-        this.state=armoireElectrique.state;
-        this.marque=armoireElectrique.marque;
+        this.typeComposant=armoireElectrique.typeComposant || '';
+        this.puissance=armoireElectrique.puissance || '';
+        this.number=armoireElectrique.number || '';
+        this.observation=armoireElectrique.observation || '';
+        this.state=armoireElectrique.state || '';
+        this.marque=armoireElectrique.marque || '';
     }
 
 }
@@ -359,12 +359,12 @@ export class SoupapeDecharge {
 
     constructor(soupapeDecharge?) {
         soupapeDecharge = soupapeDecharge || {};
-        this.typeComposant=soupapeDecharge.typeComposant;
-        this.marque=soupapeDecharge.marque;
-        this.presseionService=soupapeDecharge.presseionService;
-        this.presseionEtanchiete=soupapeDecharge.presseionEtanchiete;
-        this.presseionTarage=soupapeDecharge.presseionTarage;
-        this.type=soupapeDecharge.type;
+        this.typeComposant=soupapeDecharge.typeComposant || '';
+        this.marque=soupapeDecharge.marque || '';
+        this.presseionService=soupapeDecharge.presseionService || '';
+        this.presseionEtanchiete=soupapeDecharge.presseionEtanchiete || '';
+        this.presseionTarage=soupapeDecharge.presseionTarage || '';
+        this.type=soupapeDecharge.type || '';
     }
 
 }
@@ -383,15 +383,15 @@ export class EquipementHydroMeca {
 
     constructor(equipementHydroMeca?) {
         equipementHydroMeca = equipementHydroMeca || {};
-        this.typeComposant=equipementHydroMeca.typeComposant;
-        this.equipementType=equipementHydroMeca.equipementType;
-        this.type=equipementHydroMeca.type;
-        this.number=equipementHydroMeca.number;
-        this.dn=equipementHydroMeca.dn;
-        this.pn=equipementHydroMeca.pn;
-        this.materiaux=equipementHydroMeca.materiaux;
-        this.state=equipementHydroMeca.state;
-        this.lieuImplantation=equipementHydroMeca.lieuImplantation;
+        this.typeComposant=equipementHydroMeca.typeComposant || '';
+        this.equipementType=equipementHydroMeca.equipementType || '';
+        this.type=equipementHydroMeca.type || '';
+        this.number=equipementHydroMeca.number || '';
+        this.dn=equipementHydroMeca.dn || '';
+        this.pn=equipementHydroMeca.pn || '';
+        this.materiaux=equipementHydroMeca.materiaux || '';
+        this.state=equipementHydroMeca.state || '';
+        this.lieuImplantation=equipementHydroMeca.lieuImplantation || '';
     }
 
 }
@@ -414,19 +414,19 @@ export class PosteChloration {
 
     constructor(posteChloration?) {
         posteChloration = posteChloration || {};
-        this.typeComposant=posteChloration.typeComposant;
-        this.abri=posteChloration.abri;
-        this.type=posteChloration.type;
-        this.dimension=posteChloration.dimension;
-        this.dosagePompe=posteChloration.dosagePompe;
-        this.pointInjectPompe=posteChloration.pointInjectPompe;
-        this.typePompe=posteChloration.typePompe;
-        this.debitPompe=posteChloration.debitPompe;
-        this.hmtPompe=posteChloration.hmtPompe;
-        this.puissancePompe=posteChloration.puissancePompe;
-        this.nombrePompe=posteChloration.nombrePompe;
-        this.fonctionnementPompe=posteChloration.fonctionnementPompe;
-        this.statePompe=posteChloration.statePompe;
+        this.typeComposant=posteChloration.typeComposant || '';
+        this.abri=posteChloration.abri || false;
+        this.type=posteChloration.type || '';
+        this.dimension=posteChloration.dimension || '';
+        this.dosagePompe=posteChloration.dosagePompe || '';
+        this.pointInjectPompe=posteChloration.pointInjectPompe || '';
+        this.typePompe=posteChloration.typePompe || '';
+        this.debitPompe=posteChloration.debitPompe || '';
+        this.hmtPompe=posteChloration.hmtPompe || '';
+        this.puissancePompe=posteChloration.puissancePompe || '';
+        this.nombrePompe=posteChloration.nombrePompe || '';
+        this.fonctionnementPompe=posteChloration.fonctionnementPompe || false;
+        this.statePompe=posteChloration.statePompe || '';
     }
 
 }
