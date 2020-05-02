@@ -31,7 +31,7 @@ public class UpdateOuvrageController {
             @ApiResponse(code = 403, message = "Accessing the resource you were trying to reach is forbidden"),
             @ApiResponse(code = 404, message = "The resource you were trying to reach is not found")
     })
-    public Ouvrage updateOuvrage(@PathVariable(value = "code") String code, @RequestBody OuvrageUpdateDto ouvrageUpdateDto) {
+    public OuvrageUpdateDto updateOuvrage(@PathVariable(value = "code") String code, @RequestBody OuvrageUpdateDto ouvrageUpdateDto) {
         return updateOuvrageQuery.updateOuvrage(ouvrageUpdateDto,code);
     }
 

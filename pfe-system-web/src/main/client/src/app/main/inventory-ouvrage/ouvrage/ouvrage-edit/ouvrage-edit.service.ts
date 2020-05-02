@@ -41,7 +41,7 @@ export class OuvrageEditService {
                 .subscribe((response: any) => {
                     resolve(response);
                 },(error) =>{
-                    reject(error);
+                    console.log(error);
                 } );
         });
     }

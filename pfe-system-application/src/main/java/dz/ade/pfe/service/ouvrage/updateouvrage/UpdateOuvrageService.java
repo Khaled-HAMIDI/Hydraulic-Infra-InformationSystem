@@ -12,11 +12,12 @@ import org.springframework.stereotype.Service;
 public class UpdateOuvrageService implements UpdateOuvrageQuery {
     //@Autowired
     private final UpdateSaveOuvrage updateSaveOuvrage;
+    private final UpdateOuvrageMapper updateOuvrageMapper;
 
     @Override
-    public Ouvrage updateOuvrage(OuvrageUpdateDto ouvrageUpdateDto, String code){
+    public OuvrageUpdateDto updateOuvrage(OuvrageUpdateDto ouvrageUpdateDto, String code){
 
-        return updateSaveOuvrage.updateSaveOuvrage(ouvrageUpdateDto,code);
+        return updateOuvrageMapper.ouvrageToOuvrageUpdate(updateSaveOuvrage.updateSaveOuvrage(ouvrageUpdateDto,code));
     }
 
 }
