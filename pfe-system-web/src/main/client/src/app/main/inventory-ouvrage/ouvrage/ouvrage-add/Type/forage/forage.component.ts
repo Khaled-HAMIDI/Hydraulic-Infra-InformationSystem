@@ -52,6 +52,7 @@ export class ForageComponent implements OnInit, OnDestroy {
      * On init
      */
     ngOnInit(): void {
+        this.ouvrage.site = this.route.snapshot.paramMap.get('id');
         this.initFormForage();
 
     }
@@ -105,6 +106,7 @@ export class ForageComponent implements OnInit, OnDestroy {
         this.ouvrageAdd.type = 'Forage';
         this.ouvrageAdd.enabled = ouvrage.enabled;
         this.ouvrageAdd.state = ouvrage.state;
+        this.ouvrageAdd.site = this.ouvrage.site;
         this.ouvrageAdd.nbCompartment = ouvrage.nbCompartment;
         this.ouvrageAdd.coordinateX = ouvrage.coordinateX;
         this.ouvrageAdd.coordinateY = ouvrage.coordinateY;

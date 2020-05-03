@@ -10,6 +10,7 @@ import { Site } from './ouvrage-add.model';
 import { OuvrageAddService } from './ouvrage-add.service';
 import { takeUntil } from 'rxjs/operators';
 import { Subject } from 'rxjs';
+import sortBy from 'lodash/sortBy';
 
 
 
@@ -51,7 +52,7 @@ export class OuvrageAddComponent implements OnInit,  OnDestroy{
     ngOnInit(): void {
         this.route.data.pipe(takeUntil(this._unsubscribeAll)).subscribe(
             (response) => {
-                this.sites = response.data[0]
+                this.sites = sortBy(response.data[0], ['name']);
                 this.initForm();
             },
             (error) => {
@@ -94,7 +95,8 @@ export class OuvrageAddComponent implements OnInit,  OnDestroy{
 
 
     onSelect(): void {
-        this.router.navigate([this.ouvrageForm.get('type').value],{relativeTo:this.route});
+        this.siteId = this.ouvrageForm.get('site').value;
+        this.router.navigate([this.ouvrageForm.get('type').value +'/'+ this.siteId],{relativeTo:this.route});
     }
     onSelectSite(): void {
         const site = this.siteForm.getRawValue();
@@ -104,7 +106,8 @@ export class OuvrageAddComponent implements OnInit,  OnDestroy{
         .then((response:Site)=> {
             this.siteForm.setValue({['site']:''});
             this.siteId = response.id;
-            console.log(response);
+            this.sites.push(response);
+            this.sites = sortBy(this.sites, ['name']);
         })
     }
     ngOnDestroy(): void {

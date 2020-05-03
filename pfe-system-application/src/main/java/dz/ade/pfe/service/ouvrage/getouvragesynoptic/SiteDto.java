@@ -1,4 +1,4 @@
-package dz.ade.pfe.service.chain.getchainsynoptic;
+package dz.ade.pfe.service.ouvrage.getouvragesynoptic;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -7,9 +7,6 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class OuvrageDto {
-    private String code;
+public class SiteDto {
     private String name;
-    private Integer position;
-    private String site;
 }

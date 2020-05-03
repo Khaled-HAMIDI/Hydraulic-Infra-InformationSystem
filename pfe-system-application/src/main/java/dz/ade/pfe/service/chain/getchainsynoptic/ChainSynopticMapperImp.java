@@ -59,6 +59,7 @@ public class ChainSynopticMapperImp implements ChainSynopticMapper {
         ouvrageDto.setCode(chain.getOuvrage().getCode());
         ouvrageDto.setPosition(chain.getPosition());
         ouvrageDto.setName(chain.getOuvrage().getName());
+        ouvrageDto.setSite(chain.getOuvrage().getSite().getName());
 
         return ouvrageDto;
     }

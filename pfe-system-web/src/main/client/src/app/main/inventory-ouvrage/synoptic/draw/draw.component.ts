@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild, ElementRef, ViewEncapsulation, OnDestroy } from '@angular/core';
-import { nodes, node, link, images } from './images'
+import { nodes, node, link, images, generalType } from './images'
 import { repeat, takeUntil } from 'rxjs/operators';
 import { fuseAnimations } from '@fuse/animations';
 import { Subject } from 'rxjs';
@@ -20,6 +20,7 @@ declare var d3: any;
 export class DrawComponent implements OnInit, OnDestroy {
   private _unsubscribeAll: Subject<any>;
   ouvrages = [];
+  ouvragesInfo = [];
   links = [];
 
   constructor(
@@ -35,6 +36,7 @@ export class DrawComponent implements OnInit, OnDestroy {
     this.route.data.pipe(takeUntil(this._unsubscribeAll)).subscribe(
       (response) => {
         console.log(response.data);
+        this.ouvragesInfo = response.data[1];
         this.initSynopticStructure(response.data[0], response.data[1]);
         this.drawSchema();
       },
@@ -49,11 +51,28 @@ export class DrawComponent implements OnInit, OnDestroy {
   initSynopticStructure(chains, ouvrages) {
     ouvrages.forEach((ouv) => {
       var n = new node();
-      ouv.name = ouv.name.replace(' ', '')
-      n.name = ouv.name + '-';
-      n.icon = images.SP;
+      ouv.site.name = ouv.site.name.replace(' ', '')
+      n.name = ouv.site.name + '-' + ouv.name.replace(' ', '');
+      if (ouv.type == generalType.Reservoir) {
+        n.icon = images.R;
+      }
+      if (ouv.type == generalType.Forage) {
+        n.icon = images.F;
+      }
+      if (ouv.type == generalType.StationTraitementConventionelle) {
+        n.icon = images.TC;
+      }
+      if (ouv.type == generalType.StationTraitementNonConventionelle) {
+        n.icon = images.TNC;
+      }
+      if (ouv.type == generalType.BriseCharge) {
+        n.icon = images.B;
+      }
+      if (ouv.type == generalType.StationPompage) {
+        n.icon = images.SP;
+      }
       n.meta = {
-        title: ouv.name
+        title: ouv.name,
       }
       this.ouvrages.push(n);
     })
@@ -62,8 +81,8 @@ export class DrawComponent implements OnInit, OnDestroy {
       var l;
       for (var i = 0; i < chain.ouvrages.length - 1; i++) {
         l = new link();
-        l.source = chain.ouvrages[i].name.replace(' ', '') + '-';
-        l.target = chain.ouvrages[i + 1].name.replace(' ', '') + '-';
+        l.source = chain.ouvrages[i].site.replace(' ', '') + '-' + chain.ouvrages[i].name.replace(' ', '');
+        l.target = chain.ouvrages[i + 1].site.replace(' ', '') + '-' + chain.ouvrages[i + 1].name.replace(' ', '');
         var ind = this.links.findIndex((link) => {
           return ((link.source === l.source) && (link.target === l.target))
         });
@@ -82,19 +101,19 @@ export class DrawComponent implements OnInit, OnDestroy {
     return 0;
   }
 
-  SetTooltips(div) {
+  SetTooltips(div, ouvrages) {
+    var html = '';
     d3.selectAll("g.node")
       .on("mouseover", function (d) {
+        var id = d.id
+        html = '<span class="tooltiptext">Nom : ' + ouvrages[id].name + '</span><br>';
+        html += '<span class="tooltiptext">Débit Actuel : ' + ouvrages[id].currentDebit + '</span><br>'
         div.transition()
           .duration(200)
           .style("opacity", .9);
-        div.html(`<span class="tooltiptext">Nom : Station Kharrouba</span><br>
-        <span class="tooltiptext">Débit Actuel : 100 l/s</span><br>
-        <span class="tooltiptext">Date mes : 11/12/2000</span><br>
-        <span class="tooltiptext">Etat : Bon</span><br>
-        `)
+        div.html(html)
           .style("left", (d3.event.pageX) - 180 + "px")
-          .style("top", (d3.event.pageY) - 100  + "px");
+          .style("top", (d3.event.pageY) - 100 + "px");
       })
       .on("mouseout", function (d) {
         div.transition()
@@ -127,7 +146,7 @@ export class DrawComponent implements OnInit, OnDestroy {
       var div = d3.select(".tooltip")
         .style("opacity", 0);
       // You can also change label position, which is, how far it is from the node along the link line
-      this.SetTooltips(div);
+      this.SetTooltips(div, this.ouvragesInfo);
       d3.selectAll('.link textPath tspan').attr('x', '40');
       d3.selectAll('.link textPath.reverse tspan').attr('x', '-40');
       d3.selectAll('tspan.title').attr('x', '-20');

@@ -1,16 +1,18 @@
 package dz.ade.pfe.ouvrage.inventory.site;
 
 import dz.ade.pfe.domain.ouvrage.Site;
+import dz.ade.pfe.port.out.site.LoadSiteById;
 import dz.ade.pfe.port.out.site.LoadSiteList;
 import dz.ade.pfe.port.out.site.SaveSite;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
+import java.util.Optional;
 
 @Component
 @RequiredArgsConstructor
-public class SitePersistenceAdapter implements SaveSite, LoadSiteList {
+public class SitePersistenceAdapter implements SaveSite, LoadSiteList, LoadSiteById {
     private final SiteRepository siteRepository;
 
     @Override
@@ -21,5 +23,10 @@ public class SitePersistenceAdapter implements SaveSite, LoadSiteList {
     @Override
     public List<Site> loadSiteList(String unitCode) {
         return siteRepository.findByUnitCode(unitCode);
+    }
+
+    @Override
+    public Optional<Site> loadSiteId(String id) {
+        return siteRepository.findById(Long.parseLong(id));
     }
 }

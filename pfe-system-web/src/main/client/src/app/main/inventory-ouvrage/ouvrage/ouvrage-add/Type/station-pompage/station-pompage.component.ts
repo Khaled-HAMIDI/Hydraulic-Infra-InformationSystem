@@ -48,6 +48,7 @@ export class StationPompageComponent implements OnInit, OnDestroy {
      * On init
      */
     ngOnInit(): void {
+        this.ouvrage.site = this.route.snapshot.paramMap.get('id');
         this.initFormStationPompage();
 
     }
@@ -104,6 +105,7 @@ export class StationPompageComponent implements OnInit, OnDestroy {
         this.ouvrageAdd.type = 'StationPompage';
         this.ouvrageAdd.enabled = ouvrage.enabled;
         this.ouvrageAdd.state = ouvrage.state;
+        this.ouvrageAdd.site = this.ouvrage.site;
         this.ouvrageAdd.nbCompartment = ouvrage.nbCompartment;
         this.ouvrageAdd.coordinateX = ouvrage.coordinateX;
         this.ouvrageAdd.coordinateY = ouvrage.coordinateY;

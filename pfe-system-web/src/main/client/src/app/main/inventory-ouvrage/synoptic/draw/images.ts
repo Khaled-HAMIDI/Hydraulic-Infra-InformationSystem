@@ -2,6 +2,10 @@ const path = 'assets/images/ouvrages/'
 export enum images  {
   SP= 'assets/images/ouvrages/pump.png',
   R= 'assets/images/ouvrages/tank.png',
+  TC='assets/images/ouvrages/production.png',
+  TNC='assets/images/ouvrages/production.png',
+  B='assets/images/ouvrages/brise.png',
+  F='assets/images/ouvrages/forage.png'
 }
 
 
@@ -52,4 +56,8 @@ export class link {
     
     this.meta = link.meta || {};
   }
+}
+
+export enum generalType {
+  StationTraitementConventionelle='StationTraitementConventionelle', StationTraitementNonConventionelle='StationTraitementNonConventionelle', Reservoir='Reservoir', Forage='Forage', StationPompage='StationPompage', BriseCharge='BriseCharge', none='none'
 }

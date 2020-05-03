@@ -48,6 +48,7 @@ export class StationTraitementConvComponent implements OnInit, OnDestroy {
      * On init
      */
     ngOnInit(): void {
+        this.ouvrage.site = this.route.snapshot.paramMap.get('id');
         this.initFormStationTC();
 
     }
@@ -102,6 +103,7 @@ export class StationTraitementConvComponent implements OnInit, OnDestroy {
         this.ouvrageAdd.type = 'StationTraitementConventionelle';
         this.ouvrageAdd.enabled = ouvrage.enabled;
         this.ouvrageAdd.state = ouvrage.state;
+        this.ouvrageAdd.site = this.ouvrage.site;
         this.ouvrageAdd.process = ouvrage.process;
         this.ouvrageAdd.nbCompartment = ouvrage.nbCompartment;
         this.ouvrageAdd.coordinateX = ouvrage.coordinateX;

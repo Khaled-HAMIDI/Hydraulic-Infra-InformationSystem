@@ -2,7 +2,11 @@ package dz.ade.pfe.web.ouvrage.inventory.ouvrage;
 
 import dz.ade.pfe.domain.ouvrage.Ouvrage;
 import dz.ade.pfe.port.in.ouvrage.createouvrage.CreateOuvrageQuery;
+import dz.ade.pfe.port.out.site.LoadSiteById;
+import dz.ade.pfe.port.out.unit.LoadUnitByCode;
 import dz.ade.pfe.service.ouvrage.createouvrage.OuvrageAddDto;
+import dz.ade.pfe.service.ouvrage.getouvragedetails.OuvrageDto;
+import dz.ade.pfe.web.utils.ProfileManager;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
@@ -20,7 +24,7 @@ import org.springframework.web.bind.annotation.*;
 public class CreateOuvrageController {
 
     private final CreateOuvrageQuery createOuvrageQuery;
-
+    private final ProfileManager profileManager;
 
     @PostMapping(value = "/ouvrage")
     @ApiOperation(value = "Save an ouvrage")
@@ -30,7 +34,7 @@ public class CreateOuvrageController {
             @ApiResponse(code = 403, message = "Accessing the resource you were trying to reach is forbidden"),
             @ApiResponse(code = 404, message = "The resource you were trying to reach is not found")
     })
-    public Ouvrage createOuvrage(@RequestBody OuvrageAddDto ouvrageAddDto) {
-        return createOuvrageQuery.createOuvrage(ouvrageAddDto);
+    public OuvrageDto createOuvrage(@RequestBody OuvrageAddDto ouvrageAddDto) {
+        return createOuvrageQuery.createOuvrage(ouvrageAddDto,profileManager.getDeployedUnitCode());
     }
 }

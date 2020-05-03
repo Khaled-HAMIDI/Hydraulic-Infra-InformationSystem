@@ -52,6 +52,7 @@ export class ReservoirComponent implements OnInit, OnDestroy {
      * On init
      */
     ngOnInit(): void {
+        this.ouvrage.site = this.route.snapshot.paramMap.get('id');
         this.initFormReservoir();
     }
 
@@ -110,6 +111,7 @@ export class ReservoirComponent implements OnInit, OnDestroy {
         this.ouvrageAdd.enabled = ouvrage.enabled;
         this.ouvrageAdd.form = ouvrage.form;
         this.ouvrageAdd.state = ouvrage.state;
+        this.ouvrageAdd.site = this.ouvrage.site;
         this.ouvrageAdd.nbCompartment = ouvrage.nbCompartment;
         this.ouvrageAdd.raftRating = ouvrage.raftRating;
         this.ouvrageAdd.coteTropFull = ouvrage.coteTropFull;
@@ -141,7 +143,7 @@ export class ReservoirComponent implements OnInit, OnDestroy {
         if (this.ouvrageAdd.form == '') this.ouvrageAdd.form = 'none';
         if (this.ouvrageAdd.type == '') this.ouvrageAdd.type = 'none';
         if (this.ouvrageAdd.treatmentStationType == '') this.ouvrageAdd.treatmentStationType = 'none';
-
+        console.log(this.ouvrageAdd);
         this.reservoirService.saveOuvrage(this.ouvrageAdd)
             .then((response) => {
                     console.log("It worked");

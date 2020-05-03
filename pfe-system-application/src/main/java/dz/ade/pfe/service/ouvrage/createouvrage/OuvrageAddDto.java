@@ -27,6 +27,8 @@ public class OuvrageAddDto {
     @Enumerated(EnumType.STRING)
     private EnumForm form;
 
+    private String site;
+
     @Enumerated(EnumType.STRING)
     private EnumEtat state;
 

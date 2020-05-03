@@ -96,9 +96,29 @@ export class ChainAddEditComponent implements OnInit, OnDestroy {
             }
             else
             ouvrage.checked = false;
+            if(ouvrage.type === generalType.BriseCharge)
+            {
+                this.AllOuvrages[0].ouvrages.push(ouvrage)
+            }
+            if(ouvrage.type === generalType.Forage)
+            {
+                this.AllOuvrages[1].ouvrages.push(ouvrage)
+            }
             if(ouvrage.type === generalType.Reservoir)
             {
                 this.AllOuvrages[2].ouvrages.push(ouvrage)
+            }
+            if(ouvrage.type === generalType.StationPompage)
+            {
+                this.AllOuvrages[3].ouvrages.push(ouvrage)
+            }
+            if(ouvrage.type === generalType.StationTraitementConventionelle)
+            {
+                this.AllOuvrages[4].ouvrages.push(ouvrage)
+            }
+            if(ouvrage.type === generalType.StationTraitementNonConventionelle)
+            {
+                this.AllOuvrages[5].ouvrages.push(ouvrage)
             }
         })
     }

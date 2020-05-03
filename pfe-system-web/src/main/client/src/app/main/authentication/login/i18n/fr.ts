@@ -3,8 +3,8 @@ export const locale = {
     data: {
         'LOGIN': {
             'INTRO': {
-                'title': "Bienvenue sur la plateforme Système d'Information Clientèle de l’Algérienne Des Eaux",
-                'description': "Réalisé par l’Algérienne Des Eaux, ce nouveau système d'information va révolutionner les processus métiers de l'ADE ainsi que l'intéraction avec les clients.",
+                'title': "Bienvenue sur la plateforme Système d'Information Gestion des ouvrages de l’Algérienne Des Eaux",
+                'description': "Réalisé par l’Algérienne Des Eaux, ce nouveau système d'information va révolutionner les processus métiers de l'ADE.",
               },
             'FORM': {
                 'title': 'CONNECTEZ-VOUS À VOTRE COMPTE',

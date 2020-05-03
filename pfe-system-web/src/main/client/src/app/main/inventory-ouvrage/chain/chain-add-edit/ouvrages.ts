@@ -1,6 +1,6 @@
 export const allOuvrages = [
     {
-        type: "",
+        type: "Station de traitement C",
         ouvrages : []
     },
     {

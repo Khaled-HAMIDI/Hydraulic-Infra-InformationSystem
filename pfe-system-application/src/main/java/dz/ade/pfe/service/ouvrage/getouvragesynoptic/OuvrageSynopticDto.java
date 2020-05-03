@@ -12,5 +12,6 @@ public class OuvrageSynopticDto {
     private String code;
     private EnumTypeGeneral type;
     private String name;
+    private SiteDto site;
     private Double currentDebit;
 }
