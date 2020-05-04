@@ -10,6 +10,11 @@ import java.util.stream.Stream;
 public enum AttachedDocumentType {
     OUVRAGE_EXAMPLE("Ouvrage example"),
     AUTRE("Autre"),
+    PV_REC("PV de réception"),
+    DOC_TECH("Documentation technique"),
+    PLAN_RC("Plans de recollement "),
+    FICH_TECH("Fiche technique"),
+    //MATERIEL(""),
     ATTACHEMENT("Attachement");
 
     private String value;

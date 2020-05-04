@@ -7,6 +7,8 @@ import { locale as french } from './i18n/fr';
 import { locale as arabic } from './i18n/ar';
 import {ForageService} from "./forage.service";
 import {Ouvrage} from "../../../../../model/ouvrage.model";
+import { ToolsService } from '@ayams/services/tools.service';
+import { Subject } from 'rxjs';
 
 
 
@@ -27,8 +29,12 @@ export class ForageComponent implements OnInit, OnDestroy {
     ouvrageForm: FormGroup;
 
     autoCordinate :boolean;
+    filesToBeAttached: any[];
+    isFilesValid: boolean;
+    public onUploadEventSubject: Subject<void>;
 
     constructor(
+        private toolsService: ToolsService,
         private router :Router,
         private forageService: ForageService,
         private formBuilder: FormBuilder,
@@ -46,6 +52,46 @@ export class ForageComponent implements OnInit, OnDestroy {
 
         this.fuseTranslationLoader.loadTranslations(french, arabic);
         this.autoCordinate=false;
+
+         //  File Init
+         this.onUploadEventSubject = new Subject();
+         this.isFilesValid = false;
+ 
+         this.filesToBeAttached = [
+             {
+                 name: 'PV de réception',
+                 title: 'PV de réception',
+                 format: '.pdf',
+                 attachmentEntity: 'OUVRAGE',
+                 attachmentEntityId: null,// set null in case add , if case update set id of entity 
+                 attachedDocumentType: 'PV_REC',
+                 required: true
+             },
+             {
+                 name: 'Documentation technique',
+                 title: 'Documentation technique',
+                 format: '.pdf',
+                 attachmentEntity: 'OUVRAGE',
+                 attachmentEntityId: null,// set null in case add , case update set id of entity 
+                 attachedDocumentType: 'DOC_TECH'
+             },
+             {
+                 name: 'Plans de recollement',
+                 title: 'Plans de recollement',
+                 format: '.pdf',
+                 attachmentEntity: 'OUVRAGE',
+                 attachmentEntityId: null,// set null in case add , case update set id of entity 
+                 attachedDocumentType: 'PLAN_RC'
+             },
+             {
+                 name: 'Fiche technique',
+                 title: 'Fiche technique',
+                 format: '.pdf',
+                 attachmentEntity: 'OUVRAGE',
+                 attachmentEntityId: null,// set null in case add , case update set id of entity 
+                 attachedDocumentType: 'FICH_TECH'
+             }
+         ];
     }
 
     /**
@@ -201,6 +247,32 @@ export class ForageComponent implements OnInit, OnDestroy {
         this.ouvrageForm.controls['coordinateX'].setValue(position.coords.latitude);
         this.ouvrageForm.controls['coordinateY'].setValue(position.coords.longitude);
         this.ouvrageForm.controls['coordinateZ'].setValue(position.coords.altitude);
+    }
+    // File Functions-------------------------------------------------------------------------
+    onAllRequiredAttached(isFilesValid: boolean): void {
+        this.isFilesValid = isFilesValid;
+    }
+    uploadFiles(entityId: number): void {
+
+        this.filesToBeAttached.forEach(item => {
+            item.attachmentEntityId = entityId.toString();
+        });
+
+        this.onUploadEventSubject.next();
+    }
+    errorUploadFiles(): void {
+        this.toolsService.hideProgressBar();
+        this.toolsService.showError("error Upload Files");
+        this.router.navigate(['composants/' + this.ouvrageAdd.code], { relativeTo: this.route });
+    }
+    successUploadFiles(): void {
+        this.toolsService.hideProgressBar();
+        //this.toolsService.showSuccess("success Upload Files");
+        this.router.navigate(['composants/' + this.ouvrageAdd.code], { relativeTo: this.route });
+    }
+
+    onSubmitFiles(id) {
+        this.uploadFiles(id);
     }
 
 }

@@ -49,6 +49,7 @@ export class DrawComponent implements OnInit, OnDestroy {
   }
 
   initSynopticStructure(chains, ouvrages) {
+    let debit;
     ouvrages.forEach((ouv) => {
       var n = new node();
       ouv.site.name = ouv.site.name.replace(' ', '')
@@ -83,6 +84,11 @@ export class DrawComponent implements OnInit, OnDestroy {
         l = new link();
         l.source = chain.ouvrages[i].site.replace(' ', '') + '-' + chain.ouvrages[i].name.replace(' ', '');
         l.target = chain.ouvrages[i + 1].site.replace(' ', '') + '-' + chain.ouvrages[i + 1].name.replace(' ', '');
+        debit = ouvrages.find((ouv) => {
+          return ouv.code === chain.ouvrages[i].code
+        }).currentDebit
+        console.log(debit);
+        l.meta = { interface: { source: debit.toString(), target: '' } };
         var ind = this.links.findIndex((link) => {
           return ((link.source === l.source) && (link.target === l.target))
         });

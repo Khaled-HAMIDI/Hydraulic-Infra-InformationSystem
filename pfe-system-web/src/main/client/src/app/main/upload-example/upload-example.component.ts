@@ -27,7 +27,7 @@ export class UploadExampleComponent implements OnInit {
         title: 'Ouvrage file 1',
         format: '.pdf',
         attachmentEntity: 'OUVRAGE',
-        attachmentEntityId: '1',// set null in case add , if case update set id of entity 
+        attachmentEntityId: null,// set null in case add , if case update set id of entity 
         attachedDocumentType: 'OUVRAGE_EXAMPLE',
         required: true
       },
@@ -36,7 +36,7 @@ export class UploadExampleComponent implements OnInit {
         title: 'Ouvrage file 2',
         format: '.pdf',
         attachmentEntity: 'OUVRAGE',
-        attachmentEntityId: '1',// set null in case add , case update set id of entity 
+        attachmentEntityId: null,// set null in case add , case update set id of entity 
         attachedDocumentType: 'AUTRE'
       }
     ];
@@ -48,7 +48,7 @@ export class UploadExampleComponent implements OnInit {
         title: 'Ouvrage file 1',
         format: '.pdf',
         attachmentEntity: 'OUVRAGE',
-        attachmentEntityId: '1',
+        attachmentEntityId: '3',
         attachedDocumentType: 'OUVRAGE_EXAMPLE'
       },
       {
@@ -94,20 +94,7 @@ export class UploadExampleComponent implements OnInit {
   }
 
   onSubmitFiles(){
-    let ouvrage = {
-      code: random(1,9999),
-      name: "Ouvrage 1",
-      type: "Reservoir",
-    }
-
-    this.uploadExampleService.saveOuvrage(ouvrage).then(
-      (ouvrage: any) => {
-        this.uploadFiles(ouvrage.id);
-      },
-      (error) => {
-        console.log("No")
-      });
-    
+        this.uploadFiles(3);  
   }
   //------------------------------------------------------------- FIN FOR EXAMPLE 1 -------------------------------------------------//
 

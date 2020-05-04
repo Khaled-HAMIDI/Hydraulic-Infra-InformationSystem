@@ -1,30 +1,36 @@
-import {Component, OnInit, OnDestroy} from '@angular/core';
-import {Ouvrage} from "../../../../../model/ouvrage.model";
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Ouvrage } from "../../../../../model/ouvrage.model";
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { fuseAnimations } from '@fuse/animations';
-import {ActivatedRoute, Router} from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { FuseTranslationLoaderService } from '@fuse/services/translation-loader.service';
 import { locale as french } from './i18n/fr';
 import { locale as arabic } from './i18n/ar';
-import {StationTraitementConvSevice} from "./station-traitement-conv.sevice";
+import { StationTraitementConvSevice } from "./station-traitement-conv.sevice";
+import { Subject } from 'rxjs';
+import { ToolsService } from '@ayams/services/tools.service';
 
 
 
 @Component({
-  selector: 'app-station-traitement-conv',
-  templateUrl: './station-traitement-conv.component.html',
-  styleUrls: ['./station-traitement-conv.component.scss'],
+    selector: 'app-station-traitement-conv',
+    templateUrl: './station-traitement-conv.component.html',
+    styleUrls: ['./station-traitement-conv.component.scss'],
     animations: fuseAnimations
 })
 export class StationTraitementConvComponent implements OnInit, OnDestroy {
 
     ouvrage: Ouvrage;
     ouvrageForm: FormGroup;
-    ouvrageAdd:Ouvrage;
+    ouvrageAdd: Ouvrage;
 
-    autoCordinate :boolean;
+    autoCordinate: boolean;
+    filesToBeAttached: any[];
+    isFilesValid: boolean;
+    public onUploadEventSubject: Subject<void>;
 
     constructor(
+        private toolsService: ToolsService,
         private stationTraitementConvSevice: StationTraitementConvSevice,
         private formBuilder: FormBuilder,
         private router: Router,
@@ -41,7 +47,46 @@ export class StationTraitementConvComponent implements OnInit, OnDestroy {
         this.ouvrage.electricAlimentation = true;
 
         this.fuseTranslationLoader.loadTranslations(french, arabic);
-        this.autoCordinate=false;
+        this.autoCordinate = false;
+        //  File Init
+        this.onUploadEventSubject = new Subject();
+        this.isFilesValid = false;
+
+        this.filesToBeAttached = [
+            {
+                name: 'PV de réception',
+                title: 'PV de réception',
+                format: '.pdf',
+                attachmentEntity: 'OUVRAGE',
+                attachmentEntityId: null,// set null in case add , if case update set id of entity 
+                attachedDocumentType: 'PV_REC',
+                required: true
+            },
+            {
+                name: 'Documentation technique',
+                title: 'Documentation technique',
+                format: '.pdf',
+                attachmentEntity: 'OUVRAGE',
+                attachmentEntityId: null,// set null in case add , case update set id of entity 
+                attachedDocumentType: 'DOC_TECH'
+            },
+            {
+                name: 'Plans de recollement',
+                title: 'Plans de recollement',
+                format: '.pdf',
+                attachmentEntity: 'OUVRAGE',
+                attachmentEntityId: null,// set null in case add , case update set id of entity 
+                attachedDocumentType: 'PLAN_RC'
+            },
+            {
+                name: 'Fiche technique',
+                title: 'Fiche technique',
+                format: '.pdf',
+                attachmentEntity: 'OUVRAGE',
+                attachmentEntityId: null,// set null in case add , case update set id of entity 
+                attachedDocumentType: 'FICH_TECH'
+            }
+        ];
     }
 
     /**
@@ -57,7 +102,7 @@ export class StationTraitementConvComponent implements OnInit, OnDestroy {
     createStTraitCForm(): FormGroup {
         let obj = {
             code: [this.ouvrage.code, Validators.required],
-            name: [this.ouvrage.name , Validators.required],
+            name: [this.ouvrage.name, Validators.required],
             enabled: [this.ouvrage.enabled, Validators.required],
             state: [this.ouvrage.state, Validators.required],
             process: [this.ouvrage.process, Validators.required],
@@ -78,15 +123,15 @@ export class StationTraitementConvComponent implements OnInit, OnDestroy {
             totalWorkforce: [this.ouvrage.totalWorkforce, Validators.required],
             distribution: [this.ouvrage.distribution, Validators.required],
             chemicalMonthlyBill: [this.ouvrage.chemicalMonthlyBill, Validators.required],
-            treatmentStationType: [this.ouvrage.treatmentStationType,Validators.required],
-            populationServed:[this.ouvrage.populationServed]
+            treatmentStationType: [this.ouvrage.treatmentStationType, Validators.required],
+            populationServed: [this.ouvrage.populationServed]
         };
 
         return this.formBuilder.group(obj);
 
     }
 
-    initFormStationTC(){
+    initFormStationTC() {
         this.ouvrageForm = this.createStTraitCForm();
     }
 
@@ -136,9 +181,9 @@ export class StationTraitementConvComponent implements OnInit, OnDestroy {
 
         this.stationTraitementConvSevice.saveOuvrage(this.ouvrageAdd)
             .then((response) => {
-                    console.log("It worked");
-                    this.router.navigate(['composants/'+this.ouvrageAdd.code],{relativeTo:this.route});
-                },
+                console.log("It worked");
+                this.router.navigate(['composants/' + this.ouvrageAdd.code], { relativeTo: this.route });
+            },
                 (error) => {
                     console.log("No")
                 });
@@ -157,24 +202,24 @@ export class StationTraitementConvComponent implements OnInit, OnDestroy {
         this.ouvrage.enabled = !this.ouvrage.enabled;
     }
 
-    toggleDistribution() :void {
+    toggleDistribution(): void {
         this.ouvrage.distribution = !this.ouvrage.distribution;
     }
 
-    toggleSpecializedLine() :void {
+    toggleSpecializedLine(): void {
         this.ouvrage.specializedLine = !this.ouvrage.specializedLine;
     }
 
-    toggleRemoteManagement() :void {
+    toggleRemoteManagement(): void {
         this.ouvrage.remoteManagement = !this.ouvrage.remoteManagement;
     }
 
-    toggleElectricAlimentation() :void {
+    toggleElectricAlimentation(): void {
         this.ouvrage.electricAlimentation = !this.ouvrage.electricAlimentation;
     }
 
-    toggleCordonates() :void {
-        if (this.autoCordinate){
+    toggleCordonates(): void {
+        if (this.autoCordinate) {
             this.ouvrageForm.controls['coordinateX'].setValue('');
             this.ouvrageForm.controls['coordinateY'].setValue('');
             this.ouvrageForm.controls['coordinateZ'].setValue('');
@@ -190,10 +235,36 @@ export class StationTraitementConvComponent implements OnInit, OnDestroy {
         }
 
     }
-    showPosition(position) :void{
+    showPosition(position): void {
         this.ouvrageForm.controls['coordinateX'].setValue(position.coords.latitude);
         this.ouvrageForm.controls['coordinateY'].setValue(position.coords.longitude);
         this.ouvrageForm.controls['coordinateZ'].setValue(position.coords.altitude);
+    }
+    // File Functions-------------------------------------------------------------------------
+    onAllRequiredAttached(isFilesValid: boolean): void {
+        this.isFilesValid = isFilesValid;
+    }
+    uploadFiles(entityId: number): void {
+
+        this.filesToBeAttached.forEach(item => {
+            item.attachmentEntityId = entityId.toString();
+        });
+
+        this.onUploadEventSubject.next();
+    }
+    errorUploadFiles(): void {
+        this.toolsService.hideProgressBar();
+        this.toolsService.showError("error Upload Files");
+        this.router.navigate(['composants/' + this.ouvrageAdd.code], { relativeTo: this.route });
+    }
+    successUploadFiles(): void {
+        this.toolsService.hideProgressBar();
+        //this.toolsService.showSuccess("success Upload Files");
+        this.router.navigate(['composants/' + this.ouvrageAdd.code], { relativeTo: this.route });
+    }
+
+    onSubmitFiles(id) {
+        this.uploadFiles(id);
     }
 
 }

@@ -130,6 +130,8 @@ import { StationNonConvShowStepperComponent } from './ouvrage-show/steppers/stat
 import { StationPompageShowStepperComponent } from './ouvrage-show/steppers/station-pompage-show-stepper/station-pompage-show-stepper.component';
 import { StationTraitementConvShowStepperComponent } from './ouvrage-show/steppers/station-traitement-conv-show-stepper/station-traitement-conv-show-stepper.component';
 import { OuvrageAddService } from './ouvrage-add/ouvrage-add.service';
+import { OuvrageShowService } from './ouvrage-show/ouvrage-show.service';
+import { OuvrageEditService } from './ouvrage-edit/ouvrage-edit.service';
 
 export const options: Partial<IConfig> | (() => Partial<IConfig>) = null;
 
@@ -203,7 +205,8 @@ const routes: Routes = [
     {
         path: ':code/edit',
         component: OuvrageEditComponent,
-        data: { action: 'edit' }
+        data: { action: 'edit' },
+        resolve: { data: OuvrageEditService }
     },
     {
         path: 'edit/StationTraitementConventionelle/composants/:code',
@@ -237,7 +240,8 @@ const routes: Routes = [
     },
     {
         path: ':code/show',
-        component: OuvrageShowComponent
+        component: OuvrageShowComponent,
+        resolve: { data: OuvrageShowService }
     },
     {
         path: 'show/StationTraitementConventionelle/composants/:code',

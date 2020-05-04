@@ -260,7 +260,7 @@
 
 
                         <div fxLayout="column" class="mr-sm-12 ml-sm-12">
-                            <fieldset class="myfieldset2">
+                            <fieldset class="myfieldset">
 
                                 <legend>{{'ADD.LEGENDS.location' | translate}}</legend>
 
@@ -302,6 +302,16 @@
                                 </mat-form-field>
 
 
+                            </fieldset>
+                        </div>
+                        <div fxLayout="column" class="mr-sm-12 ml-sm-12">
+                            <fieldset class="myfieldset">
+                                <legend>{{'ADD.LEGENDS.documents' | translate}}</legend>
+                                <ayams-file-uploader fxFlex [uploadFiles]="filesToBeAttached" [showAndUpdate]="true"
+                                    [events]="onUploadEventSubject.asObservable()" (errorUpload)="errorUploadFiles()"
+                                    (allRequiredAttached)="onAllRequiredAttached($event)"
+                                    (successUpload)="successUploadFiles()">
+                                </ayams-file-uploader>
                             </fieldset>
                         </div>
                     </div>

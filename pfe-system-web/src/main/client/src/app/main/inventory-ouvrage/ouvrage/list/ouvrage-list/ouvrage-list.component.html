@@ -122,7 +122,7 @@
                             <mat-menu #moreMenu="matMenu">
                                 <ng-container *ayamsHasAnyPermissions="['ouvrages:edit','ouvrages:*','*:edit','*:*']">
                                     <button mat-menu-item aria-label="edit"
-                                        (click)="router.navigate(['/patrimony/ouvrages/'+ouvrage.id+'/edit'])">
+                                        (click)="router.navigate(['/patrimony/ouvrages/'+ouvrage.code+'/edit'])">
                                         <mat-icon>edit</mat-icon>
                                         <span>{{'LIST.TABLE.action.edit' | translate}}</span>
                                     </button>

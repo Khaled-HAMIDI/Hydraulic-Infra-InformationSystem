@@ -84,7 +84,8 @@ export const locale = {
             "LEGENDS": {
                 'general': 'Information générales',
                 'technical': 'Information techniques',
-                'location': 'Emplacement'
+                'location': 'Emplacement',
+                'documents':'Partie des documents'
             }
         },
     }

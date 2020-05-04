@@ -6,8 +6,10 @@ import { locale as french } from './i18n/fr';
 import { locale as arabic } from './i18n/ar';
 import {Ouvrage, OuvrageEdit} from "../../../model/ouvrage.model";
 import {OuvrageEditService} from "./ouvrage-edit.service";
-import {ActivatedRoute} from "@angular/router";
-
+import {ActivatedRoute, Router} from "@angular/router";
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
+import { ToolsService } from '@ayams/services/tools.service';
 @Component({
   selector: 'app-ouvrage-edit',
   templateUrl: './ouvrage-edit.component.html',
@@ -21,9 +23,14 @@ export class OuvrageEditComponent implements OnInit, OnDestroy {
     ouvrageEdit : OuvrageEdit;
     ouvrageForm: FormGroup;
     ouvrageCode: string;
-
+    private _unsubscribeAll: Subject<any>;
+    filesToBeAttached: any[];
+    isFilesValid: boolean;
+    public onUploadEventSubject: Subject<void>;
 
     constructor(
+        private toolsService: ToolsService,
+        private router: Router,
         private route :ActivatedRoute,
         private ouvrageEditService: OuvrageEditService,
         private formBuilder: FormBuilder,
@@ -31,15 +38,52 @@ export class OuvrageEditComponent implements OnInit, OnDestroy {
 
         this.ouvrage = new Ouvrage();
         this.ouvrageEdit = new OuvrageEdit();
-
+        this._unsubscribeAll = new Subject();
         this.fuseTranslationLoader.loadTranslations(french, arabic);
+        //  File Init
+        this.onUploadEventSubject = new Subject();
+        this.isFilesValid = false;
+        this.filesToBeAttached = [
+            {
+                name: 'PV de réception',
+                title: 'PV de réception',
+                format: '.pdf',
+                attachmentEntity: 'OUVRAGE',
+                attachmentEntityId: null,// set null in case add , if case update set id of entity 
+                attachedDocumentType: 'PV_REC',
+                required: true
+            },
+            {
+                name: 'Documentation technique',
+                title: 'Documentation technique',
+                format: '.pdf',
+                attachmentEntity: 'OUVRAGE',
+                attachmentEntityId: null,// set null in case add , case update set id of entity 
+                attachedDocumentType: 'DOC_TECH'
+            },
+            {
+                name: 'Plans de recollement',
+                title: 'Plans de recollement',
+                format: '.pdf',
+                attachmentEntity: 'OUVRAGE',
+                attachmentEntityId: null,// set null in case add , case update set id of entity 
+                attachedDocumentType: 'PLAN_RC'
+            },
+            {
+                name: 'Fiche technique',
+                title: 'Fiche technique',
+                format: '.pdf',
+                attachmentEntity: 'OUVRAGE',
+                attachmentEntityId: null,// set null in case add , case update set id of entity 
+                attachedDocumentType: 'FICH_TECH'
+            }
+        ];
     }
 
     ngOnInit(): void {
-        this.ouvrageEditService.get(this.route.snapshot.params['code']).then(
-            (ouvrage) => {
-                console.log(ouvrage);
-                this.ouvrage= new Ouvrage(ouvrage);
+        this.route.data.pipe(takeUntil(this._unsubscribeAll)).subscribe(
+            (response) => {
+                this.ouvrage= new Ouvrage(response.data[0]);
                 switch (this.ouvrage.type) {
                     case 'StationTraitementConventionelle':
                         this.ouvrageForm = this.createStationTCForm();
@@ -60,6 +104,17 @@ export class OuvrageEditComponent implements OnInit, OnDestroy {
                         this.ouvrageForm = this.createBriseChargeForm();
                         break;
                 }
+                this.filesToBeAttached.forEach(item => {
+                    item.attachmentEntityId = response.data[0].code
+                  });
+            },
+            (error) => {
+                console.log(error);
+            }
+        );
+        this.ouvrageEditService.get(this.route.snapshot.params['code']).then(
+            (ouvrage) => {
+                
 
             },
             (error) => {
@@ -198,10 +253,35 @@ export class OuvrageEditComponent implements OnInit, OnDestroy {
         this.ouvrageEditService.saveOuvrage(this.ouvrageEdit,this.ouvrage.code)
             .then(() => {
                 console.log("It worked");
+                this.onSubmitFiles();
             });
     }
+    // File Functions-------------------------------------------------------------------------
+    onAllRequiredAttached(isFilesValid: boolean): void {
+        this.isFilesValid = isFilesValid;
+    }
+    uploadFiles(): void {
+        this.onUploadEventSubject.next();
+    }
+    errorUploadFiles(): void {
+        this.toolsService.hideProgressBar();
+        this.toolsService.showError("error Upload Files");
+        this.router.navigate(['/patrimony/ouvrages/'+this.ouvrage.code+'/show']);
+    }
+    successUploadFiles(): void {
+        this.toolsService.hideProgressBar();
+        //this.toolsService.showSuccess("success Upload Files");
+        this.router.navigate(['/patrimony/ouvrages/'+this.ouvrage.code+'/show']);
+    }
+
+    onSubmitFiles() {
+        this.uploadFiles();
+    }
+    //---------------------------------------------------------------------
 
     ngOnDestroy(): void {
+        this._unsubscribeAll.next();
+        this._unsubscribeAll.complete();
     }
 
 
