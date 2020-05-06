@@ -9,6 +9,8 @@ import java.util.List;
 
 public interface OuvrageRepository extends JpaRepository<Ouvrage, Long> {
 
+    boolean existsByCode(String Code);
+
     Ouvrage findByCode(String code);
 
     @Query("SELECT ouvrage FROM Ouvrage ouvrage WHERE ouvrage.code IN :ouvrages")

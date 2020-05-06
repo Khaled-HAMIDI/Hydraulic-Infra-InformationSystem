@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { API } from 'config/api.config';
 import {  Router } from '@angular/router';
 import { ToolsService } from '@ayams/services/tools.service';
+import {error} from "util";
 
 const OUVRAGE_API = API + '/ouvrage';
 
@@ -41,10 +42,16 @@ export class BriseChargeService {
         return new Promise((resolve, reject) => {
             this.toolsService.showProgressBar();
             this.save(ouvrage).then((response) => {
-
-                    this.toolsService.hideProgressBar();
+                this.toolsService.hideProgressBar();
+                console.log(response);
+                if (response.code == "0") {
+                    this.toolsService.showError('ADD.TOAST-ADD.existError');
+                    reject(response);
+                }
+                else {
                     this.toolsService.showSuccess('ADD.TOAST-ADD.success');
                     resolve(response);
+                }
                 },
                 (error) => {
                     console.log(error);

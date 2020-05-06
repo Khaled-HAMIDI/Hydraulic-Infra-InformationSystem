@@ -13,7 +13,10 @@ public class CreateOuvrageAdapter implements SaveOuvrage {
     private final OuvrageRepository ouvrageRepository;
     @Override
     public Ouvrage saveOuvrage(Ouvrage ouvrage) {
-        ouvrageRepository.save(ouvrage);
+
+        if (ouvrageRepository.existsByCode(ouvrage.getCode())) ouvrage.setCode("0");
+        else ouvrageRepository.save(ouvrage);
+
         return ouvrage;
     }
 }

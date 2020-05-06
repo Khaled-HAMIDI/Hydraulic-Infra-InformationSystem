@@ -79,7 +79,8 @@ export const locale = {
             'TOAST-ADD': {
                 'title': 'Création des ouvrages',
                 'success': 'L\'ouvrage a été crée',
-                'error': 'L\'ouvrage n\'a pas été crée'
+                'error': 'L\'ouvrage n\'a pas été crée',
+                'existError':'Le code de l\'ouvrage existe déja'
             },
             "LEGENDS": {
                 'general': 'Information générales',
