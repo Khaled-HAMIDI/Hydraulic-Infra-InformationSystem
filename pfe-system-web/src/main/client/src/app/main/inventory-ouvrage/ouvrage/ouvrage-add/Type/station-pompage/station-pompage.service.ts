@@ -41,10 +41,16 @@ export class StationPompageService {
         return new Promise((resolve, reject) => {
             this.toolsService.showProgressBar();
             this.save(ouvrage).then((response) => {
-
                     this.toolsService.hideProgressBar();
-                    this.toolsService.showSuccess('ADD.TOAST-ADD.success');
-                    resolve(response);
+                    console.log(response);
+                    if (response.code == "0") {
+                        this.toolsService.showError('ADD.TOAST-ADD.existError');
+                        reject(response);
+                    }
+                    else {
+                        this.toolsService.showSuccess('ADD.TOAST-ADD.success');
+                        resolve(response);
+                    }
                 },
                 (error) => {
                     console.log(error);

@@ -11,6 +11,8 @@ public class OuvrageDto {
 
     private String id;
 
+    private String code;
+
     private String type;
 
     private Boolean enabled;
