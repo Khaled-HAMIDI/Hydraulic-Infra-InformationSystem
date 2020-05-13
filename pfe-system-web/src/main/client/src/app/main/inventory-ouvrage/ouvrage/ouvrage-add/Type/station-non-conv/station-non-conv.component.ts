@@ -145,7 +145,7 @@ export class StationNonConvComponent  implements OnInit, OnDestroy {
             state: [this.ouvrage.state, Validators.required],
             nbCompartment: [this.ouvrage.nbCompartment, Validators.required],
             coordinateX: [this.ouvrage.coordinateX, Validators.required],
-            coordinateZ: [this.ouvrage.coordinateZ, Validators.required],
+            coordinateZ: [this.ouvrage.coordinateZ],
             coordinateY: [this.ouvrage.coordinateY, Validators.required],
             area: [this.ouvrage.area, Validators.required],
             constructionType: [this.ouvrage.constructionType, Validators.required],

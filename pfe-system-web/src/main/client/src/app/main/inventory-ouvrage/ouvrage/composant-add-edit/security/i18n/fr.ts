@@ -5,7 +5,7 @@ export const locale = {
             'BUTTON': {
                 'disponible': 'Il n\' y a pas de sécurité',
                 'add':'Sauvgarder le composant',
-                'update':'Mettre a jour le composant'
+                'update':'Mettre à jour le composant'
             },
             "FIELD" :{
                 'state': 'Etat de l\'acces',

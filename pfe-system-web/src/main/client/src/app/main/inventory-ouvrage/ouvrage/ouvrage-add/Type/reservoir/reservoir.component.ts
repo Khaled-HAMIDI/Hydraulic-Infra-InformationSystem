@@ -153,7 +153,7 @@ export class ReservoirComponent implements OnInit, OnDestroy {
             raftRating: [this.ouvrage.raftRating, Validators.required],
             coteTropFull: [this.ouvrage.coteTropFull, Validators.required],
             coordinateX: [this.ouvrage.coordinateX, Validators.required],
-            coordinateZ: [this.ouvrage.coordinateZ, Validators.required],
+            coordinateZ: [this.ouvrage.coordinateZ],
             coordinateY: [this.ouvrage.coordinateY, Validators.required],
             area: [this.ouvrage.area, Validators.required],
             constructionType: [this.ouvrage.constructionType, Validators.required],
