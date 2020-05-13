@@ -6,10 +6,11 @@ import {ActivatedRoute, Router} from '@angular/router';
 import { FuseTranslationLoaderService } from '@fuse/services/translation-loader.service';
 import { locale as french } from './i18n/fr';
 import { locale as arabic } from './i18n/ar';
-import {StationTraitementConvSevice} from "../station-traitement-conv/station-traitement-conv.sevice";
 import {StationNonConvService} from "./station-non-conv.service";
 import { Subject } from 'rxjs';
 import { ToolsService } from '@ayams/services/tools.service';
+import { tileLayer, latLng, marker, icon, Map, map, Draggable, MarkerOptions, LeafletMouseEvent } from 'leaflet';
+
 
 @Component({
   selector: 'app-station-non-conv',
@@ -23,7 +24,29 @@ export class StationNonConvComponent  implements OnInit, OnDestroy {
     ouvrageForm: FormGroup;
     ouvrageAdd :Ouvrage;
 
-    autoCordinate :boolean;
+    theplace: any;
+    options: any;
+    lati: number;
+    long: number;
+
+    streetMaps = tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        detectRetina: true,
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+    });
+    wMaps = tileLayer('http://maps.wikimedia.org/osm-intl/{z}/{x}/{y}.png', {
+        detectRetina: true,
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+    });
+
+    // Layers control object with our two base layers and the three overlay layers
+    layersControl = {
+        baseLayers: {
+            'Street Maps': this.streetMaps,
+            'Wikimedia Maps': this.wMaps
+        }
+
+    };
+
     filesToBeAttached: any[];
     isFilesValid: boolean;
     public onUploadEventSubject: Subject<void>;
@@ -46,7 +69,6 @@ export class StationNonConvComponent  implements OnInit, OnDestroy {
         this.ouvrage.electricAlimentation = true;
 
         this.fuseTranslationLoader.loadTranslations(french, arabic);
-        this.autoCordinate=false;
         //  File Init
         this.onUploadEventSubject = new Subject();
         this.isFilesValid = false;
@@ -94,6 +116,23 @@ export class StationNonConvComponent  implements OnInit, OnDestroy {
     ngOnInit(): void {
         this.ouvrage.site = this.route.snapshot.paramMap.get('id');
         this.initFormStationTC();
+
+        //Just for now
+        this.lati = 36.697833;
+        this.long = 3.178480;
+        this.options = {
+
+            layers: [this.streetMaps, this.theplace = marker([this.lati, this.long], {
+                icon: icon({
+                    iconSize: [25, 41],
+                    iconAnchor: [13, 41],
+                    iconUrl: 'leaflet/marker-icon.png',
+                    shadowUrl: 'leaflet/marker-shadow.png'
+                }), draggable: true
+            })],
+            zoom: 14,
+            center: latLng(this.lati, this.long)
+        };
 
     }
 
@@ -209,28 +248,28 @@ export class StationNonConvComponent  implements OnInit, OnDestroy {
         this.ouvrage.remoteManagement = !this.ouvrage.remoteManagement;
     }
 
-    toggleCordonates() :void {
-        if (this.autoCordinate){
-            this.ouvrageForm.controls['coordinateX'].setValue('');
-            this.ouvrageForm.controls['coordinateY'].setValue('');
-            this.ouvrageForm.controls['coordinateZ'].setValue('');
-            this.autoCordinate = !this.autoCordinate;
-        }
-        else {
-            if (navigator.geolocation) {
-                navigator.geolocation.getCurrentPosition(this.showPosition);
-            } else {
-                console.log("Geolocation is not supported by this browser");
-            }
-            this.autoCordinate = !this.autoCordinate;
-        }
+    // Map functions
 
+    onMapReady(map: Map) {
+        map.on('click', <LeafletMouseEvent>($event) => {
+            const coord = $event.latlng;
+            this.lati = coord.lat.toFixed(6);
+            this.long = coord.lng.toFixed(6);
+            this.theplace.setLatLng(coord);
+        });
+
+        this.theplace.on('dragend', <DragEndEvent>($event) => {
+            const coord = $event.latlng;
+            this.lati=coord.lat.toFixed(6);
+            this.long=coord.lng.toFixed(6);
+            this.theplace.setLatLng(coord);
+        });
     }
-    showPosition(position) :void{
-        this.ouvrageForm.controls['coordinateX'].setValue(position.coords.latitude);
-        this.ouvrageForm.controls['coordinateY'].setValue(position.coords.longitude);
-        this.ouvrageForm.controls['coordinateZ'].setValue(position.coords.altitude);
+    onCoordChange() {
+        const coord = latLng(this.lati, this.long);
+        this.theplace.setLatLng(coord);
     }
+
      // File Functions-------------------------------------------------------------------------
      onAllRequiredAttached(isFilesValid: boolean): void {
         this.isFilesValid = isFilesValid;

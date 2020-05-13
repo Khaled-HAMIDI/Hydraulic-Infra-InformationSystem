@@ -279,43 +279,41 @@
                             <fieldset class="myfieldset">
 
                                 <legend>{{'ADD.LEGENDS.location' | translate}}</legend>
-
-                                <div>
-                                    <mat-slide-toggle matInput class="mt-20" (change)="toggleCordonates()">
-                                        <span *ngIf="autoCordinate">
-                                            {{ 'ADD.PLACE-HOLDER.autocordinateActive' | translate }}
-                                        </span>
-                                        <span *ngIf="!autoCordinate">
-                                            {{ 'ADD.PLACE-HOLDER.autocordinateInactive' | translate }}
-                                        </span>
-                                    </mat-slide-toggle>
+                                <div class="ml-sm-12" fxLayout.xs="column" fxLayout.sm="column">
+                                    <div class="mr-sm-12" fxFlex>
+                                        <mat-form-field appearance="outline" class="w-100-p">
+                                            <mat-label>{{'ADD.PLACE-HOLDER.area' | translate}}</mat-label>
+                                            <mat-icon matSuffix class="secondary-text">domain</mat-icon>
+                                            <input matInput name="area" formControlName="area" required>
+                                        </mat-form-field>
+                                    </div>
+                                    <div class="mr-sm-12" fxFlex>
+                                        <mat-form-field appearance="outline" fxFlex>
+                                            <mat-label>{{'ADD.PLACE-HOLDER.coordinateX' | translate}}
+                                            </mat-label>
+                                            <input matInput name="coordinateX" formControlName="coordinateX"
+                                                   [(ngModel)]="long" value="{{long}}" (change)="onCoordChange()"
+                                                   required>
+                                            <mat-icon matSuffix class="secondary-text">place</mat-icon>
+                                        </mat-form-field>
+                                    </div>
+                                    <div class="mr-sm-12" fxFlex>
+                                        <mat-form-field appearance="outline" fxFlex>
+                                            <mat-label>{{'ADD.PLACE-HOLDER.coordinateY' | translate}}
+                                            </mat-label>
+                                            <input matInput formControlName="coordinateY" [(ngModel)]="lati"
+                                                   value="{{lati}}" (change)="onCoordChange()" required>
+                                            <mat-icon matSuffix class="secondary-text">place</mat-icon>
+                                        </mat-form-field>
+                                    </div>
                                 </div>
-
-
-                                <mat-form-field appearance="outline" class="w-100-p">
-                                    <mat-label>{{'ADD.PLACE-HOLDER.coordinateX' | translate}}</mat-label>
-                                    <mat-icon matSuffix class="secondary-text">place</mat-icon>
-                                    <input matInput name="coordinateX" formControlName="coordinateX" required>
-                                </mat-form-field>
-
-                                <mat-form-field appearance="outline" class="w-100-p">
-                                    <mat-label>{{'ADD.PLACE-HOLDER.coordinateY' | translate}}</mat-label>
-                                    <mat-icon matSuffix class="secondary-text">place</mat-icon>
-                                    <input matInput name="coordinateY" formControlName="coordinateY" required>
-                                </mat-form-field>
-
-                                <mat-form-field appearance="outline" class="w-100-p">
-                                    <mat-label>{{'ADD.PLACE-HOLDER.coordinateZ' | translate}}</mat-label>
-                                    <mat-icon matSuffix class="secondary-text">place</mat-icon>
-                                    <input matInput name="coordinateZ" formControlName="coordinateZ" required>
-                                </mat-form-field>
-
-                                <mat-form-field appearance="outline" class="w-100-p">
-                                    <mat-label>{{'ADD.PLACE-HOLDER.area' | translate}}</mat-label>
-                                    <mat-icon matSuffix class="secondary-text">domain</mat-icon>
-                                    <input matInput name="area" formControlName="area" required>
-                                </mat-form-field>
-
+                                <div class="mapcls">
+                                    <div leaflet [leafletOptions]="options"
+                                         [leafletLayersControl]="layersControl"
+                                         (leafletMapReady)="onMapReady($event)" style="height: 300px;"
+                                         class="mapwh">
+                                    </div>
+                                </div>
 
                             </fieldset>
                         </div>
