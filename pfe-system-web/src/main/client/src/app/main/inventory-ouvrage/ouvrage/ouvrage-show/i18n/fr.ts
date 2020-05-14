@@ -6,7 +6,7 @@ export const locale = {
                 'composant':'Afficher les composants'
             },
             'HEADER': {
-                'title': 'Ouvrage',
+                'title': 'Les informations de l\'ouvrage ',
             },
             'LABEL': {
                 'code': 'Code',

@@ -4,7 +4,7 @@
     <div class="tab-content p-24" fusePerfectScrollbar>
 
         <div *ngIf="add">
-            <button mat-raised-button class="accent add-button" matStepperNext>
+            <button mat-raised-button class="accent add-button" [routerLink]="'patrimony/ouvrages/list'">
                 <span>{{'BUTTON.disponible' | translate}}</span>
             </button>
         </div>
@@ -103,7 +103,7 @@
         </div>
         <hr>
         <div>
-            <button mat-raised-button class="accent add-button" matStepperNext [disabled]="postChlorationForm.invalid" (click)="onSave()">
+            <button mat-raised-button class="accent add-button" [routerLink]="'patrimony/ouvrages/list'" [disabled]="postChlorationForm.invalid" (click)="onSave()">
                 <span *ngIf="add">{{'BUTTON.add' | translate}}</span>
                 <span *ngIf="!add">{{'BUTTON.update' | translate}}</span>
             </button>

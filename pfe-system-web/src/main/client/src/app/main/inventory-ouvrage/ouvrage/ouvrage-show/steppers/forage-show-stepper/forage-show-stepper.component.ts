@@ -3,6 +3,7 @@ import { FuseTranslationLoaderService } from '@fuse/services/translation-loader.
 import { locale as french } from '../i18n/fr';
 import { locale as arabic } from '../i18n/ar';
 import { fuseAnimations } from '@fuse/animations';
+import {ActivatedRoute} from "@angular/router";
 
 @Component({
   selector: 'app-forage-show-stepper',
@@ -12,6 +13,7 @@ import { fuseAnimations } from '@fuse/animations';
 })
 export class ForageShowStepperComponent {
     constructor(
+        private route: ActivatedRoute,
         private fuseTranslationLoader: FuseTranslationLoaderService
     ) {
         // Set the default

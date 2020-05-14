@@ -13,7 +13,7 @@
             <!-- APP TITLE -->
             <div fxLayout="row" fxLayoutAlign="start center">
 
-                <button mat-icon-button class="mr-0 mr-sm-16" [routerLink]="'patrimony/ouvrages'">
+                <button mat-icon-button class="mr-0 mr-sm-16" [routerLink]="'/patrimony/ouvrages/add'">
                     <mat-icon>arrow_back</mat-icon>
                 </button>
 
@@ -288,14 +288,11 @@
                             </fieldset>
                         </div>
                         <div fxLayout="column" class="mr-sm-12 ml-sm-12">
-                            <fieldset class="myfieldset">
-                                <legend>{{'ADD.LEGENDS.documents' | translate}}</legend>
                                 <ayams-file-uploader fxFlex [uploadFiles]="filesToBeAttached" [showAndUpdate]="true"
                                     [events]="onUploadEventSubject.asObservable()" (errorUpload)="errorUploadFiles()"
                                     (allRequiredAttached)="onAllRequiredAttached($event)"
                                     (successUpload)="successUploadFiles()">
                                 </ayams-file-uploader>
-                            </fieldset>
                         </div>
                     </div>
 

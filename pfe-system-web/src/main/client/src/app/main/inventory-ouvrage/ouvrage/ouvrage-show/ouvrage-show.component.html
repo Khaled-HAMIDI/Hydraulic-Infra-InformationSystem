@@ -21,7 +21,7 @@
                     <div fxLayout="column" fxLayoutAlign="start start"
                          [@animate]="{value:'*',params:{delay:'100ms',x:'-25px'}}">
                         <div class="h2">
-                            {{'SHOW.HEADER.title' | translate}} {{ouvrage.name}}
+                            {{'SHOW.HEADER.title' | translate}} {{ouvrage.code}}
                         </div>
 
                     </div>
@@ -460,10 +460,7 @@
                             </fieldset>
                         </div>
                         <div fxLayout="column" class="mr-sm-12 ml-sm-12">
-                            <fieldset class="myfieldset">
-                                <legend>{{'ADD.LEGENDS.documents' | translate}}</legend>
                                 <ayams-file-uploader fxFlex [uploadFiles]="filesToBeShowed"></ayams-file-uploader>
-                            </fieldset>
                         </div>
                     </div>
                 </div>

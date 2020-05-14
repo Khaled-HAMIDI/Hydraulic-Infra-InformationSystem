@@ -16,7 +16,7 @@
                 <div fxLayout="column" fxLayoutAlign="start start"
                      [@animate]="{value:'*',params:{delay:'100ms',x:'-25px'}}">
                     <div class="h2" >
-                        {{'HEADER.title' | translate}}
+                        {{'HEADER.title' | translate}} {{ route.snapshot.params['code']}}
                     </div>
                 </div>
             </div>
@@ -44,11 +44,6 @@
                             <mat-step >
                                 <ng-template matStepLabel>Poste transformation électrique</ng-template>
                                 <app-post-trans-elec-show></app-post-trans-elec-show>
-                            </mat-step>
-
-                            <mat-step >
-                                <ng-template matStepLabel>Groupe électrogène </ng-template>
-                                <app-groupe-electrogene-show></app-groupe-electrogene-show>
                             </mat-step>
 
                             <mat-step >
@@ -109,6 +104,11 @@
                             <mat-step >
                                 <ng-template matStepLabel>Collecteur de refoulement  </ng-template>
                                 <app-collecteur-reffoullement-show></app-collecteur-reffoullement-show>
+                            </mat-step>
+
+                            <mat-step >
+                                <ng-template matStepLabel>Groupe électrogène </ng-template>
+                                <app-groupe-electrogene-show></app-groupe-electrogene-show>
                             </mat-step>
 
                         </mat-vertical-stepper>
