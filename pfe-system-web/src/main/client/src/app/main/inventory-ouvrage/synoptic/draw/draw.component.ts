@@ -88,7 +88,7 @@ export class DrawComponent implements OnInit, OnDestroy {
           return ouv.code === chain.ouvrages[i].code
         }).currentDebit
         console.log(debit);
-        l.meta = { interface: { source: debit.toString(), target: '' } };
+        l.meta = { interface: { source: 10, target: '' } };
         var ind = this.links.findIndex((link) => {
           return ((link.source === l.source) && (link.target === l.target))
         });

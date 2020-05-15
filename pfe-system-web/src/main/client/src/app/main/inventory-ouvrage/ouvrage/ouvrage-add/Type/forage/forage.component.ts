@@ -186,9 +186,8 @@ export class ForageComponent implements OnInit, OnDestroy {
 
 
         this.forageService.saveOuvrage(this.ouvrageAdd)
-            .then((response) => {
-                    console.log("It worked");
-                    this.router.navigate(['composants/'+this.ouvrageAdd.code],{relativeTo:this.route});
+            .then((response:any) => {
+                this.onSubmitFiles(response.id)
                 },
                 (error) => {
                     console.log("No")

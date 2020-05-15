@@ -175,9 +175,8 @@ export class StationNonConvComponent  implements OnInit, OnDestroy {
         if (this.ouvrageAdd.treatmentStationType == '') this.ouvrageAdd.treatmentStationType = 'none';
 
         this.stationNonConvService.saveOuvrage(this.ouvrageAdd)
-            .then((response) => {
-                    console.log("It worked");
-                    this.router.navigate(['composants/'+this.ouvrageAdd.code],{relativeTo:this.route});
+            .then((response:any) => {
+                this.onSubmitFiles(response.id);
                 },
                 (error) => {
                     console.log("No")

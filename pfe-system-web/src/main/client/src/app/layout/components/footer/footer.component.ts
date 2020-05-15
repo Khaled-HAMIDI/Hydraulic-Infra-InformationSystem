@@ -7,10 +7,14 @@ import { Component } from '@angular/core';
 })
 export class FooterComponent
 {
+    date : Date
+    year;
     /**
      * Constructor
      */
     constructor()
     {
+        this.date = new Date();
+        this.year = this.date.getFullYear();
     }
 }
