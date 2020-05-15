@@ -20,7 +20,7 @@
                 <div fxLayout="column" fxLayoutAlign="start start"
                     [@animate]="{value:'*',params:{delay:'100ms',x:'-25px'}}">
                     <div class="h2">
-                        {{'EDIT.HEADER.title-edit' | translate}} {{ouvrage.name}}
+                        {{'EDIT.HEADER.title-edit' | translate}} {{ouvrage.code}}
                     </div>
                 </div>
             </div>
@@ -210,14 +210,11 @@
                             </div>
                         </div>
                         <div fxLayout="column" class="mr-sm-12 ml-sm-12">
-                            <fieldset class="myfieldset">
-                                <legend>{{'ADD.LEGENDS.documents' | translate}}</legend>
                                 <ayams-file-uploader fxFlex [uploadFiles]="filesToBeAttached" [showAndUpdate]="true"
                                     [events]="onUploadEventSubject.asObservable()" (errorUpload)="errorUploadFiles()"
                                     (allRequiredAttached)="onAllRequiredAttached($event)"
                                     (successUpload)="successUploadFiles()">
                                 </ayams-file-uploader>
-                            </fieldset>
                         </div>
                     </div>
                 </form>

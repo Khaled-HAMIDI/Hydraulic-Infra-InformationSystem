@@ -6,7 +6,7 @@ export const locale = {
                 'composant':'Afficher les composants'
             },
             'HEADER': {
-                'title': 'Ouvrage',
+                'title': 'Les informations de l\'ouvrage ',
             },
             'LABEL': {
                 'code': 'Code',
@@ -19,8 +19,8 @@ export const locale = {
                 'nbCompartment': 'Nombre de compartiments',
                 'raftRating': 'Cote du radier',
                 'coteTropFull': 'Cote trop plein',
-                'coordinateX' : 'Cordonnées X',
-                'coordinateY' : 'Cordonnées Y',
+                'coordinateX' : 'Longitude',
+                'coordinateY' : 'Latitude',
                 'coordinateZ' : 'Cordonnées Z',
                 'area' : 'Superficie',
                 'installedCapacity' : "Capacité installée",

@@ -12,20 +12,31 @@
 }
 
 
-.mat-white-bg[disabled] {
-    background-color: rgba(255, 255, 255, 0.52) !important;
-    color: rgba(0, 0, 0, 0.26) !important;
-}
-
-.myfieldset{
-    padding-top: 15px;
-    border-radius: 7px;
-    border: 1px solid rgb(224, 224, 224);
-    margin-top: 15px;
-    //min-height: 399px;
-    
-    legend {
-        padding-left: 5px;
-        padding-right: 5px;
+    .mat-white-bg[disabled] {
+        background-color: rgba(255, 255, 255, 0.52) !important;
+        color: rgba(0, 0, 0, 0.26) !important;
     }
+
+    .myfieldset{
+        padding-top: 15px;
+        border-radius: 7px;
+        border: 1px solid rgb(224, 224, 224);
+        margin-top: 15px;
+        //min-height: 399px;
+
+        legend {
+            padding-left: 5px;
+            padding-right: 5px;
+        }
+        }
+    .mapwh{
+        width: 100% !important;
+        height: 300px !important;
+        min-height: 300px !important;
+        max-height: 300px !important;
+    }
+    .mapcls{
+        overflow: auto;
+        max-height: 350px;
+        margin-bottom: 8px;
     }

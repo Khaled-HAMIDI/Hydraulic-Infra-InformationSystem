@@ -5,7 +5,7 @@ export const locale = {
             'BUTTON': {
                 'disponible': 'Cet composant n\'existe pas',
                 'add':'Sauvgarder le composant',
-                'update':'Mettre a jour le composant'
+                'update':'Mettre à jour le composant'
             },
             "FIELD" :{
                 'type': 'Type',

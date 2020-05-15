@@ -132,6 +132,7 @@ import { StationTraitementConvShowStepperComponent } from './ouvrage-show/steppe
 import { OuvrageAddService } from './ouvrage-add/ouvrage-add.service';
 import { OuvrageShowService } from './ouvrage-show/ouvrage-show.service';
 import { OuvrageEditService } from './ouvrage-edit/ouvrage-edit.service';
+import {LeafletModule} from "@asymmetrik/ngx-leaflet";
 
 export const options: Partial<IConfig> | (() => Partial<IConfig>) = null;
 
@@ -306,6 +307,7 @@ const routes: Routes = [
         NgxMaskModule.forRoot(options),
         MatDatepickerModule,
         MatStepperModule,
+        LeafletModule,
     ]
 })
 export class OuvrageModule { }

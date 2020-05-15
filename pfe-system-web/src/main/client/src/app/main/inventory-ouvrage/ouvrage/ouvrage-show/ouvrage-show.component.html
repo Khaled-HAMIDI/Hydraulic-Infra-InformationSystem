@@ -21,7 +21,7 @@
                     <div fxLayout="column" fxLayoutAlign="start start"
                          [@animate]="{value:'*',params:{delay:'100ms',x:'-25px'}}">
                         <div class="h2">
-                            {{'SHOW.HEADER.title' | translate}} {{ouvrage.name}}
+                            {{'SHOW.HEADER.title' | translate}} {{ouvrage.code}}
                         </div>
 
                     </div>
@@ -431,6 +431,14 @@
                                 <div fxLayout="column" fxLayout.gt-sm="row">
 
                                     <div class="mr-sm-24" fxFlex>
+                                        <p class="myLabel">{{'SHOW.LABEL.area' | translate}}</p>
+                                        <p class="myp">
+                                            <mat-icon matPrefix class="mr-12 s-20" color="accent">domain</mat-icon>
+                                            <span>{{ouvrage.area}}</span>
+                                        </p>
+                                    </div>
+
+                                    <div class="mr-sm-24" fxFlex>
                                         <p class="myLabel">{{'SHOW.LABEL.coordinateX' | translate}}</p>
                                         <p class="myp">
                                             <mat-icon matPrefix class="mr-12 s-20" color="accent">place</mat-icon>
@@ -447,32 +455,12 @@
                                         </p>
                                     </div>
 
-                                    <div class="mr-sm-24" fxFlex>
-                                        <p class="myLabel">{{'SHOW.LABEL.coordinateZ' | translate}}</p>
-                                        <p class="myp">
-                                            <mat-icon matPrefix class="mr-12 s-20" color="accent">place</mat-icon>
-                                            <span>{{ouvrage.coordinateZ}}</span>
-                                        </p>
-                                    </div>
-
-
-                                    <div class="mr-sm-24" fxFlex>
-                                        <p class="myLabel">{{'SHOW.LABEL.area' | translate}}</p>
-                                        <p class="myp">
-                                            <mat-icon matPrefix class="mr-12 s-20" color="accent">domain</mat-icon>
-                                            <span>{{ouvrage.area}}</span>
-                                        </p>
-                                    </div>
-
 
                                 </div>
                             </fieldset>
                         </div>
                         <div fxLayout="column" class="mr-sm-12 ml-sm-12">
-                            <fieldset class="myfieldset">
-                                <legend>{{'ADD.LEGENDS.documents' | translate}}</legend>
                                 <ayams-file-uploader fxFlex [uploadFiles]="filesToBeShowed"></ayams-file-uploader>
-                            </fieldset>
                         </div>
                     </div>
                 </div>

@@ -4,16 +4,14 @@
     <div class="tab-content p-24" fusePerfectScrollbar>
 
         <div *ngIf="add">
-            <button mat-raised-button class=" mat-white-bg" matStepperNext>
+            <button mat-raised-button class="accent add-button" [routerLink]="'/patrimony/ouvrages/list'">
                 <span>{{'BUTTON.disponible' | translate}}</span>
             </button>
         </div>
-        <hr>
+        <hr *ngIf="add">
 
         <div fxLayout="column" fxLayout.gt-sm="row">
             <div class="mr-sm-12 ml-sm-12" fxFlex>
-
-                <fieldset class="myfieldset">
 
                     <mat-form-field appearance="outline" class="w-100-p" >
                         <mat-label>{{'FIELD.puissance' | translate}}</mat-label>
@@ -28,12 +26,10 @@
                         <input matInput name="cuve" formControlName="cuve" required>
                     </mat-form-field>
 
-                </fieldset>
             </div>
 
             <div class="mr-sm-12 ml-sm-12" fxFlex>
 
-                <fieldset class="myfieldset">
                     <mat-form-field appearance="outline" class="w-100-p" >
                         <mat-label>{{'FIELD.number' | translate}}</mat-label>
                         <mat-icon matSuffix class="secondary-text">keyboard</mat-icon>
@@ -47,13 +43,12 @@
                         <input matInput name="nature" formControlName="nature" required>
                     </mat-form-field>
 
-                </fieldset>
             </div>
         </div>
 
         <hr>
         <div>
-            <button mat-raised-button class=" mat-white-bg" matStepperNext [disabled]="groupeElectrogeneForm.invalid" (click)="onSave()">
+            <button mat-raised-button class="accent add-button" [routerLink]="'/patrimony/ouvrages/list'" [disabled]="groupeElectrogeneForm.invalid" (click)="onSave()">
                 <span *ngIf="add">{{'BUTTON.add' | translate}}</span>
                 <span *ngIf="!add">{{'BUTTON.update' | translate}}</span>
             </button>

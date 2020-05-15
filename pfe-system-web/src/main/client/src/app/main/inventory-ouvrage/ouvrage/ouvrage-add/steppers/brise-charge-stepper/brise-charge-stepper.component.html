@@ -15,8 +15,8 @@
 
                 <div fxLayout="column" fxLayoutAlign="start start"
                      [@animate]="{value:'*',params:{delay:'100ms',x:'-25px'}}">
-                    <div class="h2" *ngIf="pageType=='add'"> {{'HEADER.titleAdd' | translate}} </div>
-                    <div class="h2" *ngIf="pageType=='edit'"> {{'HEADER.titleEdit' | translate}} </div>
+                    <div class="h2" *ngIf="pageType=='add'"> {{'HEADER.titleAdd' | translate }} {{ route.snapshot.params['code']}} </div>
+                    <div class="h2" *ngIf="pageType=='edit'"> {{'HEADER.titleEdit' | translate}} {{ route.snapshot.params['code']}} </div>
                 </div>
             </div>
             <!-- / APP TITLE -->
