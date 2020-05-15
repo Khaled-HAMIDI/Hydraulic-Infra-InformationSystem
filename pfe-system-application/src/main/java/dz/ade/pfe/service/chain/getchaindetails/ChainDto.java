@@ -16,7 +16,5 @@ public class ChainDto {
 
     private String name;
 
-    private Integer ouvragesNumber;
-
     private List<OuvrageDto> ouvrages;
 }
