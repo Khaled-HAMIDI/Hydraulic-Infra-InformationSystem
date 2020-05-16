@@ -1,95 +1,83 @@
-.page-layout.carded.fullwidth {
-    .top-bg {
-        height: 152px;
-    }
-    .center {
-        .header {
-            height: 97px !important;
-            min-height: 97px !important;
-            max-height: 97px !important;
+#chain {
+
+    .header {
+
+        .product-image {
+            overflow: hidden;
+            width: 56px;
+            min-width: 56px;
+            max-width: 56px;
+            height: 56px;
+            min-height: 56px;
+            max-height: 56px;
+            border-radius: 4px;
+
+            img {
+                height: 100%;
+                width: auto;
+                max-width: none;
+            }
+        }
+
+        .subtitle {
+            margin: 6px 0 0 0;
         }
     }
-}
 
+    .content {
+
+        .mat-tab-group,
+        .mat-tab-body-wrapper,
+        .tab-content{
+            flex: 1 1 auto;
+            max-width: 100%;
+        }
+
+        .mat-tab-body-content {
+            display: flex;
+        }
+
+        .mat-tab-label {
+            height: 64px;
+        }
+
+        .product-image {
+            overflow: hidden;
+            width: 128px;
+            height: 128px;
+            margin-right: 16px;
+            margin-bottom: 16px;
+            border-radius: 4px;
+
+            img {
+                height: 100%;
+                width: auto;
+                max-width: none;
+            }
+        }
+
+        // Temporary prefix alignment fix
+        .mat-form-field-appearance-outline .mat-form-field-prefix,
+        .mat-form-field-appearance-outline .mat-form-field-suffix {
+            top: 0;
+        }
+    }
+
+}
 
 .mat-white-bg[disabled] {
     background-color: rgba(255, 255, 255, 0.52) !important;
     color: rgba(0, 0, 0, 0.26) !important;
 }
-
-
-.users-table {
-    flex: 1 1 auto;
-    border-bottom: 1px solid rgba(0, 0, 0, .12);
-    overflow: auto;
-    mat-cell:last-child{
-        padding: 0;
-    }
-    .mat-header-row {
-        min-height: 54px;
-    }
-
-    .user {
-        position: relative;
-        cursor: pointer;
-    }
-
-    .mat-cell {
-        min-width: 0;
-        display: flex;
-        align-items: left;
-    }
-
-    .mat-column-checkbox {
-        flex: 0 1 80px;
-    }
-
-    .mat-column-enabled {
-        flex: 0 1 80px;
-    }
-
-    .mat-column-employeeCode {
-        flex: 0 1 80px;
-    }
-
-    .mat-column-buttons {
-        flex: 0 1 80px;
-    }
-
-    .mat-column-active{
-        flex: 0 1 30px;
-    }
-
-    .mat-column-roles{
-        padding-bottom: 3px;
-        padding-top: 3px;
-    }
-    
-}
-        
+       
 .example-container {
         overflow: auto;
         background-color: white;
     }
 
-table {
-width: 100%;
-min-width: 850px;
-margin-bottom: 5em;
-}
-
-
-
-
-.mat-menu-item {
-font-family: Roboto, "Helvetica Neue", sans-serif;
-font-size: 14px;
-line-height: 0px;
-font-weight: 500;
-}
         .flex-container {
             display: flex;
-            flex-direction: column;
+            flex-direction: row;
           }
           .example-list {
             width: 500px;
@@ -139,3 +127,12 @@ font-weight: 500;
           .example-list.cdk-drop-list-dragging .example-box:not(.cdk-drag-placeholder) {
             transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
           }
+          .example-headers-align .mat-expansion-panel-header-title,
+.example-headers-align .mat-expansion-panel-header-description {
+  flex-basis: 0;
+}
+
+.example-headers-align .mat-expansion-panel-header-description {
+  justify-content: space-between;
+  align-items: center;
+}

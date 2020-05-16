@@ -20,6 +20,8 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatSortModule } from '@angular/material/sort';
 import { MatTableModule } from '@angular/material/table';
+import { MatTabsModule } from '@angular/material/tabs';
+import {MatExpansionModule} from '@angular/material/expansion';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatListModule } from '@angular/material/list';
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -75,6 +77,8 @@ const routes: Routes = [
         RouterModule.forChild(routes),
         MatSortModule,
         MatTableModule,
+        MatTabsModule,
+        MatExpansionModule,
         MatPaginatorModule,
         MatIconModule,
         MatFormFieldModule,

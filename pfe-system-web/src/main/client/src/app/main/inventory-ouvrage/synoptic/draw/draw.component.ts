@@ -53,7 +53,7 @@ export class DrawComponent implements OnInit, OnDestroy {
     ouvrages.forEach((ouv) => {
       var n = new node();
       ouv.site.name = ouv.site.name.replace(' ', '')
-      n.name = ouv.site.name + '-' + ouv.name.replace(' ', '');
+      n.name = ouv.site.name + '-' + ouv.code;
       if (ouv.type == generalType.Reservoir) {
         n.icon = images.R;
       }
@@ -82,8 +82,8 @@ export class DrawComponent implements OnInit, OnDestroy {
       var l;
       for (var i = 0; i < chain.ouvrages.length - 1; i++) {
         l = new link();
-        l.source = chain.ouvrages[i].site.replace(' ', '') + '-' + chain.ouvrages[i].name.replace(' ', '');
-        l.target = chain.ouvrages[i + 1].site.replace(' ', '') + '-' + chain.ouvrages[i + 1].name.replace(' ', '');
+        l.source = chain.ouvrages[i].site.replace(' ', '') + '-' + chain.ouvrages[i].code;
+        l.target = chain.ouvrages[i + 1].site.replace(' ', '') + '-' + chain.ouvrages[i + 1].code;
         debit = ouvrages.find((ouv) => {
           return ouv.code === chain.ouvrages[i].code
         }).currentDebit

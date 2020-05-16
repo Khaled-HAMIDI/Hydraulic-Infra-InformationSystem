@@ -38,6 +38,8 @@ export class ChainAddEditComponent implements OnInit, OnDestroy {
     allPermissions=[];
     pageType: string;
     AllOuvrages = [];
+    filteredOuvrages = [];
+    searchTerm : string = '';
     chainForm: FormGroup;
     dataSource: MatTableDataSource<any>;
     displayedColumns: string[];
@@ -63,7 +65,7 @@ export class ChainAddEditComponent implements OnInit, OnDestroy {
     ngOnInit(): void {
         this.route.data.pipe(takeUntil(this._unsubscribeAll)).subscribe(
             (response) => {
-                console.log(response.data[0]);
+                console.log(response.data[1]);
                 this.initForm(response.data[0], response.action);
                 this.classOuvrages(response.data[1],response.action);
                 this.initTable(this.AllOuvrages);
@@ -81,6 +83,7 @@ export class ChainAddEditComponent implements OnInit, OnDestroy {
 
     classOuvrages(ouvrages,type){
         this.AllOuvrages = this.createAllOuvragesStructure();
+        this.filteredOuvrages = this.createAllOuvragesStructure();
         ouvrages.forEach((ouvrage)=> {
             if (type == 'edit'){
                 var i = this.chain.ouvrages.findIndex((item)=>{
@@ -98,27 +101,33 @@ export class ChainAddEditComponent implements OnInit, OnDestroy {
             ouvrage.checked = false;
             if(ouvrage.type === generalType.BriseCharge)
             {
-                this.AllOuvrages[0].ouvrages.push(ouvrage)
+                this.AllOuvrages[0].ouvrages.push(ouvrage);
+                this.filteredOuvrages[0].ouvrages.push(ouvrage);
             }
             if(ouvrage.type === generalType.Forage)
             {
                 this.AllOuvrages[1].ouvrages.push(ouvrage)
+                this.filteredOuvrages[1].ouvrages.push(ouvrage)
             }
             if(ouvrage.type === generalType.Reservoir)
             {
                 this.AllOuvrages[2].ouvrages.push(ouvrage)
+                this.filteredOuvrages[2].ouvrages.push(ouvrage)
             }
             if(ouvrage.type === generalType.StationPompage)
             {
                 this.AllOuvrages[3].ouvrages.push(ouvrage)
+                this.filteredOuvrages[3].ouvrages.push(ouvrage)
             }
             if(ouvrage.type === generalType.StationTraitementConventionelle)
             {
                 this.AllOuvrages[4].ouvrages.push(ouvrage)
+                this.filteredOuvrages[4].ouvrages.push(ouvrage)
             }
             if(ouvrage.type === generalType.StationTraitementNonConventionelle)
             {
                 this.AllOuvrages[5].ouvrages.push(ouvrage)
+                this.filteredOuvrages[5].ouvrages.push(ouvrage)
             }
         })
     }
@@ -151,6 +160,23 @@ export class ChainAddEditComponent implements OnInit, OnDestroy {
         this.selectedOuvrages.push(ouvrage);
         else
         this.selectedOuvrages.splice(this.selectedOuvrages.indexOf(ouvrage),1);
+    }
+
+    filterOuvrageByTerm(i:number): void
+    {
+        const searchTerm = this.searchTerm.toLowerCase();
+        console.log(searchTerm);
+        // Search
+        if ( searchTerm === '' )
+        {
+            this.filteredOuvrages[i].ouvrages = this.AllOuvrages[i].ouvrages;
+        }
+        else
+        {
+            this.filteredOuvrages[i].ouvrages = this.AllOuvrages[i].ouvrages.filter((ouvrage) => {
+                return (ouvrage.name.toLowerCase().includes(searchTerm) || ouvrage.code.toLowerCase().includes(searchTerm) );
+            });
+        }
     }
 
     onSave(): void {
