@@ -34,6 +34,9 @@ export class OuvrageListComponent extends Table implements OnInit, OnDestroy {
   confirmDialogRef: MatDialogRef<FuseConfirmDialogComponent>;
   btnExport: boolean;
   emptyList: boolean;
+  currentCategory;
+  filtredOuvrages;
+  searchTerm:string ='';
   constructor(
     private ouvrageListService: OuvrageListService,
     private route: ActivatedRoute,
@@ -46,6 +49,8 @@ export class OuvrageListComponent extends Table implements OnInit, OnDestroy {
     this.ouvragesCheckbox = {};
     this.selectBarDisplayed = false;
     this.toolsService.loadTranslations(french, arabic);
+    this.currentCategory = 'all'
+    this.filtredOuvrages = []
   }
 
   ngOnInit() {
@@ -54,7 +59,8 @@ export class OuvrageListComponent extends Table implements OnInit, OnDestroy {
         console.log(response.data[0]);
         this.btnExport = response.data[0].length;
         this.emptyList = response.data[0].length == 0;
-        this.initTable(response.data[0]);
+        this.filtredOuvrages = response.data[0]
+        this.initTable(this.filtredOuvrages);
         this.initOuvragesSelected(response.data[0]);
       },
       (error) => {
@@ -119,10 +125,35 @@ export class OuvrageListComponent extends Table implements OnInit, OnDestroy {
   // -----------------------------------------------------------------------------------------------------
   // @ Public function
   // -----------------------------------------------------------------------------------------------------
+  filterOuvragesByType():void{
+    // Filter
+    if ( this.currentCategory === 'all' )
+    {
+        this.filtredOuvrages = this.ouvrageListService.ouvrages;
+        this.initTable(this.filtredOuvrages);
+        this.ouvrageListService.setOuvragesByFilter(this.filtredOuvrages)
+        //this.filteredCourses = this.courses;
+    }
+    else
+    {
+        this.filtredOuvrages = this.ouvrageListService.ouvrages.filter((ouvrage) => {
+            return ouvrage.type === this.currentCategory;
+        });
+        this.initTable(this.filtredOuvrages);
+        this.ouvrageListService.setOuvragesByFilter(this.filtredOuvrages)
+        //this.filteredCourses = [...this.coursesFilteredByCategory];
+
+    }
+
+    // Re-filter by search term
+    this.applyFilter(this.searchTerm)
+  }
+  
   applyFilter(filterValue: string) {
 
     this.filter(filterValue);
     this.ouvrageListService.setOuvragesByFilter(this.dataSource.filteredData);
+    this.filtredOuvrages = this.dataSource.filteredData;
     this.btnExport = this.dataSource['_renderData'].value.length;
   }
 

@@ -1,10 +1,10 @@
 export class Chain {
-    id : string;
-    code : string;
-    name : string;
-    enabled : boolean
-    ouvrages : any[]
-    constructor(chain?){
+    id: string;
+    code: string;
+    name: string;
+    enabled: boolean
+    ouvrages: any[]
+    constructor(chain?) {
         chain = chain || {};
         this.id = chain.id || null;
         this.code = chain.code || '';
@@ -19,14 +19,20 @@ export class Ouvrage {
 }
 
 export class AllOuvrages {
-    type : string;
-    ouvrages : any[];
-    constructor(type:string){
+    type: string;
+    ouvrages: any[];
+    constructor(type: string) {
         this.type = type;
         this.ouvrages = [];
     }
 }
 
 export enum generalType {
-    StationTraitementConventionelle='StationTraitementConventionelle', StationTraitementNonConventionelle='StationTraitementNonConventionelle', Reservoir='Reservoir', Forage='Forage', StationPompage='StationPompage', BriseCharge='BriseCharge', none='none'
+    StationTraitementConventionelle = 'StationTraitementConventionelle',
+    StationTraitementNonConventionelle = 'StationTraitementNonConventionelle',
+    Reservoir = 'Reservoir',
+    Forage = 'Forage',
+    StationPompage = 'StationPompage',
+    BriseCharge = 'BriseCharge',
+    none = 'none'
 }

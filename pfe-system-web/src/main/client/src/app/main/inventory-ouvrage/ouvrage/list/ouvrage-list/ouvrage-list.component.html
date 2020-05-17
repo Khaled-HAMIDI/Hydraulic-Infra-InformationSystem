@@ -27,10 +27,26 @@
                 <div class="search-wrapper mx-32 mx-md-0">
                     <div class="search" fxFlex fxLayout="row" fxLayoutAlign="start center">
                         <mat-icon>search</mat-icon>
-                        <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Recherche">
+                        <input matInput [(ngModel)]="searchTerm" (keyup)="applyFilter($event.target.value)" placeholder="Recherche">
                     </div>
                 </div>
                 <!-- / SEARCH -->
+                <mat-form-field class="category-selector mt-24 mt-md-0">
+                    <mat-label>Types</mat-label>
+                    <mat-select [(ngModel)]="currentCategory" (selectionChange)="filterOuvragesByType()">
+                        <mat-option [value]="'all'">
+                            Tous
+                        </mat-option>
+                        <mat-option value="StationTraitementConventionelle">Station de
+                            Traitement Conventionelle</mat-option>
+                        <mat-option value="StationTraitementNonConventionelle">Station de Traitement
+                            Non Conventionelle</mat-option>
+                        <mat-option value="Reservoir">Reservoir</mat-option>
+                        <mat-option value="Forage">Forage, Puit, Source</mat-option>
+                        <mat-option value="StationPompage">Station de Pompage</mat-option>
+                        <mat-option value="BriseCharge">Brise Charge</mat-option>
+                    </mat-select>
+                </mat-form-field>
 
                 <button mat-raised-button (click)="export()" class="mat-white-bg mt-24 mt-md-0" [disabled]="!btnExport">
                     <span>Exporter</span>
