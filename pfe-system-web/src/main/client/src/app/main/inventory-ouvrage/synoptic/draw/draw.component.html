@@ -1,33 +1,41 @@
-    <div id="chain" class="page-layout carded fullwidth inner-scroll">
-        <!-- TOP BACKGROUND -->
-        <div class="top-bg accent"></div>
-        <!-- / TOP BACKGROUND -->
-        <div class="center">
-            <!-- HEADER -->
-            <div class="header accent" fxLayout="row" fxLayoutAlign="space-between center">
+<div id="chain" class="page-layout carded fullwidth inner-scroll">
+    <!-- TOP BACKGROUND -->
+    <div class="top-bg accent"></div>
+    <!-- / TOP BACKGROUND -->
+    <div class="center">
+        <!-- HEADER -->
+        <div class="header accent" fxLayout="column" fxLayoutAlign="center center" fxLayout.gt-sm="row"
+            fxLayoutAlign.gt-sm="space-between center">
 
-                <!-- APP TITLE -->
-                <div fxLayout="row" fxLayoutAlign="start center">
+            <!-- APP TITLE -->
+            <div fxLayout="row" fxLayoutAlign="start center">
 
-                    <button mat-icon-button class="mr-0 mr-sm-16" [routerLink]="'/patrimony/chain/list'">
-                        <mat-icon>arrow_back</mat-icon>
-                    </button>
+                <button mat-icon-button class="mr-0 mr-sm-16" [routerLink]="'/patrimony/chain/list'">
+                    <mat-icon>arrow_back</mat-icon>
+                </button>
 
-
-                    <div fxLayout="column" fxLayoutAlign="start start"
-                        [@animate]="{value:'*',params:{delay:'100ms',x:'-25px'}}">
-                        <div class="h2">
-                            Synoptic
-                        </div>
+                <div fxLayout="column" fxLayoutAlign="start start"
+                    [@animate]="{value:'*',params:{delay:'100ms',x:'-25px'}}">
+                    <div class="h2">
+                        Synoptic
                     </div>
                 </div>
             </div>
-            <!-- / HEADER -->
-            <div class="content-card mat-white-bg">
-                <!-- CONTENT -->
-                <div id="diagram"></div>
-                <div class="tooltip"></div>
-            </div>
+            <mat-form-field class="category-selector mt-24 mt-md-0">
+                <mat-label>Chaines</mat-label>
+                <mat-select [(ngModel)]="selectedChains"  multiple>
+                    <mat-option (click)="selectAll()" [value]="'all'">
+                        Tous
+                    </mat-option>
+                    <mat-option *ngFor="let chain of chains;let i = index" (click)="selectChains(i)" [value]='chain.code'>{{chain.name}}</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+        <!-- / HEADER -->
+        <div class="content-card mat-white-bg">
+            <!-- CONTENT -->
+            <div id="diagram"></div>
+            <div class="tooltip"></div>
         </div>
     </div>
-
+</div>

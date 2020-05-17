@@ -4,6 +4,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { DrawComponent } from './draw/draw.component';
 import { DrawService } from './draw/draw.service';
 import { MatIconModule } from '@angular/material/icon';
+import {MatSelectModule} from '@angular/material/select';
 import { FuseSharedModule } from '@fuse/shared.module';
 import { FuseConfirmDialogModule } from '@fuse/components';
 import { FuseWidgetModule } from '@fuse/components/widget/widget.module';
@@ -28,6 +29,7 @@ const routes: Routes = [
   imports: [
     MatIconModule,
     CommonModule,
+    MatSelectModule,
     RouterModule.forChild(routes),
     FuseSharedModule,
     FuseConfirmDialogModule,

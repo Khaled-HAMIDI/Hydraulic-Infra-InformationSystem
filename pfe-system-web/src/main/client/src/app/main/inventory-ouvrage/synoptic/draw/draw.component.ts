@@ -20,9 +20,11 @@ declare var d3: any;
 export class DrawComponent implements OnInit, OnDestroy {
   private _unsubscribeAll: Subject<any>;
   ouvrages = [];
+  chains = [];
   ouvragesInfo = [];
   links = [];
-
+  selectAllOn: boolean = true;
+  selectedChains = []
   constructor(
     private route: ActivatedRoute,
     private router: Router,
@@ -36,7 +38,9 @@ export class DrawComponent implements OnInit, OnDestroy {
     this.route.data.pipe(takeUntil(this._unsubscribeAll)).subscribe(
       (response) => {
         console.log(response.data);
+        this.chains = response.data[0];
         this.ouvragesInfo = response.data[1];
+        this.selectedChains.push('all');
         this.initSynopticStructure(response.data[0], response.data[1]);
         this.drawSchema();
       },
@@ -78,6 +82,7 @@ export class DrawComponent implements OnInit, OnDestroy {
       this.ouvrages.push(n);
     })
     chains.forEach((chain) => {
+      this.selectedChains.push(chain.code);
       chain.ouvrages.sort(this.compare);
       var l;
       for (var i = 0; i < chain.ouvrages.length - 1; i++) {
@@ -192,6 +197,53 @@ export class DrawComponent implements OnInit, OnDestroy {
     return ouvrages.filter((ouvrage) => {
       return ouvrage['code'] == code
     })
+  }
+
+  selectChains(index) {
+    let npath = 0;
+    if (this.selectedChains.includes('all')) {
+      this.selectedChains = this.selectedChains.filter(chain => chain !== 'all')
+    }
+    else {
+      if (this.selectedChains.length === this.chains.length)
+        this.selectedChains = [...this.selectedChains, 'all']
+    }
+    if (this.selectedChains.includes(this.chains[index].code)) {
+      for (var i = 0; i < index; i++) {
+        npath += this.chains[i].ouvrages.length - 1
+      }
+      for (var j = 0; j < this.chains[index].ouvrages.length - 1; j++) {
+        d3.select("#link" + npath).style("display", "block")
+        d3.select("#path" + npath).style("opacity", "1")
+        npath++;
+      }
+    }
+    else {
+      for (var i = 0; i < index; i++) {
+        npath += this.chains[i].ouvrages.length - 1
+      }
+      for (var j = 0; j < this.chains[index].ouvrages.length - 1; j++) {
+        d3.select("#link" + npath).style("display", "none")
+        d3.select("#path" + npath).style("opacity", "0")
+        npath++;
+      }
+    }
+  }
+
+  selectAll() {
+    if (this.selectedChains.includes('all')) {
+      this.chains.forEach((chain) => {
+        if (!this.selectedChains.includes(chain.code))
+          this.selectedChains = [...this.selectedChains, chain.code]
+      })
+      // Line and path style
+      d3.selectAll("line").style("display", "block");
+      d3.selectAll("path").style("opacity", "1");
+    } else {
+      this.selectedChains = [];
+      d3.selectAll("line").style("display", "none");
+      d3.selectAll("path").style("opacity", "0");
+    }
   }
 
   ngOnDestroy(): void {
