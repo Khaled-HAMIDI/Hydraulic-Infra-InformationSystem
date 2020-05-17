@@ -42,20 +42,13 @@ export class StationTraitementConvSevice {
             this.toolsService.showProgressBar();
             this.save(ouvrage).then((response) => {
                     this.toolsService.hideProgressBar();
-                    console.log(response);
-                    if (response.code == "0") {
-                        this.toolsService.showError('ADD.TOAST-ADD.existError');
-                        reject(response);
-                    }
-                    else {
-                        this.toolsService.showSuccess('ADD.TOAST-ADD.success');
-                        resolve(response);
-                    }
+                    this.toolsService.showSuccess('ADD.TOAST-ADD.success');
+                    resolve(response);
                 },
                 (error) => {
-                    console.log(error);
                     this.toolsService.hideProgressBar();
-                    this.toolsService.showError('ADD.TOAST-ADD.error');
+                    if (error.error.message == 'code-exist') this.toolsService.showError('ADD.TOAST-ADD.existError');
+                    else this.toolsService.showError('ADD.TOAST-ADD.error');
                     reject(error);
                 })
         });

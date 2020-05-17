@@ -12,9 +12,9 @@ public class CreateOuvrageAdapter implements SaveOuvrage {
 
     private final OuvrageRepository ouvrageRepository;
     @Override
-    public Ouvrage saveOuvrage(Ouvrage ouvrage) {
+    public Ouvrage saveOuvrage(Ouvrage ouvrage) throws Exception {
 
-        if (ouvrageRepository.existsByCode(ouvrage.getCode())) ouvrage.setCode("0");
+        if (ouvrageRepository.existsByCode(ouvrage.getCode())) throw new Exception("code-exist");
         else ouvrageRepository.save(ouvrage);
 
         return ouvrage;

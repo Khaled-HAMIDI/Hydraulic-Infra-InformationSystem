@@ -5,5 +5,5 @@ import dz.ade.pfe.service.ouvrage.createouvrage.OuvrageAddDto;
 import dz.ade.pfe.service.ouvrage.getouvragedetails.OuvrageDto;
 
 public interface CreateOuvrageQuery {
-    OuvrageDto createOuvrage(OuvrageAddDto ouvrageAddDto, String unitCode);
+    OuvrageDto createOuvrage(OuvrageAddDto ouvrageAddDto, String unitCode) throws Exception;
 }

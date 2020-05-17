@@ -34,7 +34,7 @@ public class CreateOuvrageController {
             @ApiResponse(code = 403, message = "Accessing the resource you were trying to reach is forbidden"),
             @ApiResponse(code = 404, message = "The resource you were trying to reach is not found")
     })
-    public OuvrageDto createOuvrage(@RequestBody OuvrageAddDto ouvrageAddDto) {
+    public OuvrageDto createOuvrage(@RequestBody OuvrageAddDto ouvrageAddDto) throws Exception {
         return createOuvrageQuery.createOuvrage(ouvrageAddDto,profileManager.getDeployedUnitCode());
     }
 }
