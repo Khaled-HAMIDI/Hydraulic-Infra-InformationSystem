@@ -2,7 +2,7 @@ package dz.ade.pfe.service.ouvrage.getouvrage;
 
 import dz.ade.pfe.port.in.ouvrage.getouvrage.GetOuvrageQuery;
 import dz.ade.pfe.port.out.ouvrage.getouvrage.LoadOuvrage;
-import dz.ade.pfe.service.ouvrage.createouvrage.OuvrageShowDto;
+import dz.ade.pfe.service.ouvrage.getouvrage.OuvrageShowDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

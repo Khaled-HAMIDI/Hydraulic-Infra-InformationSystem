@@ -83,6 +83,7 @@ export class OuvrageEditComponent implements OnInit, OnDestroy {
     ngOnInit(): void {
         this.route.data.pipe(takeUntil(this._unsubscribeAll)).subscribe(
             (response) => {
+                console.log(response.data[0]);
                 this.ouvrage= new Ouvrage(response.data[0]);
                 switch (this.ouvrage.type) {
                     case 'StationTraitementConventionelle':
@@ -105,7 +106,7 @@ export class OuvrageEditComponent implements OnInit, OnDestroy {
                         break;
                 }
                 this.filesToBeAttached.forEach(item => {
-                    item.attachmentEntityId = response.data[0].code
+                    item.attachmentEntityId = response.data[0].id
                   });
             },
             (error) => {

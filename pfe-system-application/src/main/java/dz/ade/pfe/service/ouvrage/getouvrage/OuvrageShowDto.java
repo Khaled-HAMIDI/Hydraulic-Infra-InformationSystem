@@ -1,4 +1,4 @@
-package dz.ade.pfe.service.ouvrage.createouvrage;
+package dz.ade.pfe.service.ouvrage.getouvrage;
 
 
 import dz.ade.pfe.domain.ouvrage.*;
@@ -15,6 +15,7 @@ import java.time.LocalDate;
 @AllArgsConstructor
 public class OuvrageShowDto {
 
+    private String id ;
     private String code;
 
     private String name;

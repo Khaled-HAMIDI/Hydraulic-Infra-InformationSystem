@@ -18,9 +18,6 @@ public interface CreateOuvrageMapper {
     })
     Ouvrage ouvrageAddToOuvrage(OuvrageAddDto ouvrageAddDto);
 
-    @Mappings({
-            @Mapping(source = "code", target = "id")
-    })
     OuvrageDto ouvrageToOuvrageDto(Ouvrage ouvrage);
 
 }
