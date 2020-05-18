@@ -14,21 +14,24 @@
             <div class="mr-sm-12 ml-sm-12" fxFlex>
                     <div>
                         <mat-slide-toggle name="closing" formControlName="closing"
-                                          class="mt-20" required [checked]="security.closing" (change)="toggleClosing()">
+                                          required [checked]="security.closing" (change)="toggleClosing()">
                                 <span *ngIf="security.closing"> {{ 'FIELD.closingActive' | translate }}</span>
                                  <span *ngIf="!security.closing"> {{ 'FIELD.closingInactive' | translate }}</span>
 
                         </mat-slide-toggle>
                     </div>
+                    <br/>
 
                     <div>
                         <mat-slide-toggle name="telsurveillance" formControlName="telsurveillance"
-                                          class="mt-20" required [checked]="security.telsurveillance" (change)="toggleTelesurveillance()">
+                                          [checked]="security.telsurveillance" (change)="toggleTelesurveillance()">
                             <span *ngIf="security.telsurveillance"> {{ 'FIELD.telsurveillanceActive' | translate }}</span>
                             <span *ngIf="!security.telsurveillance"> {{ 'FIELD.telsurveillanceInactive' | translate }}</span>
 
                         </mat-slide-toggle>
                     </div>
+                    <br/>
+
 
                     <mat-form-field appearance="outline" class="w-100-p">
                         <mat-label>{{'FIELD.state' | translate}}</mat-label>
@@ -69,7 +72,7 @@
 
                     <div>
                         <mat-slide-toggle name="armement" formControlName="armement"
-                                          class="mt-20" required [checked]="security.armement" (change)="toggleArmement()">
+                                          required [checked]="security.armement" (change)="toggleArmement()">
                             <span *ngIf="security.armement"> {{ 'FIELD.armementActive' | translate }}</span>
                             <span *ngIf="!security.armement"> {{ 'FIELD.armementInactive' | translate }}</span>
 

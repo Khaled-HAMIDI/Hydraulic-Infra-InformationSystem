@@ -55,7 +55,7 @@
 
                     <div>
                         <mat-slide-toggle matInput name="fonctionnementPompe" formControlName="fonctionnementPompe"
-                                          class="mt-20" required [checked]="poste.fonctionnementPompe" (change)="toggleFonctionnementPompe()">
+                                           required [checked]="poste.fonctionnementPompe" (change)="toggleFonctionnementPompe()">
                             <span *ngIf="poste.fonctionnementPompe"> {{ 'FIELD.enabledActivePompe' | translate }} </span>
                             <span *ngIf="!poste.fonctionnementPompe"> {{ 'FIELD.enabledInactivePompe' | translate }} </span>
                         </mat-slide-toggle>

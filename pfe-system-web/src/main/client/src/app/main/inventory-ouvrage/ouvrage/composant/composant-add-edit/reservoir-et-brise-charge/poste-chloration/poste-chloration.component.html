@@ -15,11 +15,12 @@
 
                     <div>
                         <mat-slide-toggle matInput name="abri" formControlName="abri"
-                                          class="mt-20" required [checked]="poste.abri" (change)="toggleAbri()">
+                                           required [checked]="poste.abri" (change)="toggleAbri()">
                             <span *ngIf="poste.abri">{{ 'FIELD.abriAvtive' | translate }} </span>
                             <span *ngIf="!poste.abri"> {{ 'FIELD.abriInactive' | translate }} </span>
                         </mat-slide-toggle>
                     </div>
+                    <br/>
 
                     <mat-form-field appearance="outline" class="w-100-p">
                         <mat-label>{{'FIELD.dimension' | translate}}</mat-label>
@@ -52,7 +53,7 @@
 
                     <div>
                         <mat-slide-toggle matInput name="fonctionnementPompe" formControlName="fonctionnementPompe"
-                                          class="mt-20" required [checked]="poste.fonctionnementPompe" (change)="toggleFonctionnementPompe()">
+                                           required [checked]="poste.fonctionnementPompe" (change)="toggleFonctionnementPompe()">
                             <span *ngIf="poste.fonctionnementPompe">{{ 'FIELD.enabledActivePompe' | translate }}</span>
                             <span *ngIf="!poste.fonctionnementPompe">{{ 'FIELD.enabledInactivePompe' | translate }}</span>
                         </mat-slide-toggle>
@@ -103,7 +104,7 @@
         </div>
         <hr>
         <div>
-            <button mat-raised-button class="accent add-button" [routerLink]="'patrimony/ouvrages/list'" [disabled]="postChlorationForm.invalid" (click)="onSave()">
+            <button mat-raised-button class="accent add-button" [routerLink]="'/patrimony/ouvrages/list'" [disabled]="postChlorationForm.invalid" (click)="onSave()">
                 <span *ngIf="add">{{'BUTTON.add' | translate}}</span>
                 <span *ngIf="!add">{{'BUTTON.update' | translate}}</span>
             </button>

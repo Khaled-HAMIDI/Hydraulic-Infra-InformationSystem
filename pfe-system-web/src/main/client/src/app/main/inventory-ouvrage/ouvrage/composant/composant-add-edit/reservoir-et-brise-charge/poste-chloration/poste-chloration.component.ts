@@ -6,7 +6,7 @@ import { FuseTranslationLoaderService } from '@fuse/services/translation-loader.
 import { locale as french } from '../i18n/fr';
 import { locale as arabic } from '../i18n/ar';
 import {ComposantSaveService} from "../../../composant-save.service";
-import {AntiBelier, PosteChloration} from "../../../../../../model/composant.model";
+import {AntiBelier, EquipementHydroMeca, PosteChloration} from "../../../../../../model/composant.model";
 import {Subject} from "rxjs";
 import {takeUntil} from "rxjs/operators";
 
@@ -33,6 +33,10 @@ export class PosteChlorationComponent implements OnInit{
     ) {
         // Set the default
         this.fuseTranslationLoader.loadTranslations(french, arabic);
+        this._unsubscribeAll = new Subject();
+        this.add=true;
+        this.exist=true;
+        this.poste=new PosteChloration();
     }
 
     /**
