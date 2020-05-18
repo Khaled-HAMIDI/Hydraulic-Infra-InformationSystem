@@ -77,7 +77,7 @@
                                     </mat-form-field>
 
                                     <div>
-                                        <mat-slide-toggle matInput name="abri" formControlName="abri" class="mt-20"
+                                        <mat-slide-toggle matInput name="abri" formControlName="abri" 
                                             required [checked]="ouvrage.abri" (change)="toggleAbri()"
                                             *ngIf="ouvrage.type == 'Forage'">
                                             <span *ngIf="ouvrage.abri">
@@ -88,10 +88,11 @@
                                             </span>
                                         </mat-slide-toggle>
                                     </div>
+                                    <br *ngIf="ouvrage.type == 'Forage'" />
 
                                     <div>
                                         <mat-slide-toggle matInput name="enabled" formControlName="enabled"
-                                            class="mt-20" required [checked]="ouvrage.enabled"
+                                             required [checked]="ouvrage.enabled"
                                             (change)="toggleEnabled()">
                                             <span *ngIf="ouvrage.enabled">
                                                 {{ 'EDIT.PLACE-HOLDER.enabledActive' | translate }}
@@ -110,7 +111,7 @@
 
                                     <div>
                                         <mat-slide-toggle matInput name="electricAlimentation"
-                                            formControlName="electricAlimentation" class="mt-20" required
+                                            formControlName="electricAlimentation"  required
                                             [checked]="ouvrage.electricAlimentation"
                                             (change)="toggleElectricAlimentation()"
                                             *ngIf="ouvrage.type == 'Reservoir' || ouvrage.type =='BriseCharge'">
@@ -122,6 +123,7 @@
                                             </span>
                                         </mat-slide-toggle>
                                     </div>
+                                    <br *ngIf="ouvrage.type == 'Reservoir' || ouvrage.type =='BriseCharge'" />
 
                                     <mat-form-field appearance="outline" class="w-100-p"
                                         *ngIf="ouvrage.type == 'BriseCharge'">
@@ -183,7 +185,7 @@
 
                                     <div>
                                         <mat-slide-toggle matInput name="specializedLine"
-                                            formControlName="specializedLine" class="mt-20" required
+                                            formControlName="specializedLine"  required
                                             [checked]="ouvrage.specializedLine" (change)="toggleSpecializedLine()">
                                             <span *ngIf="ouvrage.specializedLine">
                                                 {{ 'EDIT.PLACE-HOLDER.specializedLineActive' | translate }}
@@ -193,10 +195,11 @@
                                             </span>
                                         </mat-slide-toggle>
                                     </div>
+                                    <br/>
 
                                     <div>
                                         <mat-slide-toggle matInput name="remoteManagement"
-                                            formControlName="remoteManagement" class="mt-20" required
+                                            formControlName="remoteManagement"  required
                                             [checked]="ouvrage.remoteManagement" (change)="toggleRemoteManagement()">
                                             <span *ngIf="ouvrage.remoteManagement">
                                                 {{ 'EDIT.PLACE-HOLDER.remoteManagementActive' | translate }}

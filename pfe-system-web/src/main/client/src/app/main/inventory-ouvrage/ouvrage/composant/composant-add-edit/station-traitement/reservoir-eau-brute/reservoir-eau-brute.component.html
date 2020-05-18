@@ -14,11 +14,12 @@
                 <div class="mr-sm-12 ml-sm-12" fxFlex>
 
                         <div>
-                            <mat-slide-toggle matInput name="enabled" formControlName="enabled" class="mt-20" required [checked]="equipement.enabled" (change)="toggleEnabled()">
+                            <mat-slide-toggle matInput name="enabled" formControlName="enabled"  required [checked]="equipement.enabled" (change)="toggleEnabled()">
                                 <span *ngIf="equipement.enabled"> {{ 'FIELD.enabledActive' | translate }} </span>
                                 <span *ngIf="!equipement.enabled"> {{ 'FIELD.enabledInactive' | translate }} </span>
                             </mat-slide-toggle>
                         </div>
+                        <br/>
 
                         <mat-form-field appearance="outline" class="w-100-p">
                             <mat-label>{{'FIELD.state' | translate}}</mat-label>

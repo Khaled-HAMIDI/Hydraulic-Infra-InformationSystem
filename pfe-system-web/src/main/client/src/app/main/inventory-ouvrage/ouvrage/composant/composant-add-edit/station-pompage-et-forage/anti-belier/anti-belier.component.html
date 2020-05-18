@@ -34,7 +34,7 @@
 
                     <div>
                         <mat-slide-toggle matInput name="compresseur" formControlName="compresseur"
-                                          class="mt-20" required [checked]="antiBelier.compresseur" (change)="toggleCompresseur()">
+                                           required [checked]="antiBelier.compresseur" (change)="toggleCompresseur()">
                                 <span *ngIf="antiBelier.compresseur">
                                     {{ 'FIELD.compresseurActive' | translate }}
                                 </span>

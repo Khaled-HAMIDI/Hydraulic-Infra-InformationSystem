@@ -77,7 +77,7 @@
 
                                     <div>
                                         <mat-slide-toggle matInput name="enabled" formControlName="enabled"
-                                                          class="mt-20" required [checked]="ouvrage.enabled" (change)="toggleEnabled()">
+                                                           required [checked]="ouvrage.enabled" (change)="toggleEnabled()">
                                             <span *ngIf="ouvrage.enabled">
                                                 {{ 'ADD.PLACE-HOLDER.enabledActive' | translate }}
                                             </span>
@@ -86,7 +86,7 @@
                                             </span>
                                         </mat-slide-toggle>
                                     </div>
-
+                                    <br/>
 
                                     <mat-form-field appearance="outline" class="w-100-p">
                                         <mat-label>{{'ADD.PLACE-HOLDER.constructionType' | translate}}</mat-label>
@@ -149,7 +149,7 @@
 
                                     <div>
                                         <mat-slide-toggle matInput name="remoteManagement" formControlName="remoteManagement"
-                                                          class="mt-20" required [checked]="ouvrage.remoteManagement" (change)="toggleRemoteManagement()">
+                                                           required [checked]="ouvrage.remoteManagement" (change)="toggleRemoteManagement()">
                                             <span *ngIf="ouvrage.remoteManagement">
                                                 {{ 'ADD.PLACE-HOLDER.remoteManagementActive' | translate }}
                                             </span>
@@ -158,10 +158,11 @@
                                             </span>
                                         </mat-slide-toggle>
                                     </div>
+                                    <br/>
 
                                     <div>
                                         <mat-slide-toggle matInput name="specializedLine" formControlName="specializedLine"
-                                                          class="mt-20" required [checked]="ouvrage.specializedLine" (change)="toggleSpecializedLine()">
+                                                           required [checked]="ouvrage.specializedLine" (change)="toggleSpecializedLine()">
                                             <span *ngIf="ouvrage.specializedLine">
                                                 {{ 'ADD.PLACE-HOLDER.specializedLineActive' | translate }}
                                             </span>
@@ -170,6 +171,7 @@
                                             </span>
                                         </mat-slide-toggle>
                                     </div>
+                                    <br/>
 
                                     <mat-form-field appearance="outline" class="w-100-p" >
                                         <mat-label>{{'ADD.PLACE-HOLDER.chemicalMonthlyBill' | translate}}</mat-label>
@@ -193,7 +195,7 @@
 
                                     <div>
                                         <mat-slide-toggle matInput name="distribution" formControlName="distribution"
-                                                          class="mt-20" required [checked]="ouvrage.distribution" (change)="toggleDistribution()">
+                                                           required [checked]="ouvrage.distribution" (change)="toggleDistribution()">
                                             <span *ngIf="ouvrage.distribution">
                                                 {{ 'ADD.PLACE-HOLDER.distributionActive' | translate }}
                                             </span>
@@ -202,6 +204,7 @@
                                             </span>
                                         </mat-slide-toggle>
                                     </div>
+                                    <br/>
 
 
                                     <div>

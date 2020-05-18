@@ -76,7 +76,7 @@
 
                                     <div>
                                         <mat-slide-toggle matInput name="enabled" formControlName="enabled"
-                                            class="mt-20" required [checked]="ouvrage.enabled"
+                                             required [checked]="ouvrage.enabled"
                                             (change)="toggleEnabled()">
                                             <span *ngIf="ouvrage.enabled">
                                                 {{ 'ADD.PLACE-HOLDER.enabledActive' | translate }}
@@ -86,6 +86,7 @@
                                             </span>
                                         </mat-slide-toggle>
                                     </div>
+                                    <br/>
 
                                     <mat-form-field appearance="outline" class="w-100-p">
                                         <mat-label>{{'ADD.PLACE-HOLDER.tankRole' | translate}}</mat-label>
@@ -190,7 +191,7 @@
 
                                     <div>
                                         <mat-slide-toggle matInput name="remoteManagement"
-                                            formControlName="remoteManagement" class="mt-20" required
+                                            formControlName="remoteManagement"  required
                                             [checked]="ouvrage.remoteManagement" (change)="toggleRemoteManagement()">
                                             <span *ngIf="ouvrage.remoteManagement">
                                                 {{ 'ADD.PLACE-HOLDER.remoteManagementActive' | translate }}
@@ -200,10 +201,11 @@
                                             </span>
                                         </mat-slide-toggle>
                                     </div>
+                                    <br/>
 
                                     <div>
                                         <mat-slide-toggle matInput name="electricAlimentation"
-                                            formControlName="electricAlimentation" class="mt-20" required
+                                            formControlName="electricAlimentation"  required
                                             [checked]="ouvrage.electricAlimentation"
                                             (change)="toggleElectricAlimentation()">
                                             <span *ngIf="ouvrage.electricAlimentation">
@@ -214,10 +216,11 @@
                                             </span>
                                         </mat-slide-toggle>
                                     </div>
+                                    <br/>
 
                                     <div>
                                         <mat-slide-toggle matInput name="specializedLine"
-                                            formControlName="specializedLine" class="mt-20" required
+                                            formControlName="specializedLine"  required
                                             [checked]="ouvrage.specializedLine" (change)="toggleSpecializedLine()"
                                             *ngIf="ouvrage.electricAlimentation">
                                             <span *ngIf="ouvrage.specializedLine">
@@ -228,6 +231,7 @@
                                             </span>
                                         </mat-slide-toggle>
                                     </div>
+                                    <br/>
 
                                     <mat-form-field appearance="outline" class="w-100-p">
                                         <mat-label>{{'ADD.PLACE-HOLDER.totalWorkforce' | translate}}</mat-label>
@@ -246,7 +250,7 @@
 
                                     <div>
                                         <mat-slide-toggle matInput name="distribution" formControlName="distribution"
-                                            class="mt-20" required [checked]="ouvrage.distribution"
+                                             required [checked]="ouvrage.distribution"
                                             (change)="toggleDistribution()">
                                             <span *ngIf="ouvrage.distribution">
                                                 {{ 'ADD.PLACE-HOLDER.distributionActive' | translate }}
@@ -257,7 +261,7 @@
                                         </mat-slide-toggle>
                                     </div>
 
-
+                                    <br/>
                                     <div>
                                         <mat-form-field appearance="outline" class="w-100-p"
                                             *ngIf="ouvrage.distribution">
