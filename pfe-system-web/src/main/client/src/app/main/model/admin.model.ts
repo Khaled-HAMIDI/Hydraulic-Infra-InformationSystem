@@ -125,11 +125,13 @@ export class Role {
 export class Authority {
     id: string;
     description: string;
+    domain : string
 
     constructor(authority?) {
         authority = authority || {};
         this.id = authority.id || '';
         this.description = authority.description || '';
+        this.domain = authority.domain || '';
     }
 }
 

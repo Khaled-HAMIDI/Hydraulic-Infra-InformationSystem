@@ -3,103 +3,95 @@
         height: 152px;
     }
     .center {
-       .header {
-          height: 97px !important;
-          min-height: 97px !important;
-          max-height: 97px !important;
-              } 
-                } 
-                  }
+        .header {
+            height: 97px !important;
+            min-height: 97px !important;
+            max-height: 97px !important;
+        }
+    }
+}
 
- 
-     .mat-white-bg[disabled] {
-        background-color: rgba(255, 255, 255, 0.52) !important;
-        color: rgba(0, 0, 0, 0.26) !important;
-                    }
-                    
-                    .example-tree-invisible {
-                      display: none;
-                    }
-                    
-                    .example-tree ul,
-                    .example-tree li {
-                      margin-top: 0;
-                      margin-bottom: 0;
-                      list-style-type: none;
-                    }
-                    
-                    .users-table {
-                      flex: 1 1 auto;
-                      border-bottom: 1px solid rgba(0, 0, 0, .12);
-                      overflow: auto;
-                      mat-cell:last-child{
-                          padding: 0;
-                      }
-                      .mat-header-row {
-                          min-height: 54px;
-                      }
-                  
-                      .user {
-                          position: relative;
-                          cursor: pointer;
-                      }
-                  
-                      .mat-cell {
-                          min-width: 0;
-                          display: flex;
-                          align-items: left;
-                      }
-                  
-                      .mat-column-checkbox {
-                          flex: 0 1 80px;
-                      }
-                  
-                      .mat-column-enabled {
-                          flex: 0 1 80px;
-                      }
-                  
-                      .mat-column-employeeCode {
-                          flex: 0 1 80px;
-                      }
-                  
-                      .mat-column-buttons {
-                          flex: 0 1 80px;
-                      }
-                  
-                      .mat-column-active{
-                          flex: 0 1 30px;
-                      }
-                  
-                      .mat-column-roles{
-                          padding-bottom: 3px;
-                          padding-top: 3px;
-                      }
-                      
-                  }
-                          
-                  .example-container {
-                          overflow: auto;
-                          background-color: white;
-                      }
-                  
-                  table {
-                  width: 100%;
-                  min-width: 850px;
-                  }
-                  
-                  
-                  
-                  
-                  .mat-menu-item {
-                  font-family: Roboto, "Helvetica Neue", sans-serif;
-                  font-size: 14px;
-                  line-height: 0px;
-                  font-weight: 500;
-                  }
-                          .flex-container {
-                              display: flex;
-                              flex-direction: column;
-                            }
-                
-                
-                                  
+.mat-white-bg[disabled] {
+    background-color: rgba(255, 255, 255, 0.52) !important;
+    color: rgba(0, 0, 0, 0.26) !important;
+}
+
+.example-tree-invisible {
+    display: none;
+}
+
+.example-tree ul,
+.example-tree li {
+    margin-top: 0;
+    margin-bottom: 0;
+    list-style-type: none;
+}
+
+.users-table {
+    flex: 1 1 auto;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+    overflow: auto;
+    mat-cell:last-child {
+        padding: 0;
+    }
+    .mat-header-row {
+        min-height: 54px;
+    }
+
+    .user {
+        position: relative;
+        cursor: pointer;
+    }
+
+    .mat-cell {
+        min-width: 0;
+        display: flex;
+        align-items: left;
+    }
+
+    .mat-column-checkbox {
+        flex: 0 1 80px;
+    }
+
+    .mat-column-enabled {
+        flex: 0 1 80px;
+    }
+
+    .mat-column-employeeCode {
+        flex: 0 1 80px;
+    }
+
+    .mat-column-buttons {
+        flex: 0 1 80px;
+    }
+
+    .mat-column-active {
+        flex: 0 1 30px;
+    }
+
+    .mat-column-roles {
+        padding-bottom: 3px;
+        padding-top: 3px;
+    }
+}
+
+.example-container {
+    overflow: auto;
+    background-color: white;
+}
+
+table {
+    width: 100%;
+    min-width: 850px;
+}
+
+.mat-menu-item {
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+    font-size: 14px;
+    line-height: 0px;
+    font-weight: 500;
+}
+.flex-container {
+    display: flex;
+    flex-direction: column;
+}

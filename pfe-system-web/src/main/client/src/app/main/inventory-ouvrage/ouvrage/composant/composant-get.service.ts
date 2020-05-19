@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { API } from 'config/api.config';
-import {ActivatedRouteSnapshot, Resolve, Router, RouterStateSnapshot} from '@angular/router';
+import { ActivatedRouteSnapshot, Resolve, Router, RouterStateSnapshot } from '@angular/router';
 import { ToolsService } from '@ayams/services/tools.service';
-import {Observable} from "rxjs";
+import { Observable } from "rxjs";
 
-const Composant_API=API + '/ouvrage/';
+const Composant_API = API + '/ouvrage/';
 
 @Injectable({
     providedIn: 'root'
@@ -14,8 +14,8 @@ const Composant_API=API + '/ouvrage/';
 export class ComposantGetService implements Resolve<any>{
 
     constructor(private router: Router,
-                private http: HttpClient,
-                private toolsService: ToolsService) {
+        private http: HttpClient,
+        private toolsService: ToolsService) {
     }
 
     // -----------------------------------------------------------------------------------------------------
@@ -28,8 +28,8 @@ export class ComposantGetService implements Resolve<any>{
 
             this.http.get(Composant_API + code + '/composants/security/')
                 .subscribe((response: any) => {
-                   resolve(response);
-                }, (error : any) => {
+                    resolve(response);
+                }, (error: any) => {
                     reject(error);
                 });
 
@@ -37,26 +37,26 @@ export class ComposantGetService implements Resolve<any>{
 
     }
 
-    loadPriseEau(code){
+    loadPriseEau(code) {
         return new Promise((resolve, reject) => {
 
-            this.http.get(Composant_API+ code + '/composants/priseEau/')
+            this.http.get(Composant_API + code + '/composants/priseEau/')
                 .subscribe((response: any) => {
                     resolve(response);
-                }, (error : any) => {
+                }, (error: any) => {
                     reject(error);
                 });
 
         });
 
     }
-    loadEquipementStationTraitement(code){
+    loadEquipementStationTraitement(code) {
         return new Promise((resolve, reject) => {
 
-            this.http.get(Composant_API+ code + '/composants/equipementStationTraitement/')
+            this.http.get(Composant_API + code + '/composants/equipementStationTraitement/')
                 .subscribe((response: any) => {
                     resolve(response);
-                }, (error : any) => {
+                }, (error: any) => {
                     reject(error);
                 });
 
@@ -64,13 +64,13 @@ export class ComposantGetService implements Resolve<any>{
 
     }
 
-    loadKitMembrane(code){
+    loadKitMembrane(code) {
         return new Promise((resolve, reject) => {
 
-            this.http.get(Composant_API+ code + '/composants/kitMembrane/')
+            this.http.get(Composant_API + code + '/composants/kitMembrane/')
                 .subscribe((response: any) => {
                     resolve(response);
-                }, (error : any) => {
+                }, (error: any) => {
                     reject(error);
                 });
 
@@ -78,13 +78,13 @@ export class ComposantGetService implements Resolve<any>{
 
     }
 
-    loadStationPhp(code){
+    loadStationPhp(code) {
         return new Promise((resolve, reject) => {
 
-            this.http.get(Composant_API+ code + '/composants/stationPhp/')
+            this.http.get(Composant_API + code + '/composants/stationPhp/')
                 .subscribe((response: any) => {
                     resolve(response);
-                }, (error : any) => {
+                }, (error: any) => {
                     reject(error);
                 });
 
@@ -92,13 +92,13 @@ export class ComposantGetService implements Resolve<any>{
 
     }
 
-    loadLocalStockageChimique(code){
+    loadLocalStockageChimique(code) {
         return new Promise((resolve, reject) => {
 
             this.http.get(Composant_API + code + '/composants/localStockage/')
                 .subscribe((response: any) => {
                     resolve(response);
-                }, (error : any) => {
+                }, (error: any) => {
                     reject(error);
                 });
 
@@ -106,13 +106,13 @@ export class ComposantGetService implements Resolve<any>{
 
     }
 
-    loadBatimentElectrique(code){
+    loadBatimentElectrique(code) {
         return new Promise((resolve, reject) => {
 
             this.http.get(Composant_API + code + '/composants/batimentElectrique/')
                 .subscribe((response: any) => {
                     resolve(response);
-                }, (error : any) => {
+                }, (error: any) => {
                     reject(error);
                 });
 
@@ -120,13 +120,13 @@ export class ComposantGetService implements Resolve<any>{
 
     }
 
-    loadGroupeElectrogene(code){
+    loadGroupeElectrogene(code) {
         return new Promise((resolve, reject) => {
 
             this.http.get(Composant_API + code + '/composants/groupeElectrogene/')
                 .subscribe((response: any) => {
                     resolve(response);
-                }, (error : any) => {
+                }, (error: any) => {
                     reject(error);
                 });
 
@@ -134,13 +134,13 @@ export class ComposantGetService implements Resolve<any>{
 
     }
 
-    loadPostChimique(code){
+    loadPostChimique(code) {
         return new Promise((resolve, reject) => {
 
             this.http.get(Composant_API + code + '/composants/postChimique/')
                 .subscribe((response: any) => {
                     resolve(response);
-                }, (error : any) => {
+                }, (error: any) => {
                     reject(error);
                 });
 
@@ -148,13 +148,13 @@ export class ComposantGetService implements Resolve<any>{
 
     }
 
-    loadPostTrandformationElectrique(code){
+    loadPostTrandformationElectrique(code) {
         return new Promise((resolve, reject) => {
 
             this.http.get(Composant_API + code + '/composants/postTransformationElectrique/')
                 .subscribe((response: any) => {
                     resolve(response);
-                }, (error : any) => {
+                }, (error: any) => {
                     reject(error);
                 });
 
@@ -162,13 +162,13 @@ export class ComposantGetService implements Resolve<any>{
 
     }
 
-    loadPompe(code){
+    loadPompe(code) {
         return new Promise((resolve, reject) => {
 
             this.http.get(Composant_API + code + '/composants/groupeElectroPompePompe/')
                 .subscribe((response: any) => {
                     resolve(response);
-                }, (error : any) => {
+                }, (error: any) => {
                     reject(error);
                 });
 
@@ -176,13 +176,13 @@ export class ComposantGetService implements Resolve<any>{
 
     }
 
-    loadMoteur(code){
+    loadMoteur(code) {
         return new Promise((resolve, reject) => {
 
             this.http.get(Composant_API + code + '/composants/groupeElectroPompeMoteur/')
                 .subscribe((response: any) => {
                     resolve(response);
-                }, (error : any) => {
+                }, (error: any) => {
                     reject(error);
                 });
 
@@ -190,13 +190,13 @@ export class ComposantGetService implements Resolve<any>{
 
     }
 
-    loadArmoire(code){
+    loadArmoire(code) {
         return new Promise((resolve, reject) => {
 
             this.http.get(Composant_API + code + '/composants/armoireElectrique/')
                 .subscribe((response: any) => {
                     resolve(response);
-                }, (error : any) => {
+                }, (error: any) => {
                     reject(error);
                 });
 
@@ -204,13 +204,13 @@ export class ComposantGetService implements Resolve<any>{
 
     }
 
-    loadAntiBelier(code){
+    loadAntiBelier(code) {
         return new Promise((resolve, reject) => {
 
             this.http.get(Composant_API + code + '/composants/antiBelier/')
                 .subscribe((response: any) => {
                     resolve(response);
-                }, (error : any) => {
+                }, (error: any) => {
                     reject(error);
                 });
 
@@ -218,13 +218,13 @@ export class ComposantGetService implements Resolve<any>{
 
     }
 
-    loadSoupape(code){
+    loadSoupape(code) {
         return new Promise((resolve, reject) => {
 
             this.http.get(Composant_API + code + '/composants/soupapeDecharge/')
                 .subscribe((response: any) => {
                     resolve(response);
-                }, (error : any) => {
+                }, (error: any) => {
                     reject(error);
                 });
 
@@ -232,13 +232,13 @@ export class ComposantGetService implements Resolve<any>{
 
     }
 
-    loadHydroMeca(code){
+    loadHydroMeca(code) {
         return new Promise((resolve, reject) => {
 
             this.http.get(Composant_API + code + '/composants/equipementHydroMeca/')
                 .subscribe((response: any) => {
                     resolve(response);
-                }, (error : any) => {
+                }, (error: any) => {
                     reject(error);
                 });
 
@@ -246,13 +246,13 @@ export class ComposantGetService implements Resolve<any>{
 
     }
 
-    loadPostChloration(code){
+    loadPostChloration(code) {
         return new Promise((resolve, reject) => {
 
             this.http.get(Composant_API + code + '/composants/postChloration/')
                 .subscribe((response: any) => {
                     resolve(response);
-                }, (error : any) => {
+                }, (error: any) => {
                     reject(error);
                 });
 

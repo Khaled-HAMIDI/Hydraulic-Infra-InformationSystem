@@ -10,4 +10,5 @@ import lombok.NoArgsConstructor;
 public class AuthorityDto {
     private String id;
     private String description;
+    private String domain;
 }

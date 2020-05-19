@@ -30,6 +30,9 @@ public class Authority extends Auditing implements GrantedAuthority {
     @Column(name = "description")
     String description;
 
+    @Column(name = "domain")
+    String domain;
+
     @ManyToMany(mappedBy = "authorities")
     @Builder.Default
     private Set<Role> roles = new LinkedHashSet<>();

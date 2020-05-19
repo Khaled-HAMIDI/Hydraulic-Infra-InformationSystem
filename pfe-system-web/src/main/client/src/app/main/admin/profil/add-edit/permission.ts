@@ -20,3 +20,20 @@ export const AllPermissions = [
     ]
   }
 ]
+
+export class AuthorityTab {
+  id: string;
+  description : string;
+  checked : boolean
+  children : any[]
+  constructor (domain:string){
+    this.id = domain.toLowerCase() + ':*';
+    this.checked = false;
+    this.description = domain;
+    this.children = [];
+  }
+}
+
+export enum Domains {
+  OUVRAGE="OUVRAGE", CHAIN="CHAIN"
+}

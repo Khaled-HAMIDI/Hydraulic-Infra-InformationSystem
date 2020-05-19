@@ -15,7 +15,7 @@ import { ProfilAddEditService } from './profil-add-edit.service';
 import sortBy from 'lodash/sortBy';
 import pullAllWith from 'lodash/pullAllWith';
 import isEqual from 'lodash/isEqual';
-import { AllPermissions } from './permission'
+import { AllPermissions,AuthorityTab,Domains } from './permission'
 import { MatTableDataSource } from '@angular/material/table';
 const COLUMN_NAMES: string[] = [
     'domain',
@@ -38,7 +38,8 @@ export class ProfilAddEditComponent implements OnInit, OnDestroy {
     AllPermissions = []
     dataSource : MatTableDataSource<any>;
     displayedColumns: string[];
-    selectedOuvrages:any[]
+    selectedOuvrages:any[];
+    domains : string [];
 
     constructor(
         private profilAddEditService: ProfilAddEditService,
@@ -53,6 +54,7 @@ export class ProfilAddEditComponent implements OnInit, OnDestroy {
         this.fuseTranslationLoader.loadTranslations(french, arabic);
         this.AllPermissions = AllPermissions;
         this.displayedColumns =  COLUMN_NAMES;
+        this.domains = []
     }
 
     hasChild = (_: number, node) => !!node.children && node.children.length > 0;
@@ -60,8 +62,10 @@ export class ProfilAddEditComponent implements OnInit, OnDestroy {
     ngOnInit(): void {
         this.route.data.pipe(takeUntil(this._unsubscribeAll)).subscribe(
             (response) => {
+                console.log(response.data[1]);
                 this.allPermissions = response.data[1];
                 this.initForm(response.data[0], response.action);
+                this.classAuthorities(response.data[1]);
                 this.initTable(this.AllPermissions);
             },
             (error) => {
@@ -73,6 +77,31 @@ export class ProfilAddEditComponent implements OnInit, OnDestroy {
     initTable(columnData) {
         // Init DataSource
         this.dataSource = new MatTableDataSource(columnData);
+    }
+    createAuthorityStructure(authorities){
+        let i = -1;
+        var permissions : AuthorityTab [];
+        permissions = new Array();
+        authorities = sortBy(authorities,['domain'])
+        authorities.forEach((authority)=>{
+            if(authority.domain !== null)
+            if(!this.domains.includes(authority.domain))
+            {
+                i++;
+                this.domains.push(authority.domain)
+                permissions.push(new AuthorityTab(authority.domain));
+                permissions[i].children.push(authority)
+            }
+            else {
+                permissions[i].children.push(authority)
+            }
+        })
+        console.log(permissions);
+        return permissions;
+    }
+    classAuthorities(authorities){
+        this.AllPermissions = this.createAuthorityStructure(authorities);
+
     }
     createProfilForm(): FormGroup {
 
@@ -101,8 +130,10 @@ export class ProfilAddEditComponent implements OnInit, OnDestroy {
                 }
             }
         })
+        if(permissionIds.includes('*:*'))
+        profil.authorities.push('*:*');
         profil.authorities = permissionIds;
-
+  
         this.profilAddEditService.saveProfil(profil)
             .then(() => {
 
