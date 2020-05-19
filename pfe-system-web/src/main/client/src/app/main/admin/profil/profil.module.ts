@@ -13,6 +13,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSelectModule } from '@angular/material/select';
 import { MatSortModule } from '@angular/material/sort';
 import { MatTableModule } from '@angular/material/table';
+import { MatTabsModule } from '@angular/material/tabs';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import {MatTreeModule} from '@angular/material/tree';
 import { FuseSharedModule } from '@fuse/shared.module';
@@ -82,6 +83,7 @@ const routes = [
         MatMenuModule,
         MatSortModule,
         MatTableModule,
+        MatTabsModule,
         MatTreeModule,
         FuseSharedModule,
         MatCheckboxModule,

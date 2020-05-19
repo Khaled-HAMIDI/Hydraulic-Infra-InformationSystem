@@ -15,12 +15,12 @@ import { ProfilAddEditService } from './profil-add-edit.service';
 import sortBy from 'lodash/sortBy';
 import pullAllWith from 'lodash/pullAllWith';
 import isEqual from 'lodash/isEqual';
-import { AllPermissions,AuthorityTab,Domains } from './permission'
+import { AllPermissions, AuthorityTab, Domains } from './permission'
 import { MatTableDataSource } from '@angular/material/table';
 const COLUMN_NAMES: string[] = [
     'domain',
     'action'
-  ];
+];
 @Component({
     selector: 'profil-add-edit',
     templateUrl: './profil-add-edit.component.html',
@@ -36,10 +36,10 @@ export class ProfilAddEditComponent implements OnInit, OnDestroy {
     pageType: string;
     profilForm: FormGroup;
     AllPermissions = []
-    dataSource : MatTableDataSource<any>;
+    dataSource: MatTableDataSource<any>;
     displayedColumns: string[];
-    selectedOuvrages:any[];
-    domains : string [];
+    selectedOuvrages: any[];
+    domains: string[];
 
     constructor(
         private profilAddEditService: ProfilAddEditService,
@@ -53,7 +53,7 @@ export class ProfilAddEditComponent implements OnInit, OnDestroy {
         this.profil = new Role();
         this.fuseTranslationLoader.loadTranslations(french, arabic);
         this.AllPermissions = AllPermissions;
-        this.displayedColumns =  COLUMN_NAMES;
+        this.displayedColumns = COLUMN_NAMES;
         this.domains = []
     }
 
@@ -62,10 +62,8 @@ export class ProfilAddEditComponent implements OnInit, OnDestroy {
     ngOnInit(): void {
         this.route.data.pipe(takeUntil(this._unsubscribeAll)).subscribe(
             (response) => {
-                console.log(response.data[1]);
-                this.allPermissions = response.data[1];
                 this.initForm(response.data[0], response.action);
-                this.classAuthorities(response.data[1]);
+                this.classAuthorities(response.data[1], response.data[0], response.action);
                 this.initTable(this.AllPermissions);
             },
             (error) => {
@@ -78,30 +76,51 @@ export class ProfilAddEditComponent implements OnInit, OnDestroy {
         // Init DataSource
         this.dataSource = new MatTableDataSource(columnData);
     }
-    createAuthorityStructure(authorities){
+    createAuthorityStructure(authorities) {
         let i = -1;
-        var permissions : AuthorityTab [];
+        var permissions: AuthorityTab[];
         permissions = new Array();
-        authorities = sortBy(authorities,['domain'])
-        authorities.forEach((authority)=>{
-            if(authority.domain !== null)
-            if(!this.domains.includes(authority.domain))
-            {
-                i++;
-                this.domains.push(authority.domain)
-                permissions.push(new AuthorityTab(authority.domain));
-                permissions[i].children.push(authority)
-            }
-            else {
-                permissions[i].children.push(authority)
-            }
+        authorities = sortBy(authorities, ['domain'])
+        authorities.forEach((authority) => {
+            if (authority.domain !== null)
+                if (!this.domains.includes(authority.domain)) {
+                    i++;
+                    this.domains.push(authority.domain)
+                    permissions.push(new AuthorityTab(authority.domain));
+                    authority.checked = false;
+                    permissions[i].children.push(authority)
+                }
+                else {
+                    authority.checked = false;
+                    permissions[i].children.push(authority)
+                }
         })
         console.log(permissions);
         return permissions;
     }
-    classAuthorities(authorities){
+    classAuthorities(authorities, profil, type) {
+        let i;
         this.AllPermissions = this.createAuthorityStructure(authorities);
-
+        if (type === 'edit') {
+            this.AllPermissions.forEach((perm) => {
+                if (profil.authorities.findIndex((auth) => {
+                    return auth.id === perm.id
+                }) >= 0) {
+                    perm.checked = true;
+                    perm.children.forEach((child) => {
+                        child.checked = true;
+                    })
+                } else {
+                    perm.children.forEach((child) => {
+                        if (profil.authorities.findIndex((auth) => {
+                            return auth.id === child.id
+                        }) >= 0) {
+                            child.checked = true;
+                        }
+                    })
+                }
+            })
+        }
     }
     createProfilForm(): FormGroup {
 
@@ -119,21 +138,23 @@ export class ProfilAddEditComponent implements OnInit, OnDestroy {
         const profil = this.profilForm.getRawValue();
         var permissionIds = [];
         // this.profil.authorities.forEach((perm) => { permissionIds.push(perm.id) });
-        this.AllPermissions.forEach((perm)=>{
-            if(perm.checked) permissionIds.push(perm.id)
+        this.AllPermissions.forEach((perm) => {
+            if (perm.checked) permissionIds.push(perm.id)
             else {
-                if(perm.children)
-                {
-                    perm.children.forEach((perm)=> {
-                        if(perm.checked) permissionIds.push(perm.id)
+                if (perm.children) {
+                    perm.children.forEach((perm) => {
+                        if (perm.checked) permissionIds.push(perm.id)
                     })
                 }
             }
         })
-        if(permissionIds.includes('*:*'))
-        profil.authorities.push('*:*');
-        profil.authorities = permissionIds;
-  
+        profil.authorities = []
+        if (permissionIds.includes('*:*'))
+            profil.authorities.push('*:*');
+        else
+            profil.authorities = permissionIds;
+
+        console.log(profil)
         this.profilAddEditService.saveProfil(profil)
             .then(() => {
 
@@ -151,7 +172,6 @@ export class ProfilAddEditComponent implements OnInit, OnDestroy {
 
         if (type == 'edit') {
             this.profil = new Role(profil);
-            this.allPermissions = pullAllWith(this.allPermissions, this.profil.authorities, isEqual);
         } else {
             this.profil = new Role();
         }
@@ -233,37 +253,36 @@ export class ProfilAddEditComponent implements OnInit, OnDestroy {
         //     this.profil.authorities.splice(index, 1);
         // }
         // /* check parent if all child checked */
-         const i = this.findChildParent(node)
-        if (this.AllChildSeleted(this.AllPermissions[i]))
-        {
+        const i = this.findChildParent(node)
+        if (this.AllChildSeleted(this.AllPermissions[i])) {
             this.AllPermissions[i].checked = true;
-        }else{
+        } else {
             this.AllPermissions[i].checked = false;
         }
     }
 
-    findChildParent(node): number{
-       let found = false
-       const index =  this.AllPermissions.findIndex((item)=> {
-            item.children.forEach((child)=>{
-                if(child.id === node.id) 
-                found = true;
+    findChildParent(node): number {
+        let found = false
+        const index = this.AllPermissions.findIndex((item) => {
+            item.children.forEach((child) => {
+                if (child.id === node.id)
+                    found = true;
             })
             return found;
         })
         return index;
     }
-    AllChildSeleted(node){
-       return node.children.every((child)=>{
-            return child.checked===true
+    AllChildSeleted(node) {
+        return node.children.every((child) => {
+            return child.checked === true
         })
     }
-    AtLeastOneSelected():boolean{
-       let thereIsOne = false
-        this.AllPermissions.forEach((perm)=>{
-            if(perm.checked) return thereIsOne=true;
-            if(perm.children) perm.children.forEach((child)=> {if(child.checked) return thereIsOne=true})
-       })
+    AtLeastOneSelected(): boolean {
+        let thereIsOne = false
+        this.AllPermissions.forEach((perm) => {
+            if (perm.checked) return thereIsOne = true;
+            if (perm.children) perm.children.forEach((child) => { if (child.checked) return thereIsOne = true })
+        })
         return thereIsOne;
     }
 
