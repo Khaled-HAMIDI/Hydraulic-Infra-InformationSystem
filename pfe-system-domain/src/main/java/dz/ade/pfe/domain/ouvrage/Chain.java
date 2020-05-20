@@ -28,7 +28,7 @@ public class Chain extends Auditing{
     @Column(name = "name")
     private String name;
 
-    @OneToMany(mappedBy = "chain", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "chain", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @Builder.Default
     protected List<OuvrageChain> ouvrages = new ArrayList<>();
 

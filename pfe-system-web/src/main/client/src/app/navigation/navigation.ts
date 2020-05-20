@@ -24,7 +24,15 @@ export const navigation: FuseNavigation[] = [
         type: 'item',
         icon: 'file',
         url: '/uploadExample'
-    },    
+    }, 
+    {
+        id: 'Stepper',
+        title: 'Stepper Example',
+        translate: 'Stepper Example',
+        type: 'item',
+        icon: 'file',
+        url: '/stepper-example'
+    },   
     {
         id: 'business',
         title: 'Matier',

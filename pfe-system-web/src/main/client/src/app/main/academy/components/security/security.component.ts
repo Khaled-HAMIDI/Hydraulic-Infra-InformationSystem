@@ -1,28 +1,31 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, Output, EventEmitter} from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { fuseAnimations } from '@fuse/animations';
 import {ActivatedRoute, Router} from '@angular/router';
 import { FuseTranslationLoaderService } from '@fuse/services/translation-loader.service';
 import { locale as french } from './i18n/fr';
 import { locale as arabic } from './i18n/ar';
-import {ComposantSaveService} from "../../composant-save.service";
 import {takeUntil} from "rxjs/operators";
 import {Subject} from "rxjs";
-import {Security} from "../../../../../model/composant.model";
+import { Security } from 'app/main/model/composant.model';
+import { ComposantSaveService } from 'app/main/inventory-ouvrage/ouvrage/composant/composant-save.service';
+
 
 @Component({
-  selector: 'app-security',
+  selector: 'testapp-security',
   templateUrl: './security.component.html',
   styleUrls: ['./security.component.scss'],
     animations: fuseAnimations
 })
-export class SecurityComponent implements OnInit{
+export class TestSecurityComponent implements OnInit{
 
     private _unsubscribeAll: Subject<any>;
     exist:boolean;
     add:boolean;
     security:Security;
     securityForm: FormGroup;
+
+    @Output() validateEvent = new EventEmitter<string>();
 
     constructor(
         private composantService : ComposantSaveService,
@@ -89,17 +92,18 @@ export class SecurityComponent implements OnInit{
     }
 
     onSave(): void {
+        this.validateEvent.emit("to-next-step");
+        // const security = this.securityForm.getRawValue();
+        // console.log(security);
 
-        const security = this.securityForm.getRawValue();
-        console.log(security);
-
-        this.composantService.saveSecurity(security,this.route.snapshot.params['code'])
-            .then((response) => {
-                    console.log("It worked");
-                },
-                (error) => {
-                    console.log("No")
-                });
+        // this.composantService.saveSecurity(security,this.route.snapshot.params['code'])
+        //     .then((response) => {
+        //             console.log("It worked");
+        //             this.validateEvent.emit("to-next-step");
+        //         },
+        //         (error) => {
+        //             console.log("No")
+        //         });
     }
 
 

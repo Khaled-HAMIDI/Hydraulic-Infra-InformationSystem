@@ -63,6 +63,10 @@ const appRoutes: Routes = [
       canActivate: [AuthenticationGuard]
     },
     {
+        path: 'stepper-example',
+        loadChildren: () => import('./main/academy/academy.module').then(m => m.AcademyModule)
+    },
+    {
         path: '**',
         redirectTo: 'home',
         pathMatch: 'full'
