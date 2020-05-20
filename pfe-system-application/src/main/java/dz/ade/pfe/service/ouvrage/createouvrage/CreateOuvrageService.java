@@ -24,7 +24,7 @@ public class CreateOuvrageService implements CreateOuvrageQuery {
     private final CreateOuvrageMapper createOuvrageMapper;
 
     @Override
-    public OuvrageDto createOuvrage(OuvrageAddDto ouvrageAddDto, String unitCode) throws Exception {
+    public OuvrageDto createOuvrage(OuvrageAddDto ouvrageAddDto, String unitCode) {
 
         Ouvrage ouvrage =createOuvrageMapper.ouvrageAddToOuvrage(ouvrageAddDto);
         Optional<Unit> unit = loadUnitByCode.loadUnitByCode(unitCode);

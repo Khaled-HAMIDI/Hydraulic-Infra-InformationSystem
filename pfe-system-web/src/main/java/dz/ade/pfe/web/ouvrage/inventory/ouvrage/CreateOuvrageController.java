@@ -32,7 +32,7 @@ public class CreateOuvrageController extends BaseController {
             @ApiResponse(code = 403, message = "Accessing the resource you were trying to reach is forbidden"),
             @ApiResponse(code = 404, message = "The resource you were trying to reach is not found")
     })
-    public OuvrageDto createOuvrage(@RequestBody OuvrageAddDto ouvrageAddDto, HttpServletRequest httpServletRequest) throws Exception {
+    public OuvrageDto createOuvrage(@RequestBody OuvrageAddDto ouvrageAddDto, HttpServletRequest httpServletRequest){
         String codeStructure = securityUtils.getConnectedUserOrganisationalStructure(httpServletRequest);
 
         return createOuvrageQuery.createOuvrage(ouvrageAddDto, codeStructure);
