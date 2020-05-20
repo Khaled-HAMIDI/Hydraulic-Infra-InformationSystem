@@ -1,6 +1,5 @@
 package dz.ade.pfe.web.admin.user.controller;
 
-import dz.ade.pfe.admin.organisationalstructures.OrganisationalStructureComponent;
 import dz.ade.pfe.admin.security.user.SecurityService;
 import dz.ade.pfe.admin.security.user.UserComponent;
 import dz.ade.pfe.domain.exceptions.ResourceAlreadyExistException;
@@ -9,11 +8,12 @@ import dz.ade.pfe.web.admin.user.dto.*;
 import dz.ade.pfe.web.admin.user.mapper.OrganisationalStructureDtoMapper;
 import dz.ade.pfe.web.admin.user.mapper.UserUserDtoMapper;
 import dz.ade.pfe.domain.exceptions.WrongFormatException;
-import dz.ade.pfe.web.utils.ProfileManager;
+import dz.ade.pfe.web.commons.controller.BaseController;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -29,29 +29,14 @@ import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping(value = "/api")
-@Api(value = "Users", description = "Operations on users")
-public class UserController {
+@Api(value = "Users")
+@RequiredArgsConstructor
+public class UserController extends BaseController {
 
-    private UserComponent userComponent;
-    private SecurityService securityService;
-    private OrganisationalStructureComponent organisationalStructureComponent;
-    private UserUserDtoMapper userUserDtoMapper;
-    private OrganisationalStructureDtoMapper organisationalStructureDtoMapper;
-    private ProfileManager profileManager;  
-
-    public UserController(UserComponent userComponent,
-                          SecurityService securityService,
-                          OrganisationalStructureComponent organisationalStructureComponent,
-                          UserUserDtoMapper userUserDtoMapper,
-                          OrganisationalStructureDtoMapper organisationalStructureDtoMapper,
-                          ProfileManager profileManager) {
-        this.userComponent = userComponent;
-        this.securityService = securityService;
-        this.organisationalStructureComponent = organisationalStructureComponent;
-        this.userUserDtoMapper = userUserDtoMapper;
-        this.organisationalStructureDtoMapper = organisationalStructureDtoMapper;
-        this.profileManager = profileManager;
-    }
+    private final UserComponent userComponent;
+    private final SecurityService securityService;
+    private final UserUserDtoMapper userUserDtoMapper;
+    private final OrganisationalStructureDtoMapper organisationalStructureDtoMapper;
 
     @PostMapping(value = "/users")
     @PreAuthorize("hasAuthority('*:*')")
@@ -72,19 +57,15 @@ public class UserController {
         User user = userUserDtoMapper.userAddDtoToUser(userAddDto);
         user.setUsername(username);
 
-        Optional<OrganisationalStructure> foundStr;
+        OrganisationalStructure foundStr;
         if (userAddDto.getStructure() != null) {
-            foundStr = organisationalStructureComponent.getStructure(userAddDto.getStructure());
+            foundStr = organisationalStructureComponent.getStructure(userAddDto.getStructure())
+                    .orElseThrow(() -> new ResourceNotFoundException("Structure with code=" + userAddDto.getStructure() + " does not exists"));
         } else {
-            foundStr = Optional.of(organisationalStructureComponent
-                    .getUnitByCode(profileManager.getDeployedUnitCode()).get());
+            foundStr = getDeployedUnit();
         }
 
-        if (!foundStr.isPresent()) {
-            throw new ResourceNotFoundException("Structure with code=" + userAddDto.getStructure() + " does not exists");
-        }
-
-        user.setOrganisationalStructure(foundStr.get());
+        user.setOrganisationalStructure(foundStr);
         user.setRoles(userComponent.convertStringsToRoles(userAddDto.getRoles()));
         user.setPassword(securityService.getDefaultPassword());
         User createdUser = userComponent.createUser(user);
@@ -211,19 +192,15 @@ public class UserController {
         userUserDtoMapper.userDtoToUserWithTarget(userAddDto, user);
         user.setUsername(username);
 
-        Optional<OrganisationalStructure> foundStr;
+        OrganisationalStructure foundStr;
         if (userAddDto.getStructure() != null) {
-            foundStr = organisationalStructureComponent.getStructure(userAddDto.getStructure());
+            foundStr = organisationalStructureComponent.getStructure(userAddDto.getStructure())
+                    .orElseThrow(() -> new ResourceNotFoundException("Structure with code=" + userAddDto.getStructure() + " does not exists"));
         } else {
-            foundStr = Optional.of(organisationalStructureComponent
-                    .getUnitByCode(profileManager.getDeployedUnitCode()).get());
+            foundStr = getDeployedUnit();
         }
 
-        if (!foundStr.isPresent()) {
-            throw new ResourceNotFoundException("Structure with code=" + userAddDto.getStructure() + " does not exists");
-        }
-
-        user.setOrganisationalStructure(foundStr.get());
+        user.setOrganisationalStructure(foundStr);
         user.setRoles(userComponent.convertStringsToRoles(userAddDto.getRoles()));
         User savedUser = userComponent.saveUser(user);
         return userUserDtoMapper.userToUserDto(savedUser);

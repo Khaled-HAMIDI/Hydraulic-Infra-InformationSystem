@@ -8,12 +8,14 @@ import dz.ade.pfe.web.admin.organisationalstructure.dto.UnitDto;
 import dz.ade.pfe.web.admin.organisationalstructure.dto.UnitEditDto;
 import dz.ade.pfe.web.admin.organisationalstructure.mapper.UnitDtoUnitMapper;
 import dz.ade.pfe.domain.exceptions.NotAllowedAffectationException;
+import dz.ade.pfe.web.commons.controller.BaseController;
 import dz.ade.pfe.web.utils.ProfileManager;
 import dz.ade.pfe.domain.exceptions.ResourceNotFoundException;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
+import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Optional;
@@ -25,23 +27,12 @@ import java.util.Optional;
  */
 @RestController
 @RequestMapping(value = "/api/units")
-@Api(value = "Centers", description = "Operations on centers")
-public class UnitController {
+@Api(value = "Units")
+@RequiredArgsConstructor
+public class UnitController extends BaseController {
 
-    private OrganisationalStructureComponent organisationalStructureComponent;
-    private UnitDtoUnitMapper unitDtoUnitMapper;
-    private ProfileManager profileManager;
-    private UserComponent userComponent;
-
-    public UnitController(OrganisationalStructureComponent organisationalStructureComponent,
-                          ProfileManager profileManager,
-                          UnitDtoUnitMapper unitDtoUnitMapper,
-                          UserComponent userComponent) {
-        this.organisationalStructureComponent = organisationalStructureComponent;
-        this.unitDtoUnitMapper = unitDtoUnitMapper;
-        this.profileManager = profileManager;
-        this.userComponent = userComponent;
-    }
+    private final UnitDtoUnitMapper unitDtoUnitMapper;
+    private final UserComponent userComponent;
 
     @GetMapping(value = "/deployedunit")
     @ApiOperation(value = "get unit deployed")
@@ -51,15 +42,10 @@ public class UnitController {
             @ApiResponse(code = 403, message = "Accessing the resource you were trying to reach is forbidden"),
             @ApiResponse(code = 404, message = "The resource you were trying to reach is not found")
     })
-    public UnitDto getDeployedUnit() {
-        Optional<Unit> unit = organisationalStructureComponent
-                .getUnitByCode(profileManager.getDeployedUnitCode());
-        if (!unit.isPresent()) {
-            throw new ResourceNotFoundException(String.format("Unit with {code %s} not found",
-                    profileManager.getDeployedUnitCode()));
-        }
+    public UnitDto getDeployedUnitDto() {
+        Unit unit = getDeployedUnit();
 
-        return unitDtoUnitMapper.unitToUnitDto(unit.get());
+        return unitDtoUnitMapper.unitToUnitDto(unit);
     }
 
 
@@ -72,26 +58,19 @@ public class UnitController {
             @ApiResponse(code = 404, message = "The resource you were trying to reach is not found")
     })
     public int updateDeployedUnit(@RequestBody UnitEditDto unitEditDto) {
-        Optional<Unit> unit = organisationalStructureComponent
-                .getUnitByCode(profileManager.getDeployedUnitCode());
-        if (!unit.isPresent()) {
-            throw new ResourceNotFoundException(String.format("Unit with {code %s} not found",
-                    profileManager.getDeployedUnitCode()));
-        }
-
-        Unit unitToBeUpdated = unit.get();
+        Unit unit = getDeployedUnit();
 
         Optional<User> user = userComponent.findByUsername(unitEditDto.getHeadOfTheStructure());
         if (user.isPresent()) {
-            if (!user.get().getOrganisationalStructure().getCode().equals(unitToBeUpdated.getCode())) {
+            if (!user.get().getOrganisationalStructure().getCode().equals(unit.getCode())) {
                 throw new NotAllowedAffectationException("head of structure selected is not assign to this structure");
             }
         }
 
-        unitDtoUnitMapper.unitEditDtoToUnitWithTarget(unitEditDto, unitToBeUpdated);
-        user.ifPresent(unitToBeUpdated::setHeadOfTheStructure);
+        unitDtoUnitMapper.unitEditDtoToUnitWithTarget(unitEditDto, unit);
+        user.ifPresent(unit::setHeadOfTheStructure);
 
-        organisationalStructureComponent.updateUnit(unitToBeUpdated);
+        organisationalStructureComponent.updateUnit(unit);
         return 1;
     }
 }

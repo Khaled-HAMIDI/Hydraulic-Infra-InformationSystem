@@ -3,7 +3,7 @@ package dz.ade.pfe.web.ouvrage.inventory.inventory;
 import dz.ade.pfe.port.in.inventory.createinventory.CreateInventoryQuery;
 import dz.ade.pfe.service.inventory.createinventory.InventoryAddDto;
 import dz.ade.pfe.service.inventory.createinventory.InventoryShowDto;
-import dz.ade.pfe.web.utils.ProfileManager;
+import dz.ade.pfe.web.commons.controller.BaseController;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
@@ -12,18 +12,17 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.*;
 
-
+import javax.servlet.http.HttpServletRequest;
 
 
 @RestController
 @RequestMapping(value = "/api")
-@Api(value = "inventory", description = "Operations on inventory")
+@Api(value = "inventory")
 @Component
 @RequiredArgsConstructor
-public class CreateInventoryController {
+public class CreateInventoryController extends BaseController {
 
     private final CreateInventoryQuery createInventoryQuery;
-    private final ProfileManager profileManager;
 
     @PostMapping(value = "/inventory")
     @ApiOperation(value = "Save an inventory")
@@ -33,7 +32,9 @@ public class CreateInventoryController {
             @ApiResponse(code = 403, message = "Accessing the resource you were trying to reach is forbidden"),
             @ApiResponse(code = 404, message = "The resource you were trying to reach is not found")
     })
-    public InventoryShowDto createInventory(@RequestBody InventoryAddDto inventoryAddDto) {
-        return createInventoryQuery.createInventory(inventoryAddDto,profileManager.getDeployedUnitCode());
+    public InventoryShowDto createInventory(@RequestBody InventoryAddDto inventoryAddDto, HttpServletRequest httpServletRequest) {
+        String codeStructure = securityUtils.getConnectedUserOrganisationalStructure(httpServletRequest);
+
+        return createInventoryQuery.createInventory(inventoryAddDto, codeStructure);
     }
 }

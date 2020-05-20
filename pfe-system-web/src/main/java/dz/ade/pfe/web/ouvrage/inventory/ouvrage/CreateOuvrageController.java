@@ -1,12 +1,9 @@
 package dz.ade.pfe.web.ouvrage.inventory.ouvrage;
 
-import dz.ade.pfe.domain.ouvrage.Ouvrage;
 import dz.ade.pfe.port.in.ouvrage.createouvrage.CreateOuvrageQuery;
-import dz.ade.pfe.port.out.site.LoadSiteById;
-import dz.ade.pfe.port.out.unit.LoadUnitByCode;
 import dz.ade.pfe.service.ouvrage.createouvrage.OuvrageAddDto;
 import dz.ade.pfe.service.ouvrage.getouvragedetails.OuvrageDto;
-import dz.ade.pfe.web.utils.ProfileManager;
+import dz.ade.pfe.web.commons.controller.BaseController;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
@@ -15,16 +12,17 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
+
 
 @RestController
 @RequestMapping(value = "/api")
-@Api(value = "ouvrage", description = "Operations on ouvrage")
+@Api(value = "ouvrage")
 @Component
 @RequiredArgsConstructor
-public class CreateOuvrageController {
+public class CreateOuvrageController extends BaseController {
 
     private final CreateOuvrageQuery createOuvrageQuery;
-    private final ProfileManager profileManager;
 
     @PostMapping(value = "/ouvrage")
     @ApiOperation(value = "Save an ouvrage")
@@ -34,7 +32,9 @@ public class CreateOuvrageController {
             @ApiResponse(code = 403, message = "Accessing the resource you were trying to reach is forbidden"),
             @ApiResponse(code = 404, message = "The resource you were trying to reach is not found")
     })
-    public OuvrageDto createOuvrage(@RequestBody OuvrageAddDto ouvrageAddDto) throws Exception {
-        return createOuvrageQuery.createOuvrage(ouvrageAddDto, profileManager.getDeployedUnitCode());
+    public OuvrageDto createOuvrage(@RequestBody OuvrageAddDto ouvrageAddDto, HttpServletRequest httpServletRequest) throws Exception {
+        String codeStructure = securityUtils.getConnectedUserOrganisationalStructure(httpServletRequest);
+
+        return createOuvrageQuery.createOuvrage(ouvrageAddDto, codeStructure);
     }
 }

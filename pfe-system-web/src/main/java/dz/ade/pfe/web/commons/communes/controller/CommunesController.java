@@ -4,11 +4,12 @@ import dz.ade.pfe.commons.commune.CommuneComponent;
 import dz.ade.pfe.domain.commons.Commune;
 import dz.ade.pfe.web.commons.communes.dto.CommuneListDto;
 import dz.ade.pfe.web.commons.communes.mapper.CommunesMapper;
-import dz.ade.pfe.web.utils.ProfileManager;
+import dz.ade.pfe.web.commons.controller.BaseController;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
+import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,20 +19,12 @@ import java.util.List;
 
 @RestController
 @RequestMapping(value = "/api")
-@Api(value = "commune", description = "Operations on commune")
-public class CommunesController {
+@Api(value = "commune")
+@RequiredArgsConstructor
+public class CommunesController extends BaseController {
 
-    private CommuneComponent communeComponent;
-    private CommunesMapper communesMapper;
-    private ProfileManager profileManager;
-
-    public CommunesController(CommuneComponent communeComponent,
-                              CommunesMapper communesMapper,
-                              ProfileManager profileManager) {
-        this.communeComponent = communeComponent;
-        this.communesMapper = communesMapper;
-        this.profileManager = profileManager;
-    }
+    private final CommuneComponent communeComponent;
+    private final CommunesMapper communesMapper;
 
     @GetMapping(value = "/wilayas/{code}/communes")
     @ApiOperation(value = "View a list of available commune by wilaya")
@@ -55,6 +48,6 @@ public class CommunesController {
             @ApiResponse(code = 404, message = "The resource you were trying to reach is not found")
     })
     public List<CommuneListDto> getCommunesByWilaya() {
-        return getCommunesByWilaya(profileManager.getDeployedUnitCode());
+        return getCommunesByWilaya(getDeployedUnit().getCode());
     }
 }

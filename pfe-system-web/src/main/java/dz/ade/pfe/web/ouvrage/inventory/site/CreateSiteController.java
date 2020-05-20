@@ -2,9 +2,8 @@ package dz.ade.pfe.web.ouvrage.inventory.site;
 
 
 import dz.ade.pfe.port.in.site.CreateSiteQuery;
-import dz.ade.pfe.service.inventory.createinventory.InventoryAddDto;
 import dz.ade.pfe.service.site.createsite.SiteDto;
-import dz.ade.pfe.web.utils.ProfileManager;
+import dz.ade.pfe.web.commons.controller.BaseController;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
@@ -16,14 +15,16 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.servlet.http.HttpServletRequest;
+
 @RestController
 @RequestMapping(value = "/api")
-@Api(value = "inventory", description = "Operations on inventory")
+@Api(value = "inventory")
 @Component
 @RequiredArgsConstructor
-public class CreateSiteController {
+public class CreateSiteController extends BaseController {
     private final CreateSiteQuery createSiteQuery;
-    private final ProfileManager profileManager;
+
     @PostMapping(value = "/site")
     @ApiOperation(value = "Save a site")
     @ApiResponses(value = {
@@ -32,7 +33,8 @@ public class CreateSiteController {
             @ApiResponse(code = 403, message = "Accessing the resource you were trying to reach is forbidden"),
             @ApiResponse(code = 404, message = "The resource you were trying to reach is not found")
     })
-    public SiteDto CreateSite(@RequestBody SiteDto siteDto){
-        return  createSiteQuery.createSite(siteDto,profileManager.getDeployedUnitCode());
+    public SiteDto CreateSite(@RequestBody SiteDto siteDto, HttpServletRequest httpServletRequest) {
+        String codeStructure = securityUtils.getConnectedUserOrganisationalStructure(httpServletRequest);
+        return createSiteQuery.createSite(siteDto, codeStructure);
     }
 }

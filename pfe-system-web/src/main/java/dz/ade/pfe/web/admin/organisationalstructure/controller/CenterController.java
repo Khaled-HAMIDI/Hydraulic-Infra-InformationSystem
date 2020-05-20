@@ -1,6 +1,5 @@
 package dz.ade.pfe.web.admin.organisationalstructure.controller;
 
-import dz.ade.pfe.admin.organisationalstructures.OrganisationalStructureComponent;
 import dz.ade.pfe.admin.security.user.UserComponent;
 import dz.ade.pfe.domain.admin.Center;
 import dz.ade.pfe.domain.admin.Unit;
@@ -11,13 +10,14 @@ import dz.ade.pfe.web.admin.organisationalstructure.dto.CenterShowDto;
 import dz.ade.pfe.web.admin.organisationalstructure.mapper.CenterDtoCenterMapper;
 import dz.ade.pfe.domain.exceptions.NotAllowedAffectationException;
 import dz.ade.pfe.domain.exceptions.WrongFormatException;
-import dz.ade.pfe.web.utils.ProfileManager;
+import dz.ade.pfe.web.commons.controller.BaseController;
 import dz.ade.pfe.domain.exceptions.ResourceAlreadyExistException;
 import dz.ade.pfe.domain.exceptions.ResourceNotFoundException;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -33,28 +33,17 @@ import java.util.stream.Collectors;
  */
 @RestController
 @RequestMapping(value = "/api/centers")
-@Api(value = "Centers", description = "Operations on centers")
-public class CenterController {
+@Api(value = "Centers")
+@RequiredArgsConstructor
+public class CenterController extends BaseController {
 
-    private OrganisationalStructureComponent organisationalStructureComponent;
-    private CenterDtoCenterMapper centerDtoCenterMapper;
-    private UserComponent userComponent;
-    private ProfileManager profileManager;
-
-    public CenterController(OrganisationalStructureComponent organisationalStructureComponent,
-                            CenterDtoCenterMapper centerDtoCenterMapper,
-                            UserComponent userComponent,
-                            ProfileManager profileManager) {
-        this.organisationalStructureComponent = organisationalStructureComponent;
-        this.centerDtoCenterMapper = centerDtoCenterMapper;
-        this.userComponent = userComponent;
-        this.profileManager = profileManager;
-    }
+    private final CenterDtoCenterMapper centerDtoCenterMapper;
+    private final UserComponent userComponent;
 
     @GetMapping
     @ApiOperation(value = "View the list of centers")
     @ApiResponses(value = {
-            @ApiResponse(code = 200, message = "Successfully retrieved a list of centers"),
+            @ApiResponse(code = 200, message = "Successfully retrieved a list of agencies"),
             @ApiResponse(code = 401, message = "You are not authorized to view the resource"),
             @ApiResponse(code = 403, message = "Accessing the resource you were trying to reach is forbidden"),
             @ApiResponse(code = 404, message = "The resource you were trying to reach is not found")
@@ -76,8 +65,7 @@ public class CenterController {
             @ApiResponse(code = 404, message = "The resource you were trying to reach is not found")
     })
     public CenterDto createCenter(@Valid @RequestBody CenterCreateDto centerCreateDto) {
-        Unit unit = organisationalStructureComponent.getUnitByCode(profileManager.getDeployedUnitCode())
-                .orElseThrow(() -> new ResourceNotFoundException(String.format("Unit with {code %s} not found", profileManager.getDeployedUnitCode())));
+        Unit unit = getDeployedUnit();
 
         Optional<Center> optionalCenter = organisationalStructureComponent.findNotDeletedCenterByCode(unit.getCode() + centerCreateDto.getCode());
         if (optionalCenter.isPresent()) {
@@ -103,12 +91,10 @@ public class CenterController {
             @ApiResponse(code = 404, message = "The resource you were trying to reach is not found")
     })
     public CenterDto updateCenter(@Valid @RequestBody CenterDto centerDto, @PathVariable String code) {
-
         Center center = organisationalStructureComponent.findNotDeletedCenterByCode(code)
                 .orElseThrow(() -> new ResourceNotFoundException(String.format("Center with {Code %s} not found", code)));
 
-        Unit unit = organisationalStructureComponent.getUnitByCode(profileManager.getDeployedUnitCode())
-                .orElseThrow(() -> new ResourceNotFoundException(String.format("Unit with {code %s} not found", profileManager.getDeployedUnitCode())));
+        Unit unit =  getDeployedUnit();
 
         if (!code.equals(unit.getCode() + centerDto.getCode())) {
             Optional<Center> optionalCenter = organisationalStructureComponent.findNotDeletedCenterByCode(unit.getCode() + centerDto.getCode());
