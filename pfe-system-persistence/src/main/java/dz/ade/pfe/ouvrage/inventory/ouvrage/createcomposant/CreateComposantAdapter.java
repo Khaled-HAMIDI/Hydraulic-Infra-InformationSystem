@@ -245,6 +245,18 @@ public class CreateComposantAdapter implements SaveComposant {
                 old = componentRepository.loadVanneDistribution(ouvrage);
                 if (old != null) componentRepository.delete(old);
                 break;
+            case "Obturateur" :
+                old = componentRepository.loadObturateur(ouvrage);
+                if (old != null) componentRepository.delete(old);
+                break;
+            case "CompteurDebimetreSortie" :
+                old = componentRepository.loadCompteurDebimetreSortie(ouvrage);
+                if (old != null) componentRepository.delete(old);
+                break;
+            case "JointDemantageSortie" :
+                old = componentRepository.loadJointDemantageSortie(ouvrage);
+                if (old != null) componentRepository.delete(old);
+                break;
         }
 
 

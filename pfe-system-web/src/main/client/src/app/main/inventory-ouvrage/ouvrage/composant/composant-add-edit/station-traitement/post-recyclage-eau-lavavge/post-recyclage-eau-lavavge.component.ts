@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { fuseAnimations } from '@fuse/animations';
 import {ActivatedRoute, Router} from '@angular/router';
@@ -24,6 +24,8 @@ export class PostRecyclageEauLavavgeComponent implements OnInit{
     poste:PostChimique;
     postes : PostChimique[];
     postRecyEauLavageForm: FormGroup;
+
+    @Output() validateEvent = new EventEmitter<string>();
 
     constructor(
         private composantService : ComposantSaveService,
@@ -118,6 +120,7 @@ export class PostRecyclageEauLavavgeComponent implements OnInit{
         this.composantService.savePostChimique(post,this.route.snapshot.params['code'])
             .then((response) => {
                     console.log("It worked");
+                    this.validateEvent.emit("to-next-step");
                 },
                 (error) => {
                     console.log("No")

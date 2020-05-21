@@ -3,12 +3,7 @@
 
     <div class="tab-content p-24" fusePerfectScrollbar>
 
-        <div *ngIf="add">
-            <button mat-raised-button class="accent add-button" matStepperNext>
-                <span>{{'BUTTON.disponible' | translate}}</span>
-            </button>
-        </div>
-        <hr *ngIf="add">
+
 
         <div fxLayout="column" fxLayout.gt-sm="row">
             <div class="mr-sm-12 ml-sm-12" fxFlex>
@@ -71,9 +66,9 @@
 
 
         </div>
-        <hr>
+
         <div>
-            <button mat-raised-button class="accent add-button" matStepperNext [disabled]="antiBelierForm.invalid" (click)="onSave()">
+            <button mat-raised-button class="accent add-button"  [disabled]="antiBelierForm.invalid" (click)="onSave()">
                 <span>{{'BUTTON.next' | translate}}</span>
             </button>
         </div>

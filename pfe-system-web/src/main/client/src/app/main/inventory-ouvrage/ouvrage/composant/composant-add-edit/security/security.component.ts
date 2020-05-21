@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { fuseAnimations } from '@fuse/animations';
 import {ActivatedRoute, Router} from '@angular/router';
@@ -23,6 +23,8 @@ export class SecurityComponent implements OnInit{
     add:boolean;
     security:Security;
     securityForm: FormGroup;
+
+    @Output() validateEvent = new EventEmitter<string>();
 
     constructor(
         private composantService : ComposantSaveService,
@@ -91,10 +93,10 @@ export class SecurityComponent implements OnInit{
     onSave(): void {
 
         const security = this.securityForm.getRawValue();
-        console.log(security);
 
         this.composantService.saveSecurity(security,this.route.snapshot.params['code'])
             .then((response) => {
+                    this.validateEvent.emit("to-next-step");
                     console.log("It worked");
                 },
                 (error) => {

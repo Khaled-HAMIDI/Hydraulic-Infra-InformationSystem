@@ -85,7 +85,8 @@ export const locale = {
                 'flotteurInexistante':'Cet ouvrage ne contient pas de flotteur',
                 'vanneArriveeInexistante':'Cet ouvrage ne contient pas de vanne d\'arrivee',
                 'vanneSortieInexistante':'Cet ouvrage ne contient pas de de vanne de sortie',
-                'posteChlorationInexistante':'Cet ouvrage ne contient pas de poste de chloration'
+                'posteChlorationInexistante':'Cet ouvrage ne contient pas de poste de chloration',
+                'obturateurInexistante':'Cet ouvrage ne contient pas d\'obturateur'
 
 
 

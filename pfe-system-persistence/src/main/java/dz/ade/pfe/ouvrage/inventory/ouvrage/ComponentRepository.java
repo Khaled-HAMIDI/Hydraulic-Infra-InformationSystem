@@ -141,4 +141,13 @@ public interface ComponentRepository extends JpaRepository<Component, Long> {
     @Query("SELECT equipement FROM HedromecaEquipment equipement WHERE equipement.ouvrage = :ouvrage AND equipement.equipementType = 'VanneDistribution'")
     HedromecaEquipment loadVanneDistribution(@Param("ouvrage") Ouvrage ouvrage);
 
+    @Query("SELECT equipement FROM HedromecaEquipment equipement WHERE equipement.ouvrage = :ouvrage AND equipement.equipementType = 'Obturateur'")
+    HedromecaEquipment loadObturateur(@Param("ouvrage") Ouvrage ouvrage);
+
+    @Query("SELECT equipement FROM HedromecaEquipment equipement WHERE equipement.ouvrage = :ouvrage AND equipement.equipementType = 'CompteurDebimetreSortie'")
+    HedromecaEquipment loadCompteurDebimetreSortie(@Param("ouvrage") Ouvrage ouvrage);
+
+    @Query("SELECT equipement FROM HedromecaEquipment equipement WHERE equipement.ouvrage = :ouvrage AND equipement.equipementType = 'JointDemantageSortie'")
+    HedromecaEquipment loadJointDemantageSortie(@Param("ouvrage") Ouvrage ouvrage);
+
 }

@@ -3,12 +3,6 @@
 
     <div class="tab-content p-24" fusePerfectScrollbar>
 
-        <div *ngIf="add">
-            <button mat-raised-button class="accent add-button" [routerLink]="'patrimony/ouvrages/list'">
-                <span>{{'BUTTON.disponible' | translate}}</span>
-            </button>
-        </div>
-        <hr *ngIf="add">
 
         <div fxLayout="column" fxLayout.gt-sm="row">
             <div class="mr-sm-12 ml-sm-12" fxFlex>
@@ -102,7 +96,7 @@
 
 
         </div>
-        <hr>
+
         <div>
             <button mat-raised-button class="accent add-button" [routerLink]="'/patrimony/ouvrages/list'" [disabled]="postChlorationForm.invalid" (click)="onSave()">
                 <span *ngIf="add">{{'BUTTON.add' | translate}}</span>

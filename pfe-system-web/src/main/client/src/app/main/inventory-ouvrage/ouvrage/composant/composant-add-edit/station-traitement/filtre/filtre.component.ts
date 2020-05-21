@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { fuseAnimations } from '@fuse/animations';
 import {ActivatedRoute, Router} from '@angular/router';
@@ -9,6 +9,7 @@ import {ComposantSaveService} from "../../../composant-save.service";
 import {Subject} from "rxjs";
 import {EquipementStationTraitement} from "../../../../../../model/composant.model";
 import {takeUntil} from "rxjs/operators";
+import {ComposantGetService} from "../../../composant-get.service";
 
 @Component({
   selector: 'app-filtre',
@@ -24,6 +25,8 @@ export class FiltreComponent implements OnInit{
     equipement:EquipementStationTraitement;
     equipements : EquipementStationTraitement[];
     filterForm: FormGroup;
+
+    @Output() validateEvent = new EventEmitter<string>();
 
     constructor(
         private composantService : ComposantSaveService,
@@ -77,18 +80,12 @@ export class FiltreComponent implements OnInit{
     initForm(action){
         if (action == 'edit') {
             this.add=false;
-            this.composantService.loadEquipementStationTraitement(this.route.snapshot.params['code']).then(
-                (composants) => {
-                    if(this.typeEquipement(composants)) {
-                        this.equipement = new EquipementStationTraitement(this.typeEquipement(composants));
-                        this.filterForm = this.createForm(this.equipement);
-                    }
-                    else this.exist=false;
-                },
-                (error) => {
-                    console.log(error);
-                }
-            );
+
+            if(this.typeEquipement(this.equipements)) {
+                this.equipement = new EquipementStationTraitement(this.typeEquipement(this.equipements));
+                this.filterForm = this.createForm(this.equipement);
+            }
+            else this.exist=false;
         }
         else {
             this.equipement=new EquipementStationTraitement();
@@ -116,6 +113,7 @@ export class FiltreComponent implements OnInit{
         this.composantService.saveEquipementStationTraitement(equipement,this.route.snapshot.params['code'])
             .then((response) => {
                     console.log("It worked");
+                    this.validateEvent.emit("to-next-step");
                 },
                 (error) => {
                     console.log("No")
