@@ -5,9 +5,9 @@ import { fuseAnimations } from '@fuse/animations';
 import { FusePerfectScrollbarDirective } from '@fuse/directives/fuse-perfect-scrollbar/fuse-perfect-scrollbar.directive';
 import { FuseSidebarService } from '@fuse/components/sidebar/sidebar.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { LoadComponenteDirective } from '../load-component.directive';
-import { DynamicComponent } from '../dynamic-component.component';
-import {SteppersService, componentMapping} from "../steppers.service";
+import { LoadComponenteDirective } from '../../../load-component.directive';
+import { DynamicComponent } from '../../../dynamic-component.component';
+import {SteppersAddEditService, componentMapping} from "../steppers-add-edit.service";
 
 @Component({
   selector: 'app-forage-stepper',
@@ -31,7 +31,7 @@ export class ForageStepperComponent implements OnInit, OnDestroy {
 
 
     constructor(
-        private steppersService: SteppersService,
+        private steppersService: SteppersAddEditService,
         private _changeDetectorRef: ChangeDetectorRef,
         private _fuseSidebarService: FuseSidebarService,
         private route: ActivatedRoute,

@@ -40,11 +40,12 @@ import {CompteurSortieComponent} from "../../composant/composant-add-edit/statio
 import {JointDemantageSortieComponent} from "../../composant/composant-add-edit/station-pompage-et-forage/joint-demantage-sortie/joint-demantage-sortie.component";
 import {SoupageDechargeComponent} from "../../composant/composant-add-edit/station-pompage-et-forage/soupape-decharge/soupage-decharge.component";
 import {PosteChlorationComponent} from "../../composant/composant-add-edit/reservoir-et-brise-charge/poste-chloration/poste-chloration.component";
+import {ColonnesMontantesComponent} from "../../composant/composant-add-edit/station-pompage-et-forage/colonnes-montantes/colonnes-montantes.component";
 
 @Injectable({
     providedIn: 'root'
 })
-export class SteppersService {
+export class SteppersAddEditService {
     briseChargeComposants = [
         {
             'title': 'Securité',
@@ -156,7 +157,7 @@ export class SteppersService {
         },
         {
             'title': 'Colonnes montantes' ,
-            'ComponentName': 'CollonnesMontantesShowComponent',
+            'ComponentName': 'ColonnesMontantesComponent',
         }
     ];
 
@@ -439,7 +440,7 @@ export const componentMapping: { [key: string]: Type<any>; } = {
     'ArmoirElecCmdComponent':ArmoirElecCmdComponent,
     'AntiBelierComponent':AntiBelierComponent,
     'ClapetAntiRetourComponent':ClapetAntiRetourComponent,
-    'CollonnesMontantesShowComponent':CollonnesMontantesShowComponent,
+    'CollonnesMontantesShowComponent':ColonnesMontantesComponent,
     'GroupeElectrogeneComponent':GroupeElectrogeneComponent,
     'ReservoirEauBruteComponent':ReservoirEauBruteComponent,
     'ReservoirEauTraiteComponent':ReservoirEauTraiteComponent,

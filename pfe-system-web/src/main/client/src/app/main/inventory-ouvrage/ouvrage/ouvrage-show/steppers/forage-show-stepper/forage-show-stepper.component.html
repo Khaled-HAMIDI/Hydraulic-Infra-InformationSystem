@@ -1,124 +1,88 @@
-<div class="page-layout carded fullwidth inner-scroll">
+<div id="stepper" class="page-layout simple left-sidebar inner-scroll">
 
-    <!-- TOP BACKGROUND -->
-    <div class="top-bg accent"></div>
-    <!-- / TOP BACKGROUND -->
+    <!-- SIDEBAR -->
+    <fuse-sidebar class="sidebar" name="left-sidebar" position="left" lockedOpen="gt-md">
+
+        <!-- SIDEBAR CONTENT -->
+        <div class="content" fusePerfectScrollbar>
+
+            <div class="steps">
+
+                <div class="step"
+                     *ngFor="let composant of composants; let i = index; let last = last; let first = first"
+                     (click)="gotoStep(i)"
+                     [ngClass]="{'current': currentStep === i, 'completed': currentStep > i, 'last': last, 'first': first}">
+                    <div class="index">
+                        <span>{{i + 1}}</span>
+                    </div>
+                    <div class="title">{{composant.title}}</div>
+                </div>
+
+            </div>
+
+        </div>
+        <!-- / SIDEBAR CONTENT -->
+
+    </fuse-sidebar>
+    <!-- / SIDEBAR -->
 
     <!-- CENTER -->
     <div class="center">
 
         <!-- HEADER -->
-        <div class="header accent" fxLayout="row" fxLayoutAlign="space-between center">
+        <div class="header accent p-24" fxLayout="row" fxLayoutAlign="start center">
 
-            <!-- APP TITLE -->
-            <div fxLayout="row" fxLayoutAlign="start center">
+            <button mat-icon-button class="mr-16" [routerLink]="'/patrimony/ouvrages/'+route.snapshot.params['code']+'/show'">
+                <mat-icon>arrow_back</mat-icon>
+            </button>
 
-                <button mat-icon-button class="mr-0 mr-sm-16" [routerLink]="'/patrimony/ouvrages/'+route.snapshot.params['code']+'/show'">
-                    <mat-icon>arrow_back</mat-icon>
-                </button>
-
-                <div fxLayout="column" fxLayoutAlign="start start"
-                     [@animate]="{value:'*',params:{delay:'100ms',x:'-25px'}}">
-                    <div class="h2" >
-                        {{'HEADER.title' | translate}} {{ route.snapshot.params['code']}}
-                    </div>
-                </div>
+            <div>
+                <h2>{{composants[currentStep].title}}</h2>
             </div>
-            <!-- / APP TITLE -->
-
 
         </div>
         <!-- / HEADER -->
 
-        <!-- CONTENT CARD -->
-        <div class="content-card mat-white-bg">
+        <!-- CONTENT -->
+        <div id="content" class="content">
 
-            <!-- CONTENT -->
-            <div class="content">
-                <div class="tab-content p-24" fusePerfectScrollbar>
-                    <div class="mr-sm-12 ml-sm-12" fxFlex>
+            <div class="stepper-step" fusePerfectScrollbar [@slideIn]="animationDirection">
 
-                        <mat-vertical-stepper #stepper>
-
-                            <mat-step >
-                                <ng-template matStepLabel>Sécurité</ng-template>
-                                <app-security-show></app-security-show>
-                            </mat-step>
-
-                            <mat-step >
-                                <ng-template matStepLabel>Poste transformation électrique</ng-template>
-                                <app-post-trans-elec-show></app-post-trans-elec-show>
-                            </mat-step>
-
-                            <mat-step >
-                                <ng-template matStepLabel>Groupe électropompe:Partie pompe</ng-template>
-                                <app-groupe-elec-pomp-pomp-show></app-groupe-elec-pomp-pomp-show>
-                            </mat-step>
-
-                            <mat-step >
-                                <ng-template matStepLabel>Groupe électropompe:Partie moteur</ng-template>
-                                <app-groupe-elec-pomp-moteur-show></app-groupe-elec-pomp-moteur-show>
-                            </mat-step>
-
-                            <mat-step >
-                                <ng-template matStepLabel>Armoire Électrique de commande</ng-template>
-                                <app-armoire-elec-cmd-show></app-armoire-elec-cmd-show>
-                            </mat-step>
-
-                            <mat-step >
-                                <ng-template matStepLabel>Anti-bélier</ng-template>
-                                <app-anti-bilier-show></app-anti-bilier-show>
-                            </mat-step>
-
-                            <mat-step >
-                                <ng-template matStepLabel>Soupape de décharge</ng-template>
-                                <app-soupape-decharge-show></app-soupape-decharge-show>
-                            </mat-step>
-
-                            <mat-step >
-                                <ng-template matStepLabel>Vanne</ng-template>
-                                <app-vanne-pompage-show></app-vanne-pompage-show>
-                            </mat-step>
-
-                            <mat-step >
-                                <ng-template matStepLabel>Clapet anti retour </ng-template>
-                                <app-clapet-anti-retour-show></app-clapet-anti-retour-show>
-                            </mat-step>
-
-                            <mat-step >
-                                <ng-template matStepLabel>Ventouse  </ng-template>
-                                <app-venteuse-show></app-venteuse-show>
-                            </mat-step>
-
-                            <mat-step >
-                                <ng-template matStepLabel>Compteur/débitmètre</ng-template>
-                                <app-compteur-show></app-compteur-show>
-                            </mat-step>
-
-                            <mat-step >
-                                <ng-template matStepLabel>Colonnes montantes </ng-template>
-                                <app-collonnes-montantes-show></app-collonnes-montantes-show>
-                            </mat-step>
-
-                            <mat-step >
-                                <ng-template matStepLabel>Groupe électrogène </ng-template>
-                                <app-groupe-electrogene-show></app-groupe-electrogene-show>
-                            </mat-step>
-
-                        </mat-vertical-stepper>
-
-                    </div>
+                <div id="course-step-content" class="course-step-content">
+                    <ng-template host></ng-template>
                 </div>
+
             </div>
-            <!-- / CONTENT -->
 
         </div>
-        <!-- / CONTENT CARD -->
+        <!-- / CONTENT -->
+
+        <div class="step-navigation">
+
+            <button mat-fab class="previous mat-accent fuse-white-fg"
+                    (click)="gotoPreviousStep()"
+                    [disabled]="currentStep === 0"
+                    [fxHide]="currentStep === 0">
+                <mat-icon>chevron_left</mat-icon>
+            </button>
+
+            <button mat-fab class="next mat-accent fuse-white-fg"
+                    (click)="gotoNextStep()"
+                    [disabled]="currentStep === composants.length - 1"
+                    [fxHide]="currentStep === composants.length - 1">
+                <mat-icon>chevron_right</mat-icon>
+            </button>
+
+            <button mat-fab class="done green-600"
+                    routerLink="/patrimony/ouvrages/list"
+                    [disabled]="currentStep !== composants.length - 1"
+                    [fxShow]="currentStep === composants.length - 1">
+                <mat-icon>check</mat-icon>
+            </button>
+
+        </div>
 
     </div>
     <!-- / CENTER -->
+
 </div>
-
-
-
-

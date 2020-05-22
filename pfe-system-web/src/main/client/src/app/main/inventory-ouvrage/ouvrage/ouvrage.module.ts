@@ -134,7 +134,7 @@ import { OuvrageShowService } from './ouvrage-show/ouvrage-show.service';
 import { OuvrageEditService } from './ouvrage-edit/ouvrage-edit.service';
 import {LeafletModule} from "@asymmetrik/ngx-leaflet";
 import {ComposantGetService} from "./composant/composant-get.service";
-import {LoadComponenteDirective} from "./ouvrage-add/steppers/load-component.directive";
+import {LoadComponenteDirective} from "./load-component.directive";
 import {TestSecurityComponent} from "../../academy/components/security/security.component";
 import {TestEchelleComponent} from "../../academy/components/reservoir-et-brise-charge/echelle/echelle.component";
 import {TestFlotteurComponent} from "../../academy/components/reservoir-et-brise-charge/flotteur/flotteur.component";
@@ -375,6 +375,49 @@ const routes: Routes = [
         CollecteurReffoullementComponent,
         CompteurSortieComponent,
         JointDemantageSortieComponent,
+
+        SecurityShowComponent,
+        VanneArriveeShowComponent,
+        OpturateurShowComponent,
+        JointDemantageShowComponent,
+        CompteurShowComponent,
+        FlotteurShowComponent,
+        SoupapeDechargeShowComponent,
+        VanneSortieShowComponent,
+        VenteuseShowComponent,
+        ConduiteTropPleinShowComponent,
+        ConduiteVidangeShowComponent,
+        EchelleShowComponent,
+        PosteChlorationShowComponent,
+        PostTransElecShowComponent,
+        GroupeElecPompMoteurShowComponent,
+        GroupeElecPompPompShowComponent,
+        ArmoireElecCmdShowComponent,
+        AntiBilierShowComponent,
+        ClapetAntiRetourShowComponent,
+        CollonnesMontantesShowComponent,
+        GroupeElectrogeneShowComponent,
+        ReservoirEauBruteShowComponent,
+        ReservoirEauTraiteShowComponent,
+        KitMembraneShowComponent,
+        StationPhpShowComponent,
+        LocalStockageChimiqueShowComponent,
+        PostPrepInjectionShowComponent,
+        PostRecyclageBouesShowComponent,
+        PostRecyclageEauLavageShowComponent,
+        BatimentElctriqueShowComponent,
+        PriseEauShowComponent,
+        BassinMelangeShowComponent,
+        FiltreShowComponent,
+        ComposantAerationShowComponent,
+        ComposantPretraitementShowComponent,
+        DecanteurShowComponent,
+        CollecteurAspirationShowComponent,
+        CollecteurReffoullementShowComponent,
+        CompteurSortieShowComponent,
+        JointDemantageSortieShowComponent,
+
     ]
+
 })
 export class OuvrageModule { }
