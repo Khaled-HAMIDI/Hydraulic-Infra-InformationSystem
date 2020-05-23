@@ -422,7 +422,7 @@ export const componentMapping: { [key: string]: Type<any>; } = {
 
     'SecurityShowComponent': SecurityShowComponent,
     'VanneArriveeShowComponent': VanneArriveeShowComponent,
-    'ObturateurComponent':OpturateurShowComponent,
+    'OpturateurShowComponent':OpturateurShowComponent,
     'JointDemantageShowComponent':JointDemantageShowComponent,
     'CompteurShowComponent':CompteurShowComponent,
     'FlotteurShowComponent':FlotteurShowComponent,

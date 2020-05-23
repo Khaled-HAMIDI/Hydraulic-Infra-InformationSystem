@@ -278,10 +278,7 @@ export class StationNonConvComponent  implements OnInit, OnDestroy {
     }
 
     showPosition(position): void {
-        this.ouvrageForm.controls['coordinateX'].setValue(position.coords.latitude);
         this.lati = position.coords.latitude;
-        console.log('this.lati');
-        this.ouvrageForm.controls['coordinateY'].setValue(position.coords.longitude);
         this.long = position.coords.altitude;
         this.ouvrageForm.controls['coordinateZ'].setValue(position.coords.altitude);
     }

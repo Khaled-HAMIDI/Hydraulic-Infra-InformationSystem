@@ -1,5 +1,5 @@
 package dz.ade.pfe.domain.ouvrage;
 
-public enum EnumTypeStTraitement {
+public enum TraitementStationType {
     Monoblocs, Endur, none
 }

@@ -23,7 +23,7 @@ public class ElectroGroupPump  extends Component {
 
     @Column(name = "state_electro_group_pump")
     @Enumerated(EnumType.STRING)
-    private EnumEtat state;
+    private State state;
 
     @Column(name = "date_electro_group_pump")
     private LocalDate date;

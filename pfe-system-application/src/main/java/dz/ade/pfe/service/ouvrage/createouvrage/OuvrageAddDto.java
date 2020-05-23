@@ -20,20 +20,20 @@ public class OuvrageAddDto {
     private String name;
 
     @Enumerated(EnumType.STRING)
-    private EnumTypeGeneral type;
+    private OuvrageType type;
 
     private boolean enabled;
 
     @Enumerated(EnumType.STRING)
-    private EnumForm form;
+    private OuvrageFormType form;
 
     private String site;
 
     @Enumerated(EnumType.STRING)
-    private EnumEtat state;
+    private State state;
 
     @Enumerated(EnumType.STRING)
-    private EnumProcess process;
+    private ProcessType process;
 
     private Integer nbCompartment;
 
@@ -64,7 +64,7 @@ public class OuvrageAddDto {
     private String constructionType;
 
     @Enumerated(EnumType.STRING)
-    private EnumProvenance waterSource;
+    private SourceType waterSource;
 
     private LocalDate commissioningDate;
 
@@ -109,13 +109,13 @@ public class OuvrageAddDto {
     private Boolean electricAlimentation;
 
     @Enumerated(EnumType.STRING)
-    private EnumTypeReservoir tankType;
+    private TankType tankType;
 
     @Enumerated(EnumType.STRING)
-    private EnumRoleReservoir tankRole;
+    private TankRole tankRole;
 
     @Enumerated(EnumType.STRING)
-    private EnumTypeStTraitement treatmentStationType;
+    private TraitementStationType treatmentStationType;
 
     public boolean getEnabled() {
         return this.enabled;

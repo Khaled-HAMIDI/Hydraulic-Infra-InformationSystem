@@ -31,5 +31,5 @@ public class ProductStorage extends Component {
 
     @Column(name = "state_product_storage")
     @Enumerated(EnumType.STRING)
-    private EnumEtat state;
+    private State state;
 }

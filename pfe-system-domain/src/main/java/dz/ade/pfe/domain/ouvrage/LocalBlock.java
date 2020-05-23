@@ -20,11 +20,11 @@ public class LocalBlock extends Component {
 
     @Column(name = "nature_local_block")
     @Enumerated(EnumType.STRING)
-    private EnumNatureBlocLocal nature;
+    private LocalBlocNature nature;
 
     @Column(name = "state_local_block")
     @Enumerated(EnumType.STRING)
-    private EnumEtat state;
+    private State state;
 
 
 }

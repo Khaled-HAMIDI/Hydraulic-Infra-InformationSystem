@@ -1,5 +1,5 @@
 package dz.ade.pfe.domain.ouvrage;
 
-public enum EnumModePompe {
+public enum PumpMode {
     Mode1, Mode2
 }

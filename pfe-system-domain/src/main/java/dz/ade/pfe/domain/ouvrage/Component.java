@@ -30,8 +30,7 @@ public class Component extends Auditing{
 
 
     @Column(name = "type_composant")
-    @Enumerated(EnumType.STRING)
-    private ComponentType typeComposant;
+    private String typeComposant;
 
 
     @ManyToOne(fetch = FetchType.LAZY)

@@ -51,5 +51,5 @@ public class ChlorationPost extends Component {
 
     @Column(name = "state_chloration_post")
     @Enumerated(EnumType.STRING)
-    private EnumEtat state;
+    private State state;
 }

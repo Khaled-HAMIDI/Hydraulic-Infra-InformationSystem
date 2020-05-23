@@ -27,7 +27,7 @@ public class ElectricalCabinet extends Component {
 
     @Column(name = "state_electrical_cabinet")
     @Enumerated(EnumType.STRING)
-    private EnumEtat state;
+    private State state;
 
     @Column(name = "brand_electrical_cabinet")
     private String brand;

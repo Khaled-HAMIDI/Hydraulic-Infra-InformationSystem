@@ -19,7 +19,7 @@ public class Security extends Component {
 
     @Column(name = "nature_security")
     @Enumerated(EnumType.STRING)
-    private EnumNatureSecurity nature;
+    private SecurityNature nature;
 
     @Column(name = "entry_box_security")
     private double entryBox;
@@ -35,6 +35,6 @@ public class Security extends Component {
 
     @Column(name = "access_security")
     @Enumerated(EnumType.STRING)
-    private EnumEtat access;
+    private State access;
 
 }

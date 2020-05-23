@@ -60,7 +60,7 @@ export class GroupeElecPompMoteurComponent implements OnInit{
 
     createForm(composant): FormGroup {
         let obj = {
-            typeComposant:['GroupeElecPompe-Moteur'],
+            typeComposant:['GroupeElecPompe_Moteur'],
             nbService: [composant.nbService,Validators.required],
             nbSecours: [composant.nbSecours,Validators.required],
             puissance:[composant.puissance,Validators.required],

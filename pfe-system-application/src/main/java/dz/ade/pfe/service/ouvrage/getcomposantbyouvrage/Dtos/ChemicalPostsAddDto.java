@@ -1,8 +1,8 @@
 package dz.ade.pfe.service.ouvrage.getcomposantbyouvrage.Dtos;
 
 
-import dz.ade.pfe.domain.ouvrage.EnumEtat;
-import dz.ade.pfe.domain.ouvrage.EnumModePompe;
+import dz.ade.pfe.domain.ouvrage.State;
+import dz.ade.pfe.domain.ouvrage.PumpMode;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -32,7 +32,7 @@ public class ChemicalPostsAddDto {
     private String pointInjectPompe;
 
     @Enumerated(EnumType.STRING)
-    private EnumModePompe dosagePompe;
+    private PumpMode dosagePompe;
 
     private String typePompe;
 
@@ -47,8 +47,8 @@ public class ChemicalPostsAddDto {
     private boolean fonctionnementPompe;
 
     @Enumerated(EnumType.STRING)
-    private EnumModePompe modePompe;
+    private PumpMode modePompe;
 
     @Enumerated(EnumType.STRING)
-    private EnumEtat statePompe;
+    private State statePompe;
 }

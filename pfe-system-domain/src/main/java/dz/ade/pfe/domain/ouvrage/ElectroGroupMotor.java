@@ -23,15 +23,15 @@ public class ElectroGroupMotor extends Component {
 
     @Column(name = "state_electro_group_motor")
     @Enumerated(EnumType.STRING)
-    private EnumEtat state;
+    private State state;
 
     @Column(name = "mode_electro_group_motor")
     @Enumerated(EnumType.STRING)
-    private EnumModeDemarageGrp mode;
+    private GroupeStartMode mode;
 
     @Column(name = "type_electro_group_motor")
     @Enumerated(EnumType.STRING)
-    private EnumTypeGrpElectro type;
+    private ElectricGroupType type;
 
     @Column(name = "date_electro_group_motor")
     private LocalDate date;
