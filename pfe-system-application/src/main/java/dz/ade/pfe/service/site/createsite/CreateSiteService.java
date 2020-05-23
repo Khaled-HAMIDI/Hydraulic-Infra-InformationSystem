@@ -1,5 +1,6 @@
 package dz.ade.pfe.service.site.createsite;
 
+import dz.ade.pfe.domain.admin.OrganisationalStructure;
 import dz.ade.pfe.domain.admin.Unit;
 import dz.ade.pfe.domain.exceptions.ResourceNotFoundException;
 import dz.ade.pfe.domain.ouvrage.Site;
@@ -21,7 +22,7 @@ public class CreateSiteService implements CreateSiteQuery {
     public SiteDto createSite(SiteDto site, String unitCode) {
         Site site1 = new Site();
         site1.setName(site.getName());
-        Optional<Unit> unit = loadUnitByCode.loadUnitByCode(unitCode);
+        Optional<OrganisationalStructure> unit = loadUnitByCode.loadUnitByCode(unitCode);
         if (!unit.isPresent()) {
             throw new ResourceNotFoundException(String.format("No unit found with code '%s'.", unitCode));
         }

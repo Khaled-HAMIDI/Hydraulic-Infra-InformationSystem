@@ -1,5 +1,6 @@
 package dz.ade.pfe.domain.ouvrage;
 
+import dz.ade.pfe.domain.admin.OrganisationalStructure;
 import dz.ade.pfe.domain.admin.Unit;
 import lombok.*;
 
@@ -29,6 +30,6 @@ public class Site {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "unit_id")
-    private Unit unit;
+    private OrganisationalStructure unit;
 
 }

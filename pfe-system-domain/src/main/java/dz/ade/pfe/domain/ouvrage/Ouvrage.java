@@ -1,6 +1,7 @@
 package dz.ade.pfe.domain.ouvrage;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import dz.ade.pfe.domain.admin.OrganisationalStructure;
 import dz.ade.pfe.domain.admin.Unit;
 import lombok.*;
 
@@ -202,7 +203,7 @@ public class Ouvrage extends Auditing{
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "unit_id")
-    private Unit unit;
+    private OrganisationalStructure unit;
 
 }
 

@@ -1,5 +1,6 @@
 package dz.ade.pfe.service.ouvrage.createouvrage;
 
+import dz.ade.pfe.domain.admin.OrganisationalStructure;
 import dz.ade.pfe.domain.admin.Unit;
 import dz.ade.pfe.domain.exceptions.ResourceNotFoundException;
 import dz.ade.pfe.domain.ouvrage.Ouvrage;
@@ -27,7 +28,7 @@ public class CreateOuvrageService implements CreateOuvrageQuery {
     public OuvrageDto createOuvrage(OuvrageAddDto ouvrageAddDto, String unitCode) {
 
         Ouvrage ouvrage =createOuvrageMapper.ouvrageAddToOuvrage(ouvrageAddDto);
-        Optional<Unit> unit = loadUnitByCode.loadUnitByCode(unitCode);
+        Optional<OrganisationalStructure> unit = loadUnitByCode.loadUnitByCode(unitCode);
         if (!unit.isPresent()) {
             throw new ResourceNotFoundException(String.format("No unit found with code '%s'.", unitCode));
         }

@@ -1,5 +1,6 @@
 package dz.ade.pfe.service.site.getsitelist;
 
+import dz.ade.pfe.domain.admin.OrganisationalStructure;
 import dz.ade.pfe.domain.admin.Unit;
 import dz.ade.pfe.domain.exceptions.ResourceNotFoundException;
 import dz.ade.pfe.domain.ouvrage.Site;
@@ -20,7 +21,7 @@ public class GetSiteListService implements GetSiteListQuery {
     private final LoadSiteList loadSiteList;
     @Override
     public List<SiteDto> getSiteList(String unitCode) {
-        Optional<Unit> unit = loadUnitByCode.loadUnitByCode(unitCode);
+        Optional<OrganisationalStructure> unit = loadUnitByCode.loadUnitByCode(unitCode);
         if (!unit.isPresent()) {
             throw new ResourceNotFoundException(String.format("No unit found with code '%s'.", unitCode));
         }

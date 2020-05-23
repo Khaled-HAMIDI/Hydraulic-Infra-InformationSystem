@@ -1,6 +1,7 @@
 package dz.ade.pfe.service.inventory.createinventory;
 
 
+import dz.ade.pfe.domain.admin.OrganisationalStructure;
 import dz.ade.pfe.domain.admin.Unit;
 import dz.ade.pfe.domain.admin.User;
 import dz.ade.pfe.domain.exceptions.ResourceNotFoundException;
@@ -36,7 +37,7 @@ public class CreateInventoryService implements CreateInventoryQuery {
         if (!user.isPresent()) {
             throw new ResourceNotFoundException(String.format("No user found with username '%s'.", inventoryAddDto.getResponsable()));
         }
-        Optional<Unit> unit = loadUnitByCode.loadUnitByCode(unitCode);
+        Optional<OrganisationalStructure> unit = loadUnitByCode.loadUnitByCode(unitCode);
         if (!unit.isPresent()) {
             throw new ResourceNotFoundException(String.format("No unit found with code '%s'.", unitCode));
         }
