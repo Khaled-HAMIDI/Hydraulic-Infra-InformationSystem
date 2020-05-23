@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { fuseAnimations } from '@fuse/animations';
 import {ActivatedRoute, Router} from '@angular/router';
@@ -23,6 +23,8 @@ export class PosteChlorationComponent implements OnInit{
     add:boolean;
     poste:PosteChloration;
     postChlorationForm: FormGroup;
+
+    @Output() validateEvent = new EventEmitter<string>();
 
     constructor(
         private composantService : ComposantSaveService,
@@ -98,6 +100,7 @@ export class PosteChlorationComponent implements OnInit{
         this.composantService.savePostChloration(postChloration,this.route.snapshot.params['code'])
             .then((response) => {
                     console.log("It worked");
+                    this.validateEvent.emit("to-next-step");
                 },
                 (error) => {
                     console.log("No")

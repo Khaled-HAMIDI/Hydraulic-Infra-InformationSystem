@@ -47,10 +47,12 @@ export class ComposantSaveService {
                 .subscribe((response: any) => {
                     this.toolsService.hideProgressBar();
                     this.toolsService.showSuccess('TOAST.success.security');
+                    resolve();
                 }, (error : any) => {
                     this.toolsService.hideProgressBar();
                     this.toolsService.showError('TOAST.error.security');
                     console.log(error);
+                    reject();
                 });
 
         });
@@ -65,10 +67,12 @@ export class ComposantSaveService {
                 .subscribe((response: any) => {
                     this.toolsService.hideProgressBar();
                     this.toolsService.showSuccess('TOAST.success.priseEau');
+                    resolve();
                 }, (error : any) => {
                     this.toolsService.hideProgressBar();
                     this.toolsService.showError('TOAST.error.priseEau');
                     console.log(error);
+                    reject();
                 });
 
         });
@@ -82,10 +86,12 @@ export class ComposantSaveService {
                 .subscribe((response: any) => {
                     this.toolsService.hideProgressBar();
                     this.toolsService.showSuccess('TOAST.success.equipement');
+                    resolve();
                 }, (error : any) => {
                     this.toolsService.hideProgressBar();
                     this.toolsService.showError('TOAST.error.equipement');
                     console.log(error);
+                    reject();
                 });
 
         });
@@ -100,10 +106,12 @@ export class ComposantSaveService {
                 .subscribe((response: any) => {
                     this.toolsService.hideProgressBar();
                     this.toolsService.showSuccess('TOAST.success.kit');
+                    resolve();
                 }, (error : any) => {
                     this.toolsService.hideProgressBar();
                     this.toolsService.showError('TOAST.error.kit');
                     console.log(error);
+                    reject();
                 });
 
         });
@@ -118,10 +126,12 @@ export class ComposantSaveService {
                 .subscribe((response: any) => {
                     this.toolsService.hideProgressBar();
                     this.toolsService.showSuccess('TOAST.success.station');
+                    resolve();
                 }, (error : any) => {
                     this.toolsService.hideProgressBar();
                     this.toolsService.showError('TOAST.error.station');
                     console.log(error);
+                    reject();
                 });
 
         });
@@ -136,10 +146,12 @@ export class ComposantSaveService {
                 .subscribe((response: any) => {
                     this.toolsService.hideProgressBar();
                     this.toolsService.showSuccess('TOAST.success.local');
+                    resolve();
                 }, (error : any) => {
                     this.toolsService.hideProgressBar();
                     this.toolsService.showError('TOAST.error.local');
                     console.log(error);
+                    reject();
                 });
 
         });
@@ -154,10 +166,12 @@ export class ComposantSaveService {
                 .subscribe((response: any) => {
                     this.toolsService.hideProgressBar();
                     this.toolsService.showSuccess('TOAST.success.batiment');
+                    resolve();
                 }, (error : any) => {
                     this.toolsService.hideProgressBar();
                     this.toolsService.showError('TOAST.error.batiment');
                     console.log(error);
+                    reject();
                 });
 
         });
@@ -172,10 +186,12 @@ export class ComposantSaveService {
                 .subscribe((response: any) => {
                     this.toolsService.hideProgressBar();
                     this.toolsService.showSuccess('TOAST.success.groupe');
+                    resolve();
                 }, (error : any) => {
                     this.toolsService.hideProgressBar();
                     this.toolsService.showError('TOAST.error.groupe');
                     console.log(error);
+                    reject();
                 });
 
         });
@@ -194,6 +210,7 @@ export class ComposantSaveService {
                     this.toolsService.hideProgressBar();
                     this.toolsService.showError('TOAST.error.postChimique');
                     console.log(error);
+                    reject();
                 });
 
         });
@@ -208,10 +225,12 @@ export class ComposantSaveService {
                 .subscribe((response: any) => {
                     this.toolsService.hideProgressBar();
                     this.toolsService.showSuccess('TOAST.success.postElectrique');
+                    resolve();
                 }, (error : any) => {
                     this.toolsService.hideProgressBar();
                     this.toolsService.showError('TOAST.error.postElectrique');
                     console.log(error);
+                    reject();
                 });
 
         });
@@ -226,10 +245,12 @@ export class ComposantSaveService {
                 .subscribe((response: any) => {
                     this.toolsService.hideProgressBar();
                     this.toolsService.showSuccess('TOAST.success.pompe');
+                    resolve();
                 }, (error : any) => {
                     this.toolsService.hideProgressBar();
                     this.toolsService.showError('TOAST.error.pompe');
                     console.log(error);
+                    reject();
                 });
 
         });
@@ -244,10 +265,12 @@ export class ComposantSaveService {
                 .subscribe((response: any) => {
                     this.toolsService.hideProgressBar();
                     this.toolsService.showSuccess('TOAST.success.moteur');
+                    resolve();
                 }, (error : any) => {
                     this.toolsService.hideProgressBar();
                     this.toolsService.showError('TOAST.error.moteur');
                     console.log(error);
+                    reject();
                 });
 
         });
@@ -262,10 +285,12 @@ export class ComposantSaveService {
                 .subscribe((response: any) => {
                     this.toolsService.hideProgressBar();
                     this.toolsService.showSuccess('TOAST.success.armoire');
+                    resolve();
                 }, (error : any) => {
                     this.toolsService.hideProgressBar();
                     this.toolsService.showError('TOAST.error.armoire');
                     console.log(error);
+                    reject();
                 });
 
         });
@@ -280,10 +305,12 @@ export class ComposantSaveService {
                 .subscribe((response: any) => {
                     this.toolsService.hideProgressBar();
                     this.toolsService.showSuccess('TOAST.success.antiBelier');
+                    resolve();
                 }, (error : any) => {
                     this.toolsService.hideProgressBar();
                     this.toolsService.showError('TOAST.error.antiBelier');
                     console.log(error);
+                    reject();
                 });
 
         });
@@ -298,10 +325,12 @@ export class ComposantSaveService {
                 .subscribe((response: any) => {
                     this.toolsService.hideProgressBar();
                     this.toolsService.showSuccess('TOAST.success.soupape');
+                    resolve();
                 }, (error : any) => {
                     this.toolsService.hideProgressBar();
                     this.toolsService.showError('TOAST.error.soupape');
                     console.log(error);
+                    reject();
                 });
 
         });
@@ -316,10 +345,12 @@ export class ComposantSaveService {
                 .subscribe((response: any) => {
                     this.toolsService.hideProgressBar();
                     this.toolsService.showSuccess('TOAST.success.equipementHydroMeca');
+                    resolve();
                 }, (error : any) => {
                     this.toolsService.hideProgressBar();
                     this.toolsService.showError('TOAST.error.equipementHydroMeca');
                     console.log(error);
+                    reject();
                 });
 
         });
@@ -334,253 +365,18 @@ export class ComposantSaveService {
                 .subscribe((response: any) => {
                     this.toolsService.hideProgressBar();
                     this.toolsService.showSuccess('TOAST.success.postChloration');
+                    resolve();
                 }, (error : any) => {
                     this.toolsService.hideProgressBar();
                     this.toolsService.showError('TOAST.error.postChloration');
                     console.log(error);
+                    reject();
                 });
 
         });
 
     }
 
-
-    loadSecurity(code) {
-        return new Promise((resolve, reject) => {
-
-            this.http.get(Composant_API + code + '/composants/security/')
-                .subscribe((response: any) => {
-                    resolve(response);
-                }, (error : any) => {
-                    reject(error);
-                });
-
-        });
-
-    }
-
-    loadPriseEau(code){
-        return new Promise((resolve, reject) => {
-
-            this.http.get(Composant_API+ code + '/composants/priseEau/')
-                .subscribe((response: any) => {
-                    resolve(response);
-                }, (error : any) => {
-                    reject(error);
-                });
-
-        });
-
-    }
-    loadEquipementStationTraitement(code){
-        return new Promise((resolve, reject) => {
-
-            this.http.get(Composant_API+ code + '/composants/equipementStationTraitement/')
-                .subscribe((response: any) => {
-                    resolve(response);
-                }, (error : any) => {
-                    reject(error);
-                });
-
-        });
-
-    }
-
-    loadKitMembrane(code){
-        return new Promise((resolve, reject) => {
-
-            this.http.get(Composant_API+ code + '/composants/kitMembrane/')
-                .subscribe((response: any) => {
-                    resolve(response);
-                }, (error : any) => {
-                    reject(error);
-                });
-
-        });
-
-    }
-
-    loadStationPhp(code){
-        return new Promise((resolve, reject) => {
-
-            this.http.get(Composant_API+ code + '/composants/stationPhp/')
-                .subscribe((response: any) => {
-                    resolve(response);
-                }, (error : any) => {
-                    reject(error);
-                });
-
-        });
-
-    }
-
-    loadLocalStockageChimique(code){
-        return new Promise((resolve, reject) => {
-
-            this.http.get(Composant_API + code + '/composants/localStockage/')
-                .subscribe((response: any) => {
-                    resolve(response);
-                }, (error : any) => {
-                    reject(error);
-                });
-
-        });
-
-    }
-
-    loadBatimentElectrique(code){
-        return new Promise((resolve, reject) => {
-
-            this.http.get(Composant_API + code + '/composants/batimentElectrique/')
-                .subscribe((response: any) => {
-                    resolve(response);
-                }, (error : any) => {
-                    reject(error);
-                });
-
-        });
-
-    }
-
-    loadGroupeElectrogene(code){
-        return new Promise((resolve, reject) => {
-
-            this.http.get(Composant_API + code + '/composants/groupeElectrogene/')
-                .subscribe((response: any) => {
-                    resolve(response);
-                }, (error : any) => {
-                    reject(error);
-                });
-
-        });
-
-    }
-
-    loadPostChimique(code){
-        return new Promise((resolve, reject) => {
-
-            this.http.get(Composant_API + code + '/composants/postChimique/')
-                .subscribe((response: any) => {
-                    resolve(response);
-                }, (error : any) => {
-                    reject(error);
-                });
-
-        });
-
-    }
-
-    loadPostTrandformationElectrique(code){
-        return new Promise((resolve, reject) => {
-
-            this.http.get(Composant_API + code + '/composants/postTransformationElectrique/')
-                .subscribe((response: any) => {
-                    resolve(response);
-                }, (error : any) => {
-                    reject(error);
-                });
-
-        });
-
-    }
-
-    loadPompe(code){
-        return new Promise((resolve, reject) => {
-
-            this.http.get(Composant_API + code + '/composants/groupeElectroPompePompe/')
-                .subscribe((response: any) => {
-                    resolve(response);
-                }, (error : any) => {
-                    reject(error);
-                });
-
-        });
-
-    }
-
-    loadMoteur(code){
-        return new Promise((resolve, reject) => {
-
-            this.http.get(Composant_API + code + '/composants/groupeElectroPompeMoteur/')
-                .subscribe((response: any) => {
-                    resolve(response);
-                }, (error : any) => {
-                    reject(error);
-                });
-
-        });
-
-    }
-
-    loadArmoire(code){
-        return new Promise((resolve, reject) => {
-
-            this.http.get(Composant_API + code + '/composants/armoireElectrique/')
-                .subscribe((response: any) => {
-                    resolve(response);
-                }, (error : any) => {
-                    reject(error);
-                });
-
-        });
-
-    }
-
-    loadAntiBelier(code){
-        return new Promise((resolve, reject) => {
-
-            this.http.get(Composant_API + code + '/composants/antiBelier/')
-                .subscribe((response: any) => {
-                    resolve(response);
-                }, (error : any) => {
-                    reject(error);
-                });
-
-        });
-
-    }
-
-    loadSoupape(code){
-        return new Promise((resolve, reject) => {
-
-            this.http.get(Composant_API + code + '/composants/soupapeDecharge/')
-                .subscribe((response: any) => {
-                    resolve(response);
-                }, (error : any) => {
-                    reject(error);
-                });
-
-        });
-
-    }
-
-    loadHydroMeca(code){
-        return new Promise((resolve, reject) => {
-
-            this.http.get(Composant_API + code + '/composants/equipementHydroMeca/')
-                .subscribe((response: any) => {
-                    resolve(response);
-                }, (error : any) => {
-                    reject(error);
-                });
-
-        });
-
-    }
-
-    loadPostChloration(code){
-        return new Promise((resolve, reject) => {
-
-            this.http.get(Composant_API + code + '/composants/postChloration/')
-                .subscribe((response: any) => {
-                    resolve(response);
-                }, (error : any) => {
-                    reject(error);
-                });
-
-        });
-
-    }
 
 
 }

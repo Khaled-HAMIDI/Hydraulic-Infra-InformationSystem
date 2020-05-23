@@ -58,10 +58,9 @@ public class CreateComposantAdapter implements SaveComposant {
 
         Ouvrage ouvrage = ouvrageRepository.findByCode(code);
         chemicalPosts.setOuvrage(ouvrage);
-
-        ChemicalPosts old = new ChemicalPosts();
         String type = chemicalPosts.getPostType();
 
+        ChemicalPosts old;
 
         switch (type){
             case "PreparationInjection":
@@ -139,7 +138,7 @@ public class CreateComposantAdapter implements SaveComposant {
         Ouvrage ouvrage = ouvrageRepository.findByCode(code);
         electroGroupMotor.setOuvrage(ouvrage);
 
-        if (componentRepository.existsByOuvrageAndTypeComposant(ouvrage,"GroupeElecPompe-Moteur")) {
+        if (componentRepository.existsByOuvrageAndTypeComposant(ouvrage,"GroupeElecPompe_Moteur")) {
             componentRepository.save(electroGroupMotor);
             ElectroGroupMotor old = componentRepository.loadElectroGroupMotor(ouvrage);
             componentRepository.delete(old);
@@ -155,7 +154,7 @@ public class CreateComposantAdapter implements SaveComposant {
         Ouvrage ouvrage = ouvrageRepository.findByCode(code);
         electroGroupPump.setOuvrage(ouvrage);
 
-        if (componentRepository.existsByOuvrageAndTypeComposant(ouvrage,"GroupeElecPompe-Pompe")) {
+        if (componentRepository.existsByOuvrageAndTypeComposant(ouvrage,"GroupeElecPompe_Pompe")) {
             ElectroGroupPump old = componentRepository.loadElectroGroupPump(ouvrage);
             componentRepository.delete(old);
         }
@@ -183,10 +182,9 @@ public class CreateComposantAdapter implements SaveComposant {
 
         Ouvrage ouvrage = ouvrageRepository.findByCode(code);
         hedromecaEquipment.setOuvrage(ouvrage);
-
-        HedromecaEquipment old = new HedromecaEquipment();
         String type = hedromecaEquipment.getEquipementType();
 
+        HedromecaEquipment old;
 
         switch (type){
             case "ClapetAntiRetour":
@@ -243,6 +241,18 @@ public class CreateComposantAdapter implements SaveComposant {
                 break;
             case "VanneDistribution" :
                 old = componentRepository.loadVanneDistribution(ouvrage);
+                if (old != null) componentRepository.delete(old);
+                break;
+            case "Obturateur" :
+                old = componentRepository.loadObturateur(ouvrage);
+                if (old != null) componentRepository.delete(old);
+                break;
+            case "CompteurDebimetreSortie" :
+                old = componentRepository.loadCompteurDebimetreSortie(ouvrage);
+                if (old != null) componentRepository.delete(old);
+                break;
+            case "JointDemantageSortie" :
+                old = componentRepository.loadJointDemantageSortie(ouvrage);
                 if (old != null) componentRepository.delete(old);
                 break;
         }
@@ -352,10 +362,9 @@ public class CreateComposantAdapter implements SaveComposant {
 
         Ouvrage ouvrage = ouvrageRepository.findByCode(code);
         traitementStationEquipement.setOuvrage(ouvrage);
-
-        TraitementStationEquipement old = new TraitementStationEquipement();
         String type = traitementStationEquipement.getTypeEquipement();
 
+        TraitementStationEquipement old;
 
         switch (type){
             case "BassinMelange":

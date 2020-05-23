@@ -1,7 +1,7 @@
 package dz.ade.pfe.service.ouvrage.getcomposantbyouvrage.Dtos;
 
-import dz.ade.pfe.domain.ouvrage.EnumEtat;
-import dz.ade.pfe.domain.ouvrage.EnumNatureSecurity;
+import dz.ade.pfe.domain.ouvrage.State;
+import dz.ade.pfe.domain.ouvrage.SecurityNature;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -19,7 +19,7 @@ public class SecurityAddDto {
     private boolean closing;
 
     @Enumerated(EnumType.STRING)
-    private EnumNatureSecurity nature;
+    private SecurityNature nature;
 
     private double guerites;
 
@@ -30,5 +30,5 @@ public class SecurityAddDto {
     private boolean telsurveillance;
 
     @Enumerated(EnumType.STRING)
-    private EnumEtat state;
+    private State state;
 }

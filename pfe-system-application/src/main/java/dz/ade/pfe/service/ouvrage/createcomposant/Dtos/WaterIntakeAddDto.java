@@ -1,6 +1,6 @@
 package dz.ade.pfe.service.ouvrage.createcomposant.Dtos;
 
-import dz.ade.pfe.domain.ouvrage.EnumTypePriseEau;
+import dz.ade.pfe.domain.ouvrage.WaterIntakeType;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -16,7 +16,7 @@ public class WaterIntakeAddDto {
     private String typeComposant;
 
     @Enumerated(EnumType.STRING)
-    private EnumTypePriseEau type;
+    private WaterIntakeType type;
 
     private String dimension;
 

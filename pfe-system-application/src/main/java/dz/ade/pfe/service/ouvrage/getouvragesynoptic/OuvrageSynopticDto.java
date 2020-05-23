@@ -1,6 +1,6 @@
 package dz.ade.pfe.service.ouvrage.getouvragesynoptic;
 
-import dz.ade.pfe.domain.ouvrage.EnumTypeGeneral;
+import dz.ade.pfe.domain.ouvrage.OuvrageType;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class OuvrageSynopticDto {
     private String code;
-    private EnumTypeGeneral type;
+    private OuvrageType type;
     private String name;
     private SiteDto site;
     private Double currentDebit;

@@ -34,7 +34,7 @@ public class TraitementStationEquipement extends Component {
 
     @Column(name = "state_traitement_station_equipement")
     @Enumerated(EnumType.STRING)
-    private EnumEtat state;
+    private State state;
 
     @Column(name = "enabled_traitement_station_equipement")
     private boolean enabled;

@@ -37,7 +37,7 @@ public class ChemicalPosts extends Component {
 
     @Column(name = "injection_chemical_posts")
     @Enumerated(EnumType.STRING)
-    private EnumInjectionType injection;
+    private InjectionType injection;
 
     @Column(name = "pump_type_chemical_posts")
     private String pumpType;
@@ -59,9 +59,9 @@ public class ChemicalPosts extends Component {
 
     @Column(name = "mode_chemical_posts")
     @Enumerated(EnumType.STRING)
-    private EnumModePompe mode;
+    private PumpMode mode;
 
     @Column(name = "state_chemical_posts")
     @Enumerated(EnumType.STRING)
-    private EnumEtat state;
+    private State state;
 }

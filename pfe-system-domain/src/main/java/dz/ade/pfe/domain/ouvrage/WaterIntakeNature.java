@@ -1,5 +1,5 @@
 package dz.ade.pfe.domain.ouvrage;
 
-public enum EnumNaturePriseEau {
+public enum WaterIntakeNature {
     Fonte, Acier
 }

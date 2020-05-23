@@ -1,14 +1,11 @@
 package dz.ade.pfe.domain.ouvrage;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import dz.ade.pfe.domain.admin.OrganisationalStructure;
-import dz.ade.pfe.domain.admin.Unit;
 import lombok.*;
 
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import dz.ade.pfe.domain.commons.Auditing;
@@ -35,22 +32,22 @@ public class Ouvrage extends Auditing{
 
     @Column(name = "type")
     @Enumerated(EnumType.STRING)
-    private EnumTypeGeneral type;
+    private OuvrageType type;
 
     @Column(name = "enabled")
     private boolean enabled;
 
     @Column(name = "form")
     @Enumerated(EnumType.STRING)
-    private EnumForm form;
+    private OuvrageFormType form;
 
     @Column(name = "state")
     @Enumerated(EnumType.STRING)
-    private EnumEtat state;
+    private State state;
 
     @Column(name = "process")
     @Enumerated(EnumType.STRING)
-    private EnumProcess process;
+    private ProcessType process;
 
     @Column(name = "nb_compartment")
     private Integer nbCompartment;
@@ -58,7 +55,7 @@ public class Ouvrage extends Auditing{
     /*type de station de traitement*/
     @Column(name = "treatment_station_type")
     @Enumerated(EnumType.STRING)
-    private EnumTypeStTraitement treatmentStationType;
+    private TraitementStationType treatmentStationType;
 
     /*Cote du radier */
     @Column(name = "raft_rating")
@@ -75,12 +72,12 @@ public class Ouvrage extends Auditing{
     /*role du reservoir*/
     @Column(name = "tank_role")
     @Enumerated(EnumType.STRING)
-    private EnumRoleReservoir tankRole;
+    private TankRole tankRole;
 
     /*type réservoir*/
     @Column(name = "tank_type")
     @Enumerated(EnumType.STRING)
-    private EnumTypeReservoir tankType;
+    private TankType tankType;
 
     /* alimentation electrique */
     @Column(name = "electric_alimentation")
@@ -142,7 +139,7 @@ public class Ouvrage extends Auditing{
 
     @Column(name = "water_source")
     @Enumerated(EnumType.STRING)
-    private EnumProvenance waterSource;
+    private SourceType waterSource;
 
     @Column(name = "commissioning_date")
     private LocalDate commissioningDate;

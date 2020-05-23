@@ -1,8 +1,8 @@
 package dz.ade.pfe.service.ouvrage.getcomposantbyouvrage.Dtos;
 
-import dz.ade.pfe.domain.ouvrage.EnumEtat;
-import dz.ade.pfe.domain.ouvrage.EnumModeDemarageGrp;
-import dz.ade.pfe.domain.ouvrage.EnumTypeGrpElectro;
+import dz.ade.pfe.domain.ouvrage.State;
+import dz.ade.pfe.domain.ouvrage.GroupeStartMode;
+import dz.ade.pfe.domain.ouvrage.ElectricGroupType;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -23,13 +23,13 @@ public class ElectroGroupMotorAddDto {
     private double puissance;
 
     @Enumerated(EnumType.STRING)
-    private EnumEtat state;
+    private State state;
 
     @Enumerated(EnumType.STRING)
-    private EnumModeDemarageGrp modeDemarrage;
+    private GroupeStartMode modeDemarrage;
 
     @Enumerated(EnumType.STRING)
-    private EnumTypeGrpElectro type;
+    private ElectricGroupType type;
 
     private LocalDate operatingDate;
 

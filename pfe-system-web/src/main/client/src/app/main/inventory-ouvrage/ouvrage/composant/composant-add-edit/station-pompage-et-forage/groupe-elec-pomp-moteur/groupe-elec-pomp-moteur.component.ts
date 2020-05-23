@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { fuseAnimations } from '@fuse/animations';
 import {ActivatedRoute, Router} from '@angular/router';
@@ -23,6 +23,8 @@ export class GroupeElecPompMoteurComponent implements OnInit{
     add:boolean;
     groupe:GroupeElectroMoteur;
     grouprElecPMForm: FormGroup;
+
+    @Output() validateEvent = new EventEmitter<string>();
 
     constructor(
         private composantService : ComposantSaveService,
@@ -58,7 +60,7 @@ export class GroupeElecPompMoteurComponent implements OnInit{
 
     createForm(composant): FormGroup {
         let obj = {
-            typeComposant:['GroupeElecPompe-Moteur'],
+            typeComposant:['GroupeElecPompe_Moteur'],
             nbService: [composant.nbService,Validators.required],
             nbSecours: [composant.nbSecours,Validators.required],
             puissance:[composant.puissance,Validators.required],
@@ -95,6 +97,7 @@ export class GroupeElecPompMoteurComponent implements OnInit{
         this.composantService.saveMoteur(moteur,this.route.snapshot.params['code'])
             .then((response) => {
                     console.log("It worked");
+                    this.validateEvent.emit("to-next-step");
                 },
                 (error) => {
                     console.log("No")

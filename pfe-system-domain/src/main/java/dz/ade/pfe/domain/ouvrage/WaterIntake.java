@@ -16,7 +16,7 @@ public class WaterIntake extends Component {
 
     @Column(name = "type_water_intake")
     @Enumerated(EnumType.STRING)
-    private EnumTypePriseEau type;
+    private WaterIntakeType type;
 
     @Column(name = "dimension_water_intake")
     private String dimension;

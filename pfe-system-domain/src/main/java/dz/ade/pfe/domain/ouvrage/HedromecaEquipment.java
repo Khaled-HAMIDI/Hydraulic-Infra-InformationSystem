@@ -34,7 +34,7 @@ public class HedromecaEquipment extends Component {
 
     @Column(name = "state_hedromeca_equipment")
     @Enumerated(EnumType.STRING)
-    private EnumEtat state;
+    private State state;
 
     @Column(name = "observation_hedromeca_equipment")
     private String observation;

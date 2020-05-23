@@ -149,7 +149,7 @@ export class BriseChargeComponent implements OnInit, OnDestroy {
             state: [this.ouvrage.state, Validators.required],
             nbCompartment: [this.ouvrage.nbCompartment, Validators.required],
             coordinateX: [this.ouvrage.coordinateX, Validators.required],
-            coordinateZ: [this.ouvrage.coordinateZ],
+            coordinateZ: [this.ouvrage.coordinateZ, Validators.required],
             coordinateY: [this.ouvrage.coordinateY, Validators.required],
             area: [this.ouvrage.area, Validators.required],
             constructionType: [this.ouvrage.constructionType, Validators.required],
@@ -285,7 +285,39 @@ export class BriseChargeComponent implements OnInit, OnDestroy {
         this.theplace.setLatLng(coord);
     }
 
-    // File Functions-------------------------------------------------------------------------
+    autoCoordinates(): void {
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(this.showPosition,this.showCoordinatesError);
+        } else {
+            console.log("Geolocation is not supported by this browser");
+        }
+    }
+
+    showPosition(position): void {
+        this.lati = position.coords.latitude;
+        this.long = position.coords.altitude;
+        this.ouvrageForm.controls['coordinateZ'].setValue(position.coords.altitude);
+    }
+
+    showCoordinatesError(error) {
+        switch (error.code) {
+            case error.PERMISSION_DENIED:
+                console.log('User denied the request for Geolocation.');
+                break;
+            case error.POSITION_UNAVAILABLE:
+                console.log('Location information is unavailable.');
+                break;
+            case error.TIMEOUT:
+                console.log('The request to get user location timed out.');
+                break;
+            case error.UNKNOWN_ERROR:
+                console.log('An unknown error occurred.');
+                break;
+        }
+    }
+
+
+        // File Functions-------------------------------------------------------------------------
     onAllRequiredAttached(isFilesValid: boolean): void {
         this.isFilesValid = isFilesValid;
     }

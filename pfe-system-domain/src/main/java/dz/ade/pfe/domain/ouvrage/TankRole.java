@@ -1,5 +1,5 @@
 package dz.ade.pfe.domain.ouvrage;
 
-public enum EnumRoleReservoir {
+public enum TankRole {
     Tampon, Distribution, Bacheahaut, none
 }

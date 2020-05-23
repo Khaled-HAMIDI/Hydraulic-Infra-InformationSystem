@@ -1,5 +1,5 @@
 package dz.ade.pfe.domain.ouvrage;
 
-public enum EnumTypeGeneral {
+public enum OuvrageType {
         StationTraitementConventionelle, StationTraitementNonConventionelle, Reservoir, Forage, StationPompage, BriseCharge, none
 }

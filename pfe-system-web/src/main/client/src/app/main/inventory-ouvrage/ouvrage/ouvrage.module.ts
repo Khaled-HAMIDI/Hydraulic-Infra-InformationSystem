@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Routes, RouterModule } from '@angular/router';
 import { FuseSharedModule } from '@fuse/shared.module';
-import { FuseConfirmDialogModule } from '@fuse/components';
+import {FuseConfirmDialogModule, FuseSidebarModule} from '@fuse/components';
 import { FuseWidgetModule } from '@fuse/components/widget/widget.module';
 import { FormsModule } from '@angular/forms';
 import { TranslateModule } from '@ngx-translate/core';
@@ -134,6 +134,18 @@ import { OuvrageShowService } from './ouvrage-show/ouvrage-show.service';
 import { OuvrageEditService } from './ouvrage-edit/ouvrage-edit.service';
 import {LeafletModule} from "@asymmetrik/ngx-leaflet";
 import {ComposantGetService} from "./composant/composant-get.service";
+import {LoadComponenteDirective} from "./load-component.directive";
+import {TestSecurityComponent} from "../../academy/components/security/security.component";
+import {TestEchelleComponent} from "../../academy/components/reservoir-et-brise-charge/echelle/echelle.component";
+import {TestFlotteurComponent} from "../../academy/components/reservoir-et-brise-charge/flotteur/flotteur.component";
+import { ObturateurComponent } from './composant/composant-add-edit/reservoir-et-brise-charge/obturateur/obturateur.component';
+import { OpturateurShowComponent } from './composant/composant-show/reservoir-et-brise-charge/obturateur-show/opturateur-show.component';
+import { CompteurSortieComponent } from './composant/composant-add-edit/station-pompage-et-forage/compteur-sortie/compteur-sortie.component';
+import { JointDemantageSortieComponent } from './composant/composant-add-edit/station-pompage-et-forage/joint-demantage-sortie/joint-demantage-sortie.component';
+import { CompteurSortieShowComponent } from './composant/composant-show/station-pompage-et-forage/compteur-sortie-show/compteur-sortie-show.component';
+import { JointDemantageSortieShowComponent } from './composant/composant-show/station-pompage-et-forage/joint-demantage-sortie-show/joint-demantage-sortie-show.component';
+import {PosteChloration, SoupapeDecharge} from "../../model/composant.model";
+
 
 export const options: Partial<IConfig> | (() => Partial<IConfig>) = null;
 
@@ -289,7 +301,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-    declarations: [OuvrageListComponent, OuvrageAddComponent, OuvrageEditComponent, OuvrageShowComponent, StationTraitementConvComponent, StationPompageComponent, ReservoirComponent, ForageComponent, BriseChargeComponent, StationNonConvComponent,  BriseChargeStepperComponent, ForageStepperComponent, ReservoirStepperComponent, StationNonConvStepperComponent, StationTraitementConvStepperComponent, StationPompageStepperComponent, SecurityComponent, PriseEauComponent, ReservoirEauBruteComponent, ComposantPretraitementComponent, ComposantAerationComponent, BassinMelangeComponent, DecanteurComponent, FiltreComponent, ReservoirEauTraiteComponent, KitMembraneComponent, StationPhpComponent, LocalStockageChimiqueComponent, PostPrepInjectionComponent, PostRecyclageBouesComponent, PostRecyclageEauLavavgeComponent, BatimentElectriqueComponent, GroupeElectrogeneComponent, PostTransElecComponent, GroupeElecPompPompComponent, GroupeElecPompMoteurComponent, ArmoirElecCmdComponent, AntiBelierComponent, SoupageDechargeComponent, VannePompageComponent, ClapetAntiRetourComponent, VenteuseComponent, JointDemantageComponent, CompteurComponent, CollecteurAspirationComponent, CollecteurReffoullementComponent, VanneArriveeComponent, VanneSortieComponent, FlotteurComponent, EchelleComponent, ConduiteTropPleinComponent, ConduiteVidangeComponent, PosteChlorationComponent, ColonnesMontantesComponent, SecurityShowComponent, ConduiteTropPleinShowComponent, ConduiteVidangeShowComponent, EchelleShowComponent, FlotteurShowComponent, PosteChlorationShowComponent, VanneArriveeShowComponent, VanneSortieShowComponent, AntiBilierShowComponent, ArmoireElecCmdShowComponent, ClapetAntiRetourShowComponent, CollecteurAspirationShowComponent, CollecteurReffoullementShowComponent, CollonnesMontantesShowComponent, CompteurShowComponent, GroupeElecPompMoteurShowComponent, GroupeElecPompPompShowComponent, JointDemantageShowComponent, PostTransElecShowComponent, SoupapeDechargeShowComponent, VannePompageShowComponent, VenteuseShowComponent, BassinMelangeShowComponent, BatimentElctriqueShowComponent, ComposantAerationShowComponent, ComposantPretraitementShowComponent, DecanteurShowComponent, FiltreShowComponent, GroupeElectrogeneShowComponent, KitMembraneShowComponent, LocalStockageChimiqueShowComponent, PostPrepInjectionShowComponent, PostRecyclageBouesShowComponent, PostRecyclageEauLavageShowComponent, PriseEauShowComponent, ReservoirEauBruteShowComponent, ReservoirEauTraiteShowComponent, StationPhpShowComponent, BriseChargeShowStepperComponent, ForageShowStepperComponent, ReservoirShowStepperComponent, StationNonConvShowStepperComponent, StationPompageShowStepperComponent, StationTraitementConvShowStepperComponent, OuvragesSelectedBarComponent],
+    declarations: [OuvrageListComponent, OuvrageAddComponent, OuvrageEditComponent, OuvrageShowComponent, StationTraitementConvComponent, StationPompageComponent, ReservoirComponent, ForageComponent, BriseChargeComponent, StationNonConvComponent, BriseChargeStepperComponent, ForageStepperComponent, ReservoirStepperComponent, StationNonConvStepperComponent, StationTraitementConvStepperComponent, StationPompageStepperComponent, SecurityComponent, PriseEauComponent, ReservoirEauBruteComponent, ComposantPretraitementComponent, ComposantAerationComponent, BassinMelangeComponent, DecanteurComponent, FiltreComponent, ReservoirEauTraiteComponent, KitMembraneComponent, StationPhpComponent, LocalStockageChimiqueComponent, PostPrepInjectionComponent, PostRecyclageBouesComponent, PostRecyclageEauLavavgeComponent, BatimentElectriqueComponent, GroupeElectrogeneComponent, PostTransElecComponent, GroupeElecPompPompComponent, GroupeElecPompMoteurComponent, ArmoirElecCmdComponent, AntiBelierComponent, SoupageDechargeComponent, VannePompageComponent, ClapetAntiRetourComponent, VenteuseComponent, JointDemantageComponent, CompteurComponent, CollecteurAspirationComponent, CollecteurReffoullementComponent, VanneArriveeComponent, VanneSortieComponent, FlotteurComponent, EchelleComponent, ConduiteTropPleinComponent, ConduiteVidangeComponent, PosteChlorationComponent, ColonnesMontantesComponent, SecurityShowComponent, ConduiteTropPleinShowComponent, ConduiteVidangeShowComponent, EchelleShowComponent, FlotteurShowComponent, PosteChlorationShowComponent, VanneArriveeShowComponent, VanneSortieShowComponent, AntiBilierShowComponent, ArmoireElecCmdShowComponent, ClapetAntiRetourShowComponent, CollecteurAspirationShowComponent, CollecteurReffoullementShowComponent, CollonnesMontantesShowComponent, CompteurShowComponent, GroupeElecPompMoteurShowComponent, GroupeElecPompPompShowComponent, JointDemantageShowComponent, PostTransElecShowComponent, SoupapeDechargeShowComponent, VannePompageShowComponent, VenteuseShowComponent, BassinMelangeShowComponent, BatimentElctriqueShowComponent, ComposantAerationShowComponent, ComposantPretraitementShowComponent, DecanteurShowComponent, FiltreShowComponent, GroupeElectrogeneShowComponent, KitMembraneShowComponent, LocalStockageChimiqueShowComponent, PostPrepInjectionShowComponent, PostRecyclageBouesShowComponent, PostRecyclageEauLavageShowComponent, PriseEauShowComponent, ReservoirEauBruteShowComponent, ReservoirEauTraiteShowComponent, StationPhpShowComponent, BriseChargeShowStepperComponent, ForageShowStepperComponent, ReservoirShowStepperComponent, StationNonConvShowStepperComponent, StationPompageShowStepperComponent, StationTraitementConvShowStepperComponent, OuvragesSelectedBarComponent, LoadComponenteDirective, ObturateurComponent, OpturateurShowComponent, CompteurSortieComponent, JointDemantageSortieComponent, CompteurSortieShowComponent, JointDemantageSortieShowComponent],
     imports: [
         CommonModule,
         RouterModule.forChild(routes),
@@ -321,6 +333,91 @@ const routes: Routes = [
         MatDatepickerModule,
         MatStepperModule,
         LeafletModule,
+        FuseSidebarModule,
+    ],entryComponents:[
+        SecurityComponent,
+        VanneArriveeComponent,
+        ObturateurComponent,
+        JointDemantageComponent,
+        CompteurComponent,
+        FlotteurComponent,
+        SoupageDechargeComponent,
+        VanneSortieComponent,
+        VenteuseComponent,
+        ConduiteTropPleinComponent,
+        ConduiteVidangeComponent,
+        EchelleComponent,
+        PosteChlorationComponent,
+        PostTransElecComponent,
+        GroupeElecPompMoteurComponent,
+        GroupeElecPompPompComponent,
+        ArmoirElecCmdComponent,
+        AntiBelierComponent,
+        ClapetAntiRetourComponent,
+        CollonnesMontantesShowComponent,
+        GroupeElectrogeneComponent,
+        ReservoirEauBruteComponent,
+        ReservoirEauTraiteComponent,
+        KitMembraneComponent,
+        StationPhpComponent,
+        LocalStockageChimiqueComponent,
+        PostPrepInjectionComponent,
+        PostRecyclageBouesComponent,
+        PostRecyclageEauLavavgeComponent,
+        BatimentElectriqueComponent,
+        PriseEauComponent,
+        BassinMelangeComponent,
+        FiltreComponent,
+        ComposantAerationComponent,
+        ComposantPretraitementComponent,
+        DecanteurComponent,
+        CollecteurAspirationComponent,
+        CollecteurReffoullementComponent,
+        CompteurSortieComponent,
+        JointDemantageSortieComponent,
+
+        SecurityShowComponent,
+        VanneArriveeShowComponent,
+        OpturateurShowComponent,
+        JointDemantageShowComponent,
+        CompteurShowComponent,
+        FlotteurShowComponent,
+        SoupapeDechargeShowComponent,
+        VanneSortieShowComponent,
+        VenteuseShowComponent,
+        ConduiteTropPleinShowComponent,
+        ConduiteVidangeShowComponent,
+        EchelleShowComponent,
+        PosteChlorationShowComponent,
+        PostTransElecShowComponent,
+        GroupeElecPompMoteurShowComponent,
+        GroupeElecPompPompShowComponent,
+        ArmoireElecCmdShowComponent,
+        AntiBilierShowComponent,
+        ClapetAntiRetourShowComponent,
+        CollonnesMontantesShowComponent,
+        GroupeElectrogeneShowComponent,
+        ReservoirEauBruteShowComponent,
+        ReservoirEauTraiteShowComponent,
+        KitMembraneShowComponent,
+        StationPhpShowComponent,
+        LocalStockageChimiqueShowComponent,
+        PostPrepInjectionShowComponent,
+        PostRecyclageBouesShowComponent,
+        PostRecyclageEauLavageShowComponent,
+        BatimentElctriqueShowComponent,
+        PriseEauShowComponent,
+        BassinMelangeShowComponent,
+        FiltreShowComponent,
+        ComposantAerationShowComponent,
+        ComposantPretraitementShowComponent,
+        DecanteurShowComponent,
+        CollecteurAspirationShowComponent,
+        CollecteurReffoullementShowComponent,
+        CompteurSortieShowComponent,
+        JointDemantageSortieShowComponent,
+
     ]
+
 })
 export class OuvrageModule { }

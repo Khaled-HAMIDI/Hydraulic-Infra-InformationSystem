@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { fuseAnimations } from '@fuse/animations';
 import {ActivatedRoute, Router} from '@angular/router';
@@ -24,6 +24,8 @@ export class AntiBelierComponent implements OnInit{
     antiBelier:AntiBelier;
     antiBelierForm: FormGroup;
 
+    @Output() validateEvent = new EventEmitter<string>();
+
 
     constructor(
         private composantService : ComposantSaveService,
@@ -38,6 +40,8 @@ export class AntiBelierComponent implements OnInit{
         this.add=true;
         this.exist=true;
         this.antiBelier=new AntiBelier();
+
+
     }
 
     /**
@@ -93,6 +97,7 @@ export class AntiBelierComponent implements OnInit{
         this.composantService.saveAntiBelier(antiBelier,this.route.snapshot.params['code'])
             .then((response) => {
                     console.log("It worked");
+                    this.validateEvent.emit("to-next-step");
                 },
                 (error) => {
                     console.log("No")

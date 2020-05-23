@@ -1,5 +1,5 @@
 package dz.ade.pfe.domain.ouvrage;
 
-public enum EnumInjectionType {
+public enum InjectionType {
     Manuel, Automatique
 }

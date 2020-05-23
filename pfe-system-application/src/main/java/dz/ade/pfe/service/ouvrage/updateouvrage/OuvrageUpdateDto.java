@@ -1,6 +1,6 @@
 package dz.ade.pfe.service.ouvrage.updateouvrage;
 
-import dz.ade.pfe.domain.ouvrage.EnumEtat;
+import dz.ade.pfe.domain.ouvrage.State;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -22,7 +22,7 @@ public class OuvrageUpdateDto {
     private Double pumpDebit;
 
     @Enumerated(EnumType.STRING)
-    private EnumEtat state;
+    private State state;
 
     private Boolean remoteManagement;
 

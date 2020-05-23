@@ -1,7 +1,7 @@
 package dz.ade.pfe.service.ouvrage.getcomposantbyouvrage.Dtos;
 
-import dz.ade.pfe.domain.ouvrage.EnumEtat;
-import dz.ade.pfe.domain.ouvrage.EnumNatureBlocLocal;
+import dz.ade.pfe.domain.ouvrage.State;
+import dz.ade.pfe.domain.ouvrage.LocalBlocNature;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -19,8 +19,8 @@ public class LocalBlockAddDto {
     private double area;
 
     @Enumerated(EnumType.STRING)
-    private EnumNatureBlocLocal nature;
+    private LocalBlocNature nature;
 
     @Enumerated(EnumType.STRING)
-    private EnumEtat state;
+    private State state;
 }

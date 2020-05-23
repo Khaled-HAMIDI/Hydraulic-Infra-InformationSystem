@@ -1,5 +1,5 @@
 package dz.ade.pfe.domain.ouvrage;
 
-public enum EnumNatureSecurity {
+public enum SecurityNature {
     Zemmerman, EnDur, FilBarbulé
 }
