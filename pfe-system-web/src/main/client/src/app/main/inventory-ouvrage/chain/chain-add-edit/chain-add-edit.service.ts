@@ -13,7 +13,7 @@ const OUVRAGES_API = API + '/ouvrages' ;
 })
 
 export class ChainAddEditService implements Resolve<any> {
-
+    code :string ;
     constructor(private router: Router,
                 private http: HttpClient,
                 private toolsService: ToolsService) {
@@ -43,6 +43,7 @@ export class ChainAddEditService implements Resolve<any> {
                 resolve(false);
             }
             else if (route.data.action === "edit") {
+                this.code = route.params.id
                 this.get(route.params.id).then(
                     (chain: Chain) => {
                         resolve(chain);
@@ -62,7 +63,7 @@ export class ChainAddEditService implements Resolve<any> {
 
     save(chain): Promise<any> {
         if (chain.id) return new Promise((resolve, reject) => {
-            this.http.put(CHAIN_API + '/' + chain.code, chain)
+            this.http.put(CHAIN_API + '/' + this.code, chain)
                 .subscribe((response: any) => {
                     resolve(response);
                 }, reject);

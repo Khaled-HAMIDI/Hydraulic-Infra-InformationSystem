@@ -103,31 +103,43 @@ export class ChainAddEditComponent implements OnInit, OnDestroy {
             {
                 this.AllOuvrages[0].ouvrages.push(ouvrage);
                 this.filteredOuvrages[0].ouvrages.push(ouvrage);
+                if (ouvrage.checked)
+                this.filteredOuvrages[0].nbCheked++;
             }
             if(ouvrage.type === generalType.Forage)
             {
                 this.AllOuvrages[1].ouvrages.push(ouvrage)
                 this.filteredOuvrages[1].ouvrages.push(ouvrage)
+                if (ouvrage.checked)
+                this.filteredOuvrages[1].nbCheked++;
             }
             if(ouvrage.type === generalType.Reservoir)
             {
                 this.AllOuvrages[2].ouvrages.push(ouvrage)
                 this.filteredOuvrages[2].ouvrages.push(ouvrage)
+                if (ouvrage.checked)
+                this.filteredOuvrages[2].nbCheked++;
             }
             if(ouvrage.type === generalType.StationPompage)
             {
                 this.AllOuvrages[3].ouvrages.push(ouvrage)
                 this.filteredOuvrages[3].ouvrages.push(ouvrage)
+                if (ouvrage.checked)
+                this.filteredOuvrages[3].nbCheked++;
             }
             if(ouvrage.type === generalType.StationTraitementConventionelle)
             {
                 this.AllOuvrages[4].ouvrages.push(ouvrage)
                 this.filteredOuvrages[4].ouvrages.push(ouvrage)
+                if (ouvrage.checked)
+                this.filteredOuvrages[4].nbCheked++;
             }
             if(ouvrage.type === generalType.StationTraitementNonConventionelle)
             {
                 this.AllOuvrages[5].ouvrages.push(ouvrage)
                 this.filteredOuvrages[5].ouvrages.push(ouvrage)
+                if (ouvrage.checked)
+                this.filteredOuvrages[5].nbCheked++;
             }
         })
     }
@@ -155,11 +167,17 @@ export class ChainAddEditComponent implements OnInit, OnDestroy {
         return this.formBuilder.group(obj);
     }
 
-    selectOuvrage(ouvrage){
+    selectOuvrage(ouvrage,j){
         if(ouvrage.checked)
-        this.selectedOuvrages.push(ouvrage);
+        {
+            this.selectedOuvrages.push(ouvrage);
+            this.filteredOuvrages[j].nbCheked++;
+        }
         else
-        this.selectedOuvrages.splice(this.selectedOuvrages.indexOf(ouvrage),1);
+        {
+            this.selectedOuvrages.splice(this.selectedOuvrages.indexOf(ouvrage),1);
+            this.filteredOuvrages[j].nbCheked--;
+        }
     }
 
     filterOuvrageByTerm(i:number): void

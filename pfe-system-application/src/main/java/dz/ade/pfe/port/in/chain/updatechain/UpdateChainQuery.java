@@ -4,5 +4,5 @@ import dz.ade.pfe.service.chain.getchaindetails.ChainDto;
 import dz.ade.pfe.service.chain.updatechain.UpdateChainDto;
 
 public interface UpdateChainQuery {
-    ChainDto updateChain(UpdateChainDto chain);
+    ChainDto updateChain(UpdateChainDto chain, String code);
 }

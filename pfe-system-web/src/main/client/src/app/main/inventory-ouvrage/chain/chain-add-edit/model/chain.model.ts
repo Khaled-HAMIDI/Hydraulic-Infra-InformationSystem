@@ -21,9 +21,11 @@ export class Ouvrage {
 export class AllOuvrages {
     type: string;
     ouvrages: any[];
+    nbCheked : number;
     constructor(type: string) {
         this.type = type;
         this.ouvrages = [];
+        this.nbCheked = 0 ;
     }
 }
 

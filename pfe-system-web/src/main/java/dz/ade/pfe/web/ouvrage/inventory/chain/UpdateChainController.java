@@ -33,6 +33,6 @@ public class UpdateChainController {
     public ChainDto updateChain(@PathVariable String code,
                                 @Valid @RequestBody UpdateChainDto updateChainDto){
 
-        return updateChainQuery.updateChain(updateChainDto);
+        return updateChainQuery.updateChain(updateChainDto, code);
     }
 }

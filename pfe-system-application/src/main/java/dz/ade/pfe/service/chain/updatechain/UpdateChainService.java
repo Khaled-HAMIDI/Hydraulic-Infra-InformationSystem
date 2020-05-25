@@ -30,10 +30,10 @@ public class UpdateChainService implements UpdateChainQuery {
     private final DeleteChainOuvrage deleteChainOuvrage;
 
     @Override
-    public ChainDto updateChain(UpdateChainDto chain) {
-        Optional<Chain> ch = loadChainDetails.loadChainDetails(chain.getCode());
+    public ChainDto updateChain(UpdateChainDto chain, String code) {
+        Optional<Chain> ch = loadChainDetails.loadChainDetails(code);
         if (!ch.isPresent()) {
-            throw new ResourceNotFoundException(String.format("No chain found with code '%s'.", chain.getCode()));
+            throw new ResourceNotFoundException(String.format("No chain found with code '%s'.", code));
         }
         Chain chain1 = ch.get();
         List<Long> ids = chain1.getOuvrages().stream()

@@ -66,7 +66,7 @@
                                     </mat-form-field>
                                 </div>
                             </mat-tab>
-                            <mat-tab label="Selectionner les ouvrages">
+                            <mat-tab [label]="'Selectionner les ouvrages ('+selectedOuvrages.length+')'">
                                 <div class="tab-content p-24" fusePerfectScrollbar>
                                     <div class="example-container mat-white-bg">
                                         <mat-accordion class="example-headers-align">
@@ -76,7 +76,7 @@
                                                         {{ouvrages.type}}
                                                     </mat-panel-title>
                                                     <mat-panel-description>
-                                                        {{ouvrages.ouvrages.length}}
+                                                        {{ouvrages.nbCheked}}
                                                     </mat-panel-description>
                                                 </mat-expansion-panel-header>
                                                 <div class="filters" fxLayout="column" fxLayoutAlign="center center"
@@ -93,7 +93,7 @@
                                                 <div fxLayout="row wrap">
                                                     <div *ngFor="let ouvrage of ouvrages.ouvrages;let i=index"
                                                         fxFlex="100" fxFlex.gt-xs="50" fxFlex.gt-sm="25">
-                                                        <mat-checkbox (change)="selectOuvrage(ouvrage)"
+                                                        <mat-checkbox (change)="selectOuvrage(ouvrage,j)"
                                                             [(ngModel)]="ouvrages.ouvrages[i].checked"
                                                             [ngModelOptions]="{standalone: true}">
                                                             <p class="text-truncate">{{ouvrage.name}} - {{ouvrage.code}}</p>
