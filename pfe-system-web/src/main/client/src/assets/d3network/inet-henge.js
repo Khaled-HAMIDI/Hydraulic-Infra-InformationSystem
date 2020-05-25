@@ -23151,10 +23151,10 @@ var Link = function () {
   }, {
     key: 'zoom',
     value: function zoom(scale) {
-      var visibility = 'hidden';
-      if (scale && scale > 1.5) visibility = 'visible';
+      var visibility = 'none';
+      if (scale && scale > 1.5) visibility = 'block';
 
-      d3.selectAll('.link text').style('visibility', visibility);
+      d3.selectAll('.link text').style('display', visibility);
     }
   }, {
     key: 'set_position',
