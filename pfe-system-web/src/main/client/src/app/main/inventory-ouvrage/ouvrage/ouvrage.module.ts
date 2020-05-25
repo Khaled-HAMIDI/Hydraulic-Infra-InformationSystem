@@ -145,6 +145,12 @@ import { JointDemantageSortieComponent } from './composant/composant-add-edit/st
 import { CompteurSortieShowComponent } from './composant/composant-show/station-pompage-et-forage/compteur-sortie-show/compteur-sortie-show.component';
 import { JointDemantageSortieShowComponent } from './composant/composant-show/station-pompage-et-forage/joint-demantage-sortie-show/joint-demantage-sortie-show.component';
 import {PosteChloration, SoupapeDecharge} from "../../model/composant.model";
+import { ReservoirService } from './ouvrage-add/Type/reservoir/reservoir.service';
+import { BriseChargeService } from './ouvrage-add/Type/brise-charge/brise-charge.service';
+import { ForageService } from './ouvrage-add/Type/forage/forage.service';
+import { StationNonConvService } from './ouvrage-add/Type/station-non-conv/station-non-conv.service';
+import { StationPompageService } from './ouvrage-add/Type/station-pompage/station-pompage.service';
+import { StationTraitementConvSevice } from './ouvrage-add/Type/station-traitement-conv/station-traitement-conv.sevice';
 
 
 export const options: Partial<IConfig> | (() => Partial<IConfig>) = null;
@@ -159,37 +165,44 @@ const routes: Routes = [
     {
         path: 'add/StationTraitementConventionelle/:id',
         component: StationTraitementConvComponent,
-        data: { action: 'add' }
+        data: { action: 'add' },
+        resolve: { data: StationTraitementConvSevice }
     },
     {
         path: 'add/Reservoir/:id',
         component: ReservoirComponent,
-        data: { action: 'add' }
+        data: { action: 'add' } ,
+        resolve: { data: ReservoirService }
     },
     {
         path: 'add/Forage/:id',
         component: ForageComponent,
-        data: { action: 'add' }
+        data: { action: 'add' },
+        resolve: { data: ForageService }
     },
     {
         path: 'add/StationPompage/:id',
         component: StationPompageComponent,
-        data: { action: 'add' }
+        data: { action: 'add' },
+        resolve: { data: StationPompageService }
     },
     {
         path: 'add/BriseCharge/:id',
         component: BriseChargeComponent,
-        data: { action: 'add' }
+        data: { action: 'add' },
+        resolve: { data: BriseChargeService }
     },
     {
         path: 'add/StationTraitementNonConventionelle/:id',
         component: StationNonConvComponent,
-        data: { action: 'add' }
+        data: { action: 'add' },
+        resolve: { data: StationNonConvService }
     },
     {
         path: 'add/StationTraitementConventionelle/:site/composants/:code',
         component: StationTraitementConvStepperComponent,
-        data: { action: 'add' }
+        data: { action: 'add' },
+        resolve: { data: BriseChargeService }
     },
     {
         path: 'add/Reservoir/:site/composants/:code',

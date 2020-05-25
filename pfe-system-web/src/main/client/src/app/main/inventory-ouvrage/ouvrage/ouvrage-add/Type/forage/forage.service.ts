@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { API } from 'config/api.config';
-import {  Router } from '@angular/router';
+import {  Router, Resolve, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
 import { ToolsService } from '@ayams/services/tools.service';
+import { Observable } from 'rxjs';
 
 const OUVRAGE_API = API + '/ouvrage';
 
@@ -10,7 +11,7 @@ const OUVRAGE_API = API + '/ouvrage';
     providedIn: 'root'
 })
 
-export class ForageService {
+export class ForageService implements Resolve<any> {
 
     constructor(private router: Router,
                 private http: HttpClient,
@@ -35,8 +36,6 @@ export class ForageService {
 
     }
 
-
-
     saveOuvrage(ouvrage) {
         return new Promise((resolve, reject) => {
             this.toolsService.showProgressBar();
@@ -51,6 +50,31 @@ export class ForageService {
                     else this.toolsService.showError('ADD.TOAST-ADD.error');
                     reject(error);
                 })
+        });
+
+    }
+    getDeployedUnit(): Promise<any> {
+        return new Promise((resolve, reject) => {
+            this.http.get(API + '/units/deployedunit')
+                .subscribe((response: any) => {
+                    resolve(response);
+                }, reject);
+        });
+    }
+
+    resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<any> | Promise<any> | any {
+
+        return new Promise((resolve, reject) => {
+
+            Promise.all([
+                this.getDeployedUnit()
+
+            ]).then(
+                (data) => {
+                    resolve(data);
+                },
+                reject
+            );
         });
 
     }

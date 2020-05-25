@@ -10,6 +10,7 @@ import { ReservoirService } from "./reservoir.service";
 import { Subject } from 'rxjs';
 import { ToolsService } from '@ayams/services/tools.service';
 import { tileLayer, latLng, marker, icon, Map, map, Draggable, MarkerOptions, LeafletMouseEvent } from 'leaflet';
+import { takeUntil } from 'rxjs/operators';
 
 
 
@@ -23,7 +24,7 @@ const REGX_CODE = "^[a-zA-Z0-9]{2}$";*/
     animations: fuseAnimations
 })
 export class ReservoirComponent implements OnInit, OnDestroy {
-
+    private _unsubscribeAll: Subject<any>;
     ouvrage: Ouvrage;
     ouvrageAdd: Ouvrage;
     ouvrageForm: FormGroup;
@@ -32,6 +33,7 @@ export class ReservoirComponent implements OnInit, OnDestroy {
     options: any;
     lati: number;
     long: number;
+    unit;
 
     streetMaps = tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         detectRetina: true,
@@ -65,6 +67,7 @@ export class ReservoirComponent implements OnInit, OnDestroy {
         private fuseTranslationLoader: FuseTranslationLoaderService
     ) {
         // Set the default
+        this._unsubscribeAll = new Subject();
         this.ouvrage = new Ouvrage();
         this.ouvrage.enabled = true;
         this.ouvrage.specializedLine = true;
@@ -119,8 +122,17 @@ export class ReservoirComponent implements OnInit, OnDestroy {
      * On init
      */
     ngOnInit(): void {
-        this.ouvrage.site = this.route.snapshot.paramMap.get('id');
-        this.initFormReservoir();
+        this.route.data.pipe(takeUntil(this._unsubscribeAll)).subscribe(
+            (response) => {
+                this.unit=response.data[0];
+                this.ouvrage.site = this.route.snapshot.paramMap.get('id');
+                this.initFormReservoir();
+            },
+            (error) => {
+                console.log(error);
+            }
+        );
+        
 
         //Just for now
         this.lati = 36.697833;

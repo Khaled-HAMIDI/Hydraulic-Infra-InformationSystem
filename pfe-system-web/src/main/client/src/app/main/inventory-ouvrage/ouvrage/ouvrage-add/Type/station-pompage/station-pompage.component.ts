@@ -10,6 +10,7 @@ import {StationPompageService} from "./station-pompage.service";
 import { Subject } from 'rxjs';
 import { ToolsService } from '@ayams/services/tools.service';
 import { tileLayer, latLng, marker, icon, Map, map, Draggable, MarkerOptions, LeafletMouseEvent } from 'leaflet';
+import { takeUntil } from 'rxjs/operators';
 
 
 
@@ -20,11 +21,11 @@ import { tileLayer, latLng, marker, icon, Map, map, Draggable, MarkerOptions, Le
     animations: fuseAnimations
 })
 export class StationPompageComponent implements OnInit, OnDestroy {
-
+    private _unsubscribeAll: Subject<any>;
     ouvrage: Ouvrage;
     ouvrageForm: FormGroup;
     ouvrageAdd :Ouvrage;
-
+    unit;
     theplace: any;
     options: any;
     lati: number;
@@ -61,6 +62,7 @@ export class StationPompageComponent implements OnInit, OnDestroy {
         private fuseTranslationLoader: FuseTranslationLoaderService
     ) {
         // Set the default
+        this._unsubscribeAll = new Subject();
         this.ouvrage = new Ouvrage();
         this.ouvrage.enabled = true;
         this.ouvrage.specializedLine = true;
@@ -115,8 +117,16 @@ export class StationPompageComponent implements OnInit, OnDestroy {
      * On init
      */
     ngOnInit(): void {
-        this.ouvrage.site = this.route.snapshot.paramMap.get('id');
-        this.initFormStationPompage();
+        this.route.data.pipe(takeUntil(this._unsubscribeAll)).subscribe(
+            (response) => {
+                this.unit=response.data[0];
+                this.ouvrage.site = this.route.snapshot.paramMap.get('id');
+                this.initFormStationPompage();
+            },
+            (error) => {
+                console.log(error);
+            }
+        );        
 
         //Just for now
         this.lati = 36.697833;
