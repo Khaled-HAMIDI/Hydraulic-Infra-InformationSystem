@@ -2,12 +2,10 @@ package dz.ade.pfe.service.inventory.createinventory;
 
 
 import dz.ade.pfe.domain.admin.OrganisationalStructure;
-import dz.ade.pfe.domain.admin.Unit;
 import dz.ade.pfe.domain.admin.User;
 import dz.ade.pfe.domain.exceptions.ResourceNotFoundException;
 import dz.ade.pfe.domain.ouvrage.Inventory;
-import dz.ade.pfe.domain.ouvrage.Ouvrage;
-import dz.ade.pfe.port.in.inventory.createinventory.CreateInventoryQuery;
+import dz.ade.pfe.port.in.inventory.createinventory.CreateInventoryCommand;
 
 import dz.ade.pfe.port.out.inventory.createinventory.SaveInventory;
 import dz.ade.pfe.port.out.unit.LoadUnitByCode;
@@ -19,7 +17,7 @@ import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
-public class CreateInventoryService implements CreateInventoryQuery {
+public class CreateInventoryService implements CreateInventoryCommand {
     //@Autowired
     private final SaveInventory saveInventory;
     private final LoadUserByUsername loadUserByUsername;

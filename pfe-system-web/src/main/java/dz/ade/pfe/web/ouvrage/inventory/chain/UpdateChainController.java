@@ -1,6 +1,6 @@
 package dz.ade.pfe.web.ouvrage.inventory.chain;
 
-import dz.ade.pfe.port.in.chain.updatechain.UpdateChainQuery;
+import dz.ade.pfe.port.in.chain.updatechain.UpdateChainCommand;
 import dz.ade.pfe.service.chain.getchaindetails.ChainDto;
 import dz.ade.pfe.service.chain.updatechain.UpdateChainDto;
 import io.swagger.annotations.Api;
@@ -20,7 +20,7 @@ import javax.validation.Valid;
 @Component
 @RequiredArgsConstructor
 public class UpdateChainController {
-    private final UpdateChainQuery updateChainQuery;
+    private final UpdateChainCommand updateChainCommand;
     @PutMapping(value = "/chain/{code}")
     @PreAuthorize("hasAuthority('*:*')")
     @ApiOperation(value = "Update user information")
@@ -33,6 +33,6 @@ public class UpdateChainController {
     public ChainDto updateChain(@PathVariable String code,
                                 @Valid @RequestBody UpdateChainDto updateChainDto){
 
-        return updateChainQuery.updateChain(updateChainDto, code);
+        return updateChainCommand.updateChain(updateChainDto, code);
     }
 }

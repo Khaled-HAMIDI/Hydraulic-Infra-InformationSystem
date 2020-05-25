@@ -1,7 +1,7 @@
 package dz.ade.pfe.web.ouvrage.inventory.site;
 
 
-import dz.ade.pfe.port.in.site.CreateSiteQuery;
+import dz.ade.pfe.port.in.site.CreateSiteCommand;
 import dz.ade.pfe.service.site.createsite.SiteDto;
 import dz.ade.pfe.web.commons.controller.BaseController;
 import io.swagger.annotations.Api;
@@ -23,7 +23,7 @@ import javax.servlet.http.HttpServletRequest;
 @Component
 @RequiredArgsConstructor
 public class CreateSiteController extends BaseController {
-    private final CreateSiteQuery createSiteQuery;
+    private final CreateSiteCommand createSiteCommand;
 
     @PostMapping(value = "/site")
     @ApiOperation(value = "Save a site")
@@ -35,6 +35,6 @@ public class CreateSiteController extends BaseController {
     })
     public SiteDto CreateSite(@RequestBody SiteDto siteDto, HttpServletRequest httpServletRequest) {
         String codeStructure = securityUtils.getConnectedUserOrganisationalStructure(httpServletRequest);
-        return createSiteQuery.createSite(siteDto, codeStructure);
+        return createSiteCommand.createSite(siteDto, codeStructure);
     }
 }

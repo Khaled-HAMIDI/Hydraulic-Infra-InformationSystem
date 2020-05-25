@@ -1,8 +1,7 @@
 package dz.ade.pfe.web.ouvrage.inventory.ouvrage;
 
 
-import dz.ade.pfe.domain.ouvrage.Ouvrage;
-import dz.ade.pfe.port.in.ouvrage.updateouvrage.UpdateOuvrageQuery;
+import dz.ade.pfe.port.in.ouvrage.updateouvrage.UpdateOuvrageCommand;
 import dz.ade.pfe.service.ouvrage.updateouvrage.OuvrageUpdateDto;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -20,7 +19,7 @@ import org.springframework.web.bind.annotation.*;
 @RequiredArgsConstructor
 public class UpdateOuvrageController {
 
-    private final UpdateOuvrageQuery updateOuvrageQuery;
+    private final UpdateOuvrageCommand updateOuvrageCommand;
 
 
     @PutMapping(value = "/ouvrage/{code}")
@@ -32,7 +31,7 @@ public class UpdateOuvrageController {
             @ApiResponse(code = 404, message = "The resource you were trying to reach is not found")
     })
     public OuvrageUpdateDto updateOuvrage(@PathVariable(value = "code") String code, @RequestBody OuvrageUpdateDto ouvrageUpdateDto) {
-        return updateOuvrageQuery.updateOuvrage(ouvrageUpdateDto,code);
+        return updateOuvrageCommand.updateOuvrage(ouvrageUpdateDto,code);
     }
 
 }

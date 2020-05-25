@@ -4,7 +4,7 @@ import dz.ade.pfe.domain.exceptions.ResourceNotFoundException;
 import dz.ade.pfe.domain.ouvrage.Chain;
 import dz.ade.pfe.domain.ouvrage.Ouvrage;
 import dz.ade.pfe.domain.ouvrage.OuvrageChain;
-import dz.ade.pfe.port.in.chain.updatechain.UpdateChainQuery;
+import dz.ade.pfe.port.in.chain.updatechain.UpdateChainCommand;
 import dz.ade.pfe.port.out.chain.DeleteChainOuvrage.DeleteChainOuvrage;
 import dz.ade.pfe.port.out.chain.getchaindetails.LoadChainDetails;
 import dz.ade.pfe.port.out.ouvrage.getouvragesbycodes.LoadOuvragesByCodes;
@@ -21,7 +21,7 @@ import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
-public class UpdateChainService implements UpdateChainQuery {
+public class UpdateChainService implements UpdateChainCommand {
     private final LoadChainDetails loadChainDetails;
     private final LoadOuvragesByCodes loadOuvragesByCodes;
     private final ModifyChain modifyChain;

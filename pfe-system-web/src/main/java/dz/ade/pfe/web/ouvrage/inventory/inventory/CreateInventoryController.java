@@ -1,6 +1,6 @@
 package dz.ade.pfe.web.ouvrage.inventory.inventory;
 
-import dz.ade.pfe.port.in.inventory.createinventory.CreateInventoryQuery;
+import dz.ade.pfe.port.in.inventory.createinventory.CreateInventoryCommand;
 import dz.ade.pfe.service.inventory.createinventory.InventoryAddDto;
 import dz.ade.pfe.service.inventory.createinventory.InventoryShowDto;
 import dz.ade.pfe.web.commons.controller.BaseController;
@@ -22,7 +22,7 @@ import javax.servlet.http.HttpServletRequest;
 @RequiredArgsConstructor
 public class CreateInventoryController extends BaseController {
 
-    private final CreateInventoryQuery createInventoryQuery;
+    private final CreateInventoryCommand createInventoryCommand;
 
     @PostMapping(value = "/inventory")
     @ApiOperation(value = "Save an inventory")
@@ -35,6 +35,6 @@ public class CreateInventoryController extends BaseController {
     public InventoryShowDto createInventory(@RequestBody InventoryAddDto inventoryAddDto, HttpServletRequest httpServletRequest) {
         String codeStructure = securityUtils.getConnectedUserOrganisationalStructure(httpServletRequest);
 
-        return createInventoryQuery.createInventory(inventoryAddDto, codeStructure);
+        return createInventoryCommand.createInventory(inventoryAddDto, codeStructure);
     }
 }

@@ -1,10 +1,9 @@
 package dz.ade.pfe.service.site.createsite;
 
 import dz.ade.pfe.domain.admin.OrganisationalStructure;
-import dz.ade.pfe.domain.admin.Unit;
 import dz.ade.pfe.domain.exceptions.ResourceNotFoundException;
 import dz.ade.pfe.domain.ouvrage.Site;
-import dz.ade.pfe.port.in.site.CreateSiteQuery;
+import dz.ade.pfe.port.in.site.CreateSiteCommand;
 import dz.ade.pfe.port.out.site.SaveSite;
 import dz.ade.pfe.port.out.unit.LoadUnitByCode;
 import lombok.RequiredArgsConstructor;
@@ -14,7 +13,7 @@ import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
-public class CreateSiteService implements CreateSiteQuery {
+public class CreateSiteService implements CreateSiteCommand {
     private final SaveSite saveSite;
     private final LoadUnitByCode loadUnitByCode;
     private final SiteDtoMapper siteDtoMapper;

@@ -1,6 +1,6 @@
 package dz.ade.pfe.web.ouvrage.inventory.ouvrage;
 
-import dz.ade.pfe.port.in.ouvrage.createouvrage.CreateOuvrageQuery;
+import dz.ade.pfe.port.in.ouvrage.createouvrage.CreateOuvrageCommand;
 import dz.ade.pfe.service.ouvrage.createouvrage.OuvrageAddDto;
 import dz.ade.pfe.service.ouvrage.getouvragedetails.OuvrageDto;
 import dz.ade.pfe.web.commons.controller.BaseController;
@@ -22,7 +22,7 @@ import javax.servlet.http.HttpServletRequest;
 @RequiredArgsConstructor
 public class CreateOuvrageController extends BaseController {
 
-    private final CreateOuvrageQuery createOuvrageQuery;
+    private final CreateOuvrageCommand createOuvrageCommand;
 
     @PostMapping(value = "/ouvrage")
     @ApiOperation(value = "Save an ouvrage")
@@ -35,6 +35,6 @@ public class CreateOuvrageController extends BaseController {
     public OuvrageDto createOuvrage(@RequestBody OuvrageAddDto ouvrageAddDto, HttpServletRequest httpServletRequest){
         String codeStructure = securityUtils.getConnectedUserOrganisationalStructure(httpServletRequest);
 
-        return createOuvrageQuery.createOuvrage(ouvrageAddDto, codeStructure);
+        return createOuvrageCommand.createOuvrage(ouvrageAddDto, codeStructure);
     }
 }

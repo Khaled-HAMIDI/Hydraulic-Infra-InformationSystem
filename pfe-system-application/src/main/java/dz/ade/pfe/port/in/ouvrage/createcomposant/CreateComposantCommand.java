@@ -4,7 +4,7 @@ import dz.ade.pfe.domain.ouvrage.*;
 import dz.ade.pfe.service.ouvrage.createcomposant.Dtos.*;
 
 
-public interface CreateComposantQuery {
+public interface CreateComposantCommand {
 
     ComponentResponseDto createSecurity(SecurityAddDto ouvrageAddDto,String code);
 

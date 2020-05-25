@@ -3,7 +3,7 @@ package dz.ade.pfe.service.chain.createchain;
 import dz.ade.pfe.domain.ouvrage.Chain;
 import dz.ade.pfe.domain.ouvrage.Ouvrage;
 import dz.ade.pfe.domain.ouvrage.OuvrageChain;
-import dz.ade.pfe.port.in.chain.createchain.CreateChainQuery;
+import dz.ade.pfe.port.in.chain.createchain.CreateChainCommand;
 import dz.ade.pfe.port.out.ouvrage.getouvragesbycodes.LoadOuvragesByCodes;
 import dz.ade.pfe.port.out.chain.savechainouvrage.SaveChainOuvrage;
 import dz.ade.pfe.port.out.chain.createchain.SaveNewChain;
@@ -15,7 +15,7 @@ import java.util.List;
 
 @Service
 @RequiredArgsConstructor
-public class CreateChainService implements CreateChainQuery {
+public class CreateChainService implements CreateChainCommand {
     private final SaveNewChain saveNewChain;
     private final ChainSaveMapper chainSaveMapper;
     private final LoadOuvragesByCodes loadOuvragesByCodes;

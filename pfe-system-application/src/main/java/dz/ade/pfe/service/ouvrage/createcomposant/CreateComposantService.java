@@ -1,7 +1,7 @@
 package dz.ade.pfe.service.ouvrage.createcomposant;
 
 import dz.ade.pfe.domain.ouvrage.*;
-import dz.ade.pfe.port.in.ouvrage.createcomposant.CreateComposantQuery;
+import dz.ade.pfe.port.in.ouvrage.createcomposant.CreateComposantCommand;
 import dz.ade.pfe.port.out.ouvrage.createcomposant.SaveComposant;
 import dz.ade.pfe.service.ouvrage.createcomposant.Dtos.*;
 import lombok.RequiredArgsConstructor;
@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 @RequiredArgsConstructor
-public class CreateComposantService implements CreateComposantQuery {
+public class CreateComposantService implements CreateComposantCommand {
     private final SaveComposant saveComposant;
     private final CreateComposantMapper createComposantMapper;
 

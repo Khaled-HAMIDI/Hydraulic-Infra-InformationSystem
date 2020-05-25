@@ -1,11 +1,10 @@
 package dz.ade.pfe.service.ouvrage.createouvrage;
 
 import dz.ade.pfe.domain.admin.OrganisationalStructure;
-import dz.ade.pfe.domain.admin.Unit;
 import dz.ade.pfe.domain.exceptions.ResourceNotFoundException;
 import dz.ade.pfe.domain.ouvrage.Ouvrage;
 import dz.ade.pfe.domain.ouvrage.Site;
-import dz.ade.pfe.port.in.ouvrage.createouvrage.CreateOuvrageQuery;
+import dz.ade.pfe.port.in.ouvrage.createouvrage.CreateOuvrageCommand;
 import dz.ade.pfe.port.out.ouvrage.createouvrage.SaveOuvrage;
 import dz.ade.pfe.port.out.site.LoadSiteById;
 import dz.ade.pfe.port.out.unit.LoadUnitByCode;
@@ -17,7 +16,7 @@ import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
-public class CreateOuvrageService implements CreateOuvrageQuery {
+public class CreateOuvrageService implements CreateOuvrageCommand {
     //@Autowired
     private final SaveOuvrage saveOuvrage;
     private final LoadSiteById loadSiteById;

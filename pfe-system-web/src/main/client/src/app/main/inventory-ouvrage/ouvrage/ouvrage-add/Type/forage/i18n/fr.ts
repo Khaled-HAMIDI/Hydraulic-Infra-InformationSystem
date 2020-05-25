@@ -22,7 +22,7 @@ export const locale = {
                 'coteTropFull': 'Cote trop plein',
                 'coordinateX' : 'Longitude',
                 'coordinateY' : 'Latitude',
-                'coordinateZ' : 'Cordonnées Z',
+                'coordinateZ' : 'Altitude',
                 'area' : 'Superficie',
                 'installedCapacity' : "Capacité installée",
                 'currentCapacity'  : 'Capacité actuelle',
