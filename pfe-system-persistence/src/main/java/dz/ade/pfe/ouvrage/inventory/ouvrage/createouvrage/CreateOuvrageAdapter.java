@@ -17,7 +17,7 @@ public class CreateOuvrageAdapter implements SaveOuvrage {
     public Ouvrage saveOuvrage(Ouvrage ouvrage){
 
         if (ouvrageRepository.existsByCode(ouvrage.getCode()))
-            throw new ResourceAlreadyExistException("code-exist");
+            throw new ResourceAlreadyExistException("codeExist");
 
          ouvrageRepository.save(ouvrage);
 

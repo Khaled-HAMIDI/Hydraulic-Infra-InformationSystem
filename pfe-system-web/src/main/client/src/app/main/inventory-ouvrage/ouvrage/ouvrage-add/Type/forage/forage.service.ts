@@ -46,8 +46,7 @@ export class ForageService implements Resolve<any> {
                 },
                 (error) => {
                     this.toolsService.hideProgressBar();
-                    if (error.error.message == 'code-exist') this.toolsService.showError('ADD.TOAST-ADD.existError');
-                    else this.toolsService.showError('ADD.TOAST-ADD.error');
+                    this.toolsService.showApiError(error.error.apierror.message);
                     reject(error);
                 })
         });

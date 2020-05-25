@@ -12,6 +12,7 @@ import { FuseProgressBarService } from '@fuse/components/progress-bar/progress-b
 export class ToolsService {
 
   confirmDialogRef: MatDialogRef<FuseConfirmDialogComponent>;
+  apiErrorCode =["codeExist"];
 
   constructor(
     public matDialog: MatDialog,
@@ -63,6 +64,11 @@ export class ToolsService {
   showError(msg) {
     this.toastr.error(this.getTranslation(msg));
   }
+
+  showApiError(msg:string) {
+      if (this.apiErrorCode.includes(msg))  this.toastr.error(this.getTranslation('ADD.TOAST-ADD.' + msg));
+      else this.toastr.error(this.getTranslation('ADD.TOAST-ADD.error'));
+    }
 
   // -----------------------------------------------------------------------------------------------------
   // CONFIRM DIALOG

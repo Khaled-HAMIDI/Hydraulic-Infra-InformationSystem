@@ -7,7 +7,7 @@ export const locale = {
             },
             'BUTTON': {
                 'add': 'Enregistrer',
-            'autocoordinates' : 'Récupérer les coordonnées automatiquement'
+                'autocoordinates' : 'Récupérer les coordonnées automatiquement'
             },
             'PLACE-HOLDER': {
                 'code': 'Code',
@@ -79,7 +79,7 @@ export const locale = {
                 'title': 'Création des ouvrages',
                 'success': 'L\'ouvrage a été crée',
                 'error': 'L\'ouvrage n\'a pas été crée',
-                'existError':'Le code de l\'ouvrage existe déja'
+                'codeExist':'Le code de l\'ouvrage existe déja'
             },
             "LEGENDS": {
                 'general': 'Information générales',
