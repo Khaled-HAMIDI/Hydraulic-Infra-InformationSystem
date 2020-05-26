@@ -35,7 +35,7 @@ export class PosteChlorationShowComponent implements OnInit {
     ngOnInit(): void {
         this.route.data.pipe(takeUntil(this._unsubscribeAll)).subscribe(
             (response) => {
-                if (response.data[16]) this.posteChloration = new PosteChloration(response.data[16]);
+                if (response.data.postChlorationData) this.posteChloration = new PosteChloration(response.data.postChlorationData);
                 else this.exist =false;
             },
             (error) => {

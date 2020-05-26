@@ -35,7 +35,7 @@ export class SoupapeDechargeShowComponent implements OnInit {
     ngOnInit(): void {
         this.route.data.pipe(takeUntil(this._unsubscribeAll)).subscribe(
             (response) => {
-                if (response.data[14]) this.soupape = new SoupapeDecharge(response.data[14]);
+                if (response.data.soupapeData) this.soupape = new SoupapeDecharge(response.data.soupapeData);
                 else this.exist =false;
             },
             (error) => {

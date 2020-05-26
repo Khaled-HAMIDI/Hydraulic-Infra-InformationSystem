@@ -35,7 +35,7 @@ export class GroupeElecPompPompShowComponent implements OnInit {
     ngOnInit(): void {
         this.route.data.pipe(takeUntil(this._unsubscribeAll)).subscribe(
             (response) => {
-                if (response.data[10]) this.groupe = new GroupeElectroPompe(response.data[10]);
+                if (response.data.pompeData) this.groupe = new GroupeElectroPompe(response.data.pompeData);
                 else this.exist =false;
             },
             (error) => {

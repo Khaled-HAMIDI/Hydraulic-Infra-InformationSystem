@@ -35,7 +35,7 @@ export class LocalStockageChimiqueShowComponent implements OnInit {
     ngOnInit(): void {
         this.route.data.pipe(takeUntil(this._unsubscribeAll)).subscribe(
             (response) => {
-                if (response.data[5]) this.local = new LocalStockage(response.data[5]);
+                if (response.data.localStockageChimiqueData) this.local = new LocalStockage(response.data.localStockageChimiqueData);
                 else this.exist =false;
             },
             (error) => {

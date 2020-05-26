@@ -35,7 +35,7 @@ export class DecanteurShowComponent implements OnInit {
     ngOnInit(): void {
         this.route.data.pipe(takeUntil(this._unsubscribeAll)).subscribe(
             (response) => {
-                if (this.typeEquipement(response.data[2])) this.equipement = new EquipementStationTraitement(this.typeEquipement(response.data[2]));
+                if (this.typeEquipement(response.data.equipementStationTraitemenData)) this.equipement = new EquipementStationTraitement(this.typeEquipement(response.data.equipementStationTraitemenData));
                 else this.exist =false;
             },
             (error) => {

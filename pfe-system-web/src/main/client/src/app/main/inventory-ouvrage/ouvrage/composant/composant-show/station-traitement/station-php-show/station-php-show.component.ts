@@ -35,7 +35,7 @@ export class StationPhpShowComponent implements OnInit {
     ngOnInit(): void {
         this.route.data.pipe(takeUntil(this._unsubscribeAll)).subscribe(
             (response) => {
-                if (response.data[4]) this.stationPhp = new StationPhp(response.data[4]);
+                if (response.data.stationPhpData) this.stationPhp = new StationPhp(response.data.stationPhpData);
                 else this.exist =false;
             },
             (error) => {

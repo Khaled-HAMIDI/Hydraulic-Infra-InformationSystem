@@ -35,7 +35,7 @@ export class PriseEauShowComponent implements OnInit {
     ngOnInit(): void {
         this.route.data.pipe(takeUntil(this._unsubscribeAll)).subscribe(
             (response) => {
-                if (response.data[1]) this.priseEau = new PriseEau(response.data[1]);
+                if (response.data.priseEauData) this.priseEau = new PriseEau(response.data.priseEauData);
                 else this.exist =false;
             },
             (error) => {

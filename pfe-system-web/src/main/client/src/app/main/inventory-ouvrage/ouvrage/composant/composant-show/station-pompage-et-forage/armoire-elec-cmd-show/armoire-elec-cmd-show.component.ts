@@ -35,7 +35,7 @@ export class ArmoireElecCmdShowComponent implements OnInit {
     ngOnInit(): void {
         this.route.data.pipe(takeUntil(this._unsubscribeAll)).subscribe(
             (response) => {
-                if (response.data[12]) this.armoire = new ArmoireElectrique(response.data[12]);
+                if (response.data.armoireData) this.armoire = new ArmoireElectrique(response.data.armoireData);
                 else this.exist =false;
             },
             (error) => {

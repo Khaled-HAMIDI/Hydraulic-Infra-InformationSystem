@@ -35,7 +35,7 @@ export class PostPrepInjectionShowComponent implements OnInit {
     ngOnInit(): void {
         this.route.data.pipe(takeUntil(this._unsubscribeAll)).subscribe(
             (response) => {
-                if (this.typePost(response.data[8])) this.post = new PostChimique(this.typePost(response.data[8]));
+                if (this.typePost(response.data.postChimiqueData)) this.post = new PostChimique(this.typePost(response.data.postChimiqueData));
                 else this.exist =false;
             },
             (error) => {

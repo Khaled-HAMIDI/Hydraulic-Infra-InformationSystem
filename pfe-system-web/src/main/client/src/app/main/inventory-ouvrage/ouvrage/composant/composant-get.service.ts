@@ -336,7 +336,7 @@ export class ComposantGetService implements Resolve<any>{
                 return {
                     securityData: data[0],
                     hydroMecaData: data[1],
-                    postChlorationyData: data[2] };
+                    postChlorationData: data[2] };
 
             case "Forage":
                 return {
@@ -366,7 +366,7 @@ export class ComposantGetService implements Resolve<any>{
                 return {
                     securityData: data[0],
                     hydroMecaData: data[1],
-                    postChlorationyData: data[2] };
+                    postChlorationData: data[2] };
 
         }
     }

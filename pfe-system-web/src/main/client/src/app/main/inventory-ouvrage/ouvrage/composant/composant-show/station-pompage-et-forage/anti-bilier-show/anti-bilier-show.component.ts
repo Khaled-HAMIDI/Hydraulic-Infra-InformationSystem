@@ -35,7 +35,7 @@ export class AntiBilierShowComponent implements OnInit {
     ngOnInit(): void {
         this.route.data.pipe(takeUntil(this._unsubscribeAll)).subscribe(
             (response) => {
-                if (response.data[13]) this.antiBelier = new AntiBelier(response.data[13]);
+                if (response.data.antiBelierData) this.antiBelier = new AntiBelier(response.data.antiBelierData);
                 else this.exist =false;
             },
             (error) => {

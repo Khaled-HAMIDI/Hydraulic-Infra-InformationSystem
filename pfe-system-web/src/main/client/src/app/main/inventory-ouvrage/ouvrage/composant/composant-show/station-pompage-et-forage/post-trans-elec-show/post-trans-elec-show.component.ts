@@ -35,7 +35,7 @@ export class PostTransElecShowComponent implements OnInit {
     ngOnInit(): void {
         this.route.data.pipe(takeUntil(this._unsubscribeAll)).subscribe(
             (response) => {
-                if (response.data[16]) this.post = new PosteTransformationElectrique(response.data[16]);
+                if (response.data.postTrandformationElectriqueData) this.post = new PosteTransformationElectrique(response.data.postTrandformationElectriqueData);
                 else this.exist =false;
             },
             (error) => {

@@ -35,7 +35,7 @@ export class BatimentElctriqueShowComponent implements OnInit {
     ngOnInit(): void {
         this.route.data.pipe(takeUntil(this._unsubscribeAll)).subscribe(
             (response) => {
-                if (response.data[6]) this.batiment = new BatimentElectrique(response.data[6]);
+                if (response.data.batimentElectriqueData) this.batiment = new BatimentElectrique(response.data.batimentElectriqueData);
                 else this.exist =false;
             },
             (error) => {

@@ -35,7 +35,7 @@ export class JointDemantageSortieShowComponent implements OnInit {
     ngOnInit(): void {
         this.route.data.pipe(takeUntil(this._unsubscribeAll)).subscribe(
             (response) => {
-                if (this.typeEquipement(response.data[15])) this.equipement = new EquipementHydroMeca(this.typeEquipement(response.data[15]));
+                if (this.typeEquipement(response.data.hydroMecaData)) this.equipement = new EquipementHydroMeca(this.typeEquipement(response.data.hydroMecaData));
                 else this.exist =false;
             },
             (error) => {

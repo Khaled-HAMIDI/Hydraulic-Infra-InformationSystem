@@ -35,7 +35,7 @@ export class GroupeElectrogeneShowComponent implements OnInit {
     ngOnInit(): void {
         this.route.data.pipe(takeUntil(this._unsubscribeAll)).subscribe(
             (response) => {
-                if (response.data[7]) this.groupe = new GroupeElectrogene(response.data[7]);
+                if (response.data.groupeElectrogeneData) this.groupe = new GroupeElectrogene(response.data.groupeElectrogeneData);
                 else this.exist =false;
             },
             (error) => {

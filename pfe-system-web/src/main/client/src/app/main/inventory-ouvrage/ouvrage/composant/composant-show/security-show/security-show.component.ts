@@ -35,7 +35,7 @@ export class SecurityShowComponent implements OnInit {
     ngOnInit(): void {
         this.route.data.pipe(takeUntil(this._unsubscribeAll)).subscribe(
             (response) => {
-                if (response.data[0]) this.security = new Security(response.data[0]);
+                if (response.data.securityData) this.security = new Security(response.data.securityData);
                 else this.exist =false;
             },
             (error) => {

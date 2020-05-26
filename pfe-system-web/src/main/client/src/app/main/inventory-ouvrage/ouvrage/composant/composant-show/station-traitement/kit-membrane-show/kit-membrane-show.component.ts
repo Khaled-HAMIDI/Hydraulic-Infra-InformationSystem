@@ -35,7 +35,7 @@ export class KitMembraneShowComponent implements OnInit {
     ngOnInit(): void {
         this.route.data.pipe(takeUntil(this._unsubscribeAll)).subscribe(
             (response) => {
-                if (response.data[3]) this.kit = new KitMembrane(response.data[3]);
+                if (response.data.kitMembraneData) this.kit = new KitMembrane(response.data.kitMembraneData);
                 else this.exist =false;
             },
             (error) => {
