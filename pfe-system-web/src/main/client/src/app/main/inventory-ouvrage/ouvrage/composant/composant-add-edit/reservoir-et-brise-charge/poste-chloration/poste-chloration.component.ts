@@ -47,7 +47,7 @@ export class PosteChlorationComponent implements OnInit{
     ngOnInit(): void {
         this.route.data.pipe(takeUntil(this._unsubscribeAll)).subscribe(
             (response) => {
-                if (response.action == 'edit') this.poste = response.data[16];
+                if (response.action == 'edit') this.poste = response.data.postChlorationyData;
                 this.initForm(response.action);
             },
             (error) => {

@@ -48,7 +48,7 @@ export class PostPrepInjectionComponent implements OnInit{
     ngOnInit(): void {
         this.route.data.pipe(takeUntil(this._unsubscribeAll)).subscribe(
             (response) => {
-                if (response.action == 'edit') this.postes = response.data[8];
+                if (response.action == 'edit') this.postes = response.data.postChimiqueData;
                 this.initForm(response.action);
 
             },

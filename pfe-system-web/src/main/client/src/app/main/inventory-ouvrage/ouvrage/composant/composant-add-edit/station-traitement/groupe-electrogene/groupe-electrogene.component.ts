@@ -47,7 +47,7 @@ export class GroupeElectrogeneComponent implements OnInit{
     ngOnInit(): void {
         this.route.data.pipe(takeUntil(this._unsubscribeAll)).subscribe(
             (response) => {
-                if (response.action == 'edit') this.groupe = response.data[7];
+                if (response.action == 'edit') this.groupe = response.data.groupeElectrogeneData;
                 this.initForm(response.action);
             },
             (error) => {

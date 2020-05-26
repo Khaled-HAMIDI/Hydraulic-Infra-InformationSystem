@@ -260,32 +260,130 @@ export class ComposantGetService implements Resolve<any>{
 
     }
 
+    loadSpecificComposant(typeOuvrage: string,code: string){
+
+        switch (typeOuvrage) {
+
+            case "StationTraitementConventionelle" || "StationTraitementNonConventionelle":
+                return [
+                    this.loadSecurity(code),
+                    this.loadPriseEau(code),
+                    this.loadEquipementStationTraitement(code),
+                    this.loadKitMembrane(code),
+                    this.loadStationPhp(code),
+                    this.loadLocalStockageChimique(code),
+                    this.loadPostChimique(code),
+                    this.loadBatimentElectrique(code),
+                    this.loadGroupeElectrogene(code) ];
+
+            case "Reservoir":
+                return [
+                    this.loadSecurity(code),
+                    this.loadHydroMeca(code),
+                    this.loadPostChloration(code)];
+
+            case "Forage":
+                return [
+                    this.loadSecurity(code),
+                    this.loadPostTrandformationElectrique(code),
+                    this.loadGroupeElectrogene(code),
+                    this.loadPompe(code),
+                    this.loadMoteur(code),
+                    this.loadArmoire(code),
+                    this.loadAntiBelier(code),
+                    this.loadSoupape(code),
+                    this.loadHydroMeca(code) ];
+
+            case "StationPompage":
+                return [
+                    this.loadSecurity(code),
+                    this.loadPostTrandformationElectrique(code),
+                    this.loadGroupeElectrogene(code),
+                    this.loadPompe(code),
+                    this.loadMoteur(code),
+                    this.loadArmoire(code),
+                    this.loadAntiBelier(code),
+                    this.loadSoupape(code),
+                    this.loadHydroMeca(code),];
+
+            case "BriseCharge":
+                return [
+                    this.loadSecurity(code),
+                    this.loadHydroMeca(code),
+                    this.loadPostChloration(code) ];
+        }
+
+    }
+
+    loadSpecificData(typeOuvrage: string,data: any){
+
+        switch (typeOuvrage) {
+
+            case "StationTraitementConventionelle" || "StationTraitementNonConventionelle":
+                return {
+                    securityData: data[0],
+                    priseEauData: data[1],
+                    equipementStationTraitemenData: data[2],
+                    kitMembraneData: data[3],
+                    stationPhpData: data[4],
+                    localStockageChimiqueData: data[5],
+                    postChimiqueData: data[6],
+                    batimentElectriqueData: data[7],
+                    groupeElectrogeneData: data[8] };
+
+
+            case "Reservoir":
+                return {
+                    securityData: data[0],
+                    hydroMecaData: data[1],
+                    postChlorationyData: data[2] };
+
+            case "Forage":
+                return {
+                    securityData: data[0],
+                    postTrandformationElectriqueData: data[1],
+                    groupeElectrogeneData: data[2],
+                    pompeData: data[3],
+                    moteurData: data[4],
+                    armoireData: data[5],
+                    antiBelierData: data[6],
+                    soupapeData: data[7],
+                    hydroMecaData: data[8] };
+
+            case "StationPompage":
+                return {
+                    securityData: data[0],
+                    postTrandformationElectriqueData: data[1],
+                    groupeElectrogeneData: data[2],
+                    pompeData: data[3],
+                    moteurData: data[4],
+                    armoireData: data[5],
+                    antiBelierData: data[6],
+                    soupapeData: data[7],
+                    hydroMecaData: data[8] };
+
+            case "BriseCharge":
+                return {
+                    securityData: data[0],
+                    hydroMecaData: data[1],
+                    postChlorationyData: data[2] };
+
+        }
+    }
+
     resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<any> | Promise<any> | any {
 
         return new Promise((resolve, reject) => {
 
-            Promise.all([
-                this.loadSecurity(route.params['code']),
-                this.loadPriseEau(route.params['code']),
-                this.loadEquipementStationTraitement(route.params['code']),
-                this.loadKitMembrane(route.params['code']),
-                this.loadStationPhp(route.params['code']),
-                this.loadLocalStockageChimique(route.params['code']),
-                this.loadBatimentElectrique(route.params['code']),
-                this.loadGroupeElectrogene(route.params['code']),
-                this.loadPostChimique(route.params['code']),
-                this.loadPostTrandformationElectrique(route.params['code']),
-                this.loadPompe(route.params['code']),
-                this.loadMoteur(route.params['code']),
-                this.loadArmoire(route.params['code']),
-                this.loadAntiBelier(route.params['code']),
-                this.loadSoupape(route.params['code']),
-                this.loadHydroMeca(route.params['code']),
-                this.loadPostChloration(route.params['code'])
 
-            ]).then(
+
+            Promise.all(
+                this.loadSpecificComposant(route.url[1].path, route.params['code'])
+            ).then(
                 (data) => {
-                    resolve(data);
+                    resolve(
+                        this.loadSpecificData(route.url[1].path ,data)
+                    );
 
                 },
                 reject

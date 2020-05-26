@@ -48,7 +48,7 @@ export class EchelleComponent implements OnInit{
     ngOnInit(): void {
         this.route.data.pipe(takeUntil(this._unsubscribeAll)).subscribe(
             (response) => {
-                if (response.action == 'edit') this.equipements = response.data[15];
+                if (response.action == 'edit') this.equipements = response.data.equipementStationTraitemenData;
                 this.initForm(response.action);
             },
             (error) => {

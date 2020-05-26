@@ -47,7 +47,7 @@ export class PostTransElecComponent implements OnInit{
     ngOnInit(): void {
         this.route.data.pipe(takeUntil(this._unsubscribeAll)).subscribe(
             (response) => {
-                if (response.action == 'edit') this.poste = response.data[9];
+                if (response.action == 'edit') this.poste = response.data.postTrandformationElectriqueData;
                 this.initForm(response.action);
             },
             (error) => {

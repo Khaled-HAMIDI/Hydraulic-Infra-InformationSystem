@@ -52,7 +52,7 @@ export class ClapetAntiRetourComponent implements OnInit{
     ngOnInit(): void {
         this.route.data.pipe(takeUntil(this._unsubscribeAll)).subscribe(
             (response) => {
-                if (response.action == 'edit') this.equipements = response.data[15];
+                if (response.action == 'edit') this.equipements = response.data.hydroMecaData;
                 this.initForm(response.action);
             },
             (error) => {

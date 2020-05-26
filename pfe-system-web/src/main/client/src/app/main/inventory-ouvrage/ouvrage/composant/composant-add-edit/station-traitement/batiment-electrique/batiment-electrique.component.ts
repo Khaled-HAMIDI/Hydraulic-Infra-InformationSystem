@@ -47,7 +47,7 @@ export class BatimentElectriqueComponent implements OnInit{
     ngOnInit(): void {
         this.route.data.pipe(takeUntil(this._unsubscribeAll)).subscribe(
             (response) => {
-                if (response.action == 'edit') this.batiment = response.data[6];
+                if (response.action == 'edit') this.batiment = response.data.batimentElectriqueData;
                 this.initForm(response.action);
             },
             (error) => {

@@ -48,7 +48,7 @@ export class StationPhpComponent implements OnInit{
     ngOnInit(): void {
         this.route.data.pipe(takeUntil(this._unsubscribeAll)).subscribe(
             (response) => {
-                if (response.action == 'edit') this.stationPhp = response.data[4];
+                if (response.action == 'edit') this.stationPhp = response.data.stationPhpData;
                 this.initForm(response.action);
             },
             (error) => {

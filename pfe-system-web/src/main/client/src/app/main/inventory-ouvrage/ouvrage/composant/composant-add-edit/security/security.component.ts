@@ -49,7 +49,9 @@ export class SecurityComponent implements OnInit{
 
         this.route.data.pipe(takeUntil(this._unsubscribeAll)).subscribe(
             (response) => {
-                if (response.action == 'edit') this.security = response.data[0];
+                if (response.action == 'edit'){
+                    this.security = response.data.securityData;
+                }
                 this.initForm(response.action);
             },
             (error) => {

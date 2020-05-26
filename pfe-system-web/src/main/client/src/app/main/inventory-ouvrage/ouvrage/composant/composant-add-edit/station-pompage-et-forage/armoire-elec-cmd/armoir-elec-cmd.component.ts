@@ -47,7 +47,7 @@ export class ArmoirElecCmdComponent implements OnInit{
     ngOnInit(): void {
         this.route.data.pipe(takeUntil(this._unsubscribeAll)).subscribe(
             (response) => {
-                if (response.action == 'edit') this.armoire = response.data[12];
+                if (response.action == 'edit') this.armoire = response.data.armoireData;
                 this.initForm(response.action);
             },
             (error) => {

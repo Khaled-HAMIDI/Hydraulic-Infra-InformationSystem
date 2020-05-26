@@ -50,7 +50,7 @@ export class AntiBelierComponent implements OnInit{
     ngOnInit(): void {
         this.route.data.pipe(takeUntil(this._unsubscribeAll)).subscribe(
             (response) => {
-                if (response.action == 'edit') this.antiBelier = response.data[13];
+                if (response.action == 'edit') this.antiBelier = response.data.antiBelierData;
                 this.initForm(response.action);
             },
             (error) => {

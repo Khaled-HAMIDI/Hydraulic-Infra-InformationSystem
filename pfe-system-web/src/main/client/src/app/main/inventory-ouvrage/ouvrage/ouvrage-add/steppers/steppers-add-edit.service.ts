@@ -120,6 +120,10 @@ export class SteppersAddEditService {
             'ComponentName': 'PostTransElecComponent',
         },
         {
+            'title': 'Groupe électrogène',
+            'ComponentName': 'GroupeElectrogeneComponent',
+        },
+        {
             'title': 'Groupe électropompe:Partie pompe',
             'ComponentName': 'GroupeElecPompPompComponent',
         },

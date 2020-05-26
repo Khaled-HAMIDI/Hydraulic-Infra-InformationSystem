@@ -48,7 +48,7 @@ export class KitMembraneComponent implements OnInit{
     ngOnInit(): void {
         this.route.data.pipe(takeUntil(this._unsubscribeAll)).subscribe(
             (response) => {
-                if (response.action == 'edit') this.kit = response.data[3];
+                if (response.action == 'edit') this.kit = response.data.kitMembraneData;
                 this.initForm(response.action);
             },
             (error) => {

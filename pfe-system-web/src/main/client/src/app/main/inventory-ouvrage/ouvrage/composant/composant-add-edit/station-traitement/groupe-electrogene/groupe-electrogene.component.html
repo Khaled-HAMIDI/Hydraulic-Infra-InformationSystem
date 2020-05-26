@@ -42,7 +42,7 @@
         </div>
 
         <div>
-            <button mat-raised-button class="accent add-button" [routerLink]="'/patrimony/ouvrages/list'" [disabled]="groupeElectrogeneForm.invalid" (click)="onSave()">
+            <button mat-raised-button class="accent add-button" [disabled]="groupeElectrogeneForm.invalid" (click)="onSave()">
                 <span *ngIf="add">{{'BUTTON.add' | translate}}</span>
                 <span *ngIf="!add">{{'BUTTON.update' | translate}}</span>
             </button>

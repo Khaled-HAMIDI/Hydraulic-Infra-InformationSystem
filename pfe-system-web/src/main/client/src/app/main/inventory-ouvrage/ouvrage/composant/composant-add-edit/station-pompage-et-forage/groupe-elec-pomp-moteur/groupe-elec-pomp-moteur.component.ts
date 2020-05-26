@@ -47,7 +47,7 @@ export class GroupeElecPompMoteurComponent implements OnInit{
     ngOnInit(): void {
         this.route.data.pipe(takeUntil(this._unsubscribeAll)).subscribe(
             (response) => {
-                if (response.action == 'edit') this.groupe = response.data[11];
+                if (response.action == 'edit') this.groupe = response.data.moteurData;
                 this.initForm(response.action);
             },
             (error) => {

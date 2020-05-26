@@ -47,7 +47,7 @@ export class SoupageDechargeComponent implements OnInit{
     ngOnInit(): void {
         this.route.data.pipe(takeUntil(this._unsubscribeAll)).subscribe(
             (response) => {
-                if (response.action == 'edit') this.soupape = response.data[14];
+                if (response.action == 'edit') this.soupape = response.data.soupapeData;
                 this.initForm(response.action);
             },
             (error) => {
