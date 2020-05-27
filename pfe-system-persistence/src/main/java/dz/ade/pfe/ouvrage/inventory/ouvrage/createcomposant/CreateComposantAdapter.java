@@ -27,7 +27,7 @@ public class CreateComposantAdapter implements SaveComposant {
         Ouvrage ouvrage = ouvrageRepository.findByCode(code);
         security.setOuvrage(ouvrage);
 
-        if (componentRepository.existsByOuvrageAndTypeComposant(ouvrage,"Security")) {
+        if (componentRepository.existsByOuvrageAndComponentType(ouvrage,ComponentType.Security)) {
             Security old = componentRepository.loadSecurity(ouvrage);
             componentRepository.delete(old);
         }
@@ -42,7 +42,7 @@ public class CreateComposantAdapter implements SaveComposant {
         Ouvrage ouvrage = ouvrageRepository.findByCode(code);
         antiRam.setOuvrage(ouvrage);
 
-        if (componentRepository.existsByOuvrageAndTypeComposant(ouvrage,"AntiBelier")) {
+        if (componentRepository.existsByOuvrageAndComponentType(ouvrage,ComponentType.AntiBelier)) {
             AntiRam old = componentRepository.loadAntiRam(ouvrage);
             componentRepository.delete(old);
 
@@ -89,7 +89,7 @@ public class CreateComposantAdapter implements SaveComposant {
         Ouvrage ouvrage = ouvrageRepository.findByCode(code);
         chlorationPost.setOuvrage(ouvrage);
 
-        if (componentRepository.existsByOuvrageAndTypeComposant(ouvrage,"PosteChloration")) {
+        if (componentRepository.existsByOuvrageAndComponentType(ouvrage,ComponentType.PosteChloration)) {
             ChlorationPost old = componentRepository.loadChlorationPost(ouvrage);
             componentRepository.delete(old);
         }
@@ -105,7 +105,7 @@ public class CreateComposantAdapter implements SaveComposant {
         Ouvrage ouvrage = ouvrageRepository.findByCode(code);
         electricalCabinet.setOuvrage(ouvrage);
 
-        if (componentRepository.existsByOuvrageAndTypeComposant(ouvrage,"ArmoireElectrique")) {
+        if (componentRepository.existsByOuvrageAndComponentType(ouvrage,ComponentType.ArmoireElectrique)) {
             componentRepository.save(electricalCabinet);
             ElectricalCabinet old = componentRepository.loadElectricalCabinet(ouvrage);
             componentRepository.delete(old);
@@ -122,7 +122,7 @@ public class CreateComposantAdapter implements SaveComposant {
         Ouvrage ouvrage = ouvrageRepository.findByCode(code);
         electricBuilding.setOuvrage(ouvrage);
 
-        if (componentRepository.existsByOuvrageAndTypeComposant(ouvrage,"BatimentElectrique")) {
+        if (componentRepository.existsByOuvrageAndComponentType(ouvrage,ComponentType.BatimentElectrique)) {
             ElectricBuilding old = componentRepository.loadElectricBuilding(ouvrage);
             componentRepository.delete(old);
         }
@@ -138,7 +138,7 @@ public class CreateComposantAdapter implements SaveComposant {
         Ouvrage ouvrage = ouvrageRepository.findByCode(code);
         electroGroupMotor.setOuvrage(ouvrage);
 
-        if (componentRepository.existsByOuvrageAndTypeComposant(ouvrage,"GroupeElecPompe_Moteur")) {
+        if (componentRepository.existsByOuvrageAndComponentType(ouvrage,ComponentType.GroupeElecPompe_Moteur)) {
             componentRepository.save(electroGroupMotor);
             ElectroGroupMotor old = componentRepository.loadElectroGroupMotor(ouvrage);
             componentRepository.delete(old);
@@ -154,7 +154,7 @@ public class CreateComposantAdapter implements SaveComposant {
         Ouvrage ouvrage = ouvrageRepository.findByCode(code);
         electroGroupPump.setOuvrage(ouvrage);
 
-        if (componentRepository.existsByOuvrageAndTypeComposant(ouvrage,"GroupeElecPompe_Pompe")) {
+        if (componentRepository.existsByOuvrageAndComponentType(ouvrage,ComponentType.GroupeElecPompe_Pompe)) {
             ElectroGroupPump old = componentRepository.loadElectroGroupPump(ouvrage);
             componentRepository.delete(old);
         }
@@ -169,7 +169,7 @@ public class CreateComposantAdapter implements SaveComposant {
         Ouvrage ouvrage = ouvrageRepository.findByCode(code);
         generator.setOuvrage(ouvrage);
 
-        if (componentRepository.existsByOuvrageAndTypeComposant(ouvrage,"GroupeElectrogene")) {
+        if (componentRepository.existsByOuvrageAndComponentType(ouvrage,ComponentType.GroupeElectrogene)) {
             Generator old = componentRepository.loadGenerator(ouvrage);
             componentRepository.delete(old);
         }
@@ -269,7 +269,7 @@ public class CreateComposantAdapter implements SaveComposant {
         Ouvrage ouvrage = ouvrageRepository.findByCode(code);
         localBlock.setOuvrage(ouvrage);
 
-        if (componentRepository.existsByOuvrageAndTypeComposant(ouvrage,"BlocLocal")) {
+        if (componentRepository.existsByOuvrageAndComponentType(ouvrage,ComponentType.BlocLocal)) {
             LocalBlock old = componentRepository.loadLocalBlock(ouvrage);
             componentRepository.delete(old);
         }
@@ -285,7 +285,7 @@ public class CreateComposantAdapter implements SaveComposant {
         Ouvrage ouvrage = ouvrageRepository.findByCode(code);
         membraneKit.setOuvrage(ouvrage);
 
-        if (componentRepository.existsByOuvrageAndTypeComposant(ouvrage,"KitMembrane")) {
+        if (componentRepository.existsByOuvrageAndComponentType(ouvrage,ComponentType.KitMembrane)) {
             MembraneKit old = componentRepository.loadMembraneKit(ouvrage);
             componentRepository.delete(old);
 
@@ -301,7 +301,7 @@ public class CreateComposantAdapter implements SaveComposant {
         Ouvrage ouvrage = ouvrageRepository.findByCode(code);
         phpStation.setOuvrage(ouvrage);
 
-        if (componentRepository.existsByOuvrageAndTypeComposant(ouvrage,"StationPHP")) {
+        if (componentRepository.existsByOuvrageAndComponentType(ouvrage,ComponentType.StationPHP)) {
             PhpStation old = componentRepository.loadPhpStation(ouvrage);
             componentRepository.delete(old);
 
@@ -316,7 +316,7 @@ public class CreateComposantAdapter implements SaveComposant {
         Ouvrage ouvrage = ouvrageRepository.findByCode(code);
         productStorage.setOuvrage(ouvrage);
 
-        if (componentRepository.existsByOuvrageAndTypeComposant(ouvrage,"LocalStockageChimique")) {
+        if (componentRepository.existsByOuvrageAndComponentType(ouvrage,ComponentType.LocalStockageChimique)) {
             ProductStorage old = componentRepository.loadProductStorage(ouvrage);
             componentRepository.delete(old);
         }
@@ -331,7 +331,7 @@ public class CreateComposantAdapter implements SaveComposant {
         Ouvrage ouvrage = ouvrageRepository.findByCode(code);
         reliefValve.setOuvrage(ouvrage);
 
-        if (componentRepository.existsByOuvrageAndTypeComposant(ouvrage,"SoupapeDecharge")) {
+        if (componentRepository.existsByOuvrageAndComponentType(ouvrage,ComponentType.SoupapeDecharge)) {
             ReliefValve old = componentRepository.loadReliefValve(ouvrage);
             componentRepository.delete(old);
 
@@ -347,7 +347,7 @@ public class CreateComposantAdapter implements SaveComposant {
         Ouvrage ouvrage = ouvrageRepository.findByCode(code);
         transformationStation.setOuvrage(ouvrage);
 
-        if (componentRepository.existsByOuvrageAndTypeComposant(ouvrage,"PosteTransformationElectrique")) {
+        if (componentRepository.existsByOuvrageAndComponentType(ouvrage,ComponentType.PosteTransformationElectrique)) {
             TransformationStation old = componentRepository.loadTransformationStation(ouvrage);
             componentRepository.delete(old);
 
@@ -407,7 +407,7 @@ public class CreateComposantAdapter implements SaveComposant {
         Ouvrage ouvrage = ouvrageRepository.findByCode(code);
         waterIntake.setOuvrage(ouvrage);
 
-        if (componentRepository.existsByOuvrageAndTypeComposant(ouvrage,"PriseEau")) {
+        if (componentRepository.existsByOuvrageAndComponentType(ouvrage,ComponentType.PriseEau)) {
             WaterIntake old= componentRepository.loadWaterIntake(ouvrage);
             componentRepository.delete(old);
         }

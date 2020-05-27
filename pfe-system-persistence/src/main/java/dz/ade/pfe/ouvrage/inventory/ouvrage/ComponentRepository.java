@@ -9,62 +9,60 @@ import java.util.List;
 
 public interface ComponentRepository extends JpaRepository<Component, Long> {
 
-    Boolean existsByOuvrageAndTypeComposant(Ouvrage ouvrage,String typeComposant);
+    Boolean existsByOuvrageAndComponentType(Ouvrage ouvrage,ComponentType componentType);
 
-    Boolean existsAllByOuvrageAndTypeComposant(Ouvrage ouvrage,String typeComposant);
-
-    @Query("SELECT security FROM Security security WHERE security.ouvrage = :ouvrage AND security.typeComposant = 'Security'")
+    @Query("SELECT security FROM Security security WHERE security.ouvrage = :ouvrage AND security.componentType = 'Security'")
     Security loadSecurity(@Param("ouvrage") Ouvrage ouvrage);
 
-    @Query("SELECT component FROM Component component WHERE component.ouvrage = :ouvrage AND component.typeComposant = 'AntiBelier'")
+    @Query("SELECT component FROM Component component WHERE component.ouvrage = :ouvrage AND component.componentType = dz.ade.pfe.domain.ouvrage.ComponentType.AntiBelier")
     AntiRam loadAntiRam(@Param("ouvrage") Ouvrage ouvrage);
 
-    @Query("SELECT component FROM Component component WHERE component.ouvrage = :ouvrage AND component.typeComposant = 'PosteChloration'")
+    @Query("SELECT component FROM Component component WHERE component.ouvrage = :ouvrage AND component.componentType = dz.ade.pfe.domain.ouvrage.ComponentType.PosteChloration")
     ChlorationPost loadChlorationPost(@Param("ouvrage") Ouvrage ouvrage);
 
-    @Query("SELECT component FROM Component component WHERE component.ouvrage = :ouvrage AND component.typeComposant = 'ArmoireElectrique'")
+    @Query("SELECT component FROM Component component WHERE component.ouvrage = :ouvrage AND component.componentType = dz.ade.pfe.domain.ouvrage.ComponentType.ArmoireElectrique")
     ElectricalCabinet loadElectricalCabinet(@Param("ouvrage") Ouvrage ouvrage);
 
-    @Query("SELECT component FROM Component component WHERE component.ouvrage = :ouvrage AND component.typeComposant = 'BatimentElectrique'")
+    @Query("SELECT component FROM Component component WHERE component.ouvrage = :ouvrage AND component.componentType = dz.ade.pfe.domain.ouvrage.ComponentType.BatimentElectrique")
     ElectricBuilding loadElectricBuilding(@Param("ouvrage") Ouvrage ouvrage);
 
-    @Query("SELECT component FROM Component component WHERE component.ouvrage = :ouvrage AND component.typeComposant = 'GroupeElecPompe_Moteur'")
+    @Query("SELECT component FROM Component component WHERE component.ouvrage = :ouvrage AND component.componentType = dz.ade.pfe.domain.ouvrage.ComponentType.GroupeElecPompe_Moteur")
     ElectroGroupMotor loadElectroGroupMotor(@Param("ouvrage") Ouvrage ouvrage);
 
-    @Query("SELECT component FROM Component component WHERE component.ouvrage = :ouvrage AND component.typeComposant = 'GroupeElecPompe_Pompe'")
+    @Query("SELECT component FROM Component component WHERE component.ouvrage = :ouvrage AND component.componentType = dz.ade.pfe.domain.ouvrage.ComponentType.GroupeElecPompe_Pompe")
     ElectroGroupPump loadElectroGroupPump(@Param("ouvrage") Ouvrage ouvrage);
 
-    @Query("SELECT component FROM Component component WHERE component.ouvrage = :ouvrage AND component.typeComposant = 'GroupeElectrogene'")
+    @Query("SELECT component FROM Component component WHERE component.ouvrage = :ouvrage AND component.componentType = dz.ade.pfe.domain.ouvrage.ComponentType.GroupeElectrogene")
     Generator loadGenerator(@Param("ouvrage") Ouvrage ouvrage);
 
-    @Query("SELECT component FROM Component component WHERE component.ouvrage = :ouvrage AND component.typeComposant = 'BlocLocal'")
+    @Query("SELECT component FROM Component component WHERE component.ouvrage = :ouvrage AND component.componentType = dz.ade.pfe.domain.ouvrage.ComponentType.BlocLocal")
     LocalBlock loadLocalBlock(@Param("ouvrage") Ouvrage ouvrage);
 
-    @Query("SELECT component FROM Component component WHERE component.ouvrage = :ouvrage AND component.typeComposant = 'KitMembrane'")
+    @Query("SELECT component FROM Component component WHERE component.ouvrage = :ouvrage AND component.componentType = dz.ade.pfe.domain.ouvrage.ComponentType.KitMembrane")
     MembraneKit loadMembraneKit(@Param("ouvrage") Ouvrage ouvrage);
 
-    @Query("SELECT component FROM Component component WHERE component.ouvrage = :ouvrage AND component.typeComposant = 'StationPHP'")
+    @Query("SELECT component FROM Component component WHERE component.ouvrage = :ouvrage AND component.componentType = dz.ade.pfe.domain.ouvrage.ComponentType.StationPHP")
     PhpStation loadPhpStation(@Param("ouvrage") Ouvrage ouvrage);
 
-    @Query("SELECT component FROM Component component WHERE component.ouvrage = :ouvrage AND component.typeComposant = 'LocalStockageChimique'")
+    @Query("SELECT component FROM Component component WHERE component.ouvrage = :ouvrage AND component.componentType = dz.ade.pfe.domain.ouvrage.ComponentType.LocalStockageChimique")
     ProductStorage loadProductStorage(@Param("ouvrage") Ouvrage ouvrage);
 
-    @Query("SELECT component FROM Component component WHERE component.ouvrage = :ouvrage AND component.typeComposant = 'SoupapeDecharge'")
+    @Query("SELECT component FROM Component component WHERE component.ouvrage = :ouvrage AND component.componentType = dz.ade.pfe.domain.ouvrage.ComponentType.SoupapeDecharge")
     ReliefValve loadReliefValve(@Param("ouvrage") Ouvrage ouvrage);
 
-    @Query("SELECT component FROM Component component WHERE component.ouvrage = :ouvrage AND component.typeComposant = 'PosteTransformationElectrique'")
+    @Query("SELECT component FROM Component component WHERE component.ouvrage = :ouvrage AND component.componentType = dz.ade.pfe.domain.ouvrage.ComponentType.PosteTransformationElectrique")
     TransformationStation loadTransformationStation(@Param("ouvrage") Ouvrage ouvrage);
 
-    @Query("SELECT component FROM Component component WHERE component.ouvrage = :ouvrage AND component.typeComposant = 'PriseEau'")
+    @Query("SELECT component FROM Component component WHERE component.ouvrage = :ouvrage AND component.componentType = dz.ade.pfe.domain.ouvrage.ComponentType.PriseEau")
     WaterIntake loadWaterIntake(@Param("ouvrage") Ouvrage ouvrage);
 
-    @Query("SELECT component FROM Component component WHERE component.ouvrage = :ouvrage AND component.typeComposant = 'EquipementStationTraitement'")
+    @Query("SELECT component FROM Component component WHERE component.ouvrage = :ouvrage AND component.componentType = dz.ade.pfe.domain.ouvrage.ComponentType.EquipementStationTraitement")
     List<TraitementStationEquipement> loadTraitementStationEquipement(@Param("ouvrage") Ouvrage ouvrage);
 
-    @Query("SELECT component FROM Component component WHERE component.ouvrage = :ouvrage AND component.typeComposant = 'PosteChimique'")
+    @Query("SELECT component FROM Component component WHERE component.ouvrage = :ouvrage AND component.componentType = dz.ade.pfe.domain.ouvrage.ComponentType.PosteChimique")
     List<ChemicalPosts> loadChemicalPosts(@Param("ouvrage") Ouvrage ouvrage);
 
-    @Query("SELECT component FROM Component component WHERE component.ouvrage = :ouvrage AND component.typeComposant = 'ComposantHydroMecanique'")
+    @Query("SELECT component FROM Component component WHERE component.ouvrage = :ouvrage AND component.componentType = dz.ade.pfe.domain.ouvrage.ComponentType.ComposantHydroMecanique")
     List<HedromecaEquipment> loadHedromecaEquipment(@Param("ouvrage") Ouvrage ouvrage);
 
     //Pour les types des composants

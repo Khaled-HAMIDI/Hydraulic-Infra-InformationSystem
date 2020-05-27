@@ -29,8 +29,10 @@ public class Component extends Auditing{
     protected Long id;
 
 
-    @Column(name = "type_composant")
-    private String typeComposant;
+
+    @Column(name = "component_type")
+    @Enumerated(EnumType.STRING)
+    private ComponentType componentType;
 
 
     @ManyToOne(fetch = FetchType.LAZY)

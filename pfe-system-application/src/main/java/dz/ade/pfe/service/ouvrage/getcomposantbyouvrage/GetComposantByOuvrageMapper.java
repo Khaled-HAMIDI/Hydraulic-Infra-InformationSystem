@@ -11,12 +11,14 @@ import java.util.List;
 @Mapper(componentModel = "spring")
 public interface GetComposantByOuvrageMapper {
 
+   @Mapping(source = "componentType", target = "typeComposant")
    ComponentResponseDto componentToComponentResponse(Component component);
 
    List<ComponentResponseDto> componentToComponentResponse(List<Component> component);
 
 
    @Mappings({
+           @Mapping(source = "componentType", target = "typeComposant"),
            @Mapping(source = "entryBox",target = "guerites"),
            @Mapping(source = "nbAgents",target = "agents"),
            @Mapping(source = "weaponry",target = "armement"),
@@ -27,6 +29,7 @@ public interface GetComposantByOuvrageMapper {
 
 
    @Mappings({
+           @Mapping(source = "componentType", target = "typeComposant"),
            @Mapping(source = "brand",target = "marque"),
            @Mapping(source = "compressor",target = "compresseur"),
            @Mapping(source = "servicePressure",target = "presseionService"),
@@ -37,6 +40,7 @@ public interface GetComposantByOuvrageMapper {
 
 
    @Mappings({
+           @Mapping(source = "componentType", target = "typeComposant"),
            @Mapping(source = "implantaionPlace",target = "lieuImplantation"),
            @Mapping(source = "injectionPoint",target = "pointInjectPompe"),
            @Mapping(source = "injection",target = "dosagePompe"),
@@ -56,6 +60,7 @@ public interface GetComposantByOuvrageMapper {
 
 
    @Mappings({
+           @Mapping(source = "componentType", target = "typeComposant"),
            @Mapping(source = "dosage",target = "dosagePompe"),
            @Mapping(source = "injectionPoint",target = "pointInjectPompe"),
            @Mapping(source = "pumpType",target = "typePompe"),
@@ -70,16 +75,19 @@ public interface GetComposantByOuvrageMapper {
 
 
    @Mappings({
+           @Mapping(source = "componentType", target = "typeComposant"),
            @Mapping(source = "brand",target = "marque"),
            @Mapping(source = "power",target = "puissance")
    })
    ElectricalCabinetAddDto electricalCabinetToElectricalCabinetAdd(ElectricalCabinet electricalCabinet);
 
 
+   @Mapping(source = "componentType", target = "typeComposant")
    ElectricBuildingAddDto electricBuildingToElectricBuildingAdd(ElectricBuilding electricBuilding);
 
 
    @Mappings({
+           @Mapping(source = "componentType", target = "typeComposant"),
            @Mapping(source = "brand",target = "marque"),
            @Mapping(source = "power",target = "puissance"),
            @Mapping(source = "mode",target = "modeDemarrage"),
@@ -93,6 +101,7 @@ public interface GetComposantByOuvrageMapper {
 
 
    @Mappings({
+           @Mapping(source = "componentType", target = "typeComposant"),
            @Mapping(source = "brand",target = "marque"),
            @Mapping(source = "date",target = "operatingDate"),
            @Mapping(source = "functionningNumber",target = "nbService"),
@@ -102,6 +111,7 @@ public interface GetComposantByOuvrageMapper {
 
 
    @Mappings({
+           @Mapping(source = "componentType", target = "typeComposant"),
            @Mapping(source = "storageTank",target = "cuve"),
            @Mapping(source = "power",target = "puissance")
    })
@@ -109,6 +119,7 @@ public interface GetComposantByOuvrageMapper {
 
 
    @Mappings({
+           @Mapping(source = "componentType", target = "typeComposant"),
            @Mapping(source = "observation",target = "lieuImplantation"),
            @Mapping(source = "materials",target = "materiaux")
    })
@@ -116,9 +127,11 @@ public interface GetComposantByOuvrageMapper {
 
    List<HedromecaEquipmentAddDto> hedromecaEquipmentToHedromecaEquipmentAdd(List<HedromecaEquipment> hedromecaEquipment);
 
+   @Mapping(source = "componentType", target = "typeComposant")
    LocalBlockAddDto localBlockToLocalBlockAdd(LocalBlock localBlock);
 
    @Mappings({
+           @Mapping(source = "componentType", target = "typeComposant"),
            @Mapping(source = "characteristic",target = "caracteristique"),
            @Mapping(source = "number",target = "nombre")
    })
@@ -127,14 +140,17 @@ public interface GetComposantByOuvrageMapper {
 
 
    @Mappings({
+           @Mapping(source = "componentType", target = "typeComposant"),
            @Mapping(source = "power",target = "puissance"),
            @Mapping(source = "number",target = "nombre")
    })
    PhpStationAddDto phpStationToPhpStationAdd(PhpStation phpStation);
 
+   @Mapping(source = "componentType", target = "typeComposant")
    ProductStorageAddDto productStorageToProductStorageAdd(ProductStorage productStorage);
 
    @Mappings({
+           @Mapping(source = "componentType", target = "typeComposant"),
            @Mapping(source = "brand",target = "marque"),
            @Mapping(source = "servicePressure",target = "presseionService"),
            @Mapping(source = "etancheitePressure",target = "presseionEtanchiete"),
@@ -146,6 +162,7 @@ public interface GetComposantByOuvrageMapper {
 
 
    @Mappings({
+           @Mapping(source = "componentType", target = "typeComposant"),
            @Mapping(source = "brand",target = "marque"),
            @Mapping(source = "power",target = "puissance"),
            @Mapping(source = "up_us",target = "up"),
@@ -157,6 +174,7 @@ public interface GetComposantByOuvrageMapper {
    })
    TransformationStationAddDto transformationStationToTransformationStationAdd(TransformationStation transformationStation);
 
+   @Mapping(source = "componentType", target = "typeComposant")
    WaterIntakeAddDto waterIntakeToWaterIntakeAdd(WaterIntake waterIntake);
 
 }

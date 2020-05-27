@@ -375,8 +375,6 @@ export class ComposantGetService implements Resolve<any>{
 
         return new Promise((resolve, reject) => {
 
-
-
             Promise.all(
                 this.loadSpecificComposant(route.url[1].path, route.params['code'])
             ).then(
