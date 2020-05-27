@@ -82,6 +82,12 @@ export class KitMembraneComponent implements OnInit{
         }
     }
 
+    toggleExist(){
+        this.add =true;
+        this.exist =true;
+        this.initForm('add');
+    }
+
     onSave(): void {
 
         const kit = this.kitMembraneForm.getRawValue();

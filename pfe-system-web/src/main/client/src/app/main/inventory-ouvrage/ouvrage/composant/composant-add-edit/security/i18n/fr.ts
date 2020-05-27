@@ -5,6 +5,7 @@ export const locale = {
             'BUTTON': {
                 'disponible': 'Il n\' y a pas de sécurité',
                 'add':'Sauvgarder le composant',
+                'addComposant':'Ajouter',
                 'update':'Mettre à jour le composant'
             },
             "FIELD" :{
@@ -19,7 +20,7 @@ export const locale = {
                 'armementActive':'Armement existant',
                 'armementInactive': 'Il n\' y a pas d\' armement',
 
-                'SecurityInexistante':'Cet ouvrage ne contient pas de sécurité'
+                'SecurityInexistante':'Cet ouvrage ne contient pas de sécurité, appuyez sur ajouter si vous voulez l\'ajouter.'
             }
         },
 };

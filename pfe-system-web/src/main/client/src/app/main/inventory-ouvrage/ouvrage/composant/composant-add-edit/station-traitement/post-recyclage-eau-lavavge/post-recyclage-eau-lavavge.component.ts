@@ -113,6 +113,12 @@ export class PostRecyclageEauLavavgeComponent implements OnInit{
         this.postRecyEauLavageForm.controls['fonctionnementPompe'].setValue(!this.postRecyEauLavageForm.get('fonctionnementPompe'));
     }
 
+    toggleExist(){
+        this.add =true;
+        this.exist =true;
+        this.initForm('add');
+    }
+
     onSave(): void {
 
         const post = this.postRecyEauLavageForm.getRawValue();

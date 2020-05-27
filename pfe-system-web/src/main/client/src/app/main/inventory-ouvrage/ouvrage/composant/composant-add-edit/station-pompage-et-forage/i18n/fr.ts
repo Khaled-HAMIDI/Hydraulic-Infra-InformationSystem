@@ -5,6 +5,7 @@ export const locale = {
             'BUTTON': {
                 'disponible': 'Cet composant n\'existe pas',
                 'add':'Sauvgarder le composant',
+                'addComposant':'Ajouter',
                 'update':'Mettre à jour le composant'
             },
             "FIELD" :{
@@ -77,20 +78,20 @@ export const locale = {
                 'materiaux':'Matériaux',
                 'typeVanne' :'Type de vanne',
 
-                'clapetAntiRetourInexistante':'Cet ouvrage ne contient pas de clapet anti retour',
-                'collecteurAspirationInexistante':'Cet ouvrage ne contient pas de collecteur d\'aspiration',
-                'collecteurReffoullementInexistante':'Cet ouvrage ne contient pas de collecteur de reffoullement',
-                'collonnesMontantesInexistante':'Cet ouvrage ne contient pas de collonnes montantes',
-                'compteurInexistante':'Cet ouvrage ne contient pas de compteur/débimètre',
-                'jointDemantageInexistante':'Cet ouvrage ne contient pas de joint de démantage',
-                'vannePompageInexistante':'Cet ouvrage ne contient pas de vanne de pompage',
-                'venteuseInexistante':'Cet ouvrage ne contient pas de venteuse',
-                'armoireElectriqueInexistante':'Cet ouvrage ne contient pas d\'armoire électrique de commande',
-                'antiBelierInexistante':'Cet ouvrage ne contient pas d\'anti bélier',
-                'groupeElectroPompeMoteurInexistante':'Cet ouvrage ne contient pas de moteur électro-pompe',
-                'groupeElectroPompePompeInexistante':'Cet ouvrage ne contient pas de pompe électro-pompe',
-                'postTransformationElectriqueInexistante':'Cet ouvrage ne contient pas de poste de transformation élecrique',
-                'soupapeDechargeInexistante':'Cet ouvrage ne contient pas de soupape de décharge'
+                'clapetAntiRetourInexistante':'Cet ouvrage ne contient pas de clapet anti retour, appuyez sur ajouter si vous voulez l\'ajouter.',
+                'collecteurAspirationInexistante':'Cet ouvrage ne contient pas de collecteur d\'aspiration, appuyez sur ajouter si vous voulez l\'ajouter.',
+                'collecteurReffoullementInexistante':'Cet ouvrage ne contient pas de collecteur de reffoullement, appuyez sur ajouter si vous voulez l\'ajouter.',
+                'collonnesMontantesInexistante':'Cet ouvrage ne contient pas de collonnes montantes, appuyez sur ajouter si vous voulez l\'ajouter.',
+                'compteurInexistante':'Cet ouvrage ne contient pas de compteur/débimètre, appuyez sur ajouter si vous voulez l\'ajouter.',
+                'jointDemantageInexistante':'Cet ouvrage ne contient pas de joint de démantage, appuyez sur ajouter si vous voulez l\'ajouter.',
+                'vannePompageInexistante':'Cet ouvrage ne contient pas de vanne de pompage, appuyez sur ajouter si vous voulez l\'ajouter.',
+                'venteuseInexistante':'Cet ouvrage ne contient pas de venteuse, appuyez sur ajouter si vous voulez l\'ajouter.',
+                'armoireElectriqueInexistante':'Cet ouvrage ne contient pas d\'armoire électrique de commande, appuyez sur ajouter si vous voulez l\'ajouter.',
+                'antiBelierInexistante':'Cet ouvrage ne contient pas d\'anti bélier, appuyez sur ajouter si vous voulez l\'ajouter.',
+                'groupeElectroPompeMoteurInexistante':'Cet ouvrage ne contient pas de moteur électro-pompe, appuyez sur ajouter si vous voulez l\'ajouter.',
+                'groupeElectroPompePompeInexistante':'Cet ouvrage ne contient pas de pompe électro-pompe, appuyez sur ajouter si vous voulez l\'ajouter.',
+                'postTransformationElectriqueInexistante':'Cet ouvrage ne contient pas de poste de transformation élecrique, appuyez sur ajouter si vous voulez l\'ajouter.',
+                'soupapeDechargeInexistante':'Cet ouvrage ne contient pas de soupape de décharge, appuyez sur ajouter si vous voulez l\'ajouter.'
 
 
 

@@ -7,7 +7,12 @@ import { locale as french } from '../i18n/fr';
 import { locale as arabic } from '../i18n/ar';
 import {ComposantSaveService} from "../../../composant-save.service";
 import {Subject} from "rxjs";
-import {EquipementStationTraitement, GroupeElectrogene, PriseEau} from "../../../../../../model/composant.model";
+import {
+    EquipementStationTraitement,
+    GroupeElectrogene,
+    PostChimique,
+    PriseEau
+} from "../../../../../../model/composant.model";
 import {takeUntil} from "rxjs/operators";
 
 @Component({
@@ -80,6 +85,12 @@ export class PriseEauComponent implements OnInit{
             this.priseEau=new PriseEau();
             this.priseEauForm = this.createForm(this.priseEau);
         }
+    }
+
+    toggleExist(){
+        this.add =true;
+        this.exist =true;
+        this.initForm('add');
     }
 
     onSave(): void {

@@ -7,7 +7,12 @@ import { locale as french } from '../i18n/fr';
 import { locale as arabic } from '../i18n/ar';
 import {ComposantSaveService} from "../../../composant-save.service";
 import {Subject} from "rxjs";
-import {EquipementStationTraitement, GroupeElectrogene, LocalStockage} from "../../../../../../model/composant.model";
+import {
+    EquipementStationTraitement,
+    GroupeElectrogene,
+    KitMembrane,
+    LocalStockage
+} from "../../../../../../model/composant.model";
 import {takeUntil} from "rxjs/operators";
 
 @Component({
@@ -57,7 +62,6 @@ export class LocalStockageChimiqueComponent implements OnInit{
 
     }
 
-
     createForm(composant): FormGroup {
         let obj = {
             typeComposant:['LocalStockageChimique'],
@@ -83,6 +87,12 @@ export class LocalStockageChimiqueComponent implements OnInit{
             this.local=new LocalStockage();
             this.localStockageChimiqueForm = this.createForm(this.local);
         }
+    }
+
+    toggleExist(){
+        this.add =true;
+        this.exist =true;
+        this.initForm('add');
     }
 
     onSave(): void {

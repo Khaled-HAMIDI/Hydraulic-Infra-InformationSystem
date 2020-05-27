@@ -5,6 +5,7 @@ export const locale = {
             'BUTTON': {
                 'disponible': 'Cet composant n\'existe pas',
                 'add':'Sauvgarder le composant',
+                'addComposant':'Ajouter',
                 'update':'Mettre à jour le composant'
             },
             "FIELD" :{
@@ -79,14 +80,14 @@ export const locale = {
                 'abriAvtive':'Abri existant',
                 'abriInactive' :'Il n\' y a pas d\'abri',
 
-                'conduiteTropPleinInexistante':'Cet ouvrage ne contient pas de conduite trop plein',
-                'conduiteVidangeInexistante':'Cet ouvrage ne contient pas de conduite de vidange',
-                'echelleInexistante':'Cet ouvrage ne contient pas d\'echelle',
-                'flotteurInexistante':'Cet ouvrage ne contient pas de flotteur',
-                'vanneArriveeInexistante':'Cet ouvrage ne contient pas de vanne d\'arrivee',
-                'vanneSortieInexistante':'Cet ouvrage ne contient pas de de vanne de sortie',
-                'posteChlorationInexistante':'Cet ouvrage ne contient pas de poste de chloration',
-                'obturateurInexistante':'Cet ouvrage ne contient pas d\'obturateur'
+                'conduiteTropPleinInexistante':'Cet ouvrage ne contient pas de conduite trop plein, appuyez sur ajouter si vous voulez l\'ajouter.',
+                'conduiteVidangeInexistante':'Cet ouvrage ne contient pas de conduite de vidange, appuyez sur ajouter si vous voulez l\'ajouter.',
+                'echelleInexistante':'Cet ouvrage ne contient pas d\'echelle, appuyez sur ajouter si vous voulez l\'ajouter.',
+                'flotteurInexistante':'Cet ouvrage ne contient pas de flotteur, appuyez sur ajouter si vous voulez l\'ajouter.',
+                'vanneArriveeInexistante':'Cet ouvrage ne contient pas de vanne d\'arrivee, appuyez sur ajouter si vous voulez l\'ajouter.',
+                'vanneSortieInexistante':'Cet ouvrage ne contient pas de de vanne de sortie, appuyez sur ajouter si vous voulez l\'ajouter.',
+                'posteChlorationInexistante':'Cet ouvrage ne contient pas de poste de chloration, appuyez sur ajouter si vous voulez l\'ajouter.',
+                'obturateurInexistante':'Cet ouvrage ne contient pas d\'obturateur, appuyez sur ajouter si vous voulez l\'ajouter.'
 
 
 

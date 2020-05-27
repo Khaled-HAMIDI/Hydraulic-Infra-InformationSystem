@@ -89,6 +89,12 @@ export class GroupeElecPompPompComponent implements OnInit{
         }
     }
 
+    toggleExist(){
+        this.add =true;
+        this.exist =true;
+        this.initForm('add');
+    }
+
     onSave(): void {
 
         const pompe = this.grouprElecPPForm.getRawValue();

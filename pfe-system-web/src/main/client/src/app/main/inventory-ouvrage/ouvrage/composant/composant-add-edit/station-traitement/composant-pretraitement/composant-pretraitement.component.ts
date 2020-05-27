@@ -101,6 +101,12 @@ export class ComposantPretraitementComponent implements OnInit{
         return null;
     }
 
+    toggleExist(){
+        this.add =true;
+        this.exist =true;
+        this.initForm('add');
+    }
+
     toggleEnabled(){
         this.equipement.enabled=!this.equipement.enabled;
         this.composantPreTraitForm.controls['enabled'].setValue(!this.composantPreTraitForm.get('enabled'));

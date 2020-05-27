@@ -84,6 +84,12 @@ export class ArmoirElecCmdComponent implements OnInit{
         }
     }
 
+    toggleExist(){
+        this.add =true;
+        this.exist =true;
+        this.initForm('add');
+    }
+
     onSave(): void {
 
         const armoire = this.armoirElecForm.getRawValue();

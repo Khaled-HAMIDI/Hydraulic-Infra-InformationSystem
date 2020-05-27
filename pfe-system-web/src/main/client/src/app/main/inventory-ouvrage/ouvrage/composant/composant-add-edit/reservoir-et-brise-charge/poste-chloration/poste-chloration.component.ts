@@ -93,6 +93,12 @@ export class PosteChlorationComponent implements OnInit{
         }
     }
 
+    toggleExist(){
+        this.add =true;
+        this.exist =true;
+        this.initForm('add');
+    }
+
     onSave(): void {
 
         const postChloration = this.postChlorationForm.getRawValue();

@@ -6,7 +6,7 @@ import { FuseTranslationLoaderService } from '@fuse/services/translation-loader.
 import { locale as french } from '../i18n/fr';
 import { locale as arabic } from '../i18n/ar';
 import {ComposantSaveService} from "../../../composant-save.service";
-import {AntiBelier, BatimentElectrique, StationPhp} from "../../../../../../model/composant.model";
+import {AntiBelier, BatimentElectrique, Security, StationPhp} from "../../../../../../model/composant.model";
 import {Subject} from "rxjs";
 import {takeUntil} from "rxjs/operators";
 
@@ -88,6 +88,12 @@ export class AntiBelierComponent implements OnInit{
             this.antiBelier.compresseur=true;
             this.antiBelierForm = this.createForm(this.antiBelier);
         }
+    }
+
+    toggleExist(){
+        this.add =true;
+        this.exist =true;
+        this.initForm('add');
     }
 
     onSave(): void {

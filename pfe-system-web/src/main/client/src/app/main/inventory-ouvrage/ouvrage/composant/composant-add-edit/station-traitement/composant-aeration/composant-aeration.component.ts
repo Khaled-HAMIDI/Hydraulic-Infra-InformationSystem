@@ -102,6 +102,12 @@ export class ComposantAerationComponent implements OnInit{
         return null;
     }
 
+    toggleExist(){
+        this.add =true;
+        this.exist =true;
+        this.initForm('add');
+    }
+
     toggleEnabled(){
         this.equipement.enabled=!this.equipement.enabled;
         this.composantAerationForm.controls['enabled'].setValue(!this.composantAerationForm.get('enabled'));

@@ -102,6 +102,12 @@ export class DecanteurComponent implements OnInit{
         return null;
     }
 
+    toggleExist(){
+        this.add =true;
+        this.exist =true;
+        this.initForm('add');
+    }
+
     toggleEnabled(){
         this.equipement.enabled=!this.equipement.enabled;
         this.decanteurForm.controls['enabled'].setValue(!this.decanteurForm.get('enabled'));

@@ -49,9 +49,7 @@ export class SecurityComponent implements OnInit{
 
         this.route.data.pipe(takeUntil(this._unsubscribeAll)).subscribe(
             (response) => {
-                if (response.action == 'edit'){
-                    this.security = response.data.securityData;
-                }
+                if (response.action == 'edit') this.security = response.data.securityData;
                 this.initForm(response.action);
             },
             (error) => {
@@ -106,6 +104,11 @@ export class SecurityComponent implements OnInit{
                 });
     }
 
+    toggleExist(){
+        this.add =true;
+        this.exist =true;
+        this.initForm('add');
+    }
 
     toggleClosing(){
         this.security.closing=!this.security.closing;

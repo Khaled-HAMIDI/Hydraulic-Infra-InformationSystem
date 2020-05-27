@@ -102,6 +102,12 @@ export class ReservoirEauBruteComponent implements OnInit{
         return null;
     }
 
+    toggleExist(){
+        this.add =true;
+        this.exist =true;
+        this.initForm('add');
+    }
+
     toggleEnabled(){
         this.equipement.enabled=!this.equipement.enabled;
         this.reservoirEauBruteForm.controls['enabled'].setValue(!this.reservoirEauBruteForm.get('enabled'));

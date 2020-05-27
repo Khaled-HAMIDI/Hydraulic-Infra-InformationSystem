@@ -7,7 +7,12 @@ import { locale as french } from '../i18n/fr';
 import { locale as arabic } from '../i18n/ar';
 import {ComposantSaveService} from "../../../composant-save.service";
 import {Subject} from "rxjs";
-import {EquipementStationTraitement, GroupeElectrogene, StationPhp} from "../../../../../../model/composant.model";
+import {
+    EquipementStationTraitement,
+    GroupeElectrogene,
+    PriseEau,
+    StationPhp
+} from "../../../../../../model/composant.model";
 import {takeUntil} from "rxjs/operators";
 
 
@@ -82,6 +87,12 @@ export class StationPhpComponent implements OnInit{
             this.stationPhp=new StationPhp();
             this.stationPhpForm = this.createForm(this.stationPhp);
         }
+    }
+
+    toggleExist(){
+        this.add =true;
+        this.exist =true;
+        this.initForm('add');
     }
 
     onSave(): void {

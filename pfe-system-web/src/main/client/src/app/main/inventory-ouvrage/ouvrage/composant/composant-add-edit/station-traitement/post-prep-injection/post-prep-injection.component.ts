@@ -114,6 +114,11 @@ export class PostPrepInjectionComponent implements OnInit{
         this.postPrepInjectForm.controls['fonctionnementPompe'].setValue(!this.postPrepInjectForm.get('fonctionnementPompe'));
     }
 
+    toggleExist(){
+        this.add =true;
+        this.exist =true;
+        this.initForm('add');
+    }
 
     onSave(): void {
 

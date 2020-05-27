@@ -102,6 +102,12 @@ export class BassinMelangeComponent implements OnInit{
         return null;
     }
 
+    toggleExist(){
+        this.add =true;
+        this.exist =true;
+        this.initForm('add');
+    }
+
     toggleEnabled(){
         this.equipement.enabled=!this.equipement.enabled;
         this.BassinMealngeForm.controls['enabled'].setValue(!this.BassinMealngeForm.get('enabled'));

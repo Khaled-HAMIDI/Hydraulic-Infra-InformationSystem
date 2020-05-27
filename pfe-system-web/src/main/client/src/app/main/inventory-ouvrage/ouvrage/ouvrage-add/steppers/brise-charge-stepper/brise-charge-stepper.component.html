@@ -30,7 +30,7 @@
     <div class="center">
 
         <!-- HEADER -->
-        <div class="header accent p-24" fxLayout="row" fxLayoutAlign="start center">
+        <div class="header accent p-24" fxLayout="row" fxLayoutAlign="start center" [@animate]="{value:'*',params:{delay:'100ms',x:'-25px'}}">
 
             <button mat-icon-button class="mr-16" [routerLink]="'/patrimony/ouvrages/'+route.snapshot.params['code']+'/edit'">
                 <mat-icon>arrow_back</mat-icon>

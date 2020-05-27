@@ -8,6 +8,7 @@ import { locale as arabic } from '../i18n/ar';
 import {ComposantSaveService} from "../../../composant-save.service";
 import {Subject} from "rxjs";
 import {
+    ArmoireElectrique,
     BatimentElectrique,
     EquipementHydroMeca,
     EquipementStationTraitement
@@ -102,6 +103,12 @@ export class ClapetAntiRetourComponent implements OnInit{
             if (composants[i].equipementType =='ClapetAntiRetour') return composants[i];
         }
         return null;
+    }
+
+    toggleExist(){
+        this.add =true;
+        this.exist =true;
+        this.initForm('add');
     }
 
     onSave(): void {

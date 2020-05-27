@@ -5,6 +5,7 @@ export const locale = {
             'BUTTON': {
                 'disponible': 'Cet composant n\'existe pas',
                 'add':'Sauvgarder le composant',
+                'addComposant':'Ajouter',
                 'update':'Mettre à jour le composant'
             },
             "FIELD" :{
@@ -37,22 +38,22 @@ export const locale = {
                 'enabledInactivePompe': 'Pompes en arret',
                 'cuve':'Cuve de stockage',
 
-                'postPrepInjecInexistante':'Cet ouvrage ne contient pas de poste de préparation d\'inejction',
-                'bassinMelangeInexistante':'Cet ouvrage ne contient pas de bassin de mélange',
-                'composantAerationInexistante':'Cet ouvrage ne contient pas de composant d\'aération',
-                'composantPretraitementInexistante':'Cet ouvrage ne contient pas de composant de prétraitement',
-                'decanteurInexistante':'Cet ouvrage ne contient pas de décanteur',
-                'filtreInexistante':'Cet ouvrage ne contient pas de filtre',
-                'reservoirEauBruteInexistante':'Cet ouvrage ne contient pas de réservoir d\'eau brute',
-                'reservoirEauTraiteInexistante':'Cet ouvrage ne contient pas de réservoir d\'eau traité',
-                'postRecyclageEauLavageInexistante':'Cet ouvrage ne contient pas de poste de recyclage des eaux de lavage',
-                'postRecyclageBouesInexistante':'Cet ouvrage ne contient pas de poste de recyclage des boues',
-                'batimentElectriqueInexistante':'Cet ouvrage ne contient pas de batiment électrique',
-                'groupeElectrogeneInexistante':'Cet ouvrage ne contient pas de groupe électrogène',
-                'localStockageInexistante':'Cet ouvrage ne contient pas de local de stockage des produits chimiques',
-                'kitMembraneInexistante':'Cet ouvrage ne contient pas de Kit Membrane',
-                'priseEauInexistante':'Cet ouvrage ne contient pas de prise d\'eau',
-                'stationPhpInexistante':'Cet ouvrage ne contient pas de station Php'
+                'postPrepInjecInexistante':'Cet ouvrage ne contient pas de poste de préparation d\'inejction, appuyez sur ajouter si vous voulez l\'ajouter.',
+                'bassinMelangeInexistante':'Cet ouvrage ne contient pas de bassin de mélange, appuyez sur ajouter si vous voulez l\'ajouter.',
+                'composantAerationInexistante':'Cet ouvrage ne contient pas de composant d\'aération, appuyez sur ajouter si vous voulez l\'ajouter.',
+                'composantPretraitementInexistante':'Cet ouvrage ne contient pas de composant de prétraitement, appuyez sur ajouter si vous voulez l\'ajouter.',
+                'decanteurInexistante':'Cet ouvrage ne contient pas de décanteur, appuyez sur ajouter si vous voulez l\'ajouter.',
+                'filtreInexistante':'Cet ouvrage ne contient pas de filtre, appuyez sur ajouter si vous voulez l\'ajouter.',
+                'reservoirEauBruteInexistante':'Cet ouvrage ne contient pas de réservoir d\'eau brute, appuyez sur ajouter si vous voulez l\'ajouter.',
+                'reservoirEauTraiteInexistante':'Cet ouvrage ne contient pas de réservoir d\'eau traité, appuyez sur ajouter si vous voulez l\'ajouter.',
+                'postRecyclageEauLavageInexistante':'Cet ouvrage ne contient pas de poste de recyclage des eaux de lavage, appuyez sur ajouter si vous voulez l\'ajouter.',
+                'postRecyclageBouesInexistante':'Cet ouvrage ne contient pas de poste de recyclage des boues, appuyez sur ajouter si vous voulez l\'ajouter.',
+                'batimentElectriqueInexistante':'Cet ouvrage ne contient pas de batiment électrique, appuyez sur ajouter si vous voulez l\'ajouter.',
+                'groupeElectrogeneInexistante':'Cet ouvrage ne contient pas de groupe électrogène, appuyez sur ajouter si vous voulez l\'ajouter.',
+                'localStockageInexistante':'Cet ouvrage ne contient pas de local de stockage des produits chimiques, appuyez sur ajouter si vous voulez l\'ajouter.',
+                'kitMembraneInexistante':'Cet ouvrage ne contient pas de Kit Membrane, appuyez sur ajouter si vous voulez l\'ajouter.',
+                'priseEauInexistante':'Cet ouvrage ne contient pas de prise d\'eau, appuyez sur ajouter si vous voulez l\'ajouter.',
+                'stationPhpInexistante':'Cet ouvrage ne contient pas de station Php, appuyez sur ajouter si vous voulez l\'ajouter.'
             }
         },
 };

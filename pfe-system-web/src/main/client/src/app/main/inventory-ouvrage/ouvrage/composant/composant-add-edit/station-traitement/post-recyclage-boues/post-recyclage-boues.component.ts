@@ -114,6 +114,12 @@ export class PostRecyclageBouesComponent implements OnInit{
         this.postRecyBouForm.controls['fonctionnementPompe'].setValue(!this.postRecyBouForm.get('fonctionnementPompe'));
     }
 
+    toggleExist(){
+        this.add =true;
+        this.exist =true;
+        this.initForm('add');
+    }
+
     onSave(): void {
 
         const post = this.postRecyBouForm.getRawValue();

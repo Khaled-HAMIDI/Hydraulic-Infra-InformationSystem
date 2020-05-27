@@ -1,7 +1,12 @@
 <p class="myp" *ngIf="!exist">{{'FIELD.priseEauInexistante' | translate}}</p>
+<div>
+    <button mat-raised-button  class="accent add-button"  (click)="toggleExist()" *ngIf="!exist">
+        <span >{{'BUTTON.addComposant' | translate}}</span>
+    </button>
+</div>
 <form name="ouvrageForm" [formGroup]="priseEauForm" class="w-100-p" fxLayout="column" fxFlex *ngIf="exist">
 
-        <div class="tab-content p-24" fusePerfectScrollbar>
+        <div class="tab-content p-24" fusePerfectScrollbar [@animate]="{value:'*',params:{delay:'100ms',x:'-25px'}}">
 
 
 

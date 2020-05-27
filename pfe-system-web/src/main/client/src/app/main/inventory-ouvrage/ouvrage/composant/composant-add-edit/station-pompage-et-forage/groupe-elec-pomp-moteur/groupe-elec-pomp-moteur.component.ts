@@ -90,6 +90,12 @@ export class GroupeElecPompMoteurComponent implements OnInit{
         }
     }
 
+    toggleExist(){
+        this.add =true;
+        this.exist =true;
+        this.initForm('add');
+    }
+
     onSave(): void {
 
         const moteur = this.grouprElecPMForm.getRawValue();

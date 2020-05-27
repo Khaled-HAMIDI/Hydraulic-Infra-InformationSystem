@@ -101,6 +101,12 @@ export class FiltreComponent implements OnInit{
         return null;
     }
 
+    toggleExist(){
+        this.add =true;
+        this.exist =true;
+        this.initForm('add');
+    }
+
     toggleEnabled(){
         this.equipement.enabled=!this.equipement.enabled;
         this.filterForm.controls['enabled'].setValue(!this.filterForm.get('enabled'));

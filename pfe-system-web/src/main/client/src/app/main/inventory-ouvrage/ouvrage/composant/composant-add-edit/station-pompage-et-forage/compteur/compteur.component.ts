@@ -93,6 +93,12 @@ export class CompteurComponent implements OnInit{
         }
     }
 
+    toggleExist(){
+        this.add =true;
+        this.exist =true;
+        this.initForm('add');
+    }
+
     typeEquipement(composants):EquipementHydroMeca{
         for (var i in composants){
             if (composants[i].equipementType =='CompteurDebimetre') return composants[i];

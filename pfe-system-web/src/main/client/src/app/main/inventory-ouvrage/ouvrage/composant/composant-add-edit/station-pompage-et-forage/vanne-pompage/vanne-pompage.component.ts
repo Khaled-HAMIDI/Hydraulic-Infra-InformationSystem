@@ -93,6 +93,12 @@ export class VannePompageComponent implements OnInit{
         }
     }
 
+    toggleExist(){
+        this.add =true;
+        this.exist =true;
+        this.initForm('add');
+    }
+
     typeEquipement(composants):EquipementHydroMeca{
         for (var i in composants){
             if (composants[i].equipementType =='VannePompage') return composants[i];
