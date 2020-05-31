@@ -62,6 +62,6 @@ public class ChainPersistenceAdapter implements LoadChainList, LoadChainDetails,
 
     @Override
     public List<Chain> loadChainSynoptic() {
-        return chainRepository.findAll();
+        return chainRepository.findAllForSynoptic();
     }
 }

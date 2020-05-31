@@ -14,7 +14,6 @@ public class GetOuvrageAdapter implements LoadOuvrage {
 
     @Override
     public Ouvrage getOuvrage(String code) {
-
         return ouvrageRepository.findByCode(code);
     }
 }

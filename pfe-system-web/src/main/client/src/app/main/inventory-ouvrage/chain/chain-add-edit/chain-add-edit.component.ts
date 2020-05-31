@@ -65,7 +65,7 @@ export class ChainAddEditComponent implements OnInit, OnDestroy {
     ngOnInit(): void {
         this.route.data.pipe(takeUntil(this._unsubscribeAll)).subscribe(
             (response) => {
-                console.log(response.data[1]);
+                console.log(response.data[0]);
                 this.initForm(response.data[0], response.action);
                 this.classOuvrages(response.data[1],response.action);
                 this.initTable(this.AllOuvrages);

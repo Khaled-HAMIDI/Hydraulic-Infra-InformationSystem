@@ -6,6 +6,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
 import java.util.List;
+import java.util.Set;
 
 public interface OuvrageRepository extends JpaRepository<Ouvrage, Long> {
 
@@ -15,4 +16,7 @@ public interface OuvrageRepository extends JpaRepository<Ouvrage, Long> {
 
     @Query("SELECT ouvrage FROM Ouvrage ouvrage WHERE ouvrage.code IN :ouvrages")
     List<Ouvrage> loadAllOuvrages(@Param("ouvrages") List<String> ouvrages);
+
+    @Query("SELECT distinct o FROM Ouvrage o JOIN FETCH o.chains c JOIN FETCH c.chain JOIN FETCH c.ouvrage ov  JOIN FETCH ov.site ")
+    List<Ouvrage> findAllForSynoptic();
 }

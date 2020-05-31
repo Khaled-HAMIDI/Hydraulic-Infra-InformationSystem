@@ -1,6 +1,8 @@
 package dz.ade.pfe.domain.admin;
 
 import dz.ade.pfe.domain.commons.Auditing;
+import dz.ade.pfe.domain.ouvrage.Ouvrage;
+import dz.ade.pfe.domain.ouvrage.Site;
 import lombok.*;
 import lombok.experimental.SuperBuilder;
 
@@ -105,6 +107,18 @@ public abstract class OrganisationalStructure extends Auditing {
     @OneToMany(mappedBy = "organisationalStructure", cascade = CascadeType.ALL)
     @Builder.Default
     protected List<User> users = new ArrayList<>();
+
+    @OneToMany(mappedBy = "unit", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @Builder.Default
+    private List<Center> inventories = new ArrayList<>();
+
+    @OneToMany(mappedBy = "unit", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @Builder.Default
+    private List<Ouvrage> ouvrages = new ArrayList<>();
+
+    @OneToMany(mappedBy = "unit", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @Builder.Default
+    private List<Site> sites = new ArrayList<>();
 
     public void addUser(User user) {
         users.add(user);

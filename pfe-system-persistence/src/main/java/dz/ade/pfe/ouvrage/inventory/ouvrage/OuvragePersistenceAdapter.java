@@ -31,6 +31,6 @@ public class OuvragePersistenceAdapter implements LoadOuvrageDetails, LoadOuvrag
 
     @Override
     public List<Ouvrage> loadOuvrageSynoptic() {
-        return ouvrageRepository.findAll();
+        return ouvrageRepository.findAllForSynoptic();
     }
 }
