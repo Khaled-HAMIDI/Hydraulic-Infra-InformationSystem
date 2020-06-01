@@ -12,8 +12,8 @@ export const locale = {
                 'TITLE': 'Connaissance patrimoniale',
                 'ITEMS':{
                     'INTEGRATE':'Intégrer un ouvrage',
-                    'LIST':'Liste des ouvrages',
-                    'CHAIN' :'Liste des chaines'
+                    'LIST':'ouvrages',
+                    'CHAIN' :'chaines'
                 }
             },
             'INVENTORY': {
@@ -22,6 +22,14 @@ export const locale = {
                     'START' :'Lancer un inventaire',
                     'FOLLOW' : 'Inventaires courants',
                     'LIST'  :'Inventaires terminés'
+                }
+            },
+            'EXPLOITATION': {
+                'TITLE': 'Exploitation',
+                'ITEMS':{
+                    'START' :'START',
+                    'FOLLOW' : 'FOLLOW',
+                    'LIST'  :'LIST'
                 }
             },
             'ADMIN': {
