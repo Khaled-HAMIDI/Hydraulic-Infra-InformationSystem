@@ -1,5 +1,5 @@
-import {Component, OnInit, OnDestroy, ViewChild, ElementRef, ChangeDetectorRef} from '@angular/core';
-import {Chain, generalType, AllOuvrages} from './model/chain.model';
+import { Component, OnInit, OnDestroy, ViewChild, ElementRef, ChangeDetectorRef } from '@angular/core';
+import { Chain, generalType, AllOuvrages } from './model/chain.model';
 import { FormGroup, FormBuilder, Validators, ValidatorFn, AbstractControl } from '@angular/forms';
 import { ChainAddEditService } from './chain-add-edit.service';
 import { fuseAnimations } from '@fuse/animations';
@@ -14,36 +14,37 @@ import { isEqual } from 'date-fns';
 import { ENTER, COMMA } from '@angular/cdk/keycodes';
 import { Authority } from 'app/main/model/admin.model';
 import { MatChipInputEvent, MatAutocompleteSelectedEvent, MatTreeNestedDataSource } from '@angular/material';
-import {CdkDragDrop, moveItemInArray} from '@angular/cdk/drag-drop';
+import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 import { MatTableDataSource } from '@angular/material/table';
 const COLUMN_NAMES: string[] = [
     'type',
     'ouvrage',
-  ];
+];
 
 
 /* A appliquer pour le code des chains
 const REGX_CODE = "^[a-zA-Z0-9]{2}$";*/
 
 @Component({
-  selector: 'app-chain-add-edit',
-  templateUrl: './chain-add-edit.component.html',
-  styleUrls: ['./chain-add-edit.component.scss'],
+    selector: 'app-chain-add-edit',
+    templateUrl: './chain-add-edit.component.html',
+    styleUrls: ['./chain-add-edit.component.scss'],
     animations: fuseAnimations
 })
 
 export class ChainAddEditComponent implements OnInit, OnDestroy {
     private _unsubscribeAll: Subject<any>;
     chain: Chain;
-    allPermissions=[];
+    allPermissions = [];
+    ouvrages: [];
     pageType: string;
     AllOuvrages = [];
     filteredOuvrages = [];
-    searchTerm : string = '';
+    searchTerm: string = '';
     chainForm: FormGroup;
     dataSource: MatTableDataSource<any>;
     displayedColumns: string[];
-    selectedOuvrages:any[]
+    selectedOuvrages: any[]
     constructor(
         private chainAddEditService: ChainAddEditService,
         private formBuilder: FormBuilder,
@@ -55,7 +56,7 @@ export class ChainAddEditComponent implements OnInit, OnDestroy {
         this._unsubscribeAll = new Subject();
         this.chain = new Chain();
         this.fuseTranslationLoader.loadTranslations(french, arabic);
-        this.displayedColumns =  COLUMN_NAMES;
+        this.displayedColumns = COLUMN_NAMES;
         this.selectedOuvrages = [];
     }
 
@@ -65,9 +66,10 @@ export class ChainAddEditComponent implements OnInit, OnDestroy {
     ngOnInit(): void {
         this.route.data.pipe(takeUntil(this._unsubscribeAll)).subscribe(
             (response) => {
-                console.log(response.data[1]);
+                console.log(response.data[0]);
+                this.ouvrages = response.data[1];
                 this.initForm(response.data[0], response.action);
-                this.classOuvrages(response.data[1],response.action);
+                this.classOuvrages(response.data[1], response.action);
                 this.initTable(this.AllOuvrages);
             },
             (error) => {
@@ -81,70 +83,63 @@ export class ChainAddEditComponent implements OnInit, OnDestroy {
         this.dataSource = new MatTableDataSource(columnData);
     }
 
-    classOuvrages(ouvrages,type){
+    classOuvrages(ouvrages, type) {
         this.AllOuvrages = this.createAllOuvragesStructure();
         this.filteredOuvrages = this.createAllOuvragesStructure();
-        ouvrages.forEach((ouvrage)=> {
-            if (type == 'edit'){
-                var i = this.chain.ouvrages.findIndex((item)=>{
+        ouvrages.forEach((ouvrage) => {
+            if (type == 'edit') {
+                var i = this.chain.ouvrages.findIndex((item) => {
                     return item.code === ouvrage.code
                 })
-                if(i != -1)
-                {
+                if (i != -1) {
                     ouvrage.checked = true;
                     this.selectedOuvrages[this.chain.ouvrages[i].position] = ouvrage;
                 }
                 else
-                ouvrage.checked = false;
+                    ouvrage.checked = false;
             }
             else
-            ouvrage.checked = false;
-            if(ouvrage.type === generalType.BriseCharge)
-            {
+                ouvrage.checked = false;
+            if (ouvrage.type === generalType.BriseCharge) {
                 this.AllOuvrages[0].ouvrages.push(ouvrage);
                 this.filteredOuvrages[0].ouvrages.push(ouvrage);
                 if (ouvrage.checked)
-                this.filteredOuvrages[0].nbCheked++;
+                    this.filteredOuvrages[0].nbCheked++;
             }
-            if(ouvrage.type === generalType.Forage)
-            {
+            if (ouvrage.type === generalType.Forage) {
                 this.AllOuvrages[1].ouvrages.push(ouvrage)
                 this.filteredOuvrages[1].ouvrages.push(ouvrage)
                 if (ouvrage.checked)
-                this.filteredOuvrages[1].nbCheked++;
+                    this.filteredOuvrages[1].nbCheked++;
             }
-            if(ouvrage.type === generalType.Reservoir)
-            {
+            if (ouvrage.type === generalType.Reservoir) {
                 this.AllOuvrages[2].ouvrages.push(ouvrage)
                 this.filteredOuvrages[2].ouvrages.push(ouvrage)
                 if (ouvrage.checked)
-                this.filteredOuvrages[2].nbCheked++;
+                    this.filteredOuvrages[2].nbCheked++;
             }
-            if(ouvrage.type === generalType.StationPompage)
-            {
+            if (ouvrage.type === generalType.StationPompage) {
                 this.AllOuvrages[3].ouvrages.push(ouvrage)
                 this.filteredOuvrages[3].ouvrages.push(ouvrage)
                 if (ouvrage.checked)
-                this.filteredOuvrages[3].nbCheked++;
+                    this.filteredOuvrages[3].nbCheked++;
             }
-            if(ouvrage.type === generalType.StationTraitementConventionelle)
-            {
+            if (ouvrage.type === generalType.StationTraitementConventionelle) {
                 this.AllOuvrages[4].ouvrages.push(ouvrage)
                 this.filteredOuvrages[4].ouvrages.push(ouvrage)
                 if (ouvrage.checked)
-                this.filteredOuvrages[4].nbCheked++;
+                    this.filteredOuvrages[4].nbCheked++;
             }
-            if(ouvrage.type === generalType.StationTraitementNonConventionelle)
-            {
+            if (ouvrage.type === generalType.StationTraitementNonConventionelle) {
                 this.AllOuvrages[5].ouvrages.push(ouvrage)
                 this.filteredOuvrages[5].ouvrages.push(ouvrage)
                 if (ouvrage.checked)
-                this.filteredOuvrages[5].nbCheked++;
+                    this.filteredOuvrages[5].nbCheked++;
             }
         })
     }
-    createAllOuvragesStructure(){
-        var allOuvrages : AllOuvrages[]
+    createAllOuvragesStructure() {
+        var allOuvrages: AllOuvrages[]
         allOuvrages = new Array();
         allOuvrages.push(new AllOuvrages(generalType.BriseCharge));
         allOuvrages.push(new AllOuvrages(generalType.Forage));
@@ -167,32 +162,27 @@ export class ChainAddEditComponent implements OnInit, OnDestroy {
         return this.formBuilder.group(obj);
     }
 
-    selectOuvrage(ouvrage,j){
-        if(ouvrage.checked)
-        {
+    selectOuvrage(ouvrage, j) {
+        if (ouvrage.checked) {
             this.selectedOuvrages.push(ouvrage);
             this.filteredOuvrages[j].nbCheked++;
         }
-        else
-        {
-            this.selectedOuvrages.splice(this.selectedOuvrages.indexOf(ouvrage),1);
+        else {
+            this.selectedOuvrages.splice(this.selectedOuvrages.indexOf(ouvrage), 1);
             this.filteredOuvrages[j].nbCheked--;
         }
     }
 
-    filterOuvrageByTerm(i:number): void
-    {
+    filterOuvrageByTerm(i: number): void {
         const searchTerm = this.searchTerm.toLowerCase();
         console.log(searchTerm);
         // Search
-        if ( searchTerm === '' )
-        {
+        if (searchTerm === '') {
             this.filteredOuvrages[i].ouvrages = this.AllOuvrages[i].ouvrages;
         }
-        else
-        {
+        else {
             this.filteredOuvrages[i].ouvrages = this.AllOuvrages[i].ouvrages.filter((ouvrage) => {
-                return (ouvrage.name.toLowerCase().includes(searchTerm) || ouvrage.code.toLowerCase().includes(searchTerm) );
+                return (ouvrage.name.toLowerCase().includes(searchTerm) || ouvrage.code.toLowerCase().includes(searchTerm));
             });
         }
     }
@@ -206,9 +196,10 @@ export class ChainAddEditComponent implements OnInit, OnDestroy {
         console.log(chain);
         this.chainAddEditService.saveChain(chain)
             .then(() => {
-
-                if (chain.id) {
-                    this.router.navigate(['/patrimony/chain/list']);
+                if (this.chain.id) {
+                    this.chain = new Chain(chain);
+                    this.chainForm = this.createChainForm();
+                    window.history.replaceState({}, '', `/patrimony/chain/${chain.code}/edit`);
                 }
                 else {
                     this.router.navigate(['/patrimony/chain/list']);
@@ -218,18 +209,15 @@ export class ChainAddEditComponent implements OnInit, OnDestroy {
 
 
     initForm(chain, type) {
-
         if (type == 'edit') {
             this.chain = new Chain(chain);
             this.selectedOuvrages = new Array(this.chain.ouvrages.length)
-            this.allPermissions = pullAllWith(this.allPermissions, this.chain.ouvrages, isEqual);
         } else {
             this.chain = new Chain();
         }
 
         this.pageType = type;
         this.chainForm = this.createChainForm();
-        this.initFilteredPermissions();
     }
 
 
@@ -304,37 +292,36 @@ export class ChainAddEditComponent implements OnInit, OnDestroy {
         //     this.chain.ouvrages.splice(index, 1);
         // }
         // /* check parent if all child checked */
-         const i = this.findChildParent(node)
-        if (this.AllChildSeleted(this.AllOuvrages[i]))
-        {
+        const i = this.findChildParent(node)
+        if (this.AllChildSeleted(this.AllOuvrages[i])) {
             this.AllOuvrages[i].checked = true;
-        }else{
+        } else {
             this.AllOuvrages[i].checked = false;
         }
     }
 
-    findChildParent(node): number{
-       let found = false
-       const index =  this.AllOuvrages.findIndex((item)=> {
-            item.children.forEach((child)=>{
-                if(child.id === node.id) 
-                found = true;
+    findChildParent(node): number {
+        let found = false
+        const index = this.AllOuvrages.findIndex((item) => {
+            item.children.forEach((child) => {
+                if (child.id === node.id)
+                    found = true;
             })
             return found;
         })
         return index;
     }
-    AllChildSeleted(node){
-       return node.children.every((child)=>{
-            return child.checked===true
+    AllChildSeleted(node) {
+        return node.children.every((child) => {
+            return child.checked === true
         })
     }
-    AtLeastOneSelected():boolean{
-       let thereIsOne = false
-        this.AllOuvrages.forEach((perm)=>{
-            if(perm.checked) return thereIsOne=true;
-            if(perm.children) perm.children.forEach((child)=> {if(child.checked) return thereIsOne=true})
-       })
+    AtLeastOneSelected(): boolean {
+        let thereIsOne = false
+        this.AllOuvrages.forEach((perm) => {
+            if (perm.checked) return thereIsOne = true;
+            if (perm.children) perm.children.forEach((child) => { if (child.checked) return thereIsOne = true })
+        })
         return thereIsOne;
     }
 
@@ -361,9 +348,9 @@ export class ChainAddEditComponent implements OnInit, OnDestroy {
             return !forbidden ? { 'forbiddenName': { value: this.chain } } : null;
         };
     }
-    drop(event: CdkDragDrop<string[]>,i) {
+    drop(event: CdkDragDrop<string[]>, i) {
         moveItemInArray(this.selectedOuvrages, event.previousIndex, event.currentIndex);
-      }
+    }
     ngOnDestroy(): void {
         this._unsubscribeAll.next();
         this._unsubscribeAll.complete();

@@ -186,7 +186,7 @@ public class Ouvrage extends Auditing{
     @Column(name = "chemical_monthly_bill")
     private Double chemicalMonthlyBill;
 
-    @OneToMany(mappedBy = "ouvrage", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "ouvrage", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @Builder.Default
     protected List<OuvrageChain> chains = new ArrayList<>();
 

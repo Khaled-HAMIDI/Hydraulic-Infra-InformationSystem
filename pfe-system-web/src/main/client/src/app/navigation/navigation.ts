@@ -17,22 +17,22 @@ export const navigation: FuseNavigation[] = [
             }
         ]
     },
-    {
-        id: 'upload',
-        title: 'Upload Example',
-        translate: 'Upload Example',
-        type: 'item',
-        icon: 'file',
-        url: '/uploadExample'
-    }, 
-    {
-        id: 'Stepper',
-        title: 'Stepper Example',
-        translate: 'Stepper Example',
-        type: 'item',
-        icon: 'file',
-        url: '/stepper-example'
-    },   
+    // {
+    //     id: 'upload',
+    //     title: 'Upload Example',
+    //     translate: 'Upload Example',
+    //     type: 'item',
+    //     icon: 'file',
+    //     url: '/uploadExample'
+    // }, 
+    // {
+    //     id: 'Stepper',
+    //     title: 'Stepper Example',
+    //     translate: 'Stepper Example',
+    //     type: 'item',
+    //     icon: 'file',
+    //     url: '/stepper-example'
+    // },   
     {
         id: 'business',
         title: 'Matier',
@@ -44,7 +44,7 @@ export const navigation: FuseNavigation[] = [
                 title: 'patrimoine',
                 translate: 'NAV.PATRIMONY.TITLE',
                 type: 'collapsable',
-                icon: 'home',
+                icon: 'web_asset',
                 children:[
                     {
                         id   : 'list',
@@ -75,7 +75,7 @@ export const navigation: FuseNavigation[] = [
                 title: 'inventaire',
                 translate: 'NAV.INVENTORY.TITLE',
                 type: 'collapsable',
-                icon: 'home',
+                icon: 'list_alt',
                 children:[
                     {
                         id: 'lancer',
@@ -95,6 +95,37 @@ export const navigation: FuseNavigation[] = [
                         id: 'liste',
                         title: 'Liste inventaires',
                         translate: 'NAV.INVENTORY.ITEMS.LIST',
+                        type: 'item',
+                        url: 'pasencore'
+                    }
+                ]
+
+            },
+            {
+                id: 'exploitation',
+                title: 'exploitation',
+                translate: 'NAV.EXPLOITATION.TITLE',
+                type: 'collapsable',
+                icon: 'build',
+                children:[
+                    {
+                        id: 'lancer',
+                        title: 'Lancer inventaire',
+                        translate: 'NAV.EXPLOITATION.ITEMS.START',
+                        type: 'item',
+                        url: 'pasencores'
+                    },
+                    {
+                        id   : 'suivre',
+                        title: 'Suivre inventaire',
+                        translate: 'NAV.EXPLOITATION.ITEMS.FOLLOW',
+                        type : 'item',
+                        url  : 'pasencore'
+                    },
+                    {
+                        id: 'liste',
+                        title: 'Liste inventaires',
+                        translate: 'NAV.EXPLOITATION.ITEMS.LIST',
                         type: 'item',
                         url: 'pasencore'
                     }
@@ -145,15 +176,6 @@ export const navigation: FuseNavigation[] = [
                 icon: 'location_city',
                 url: '/admin/centers',
                 authorizations: ['centers']
-            },
-            {
-                id: 'agencies',
-                title: 'Agences',
-                translate: 'NAV.AGENCIES.TITLE',
-                type: 'item',
-                icon: 'domain',
-                url: '/admin/agencies',
-                authorizations: ['agencies']
             }
         ]
     }

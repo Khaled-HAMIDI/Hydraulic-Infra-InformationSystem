@@ -15,10 +15,12 @@ import java.util.List;
 public class OuvragePersistenceAdapter implements LoadOuvrageDetails, LoadOuvrageList, LoadOuvragesByCodes, LoadOuvrageSynoptic {
 
     private final OuvrageRepository ouvrageRepository;
+
     @Override
     public Ouvrage loadOuvrageDetails(String code) {
         return ouvrageRepository.getOne((long) 1);
     }
+
     @Override
     public List<Ouvrage> loadOuvrageList() {
         return ouvrageRepository.findAll();
@@ -30,7 +32,10 @@ public class OuvragePersistenceAdapter implements LoadOuvrageDetails, LoadOuvrag
     }
 
     @Override
-    public List<Ouvrage> loadOuvrageSynoptic() {
-        return ouvrageRepository.findAll();
+    public List<Ouvrage> loadOuvrageSynoptic(String code) {
+        if (code.equals("all"))
+            return ouvrageRepository.findAllForSynoptic();
+        else
+            return ouvrageRepository.findAllForSynopticByCode(code);
     }
 }

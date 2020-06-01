@@ -13,6 +13,7 @@ import dz.ade.pfe.service.chain.getchaindetails.ChainDetailsMapper;
 import dz.ade.pfe.service.chain.getchaindetails.ChainDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,7 +29,7 @@ public class UpdateChainService implements UpdateChainCommand {
     private final ChainDetailsMapper chainDetailsMapper;
     private final UpdateChainMapper updateChainMapper;
     private final DeleteChainOuvrage deleteChainOuvrage;
-
+    @Transactional
     @Override
     public ChainDto updateChain(UpdateChainDto chain, String code) {
         Optional<Chain> ch = loadChainDetails.loadChainDetails(code);

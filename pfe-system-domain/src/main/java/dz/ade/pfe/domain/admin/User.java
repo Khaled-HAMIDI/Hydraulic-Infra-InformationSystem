@@ -67,7 +67,7 @@ public class User extends Auditing implements UserDetails {
     @JoinColumn(name = "organisational_structure_id")
     private OrganisationalStructure organisationalStructure;
 
-    @OneToMany(mappedBy = "headOfTheInventory", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "headOfTheInventory", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @Builder.Default
     protected List<Inventory> inventories = new ArrayList<>();
 

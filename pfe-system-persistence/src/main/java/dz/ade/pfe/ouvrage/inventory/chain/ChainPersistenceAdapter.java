@@ -46,7 +46,7 @@ public class ChainPersistenceAdapter implements LoadChainList, LoadChainDetails,
 
     @Override
     public Chain modifyChain(Chain chain) {
-        return  chainRepository.save(chain);
+        return chainRepository.save(chain);
     }
 
     @Transactional
@@ -61,7 +61,10 @@ public class ChainPersistenceAdapter implements LoadChainList, LoadChainDetails,
     }
 
     @Override
-    public List<Chain> loadChainSynoptic() {
-        return chainRepository.findAll();
+    public List<Chain> loadChainSynoptic(String code) {
+        if (code.equals("all"))
+            return chainRepository.findAllForSynoptic();
+        else
+            return chainRepository.findAllForSynopticByCode(code);
     }
 }

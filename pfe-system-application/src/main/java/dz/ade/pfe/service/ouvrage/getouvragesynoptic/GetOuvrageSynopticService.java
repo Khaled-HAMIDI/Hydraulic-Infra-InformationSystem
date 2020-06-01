@@ -15,8 +15,8 @@ public class GetOuvrageSynopticService implements GetOuvrageSynopticQuery {
     private final OuvrageSynopticMapper ouvrageSynopticMapper;
 
     @Override
-    public List<OuvrageSynopticDto> getOuvrageSynoptic() {
-        List<Ouvrage> ouvrages = loadOuvrageSynoptic.loadOuvrageSynoptic();
+    public List<OuvrageSynopticDto> getOuvrageSynoptic(String code) {
+        List<Ouvrage> ouvrages = loadOuvrageSynoptic.loadOuvrageSynoptic(code);
         return ouvrageSynopticMapper.ouvrageToOuvrageDto(ouvrages);
     }
 }

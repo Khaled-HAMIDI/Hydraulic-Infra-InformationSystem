@@ -24,7 +24,7 @@ public class Site {
     @Column(name = "name")
     private String name;
 
-    @OneToMany(mappedBy = "site", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "site", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @Builder.Default
     protected List<Ouvrage> ouvrages = new ArrayList<>();
 

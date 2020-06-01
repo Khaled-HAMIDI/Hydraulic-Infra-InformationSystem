@@ -65,6 +65,7 @@ export class ChainAddEditService implements Resolve<any> {
         if (chain.id) return new Promise((resolve, reject) => {
             this.http.put(CHAIN_API + '/' + this.code, chain)
                 .subscribe((response: any) => {
+                    this.code = chain.code;
                     resolve(response);
                 }, reject);
         });

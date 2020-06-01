@@ -15,7 +15,8 @@
             <!-- APP TITLE -->
             <div class="logo my-12 m-sm-0" fxLayout="row" fxLayoutAlign="start center">
                 <span class="logo-text h1">
-                   Chains <!-- {{'LIST.HEADER.title' | translate}} -->
+                    Chains
+                    <!-- {{'LIST.HEADER.title' | translate}} -->
                 </span>
             </div>
             <!-- / APP TITLE -->
@@ -25,12 +26,11 @@
                 <div class="search-wrapper mx-32 mx-md-0">
                     <div class="search" fxFlex fxLayout="row" fxLayoutAlign="start center">
                         <mat-icon>search</mat-icon>
-                        <input matInput (keyup)="applyFilter($event.target.value)"
-                            placeholder="Recherche">
+                        <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Recherche">
                     </div>
                 </div>
                 <!-- / SEARCH -->
-                <button mat-raised-button [routerLink]="'/patrimony/synoptic/11'" class="mat-white-bg mt-24 mt-md-0">
+                <button mat-raised-button [routerLink]="'/patrimony/synoptic/all'" class="mat-white-bg mt-24 mt-md-0">
                     <span>Visualiser</span>
                 </button>
 
@@ -45,7 +45,7 @@
         <ng-container *ayamsHasAnyPermissions="['*:*']">
             <div class="example-container mat-white-bg">
 
-                <table mat-table  [dataSource]="dataSource" matSort >
+                <table mat-table [dataSource]="dataSource" matSort>
 
                     <!-- Checkbox Column -->
                     <ng-container matColumnDef="checkbox">
@@ -81,7 +81,7 @@
                     <!-- Code Column -->
                     <ng-container matColumnDef="commune">
                         <th mat-header-cell *matHeaderCellDef mat-sort-header>Nombre d'ouvrage
-                        </th >
+                        </th>
                         <td mat-cell *matCellDef="let chain">
                             <p class="text-truncate">{{chain.ouvragesNumber}}</p>
                         </td>
@@ -90,9 +90,10 @@
                     <!-- Permissions Column -->
                     <ng-container matColumnDef="enabled">
                         <th mat-header-cell *matHeaderCellDef mat-sort-header>Fonctionnement
-                        </th >
+                        </th>
                         <td mat-cell *matCellDef="let chain">
-                            <mat-icon *ngIf="chain.enabled" class="active-icon green-600-bg fuse-white-500-fg s-16">check
+                            <mat-icon *ngIf="chain.enabled" class="active-icon green-600-bg fuse-white-500-fg s-16">
+                                check
                             </mat-icon>
                             <mat-icon *ngIf="!chain.enabled" class="active-icon red-500-bg fuse-white-500-fg s-16">close
                             </mat-icon>
@@ -105,27 +106,33 @@
                         <th mat-header-cell *matHeaderCellDef></th>
                         <td mat-cell *matCellDef="let chain">
 
-                                <button mat-icon-button [matMenuTriggerFor]="moreMenu" aria-label="More"
-                                    (click)="$event.stopPropagation();">
-                                    <mat-icon class="secondary-text">more_vert</mat-icon>
-                                </button>
+                            <button mat-icon-button [matMenuTriggerFor]="moreMenu" aria-label="More"
+                                (click)="$event.stopPropagation();">
+                                <mat-icon class="secondary-text">more_vert</mat-icon>
+                            </button>
 
-                                <mat-menu #moreMenu="matMenu">
-                                    <ng-container *ayamsHasAnyPermissions="['chains:edit','chains:*','*:edit','*:*']">
-                                        <button mat-menu-item aria-label="edit"
-                                            (click)="router.navigate(['/patrimony/chain/'+chain.code+'/edit'])">
-                                            <mat-icon>edit</mat-icon>
-                                            <span>{{'LIST.TABLE.action.edit' | translate}}</span>
-                                        </button>
-                                    </ng-container>
-                                    <ng-container
-                                        *ayamsHasAnyPermissions="['chains:delete','chains:*','*:delete','*:*']">
-                                        <button mat-menu-item aria-label="remove" (click)="onDelete(chain)">
-                                            <mat-icon>delete</mat-icon>
-                                            <span>{{'LIST.TABLE.action.remove' | translate}}</span>
-                                        </button>
-                                    </ng-container>
-                                </mat-menu>
+                            <mat-menu #moreMenu="matMenu">
+                                <ng-container *ayamsHasAnyPermissions="['chains:edit','chains:*','*:edit','*:*']">
+                                    <button mat-menu-item aria-label="edit"
+                                        (click)="router.navigate(['/patrimony/chain/'+chain.code+'/edit'])">
+                                        <mat-icon>edit</mat-icon>
+                                        <span>{{'LIST.TABLE.action.edit' | translate}}</span>
+                                    </button>
+                                </ng-container>
+                                <ng-container *ayamsHasAnyPermissions="['chains:delete','chains:*','*:delete','*:*']">
+                                    <button mat-menu-item aria-label="remove" (click)="onDelete(chain)">
+                                        <mat-icon>delete</mat-icon>
+                                        <span>{{'LIST.TABLE.action.remove' | translate}}</span>
+                                    </button>
+                                </ng-container>
+                                <ng-container *ayamsHasAnyPermissions="['chains:delete','chains:*','*:delete','*:*']">
+                                    <button mat-menu-item aria-label="view"
+                                        (click)="router.navigate(['/patrimony/synoptic/'+chain.code])">
+                                        <mat-icon>show_chart</mat-icon>
+                                        <span>{{'LIST.TABLE.action.view' | translate}}</span>
+                                    </button>
+                                </ng-container>
+                            </mat-menu>
                         </td>
                     </ng-container>
 
