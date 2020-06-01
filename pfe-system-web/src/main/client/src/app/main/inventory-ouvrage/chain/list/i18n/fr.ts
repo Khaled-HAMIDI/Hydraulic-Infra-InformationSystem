@@ -23,6 +23,7 @@ export const locale = {
                 'action': {
                     'show': 'Afficher',
                     'edit': 'Modifier',
+                    'view': 'Visualiser',
                     'remove': 'Supprimer',
                     'reset_pswd': 'Réinitialiser le mot de passe'
                 }

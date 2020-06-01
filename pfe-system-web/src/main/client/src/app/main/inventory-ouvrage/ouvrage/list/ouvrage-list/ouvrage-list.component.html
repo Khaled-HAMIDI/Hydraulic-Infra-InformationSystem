@@ -31,7 +31,7 @@
                     </div>
                 </div>
                 <!-- / SEARCH -->
-                <mat-form-field class="category-selector mt-24 mt-md-0">
+                <mat-form-field appearance="outline" class="category-selector mt-24 mt-md-0">
                     <mat-label>Types</mat-label>
                     <mat-select [(ngModel)]="currentCategory" (selectionChange)="filterOuvragesByType()">
                         <mat-option [value]="'all'">

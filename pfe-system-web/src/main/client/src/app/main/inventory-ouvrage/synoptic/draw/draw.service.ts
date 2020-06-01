@@ -5,6 +5,7 @@ import { Router, ActivatedRouteSnapshot, RouterStateSnapshot, Resolve } from '@a
 import { ToolsService } from '@ayams/services/tools.service';
 import { Observable } from 'rxjs';
 const CHAINS_API = API + '/chain/synoptic';
+const CHAIN_API = API + '/chain';
 const OUVRAGES_API = API + '/ouvrages/synoptic'
 @Injectable({
     providedIn: 'root'
@@ -16,22 +17,23 @@ export class DrawService implements Resolve<any> {
         private toolsService: ToolsService) {
     }
 
-    getChains() {
+    getChains(code) {
         return new Promise((resolve, reject) => {
-            this.http.get(CHAINS_API)
+            this.http.get(CHAINS_API + '/' + code)
                 .subscribe((response: any) => {
                     resolve(response);
-                }, (error) =>{
+                }, (error) => {
                     reject(error);
                 });
         });
+
     }
-    getOuvrages() {
+    getOuvrages(code) {
         return new Promise((resolve, reject) => {
-            this.http.get(OUVRAGES_API)
+            this.http.get(OUVRAGES_API+ '/' + code)
                 .subscribe((response: any) => {
                     resolve(response);
-                }, (error) =>{
+                }, (error) => {
                     reject(error);
                 });
         });
@@ -40,9 +42,10 @@ export class DrawService implements Resolve<any> {
     resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<any> | Promise<any> | any {
 
         return new Promise((resolve, reject) => {
+            console.log(route.params.code);
             Promise.all([
-                this.getChains(),
-                this.getOuvrages()
+                this.getChains(route.params.code),
+                this.getOuvrages(route.params.code)
             ]).then(
                 (data) => {
                     resolve(data);

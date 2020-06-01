@@ -23,7 +23,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class GetChainSynopticController {
     private final GetChainSynopticQuery getChainSynopticQuery;
-    @GetMapping(value = "/chain/synoptic")
+    @GetMapping(value = "/chain/synoptic/{code}")
     @PreAuthorize("hasAnyAuthority('roles:list', '*:*')")
     @ApiOperation(value = "View a list of available chains")
     @ApiResponses(value = {
@@ -32,7 +32,7 @@ public class GetChainSynopticController {
             @ApiResponse(code = 403, message = "Accessing the resource you were trying to reach is forbidden"),
             @ApiResponse(code = 404, message = "The resource you were trying to reach is not found")
     })
-    public List<ChainSynopticDto> getChainSynoptic(){
-        return getChainSynopticQuery.getChainSynoptic();
+    public List<ChainSynopticDto> getChainSynoptic(@PathVariable String code){
+        return getChainSynopticQuery.getChainSynoptic(code);
     }
 }

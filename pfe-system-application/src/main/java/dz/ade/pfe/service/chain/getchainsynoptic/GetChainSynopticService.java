@@ -15,8 +15,8 @@ public class GetChainSynopticService implements GetChainSynopticQuery {
     private final LoadChainSynoptic loadChainSynoptic;
     private final ChainSynopticMapper chainSynopticMapper;
     @Override
-    public List<ChainSynopticDto> getChainSynoptic() {
-        List<Chain> chains = loadChainSynoptic.loadChainSynoptic();
+    public List<ChainSynopticDto> getChainSynoptic(String code) {
+        List<Chain> chains = loadChainSynoptic.loadChainSynoptic(code);
         return chainSynopticMapper.chainToChainListDto(chains);
     }
 }

@@ -19,4 +19,7 @@ public interface OuvrageRepository extends JpaRepository<Ouvrage, Long> {
 
     @Query("SELECT distinct o FROM Ouvrage o JOIN FETCH o.chains c JOIN FETCH c.chain JOIN FETCH c.ouvrage ov  JOIN FETCH ov.site ")
     List<Ouvrage> findAllForSynoptic();
+
+    @Query("SELECT distinct o FROM Ouvrage o JOIN FETCH o.chains c JOIN FETCH c.chain ch JOIN FETCH c.ouvrage ov  JOIN FETCH ov.site where ch.code = :code ")
+    List<Ouvrage> findAllForSynopticByCode(String code);
 }

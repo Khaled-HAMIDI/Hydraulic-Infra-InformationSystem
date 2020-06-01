@@ -10,6 +10,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -22,7 +23,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class GetOuvragesSynoptic {
     private final GetOuvrageSynopticQuery getOuvragesSynopticQuery;
-    @GetMapping(value = "/ouvrages/synoptic")
+    @GetMapping(value = "/ouvrages/synoptic/{code}")
     @PreAuthorize("hasAnyAuthority('roles:list', '*:*')")
     @ApiOperation(value = "View a list of available ouvrages")
     @ApiResponses(value = {
@@ -31,7 +32,7 @@ public class GetOuvragesSynoptic {
             @ApiResponse(code = 403, message = "Accessing the resource you were trying to reach is forbidden"),
             @ApiResponse(code = 404, message = "The resource you were trying to reach is not found")
     })
-    public List<OuvrageSynopticDto> getOuvrageSynoptic() {
-        return getOuvragesSynopticQuery.getOuvrageSynoptic();
+    public List<OuvrageSynopticDto> getOuvrageSynoptic(@PathVariable String code) {
+        return getOuvragesSynopticQuery.getOuvrageSynoptic(code);
     }
 }
