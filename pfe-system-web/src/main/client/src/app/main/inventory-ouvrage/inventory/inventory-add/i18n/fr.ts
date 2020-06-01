@@ -11,7 +11,15 @@ export const locale = {
             'FIELD' :{
                 'code': 'Code d\'inventaire',
                 'date': 'Date début',
-                'responsable' : 'Responsable(integer)'
+                'responsable' : 'Responsable de l\'inventaire',
+                'responsable2' : 'Responsable',
+                'rechercher':'Rechercher un ouvrage',
+                'codeNom' :'Entrez le nom ou le code'
+            },
+            'TAB': {
+                'infos': 'Informations générales sur l\'inventaire',
+                'ouvrages': 'Sélectionnez les ouvrages à inventorier',
+                'responsables':'Sélectionnez pour chaque ouvrage l\'employé chargés de l\'inventaire '
             },
             'TOAST-ADD':{
               'success':'L\'inventaire a été bien crée',

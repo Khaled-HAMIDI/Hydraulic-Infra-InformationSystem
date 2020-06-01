@@ -264,7 +264,8 @@ export class ComposantGetService implements Resolve<any>{
 
         switch (typeOuvrage) {
 
-            case "StationTraitementConventionelle" || "StationTraitementNonConventionelle":
+            case "StationTraitementConventionelle" :
+            case "StationTraitementNonConventionelle":
                 return [
                     this.loadSecurity(code),
                     this.loadPriseEau(code),
@@ -319,7 +320,8 @@ export class ComposantGetService implements Resolve<any>{
 
         switch (typeOuvrage) {
 
-            case "StationTraitementConventionelle" || "StationTraitementNonConventionelle":
+            case "StationTraitementConventionelle":
+            case "StationTraitementNonConventionelle":
                 return {
                     securityData: data[0],
                     priseEauData: data[1],

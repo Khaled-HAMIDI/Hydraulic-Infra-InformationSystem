@@ -5,7 +5,6 @@ import {ObturateurComponent} from "../../composant/composant-add-edit/reservoir-
 import {JointDemantageComponent} from "../../composant/composant-add-edit/station-pompage-et-forage/joint-demantage/joint-demantage.component";
 import {CompteurComponent} from "../../composant/composant-add-edit/station-pompage-et-forage/compteur/compteur.component";
 import {FlotteurComponent} from "../../composant/composant-add-edit/reservoir-et-brise-charge/flotteur/flotteur.component";
-import {PosteChloration, SoupapeDecharge} from "../../../../model/composant.model";
 import {VanneSortieComponent} from "../../composant/composant-add-edit/reservoir-et-brise-charge/vanne-sortie/vanne-sortie.component";
 import {VenteuseComponent} from "../../composant/composant-add-edit/station-pompage-et-forage/venteuse/venteuse.component";
 import {ConduiteTropPleinComponent} from "../../composant/composant-add-edit/reservoir-et-brise-charge/conduite-trop-plein/conduite-trop-plein.component";

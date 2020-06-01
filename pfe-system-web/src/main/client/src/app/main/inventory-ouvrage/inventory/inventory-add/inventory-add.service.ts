@@ -4,9 +4,11 @@ import { API } from 'config/api.config';
 import { Router, Resolve, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
 import { ToolsService } from '@ayams/services/tools.service';
 import { Observable } from 'rxjs';
+import {Ouvrage} from "../../chain/chain-add-edit/model/chain.model";
 
 const INVENTORY_API = API + '/inventory';
 const USERS_API = API + '/users';
+const OUVRAGES_API = API + '/ouvrages' ;
 
 @Injectable({
     providedIn: 'root'
@@ -34,6 +36,15 @@ export class InventoryAddService implements Resolve<any>{
 
     }
 
+    getAllOuvrages(): Promise<Ouvrage[]> {
+        return new Promise((resolve, reject) => {
+            this.http.get(OUVRAGES_API)
+                .subscribe((response: any) => {
+                    resolve(response);
+                }, reject);
+        });
+    }
+
     save(inventory): Promise<any> {
         return new Promise((resolve, reject) => {
             this.http.post(INVENTORY_API, inventory)
@@ -53,7 +64,8 @@ export class InventoryAddService implements Resolve<any>{
         return new Promise((resolve, reject) => {
 
             Promise.all([
-                this.getUsers()
+                this.getUsers(),
+                this.getAllOuvrages()
             ]).then(
                 (data) => {
                     resolve(data);

@@ -28,6 +28,8 @@ import { IConfig, NgxMaskModule } from 'ngx-mask';
 import { MatDatepickerModule } from "@angular/material/datepicker";
 import {InventoryAddComponent} from "./inventory-add/inventory-add.component";
 import { InventoryAddService } from './inventory-add/inventory-add.service';
+import {MatTabsModule} from "@angular/material/tabs";
+import {MatExpansionModule} from "@angular/material/expansion";
 
 
 export const options: Partial<IConfig> | (() => Partial<IConfig>) = null;
@@ -73,6 +75,8 @@ const routes: Routes = [
         AyamsModule,
         NgxMaskModule.forRoot(options),
         MatDatepickerModule,
+        MatTabsModule,
+        MatExpansionModule,
     ]
 })
 export class InventoryModule { }
