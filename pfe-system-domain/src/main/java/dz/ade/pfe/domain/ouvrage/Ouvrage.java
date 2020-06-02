@@ -190,6 +190,14 @@ public class Ouvrage extends Auditing{
     @Builder.Default
     protected List<OuvrageChain> chains = new ArrayList<>();
 
+    @OneToMany(mappedBy = "ouvrage", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @Builder.Default
+    protected List<WorkStopTimes> workStopTimes = new ArrayList<>();
+
+    @OneToMany(mappedBy = "ouvrage", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @Builder.Default
+    protected List<WorkStopTimes> ExploitationReading = new ArrayList<>();
+
     @OneToMany(mappedBy = "ouvrage", cascade = CascadeType.ALL)
     @Builder.Default
     protected List<Component> components = new ArrayList<>();

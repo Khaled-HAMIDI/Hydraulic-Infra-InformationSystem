@@ -53,7 +53,7 @@
 
                                 <mat-form-field appearance="outline" class="w-100-p">
                                     <mat-label>{{'ADD.FIELD.date' | translate}}</mat-label>
-                                    <input matInput [matDatepicker]="picker1" name="date" formControlName="date" required>
+                                    <input matInput type="datetime-local" [matDatepicker]="picker1" name="date" formControlName="date" required>
                                     <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
                                     <mat-datepicker #picker1></mat-datepicker>
                                 </mat-form-field>
