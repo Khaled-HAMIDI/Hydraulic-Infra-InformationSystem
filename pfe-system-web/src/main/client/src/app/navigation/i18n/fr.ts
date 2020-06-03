@@ -27,7 +27,7 @@ export const locale = {
             'EXPLOITATION': {
                 'TITLE': 'Exploitation',
                 'ITEMS':{
-                    'START' :'START',
+                    'START' :'Exploitation quotidienne',
                     'FOLLOW' : 'FOLLOW',
                     'LIST'  :'LIST'
                 }

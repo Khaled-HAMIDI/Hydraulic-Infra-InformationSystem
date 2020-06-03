@@ -109,11 +109,11 @@ export const navigation: FuseNavigation[] = [
                 icon: 'build',
                 children:[
                     {
-                        id: 'lancer',
-                        title: 'Lancer inventaire',
+                        id: 'suivre',
+                        title: 'Suivi des ouvrage',
                         translate: 'NAV.EXPLOITATION.ITEMS.START',
                         type: 'item',
-                        url: 'pasencores'
+                        url: 'exploitation/reading/add'
                     },
                     {
                         id   : 'suivre',
