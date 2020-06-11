@@ -1,11 +1,23 @@
 package dz.ade.pfe.service.ouvrage.getouvragesynoptic;
 
+import dz.ade.pfe.domain.ouvrage.Chain;
 import dz.ade.pfe.domain.ouvrage.Ouvrage;
 import org.mapstruct.Mapper;
+import org.mapstruct.Mapping;
+import org.mapstruct.Mappings;
 
 import java.util.List;
 @Mapper(componentModel = "spring", uses = SiteSynopticMapper.class)
 public interface OuvrageSynopticMapper {
+    @Mappings({
+            @Mapping(target = "nbApears",expression = "java(getNbChains(ouvrage))")
+    })
     OuvrageSynopticDto ouvrageToOuvrageDto (Ouvrage ouvrage);
     List<OuvrageSynopticDto> ouvrageToOuvrageDto(List<Ouvrage> ouvrages);
+
+    default Integer getNbChains (Ouvrage ouvrage){
+        if(ouvrage.getChains() != null)
+            return ouvrage.getChains().size();
+        return 0;
+    }
 }

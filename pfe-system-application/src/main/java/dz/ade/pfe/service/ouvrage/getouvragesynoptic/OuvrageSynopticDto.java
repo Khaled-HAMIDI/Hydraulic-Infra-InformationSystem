@@ -14,4 +14,5 @@ public class OuvrageSynopticDto {
     private String name;
     private SiteDto site;
     private Double currentDebit;
+    private Integer nbApears;
 }
