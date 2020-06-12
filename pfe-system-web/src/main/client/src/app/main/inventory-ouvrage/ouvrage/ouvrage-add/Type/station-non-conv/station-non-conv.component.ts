@@ -225,7 +225,7 @@ export class StationNonConvComponent  implements OnInit, OnDestroy {
 
         this.stationNonConvService.saveOuvrage(this.ouvrageAdd)
             .then((response:any) => {
-                this.onSubmitFiles(response.id);
+                this.onSubmitFiles(response.code);
                 },
                 (error) => {
                     console.log("No")
@@ -314,10 +314,10 @@ export class StationNonConvComponent  implements OnInit, OnDestroy {
      onAllRequiredAttached(isFilesValid: boolean): void {
         this.isFilesValid = isFilesValid;
     }
-    uploadFiles(entityId: number): void {
+    uploadFiles(entityId: string): void {
 
         this.filesToBeAttached.forEach(item => {
-            item.attachmentEntityId = entityId.toString();
+            item.attachmentEntityId = entityId;
         });
 
         this.onUploadEventSubject.next();
@@ -329,7 +329,7 @@ export class StationNonConvComponent  implements OnInit, OnDestroy {
     }
     successUploadFiles(): void {
         this.toolsService.hideProgressBar();
-        //this.toolsService.showSuccess("success Upload Files");
+        this.toolsService.showSuccess("success Upload Files");
         this.router.navigate(['composants/' + this.ouvrageAdd.code], { relativeTo: this.route });
     }
 
