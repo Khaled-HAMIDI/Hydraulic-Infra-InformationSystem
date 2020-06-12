@@ -10,5 +10,6 @@ import lombok.NoArgsConstructor;
 public class OuvrageDto {
 
     private String code;
+    private String name;
     private Integer position;
 }

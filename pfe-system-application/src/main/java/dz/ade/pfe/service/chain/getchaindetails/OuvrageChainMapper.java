@@ -10,7 +10,8 @@ import java.util.List;
 @Mapper(componentModel = "spring")
 public interface OuvrageChainMapper {
     @Mappings({
-            @Mapping(source = "ouvrage.code", target = "code")
+            @Mapping(source = "ouvrage.code", target = "code"),
+            @Mapping(source = "ouvrage.name", target = "name")
     })
     OuvrageDto OuvrageChaineMapper (OuvrageChain ouvrageChain);
     List<OuvrageDto> OuvrageChaineMapper (List<OuvrageChain> ouvrageChain);
