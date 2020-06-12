@@ -30,7 +30,7 @@
                     </div>
                 </div>
                 <!-- / SEARCH -->
-                <button mat-raised-button [routerLink]="'/patrimony/synoptic/all'" class="mat-white-bg mt-24 mt-md-0">
+                <button mat-raised-button [routerLink]="'/patrimony/chain/synoptic/all'" class="mat-white-bg mt-24 mt-md-0">
                     <span>Visualiser</span>
                 </button>
 
@@ -87,19 +87,6 @@
                         </td>
                     </ng-container>
 
-                    <!-- Permissions Column -->
-                    <ng-container matColumnDef="enabled">
-                        <th mat-header-cell *matHeaderCellDef mat-sort-header>Fonctionnement
-                        </th>
-                        <td mat-cell *matCellDef="let chain">
-                            <mat-icon *ngIf="true" class="active-icon green-600-bg fuse-white-500-fg s-16">
-                                check
-                            </mat-icon>
-                            <mat-icon *ngIf="!true" class="active-icon red-500-bg fuse-white-500-fg s-16">close
-                            </mat-icon>
-                        </td>
-                    </ng-container>
-
 
                     <!-- Buttons Column -->
                     <ng-container matColumnDef="buttons" stickyEnd>
@@ -127,7 +114,7 @@
                                 </ng-container>
                                 <ng-container *ayamsHasAnyPermissions="['chains:delete','chains:*','*:delete','*:*']">
                                     <button mat-menu-item aria-label="view"
-                                        (click)="router.navigate(['/patrimony/synoptic/'+chain.code])">
+                                        (click)="router.navigate(['/patrimony/chain/synoptic/'+chain.code])">
                                         <mat-icon>show_chart</mat-icon>
                                         <span>{{'LIST.TABLE.action.view' | translate}}</span>
                                     </button>

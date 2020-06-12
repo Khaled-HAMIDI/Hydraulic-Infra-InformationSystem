@@ -16,7 +16,6 @@ const COLUMN_NAMES: string[] = [
   'chainCode',
   'name',
   'commune',
-  'enabled',
   'buttons'
 ];
 

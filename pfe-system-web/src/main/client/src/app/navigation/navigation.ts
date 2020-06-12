@@ -65,7 +65,7 @@ export const navigation: FuseNavigation[] = [
                         title: 'Chaine',
                         translate: 'NAV.PATRIMONY.ITEMS.CHAIN',
                         type: 'item',
-                        url: 'patrimony/chain/list'
+                        url: 'patrimony/chain'
                     }
                 ]
                 
