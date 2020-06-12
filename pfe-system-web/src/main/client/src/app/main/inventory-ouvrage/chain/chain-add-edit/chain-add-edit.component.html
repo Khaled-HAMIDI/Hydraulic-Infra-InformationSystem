@@ -14,7 +14,7 @@
                 <!-- APP TITLE -->
                 <div fxLayout="row" fxLayoutAlign="start center">
 
-                    <button mat-icon-button class="mr-0 mr-sm-16" [routerLink]="'/patrimony/chain/list'">
+                    <button mat-icon-button class="mr-0 mr-sm-16" [routerLink]="'/patrimony/chain'">
                         <mat-icon>arrow_back</mat-icon>
                     </button>
 
@@ -70,12 +70,13 @@
                                 <div class="tab-content p-24" fusePerfectScrollbar>
                                     <div class="example-container mat-white-bg">
                                         <mat-accordion class="example-headers-align">
-                                            <mat-expansion-panel *ngFor="let ouvrages of filteredOuvrages;let j = index">
+                                            <mat-expansion-panel
+                                                *ngFor="let ouvrages of filteredOuvrages;let j = index">
                                                 <mat-expansion-panel-header fxLayout="row" fxLayoutAlign="end center">
                                                     <mat-panel-title>
                                                         {{ouvrages.type}}
                                                     </mat-panel-title>
-                                                    <mat-panel-description >
+                                                    <mat-panel-description>
                                                         {{ouvrages.nbCheked}}
                                                     </mat-panel-description>
                                                 </mat-expansion-panel-header>
@@ -96,7 +97,8 @@
                                                         <mat-checkbox (change)="selectOuvrage(ouvrage,j)"
                                                             [(ngModel)]="ouvrages.ouvrages[i].checked"
                                                             [ngModelOptions]="{standalone: true}">
-                                                            <p class="text-truncate">{{ouvrage.name}} - {{ouvrage.code}}</p>
+                                                            <p class="text-truncate">{{ouvrage.name}} - {{ouvrage.code}}
+                                                            </p>
                                                         </mat-checkbox>
                                                     </div>
                                                 </div>
@@ -112,6 +114,9 @@
                                         <div class="example-box" *ngFor="let ouvrage of selectedOuvrages; let i = index"
                                             cdkDrag>
                                             {{i+1}} - {{ouvrage.name}}-{{ouvrage.code}}</div>
+                                    </div>
+                                    <div *ngIf='!selectedOuvrages.length'>
+                                        <div class="h3 secondary-text">Aucun ouvrage n'est sélectionné</div>
                                     </div>
                                 </div>
                             </mat-tab>

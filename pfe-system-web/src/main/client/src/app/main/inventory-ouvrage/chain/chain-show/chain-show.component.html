@@ -66,6 +66,9 @@
                                     <div class="example-box" *ngFor="let ouvrage of chain.ouvrages; let i = index">
                                         {{i+1}} - {{ouvrage.name}}-{{ouvrage.code}}</div>
                                 </div>
+                                <div *ngIf='!chain.ouvrages.length'>
+                                    <div class="h3 secondary-text">Cette chaine ne contient aucun ouvrage</div>
+                                </div>
                             </div>
                         </mat-tab>
                         <mat-tab label="Structure">
