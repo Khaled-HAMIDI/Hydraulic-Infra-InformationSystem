@@ -210,5 +210,9 @@ public class Ouvrage extends Auditing{
     @JoinColumn(name = "unit_id")
     private OrganisationalStructure unit;
 
+    @OneToMany(mappedBy = "ouvrage", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @Builder.Default
+    protected List<InventoryOuvrage> inventories = new ArrayList<>();
+
 }
 

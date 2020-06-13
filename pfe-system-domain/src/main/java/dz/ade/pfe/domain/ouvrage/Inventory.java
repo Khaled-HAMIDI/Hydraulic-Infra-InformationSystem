@@ -7,7 +7,10 @@ import lombok.*;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
+
 import dz.ade.pfe.domain.commons.Auditing;
 
 @Entity
@@ -19,8 +22,8 @@ import dz.ade.pfe.domain.commons.Auditing;
 @Builder
 public class Inventory extends Auditing{
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "inventaire_gen")
-    @SequenceGenerator(name = "inventaire_gen", sequenceName = "inventaire_seq", schema = "pfe", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "inventory_gen")
+    @SequenceGenerator(name = "inventory_gen", sequenceName = "inventory_seq", schema = "pfe", allocationSize = 1)
     protected Long id;
 
     @Column(name = "code")
@@ -39,6 +42,10 @@ public class Inventory extends Auditing{
 
     @Column(name = "completed")
     private Boolean completed;
+
+    @OneToMany(mappedBy = "inventory", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @Builder.Default
+    protected List<InventoryOuvrage> ouvrages = new ArrayList<>();
 
 }
 

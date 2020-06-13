@@ -31,20 +31,20 @@ public class CreateInventoryService implements CreateInventoryCommand {
 
         inventory.setCode(inventoryAddDto.getCode());
         inventory.setDate(inventoryAddDto.getDate());
+
         Optional<User> user = loadUserByUsername.loadUserByUsername(inventoryAddDto.getResponsable());
         if (!user.isPresent()) {
             throw new ResourceNotFoundException(String.format("No user found with username '%s'.", inventoryAddDto.getResponsable()));
         }
+
         Optional<OrganisationalStructure> unit = loadUnitByCode.loadUnitByCode(unitCode);
         if (!unit.isPresent()) {
             throw new ResourceNotFoundException(String.format("No unit found with code '%s'.", unitCode));
         }
         inventory.setUnit(unit.get());
         inventory.setHeadOfTheInventory(user.get());
-        //inventory.setResponsable(inventoryAddDto.getResponsable());
         inventory.setCompleted(inventoryAddDto.getCompleted());
 
-        Inventory inventory1 = saveInventory.saveInventory(inventory);
-        return returnInventoryMapper.ReturnInventory(inventory1);
+        return returnInventoryMapper.ReturnInventory(saveInventory.saveInventory(inventory));
     }
 }

@@ -1,5 +1,6 @@
 package dz.ade.pfe.domain.ouvrage;
 
+import dz.ade.pfe.domain.admin.User;
 import lombok.*;
 
 import javax.persistence.*;
@@ -15,15 +16,21 @@ import dz.ade.pfe.domain.commons.Auditing;
 @Builder
 public class InventoryOuvrage extends Auditing{
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "inventaire_ouvrage_gen")
-    @SequenceGenerator(name = "inventaire_ouvrage_gen", sequenceName = "inventaire_ouvrage_seq", schema = "pfe", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "inventory_ouvrage_gen")
+    @SequenceGenerator(name = "inventory_ouvrage_gen", sequenceName = "inventory_ouvrage_seq", schema = "pfe", allocationSize = 1)
     protected Long id;
 
-    @Column(name = "id_inventaire")
-    private Long id_inventaire;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "inventory_id")
+    private Inventory inventory;
 
-    @Column(name = "id_ouvrage")
-    private Long id_ouvrage;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "ouvrage_id")
+    private Ouvrage ouvrage;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "responsable_id")
+    private User responsable;
 
 
 }
