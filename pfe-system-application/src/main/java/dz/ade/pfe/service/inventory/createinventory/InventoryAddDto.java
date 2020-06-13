@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @Data
 @NoArgsConstructor
@@ -15,6 +16,7 @@ public class InventoryAddDto {
     private LocalDate date;
     private String responsable;
     private boolean completed;
+    private List<Object> responsablesOuvrage;
 
     public boolean getCompleted() {
         return this.completed;

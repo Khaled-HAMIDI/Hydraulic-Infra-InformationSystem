@@ -63,7 +63,7 @@
                                     <mat-icon matSuffix class="secondary-text">account_circle</mat-icon>
                                     <mat-select formControlName="headOfTheInventory"
                                                 (selectionChange)="changeCurrentChef($event.value)">
-                                        <mat-option *ngFor="let headOfInventory of headOfTheInvontories"
+                                        <mat-option *ngFor="let headOfInventory of users"
                                                     [value]="headOfInventory.id">
                                             {{headOfInventory.lastName}} {{headOfInventory.firstName}}
                                         </mat-option>
@@ -136,11 +136,10 @@
                                             <mat-form-field appearance="outline" class="w-100-p">
                                                 <mat-label>{{'ADD.FIELD.responsable2' | translate}}</mat-label>
                                                 <mat-icon matSuffix class="secondary-text">account_circle</mat-icon>
-                                                <mat-select formControlName="headOfTheInventory"
-                                                            (selectionChange)="changeCurrentChef($event.value)">
-                                                    <mat-option *ngFor="let headOfInventory of headOfTheInvontories"
-                                                                [value]="headOfInventory.id">
-                                                        {{headOfInventory.lastName}} {{headOfInventory.firstName}}
+                                                <mat-select (selectionChange)="setOuvrageResponsable($event.value,ouvrage.code)">
+                                                    <mat-option *ngFor="let user of users"
+                                                                [value]="user.id">
+                                                        {{user.lastName}} {{user.firstName}}
                                                     </mat-option>
                                                 </mat-select>
                                             </mat-form-field>

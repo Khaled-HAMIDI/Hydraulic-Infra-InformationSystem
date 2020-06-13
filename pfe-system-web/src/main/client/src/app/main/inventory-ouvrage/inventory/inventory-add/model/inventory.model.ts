@@ -4,6 +4,7 @@ export class Inventory {
     responsable: any;
     date: string;
     completed: boolean;
+    responsablesOuvrage: any [];
 
 
     constructor(inventory?) {
@@ -12,6 +13,7 @@ export class Inventory {
         this.responsable = inventory.responsable || '';
         this.date = inventory.date || '';
         this.completed = inventory.completed || false;
+        this.responsablesOuvrage = inventory.responsablesOuvrage || []
     }
 
 }

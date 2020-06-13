@@ -26,14 +26,16 @@ export class InventoryAddComponent implements OnInit, OnDestroy {
     inventory: Inventory;
     inventoryAdd: Inventory;
     inventoryForm: FormGroup;
-    headOfTheInvontories: User[];
+    users: User[];
     currentchef: any;
 
 
     searchTerm : string = '';
     AllOuvrages = [];
     filteredOuvrages = [];
-    selectedOuvrages:any[]
+    selectedOuvrages:any[];
+    responsablesOuvrages:any[];
+
 
     constructor(
         private inventoryAddService: InventoryAddService,
@@ -47,6 +49,7 @@ export class InventoryAddComponent implements OnInit, OnDestroy {
         this.inventory = new Inventory();
         this.fuseTranslationLoader.loadTranslations(french, arabic);
         this.selectedOuvrages = [];
+        this.responsablesOuvrages = [];
     }
 
     /**
@@ -55,7 +58,7 @@ export class InventoryAddComponent implements OnInit, OnDestroy {
     ngOnInit(): void {
         this.route.data.pipe(takeUntil(this._unsubscribeAll)).subscribe(
             (response) => {
-                this.headOfTheInvontories = sortBy(response.data[0], ['lastname', 'firstname']);
+                this.users = sortBy(response.data[0], ['lastname', 'firstname']);
                 this.initForm();
                 this.classOuvrages(response.data[1]);
             },
@@ -172,10 +175,18 @@ export class InventoryAddComponent implements OnInit, OnDestroy {
     }
 
     changeCurrentChef(IdCurrentChef) {
-        this.currentchef = find(this.headOfTheInvontories, { 'id': IdCurrentChef })
+        this.currentchef = find(this.users, { 'id': IdCurrentChef })
+    }
+
+    setOuvrageResponsable(IdResponsable,codeOuvrage) {
+        this.responsablesOuvrages =this.responsablesOuvrages.filter(ouvrageResponsable => ouvrageResponsable.ouvrage != codeOuvrage);
+        this.responsablesOuvrages.push({ouvrage:codeOuvrage,responsable:IdResponsable});
     }
 
     onSave(): void {
+
+        console.log(this.responsablesOuvrages);
+
         const inventory = this.inventoryForm.getRawValue();
         this.inventoryAdd = new Inventory();
 
@@ -183,9 +194,10 @@ export class InventoryAddComponent implements OnInit, OnDestroy {
         this.inventoryAdd.responsable = this.currentchef.id;
         this.inventoryAdd.code = inventory.code;
         this.inventoryAdd.completed = false;
+        this.inventoryAdd.responsablesOuvrage = this.responsablesOuvrages;
         this.inventoryAddService.saveInventory(this.inventoryAdd)
             .then((response) => {
-                this.router.navigate(['/']);
+                    console.log("yesss");
             },
                 (error) => {
                     console.log("No")

@@ -18,8 +18,8 @@ export const locale = {
             },
             'TAB': {
                 'infos': 'Informations générales sur l\'inventaire',
-                'ouvrages': 'Sélectionnez les ouvrages à inventorier',
-                'responsables':'Sélectionnez pour chaque ouvrage l\'employé chargés de l\'inventaire '
+                'ouvrages': 'Ouvrages',
+                'responsables':'Chargé de l\'inventaire '
             },
             'TOAST-ADD':{
               'success':'L\'inventaire a été bien crée',
