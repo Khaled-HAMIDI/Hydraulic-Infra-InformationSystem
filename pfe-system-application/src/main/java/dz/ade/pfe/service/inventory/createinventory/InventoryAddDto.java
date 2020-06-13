@@ -16,7 +16,7 @@ public class InventoryAddDto {
     private LocalDate date;
     private String responsable;
     private boolean completed;
-    private List<Object> responsablesOuvrage;
+    private List<ResponsableOuvrageType> responsablesOuvrage;
 
     public boolean getCompleted() {
         return this.completed;

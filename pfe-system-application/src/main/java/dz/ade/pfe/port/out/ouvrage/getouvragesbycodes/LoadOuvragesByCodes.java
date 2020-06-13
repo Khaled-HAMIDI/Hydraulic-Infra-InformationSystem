@@ -6,4 +6,5 @@ import java.util.List;
 
 public interface LoadOuvragesByCodes {
     public List<Ouvrage> loadOuvragesByCodes(List<String> ouvrages);
+    public Ouvrage loadOuvrageByCode (String code);
 }

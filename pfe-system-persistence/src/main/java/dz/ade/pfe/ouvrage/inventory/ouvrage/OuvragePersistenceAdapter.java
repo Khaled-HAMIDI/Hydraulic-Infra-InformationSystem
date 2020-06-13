@@ -27,6 +27,11 @@ public class OuvragePersistenceAdapter implements LoadOuvrageList, LoadOuvragesB
     }
 
     @Override
+    public Ouvrage loadOuvrageByCode(String code) {
+        return ouvrageRepository.findByCode(code);
+    }
+
+    @Override
     public List<Ouvrage> loadOuvrageSynoptic(String code) {
         if (code.equals("all"))
             return ouvrageRepository.findAllForSynoptic();
