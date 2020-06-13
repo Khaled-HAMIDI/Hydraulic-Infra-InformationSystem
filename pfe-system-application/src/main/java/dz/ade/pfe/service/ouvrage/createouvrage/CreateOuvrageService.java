@@ -8,7 +8,7 @@ import dz.ade.pfe.port.in.ouvrage.createouvrage.CreateOuvrageCommand;
 import dz.ade.pfe.port.out.ouvrage.createouvrage.SaveOuvrage;
 import dz.ade.pfe.port.out.site.LoadSiteById;
 import dz.ade.pfe.port.out.unit.LoadUnitByCode;
-import dz.ade.pfe.service.ouvrage.getouvragedetails.OuvrageDto;
+import dz.ade.pfe.service.ouvrage.getouvrage.OuvrageShowDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -24,7 +24,7 @@ public class CreateOuvrageService implements CreateOuvrageCommand {
     private final CreateOuvrageMapper createOuvrageMapper;
 
     @Override
-    public OuvrageDto createOuvrage(OuvrageAddDto ouvrageAddDto, String unitCode) {
+    public OuvrageShowDto createOuvrage(OuvrageAddDto ouvrageAddDto, String unitCode) {
 
         Ouvrage ouvrage =createOuvrageMapper.ouvrageAddToOuvrage(ouvrageAddDto);
         Optional<OrganisationalStructure> unit = loadUnitByCode.loadUnitByCode(unitCode);

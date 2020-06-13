@@ -71,7 +71,7 @@ export class OuvrageShowComponent implements OnInit, OnDestroy {
                 console.log(response.data[0])
                 this.initOuvrage(response.data[0]);
                 this.filesToBeShowed.forEach(item => {
-                    item.attachmentEntityId = response.data[0].id
+                    item.attachmentEntityId = response.data[0].code
                   });
             },
             (error) => {

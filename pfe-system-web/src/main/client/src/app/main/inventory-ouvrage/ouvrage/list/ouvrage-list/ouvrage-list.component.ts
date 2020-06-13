@@ -13,11 +13,11 @@ import { ToolsService } from '@ayams/services/tools.service';
 import { takeUntil } from 'rxjs/operators';
 const COLUMN_NAMES: string[] = [
   'checkbox',
-  'type',
+  'name',
   'code',
-  'commune',
   'currentCapacity',
-  'enabled',
+  'commissioningDate',
+  'operatingDate',
   'buttons'
 ];
 

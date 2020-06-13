@@ -6,7 +6,7 @@ import { AuthenticationGuard } from 'app/guards/authentication.guard';
 
 const routes: Routes = [
   {
-    path: 'synoptic',
+    path: 'chain/synoptic',
     loadChildren: () => import('./synoptic/synoptic.module').then(m => m.SynopticModule),
     canActivate: [AuthenticationGuard]
   },

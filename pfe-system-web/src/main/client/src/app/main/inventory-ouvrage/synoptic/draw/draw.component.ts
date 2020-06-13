@@ -5,6 +5,7 @@ import { fuseAnimations } from '@fuse/animations';
 import { Subject } from 'rxjs';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FuseTranslationLoaderService } from '@fuse/services/translation-loader.service';
+import findIndex from 'lodash/findIndex'
 declare var Diagram: any;
 declare var cola: any;
 declare var d3: any;
@@ -55,37 +56,42 @@ export class DrawComponent implements OnInit, OnDestroy {
   initSynopticStructure(chains, ouvrages) {
     let debit;
     ouvrages.forEach((ouv) => {
-      var n = new node();
-      ouv.site.name = ouv.site.name.replace(' ', '')
-      n.name = ouv.site.name + '-' + ouv.code;
-      if (ouv.type == generalType.Reservoir) {
-        n.icon = images.R;
+      if (ouv.nbApears > 0) {
+        var n = new node();
+        ouv.site.name = ouv.site.name.replace(' ', '')
+        n.name = ouv.site.name + '-' + ouv.code;
+        if (ouv.type == generalType.Reservoir) {
+          n.icon = images.R;
+        }
+        if (ouv.type == generalType.Forage) {
+          n.icon = images.F;
+        }
+        if (ouv.type == generalType.StationTraitementConventionelle) {
+          n.icon = images.TC;
+        }
+        if (ouv.type == generalType.StationTraitementNonConventionelle) {
+          n.icon = images.TNC;
+        }
+        if (ouv.type == generalType.BriseCharge) {
+          n.icon = images.B;
+        }
+        if (ouv.type == generalType.StationPompage) {
+          n.icon = images.SP;
+        }
+        n.meta = {
+          title: ouv.name,
+        }
+        this.ouvrages.push(n);
       }
-      if (ouv.type == generalType.Forage) {
-        n.icon = images.F;
-      }
-      if (ouv.type == generalType.StationTraitementConventionelle) {
-        n.icon = images.TC;
-      }
-      if (ouv.type == generalType.StationTraitementNonConventionelle) {
-        n.icon = images.TNC;
-      }
-      if (ouv.type == generalType.BriseCharge) {
-        n.icon = images.B;
-      }
-      if (ouv.type == generalType.StationPompage) {
-        n.icon = images.SP;
-      }
-      n.meta = {
-        title: ouv.name,
-      }
-      this.ouvrages.push(n);
+
     })
     chains.forEach((chain) => {
       this.selectedChains.push(chain.code);
       chain.ouvrages.sort(this.compare);
       var l;
+      let k: number;
       for (var i = 0; i < chain.ouvrages.length - 1; i++) {
+        //let k = findIndex(this.ouvragesInfo, {'code': chain.ouvrages[i].code})
         l = new link();
         l.source = chain.ouvrages[i].site.replace(' ', '') + '-' + chain.ouvrages[i].code;
         l.target = chain.ouvrages[i + 1].site.replace(' ', '') + '-' + chain.ouvrages[i + 1].code;
@@ -212,6 +218,7 @@ export class DrawComponent implements OnInit, OnDestroy {
       for (var i = 0; i < index; i++) {
         npath += this.chains[i].ouvrages.length - 1
       }
+      this.displayOuvrages(index, true);
       for (var j = 0; j < this.chains[index].ouvrages.length - 1; j++) {
         d3.select("#link" + npath).style("display", "block")
         d3.select("#path" + npath).style("opacity", "1")
@@ -222,6 +229,7 @@ export class DrawComponent implements OnInit, OnDestroy {
       for (var i = 0; i < index; i++) {
         npath += this.chains[i].ouvrages.length - 1
       }
+      this.displayOuvrages(index, false);
       for (var j = 0; j < this.chains[index].ouvrages.length - 1; j++) {
         d3.select("#link" + npath).style("display", "none")
         d3.select("#path" + npath).style("opacity", "0")
@@ -232,6 +240,7 @@ export class DrawComponent implements OnInit, OnDestroy {
 
   selectAll() {
     if (this.selectedChains.includes('all')) {
+      this.displayAllOuvrages(true);
       this.chains.forEach((chain) => {
         if (!this.selectedChains.includes(chain.code))
           this.selectedChains = [...this.selectedChains, chain.code]
@@ -240,10 +249,53 @@ export class DrawComponent implements OnInit, OnDestroy {
       d3.selectAll("line").style("display", "block");
       d3.selectAll("path").style("opacity", "1");
     } else {
+      this.displayAllOuvrages(false);
       this.selectedChains = [];
       d3.selectAll("line").style("display", "none");
       d3.selectAll("path").style("opacity", "0");
     }
+  }
+
+  displayOuvrages(index, stat: boolean) {
+    let i;
+    let ouv;
+    if (stat) {
+      this.chains[index].ouvrages.forEach(ouvrage => {
+        i = findIndex(this.ouvragesInfo, { 'code': ouvrage.code })
+        ouv = this.ouvragesInfo[i];
+        if (ouv.nbApears == 0) {
+          d3.select("#nodes #" + ouv.site.name.replace(' ', '') + "-" + ouv.code.toLowerCase()).style("display", "block");
+          d3.select(".group." + ouv.site.name.replace(' ', '')).style("display", "block");
+        }
+        this.ouvragesInfo[i].nbApears++
+      })
+    }
+    else {
+      this.chains[index].ouvrages.forEach(ouvrage => {
+        i = findIndex(this.ouvragesInfo, { 'code': ouvrage.code })
+        ouv = this.ouvragesInfo[i];
+        this.ouvragesInfo[i].nbApears--
+        if (ouv.nbApears == 0) {
+          d3.select("#nodes #" + ouv.site.name.replace(' ', '') + "-" + ouv.code.toLowerCase()).style("display", "none");
+          d3.select(".group." + ouv.site.name.replace(' ', '')).style("display", "none");
+        }
+      })
+    }
+
+  }
+  displayAllOuvrages(stat: boolean) {
+    for (var i = 0; i < this.chains.length; i++) {
+      this.displayOuvrages(i, stat);
+    }
+    // if(stat)
+    // {
+    //   d3.selectAll("#nodes g").style("display", "block");
+    //   this.ouvragesInfo.map(ouv => ouv.nbApears = 0)
+    // }
+    // else
+    // {
+    //   d3.selectAll("#nodes g").style("display", "none");
+    // }
   }
 
   ngOnDestroy(): void {

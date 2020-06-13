@@ -14,7 +14,7 @@
                 <!-- APP TITLE -->
                 <div fxLayout="row" fxLayoutAlign="start center">
 
-                    <button mat-icon-button class="mr-0 mr-sm-16" [routerLink]="'/patrimony/chain/list'">
+                    <button mat-icon-button class="mr-0 mr-sm-16" [routerLink]="'/patrimony/chain'">
                         <mat-icon>arrow_back</mat-icon>
                     </button>
 
@@ -28,7 +28,7 @@
                     </div>
                 </div>
                 <!-- / APP TITLE -->
-                
+
 
             </div>
             <!-- / HEADER -->
@@ -37,77 +37,69 @@
 
                 <!-- CONTENT -->
                 <div class="content">
-
-                    <div class="tab-content p-24" fusePerfectScrollbar>
-
-                        <div fxLayout="column" fxLayout.gt-sm="row">
-                            <div class="mr-sm-12 ml-sm-12" fxFlex>
-                                <fieldset class="myfieldset">
-                                    <legend>{{'SHOW.LEGENDS.infos-gen' | translate}}</legend>
-
-                                    <div class="mr-sm-24" fxFlex>
+                    <mat-tab-group>
+                        <mat-tab label="Chaine Info">
+                            <div class="tab-content p-24" fusePerfectScrollbar>
+                                <div class="ml-sm-12 mr-sm-12">
+                                    <div class="mr-sm-24">
                                         <p class="myLabel">{{'SHOW.LABEL.name' | translate}}</p>
                                         <p class="myp">
-                                            <mat-icon matPrefix class="mr-12 s-20" color="accent">person</mat-icon>
+                                            <mat-icon matPrefix class="mr-12 s-20" color="accent">crop_free
+                                            </mat-icon>
                                             <span>{{chain.name}}</span>
                                         </p>
                                     </div>
-
-                                    <div class="mr-sm-24" fxFlex>
+                                    <div class="mr-sm-24">
                                         <p class="myLabel">{{'SHOW.LABEL.chaine-code' | translate}}</p>
                                         <p class="myp">
-                                            <mat-icon matPrefix class="mr-12 s-20" color="accent">keyboard</mat-icon>
+                                            <mat-icon matPrefix class="mr-12 s-20" color="accent">clear_all
+                                            </mat-icon>
                                             <span>{{chain.code}}</span>
                                         </p>
                                     </div>
-
-                                    <div class="active_div">
-                                        <span *ngIf="chain.enabled">
-                                            <mat-icon class="active-icon green-600-bg fuse-white-500-fg s-16">check
-                                            </mat-icon>
-                                            {{ 'SHOW.LABEL.active' | translate }}
-                                        </span>
-                                        <span *ngIf="!chain.enabled">
-                                            <mat-icon class="active-icon red-500-bg fuse-white-500-fg s-16">close
-                                            </mat-icon>
-                                            {{ 'SHOW.LABEL.inactive' | translate }}
-                                        </span>
-                                    </div>
-
-                                </fieldset>
-                            </div>
-                        </div>
-
-                        <div fxLayout="column" class="mr-sm-12 ml-sm-12">
-                            <fieldset class="myfieldset2">
-                                <legend>{{'SHOW.LEGENDS.structure' | translate}}</legend>
-                                <div fxLayout="column" fxLayout.gt-sm="row">
-
-                                    <!-- <div *ngIf="chain.structure.type == 'UNIT' || chain.structure.type == 'CENTER'"
-                                        class="mr-sm-24" fxFlex>
-                                        <p class="myLabel">{{'SHOW.LABEL.unit' | translate}}</p>
-                                        <p class="myp">
-                                            <mat-icon matPrefix class="mr-12 s-20" color="accent">home
-                                            </mat-icon>
-                                            <span
-                                                *ngIf="chain.structure.type == 'UNIT'">{{chain.structure.designation}}</span>
-                                            <span
-                                                *ngIf="chain.structure.parentStructure?.type == 'UNIT'">{{chain.structure.parentStructure.designation}}</span>
-                                        </p>
-                                    </div> -->
-
-                                    <!-- <div *ngIf="chain.structure.type == 'CENTER'" class="mr-sm-24" fxFlex>
-                                        <p class="myLabel">{{'SHOW.LABEL.center' | translate}}</p>
-                                        <p class="myp">
-                                            <mat-icon matPrefix class="mr-12 s-20" color="accent">location_city</mat-icon>
-                                            <span>{{chain.structure.designation}}</span>
-                                        </p>
-                                    </div> -->
                                 </div>
-                            </fieldset>
-                        </div>
+                            </div>
+                        </mat-tab>
+                        <mat-tab label="Les ouvrage de la chaine">
+                            <div class="tab-content p-24" fusePerfectScrollbar>
+                                <div *ngIf='chain.ouvrages.length' class="example-list">
+                                    <div class="example-box" *ngFor="let ouvrage of chain.ouvrages; let i = index">
+                                        {{i+1}} - {{ouvrage.name}}-{{ouvrage.code}}</div>
+                                </div>
+                                <div *ngIf='!chain.ouvrages.length'>
+                                    <div class="h3 secondary-text">Cette chaine ne contient aucun ouvrage</div>
+                                </div>
+                            </div>
+                        </mat-tab>
+                        <mat-tab label="Structure">
+                            <div class="tab-content p-24" fusePerfectScrollbar>
+                                <div fxLayout="column" class="mr-sm-12 ml-sm-12">
+                                    <div fxLayout="column" fxLayout.gt-sm="row">
+                                        <!-- <div *ngIf="chain.structure.type == 'UNIT' || chain.structure.type == 'CENTER'"
+                                                class="mr-sm-24" fxFlex>
+                                                <p class="myLabel">{{'SHOW.LABEL.unit' | translate}}</p>
+                                                <p class="myp">
+                                                    <mat-icon matPrefix class="mr-12 s-20" color="accent">home
+                                                    </mat-icon>
+                                                    <span
+                                                        *ngIf="chain.structure.type == 'UNIT'">{{chain.structure.designation}}</span>
+                                                    <span
+                                                        *ngIf="chain.structure.parentStructure?.type == 'UNIT'">{{chain.structure.parentStructure.designation}}</span>
+                                                </p>
+                                            </div> -->
 
-                    </div>
+                                        <!-- <div *ngIf="chain.structure.type == 'CENTER'" class="mr-sm-24" fxFlex>
+                                                <p class="myLabel">{{'SHOW.LABEL.center' | translate}}</p>
+                                                <p class="myp">
+                                                    <mat-icon matPrefix class="mr-12 s-20" color="accent">location_city</mat-icon>
+                                                    <span>{{chain.structure.designation}}</span>
+                                                </p>
+                                            </div> -->
+                                    </div>
+                                </div>
+                            </div>
+                        </mat-tab>
+                    </mat-tab-group>
                 </div>
                 <!-- / CONTENT -->
 

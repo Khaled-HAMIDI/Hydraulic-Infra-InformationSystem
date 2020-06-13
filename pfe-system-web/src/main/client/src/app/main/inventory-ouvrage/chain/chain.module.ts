@@ -64,7 +64,7 @@ const routes: Routes = [
         resolve: {data: ChainShowService}
     },
     {
-        path: 'list',
+        path: '',
         component: ChainListComponent,
         resolve: { data: ChainListService }
     }

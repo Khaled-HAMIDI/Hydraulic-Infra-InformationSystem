@@ -54,13 +54,20 @@ const appRoutes: Routes = [
         loadChildren: () => import('./main/print/print.module').then(m => m.PrintModule),
         canActivate: [AuthenticationGuard]
     },
-    { path: 'patrimony', 
-      loadChildren: () => import('./main/inventory-ouvrage/inventory-ouvrage.module').then(m => m.InventoryOuvrageModule),
-      canActivate: [AuthenticationGuard]
+    {
+        path: 'patrimony',
+        loadChildren: () => import('./main/inventory-ouvrage/inventory-ouvrage.module').then(m => m.InventoryOuvrageModule),
+        canActivate: [AuthenticationGuard]
     },
-    { path: 'uploadExample', 
-      loadChildren: () => import('./main/upload-example/upload-example.module').then(m => m.UploadExampleModule),
-      canActivate: [AuthenticationGuard]
+    {
+        path: 'exploitation',
+        loadChildren: () => import('./main/exploitation/exploitation.module').then(m => m.ExploitationModule),
+        canActivate: [AuthenticationGuard]
+    },
+    {
+        path: 'uploadExample',
+        loadChildren: () => import('./main/upload-example/upload-example.module').then(m => m.UploadExampleModule),
+        canActivate: [AuthenticationGuard]
     },
     {
         path: 'stepper-example',

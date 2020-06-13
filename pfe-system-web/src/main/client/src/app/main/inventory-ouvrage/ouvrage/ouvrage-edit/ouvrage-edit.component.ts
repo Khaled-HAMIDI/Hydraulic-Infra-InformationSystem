@@ -106,7 +106,7 @@ export class OuvrageEditComponent implements OnInit, OnDestroy {
                         break;
                 }
                 this.filesToBeAttached.forEach(item => {
-                    item.attachmentEntityId = response.data[0].id
+                    item.attachmentEntityId = response.data[0].code
                   });
             },
             (error) => {

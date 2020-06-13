@@ -2,7 +2,6 @@ package dz.ade.pfe.ouvrage.inventory.ouvrage;
 
 import dz.ade.pfe.domain.ouvrage.Ouvrage;
 import dz.ade.pfe.port.out.ouvrage.getouvragesbycodes.LoadOuvragesByCodes;
-import dz.ade.pfe.port.out.ouvrage.getouvragedetails.LoadOuvrageDetails;
 import dz.ade.pfe.port.out.ouvrage.getouvragelist.LoadOuvrageList;
 import dz.ade.pfe.port.out.ouvrage.getouvragesynoptic.LoadOuvrageSynoptic;
 import lombok.RequiredArgsConstructor;
@@ -12,14 +11,10 @@ import java.util.List;
 
 @Component
 @RequiredArgsConstructor
-public class OuvragePersistenceAdapter implements LoadOuvrageDetails, LoadOuvrageList, LoadOuvragesByCodes, LoadOuvrageSynoptic {
+public class OuvragePersistenceAdapter implements LoadOuvrageList, LoadOuvragesByCodes, LoadOuvrageSynoptic {
 
     private final OuvrageRepository ouvrageRepository;
 
-    @Override
-    public Ouvrage loadOuvrageDetails(String code) {
-        return ouvrageRepository.getOne((long) 1);
-    }
 
     @Override
     public List<Ouvrage> loadOuvrageList() {

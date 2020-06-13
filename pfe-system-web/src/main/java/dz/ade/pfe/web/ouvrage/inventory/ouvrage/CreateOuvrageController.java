@@ -2,7 +2,7 @@ package dz.ade.pfe.web.ouvrage.inventory.ouvrage;
 
 import dz.ade.pfe.port.in.ouvrage.createouvrage.CreateOuvrageCommand;
 import dz.ade.pfe.service.ouvrage.createouvrage.OuvrageAddDto;
-import dz.ade.pfe.service.ouvrage.getouvragedetails.OuvrageDto;
+import dz.ade.pfe.service.ouvrage.getouvrage.OuvrageShowDto;
 import dz.ade.pfe.web.commons.controller.BaseController;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -32,7 +32,7 @@ public class CreateOuvrageController extends BaseController {
             @ApiResponse(code = 403, message = "Accessing the resource you were trying to reach is forbidden"),
             @ApiResponse(code = 404, message = "The resource you were trying to reach is not found")
     })
-    public OuvrageDto createOuvrage(@RequestBody OuvrageAddDto ouvrageAddDto, HttpServletRequest httpServletRequest){
+    public OuvrageShowDto createOuvrage(@RequestBody OuvrageAddDto ouvrageAddDto, HttpServletRequest httpServletRequest){
         String codeStructure = securityUtils.getConnectedUserOrganisationalStructure(httpServletRequest);
 
         return createOuvrageCommand.createOuvrage(ouvrageAddDto, codeStructure);

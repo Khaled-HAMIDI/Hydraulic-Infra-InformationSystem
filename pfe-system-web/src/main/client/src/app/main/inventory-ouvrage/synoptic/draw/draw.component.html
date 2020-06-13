@@ -1,4 +1,4 @@
-<div id="chain" class="page-layout carded fullwidth inner-scroll">
+<div id="synoptic" class="page-layout carded fullwidth inner-scroll">
     <!-- TOP BACKGROUND -->
     <div class="top-bg accent"></div>
     <!-- / TOP BACKGROUND -->
@@ -10,7 +10,7 @@
             <!-- APP TITLE -->
             <div fxLayout="row" fxLayoutAlign="start center">
 
-                <button mat-icon-button class="mr-0 mr-sm-16" [routerLink]="'/patrimony/chain/list'">
+                <button mat-icon-button class="mr-0 mr-sm-16" [routerLink]="'/patrimony/chain'">
                     <mat-icon>arrow_back</mat-icon>
                 </button>
 
@@ -21,7 +21,7 @@
                     </div>
                 </div>
             </div>
-            <mat-form-field class="category-selector mt-24 mt-md-0">
+            <mat-form-field appearance="outline" class="category-selector mt-24 mt-md-0">
                 <mat-label>Chaines</mat-label>
                 <mat-select [(ngModel)]="selectedChains"  multiple>
                     <mat-option (click)="selectAll()" [value]="'all'">

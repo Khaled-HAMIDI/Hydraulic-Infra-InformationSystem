@@ -18,7 +18,7 @@ import { Chain } from './model/chain.model';
 })
 export class ChainShowComponent implements OnInit, OnDestroy {
   private _unsubscribeAll: Subject<any>;
-  private chain: Chain
+  chain: Chain
 
   constructor(
     private chainShowService: ChainShowService,
@@ -31,13 +31,22 @@ export class ChainShowComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.route.data.subscribe(
       (response) => {
-
         this.chain = response.data[0];
+        this.chain.ouvrages.sort(this.compare);
       },
       (error) => {
         console.log(error);
       }
     );
+  }
+  compare(a, b) {
+    if (a.position < b.position) {
+      return -1;
+    }
+    if (a.position > b.position) {
+      return 1;
+    }
+    return 0;
   }
 
   ngOnDestroy(): void {

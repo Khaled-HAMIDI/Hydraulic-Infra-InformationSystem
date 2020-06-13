@@ -12,6 +12,7 @@ import find from 'lodash/find';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import {Inventory, generalType, AllOuvrages} from './model/inventory.model';
+import * as moment from 'moment';
 
 
 @Component({
@@ -190,7 +191,7 @@ export class InventoryAddComponent implements OnInit, OnDestroy {
         const inventory = this.inventoryForm.getRawValue();
         this.inventoryAdd = new Inventory();
 
-        this.inventoryAdd.date = inventory.date;
+        this.inventoryAdd.date = moment(inventory.date).format('YYYY-MM-DD')
         this.inventoryAdd.responsable = this.currentchef.id;
         this.inventoryAdd.code = inventory.code;
         this.inventoryAdd.completed = false;
