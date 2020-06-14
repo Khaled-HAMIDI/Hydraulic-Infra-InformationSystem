@@ -28,4 +28,8 @@ public class WorkStopTimes extends Auditing {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "ouvrage_id")
     private Ouvrage ouvrage;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "reading_id")
+    private ExploitationReading reading;
 }
