@@ -186,8 +186,6 @@ export class InventoryAddComponent implements OnInit, OnDestroy {
 
     onSave(): void {
 
-        console.log(this.responsablesOuvrages);
-
         const inventory = this.inventoryForm.getRawValue();
         this.inventoryAdd = new Inventory();
 
@@ -198,10 +196,10 @@ export class InventoryAddComponent implements OnInit, OnDestroy {
         this.inventoryAdd.responsablesOuvrage = this.responsablesOuvrages;
         this.inventoryAddService.saveInventory(this.inventoryAdd)
             .then((response) => {
-                    console.log("yesss");
+                    console.log(response);
             },
                 (error) => {
-                    console.log("No")
+                    console.log(error)
                 });
 
     }

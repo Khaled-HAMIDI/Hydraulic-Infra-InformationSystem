@@ -4,5 +4,9 @@ import dz.ade.pfe.domain.ouvrage.Inventory;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface InventoryRepository extends JpaRepository<Inventory, Long> {
+
     Inventory findByCode(String code);
+
+    Inventory findByCompleted(Boolean completed);
+    Inventory findByUnitAndCompleted(String unite,Boolean completed);
 }

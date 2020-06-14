@@ -13,9 +13,10 @@ import java.util.List;
 public class GetOuvrageByInventoryService  implements GetOuvrageByInventoryQuery{
 
     private final LoadOuvrageByInventory loadOuvrageByInventory;
+    private final GetOuvrageByInventoryMapper getouvrageByInventoryMapper;
 
     @Override
-    public List<Ouvrage> getOuvrageByInventory(String code) {
-        return loadOuvrageByInventory.loadOuvrageByInventory(code);
+    public List<OuvrageInventoryDto> getOuvrageByInventory(String user) {
+        return getouvrageByInventoryMapper.ouvrageToOuvrageInventoryDto(loadOuvrageByInventory.loadOuvrageByInventory(user));
     }
 }

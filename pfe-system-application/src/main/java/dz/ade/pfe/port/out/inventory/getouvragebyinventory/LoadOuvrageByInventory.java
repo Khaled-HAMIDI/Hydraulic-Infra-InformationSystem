@@ -5,5 +5,5 @@ import dz.ade.pfe.domain.ouvrage.Ouvrage;
 import java.util.List;
 
 public interface LoadOuvrageByInventory {
-    List<Ouvrage> loadOuvrageByInventory(String code);
+    List<Ouvrage> loadOuvrageByInventory(String user);
 }

@@ -63,7 +63,7 @@ public class CreateInventoryService implements CreateInventoryCommand {
                 .forEach((responsableOuvrage) -> {
                     saveInventoryOuvrage.saveInventoryOuvrage(new InventoryOuvrage(null, inventory1,
                             loadOuvragesByCodes.loadOuvrageByCode(responsableOuvrage.ouvrage),
-                            loadUserByUsername.loadUserByUsername(responsableOuvrage.responsable).get()));
+                            loadUserByUsername.loadUserByUsername(responsableOuvrage.responsable).get(),false));
                 });
 
         return returnInventoryMapper.ReturnInventory(inventory1);

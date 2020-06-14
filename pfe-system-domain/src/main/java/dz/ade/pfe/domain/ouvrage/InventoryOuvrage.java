@@ -32,6 +32,8 @@ public class InventoryOuvrage extends Auditing{
     @JoinColumn(name = "responsable_id")
     private User responsable;
 
+    private boolean done;
+
 
 }
 
