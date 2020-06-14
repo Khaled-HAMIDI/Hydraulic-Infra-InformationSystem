@@ -113,7 +113,7 @@ export const navigation: FuseNavigation[] = [
                         title: 'Suivi des ouvrage',
                         translate: 'NAV.EXPLOITATION.ITEMS.START',
                         type: 'item',
-                        url: 'exploitation/reading/add'
+                        url: 'exploitation/reading'
                     },
                     {
                         id   : 'suivre',
