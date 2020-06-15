@@ -24,20 +24,22 @@ import java.util.List;
 @Component
 @RequiredArgsConstructor
 
-public class GetCompletedInventoryController extends BaseController {
+public class GetCompletedInventoriesController extends BaseController {
     private final GetCompletedInventoriesQuery getCompletedInventoriesQuery;
 
-    @GetMapping(value = "/inventory")
+    @GetMapping(value = "/inventory/completed")
     @ApiOperation(value = "Obtenir la liste des inventaires effecués dans l'unité")
-    @ApiResponses(value = {
-            @ApiResponse(code = 200, message = "Successfully retrieved a list of inventories"),
-            @ApiResponse(code = 401, message = "You are not authorized to view the resource"),
-            @ApiResponse(code = 403, message = "Accessing the resource you were trying to reach is forbidden"),
-            @ApiResponse(code = 404, message = "The resource you were trying to reach is not found")
-    })
     public List<InventoryShowDto> getCompletedInventories(HttpServletRequest httpServletRequest) {
 
         String unitCode= securityUtils.getConnectedUserOrganisationalStructure(httpServletRequest);
-        return getCompletedInventoriesQuery.getCompletedInventory(unitCode);
+        return getCompletedInventoriesQuery.getCompletedInventories(unitCode);
+    }
+
+    @GetMapping(value = "/inventory/completed/chiefs")
+    @ApiOperation(value = "Obtenir la liste des chefs des inventaires effecués dans l'unité")
+    public List<String> getCompletedInventoriesChiefs(HttpServletRequest httpServletRequest) {
+
+        String unitCode= securityUtils.getConnectedUserOrganisationalStructure(httpServletRequest);
+        return getCompletedInventoriesQuery.getCompletedInventoriesChiefs(unitCode);
     }
 }

@@ -8,6 +8,7 @@ import dz.ade.pfe.port.out.inventory.getcompletedinventory.LoadCompletedInventor
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Component
@@ -18,10 +19,26 @@ public class GetCompletedInventoryAdapter implements LoadCompletedInventory {
     private final OrganisationalStructureRepository organisationalStructureRepository;
 
     @Override
-    public List<Inventory> loadCompletedInventory(String unitCode){
+    public List<Inventory> loadCompletedInventories(String unitCode){
 
         OrganisationalStructure unit = organisationalStructureRepository.findByCode(unitCode);
 
         return inventoryRepository.findAllByUnitAndCompleted(unit,true);
+    }
+
+    @Override
+    public List<String> loadCompletedInventoriesChiefs(String unitCode){
+
+        OrganisationalStructure unit = organisationalStructureRepository.findByCode(unitCode);
+        List<Inventory> inventories= inventoryRepository.findAllByUnitAndCompleted(unit,true);
+        List<String> cheifs =new ArrayList<String>();
+
+        inventories.stream()
+                .forEach((inventory) ->{
+                  String chef = inventory.getHeadOfTheInventory().getFirstName() + ' '+ inventory.getHeadOfTheInventory().getLastName();
+                  cheifs.add(chef);
+                });
+
+        return cheifs;
     }
 }

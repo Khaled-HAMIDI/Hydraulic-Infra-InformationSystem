@@ -96,7 +96,7 @@ export const navigation: FuseNavigation[] = [
                         title: 'Liste inventaires',
                         translate: 'NAV.INVENTORY.ITEMS.LIST',
                         type: 'item',
-                        url: 'pasencore'
+                        url: 'patrimony/inventory/completed'
                     }
                 ]
 

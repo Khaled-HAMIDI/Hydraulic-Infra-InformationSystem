@@ -41,7 +41,6 @@ export class CurrentInventoryComponent extends Table implements OnInit, OnDestro
     constructor(
         private currentInventoryService: CurrentInventoryService,
         private route: ActivatedRoute,
-        public authorizationService: AuthorizationService,
         private toolsService: ToolsService,
         public router: Router) {
         super(COLUMN_NAMES)
@@ -70,6 +69,7 @@ export class CurrentInventoryComponent extends Table implements OnInit, OnDestro
                         inventoryDate:this.InventoryDate
                     })
                 }
+
                 this.initTable(this.inventoryData);
             },
             (error) => {

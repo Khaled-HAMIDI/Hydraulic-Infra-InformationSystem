@@ -15,5 +15,7 @@ public class InventoryShowDto {
 
     private LocalDate date;
 
+    private LocalDate finishDate;
+
     private Boolean completed;
 }

@@ -32,6 +32,8 @@ import {MatTabsModule} from "@angular/material/tabs";
 import {MatExpansionModule} from "@angular/material/expansion";
 import { CurrentInventoryComponent } from './current-inventory/current-inventory.component';
 import {CurrentInventoryService} from "./current-inventory/current-inventory.service";
+import { CompletedInventoriesComponent } from './completed-inventories/completed-inventories.component';
+import {CompletedInventoriesService} from "./completed-inventories/completed-inventories.service";
 
 
 export const options: Partial<IConfig> | (() => Partial<IConfig>) = null;
@@ -51,11 +53,18 @@ const routes: Routes = [
         resolve: {
             data: CurrentInventoryService
         }
+    },
+    {
+        path: 'completed',
+        component: CompletedInventoriesComponent,
+        resolve: {
+            data: CompletedInventoriesService
+        }
     }
 ];
 
 @NgModule({
-    declarations: [InventoryAddComponent, CurrentInventoryComponent],
+    declarations: [InventoryAddComponent, CurrentInventoryComponent, CompletedInventoriesComponent],
     imports: [
         CommonModule,
         RouterModule.forChild(routes),

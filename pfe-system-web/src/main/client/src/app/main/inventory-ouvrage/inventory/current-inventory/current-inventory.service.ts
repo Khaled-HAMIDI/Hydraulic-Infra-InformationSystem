@@ -49,7 +49,6 @@ export class CurrentInventoryService implements Resolve<any> {
         return new Promise((resolve, reject) => {
             this.http.get(API+"/ouvrage/type")
                 .subscribe((response: any) => {
-                    this.ouvrages = response;
                     resolve(response);
                 }, reject = (err) => { console.log(err) });
         });
@@ -59,7 +58,6 @@ export class CurrentInventoryService implements Resolve<any> {
         return new Promise((resolve, reject) => {
             this.http.get(INVENTORY_API+"/status")
                 .subscribe((response: any) => {
-                    this.ouvrages = response;
                     resolve(response);
                 }, reject = (err) => { console.log(err) });
         });
@@ -69,7 +67,6 @@ export class CurrentInventoryService implements Resolve<any> {
         return new Promise((resolve, reject) => {
             this.http.get(INVENTORY_API+"/startdate")
                 .subscribe((response: any) => {
-                    this.ouvrages = response;
                     resolve(response);
                 }, reject = (err) => { console.log(err) });
         });

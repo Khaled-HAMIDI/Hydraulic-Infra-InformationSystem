@@ -6,5 +6,6 @@ import dz.ade.pfe.service.inventory.getcompletedinventories.InventoryShowDto;
 import java.util.List;
 
 public interface GetCompletedInventoriesQuery {
-    List<InventoryShowDto> getCompletedInventory(String unitCode);
+    List<InventoryShowDto> getCompletedInventories(String unitCode);
+    List<String> getCompletedInventoriesChiefs(String unitCode);
 }

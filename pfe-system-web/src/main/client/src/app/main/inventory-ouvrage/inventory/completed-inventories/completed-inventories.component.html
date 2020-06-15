@@ -1,0 +1,91 @@
+<div id="inventories" class="page-layout carded fullwidth inner-scroll">
+
+    <!-- TOP BACKGROUND -->
+    <div class="top-bg accent" id="headerHeight"></div>
+    <!-- / TOP BACKGROUND -->
+    <!-- CENTER -->
+    <div [ngClass]="{HideTable: emptyList}" class="center">
+        <!-- HEADER -->
+        <div class="header accent" fxLayout="column" fxLayoutAlign="center center" fxLayout.gt-sm="row"
+             fxLayoutAlign.gt-sm="space-between center">
+
+            <!-- APP TITLE -->
+            <div class="logo my-12 m-sm-0" fxLayout="row" fxLayoutAlign="start center">
+                <span class="logo-text h1"> {{'LIST.HEADER.title' | translate}} </span>
+            </div>
+            <!-- / APP TITLE -->
+
+            <!-- SEARCH -->
+            <ng-container *ayamsHasAnyPermissions="['*:*']">
+                <div class="search-wrapper mx-32 mx-md-0">
+                    <div class="search" fxFlex fxLayout="row" fxLayoutAlign="start center">
+                        <mat-icon>search</mat-icon>
+                        <input matInput [(ngModel)]="searchTerm" (keyup)="applyFilter($event.target.value)" placeholder="Recherche">
+                    </div>
+                </div>
+                <!-- / SEARCH -->
+
+                <button mat-raised-button (click)="export()" class="mat-white-bg mt-24 mt-md-0" [disabled]="!btnExport">
+                    <span>{{'LIST.HEADER.export' | translate}}</span>
+                </button>
+            </ng-container>
+        </div>
+        <!-- / HEADER -->
+
+        <!-- CONTENT CARD -->
+        <ng-container *ayamsHasAnyPermissions="['*:*']">
+            <div class="example-container mat-white-bg">
+
+                <table mat-table [dataSource]="dataSource" matSort>
+
+                    <ng-container matColumnDef="code">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header>{{'LIST.TABLE.code' | translate}}
+                        </th>
+                        <td mat-cell *matCellDef="let inventory">
+                            <p class="text-truncate">{{inventory.data.code}}</p>
+                        </td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="startDate">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header>{{'LIST.TABLE.startDate' | translate}}
+                        </th>
+                        <td mat-cell *matCellDef="let inventory">
+                            <p class="text-truncate">{{inventory.data.date}}</p>
+                        </td>
+                    </ng-container>
+
+
+                    <ng-container matColumnDef="finishDate">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header>{{'LIST.TABLE.finishDate' | translate}}
+                        </th>
+                        <td mat-cell *matCellDef="let inventory">
+                            <p class="text-truncate">{{inventory.data.finishDate}}</p>
+                        </td>
+                    </ng-container>
+
+                    <!-- Code Column -->
+                    <ng-container matColumnDef="chief">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header>{{'LIST.TABLE.chief' | translate}}
+                        </th>
+                        <td mat-cell *matCellDef="let inventory">
+                            <p class="text-truncate">{{inventory.cheif}}</p>
+                        </td>
+                    </ng-container>
+
+
+                    <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky:true"></tr>
+                    <ng-container *ayamsHasAnyPermissions="['ouvrages:show','ouvrages:*','*:show','*:*']">
+                        <tr mat-row *matRowDef="let ouvrage; columns: displayedColumns;" class="ouvrage" matRipple
+                            (click)="router.navigate(['/patrimony/ouvrages/'+ouvrage.code+'/show'])">
+                        </tr>
+                    </ng-container>
+                </table>
+
+            </div>
+
+        </ng-container>
+        <mat-paginator [pageSizeOptions]="pageSizeOptions"></mat-paginator>
+        <!-- / CONTENT CARD -->
+    </div>
+    <!-- / CENTER -->
+</div>

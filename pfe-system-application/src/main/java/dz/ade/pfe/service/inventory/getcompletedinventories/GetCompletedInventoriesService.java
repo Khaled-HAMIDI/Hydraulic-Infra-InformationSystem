@@ -15,7 +15,12 @@ public class GetCompletedInventoriesService implements GetCompletedInventoriesQu
     private final GetCompletedInventoriesMapper getCompletedInventoriesMapper;
 
     @Override
-    public List<InventoryShowDto> getCompletedInventory(String unitCode) {
-        return getCompletedInventoriesMapper.inventoryToInventoryShow(loadCompletedInventory.loadCompletedInventory(unitCode));
+    public List<InventoryShowDto> getCompletedInventories(String unitCode) {
+        return getCompletedInventoriesMapper.inventoryToInventoryShow(loadCompletedInventory.loadCompletedInventories(unitCode));
+    }
+
+    @Override
+    public List<String> getCompletedInventoriesChiefs(String unitCode) {
+        return loadCompletedInventory.loadCompletedInventoriesChiefs(unitCode);
     }
 }
