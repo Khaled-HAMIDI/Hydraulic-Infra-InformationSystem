@@ -105,32 +105,9 @@ export const navigation: FuseNavigation[] = [
                 id: 'exploitation',
                 title: 'exploitation',
                 translate: 'NAV.EXPLOITATION.TITLE',
-                type: 'collapsable',
+                type: 'item',
                 icon: 'build',
-                children:[
-                    {
-                        id: 'suivre',
-                        title: 'Suivi des ouvrage',
-                        translate: 'NAV.EXPLOITATION.ITEMS.START',
-                        type: 'item',
-                        url: 'exploitation/reading'
-                    },
-                    {
-                        id   : 'suivre',
-                        title: 'Suivre inventaire',
-                        translate: 'NAV.EXPLOITATION.ITEMS.FOLLOW',
-                        type : 'item',
-                        url  : 'pasencore'
-                    },
-                    {
-                        id: 'liste',
-                        title: 'Liste inventaires',
-                        translate: 'NAV.EXPLOITATION.ITEMS.LIST',
-                        type: 'item',
-                        url: 'pasencore'
-                    }
-                ]
-
+                url: 'exploitation/reading'
             }
         ]
     },
