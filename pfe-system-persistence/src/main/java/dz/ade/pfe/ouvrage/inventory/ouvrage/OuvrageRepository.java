@@ -1,12 +1,12 @@
 package dz.ade.pfe.ouvrage.inventory.ouvrage;
 
 import dz.ade.pfe.domain.ouvrage.Ouvrage;
+import dz.ade.pfe.service.exploitation.getouvrages.OuvrageExploitationDto;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
 import java.util.List;
-import java.util.Set;
 
 public interface OuvrageRepository extends JpaRepository<Ouvrage, Long> {
 
@@ -22,4 +22,7 @@ public interface OuvrageRepository extends JpaRepository<Ouvrage, Long> {
 
     @Query("SELECT distinct o FROM Ouvrage o JOIN FETCH o.chains c JOIN FETCH c.chain ch JOIN FETCH c.ouvrage ov  JOIN FETCH ov.site where ch.code = :code ")
     List<Ouvrage> findAllForSynopticByCode(String code);
+
+    @Query("SELECT distinct o FROM Ouvrage o JOIN FETCH o.readings r order by o.id,r.date desc")
+    List<Ouvrage> loadOuvragesExploitation();
 }

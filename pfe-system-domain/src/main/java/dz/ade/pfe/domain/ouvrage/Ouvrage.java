@@ -196,7 +196,7 @@ public class Ouvrage extends Auditing{
 
     @OneToMany(mappedBy = "ouvrage", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @Builder.Default
-    protected List<WorkStopTimes> ExploitationReading = new ArrayList<>();
+    protected List<ExploitationReading> readings = new ArrayList<>();
 
     @OneToMany(mappedBy = "ouvrage", cascade = CascadeType.ALL)
     @Builder.Default

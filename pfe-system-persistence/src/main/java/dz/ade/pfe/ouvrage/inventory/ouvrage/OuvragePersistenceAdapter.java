@@ -1,9 +1,11 @@
 package dz.ade.pfe.ouvrage.inventory.ouvrage;
 
 import dz.ade.pfe.domain.ouvrage.Ouvrage;
+import dz.ade.pfe.port.out.exploitation.getouvrages.LoadOuvragesExploitation;
 import dz.ade.pfe.port.out.ouvrage.getouvragesbycodes.LoadOuvragesByCodes;
 import dz.ade.pfe.port.out.ouvrage.getouvragelist.LoadOuvrageList;
 import dz.ade.pfe.port.out.ouvrage.getouvragesynoptic.LoadOuvrageSynoptic;
+import dz.ade.pfe.service.exploitation.getouvrages.OuvrageExploitationDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
@@ -11,7 +13,7 @@ import java.util.List;
 
 @Component
 @RequiredArgsConstructor
-public class OuvragePersistenceAdapter implements LoadOuvrageList, LoadOuvragesByCodes, LoadOuvrageSynoptic {
+public class OuvragePersistenceAdapter implements LoadOuvrageList, LoadOuvragesByCodes, LoadOuvrageSynoptic, LoadOuvragesExploitation {
 
     private final OuvrageRepository ouvrageRepository;
 
@@ -37,5 +39,9 @@ public class OuvragePersistenceAdapter implements LoadOuvrageList, LoadOuvragesB
             return ouvrageRepository.findAllForSynoptic();
         else
             return ouvrageRepository.findAllForSynopticByCode(code);
+    }
+    @Override
+    public List<Ouvrage> loadOuvragesExploitation(){
+       return ouvrageRepository.loadOuvragesExploitation();
     }
 }
