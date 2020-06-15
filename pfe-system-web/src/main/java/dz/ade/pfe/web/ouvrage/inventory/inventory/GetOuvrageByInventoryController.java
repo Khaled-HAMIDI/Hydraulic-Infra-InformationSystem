@@ -19,7 +19,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping(value = "/api")
-@Api(value = "inventory", description = "Obtenir la liste des ouvrages dans un inventaire par unité et par utilisateur")
+@Api(value = "inventory", description = "Obtenir la liste des ouvrages dans un inventaire  par utilisateur")
 @Component
 @RequiredArgsConstructor
 public class GetOuvrageByInventoryController extends BaseController {

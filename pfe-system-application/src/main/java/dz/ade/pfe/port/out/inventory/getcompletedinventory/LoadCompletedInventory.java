@@ -5,5 +5,5 @@ import dz.ade.pfe.domain.ouvrage.Inventory;
 import java.util.List;
 
 public interface LoadCompletedInventory {
-    List<Inventory> loadCompletedInventory();
+    List<Inventory> loadCompletedInventory(String unitCode);
 }
