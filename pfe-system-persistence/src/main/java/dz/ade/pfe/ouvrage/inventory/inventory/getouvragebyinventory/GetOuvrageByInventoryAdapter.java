@@ -10,6 +10,8 @@ import dz.ade.pfe.port.out.inventory.getouvragebyinventory.LoadOuvrageByInventor
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
+import javax.validation.constraints.Null;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -37,5 +39,49 @@ public class GetOuvrageByInventoryAdapter implements LoadOuvrageByInventory {
                 });
 
         return ouvrages;
+    }
+
+    @Override
+    public List<Boolean> loadOuvrageStatusByInventory(String user){
+
+        Inventory inventory =inventoryRepository.findByCompleted(false);
+        List<InventoryOuvrage> inventoryOuvrages = inventoryOuvrageRepository.findAllByInventory(inventory);
+
+        List<Boolean> ouvragesStatus = new ArrayList<Boolean>();
+
+        inventoryOuvrages.stream()
+                .forEach((inventoryOuvrage) -> {
+                    if (inventoryOuvrage.getResponsable().getUsername().equals(user)){
+                        ouvragesStatus.add(inventoryOuvrage.isDone());
+                    }
+                });
+
+        return ouvragesStatus;
+    }
+
+    @Override
+    public LocalDate loadInventoryDate(String user){
+
+        Inventory inventory =inventoryRepository.findByCompleted(false);
+        if (inventory != null) return inventory.getDate();
+        else return null;
+    }
+
+    @Override
+    public List<LocalDate> loadDateByOuvrage(String user){
+
+        Inventory inventory =inventoryRepository.findByCompleted(false);
+        List<InventoryOuvrage> inventoryOuvrages = inventoryOuvrageRepository.findAllByInventory(inventory);
+
+        List<LocalDate> ouvragesDates = new ArrayList<LocalDate>();
+
+        inventoryOuvrages.stream()
+                .forEach((inventoryOuvrage) -> {
+                    if (inventoryOuvrage.getResponsable().getUsername().equals(user)){
+                        ouvragesDates.add(inventoryOuvrage.getDoneDate());
+                    }
+                });
+
+        return ouvragesDates;
     }
 }

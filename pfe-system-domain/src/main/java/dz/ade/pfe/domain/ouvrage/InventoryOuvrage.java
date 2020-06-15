@@ -6,6 +6,8 @@ import lombok.*;
 import javax.persistence.*;
 import dz.ade.pfe.domain.commons.Auditing;
 
+import java.time.LocalDate;
+
 
 @Entity
 @Table(name = "inventory_ouvrage", schema = "pfe")
@@ -32,8 +34,14 @@ public class InventoryOuvrage extends Auditing{
     @JoinColumn(name = "responsable_id")
     private User responsable;
 
+    @Column(name = "done")
     private boolean done;
 
+    @Column(name = "done_date")
+    private LocalDate doneDate;
 
+    public boolean isDone() {
+        return done;
+    }
 }
 

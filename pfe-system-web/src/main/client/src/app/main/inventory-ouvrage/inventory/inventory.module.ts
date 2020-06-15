@@ -30,6 +30,8 @@ import {InventoryAddComponent} from "./inventory-add/inventory-add.component";
 import { InventoryAddService } from './inventory-add/inventory-add.service';
 import {MatTabsModule} from "@angular/material/tabs";
 import {MatExpansionModule} from "@angular/material/expansion";
+import { CurrentInventoryComponent } from './current-inventory/current-inventory.component';
+import {CurrentInventoryService} from "./current-inventory/current-inventory.service";
 
 
 export const options: Partial<IConfig> | (() => Partial<IConfig>) = null;
@@ -42,11 +44,18 @@ const routes: Routes = [
         resolve: {
             data: InventoryAddService
         }
+    },
+    {
+        path: 'current',
+        component: CurrentInventoryComponent,
+        resolve: {
+            data: CurrentInventoryService
+        }
     }
 ];
 
 @NgModule({
-    declarations: [InventoryAddComponent],
+    declarations: [InventoryAddComponent, CurrentInventoryComponent],
     imports: [
         CommonModule,
         RouterModule.forChild(routes),

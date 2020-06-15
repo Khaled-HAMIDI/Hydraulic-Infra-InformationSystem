@@ -20,7 +20,7 @@ export const locale = {
                 'TITLE': 'Inventaire',
                 'ITEMS':{
                     'START' :'Lancer un inventaire',
-                    'FOLLOW' : 'Inventaires courants',
+                    'FOLLOW' : 'Inventaire courant',
                     'LIST'  :'Inventaires terminés'
                 }
             },

@@ -89,7 +89,7 @@ export const navigation: FuseNavigation[] = [
                         title: 'Suivre inventaire',
                         translate: 'NAV.INVENTORY.ITEMS.FOLLOW',
                         type : 'item',
-                        url  : 'pasencore'
+                        url  : 'patrimony/inventory/current'
                     },
                     {
                         id: 'liste',

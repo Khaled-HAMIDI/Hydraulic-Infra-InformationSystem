@@ -40,6 +40,9 @@ public class Inventory extends Auditing{
     @Column(name = "date")
     private LocalDate date;
 
+    @Column(name = "finish_date")
+    private LocalDate finishDate;
+
     @Column(name = "completed")
     private Boolean completed;
 

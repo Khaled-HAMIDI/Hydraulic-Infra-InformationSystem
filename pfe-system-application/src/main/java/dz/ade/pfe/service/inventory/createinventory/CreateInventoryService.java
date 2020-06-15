@@ -55,6 +55,7 @@ public class CreateInventoryService implements CreateInventoryCommand {
         inventory.setUnit(unit.get());
         inventory.setHeadOfTheInventory(user.get());
         inventory.setCompleted(inventoryAddDto.getCompleted());
+        inventory.setDate(inventoryAddDto.getDate());
 
         Inventory inventory1 = saveInventory.saveInventory(inventory);
 
@@ -63,7 +64,7 @@ public class CreateInventoryService implements CreateInventoryCommand {
                 .forEach((responsableOuvrage) -> {
                     saveInventoryOuvrage.saveInventoryOuvrage(new InventoryOuvrage(null, inventory1,
                             loadOuvragesByCodes.loadOuvrageByCode(responsableOuvrage.ouvrage),
-                            loadUserByUsername.loadUserByUsername(responsableOuvrage.responsable).get(),false));
+                            loadUserByUsername.loadUserByUsername(responsableOuvrage.responsable).get(),false,null));
                 });
 
         return returnInventoryMapper.ReturnInventory(inventory1);

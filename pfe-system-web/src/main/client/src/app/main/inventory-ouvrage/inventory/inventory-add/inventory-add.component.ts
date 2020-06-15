@@ -6,7 +6,7 @@ import { FuseTranslationLoaderService } from '@fuse/services/translation-loader.
 import { locale as french } from './i18n/fr';
 import { locale as arabic } from './i18n/ar';
 import { InventoryAddService } from "./inventory-add.service";
-import { User } from './inventory.model';
+import { User } from './model/inventory.model';
 import sortBy from 'lodash/sortBy';
 import find from 'lodash/find';
 import { Subject } from 'rxjs';

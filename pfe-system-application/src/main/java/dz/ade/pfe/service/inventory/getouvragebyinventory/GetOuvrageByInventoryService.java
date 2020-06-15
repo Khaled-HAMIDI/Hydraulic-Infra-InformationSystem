@@ -6,6 +6,7 @@ import dz.ade.pfe.port.out.inventory.getouvragebyinventory.LoadOuvrageByInventor
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @Service
@@ -19,4 +20,21 @@ public class GetOuvrageByInventoryService  implements GetOuvrageByInventoryQuery
     public List<OuvrageInventoryDto> getOuvrageByInventory(String user) {
         return getouvrageByInventoryMapper.ouvrageToOuvrageInventoryDto(loadOuvrageByInventory.loadOuvrageByInventory(user));
     }
+
+    @Override
+    public List<Boolean> getOuvrageStatusByInventory(String user) {
+        return loadOuvrageByInventory.loadOuvrageStatusByInventory(user);
+    }
+
+
+    @Override
+    public List<LocalDate> getDateByOuvrage(String user) {
+        return loadOuvrageByInventory.loadDateByOuvrage(user);
+    }
+
+    @Override
+    public LocalDate getInventoryDate(String user) {
+        return loadOuvrageByInventory.loadInventoryDate(user);
+    }
+
 }

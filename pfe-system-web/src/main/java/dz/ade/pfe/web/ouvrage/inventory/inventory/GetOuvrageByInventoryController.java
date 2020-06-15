@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletRequest;
+import java.time.LocalDate;
 import java.util.List;
 
 @RestController
@@ -26,17 +27,38 @@ public class GetOuvrageByInventoryController extends BaseController {
     private final GetOuvrageByInventoryQuery getOuvrageByInventoryQuery;
 
     @GetMapping(value = "/inventory/ouvrages")
-    @ApiOperation(value = "Obtenir la liste des ouvrages inventoriés dans un inventaire")
-    @ApiResponses(value = {
-            @ApiResponse(code = 200, message = "Successfully retrieved a list of ouvrages"),
-            @ApiResponse(code = 401, message = "You are not authorized to view the resource"),
-            @ApiResponse(code = 403, message = "Accessing the resource you were trying to reach is forbidden"),
-            @ApiResponse(code = 404, message = "The resource you were trying to reach is not found")
-    })
+    @ApiOperation(value = "Obtenir la liste des ouvrages inventoriés")
     public List<OuvrageInventoryDto> getOuvrageByInventory(HttpServletRequest httpServletRequest) {
 
         String codeUser = securityUtils.getUsername(httpServletRequest);
 
         return getOuvrageByInventoryQuery.getOuvrageByInventory(codeUser);
+    }
+
+    @GetMapping(value = "/inventory/ouvrages/status")
+    @ApiOperation(value = "Obtenir la liste des status d'ouvrages inventoriés")
+    public List<Boolean> getOuvrageStatusByInventory(HttpServletRequest httpServletRequest) {
+
+        String codeUser = securityUtils.getUsername(httpServletRequest);
+
+        return getOuvrageByInventoryQuery.getOuvrageStatusByInventory(codeUser);
+    }
+
+    @GetMapping(value = "/inventory/ouvrages/dates")
+    @ApiOperation(value = "Obtenir la liste des dates d'inventaire sur les ouvrages")
+    public List<LocalDate> getDateByOuvrage(HttpServletRequest httpServletRequest) {
+
+        String codeUser = securityUtils.getUsername(httpServletRequest);
+
+        return getOuvrageByInventoryQuery.getDateByOuvrage(codeUser);
+    }
+
+    @GetMapping(value = "/inventory/ouvrages/startdate")
+    @ApiOperation(value = "Obtenir la date de début de l'ouvrage")
+    public LocalDate getInventoryDate(HttpServletRequest httpServletRequest) {
+
+        String codeUser = securityUtils.getUsername(httpServletRequest);
+
+        return getOuvrageByInventoryQuery.getInventoryDate(codeUser);
     }
 }
