@@ -44,7 +44,7 @@ import {ColonnesMontantesComponent} from "../../composant/composant-add-edit/sta
 @Injectable({
     providedIn: 'root'
 })
-export class SteppersAddEditService {
+export class StepperAddEditService {
     briseChargeComposants = [
         {
             'title': 'Securité',

@@ -5,25 +5,24 @@ import { fuseAnimations } from '@fuse/animations';
 import { FusePerfectScrollbarDirective } from '@fuse/directives/fuse-perfect-scrollbar/fuse-perfect-scrollbar.directive';
 import { FuseSidebarService } from '@fuse/components/sidebar/sidebar.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { LoadComponenteDirective } from '../../../load-component.directive';
-import { DynamicComponent } from '../../../dynamic-component.component';
-import {SteppersAddEditService, componentMapping} from "../steppers-add-edit.service";
+import { LoadComponenteDirective } from '../../load-component.directive';
+import { DynamicComponent } from '../../dynamic-component.component';
+import {StepperShowServie, componentMapping} from "./stepper-show.servie";
 
 @Component({
-  selector: 'app-station-traitement-conv-stepper',
-  templateUrl: './station-traitement-conv-stepper.component.html',
-  styleUrls: ['./station-traitement-conv-stepper.component.scss'],
-    animations: fuseAnimations,
-    encapsulation: ViewEncapsulation.None
+  selector: 'app-stepper-show',
+  templateUrl: './stepper-show.component.html',
+  styleUrls: ['./stepper-show.component.scss'],
+    encapsulation: ViewEncapsulation.None,
+    animations: fuseAnimations
 })
+export class StepperShowComponent implements OnInit, OnDestroy {
 
-export class StationTraitementConvStepperComponent implements OnInit, OnDestroy {
     @ViewChild(LoadComponenteDirective, { static: true }) integrationHost: LoadComponenteDirective;
 
     animationDirection: 'left' | 'right' | 'none';
     composants: any[] = [];
     currentStep: number;
-    action :String;
 
     @ViewChildren(FusePerfectScrollbarDirective)
     fuseScrollbarDirectives: QueryList<FusePerfectScrollbarDirective>;
@@ -32,7 +31,7 @@ export class StationTraitementConvStepperComponent implements OnInit, OnDestroy 
 
 
     constructor(
-        private steppersService: SteppersAddEditService,
+        private steppersService: StepperShowServie,
         private _changeDetectorRef: ChangeDetectorRef,
         private _fuseSidebarService: FuseSidebarService,
         private route: ActivatedRoute,
@@ -58,8 +57,27 @@ export class StationTraitementConvStepperComponent implements OnInit, OnDestroy 
         // Subscribe to courses
         this.route.data.pipe(takeUntil(this._unsubscribeAll)).subscribe(
             (response) => {
-                this.action = response.action;
-                this.composants = this.steppersService.stationTraitementConventionelleComposants;
+
+                switch (this.route.snapshot.params['type']) {
+                    case "StationTraitementConventionelle" :
+                        this.composants = this.steppersService.stationTraitementConventionelleComposants;
+                        break;
+                    case "StationTraitementNonConventionelle":
+                        this.composants = this.steppersService.stationTraitementNonConventionelleComposants;
+                        break;
+                    case "Reservoir":
+                        this.composants = this.steppersService.reservoirComposants;
+                        break;
+                    case "Forage":
+                        this.composants = this.steppersService.forageComposants;
+                        break;
+                    case "StationPompage":
+                        this.composants = this.steppersService.stationPompageComposants;
+                        break;
+                    case "BriseCharge":
+                        this.composants = this.steppersService.briseChargeComposants;
+                        break;
+                }
                 this.loadComponent(this.composants[0].ComponentName);
             },
             (error) => {
@@ -87,7 +105,7 @@ export class StationTraitementConvStepperComponent implements OnInit, OnDestroy 
      * @param step
      */
     gotoStep(step): void {
-        if (this.action != "edit") return;
+
         // Decide the animation direction
         this.animationDirection = this.currentStep < step ? 'left' : 'right';
 
@@ -126,7 +144,7 @@ export class StationTraitementConvStepperComponent implements OnInit, OnDestroy 
      * Go to previous step
      */
     gotoPreviousStep(): void {
-        if (this.currentStep === 0 || this.action != "edit") {
+        if (this.currentStep === 0 ) {
             return;
         }
 

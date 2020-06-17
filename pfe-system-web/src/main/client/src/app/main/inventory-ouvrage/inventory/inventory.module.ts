@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Routes, RouterModule } from '@angular/router';
 import { FuseSharedModule } from '@fuse/shared.module';
-import { FuseConfirmDialogModule } from '@fuse/components';
+import {FuseConfirmDialogModule, FuseSidebarModule} from '@fuse/components';
 import { FuseWidgetModule } from '@fuse/components/widget/widget.module';
 import { FormsModule } from '@angular/forms';
 import { TranslateModule } from '@ngx-translate/core';
@@ -34,6 +34,10 @@ import { CurrentInventoryComponent } from './current-inventory/current-inventory
 import {CurrentInventoryService} from "./current-inventory/current-inventory.service";
 import { CompletedInventoriesComponent } from './completed-inventories/completed-inventories.component';
 import {CompletedInventoriesService} from "./completed-inventories/completed-inventories.service";
+import { InventoryStepperComponent } from './composant/inventory-stepper/inventory-stepper.component';
+import { InventoryComposantComponent } from './composant/inventory-composant/inventory-composant.component';
+import {LoadComponenteDirective} from "./load-component.directive";
+import {SecurityComponent} from "../ouvrage/composant/composant-add-edit/security/security.component";
 
 
 export const options: Partial<IConfig> | (() => Partial<IConfig>) = null;
@@ -55,6 +59,10 @@ const routes: Routes = [
         }
     },
     {
+        path: 'current/:type/:code',
+        component: InventoryStepperComponent,
+    },
+    {
         path: 'completed',
         component: CompletedInventoriesComponent,
         resolve: {
@@ -64,7 +72,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-    declarations: [InventoryAddComponent, CurrentInventoryComponent, CompletedInventoriesComponent],
+    declarations: [InventoryAddComponent, CurrentInventoryComponent, CompletedInventoriesComponent, InventoryStepperComponent, InventoryComposantComponent, LoadComponenteDirective],
     imports: [
         CommonModule,
         RouterModule.forChild(routes),
@@ -95,6 +103,9 @@ const routes: Routes = [
         MatDatepickerModule,
         MatTabsModule,
         MatExpansionModule,
-    ]
+        FuseSidebarModule,
+    ],entryComponents:[
+        InventoryComposantComponent
+        ]
 })
 export class InventoryModule { }

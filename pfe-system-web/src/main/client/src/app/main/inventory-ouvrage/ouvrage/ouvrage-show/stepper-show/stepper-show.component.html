@@ -30,9 +30,9 @@
     <div class="center">
 
         <!-- HEADER -->
-        <div class="header accent p-24" fxLayout="row" fxLayoutAlign="start center" [@animate]="{value:'*',params:{delay:'100ms',x:'-25px'}}">
+        <div class="header accent p-24" fxLayout="row" fxLayoutAlign="start center">
 
-            <button mat-icon-button class="mr-16" [routerLink]="'/patrimony/ouvrages/'+route.snapshot.params['code']+'/edit'">
+            <button mat-icon-button class="mr-16" [routerLink]="'/patrimony/ouvrages/'+route.snapshot.params['code']+'/show'">
                 <mat-icon>arrow_back</mat-icon>
             </button>
 
@@ -59,10 +59,10 @@
 
         <div class="step-navigation">
 
-            <button *ngIf="action == 'edit'" mat-fab class="previous mat-accent fuse-white-fg"
-                    (click)="gotoPreviousStep()"
-                    [disabled]="currentStep === 0"
-                    [fxHide]="currentStep === 0">
+            <button  mat-fab class="previous mat-accent fuse-white-fg"
+                     (click)="gotoPreviousStep()"
+                     [disabled]="currentStep === 0"
+                     [fxHide]="currentStep === 0">
                 <mat-icon>chevron_left</mat-icon>
             </button>
 

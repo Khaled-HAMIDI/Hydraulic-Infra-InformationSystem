@@ -5,19 +5,19 @@ import { fuseAnimations } from '@fuse/animations';
 import { FusePerfectScrollbarDirective } from '@fuse/directives/fuse-perfect-scrollbar/fuse-perfect-scrollbar.directive';
 import { FuseSidebarService } from '@fuse/components/sidebar/sidebar.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { LoadComponenteDirective } from '../../../load-component.directive';
-import { DynamicComponent } from '../../../dynamic-component.component';
-import {SteppersAddEditService, componentMapping} from "../steppers-add-edit.service";
+import { LoadComponenteDirective } from '../../load-component.directive';
+import { DynamicComponent } from '../../dynamic-component.component';
+import {StepperAddEditService, componentMapping} from "./stepper-add-edit.service";
 
 @Component({
-  selector: 'app-station-pompage-stepper',
-  templateUrl: './station-pompage-stepper.component.html',
-  styleUrls: ['./station-pompage-stepper.component.scss'],
-    animations: fuseAnimations,
-    encapsulation: ViewEncapsulation.None
+  selector: 'app-inventory-stepper',
+  templateUrl: './inventory-stepper.component.html',
+  styleUrls: ['./inventory-stepper.component.scss'],
+    encapsulation: ViewEncapsulation.None,
+    animations: fuseAnimations
 })
+export class InventoryStepperComponent implements OnInit, OnDestroy {
 
-export class StationPompageStepperComponent implements OnInit, OnDestroy {
     @ViewChild(LoadComponenteDirective, { static: true }) integrationHost: LoadComponenteDirective;
 
     animationDirection: 'left' | 'right' | 'none';
@@ -32,7 +32,7 @@ export class StationPompageStepperComponent implements OnInit, OnDestroy {
 
 
     constructor(
-        private steppersService: SteppersAddEditService,
+        private steppersService: StepperAddEditService,
         private _changeDetectorRef: ChangeDetectorRef,
         private _fuseSidebarService: FuseSidebarService,
         private route: ActivatedRoute,
@@ -59,7 +59,27 @@ export class StationPompageStepperComponent implements OnInit, OnDestroy {
         this.route.data.pipe(takeUntil(this._unsubscribeAll)).subscribe(
             (response) => {
                 this.action = response.action;
-                this.composants = this.steppersService.stationPompageComposants;
+                switch (this.route.snapshot.params['type']) {
+
+                    case "StationTraitementConventionelle" :
+                        this.composants = this.steppersService.stationTraitementConventionelleComposants;
+                        break;
+                    case "StationTraitementNonConventionelle":
+                        this.composants = this.steppersService.stationTraitementNonConventionelleComposants;
+                        break;
+                    case "Reservoir":
+                        this.composants = this.steppersService.reservoirComposants;
+                        break;
+                    case "Forage":
+                        this.composants = this.steppersService.forageComposants;
+                        break;
+                    case "StationPompage":
+                        this.composants = this.steppersService.stationPompageComposants;
+                        break;
+                    case "BriseCharge":
+                        this.composants = this.steppersService.briseChargeComposants;
+                        break;
+                }
                 this.loadComponent(this.composants[0].ComponentName);
             },
             (error) => {
@@ -144,12 +164,14 @@ export class StationPompageStepperComponent implements OnInit, OnDestroy {
 
 
     loadComponent(componentName: string): void {
+        console.log(componentName);
         const componentFactory = this.componentFactoryResolver.resolveComponentFactory(componentMapping[componentName]);
+        console.log(componentName);
         const viewContainerRef = this.integrationHost.viewContainerRef;
         viewContainerRef.clear();
 
         const componentRef = viewContainerRef.createComponent(componentFactory);
-        (<DynamicComponent>componentRef.instance).data = {};
+        componentRef.instance.typeComposant = componentName;
         if ((<DynamicComponent>componentRef.instance).validateEvent) {
             (<DynamicComponent>componentRef.instance).validateEvent.subscribe(($event) => {
                 if (this.currentStep === this.composants.length - 1) {
