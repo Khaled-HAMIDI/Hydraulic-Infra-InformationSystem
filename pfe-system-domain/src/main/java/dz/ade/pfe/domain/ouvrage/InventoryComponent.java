@@ -1,5 +1,6 @@
 package dz.ade.pfe.domain.ouvrage;
 
+import dz.ade.pfe.domain.admin.User;
 import lombok.*;
 
 import javax.persistence.*;
@@ -14,15 +15,20 @@ import dz.ade.pfe.domain.commons.Auditing;
 @Builder
 public class InventoryComponent extends Auditing{
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "inventaire_composant_gen")
-    @SequenceGenerator(name = "inventaire_composant_gen", sequenceName = "inventaire_composant_seq", schema = "pfe", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "inventory_component_gen")
+    @SequenceGenerator(name = "inventory_component_gen", sequenceName = "inventory_component_seq", schema = "pfe", allocationSize = 1)
     protected Long id;
 
-    @Column(name = "id_composant")
-    private Long id_composant;
+    @Column(name = "component_type")
+    private String componentType;
 
-    @Column(name = "id_inventaire")
-    private Long id_inventaire;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "inventory_id")
+    private Inventory inventory;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "ouvrage_id")
+    private Ouvrage ouvrage;
 
     @Column(name = "state")
     @Enumerated(EnumType.STRING)
@@ -30,6 +36,10 @@ public class InventoryComponent extends Auditing{
     /* Difference */
     @Column(name = "gap")
     private String gap;
+
+    @Column(name = "observation")
+    private String observation;
+
 
 
 }

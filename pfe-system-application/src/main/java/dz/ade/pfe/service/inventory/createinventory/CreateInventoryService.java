@@ -4,14 +4,13 @@ package dz.ade.pfe.service.inventory.createinventory;
 import dz.ade.pfe.domain.admin.OrganisationalStructure;
 import dz.ade.pfe.domain.admin.User;
 import dz.ade.pfe.domain.exceptions.ResourceNotFoundException;
-import dz.ade.pfe.domain.ouvrage.Inventory;
-import dz.ade.pfe.domain.ouvrage.InventoryOuvrage;
-import dz.ade.pfe.domain.ouvrage.Ouvrage;
-import dz.ade.pfe.domain.ouvrage.OuvrageChain;
+import dz.ade.pfe.domain.ouvrage.*;
 import dz.ade.pfe.port.in.inventory.createinventory.CreateInventoryCommand;
 
 import dz.ade.pfe.port.out.inventory.createinventory.SaveInventory;
+import dz.ade.pfe.port.out.inventory.saveinventorycomponent.SaveInventoryComponent;
 import dz.ade.pfe.port.out.inventory.saveinventoryouvrage.SaveInventoryOuvrage;
+import dz.ade.pfe.port.out.ouvrage.getcomposantbyouvrage.LoadComposantByOuvrage;
 import dz.ade.pfe.port.out.ouvrage.getouvragesbycodes.LoadOuvragesByCodes;
 import dz.ade.pfe.port.out.unit.LoadUnitByCode;
 import dz.ade.pfe.port.out.user.loadbyusername.LoadUserByUsername;
@@ -28,10 +27,12 @@ public class CreateInventoryService implements CreateInventoryCommand {
     //@Autowired
     private final SaveInventory saveInventory;
     private final SaveInventoryOuvrage saveInventoryOuvrage;
+    private final SaveInventoryComponent saveInventoryComponent;
     private final LoadUserByUsername loadUserByUsername;
     private final ReturnInventoryMapper returnInventoryMapper;
     private final LoadUnitByCode loadUnitByCode;
     private final LoadOuvragesByCodes loadOuvragesByCodes;
+    private final LoadComposantByOuvrage loadComposantByOuvrage;
 
 
     @Transactional
@@ -62,9 +63,36 @@ public class CreateInventoryService implements CreateInventoryCommand {
         List<ResponsableOuvrageType> responsablesOuvrage = inventoryAddDto.getResponsablesOuvrage();
         responsablesOuvrage.stream()
                 .forEach((responsableOuvrage) -> {
+
+                    Ouvrage ouvrage =loadOuvragesByCodes.loadOuvrageByCode(responsableOuvrage.ouvrage);
                     saveInventoryOuvrage.saveInventoryOuvrage(new InventoryOuvrage(null, inventory1,
-                            loadOuvragesByCodes.loadOuvrageByCode(responsableOuvrage.ouvrage),
-                            loadUserByUsername.loadUserByUsername(responsableOuvrage.responsable).get(),false,null));
+                            ouvrage, loadUserByUsername.loadUserByUsername(responsableOuvrage.responsable).get(),false,null));
+
+
+                    List<Component> components = loadComposantByOuvrage.loadAll(responsableOuvrage.ouvrage);
+                    components.forEach((component) -> {
+                        switch (component.getComponentType()){
+
+                            case EquipementStationTraitement:
+                                TraitementStationEquipement traitementStationEquipement = (TraitementStationEquipement) component;
+                                saveInventoryComponent.saveInventoryComponent(new InventoryComponent(null,traitementStationEquipement.getTypeEquipement(),inventory1,ouvrage,State.Bon," "," "));
+                                break;
+
+                            case ComposantHydroMecanique:
+                                HedromecaEquipment hedromecaEquipment = (HedromecaEquipment) component;
+                                saveInventoryComponent.saveInventoryComponent(new InventoryComponent(null,hedromecaEquipment.getEquipementType(),inventory1,ouvrage,State.Bon," "," "));
+                                break;
+
+                            case PosteChimique:
+                                ChemicalPosts chemicalPost = (ChemicalPosts) component;
+                                saveInventoryComponent.saveInventoryComponent(new InventoryComponent(null,chemicalPost.getPostType(),inventory1,ouvrage,State.Bon," "," "));
+                                break;
+
+                            default:
+                                saveInventoryComponent.saveInventoryComponent(new InventoryComponent(null,component.getComponentType().toString(),inventory1,ouvrage,State.Bon," "," "));
+                        }
+                    });
+
                 });
 
         return returnInventoryMapper.ReturnInventory(inventory1);

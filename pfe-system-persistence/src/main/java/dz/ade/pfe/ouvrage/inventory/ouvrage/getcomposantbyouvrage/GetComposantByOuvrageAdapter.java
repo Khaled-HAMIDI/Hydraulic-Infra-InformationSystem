@@ -117,5 +117,11 @@ public class GetComposantByOuvrageAdapter implements LoadComposantByOuvrage {
         Ouvrage ouvrage=ouvrageRepository.findByCode(code);
         return componentRepository.loadHedromecaEquipment(ouvrage);
     }
+
+    @Override
+    public List<Component> loadAll(String code){
+        Ouvrage ouvrage=ouvrageRepository.findByCode(code);
+        return componentRepository.findAllByOuvrage(ouvrage);
+    }
 }
 

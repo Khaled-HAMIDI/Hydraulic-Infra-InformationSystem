@@ -5,7 +5,7 @@ import dz.ade.pfe.domain.ouvrage.*;
 import java.util.List;
 
 public interface LoadComposantByOuvrage {
-    
+
      Security loadSecurity(String code);
         
      AntiRam loadAntiRam(String code);
@@ -39,4 +39,6 @@ public interface LoadComposantByOuvrage {
      List<ChemicalPosts> loadChemicalPosts(String code);
     
      List<HedromecaEquipment> loadHedromecaEquipment(String code);
+
+     List<Component> loadAll(String code);
 }

@@ -11,6 +11,8 @@ public interface ComponentRepository extends JpaRepository<Component, Long> {
 
     Boolean existsByOuvrageAndComponentType(Ouvrage ouvrage,ComponentType componentType);
 
+    List<Component> findAllByOuvrage(Ouvrage ouvrage);
+
     @Query("SELECT security FROM Security security WHERE security.ouvrage = :ouvrage AND security.componentType = 'Security'")
     Security loadSecurity(@Param("ouvrage") Ouvrage ouvrage);
 
