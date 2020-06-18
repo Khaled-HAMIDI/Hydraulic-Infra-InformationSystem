@@ -40,6 +40,9 @@ public class InventoryComponent extends Auditing{
     @Column(name = "observation")
     private String observation;
 
+    @Column(name = "done")
+    private Boolean done;
+
 
 
 }

@@ -37,4 +37,7 @@ public class GetOuvrageByInventoryService  implements GetOuvrageByInventoryQuery
         return loadOuvrageByInventory.loadInventoryDate(user);
     }
 
+    @Override
+    public InventoryShowDto getCurrentInventory(String unitCode){return  getouvrageByInventoryMapper.inventoryToInventoryShow(loadOuvrageByInventory.loadCurrentInventory(unitCode));};
+
 }

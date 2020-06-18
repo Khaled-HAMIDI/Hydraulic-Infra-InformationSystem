@@ -11,6 +11,7 @@ public interface InventoryRepository extends JpaRepository<Inventory, Long> {
     Inventory findByCode(String code);
 
     Inventory findByCompleted(Boolean completed);
+    Inventory findByUnitAndCompleted(OrganisationalStructure unitCode, Boolean completed);
     List<Inventory> findAllByUnitAndCompleted(OrganisationalStructure unitCode, Boolean completed);
 
 }

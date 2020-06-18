@@ -2,6 +2,7 @@ package dz.ade.pfe.web.ouvrage.inventory.inventory;
 
 
 import dz.ade.pfe.port.in.inventory.getouvragebyinventory.GetOuvrageByInventoryQuery;
+import dz.ade.pfe.service.inventory.getouvragebyinventory.InventoryShowDto;
 import dz.ade.pfe.service.inventory.getouvragebyinventory.OuvrageInventoryDto;
 import dz.ade.pfe.web.commons.controller.BaseController;
 import io.swagger.annotations.Api;
@@ -60,5 +61,12 @@ public class GetOuvrageByInventoryController extends BaseController {
         String codeUser = securityUtils.getUsername(httpServletRequest);
 
         return getOuvrageByInventoryQuery.getInventoryDate(codeUser);
+    }
+
+    @GetMapping(value = "/inventory/current")
+    public InventoryShowDto getCurrentInventory(HttpServletRequest httpServletRequest) {
+
+        String unitCode= securityUtils.getConnectedUserOrganisationalStructure(httpServletRequest);
+        return getOuvrageByInventoryQuery.getCurrentInventory(unitCode);
     }
 }

@@ -1,16 +1,17 @@
 package dz.ade.pfe.ouvrage.inventory.inventory.getouvragebyinventory;
 ;
+import dz.ade.pfe.domain.admin.OrganisationalStructure;
 import dz.ade.pfe.domain.ouvrage.Inventory;
 import dz.ade.pfe.domain.ouvrage.InventoryOuvrage;
 import dz.ade.pfe.domain.ouvrage.Ouvrage;
 import dz.ade.pfe.ouvrage.inventory.inventory.InventoryOuvrageRepository;
 import dz.ade.pfe.ouvrage.inventory.inventory.InventoryRepository;
+import dz.ade.pfe.ouvrage.inventory.inventory.OrganisationalStructureRepository;
 import dz.ade.pfe.ouvrage.inventory.ouvrage.OuvrageRepository;
 import dz.ade.pfe.port.out.inventory.getouvragebyinventory.LoadOuvrageByInventory;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
-import javax.validation.constraints.Null;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -22,6 +23,7 @@ public class GetOuvrageByInventoryAdapter implements LoadOuvrageByInventory {
 
     private final InventoryRepository inventoryRepository;
     private final InventoryOuvrageRepository inventoryOuvrageRepository;
+    private final OrganisationalStructureRepository organisationalStructureRepository;
 
     @Override
     public List<Ouvrage> loadOuvrageByInventory(String user){
@@ -65,6 +67,13 @@ public class GetOuvrageByInventoryAdapter implements LoadOuvrageByInventory {
         Inventory inventory =inventoryRepository.findByCompleted(false);
         if (inventory != null) return inventory.getDate();
         else return null;
+    }
+
+    @Override
+    public Inventory loadCurrentInventory(String unitCode) {
+
+        OrganisationalStructure unit = organisationalStructureRepository.findByCode(unitCode);
+        return inventoryRepository.findByUnitAndCompleted(unit,false);
     }
 
     @Override

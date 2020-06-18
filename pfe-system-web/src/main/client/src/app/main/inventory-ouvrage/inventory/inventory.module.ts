@@ -38,6 +38,7 @@ import { InventoryStepperComponent } from './composant/inventory-stepper/invento
 import { InventoryComposantComponent } from './composant/inventory-composant/inventory-composant.component';
 import {LoadComponenteDirective} from "./load-component.directive";
 import {SecurityComponent} from "../ouvrage/composant/composant-add-edit/security/security.component";
+import {InventoryStepperService} from "./composant/inventory-stepper/inventory-stepper.service";
 
 
 export const options: Partial<IConfig> | (() => Partial<IConfig>) = null;
@@ -59,8 +60,11 @@ const routes: Routes = [
         }
     },
     {
-        path: 'current/:type/:code',
+        path: 'current/:codeInventory/:type/:codeOuvrage',
         component: InventoryStepperComponent,
+        resolve: {
+            data: InventoryStepperService
+        }
     },
     {
         path: 'completed',

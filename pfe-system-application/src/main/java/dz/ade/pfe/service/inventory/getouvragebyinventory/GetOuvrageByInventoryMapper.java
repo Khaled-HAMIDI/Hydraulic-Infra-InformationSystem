@@ -1,7 +1,7 @@
 package dz.ade.pfe.service.inventory.getouvragebyinventory;
 
+import dz.ade.pfe.domain.ouvrage.Inventory;
 import dz.ade.pfe.domain.ouvrage.Ouvrage;
-import dz.ade.pfe.service.ouvrage.getouvragelist.OuvrageListDto;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.Mappings;
@@ -19,5 +19,7 @@ public interface GetOuvrageByInventoryMapper {
     OuvrageInventoryDto ouvrageToOuvrageDto(Ouvrage ouvrage);
 
     List<OuvrageInventoryDto> ouvrageToOuvrageInventoryDto(List<Ouvrage> ouvrage);
+
+    InventoryShowDto inventoryToInventoryShow(Inventory inventory);
 
 }

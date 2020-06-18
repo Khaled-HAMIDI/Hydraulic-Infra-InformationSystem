@@ -1,5 +1,4 @@
-package dz.ade.pfe.service.inventory.getcomponentbyinventory;
-
+package dz.ade.pfe.service.inventory.createinventorycomponent;
 
 import dz.ade.pfe.domain.ouvrage.State;
 import lombok.AllArgsConstructor;
@@ -12,7 +11,7 @@ import javax.persistence.Enumerated;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class InventoryComponentDto {
+public class InventoryComponentAddDto {
 
     private String componentType;
 

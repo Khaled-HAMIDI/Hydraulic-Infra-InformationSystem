@@ -8,5 +8,10 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.List;
 
 public interface InventoryComponentRepository  extends JpaRepository<InventoryComponent, Long> {
+
+    InventoryComponent findByInventoryAndAndOuvrageAndComponentType(Inventory inventory, Ouvrage ouvrage,String type);
+
     List<InventoryComponent> findAllByInventoryAndAndOuvrage(Inventory inventory, Ouvrage ouvrage);
+
+    Boolean existsByInventoryAndOuvrageAndComponentType(Inventory inventory,Ouvrage ouvrage,String type);
 }

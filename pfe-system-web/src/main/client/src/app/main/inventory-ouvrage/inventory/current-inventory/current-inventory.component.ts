@@ -9,6 +9,7 @@ import { locale as french } from './i18n/fr';
 import { locale as arabic } from './i18n/ar';
 import { ToolsService } from '@ayams/services/tools.service';
 import { takeUntil } from 'rxjs/operators';
+import {Inventory} from "./model/currentInventory.model";
 const COLUMN_NAMES: string[] = [
     'code',
     'name',
@@ -35,8 +36,9 @@ export class CurrentInventoryComponent extends Table implements OnInit, OnDestro
     types = [];
     status = [];
     dates = [];
-    InventoryDate;
+    inventoryDate;
     inventoryData = [];
+    inventory : Inventory;
 
     constructor(
         private currentInventoryService: CurrentInventoryService,
@@ -59,14 +61,15 @@ export class CurrentInventoryComponent extends Table implements OnInit, OnDestro
                 this.types = response.data[1];
                 this.status = response.data[2];
                 this.dates =response.data[3];
-                this.InventoryDate =response.data[4];
+                this.inventoryDate =response.data[4];
+                this.inventory = response.data[5];
 
                 for (let i in this.filtredOuvrages){
                     this.inventoryData.push({
                         ouvrage :this.filtredOuvrages[i],
                         status :this.status[i],
                         ouvrageDate:this.dates[i],
-                        inventoryDate:this.InventoryDate
+                        inventoryDate:this.inventoryDate
                     })
                 }
 

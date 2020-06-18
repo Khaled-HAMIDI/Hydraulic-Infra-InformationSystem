@@ -75,21 +75,21 @@ public class CreateInventoryService implements CreateInventoryCommand {
 
                             case EquipementStationTraitement:
                                 TraitementStationEquipement traitementStationEquipement = (TraitementStationEquipement) component;
-                                saveInventoryComponent.saveInventoryComponent(new InventoryComponent(null,traitementStationEquipement.getTypeEquipement(),inventory1,ouvrage,State.Bon," "," "));
+                                saveInventoryComponent.setInventoryComponent(new InventoryComponent(null,traitementStationEquipement.getTypeEquipement(),inventory1,ouvrage,State.Bon," "," ",false));
                                 break;
 
                             case ComposantHydroMecanique:
                                 HedromecaEquipment hedromecaEquipment = (HedromecaEquipment) component;
-                                saveInventoryComponent.saveInventoryComponent(new InventoryComponent(null,hedromecaEquipment.getEquipementType(),inventory1,ouvrage,State.Bon," "," "));
+                                saveInventoryComponent.setInventoryComponent(new InventoryComponent(null,hedromecaEquipment.getEquipementType(),inventory1,ouvrage,State.Bon," "," ",false));
                                 break;
 
                             case PosteChimique:
                                 ChemicalPosts chemicalPost = (ChemicalPosts) component;
-                                saveInventoryComponent.saveInventoryComponent(new InventoryComponent(null,chemicalPost.getPostType(),inventory1,ouvrage,State.Bon," "," "));
+                                saveInventoryComponent.setInventoryComponent(new InventoryComponent(null,chemicalPost.getPostType(),inventory1,ouvrage,State.Bon," "," ",false));
                                 break;
 
                             default:
-                                saveInventoryComponent.saveInventoryComponent(new InventoryComponent(null,component.getComponentType().toString(),inventory1,ouvrage,State.Bon," "," "));
+                                saveInventoryComponent.setInventoryComponent(new InventoryComponent(null,component.getComponentType().toString(),inventory1,ouvrage,State.Bon," "," ",false));
                         }
                     });
 

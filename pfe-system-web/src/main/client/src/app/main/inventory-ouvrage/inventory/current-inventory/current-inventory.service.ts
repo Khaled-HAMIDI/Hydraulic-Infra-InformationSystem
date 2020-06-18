@@ -4,7 +4,6 @@ import { Resolve, ActivatedRouteSnapshot, RouterStateSnapshot, Router } from '@a
 import { Observable, Subject, BehaviorSubject } from 'rxjs';
 import { API } from 'config/api.config';
 import { ToolsService } from '@ayams/services/tools.service';
-import * as XLSX from 'xlsx';
 import {OuvrageInventory} from "./model/currentInventory.model";
 
 const INVENTORY_API = API + '/inventory/ouvrages';
@@ -82,6 +81,15 @@ export class CurrentInventoryService implements Resolve<any> {
         });
     }
 
+    getInventoryCode(){
+        return new Promise((resolve, reject) => {
+            this.http.get(API + '/inventory/current')
+                .subscribe((response: any) => {
+                    resolve(response);
+                }, reject = (err) => { console.log(err) });
+        });
+    }
+
     // -----------------------------------------------------------------------------------------------------
     // @ Setter function
     // -----------------------------------------------------------------------------------------------------
@@ -97,7 +105,8 @@ export class CurrentInventoryService implements Resolve<any> {
                 this.getTypes(),
                 this.getStatus(),
                 this.getInventoryOuvragesDate(),
-                this.getInventoryDate()
+                this.getInventoryDate(),
+                this.getInventoryCode()
             ]).then(
                 (data) => {
                     resolve(data);

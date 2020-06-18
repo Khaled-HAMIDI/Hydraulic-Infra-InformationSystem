@@ -1,6 +1,5 @@
 import { Injectable, Type } from '@angular/core';
 import {InventoryComposantComponent} from "../inventory-composant/inventory-composant.component";
-import {SecurityComponent} from "../../../ouvrage/composant/composant-add-edit/security/security.component";
 
 @Injectable({
     providedIn: 'root'
@@ -9,63 +8,63 @@ export class StepperAddEditService {
     briseChargeComposants = [
         {
             'title': 'Securité',
-            'ComponentName': 'SecurityComponent',
+            'ComponentName': 'Security',
         },
         {
             'title': 'Obturateur',
-            'ComponentName': 'ObturateurComponent',
+            'ComponentName': 'Obturateur',
         },
         {
             'title': 'Vanne d\'arrivée',
-            'ComponentName': 'VanneArriveeComponent',
+            'ComponentName': 'VanneArrivee',
         },
         {
             'title': 'Compteur/débitmètre arrivée',
-            'ComponentName': 'CompteurComponent',
+            'ComponentName': 'Compteur',
         },
         {
             'title': 'Joint de démontage arrivée',
-            'ComponentName': 'JointDemantageComponent',
+            'ComponentName': 'JointDemantage',
         },
         {
             'title': 'Flotteur',
-            'ComponentName': 'FlotteurComponent',
+            'ComponentName': 'Flotteur',
         },
         {
             'title': 'Soupape de décharge',
-            'ComponentName': 'SoupageDechargeComponent',
+            'ComponentName': 'SoupageDecharge',
         },
         {
             'title': 'Vanne de distribution',
-            'ComponentName': 'VanneSortieComponent',
+            'ComponentName': 'VanneSortie',
         },
         {
             'title': 'Ventouse',
-            'ComponentName': 'VenteuseComponent',
+            'ComponentName': 'Venteuse',
         },
         {
             'title': 'Joint de démontage distribution',
-            'ComponentName': 'JointDemantageSortieComponent',
+            'ComponentName': 'JointDemantageSortie',
         },
         {
             'title': 'Compteur/débitmètre distribution',
-            'ComponentName': 'CompteurSortieComponent',
+            'ComponentName': 'CompteurSortie',
         },
         {
             'title': 'Conduite trop plein',
-            'ComponentName': 'ConduiteTropPleinComponent',
+            'ComponentName': 'ConduiteTropPlein',
         },
         {
             'title': 'Conduite de vidange',
-            'ComponentName': 'ConduiteVidangeComponent',
+            'ComponentName': 'ConduiteVidange',
         },
         {
             'title': 'Échelle',
-            'ComponentName': 'EchelleComponent',
+            'ComponentName': 'Echelle',
         },
         {
             'title': 'Poste de Chloration',
-            'ComponentName': 'PosteChlorationComponent',
+            'ComponentName': 'PosteChloration',
         }
         ];
 
@@ -73,110 +72,110 @@ export class StepperAddEditService {
     forageComposants = [
         {
             'title': 'Securité',
-            'ComponentName': 'SecurityComponent',
+            'ComponentName': 'Security',
         },
         {
             'title': 'Poste transformation électrique',
-            'ComponentName': 'PostTransElecComponent',
+            'ComponentName': 'PostTransElec',
         },
         {
             'title': 'Groupe électrogène',
-            'ComponentName': 'GroupeElectrogeneComponent',
+            'ComponentName': 'GroupeElectrogene',
         },
         {
             'title': 'Groupe électropompe:Partie pompe',
-            'ComponentName': 'GroupeElecPompPompComponent',
+            'ComponentName': 'GroupeElecPompPomp',
         },
         {
             'title': 'Groupe électropompe:Partie moteur',
-            'ComponentName': 'GroupeElecPompMoteurComponent',
+            'ComponentName': 'GroupeElecPompMoteur',
         },
         {
             'title': 'Armoire Électrique de commande',
-            'ComponentName': 'ArmoirElecCmdComponent',
+            'ComponentName': 'ArmoirElecCmd',
         },
         {
             'title': 'Anti-bélier',
-            'ComponentName': 'AntiBelierComponent',
+            'ComponentName': 'AntiBelier',
         },
         {
             'title': 'Soupape de décharge',
-            'ComponentName': 'SoupageDechargeComponent',
+            'ComponentName': 'SoupageDecharge',
         },
         {
             'title': 'Vanne ',
-            'ComponentName': 'VanneArriveeComponent',
+            'ComponentName': 'VanneArrivee',
         },
         {
             'title': 'Clapet anti retour ',
-            'ComponentName': 'ClapetAntiRetourComponent',
+            'ComponentName': 'ClapetAntiRetour',
         },
         {
             'title': 'Ventouse',
-            'ComponentName': 'VenteuseComponent',
+            'ComponentName': 'Venteuse',
         },
         {
             'title': 'Compteur/débitmètre',
-            'ComponentName': 'CompteurComponent',
+            'ComponentName': 'Compteur',
         },
         {
             'title': 'Colonnes montantes' ,
-            'ComponentName': 'ColonnesMontantesComponent',
+            'ComponentName': 'ColonnesMontantes',
         }
     ];
 
     reservoirComposants = [
         {
             'title': 'Securité',
-            'ComponentName': 'SecurityComponent',
+            'ComponentName': 'Security',
         },
         {
             'title': 'Vanne d\'arrivée',
-            'ComponentName': 'VanneArriveeComponent',
+            'ComponentName': 'VanneArrivee',
         },
         {
             'title': 'Joint de démontage arrivée',
-            'ComponentName': 'JointDemantageComponent',
+            'ComponentName': 'JointDemantage',
         },
         {
             'title': 'Compteur/débitmètre arrivée',
-            'ComponentName': 'CompteurComponent',
+            'ComponentName': 'Compteur',
         },
         {
             'title': 'Flotteur',
-            'ComponentName': 'FlotteurComponent',
+            'ComponentName': 'Flotteur',
         },
         {
             'title': 'Vanne de distribution',
-            'ComponentName': 'VanneSortieComponent',
+            'ComponentName': 'VanneSortie',
         },
         {
             'title': 'Ventouse',
-            'ComponentName': 'VenteuseComponent',
+            'ComponentName': 'Venteuse',
         },
         {
             'title': 'Joint de démontage distribution',
-            'ComponentName': 'JointDemantageSortieComponent',
+            'ComponentName': 'JointDemantageSortie',
         },
         {
             'title': 'Compteur/débitmètre distribution',
-            'ComponentName': 'CompteurSortieComponent',
+            'ComponentName': 'CompteurSortie',
         },
         {
             'title': 'Conduite trop plein',
-            'ComponentName': 'ConduiteTropPleinComponent',
+            'ComponentName': 'ConduiteTropPlein',
         },
         {
             'title': 'Conduite de vidange',
-            'ComponentName': 'ConduiteVidangeComponent',
+            'ComponentName': 'ConduiteVidange',
         },
         {
             'title': 'Échelle',
-            'ComponentName': 'EchelleComponent',
+            'ComponentName': 'Echelle',
         },
         {
             'title': 'Poste de Chloration',
-            'ComponentName': 'PosteChlorationComponent',
+            'ComponentName': 'PosteChloration',
         }
     ];
 
@@ -184,63 +183,63 @@ export class StepperAddEditService {
     stationTraitementNonConventionelleComposants = [
         {
             'title': 'Securité',
-            'ComponentName': 'SecurityComponent',
+            'ComponentName': 'Security',
         },
         {
             'title': 'Prise d\'eau brute',
-            'ComponentName': 'PriseEauComponent',
+            'ComponentName': 'PriseEau',
         },
         {
             'title': 'Réservoir d\'eau brute',
-            'ComponentName': 'ReservoirEauBruteComponent',
+            'ComponentName': 'ReservoirEauBrute',
         },
         {
             'title': 'Equipement de prétraitement',
-            'ComponentName': 'ComposantPretraitementComponent',
+            'ComponentName': 'ComposantPretraitement',
         },
         {
             'title': 'Bassin de mélange',
-            'ComponentName': 'BassinMelangeComponent',
+            'ComponentName': 'BassinMelange',
         },
         {
             'title': 'Filtre',
-            'ComponentName': 'FiltreComponent',
+            'ComponentName': 'Filtre',
         },
         {
             'title': 'Réservoir d\'eau traité',
-            'ComponentName': 'ReservoirEauTraiteComponent',
+            'ComponentName': 'ReservoirEauTraite',
         },
         {
             'title': 'Kit de membrane',
-            'ComponentName': 'KitMembraneComponent',
+            'ComponentName': 'KitMembrane',
         },
         {
             'title': 'Station PHP',
-            'ComponentName': 'StationPhpComponent',
+            'ComponentName': 'StationPhp',
         },
         {
             'title': 'Local de stockage des produits chimiques',
-            'ComponentName': 'LocalStockageChimiqueComponent',
+            'ComponentName': 'LocalStockageChimique',
         },
         {
             'title': 'Poste de préparation et d’injection',
-            'ComponentName': 'PostPrepInjectionComponent',
+            'ComponentName': 'PostPrepInjection',
         },
         {
             'title': 'Poste de recyclage de boues',
-            'ComponentName': 'PostRecyclageBouesComponent',
+            'ComponentName': 'PostRecyclageBoues',
         },
         {
             'title': 'Poste de recyclage des eaux de lavage',
-            'ComponentName': 'PostRecyclageEauLavavgeComponent',
+            'ComponentName': 'PostRecyclageEauLavavge',
         },
         {
             'title': 'Bâtiment électrique',
-            'ComponentName': 'BatimentElectriqueComponent',
+            'ComponentName': 'BatimentElectrique',
         },
         {
             'title': 'Groupe électrogène',
-            'ComponentName': 'GroupeElectrogeneComponent',
+            'ComponentName': 'GroupeElectrogene',
         }
     ];
 
@@ -248,134 +247,134 @@ export class StepperAddEditService {
     stationTraitementConventionelleComposants = [
         {
             'title': 'Securité',
-            'ComponentName': 'SecurityComponent',
+            'ComponentName': 'Security',
         },
         {
             'title': 'Prise d\'eau brute',
-            'ComponentName': 'PriseEauComponent',
+            'ComponentName': 'PriseEau',
         },
         {
             'title': 'Réservoir d\'eau brute',
-            'ComponentName': 'ReservoirEauBruteComponent',
+            'ComponentName': 'ReservoirEauBrute',
         },
         {
             'title': 'Equipement de prétraitement',
-            'ComponentName': 'ComposantPretraitementComponent',
+            'ComponentName': 'ComposantPretraitement',
         },
         {
             'title': 'Equipement d\'aération',
-            'ComponentName': 'ComposantAerationComponent',
+            'ComponentName': 'ComposantAeration',
         },
         {
             'title': 'Bassin de mélange',
-            'ComponentName': 'BassinMelangeComponent',
+            'ComponentName': 'BassinMelange',
         },
         {
             'title': 'Décanteur',
-            'ComponentName': 'DecanteurComponent',
+            'ComponentName': 'Decanteur',
         },
         {
             'title': 'Filtre',
-            'ComponentName': 'FiltreComponent',
+            'ComponentName': 'Filtre',
         },
         {
             'title': 'Réservoir d\'eau traité',
-            'ComponentName': 'ReservoirEauTraiteComponent',
+            'ComponentName': 'ReservoirEauTraite',
         },
         {
             'title': 'Kit de membrane',
-            'ComponentName': 'KitMembraneComponent',
+            'ComponentName': 'KitMembrane',
         },
         {
             'title': 'Station PHP',
-            'ComponentName': 'StationPhpComponent',
+            'ComponentName': 'StationPhp',
         },
         {
             'title': 'Local de stockage des produits chimiques',
-            'ComponentName': 'LocalStockageChimiqueComponent',
+            'ComponentName': 'LocalStockageChimique',
         },
         {
             'title': 'Poste de préparation et d’injection',
-            'ComponentName': 'PostPrepInjectionComponent',
+            'ComponentName': 'PostPrepInjection',
         },
         {
             'title': 'Poste de recyclage de boues',
-            'ComponentName': 'PostRecyclageBouesComponent',
+            'ComponentName': 'PostRecyclageBoues',
         },
         {
             'title': 'Poste de recyclage des eaux de lavage',
-            'ComponentName': 'PostRecyclageEauLavavgeComponent',
+            'ComponentName': 'PostRecyclageEauLavavge',
         },
         {
             'title': 'Bâtiment électrique',
-            'ComponentName': 'BatimentElectriqueComponent',
+            'ComponentName': 'BatimentElectrique',
         },
         {
             'title': 'Groupe électrogène',
-            'ComponentName': 'GroupeElectrogeneComponent',
+            'ComponentName': 'GroupeElectrogene',
         }
     ];
 
     stationPompageComposants = [
         {
             'title': 'Securité',
-            'ComponentName': 'SecurityComponent',
+            'ComponentName': 'Security',
         },
         {
             'title': 'Poste transformation électrique',
-            'ComponentName': 'PostTransElecComponent',
+            'ComponentName': 'PostTransElec',
         },
         {
             'title': 'Groupe électrogène',
-            'ComponentName': 'GroupeElectrogeneComponent',
+            'ComponentName': 'GroupeElectrogene',
         },
         {
             'title': 'Groupe électropompe:Partie pompe',
-            'ComponentName': 'GroupeElecPompMoteurComponent',
+            'ComponentName': 'GroupeElecPompMoteur',
         },
         {
             'title': 'Groupe électropompe:Partie moteur',
-            'ComponentName': 'GroupeElecPompPompComponent',
+            'ComponentName': 'GroupeElecPompPomp',
         },
         {
             'title': 'Armoire Électrique de commande',
-            'ComponentName': 'ArmoirElecCmdComponent',
+            'ComponentName': 'ArmoirElecCmd',
         },
         {
             'title': 'Anti-bélier',
-            'ComponentName': 'AntiBelierComponent',
+            'ComponentName': 'AntiBelier',
         },
         {
             'title': 'Soupape de décharge',
-            'ComponentName': 'SoupageDechargeComponent',
+            'ComponentName': 'SoupageDecharge',
         },
         {
             'title': 'Vanne',
-            'ComponentName': 'VanneArriveeComponent',
+            'ComponentName': 'VanneArrivee',
         },
         {
             'title': 'Clapet anti retour ',
-            'ComponentName': 'ClapetAntiRetourComponent',
+            'ComponentName': 'ClapetAntiRetour',
         },
         {
             'title': 'Ventouse',
-            'ComponentName': 'VenteuseComponent',
+            'ComponentName': 'Venteuse',
         },
         {
             'title': 'Compteur/débitmètre',
-            'ComponentName': 'CompteurComponent',
+            'ComponentName': 'Compteur',
         },
         {
             'title': 'Joint de démontage' ,
-            'ComponentName': 'JointDemantageComponent',
+            'ComponentName': 'JointDemantage',
         },
         {
             'title': 'Collecteur d’aspiration ',
-            'ComponentName': 'CollecteurAspirationComponent',
+            'ComponentName': 'CollecteurAspiration',
         },
         {
             'title': 'Collecteur de refoulement' ,
-            'ComponentName': 'CollecteurReffoullementComponent',
+            'ComponentName': 'CollecteurReffoullement',
         }
     ];
 
@@ -385,47 +384,6 @@ export class StepperAddEditService {
 
 export const componentMapping: { [key: string]: Type<any>; } = {
 
-    'SecurityComponent': InventoryComposantComponent,
-    'VanneArriveeComponent': InventoryComposantComponent,
-    'ObturateurComponent':InventoryComposantComponent,
-    'JointDemantageComponent':InventoryComposantComponent,
-    'CompteurComponent':InventoryComposantComponent,
-    'FlotteurComponent':InventoryComposantComponent,
-    'SoupageDechargeComponent':InventoryComposantComponent,
-    'VanneSortieComponent':InventoryComposantComponent,
-    'VenteuseComponent':InventoryComposantComponent,
-    'ConduiteTropPleinComponent':InventoryComposantComponent,
-    'ConduiteVidangeComponent':InventoryComposantComponent,
-    'EchelleComponent':InventoryComposantComponent,
-    'PosteChlorationComponent':InventoryComposantComponent,
-    'PostTransElecComponent':InventoryComposantComponent,
-    'GroupeElecPompMoteurComponent':InventoryComposantComponent,
-    'GroupeElecPompPompComponent':InventoryComposantComponent,
-    'ArmoirElecCmdComponent':InventoryComposantComponent,
-    'AntiBelierComponent':InventoryComposantComponent,
-    'ClapetAntiRetourComponent':InventoryComposantComponent,
-    'CollonnesMontantesShowComponent':InventoryComposantComponent,
-    'GroupeElectrogeneComponent':InventoryComposantComponent,
-    'ReservoirEauBruteComponent':InventoryComposantComponent,
-    'ReservoirEauTraiteComponent':InventoryComposantComponent,
-    'KitMembraneComponent':InventoryComposantComponent,
-    'StationPhpComponent':InventoryComposantComponent,
-    'LocalStockageChimiqueComponent':InventoryComposantComponent,
-    'PostPrepInjectionComponent':InventoryComposantComponent,
-    'PostRecyclageBouesComponent':InventoryComposantComponent,
-    'PostRecyclageEauLavavgeComponent':InventoryComposantComponent,
-    'BatimentElectriqueComponent':InventoryComposantComponent,
-    'PriseEauComponent':InventoryComposantComponent,
-    'BassinMelangeComponent':InventoryComposantComponent,
-    'FiltreComponent':InventoryComposantComponent,
-    'ComposantAerationComponent':InventoryComposantComponent,
-    'ComposantPretraitementComponent':InventoryComposantComponent,
-    'DecanteurComponent':InventoryComposantComponent,
-    'CollecteurAspirationComponent':InventoryComposantComponent,
-    'CollecteurReffoullementComponent':InventoryComposantComponent,
-    'CompteurSortieComponent':InventoryComposantComponent,
-    'JointDemantageSortieComponent':InventoryComposantComponent,
-
-    
+    'InventoryComposantComponent': InventoryComposantComponent,
 
 };

@@ -164,18 +164,18 @@ export class InventoryStepperComponent implements OnInit, OnDestroy {
 
 
     loadComponent(componentName: string): void {
-        console.log(componentName);
-        const componentFactory = this.componentFactoryResolver.resolveComponentFactory(componentMapping[componentName]);
-        console.log(componentName);
+
+
+        const componentFactory = this.componentFactoryResolver.resolveComponentFactory(componentMapping['InventoryComposantComponent']);
         const viewContainerRef = this.integrationHost.viewContainerRef;
         viewContainerRef.clear();
 
         const componentRef = viewContainerRef.createComponent(componentFactory);
-        componentRef.instance.typeComposant = componentName;
+        componentRef.instance.typeComponent = componentName;
         if ((<DynamicComponent>componentRef.instance).validateEvent) {
             (<DynamicComponent>componentRef.instance).validateEvent.subscribe(($event) => {
                 if (this.currentStep === this.composants.length - 1) {
-                    this.router.navigate(['/patrimony/ouvrages/list']);
+                    this.router.navigate(['/patrimony/inventory/current']);
                 }
                 else {
                     this.gotoNextStep();
