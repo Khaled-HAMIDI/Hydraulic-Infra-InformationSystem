@@ -10,6 +10,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 @Component
 @RequiredArgsConstructor
@@ -42,6 +44,7 @@ public class OuvragePersistenceAdapter implements LoadOuvrageList, LoadOuvragesB
     }
     @Override
     public List<Ouvrage> loadOuvragesExploitation(){
-       return ouvrageRepository.loadOuvragesExploitation();
+       return Stream.concat(ouvrageRepository.loadOuvragesExploitation().stream(), ouvrageRepository.loadOuvragesNotInExploitation().stream())
+                .collect(Collectors.toList());
     }
 }
