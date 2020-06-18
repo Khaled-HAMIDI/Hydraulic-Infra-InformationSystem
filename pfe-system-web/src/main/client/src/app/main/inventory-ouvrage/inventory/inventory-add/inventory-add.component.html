@@ -26,7 +26,7 @@
                 </div>
             </div>
             <!-- / APP TITLE -->
-            <button mat-raised-button class=" mat-white-bg" [disabled]="inventoryForm.invalid" (click)="onSave()">
+            <button mat-raised-button class=" mat-white-bg" [disabled]="inventoryForm.invalid" (click)="onSave()" *ngIf="!existCurrent">
                 <span>{{'ADD.BUTTON.create' | translate}}</span>
             </button>
 
@@ -35,12 +35,19 @@
         <!-- / HEADER -->
 
         <!-- CONTENT CARD -->
-        <div class="content-card mat-white-bg">
 
+        <div class="content-card mat-white-bg" >
+
+            <p class="myp" *ngIf="existCurrent">{{'ADD.FIELD.currrentExist' | translate}}</p>
+            <div>
+                <button mat-raised-button  class="accent add-button"  routerLink="/patrimony/inventory/current" *ngIf="existCurrent">
+                    <span >{{'ADD.BUTTON.continue' | translate}}</span>
+                </button>
+            </div>
             <!-- CONTENT -->
-            <div class="content">
+            <div class="content" *ngIf="!existCurrent">
 
-                <form name="ouvrageForm" [formGroup]="inventoryForm" class="w-100-p" fxLayout="column" fxFlex>
+                <form name="ouvrageForm" [formGroup]="inventoryForm" class="w-100-p" fxLayout="column" fxFlex >
                     <mat-tab-group>
                         <mat-tab [label]="'ADD.TAB.infos' | translate">
                             <div class="tab-content p-24" fusePerfectScrollbar>

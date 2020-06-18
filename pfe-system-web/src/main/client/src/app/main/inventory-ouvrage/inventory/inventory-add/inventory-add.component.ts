@@ -29,7 +29,7 @@ export class InventoryAddComponent implements OnInit, OnDestroy {
     inventoryForm: FormGroup;
     users: User[];
     currentchef: any;
-
+    existCurrent:boolean;
 
     searchTerm : string = '';
     AllOuvrages = [];
@@ -51,6 +51,7 @@ export class InventoryAddComponent implements OnInit, OnDestroy {
         this.fuseTranslationLoader.loadTranslations(french, arabic);
         this.selectedOuvrages = [];
         this.responsablesOuvrages = [];
+        this.existCurrent = false
     }
 
     /**
@@ -60,8 +61,10 @@ export class InventoryAddComponent implements OnInit, OnDestroy {
         this.route.data.pipe(takeUntil(this._unsubscribeAll)).subscribe(
             (response) => {
                 this.users = sortBy(response.data[0], ['lastname', 'firstname']);
+                if (response.data[2]) this.existCurrent = true;
                 this.initForm();
                 this.classOuvrages(response.data[1]);
+
             },
             (error) => {
                 console.log(error);

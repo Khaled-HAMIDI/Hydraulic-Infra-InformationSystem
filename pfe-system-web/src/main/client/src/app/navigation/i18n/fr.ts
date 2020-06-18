@@ -12,8 +12,8 @@ export const locale = {
                 'TITLE': 'Connaissance patrimoniale',
                 'ITEMS':{
                     'INTEGRATE':'Intégrer un ouvrage',
-                    'LIST':'ouvrages',
-                    'CHAIN' :'chaines'
+                    'LIST':'Ouvrages',
+                    'CHAIN' :'Chaines'
                 }
             },
             'INVENTORY': {

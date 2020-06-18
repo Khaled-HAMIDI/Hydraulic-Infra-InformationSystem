@@ -81,7 +81,7 @@ export class CurrentInventoryService implements Resolve<any> {
         });
     }
 
-    getInventoryCode(){
+    getCurrentInventory(){
         return new Promise((resolve, reject) => {
             this.http.get(API + '/inventory/current')
                 .subscribe((response: any) => {
@@ -106,7 +106,7 @@ export class CurrentInventoryService implements Resolve<any> {
                 this.getStatus(),
                 this.getInventoryOuvragesDate(),
                 this.getInventoryDate(),
-                this.getInventoryCode()
+                this.getCurrentInventory()
             ]).then(
                 (data) => {
                     resolve(data);

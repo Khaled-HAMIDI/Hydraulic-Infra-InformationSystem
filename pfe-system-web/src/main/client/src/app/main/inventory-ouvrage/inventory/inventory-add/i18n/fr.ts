@@ -6,7 +6,8 @@ export const locale = {
                 'title-add': 'Lancer un inventaire'
             },
             'BUTTON': {
-                'create': 'Lancer'
+                'create': 'Lancer',
+                'continue' : 'Continuer l\'inventaire en cours'
             },
             'FIELD' :{
                 'code': 'Code d\'inventaire',
@@ -14,7 +15,8 @@ export const locale = {
                 'responsable' : 'Responsable de l\'inventaire',
                 'responsable2' : 'Responsable',
                 'rechercher':'Rechercher un ouvrage',
-                'codeNom' :'Entrez le nom ou le code'
+                'codeNom' :'Entrez le nom ou le code',
+                'currrentExist': 'Il existe déja un inventaire en cours, veuillez le continuer avant de lancer un nouveau.'
             },
             'TAB': {
                 'infos': 'Informations générales sur l\'inventaire',

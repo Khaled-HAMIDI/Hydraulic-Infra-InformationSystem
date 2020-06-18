@@ -1,8 +1,12 @@
 package dz.ade.pfe.service.inventory.createinventory;
 
 
+import dz.ade.pfe.commons.UseCaseExecutor;
+import dz.ade.pfe.commons.notification.mapper.NewNotificationDto;
+import dz.ade.pfe.commons.notification.usecases.CreateNotificationForUser;
 import dz.ade.pfe.domain.admin.OrganisationalStructure;
 import dz.ade.pfe.domain.admin.User;
+import dz.ade.pfe.domain.commons.NotificationAction;
 import dz.ade.pfe.domain.exceptions.ResourceNotFoundException;
 import dz.ade.pfe.domain.ouvrage.*;
 import dz.ade.pfe.port.in.inventory.createinventory.CreateInventoryCommand;
@@ -15,6 +19,7 @@ import dz.ade.pfe.port.out.ouvrage.getouvragesbycodes.LoadOuvragesByCodes;
 import dz.ade.pfe.port.out.unit.LoadUnitByCode;
 import dz.ade.pfe.port.out.user.loadbyusername.LoadUserByUsername;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -33,6 +38,12 @@ public class CreateInventoryService implements CreateInventoryCommand {
     private final LoadUnitByCode loadUnitByCode;
     private final LoadOuvragesByCodes loadOuvragesByCodes;
     private final LoadComposantByOuvrage loadComposantByOuvrage;
+
+    @Autowired
+    private UseCaseExecutor useCaseExecutor;
+
+    @Autowired
+    private CreateNotificationForUser createNotificationForUser;
 
 
     @Transactional
@@ -65,10 +76,26 @@ public class CreateInventoryService implements CreateInventoryCommand {
                 .forEach((responsableOuvrage) -> {
 
                     Ouvrage ouvrage =loadOuvragesByCodes.loadOuvrageByCode(responsableOuvrage.ouvrage);
+                    User responsable =loadUserByUsername.loadUserByUsername(responsableOuvrage.responsable).get();
+
                     saveInventoryOuvrage.saveInventoryOuvrage(new InventoryOuvrage(null, inventory1,
-                            ouvrage, loadUserByUsername.loadUserByUsername(responsableOuvrage.responsable).get(),false,null));
+                            ouvrage, responsable,false,null));
 
 
+                    // Notification
+                    String message =String.format("Vous avez un nouvel ouvrage à inventorier ayant le code %s",responsableOuvrage.ouvrage);
+                    NewNotificationDto newNotificationDto = new NewNotificationDto();
+                    newNotificationDto.setMessage(message);
+                    newNotificationDto.setNotificationAction(NotificationAction.ROUTE);
+                    newNotificationDto.setActionValue("/patrimony/inventory/current/" +inventory1.getCode()+ "/" +ouvrage.getType()+"/" +ouvrage.getCode());
+
+                    useCaseExecutor.execute(
+                            createNotificationForUser,
+                            new CreateNotificationForUser.InputValues(responsableOuvrage.responsable, newNotificationDto),
+                            CreateNotificationForUser.OutputValues::getShowNotificationDtos);
+
+
+                    // End notification
                     List<Component> components = loadComposantByOuvrage.loadAll(responsableOuvrage.ouvrage);
                     components.forEach((component) -> {
                         switch (component.getComponentType()){
