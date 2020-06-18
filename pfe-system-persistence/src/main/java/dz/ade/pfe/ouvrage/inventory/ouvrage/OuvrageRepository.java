@@ -25,4 +25,7 @@ public interface OuvrageRepository extends JpaRepository<Ouvrage, Long> {
 
     @Query("SELECT distinct o FROM Ouvrage o JOIN FETCH o.readings r order by o.id,r.date desc")
     List<Ouvrage> loadOuvragesExploitation();
+
+    @Query(value = "select * from pfe.ouvrage where id not in (select o.id from pfe.ouvrage as o join pfe.exploitation_reading as r on( o.id=r.ouvrage_id))", nativeQuery = true)
+    List<Ouvrage> loadOuvragesNotInExploitation();
 }
