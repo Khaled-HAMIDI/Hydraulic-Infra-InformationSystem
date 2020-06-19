@@ -6,7 +6,7 @@ import { API } from 'config/api.config';
 import { ToolsService } from '@ayams/services/tools.service';
 import {OuvrageInventory} from "./model/currentInventory.model";
 
-const INVENTORY_API = API + '/inventory/ouvrages';
+const INVENTORY_API = API + '/inventory/';
 @Injectable({
     providedIn: 'root'
 })
@@ -36,7 +36,7 @@ export class CurrentInventoryService implements Resolve<any> {
 
     getAll(): Promise<OuvrageInventory[]> {
         return new Promise((resolve, reject) => {
-            this.http.get(INVENTORY_API)
+            this.http.get(INVENTORY_API+"current/ouvrages")
                 .subscribe((response: any) => {
                     this.ouvrages = response;
                     resolve(response);
@@ -55,7 +55,7 @@ export class CurrentInventoryService implements Resolve<any> {
 
     getStatus(){
         return new Promise((resolve, reject) => {
-            this.http.get(INVENTORY_API+"/status")
+            this.http.get(INVENTORY_API+"current/ouvrages/status")
                 .subscribe((response: any) => {
                     resolve(response);
                 }, reject = (err) => { console.log(err) });
@@ -64,7 +64,7 @@ export class CurrentInventoryService implements Resolve<any> {
 
     getInventoryDate(){
         return new Promise((resolve, reject) => {
-            this.http.get(INVENTORY_API+"/startdate")
+            this.http.get(INVENTORY_API+"current/startdate")
                 .subscribe((response: any) => {
                     resolve(response);
                 }, reject = (err) => { console.log(err) });
@@ -73,7 +73,7 @@ export class CurrentInventoryService implements Resolve<any> {
 
     getInventoryOuvragesDate(){
         return new Promise((resolve, reject) => {
-            this.http.get(INVENTORY_API+"/dates")
+            this.http.get(INVENTORY_API+"current/ouvrages/dates")
                 .subscribe((response: any) => {
                     this.ouvrages = response;
                     resolve(response);

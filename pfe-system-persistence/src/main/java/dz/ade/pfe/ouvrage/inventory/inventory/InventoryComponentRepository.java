@@ -11,6 +11,8 @@ public interface InventoryComponentRepository  extends JpaRepository<InventoryCo
 
     InventoryComponent findByInventoryAndAndOuvrageAndComponentType(Inventory inventory, Ouvrage ouvrage,String type);
 
+    List<InventoryComponent> findAllByInventory(Inventory inventory);
+
     List<InventoryComponent> findAllByInventoryAndAndOuvrage(Inventory inventory, Ouvrage ouvrage);
 
     Boolean existsByInventoryAndOuvrageAndComponentType(Inventory inventory,Ouvrage ouvrage,String type);

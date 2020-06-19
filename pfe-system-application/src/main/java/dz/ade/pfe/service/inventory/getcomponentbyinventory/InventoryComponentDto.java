@@ -1,6 +1,7 @@
 package dz.ade.pfe.service.inventory.getcomponentbyinventory;
 
 
+import dz.ade.pfe.domain.ouvrage.Ouvrage;
 import dz.ade.pfe.domain.ouvrage.State;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -13,6 +14,8 @@ import javax.persistence.Enumerated;
 @AllArgsConstructor
 @NoArgsConstructor
 public class InventoryComponentDto {
+
+    private String ouvrageCode;
 
     private String componentType;
 

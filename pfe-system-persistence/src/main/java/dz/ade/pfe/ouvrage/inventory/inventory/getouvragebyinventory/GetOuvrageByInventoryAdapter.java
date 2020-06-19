@@ -26,9 +26,27 @@ public class GetOuvrageByInventoryAdapter implements LoadOuvrageByInventory {
     private final OrganisationalStructureRepository organisationalStructureRepository;
 
     @Override
-    public List<Ouvrage> loadOuvrageByInventory(String user){
+    public List<Ouvrage> loadOuvrageByCurrentInventory(String user){
 
         Inventory inventory =inventoryRepository.findByCompleted(false);
+        List<InventoryOuvrage> inventoryOuvrages = inventoryOuvrageRepository.findAllByInventory(inventory);
+
+        List<Ouvrage> ouvrages = new ArrayList<Ouvrage>();
+
+        inventoryOuvrages.stream()
+                .forEach((inventoryOuvrage) -> {
+                    if (inventoryOuvrage.getResponsable().getUsername().equals(user)){
+                        ouvrages.add(inventoryOuvrage.getOuvrage());
+                    }
+                });
+
+        return ouvrages;
+    }
+
+    @Override
+    public List<Ouvrage> loadOuvrageByInventory(String InventoryCode,String user){
+
+        Inventory inventory =inventoryRepository.findByCode(InventoryCode);
         List<InventoryOuvrage> inventoryOuvrages = inventoryOuvrageRepository.findAllByInventory(inventory);
 
         List<Ouvrage> ouvrages = new ArrayList<Ouvrage>();
@@ -80,6 +98,24 @@ public class GetOuvrageByInventoryAdapter implements LoadOuvrageByInventory {
     public List<LocalDate> loadDateByOuvrage(String user){
 
         Inventory inventory =inventoryRepository.findByCompleted(false);
+        List<InventoryOuvrage> inventoryOuvrages = inventoryOuvrageRepository.findAllByInventory(inventory);
+
+        List<LocalDate> ouvragesDates = new ArrayList<LocalDate>();
+
+        inventoryOuvrages.stream()
+                .forEach((inventoryOuvrage) -> {
+                    if (inventoryOuvrage.getResponsable().getUsername().equals(user)){
+                        ouvragesDates.add(inventoryOuvrage.getDoneDate());
+                    }
+                });
+
+        return ouvragesDates;
+    }
+
+    @Override
+    public List<LocalDate> loadDateByOuvrageByInventory(String inventoryCode,String user){
+
+        Inventory inventory =inventoryRepository.findByCode(inventoryCode);
         List<InventoryOuvrage> inventoryOuvrages = inventoryOuvrageRepository.findAllByInventory(inventory);
 
         List<LocalDate> ouvragesDates = new ArrayList<LocalDate>();

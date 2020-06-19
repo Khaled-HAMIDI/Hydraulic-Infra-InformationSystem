@@ -17,8 +17,13 @@ public class GetOuvrageByInventoryService  implements GetOuvrageByInventoryQuery
     private final GetOuvrageByInventoryMapper getouvrageByInventoryMapper;
 
     @Override
-    public List<OuvrageInventoryDto> getOuvrageByInventory(String user) {
-        return getouvrageByInventoryMapper.ouvrageToOuvrageInventoryDto(loadOuvrageByInventory.loadOuvrageByInventory(user));
+    public List<OuvrageInventoryDto> getOuvrageByCurrentInventory(String user) {
+        return getouvrageByInventoryMapper.ouvrageToOuvrageInventoryDto(loadOuvrageByInventory.loadOuvrageByCurrentInventory(user));
+    }
+
+    @Override
+    public List<OuvrageInventoryDto> getOuvrageByInventory(String codeInventory,String user) {
+        return getouvrageByInventoryMapper.ouvrageToOuvrageInventoryDto(loadOuvrageByInventory.loadOuvrageByInventory(codeInventory,user));
     }
 
     @Override
@@ -31,6 +36,12 @@ public class GetOuvrageByInventoryService  implements GetOuvrageByInventoryQuery
     public List<LocalDate> getDateByOuvrage(String user) {
         return loadOuvrageByInventory.loadDateByOuvrage(user);
     }
+
+    @Override
+    public List<LocalDate> getDateByOuvrageByInventory(String inventoryCode ,String user) {
+        return loadOuvrageByInventory.loadDateByOuvrageByInventory(inventoryCode,user);
+    }
+
 
     @Override
     public LocalDate getInventoryDate(String user) {

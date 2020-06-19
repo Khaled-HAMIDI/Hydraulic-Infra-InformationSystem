@@ -8,11 +8,15 @@ import java.util.List;
 
 public interface LoadOuvrageByInventory {
 
-    List<Ouvrage> loadOuvrageByInventory(String user);
+    List<Ouvrage> loadOuvrageByCurrentInventory(String user);
+
+    List<Ouvrage> loadOuvrageByInventory(String codeInventory, String user);
 
     List<Boolean> loadOuvrageStatusByInventory(String user);
 
     List<LocalDate> loadDateByOuvrage(String user);
+
+    List<LocalDate> loadDateByOuvrageByInventory(String codeInventory,String user);
 
     LocalDate loadInventoryDate(String user);
 

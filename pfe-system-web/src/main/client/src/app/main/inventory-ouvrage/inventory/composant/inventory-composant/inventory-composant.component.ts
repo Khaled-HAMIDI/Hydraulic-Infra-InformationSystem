@@ -50,6 +50,7 @@ export class InventoryComposantComponent implements OnInit{
         this.route.data.pipe(takeUntil(this._unsubscribeAll)).subscribe(
             (response) => {
                 this.components = response.data[0];
+                console.log(this.components);
                 this.initForm();
             },
             (error) => {

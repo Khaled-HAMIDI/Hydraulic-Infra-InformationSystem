@@ -33,9 +33,11 @@ public class InventoryComponent extends Auditing{
     @Column(name = "state")
     @Enumerated(EnumType.STRING)
     private State state;
+
     /* Difference */
     @Column(name = "gap")
     private String gap;
+
 
     @Column(name = "observation")
     private String observation;

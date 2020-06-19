@@ -30,4 +30,12 @@ public class GetComponentByInventoryAdapter implements LoadComponentByInventory 
 
         return inventoryComponentRepository.findAllByInventoryAndAndOuvrage(inventory,ouvrage);
     }
+
+    @Override
+    public List<InventoryComponent> loadAllComponentByInventory(String inventoryCode){
+
+        Inventory inventory = inventoryRepository.findByCode(inventoryCode);
+
+        return inventoryComponentRepository.findAllByInventory(inventory);
+    }
 }

@@ -6,4 +6,5 @@ import java.util.List;
 public interface GetComponentByInventoryQuery {
 
     List<InventoryComponentDto> getComponentByInventory(String inventoryCode, String ouvrageCode);
+    List<InventoryComponentDto> getAllComponentByInventory(String inventoryCode);
 }

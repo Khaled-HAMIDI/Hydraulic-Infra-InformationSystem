@@ -18,4 +18,9 @@ public class GetComponentByInventoryService implements GetComponentByInventoryQu
     public List<InventoryComponentDto> getComponentByInventory(String inventoryCode, String ouvrageCode) {
         return getComponentByInventoryMapper.inventoryComponentToInventoryComponentDto(loadComponentByInventory.loadComponentByInventory(inventoryCode,ouvrageCode));
     }
+
+    @Override
+    public List<InventoryComponentDto> getAllComponentByInventory(String inventoryCode) {
+        return getComponentByInventoryMapper.inventoryComponentToInventoryComponentDto(loadComponentByInventory.loadAllComponentByInventory(inventoryCode));
+    }
 }

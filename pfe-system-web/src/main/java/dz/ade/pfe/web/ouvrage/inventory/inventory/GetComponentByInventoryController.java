@@ -30,4 +30,11 @@ public class GetComponentByInventoryController {
 
         return getComponentByInventoryQuery.getComponentByInventory(inventoryCode,ouvrageCode);
     }
+
+    @GetMapping(value = "/inventory/{inventoryCode}/composant")
+    @ApiOperation(value = "Obtenir la liste des composants inventoriés")
+    public List<InventoryComponentDto> getAllComponentByInventory(@PathVariable(value = "inventoryCode") String inventoryCode) {
+
+        return getComponentByInventoryQuery.getAllComponentByInventory(inventoryCode);
+    }
 }

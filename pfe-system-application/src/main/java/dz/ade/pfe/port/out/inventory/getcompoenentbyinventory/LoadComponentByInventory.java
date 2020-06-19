@@ -7,4 +7,5 @@ import java.util.List;
 public interface LoadComponentByInventory {
 
     List<InventoryComponent> loadComponentByInventory(String inventoryCode,String ouvrageCode);
+    List<InventoryComponent> loadAllComponentByInventory(String inventoryCode);
 }

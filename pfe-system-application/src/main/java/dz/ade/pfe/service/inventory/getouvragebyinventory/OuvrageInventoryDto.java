@@ -11,6 +11,7 @@ import java.time.LocalDate;
 @NoArgsConstructor
 
 public class OuvrageInventoryDto {
+
     private String id;
 
     private String code;

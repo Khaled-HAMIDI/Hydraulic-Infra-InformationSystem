@@ -12,6 +12,7 @@ import io.swagger.annotations.ApiResponses;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -27,17 +28,26 @@ import java.util.List;
 public class GetOuvrageByInventoryController extends BaseController {
     private final GetOuvrageByInventoryQuery getOuvrageByInventoryQuery;
 
-    @GetMapping(value = "/inventory/ouvrages")
-    @ApiOperation(value = "Obtenir la liste des ouvrages inventoriés")
-    public List<OuvrageInventoryDto> getOuvrageByInventory(HttpServletRequest httpServletRequest) {
+    @GetMapping(value = "/inventory/current/ouvrages")
+    @ApiOperation(value = "Obtenir la liste des ouvrages inventoriés de l'inventaire courant")
+    public List<OuvrageInventoryDto> getOuvrageByCurrentInventory(HttpServletRequest httpServletRequest) {
 
         String codeUser = securityUtils.getUsername(httpServletRequest);
 
-        return getOuvrageByInventoryQuery.getOuvrageByInventory(codeUser);
+        return getOuvrageByInventoryQuery.getOuvrageByCurrentInventory(codeUser);
     }
 
-    @GetMapping(value = "/inventory/ouvrages/status")
-    @ApiOperation(value = "Obtenir la liste des status d'ouvrages inventoriés")
+    @GetMapping(value = "/inventory/{inventoryCode}/ouvrages")
+    @ApiOperation(value = "Obtenir la liste des ouvrages inventoriés d'un inventaire donné")
+    public List<OuvrageInventoryDto> getOuvrageByInventory(@PathVariable(value = "inventoryCode") String inventoryCode,HttpServletRequest httpServletRequest) {
+
+        String codeUser = securityUtils.getUsername(httpServletRequest);
+
+        return getOuvrageByInventoryQuery.getOuvrageByInventory(inventoryCode,codeUser);
+    }
+
+    @GetMapping(value = "/inventory/current/ouvrages/status")
+    @ApiOperation(value = "Obtenir la liste des status d'ouvrages dans l'inventaire courant")
     public List<Boolean> getOuvrageStatusByInventory(HttpServletRequest httpServletRequest) {
 
         String codeUser = securityUtils.getUsername(httpServletRequest);
@@ -45,8 +55,8 @@ public class GetOuvrageByInventoryController extends BaseController {
         return getOuvrageByInventoryQuery.getOuvrageStatusByInventory(codeUser);
     }
 
-    @GetMapping(value = "/inventory/ouvrages/dates")
-    @ApiOperation(value = "Obtenir la liste des dates d'inventaire sur les ouvrages")
+    @GetMapping(value = "/inventory/current/ouvrages/dates")
+    @ApiOperation(value = "Obtenir la liste des dates de validatioin des ouvrages de l'inventaire courant")
     public List<LocalDate> getDateByOuvrage(HttpServletRequest httpServletRequest) {
 
         String codeUser = securityUtils.getUsername(httpServletRequest);
@@ -54,8 +64,17 @@ public class GetOuvrageByInventoryController extends BaseController {
         return getOuvrageByInventoryQuery.getDateByOuvrage(codeUser);
     }
 
-    @GetMapping(value = "/inventory/ouvrages/startdate")
-    @ApiOperation(value = "Obtenir la date de début de l'ouvrage")
+    @GetMapping(value = "/inventory/{inventoryCode}/ouvrages/dates")
+    @ApiOperation(value = "Obtenir la liste des dates de validatioin des ouvrages de l'inventaire courant")
+    public List<LocalDate> getDateByOuvrageByInventory(@PathVariable(value = "inventoryCode") String inventoryCode,HttpServletRequest httpServletRequest) {
+
+        String codeUser = securityUtils.getUsername(httpServletRequest);
+
+        return getOuvrageByInventoryQuery.getDateByOuvrageByInventory(inventoryCode,codeUser);
+    }
+
+    @GetMapping(value = "/inventory/current/startdate")
+    @ApiOperation(value = "Obtenir la date de début de l'inventaire courant")
     public LocalDate getInventoryDate(HttpServletRequest httpServletRequest) {
 
         String codeUser = securityUtils.getUsername(httpServletRequest);

@@ -39,6 +39,8 @@ import { InventoryComposantComponent } from './composant/inventory-composant/inv
 import {LoadComponenteDirective} from "./load-component.directive";
 import {SecurityComponent} from "../ouvrage/composant/composant-add-edit/security/security.component";
 import {InventoryStepperService} from "./composant/inventory-stepper/inventory-stepper.service";
+import { CompletedInventoryComponent } from './completed-inventory/completed-inventory.component';
+import {CompletedInventoryService} from "./completed-inventory/completed-inventory.service";
 
 
 export const options: Partial<IConfig> | (() => Partial<IConfig>) = null;
@@ -72,11 +74,18 @@ const routes: Routes = [
         resolve: {
             data: CompletedInventoriesService
         }
+    },
+    {
+        path: 'completed/:codeInventory',
+        component: CompletedInventoryComponent,
+        resolve: {
+            data: CompletedInventoryService
+        }
     }
 ];
 
 @NgModule({
-    declarations: [InventoryAddComponent, CurrentInventoryComponent, CompletedInventoriesComponent, InventoryStepperComponent, InventoryComposantComponent, LoadComponenteDirective],
+    declarations: [InventoryAddComponent, CurrentInventoryComponent, CompletedInventoriesComponent, InventoryStepperComponent, InventoryComposantComponent, LoadComponenteDirective, CompletedInventoryComponent],
     imports: [
         CommonModule,
         RouterModule.forChild(routes),
