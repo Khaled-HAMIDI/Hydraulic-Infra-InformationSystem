@@ -5,6 +5,7 @@ import dz.ade.pfe.port.out.exploitation.getouvrages.LoadOuvragesExploitation;
 import dz.ade.pfe.port.out.ouvrage.getouvragesbycodes.LoadOuvragesByCodes;
 import dz.ade.pfe.port.out.ouvrage.getouvragelist.LoadOuvrageList;
 import dz.ade.pfe.port.out.ouvrage.getouvragesynoptic.LoadOuvrageSynoptic;
+import dz.ade.pfe.port.out.ouvrage.loadnbouvrages.LoadNbOuvrages;
 import dz.ade.pfe.service.exploitation.getouvrages.OuvrageExploitationDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
@@ -15,7 +16,7 @@ import java.util.stream.Stream;
 
 @Component
 @RequiredArgsConstructor
-public class OuvragePersistenceAdapter implements LoadOuvrageList, LoadOuvragesByCodes, LoadOuvrageSynoptic, LoadOuvragesExploitation {
+public class OuvragePersistenceAdapter implements LoadOuvrageList, LoadOuvragesByCodes, LoadOuvrageSynoptic, LoadOuvragesExploitation, LoadNbOuvrages {
 
     private final OuvrageRepository ouvrageRepository;
 
@@ -46,5 +47,13 @@ public class OuvragePersistenceAdapter implements LoadOuvrageList, LoadOuvragesB
     public List<Ouvrage> loadOuvragesExploitation(){
        return Stream.concat(ouvrageRepository.loadOuvragesExploitation().stream(), ouvrageRepository.loadOuvragesNotInExploitation().stream())
                 .collect(Collectors.toList());
+    }
+
+    @Override
+    public List<Object> loadNbOuvrages() {
+        List<Object> list = ouvrageRepository.loadNbOuvrages();
+        Object obj = ouvrageRepository.loadNbAllOuvrages();
+        list.add(obj);
+        return list;
     }
 }

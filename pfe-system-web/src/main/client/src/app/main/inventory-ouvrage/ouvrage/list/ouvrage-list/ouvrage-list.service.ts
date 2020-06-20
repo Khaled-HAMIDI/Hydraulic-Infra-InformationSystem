@@ -49,7 +49,6 @@ export class OuvrageListService implements Resolve<any> {
     return new Promise((resolve, reject) => {
       this.http.get(API+"/ouvrage/type")
         .subscribe((response: any) => {
-          this.ouvrages = response;
           resolve(response);
         }, reject = (err) => { console.log(err) });
     });

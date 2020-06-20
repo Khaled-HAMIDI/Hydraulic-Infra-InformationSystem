@@ -28,4 +28,12 @@ public interface OuvrageRepository extends JpaRepository<Ouvrage, Long> {
 
     @Query(value = "select * from pfe.ouvrage where id not in (select o.id from pfe.ouvrage as o join pfe.exploitation_reading as r on( o.id=r.ouvrage_id))", nativeQuery = true)
     List<Ouvrage> loadOuvragesNotInExploitation();
+
+    @Query(value = "select o.type,count(*) from pfe.ouvrage o group by o.type", nativeQuery = true)
+    List<Object> loadNbOuvrages();
+
+    @Query(value = "select count(ouvrage_id) from pfe.exploitation_reading", nativeQuery = true)
+    Object loadNbAllOuvrages();
+
+
 }
