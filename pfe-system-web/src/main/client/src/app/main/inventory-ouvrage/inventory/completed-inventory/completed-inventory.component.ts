@@ -7,9 +7,7 @@ import { locale as french } from './i18n/fr';
 import { locale as arabic } from './i18n/ar';
 import { ToolsService } from '@ayams/services/tools.service';
 import { takeUntil } from 'rxjs/operators';
-import {CompletedInventoriesService} from "../completed-inventories/completed-inventories.service";
 import {CompletedInventoryService} from "./completed-inventory.service";
-import {MatTableDataSource} from "@angular/material/table";
 const COLUMN_NAMES: string[] = [
     'componentType',
     'state',
@@ -54,6 +52,7 @@ export class CompletedInventoryComponent extends Table implements OnInit, OnDest
                 this.emptyList = response.data[0].length == 0;
                 this.ouvrages = response.data[0];
                 this.components = response.data[2];
+                this.filtredComponents =response.data[2];
 
                 for (let i in this.ouvrages){
                     this.ouvrageData.push({
@@ -85,7 +84,7 @@ export class CompletedInventoryComponent extends Table implements OnInit, OnDest
     }
 
     export() {
-        this.completedInventoryService.exportDataXLS(["id"]);
+        this.completedInventoryService.exportDataXLS(this.filtredComponents,['done']);
     }
 
 

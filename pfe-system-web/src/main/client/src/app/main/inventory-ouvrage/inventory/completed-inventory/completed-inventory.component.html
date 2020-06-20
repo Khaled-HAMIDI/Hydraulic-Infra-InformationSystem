@@ -9,7 +9,7 @@
             <!-- APP TITLE -->
             <div fxLayout="row" fxLayoutAlign="start center">
 
-                <button mat-icon-button class="mr-0 mr-sm-16" >
+                <button mat-icon-button class="mr-0 mr-sm-16" [routerLink]="'/patrimony/inventory/completed'">
                     <mat-icon>arrow_back</mat-icon>
                 </button>
 
@@ -46,7 +46,7 @@
                     <mat-accordion class="example-headers-align" >
                         <mat-expansion-panel *ngFor="let ouvrage of ouvrageData;let j = index" (click)="updateTable(ouvrage)">
 
-                            <mat-expansion-panel-header>
+                            <mat-expansion-panel-header fxLayout="row" fxLayoutAlign="end center">
                                 <mat-panel-title> {{ouvrage.ouvrage.type}} </mat-panel-title>
                                 <mat-panel-description> {{ouvrage.ouvrage.code}} </mat-panel-description>
                                 <mat-panel-description> {{ouvrage.ouvrage.name}} </mat-panel-description>

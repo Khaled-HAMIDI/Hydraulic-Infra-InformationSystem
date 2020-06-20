@@ -8,6 +8,10 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { LoadComponenteDirective } from '../../load-component.directive';
 import { DynamicComponent } from '../../dynamic-component.component';
 import {StepperAddEditService, componentMapping} from "./stepper-add-edit.service";
+import {InventoryStepperService} from "./inventory-stepper.service";
+import { locale as french } from './i18n/fr';
+import { locale as arabic } from './i18n/ar';
+import {ToolsService} from "../../../../../../@ayams/services/tools.service";
 
 @Component({
   selector: 'app-inventory-stepper',
@@ -34,12 +38,15 @@ export class InventoryStepperComponent implements OnInit, OnDestroy {
     constructor(
         private steppersService: StepperAddEditService,
         private _changeDetectorRef: ChangeDetectorRef,
+        private toolsService: ToolsService,
         private _fuseSidebarService: FuseSidebarService,
         private route: ActivatedRoute,
         private router: Router,
         private componentFactoryResolver: ComponentFactoryResolver,
+        private inventoryStepperService :InventoryStepperService
     ) {
         // Set the defaults
+        this.toolsService.loadTranslations(french, arabic);
         this.animationDirection = 'none';
         this.currentStep = 0;
 
@@ -181,6 +188,17 @@ export class InventoryStepperComponent implements OnInit, OnDestroy {
                 }
             });
         }
+    }
+
+    inventoryOuvrageValidate(){
+        this.inventoryStepperService.inventoryOuvrageValidate(this.route.snapshot.params['codeInventory'],this.route.snapshot.params['codeOuvrage'])
+            .then((response:any) => {
+                    console.log(response);
+                    this.router.navigate(['/patrimony/inventory/current']);
+                },
+                (error) => {
+                    console.log(error)
+                });;
     }
 
 }

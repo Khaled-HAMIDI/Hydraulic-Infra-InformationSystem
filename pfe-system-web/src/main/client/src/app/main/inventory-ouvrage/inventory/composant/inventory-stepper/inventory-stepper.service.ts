@@ -46,6 +46,23 @@ export class InventoryStepperService implements Resolve<any> {
 
     }
 
+    inventoryOuvrageValidate(codeInventory,codeOuvrage){
+        return new Promise((resolve, reject) => {
+            this.toolsService.showProgressBar();
+            console.log('testt');
+            this.http.get(API + '/inventory/update/' +codeInventory + '/' + codeOuvrage)
+                .subscribe((response: any) => {
+                    this.toolsService.hideProgressBar();
+                    this.toolsService.showSuccess('ADD.TOAST-ADD.success');
+                    resolve(response);
+                }, (error: any) => {
+                    this.toolsService.hideProgressBar();
+                    this.toolsService.showApiError(error.error.message);
+                    reject(error);
+                });
+        });
+    }
+
 
     resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<any> | Promise<any> | any {
         return new Promise((resolve, reject) => {

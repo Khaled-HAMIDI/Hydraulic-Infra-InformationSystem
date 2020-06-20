@@ -12,7 +12,7 @@ import { FuseProgressBarService } from '@fuse/components/progress-bar/progress-b
 export class ToolsService {
 
   confirmDialogRef: MatDialogRef<FuseConfirmDialogComponent>;
-  apiErrorCode =["codeExist"];
+  apiErrorCode =["codeExist","invalidInventory","invalidInventoryOuvrage"];
 
   constructor(
     public matDialog: MatDialog,

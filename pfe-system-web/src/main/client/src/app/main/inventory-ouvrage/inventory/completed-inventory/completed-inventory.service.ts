@@ -5,7 +5,6 @@ import { Observable, Subject } from 'rxjs';
 import { API } from 'config/api.config';
 import { ToolsService } from '@ayams/services/tools.service';
 import * as XLSX from 'xlsx';
-import {Inventory} from "./model/completedInventories.model";
 
 const INVENTORY_API = API + '/inventory/';
 @Injectable({
@@ -13,29 +12,22 @@ const INVENTORY_API = API + '/inventory/';
 })
 export class CompletedInventoryService implements Resolve<any> {
 
-    inventories: Inventory[];
-    inventoriesByFilter: Inventory[];
-    onInventoriesChanged: Subject<any>;
-
     constructor(
         private router: Router,
         private http: HttpClient,
         private toolsService: ToolsService
     ) {
-        this.inventoriesByFilter = [];
-        this.onInventoriesChanged = new Subject();
     }
 
     // -----------------------------------------------------------------------------------------------------
     // @ API function
     // -----------------------------------------------------------------------------------------------------
 
-    getOuvrages(inventoryCode): Promise<Inventory[]> {
+    getOuvrages(inventoryCode): Promise<any> {
         return new Promise((resolve, reject) => {
             this.http.get(INVENTORY_API +inventoryCode +'/ouvrages')
                 .subscribe((response: any) => {
                     resolve(response);
-                    this.inventories = response;
                 }, reject = (err) => { console.log(err) });
         });
     }
@@ -44,7 +36,6 @@ export class CompletedInventoryService implements Resolve<any> {
         return new Promise((resolve, reject) => {
             this.http.get(INVENTORY_API+ inventoryCode +'/ouvrages/dates')
                 .subscribe((response: any) => {
-                    this.inventories = response;
                     resolve(response);
                 }, reject = (err) => { console.log(err) });
         });
@@ -60,13 +51,6 @@ export class CompletedInventoryService implements Resolve<any> {
     }
 
 
-
-    // -----------------------------------------------------------------------------------------------------
-    // @ Setter function
-    // -----------------------------------------------------------------------------------------------------
-    setOuvragesByFilter(inventoriesByFilter: any[]) {
-        this.inventoriesByFilter = inventoriesByFilter;
-    }
 
     resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<any> | Promise<any> | any {
         return new Promise((resolve, reject) => {
@@ -88,21 +72,14 @@ export class CompletedInventoryService implements Resolve<any> {
 
 
     }
-    exportDataXLS(properties) {
-        var data;
+    exportDataXLS(data,properties) {
 
         this.toolsService.showProgressBar();
-
-        if (this.inventoriesByFilter.length)
-            data = this.inventoriesByFilter;
-        else
-            data = this.inventories;
 
         //remove reference
         data = JSON.parse(JSON.stringify(data));
 
         this.removeProperties(data, properties);
-        //this.replacePorperty(data);
 
         /* generate a worksheet */
         var ws = XLSX.utils.json_to_sheet(data);
@@ -116,7 +93,6 @@ export class CompletedInventoryService implements Resolve<any> {
 
         this.toolsService.hideProgressBar();
     }
-
 
     removeProperties(data, properties) {
 

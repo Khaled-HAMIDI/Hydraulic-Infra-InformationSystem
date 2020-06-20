@@ -90,6 +90,22 @@ export class CurrentInventoryService implements Resolve<any> {
         });
     }
 
+    inventoryValidate(){
+        return new Promise((resolve, reject) => {
+            this.toolsService.showProgressBar();
+            this.http.get(API + '/inventory/update/current')
+                .subscribe((response: any) => {
+                    this.toolsService.hideProgressBar();
+                    this.toolsService.showSuccess('ADD.TOAST-ADD.success');
+                    resolve(response);
+                }, (error: any) => {
+                    this.toolsService.hideProgressBar();
+                    this.toolsService.showApiError(error.error.message);
+                    reject(error);
+                });
+        });
+    }
+
     // -----------------------------------------------------------------------------------------------------
     // @ Setter function
     // -----------------------------------------------------------------------------------------------------

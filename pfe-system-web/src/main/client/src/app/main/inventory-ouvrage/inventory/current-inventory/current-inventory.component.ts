@@ -121,7 +121,15 @@ export class CurrentInventoryComponent extends Table implements OnInit, OnDestro
     }
 
     InventoryValidate() {
+        this.currentInventoryService.inventoryValidate()
+            .then((response:any) => {
+                    console.log(response);
+                    this.router.navigate(['/patrimony/inventory/completed']);
 
+                },
+                (error) => {
+                    console.log("No")
+                });
     }
 
     heightDyn() {

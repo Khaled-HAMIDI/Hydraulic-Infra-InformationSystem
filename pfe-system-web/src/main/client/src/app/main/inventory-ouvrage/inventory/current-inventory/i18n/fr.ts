@@ -14,16 +14,18 @@ export const locale = {
                 'code': 'Code',
                 'name': 'Nom',
                 'type': 'Type',
-                'status': 'Inventorié',
+                'status': 'Etat',
+                'statusDone': 'Terminé',
+                'statusNotYet': 'En cours',
                 'inventoryStart': 'Début d\'inventaire',
                 'inventoryOuvrageDate': 'Date de validation d\'ouvrage'
-            },
-            'TOAST': {
-                'success-validate': 'L\'inventaire a été validé',
             }
         },
-        'EMPTY-LIST': {
-            'msg': 'Aucun inventaire disponible pour le moment'
+        'ADD':{
+            'TOAST-ADD':{
+                'success':'L\'inventaire a été validé',
+                'invalidInventory': 'Il reste encore des ouvrages à inventorier, veuillez les compléter'
+            }
         }
     }
 };
