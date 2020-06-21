@@ -28,6 +28,7 @@ export class InventoryStepperComponent implements OnInit, OnDestroy {
     composants: any[] = [];
     currentStep: number;
     action :String;
+    code:string;
 
     @ViewChildren(FusePerfectScrollbarDirective)
     fuseScrollbarDirectives: QueryList<FusePerfectScrollbarDirective>;
@@ -52,6 +53,7 @@ export class InventoryStepperComponent implements OnInit, OnDestroy {
 
         // Set the private defaults
         this._unsubscribeAll = new Subject();
+        this.code = this.inventoryStepperService.code
     }
 
     // -----------------------------------------------------------------------------------------------------

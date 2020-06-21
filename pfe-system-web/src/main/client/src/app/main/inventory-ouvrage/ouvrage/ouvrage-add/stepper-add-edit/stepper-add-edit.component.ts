@@ -8,6 +8,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { LoadComponenteDirective } from '../../load-component.directive';
 import { DynamicComponent } from '../../dynamic-component.component';
 import {StepperAddEditService, componentMapping} from "./stepper-add-edit.service";
+import { ComposantGetService } from '../../composant/composant-get.service';
 
 
 
@@ -26,6 +27,7 @@ export class StepperAddEditComponent implements OnInit, OnDestroy {
     composants: any[] = [];
     currentStep: number;
     action :String;
+    code:string;
 
     @ViewChildren(FusePerfectScrollbarDirective)
     fuseScrollbarDirectives: QueryList<FusePerfectScrollbarDirective>;
@@ -40,6 +42,7 @@ export class StepperAddEditComponent implements OnInit, OnDestroy {
         private route: ActivatedRoute,
         private router: Router,
         private componentFactoryResolver: ComponentFactoryResolver,
+        private composantGetService :ComposantGetService
     ) {
         // Set the defaults
         this.animationDirection = 'none';
@@ -47,6 +50,7 @@ export class StepperAddEditComponent implements OnInit, OnDestroy {
 
         // Set the private defaults
         this._unsubscribeAll = new Subject();
+        this.code = composantGetService.code;
     }
 
     // -----------------------------------------------------------------------------------------------------

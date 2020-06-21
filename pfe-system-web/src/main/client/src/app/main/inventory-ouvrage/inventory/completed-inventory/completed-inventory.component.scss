@@ -1,5 +1,16 @@
 #inventory {
 
+    .top-bg {
+        height: 152px;
+      }
+      .center {
+        .header {
+            height: 97px !important;
+            min-height: 97px !important;
+            max-height: 97px !important;
+        }
+    }
+
     .header {
 
         .product-image {

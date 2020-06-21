@@ -11,7 +11,7 @@ const INVENTORY_API = API + '/inventory/';
     providedIn: 'root'
 })
 export class InventoryStepperService implements Resolve<any> {
-
+    code:string
     constructor(
         private router: Router,
         private http: HttpClient,
@@ -25,6 +25,7 @@ export class InventoryStepperService implements Resolve<any> {
     // -----------------------------------------------------------------------------------------------------
 
     getComponents(codeInventory, codeOuvrage): Promise<componentInventory[]> {
+        this.code = codeOuvrage;
         return new Promise((resolve, reject) => {
             this.http.get(INVENTORY_API + codeInventory + '/' +codeOuvrage + '/composant')
                 .subscribe((response: any) => {

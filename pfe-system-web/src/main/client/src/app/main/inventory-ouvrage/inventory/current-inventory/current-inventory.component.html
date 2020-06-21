@@ -7,15 +7,12 @@
     <div [ngClass]="{HideTable: emptyList}" class="center">
         <!-- HEADER -->
         <div class="header accent" fxLayout="column" fxLayoutAlign="center center" fxLayout.gt-sm="row"
-             fxLayoutAlign.gt-sm="space-between center">
-
-            <!-- APP TITLE -->
-            <button mat-icon-button class="mr-0 mr-sm-16" [routerLink]="'/home'">
-                <mat-icon>arrow_back</mat-icon>
-            </button>
+            fxLayoutAlign.gt-sm="space-between center">
 
             <div class="logo my-12 m-sm-0" fxLayout="row" fxLayoutAlign="start center">
-                <span class="logo-text h1">{{'LIST.HEADER.title' | translate}}</span>
+                <span class="logo-text h1">
+                    {{'LIST.HEADER.title' | translate}}
+                </span>
             </div>
             <!-- / APP TITLE -->
 
@@ -24,7 +21,8 @@
                 <div class="search-wrapper mx-32 mx-md-0">
                     <div class="search" fxFlex fxLayout="row" fxLayoutAlign="start center">
                         <mat-icon>search</mat-icon>
-                        <input matInput [(ngModel)]="searchTerm" (keyup)="applyFilter($event.target.value)" placeholder="Recherche">
+                        <input matInput [(ngModel)]="searchTerm" (keyup)="applyFilter($event.target.value)"
+                            placeholder="Recherche">
                     </div>
                 </div>
                 <!-- / SEARCH -->
@@ -75,7 +73,7 @@
 
                     <ng-container matColumnDef="status">
                         <th mat-header-cell *matHeaderCellDef mat-sort-header>{{'LIST.TABLE.status' | translate}}
-                        </th >
+                        </th>
                         <td mat-cell *matCellDef="let data">
                             <span *ngIf="data.status"> {{ 'LIST.TABLE.statusDone' | translate }} </span>
                             <span *ngIf="!data.status"> {{ 'LIST.TABLE.statusNotYet' | translate }} </span>
@@ -84,7 +82,8 @@
                     </ng-container>
 
                     <ng-container matColumnDef="inventoryStart">
-                        <th mat-header-cell *matHeaderCellDef mat-sort-header>{{'LIST.TABLE.inventoryStart' | translate}}
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header>
+                            {{'LIST.TABLE.inventoryStart' | translate}}
                         </th>
                         <td mat-cell *matCellDef="let data">
                             <p class="text-truncate">{{data.inventoryDate}}</p>
@@ -92,7 +91,8 @@
                     </ng-container>
 
                     <ng-container matColumnDef="inventoryOuvrageDate">
-                        <th mat-header-cell *matHeaderCellDef mat-sort-header>{{'LIST.TABLE.inventoryOuvrageDate' | translate}}
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header>
+                            {{'LIST.TABLE.inventoryOuvrageDate' | translate}}
                         </th>
                         <td mat-cell *matCellDef="let data">
                             <p class="text-truncate">{{data.ouvrageDate}}</p>

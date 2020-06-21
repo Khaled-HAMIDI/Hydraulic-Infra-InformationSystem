@@ -9,9 +9,9 @@
             <div class="steps">
 
                 <div class="step"
-                     *ngFor="let composant of composants; let i = index; let last = last; let first = first"
-                     (click)="gotoStep(i)"
-                     [ngClass]="{'current': currentStep === i, 'completed': currentStep > i, 'last': last, 'first': first}">
+                    *ngFor="let composant of composants; let i = index; let last = last; let first = first"
+                    (click)="gotoStep(i)"
+                    [ngClass]="{'current': currentStep === i, 'completed': currentStep > i, 'last': last, 'first': first}">
                     <div class="index">
                         <span>{{i + 1}}</span>
                     </div>
@@ -30,14 +30,20 @@
     <div class="center">
 
         <!-- HEADER -->
-        <div class="header accent p-24" fxLayout="row" fxLayoutAlign="start center" [@animate]="{value:'*',params:{delay:'100ms',x:'-25px'}}">
+        <div class="header accent p-24" fxLayout="row" fxLayoutAlign="space-between center"
+            [@animate]="{value:'*',params:{delay:'100ms',x:'-25px'}}">
 
-            <button mat-icon-button class="mr-16" [routerLink]="'/patrimony/inventory/current'">
-                <mat-icon>arrow_back</mat-icon>
-            </button>
+            <div fxLayout="row" fxLayoutAlign="start center">
+                <button mat-icon-button class="mr-16" [routerLink]="'/patrimony/inventory/current'">
+                    <mat-icon>arrow_back</mat-icon>
+                </button>
 
-            <div>
-                <h2>{{composants[currentStep].title}}</h2>
+                <div fxLayout="column" fxLayoutAlign="start start"
+                    [@animate]="{value:'*',params:{delay:'100ms',x:'-25px'}}">
+                    <div class="h2">
+                        {{composants[currentStep].title}} - {{code}}
+                    </div>
+                </div>
             </div>
 
             <ng-container>
@@ -66,23 +72,17 @@
         <div class="step-navigation">
 
             <button *ngIf="action == 'edit'" mat-fab class="previous mat-accent fuse-white-fg"
-                    (click)="gotoPreviousStep()"
-                    [disabled]="currentStep === 0"
-                    [fxHide]="currentStep === 0">
+                (click)="gotoPreviousStep()" [disabled]="currentStep === 0" [fxHide]="currentStep === 0">
                 <mat-icon>chevron_left</mat-icon>
             </button>
 
-            <button mat-fab class="next mat-accent fuse-white-fg"
-                    (click)="gotoNextStep()"
-                    [disabled]="currentStep === composants.length - 1"
-                    [fxHide]="currentStep === composants.length - 1">
+            <button mat-fab class="next mat-accent fuse-white-fg" (click)="gotoNextStep()"
+                [disabled]="currentStep === composants.length - 1" [fxHide]="currentStep === composants.length - 1">
                 <mat-icon>chevron_right</mat-icon>
             </button>
 
-            <button mat-fab class="done green-600"
-                    routerLink="/patrimony/ouvrages/list"
-                    [disabled]="currentStep !== composants.length - 1"
-                    [fxShow]="currentStep === composants.length - 1">
+            <button mat-fab class="done green-600" routerLink="/patrimony/ouvrages/list"
+                [disabled]="currentStep !== composants.length - 1" [fxShow]="currentStep === composants.length - 1">
                 <mat-icon>check</mat-icon>
             </button>
 

@@ -8,6 +8,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { LoadComponenteDirective } from '../../load-component.directive';
 import { DynamicComponent } from '../../dynamic-component.component';
 import {StepperShowServie, componentMapping} from "./stepper-show.servie";
+import { ComposantGetService } from '../../composant/composant-get.service';
 
 @Component({
   selector: 'app-stepper-show',
@@ -17,7 +18,7 @@ import {StepperShowServie, componentMapping} from "./stepper-show.servie";
     animations: fuseAnimations
 })
 export class StepperShowComponent implements OnInit, OnDestroy {
-
+    code:string;
     @ViewChild(LoadComponenteDirective, { static: true }) integrationHost: LoadComponenteDirective;
 
     animationDirection: 'left' | 'right' | 'none';
@@ -37,6 +38,7 @@ export class StepperShowComponent implements OnInit, OnDestroy {
         private route: ActivatedRoute,
         private router: Router,
         private componentFactoryResolver: ComponentFactoryResolver,
+        private composantGetService :ComposantGetService
     ) {
         // Set the defaults
         this.animationDirection = 'none';
@@ -44,6 +46,7 @@ export class StepperShowComponent implements OnInit, OnDestroy {
 
         // Set the private defaults
         this._unsubscribeAll = new Subject();
+        this.code = composantGetService.code;
     }
 
     // -----------------------------------------------------------------------------------------------------
