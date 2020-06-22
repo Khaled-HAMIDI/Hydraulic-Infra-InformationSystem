@@ -26,6 +26,9 @@ export const locale = {
                 'success':'L\'inventaire a été validé',
                 'invalidInventory': 'Il reste encore des ouvrages à inventorier, veuillez les compléter'
             }
+        },
+        'EMPTY-LIST': {
+            'msg': 'Aucun inventaire lancé pour le moment'
         }
     }
 };

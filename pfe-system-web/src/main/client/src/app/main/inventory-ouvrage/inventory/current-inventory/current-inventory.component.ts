@@ -56,6 +56,7 @@ export class CurrentInventoryComponent extends Table implements OnInit, OnDestro
     ngOnInit() {
         this.route.data.pipe(takeUntil(this._unsubscribeAll)).subscribe(
             (response) => {
+                console.log(response);
                 this.filtredOuvrages = response.data[0];
                 this.emptyList = response.data[0].length == 0;
                 this.types = response.data[1];

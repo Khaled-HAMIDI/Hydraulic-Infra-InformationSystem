@@ -114,4 +114,32 @@
         <!-- / CONTENT CARD -->
     </div>
     <!-- / CENTER -->
+    <!-- CENTER -->
+    <div [ngClass]="{HideTable: !emptyList}" class="center">
+
+        <!-- HEADER -->
+        <div class="header accent" fxLayout="column" fxLayoutAlign="center center" fxLayout.gt-sm="row"
+            fxLayoutAlign.gt-sm="space-between center">
+
+            <!-- APP TITLE -->
+            <div class="logo my-12 m-sm-0" fxLayout="row" fxLayoutAlign="start center">
+                <span class="logo-text h1">
+                    {{'LIST.HEADER.title' | translate}}
+                </span>
+            </div>
+
+        </div>
+        <!-- / HEADER -->
+
+        <!-- CONTENT CARD -->
+        <div class="example-container mat-white-bg">
+            <mat-card>
+                <h2 fxLayoutAlign="center center">
+                    {{'EMPTY-LIST.msg' | translate}}
+                </h2>
+            </mat-card>
+        </div>
+
+    </div>
+    <!-- / CENTER -->
 </div>

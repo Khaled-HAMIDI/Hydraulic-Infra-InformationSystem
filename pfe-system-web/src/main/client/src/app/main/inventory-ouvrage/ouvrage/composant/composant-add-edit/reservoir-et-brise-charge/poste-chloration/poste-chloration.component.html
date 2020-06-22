@@ -103,7 +103,7 @@
         </div>
 
         <div>
-            <button mat-raised-button class="accent add-button" [routerLink]="'/patrimony/ouvrages/list'" [disabled]="postChlorationForm.invalid" (click)="onSave()">
+            <button mat-raised-button class="accent add-button" [routerLink]="'/patrimony/ouvrages'" [disabled]="postChlorationForm.invalid" (click)="onSave()">
                 <span *ngIf="add">{{'BUTTON.add' | translate}}</span>
                 <span *ngIf="!add">{{'BUTTON.update' | translate}}</span>
             </button>

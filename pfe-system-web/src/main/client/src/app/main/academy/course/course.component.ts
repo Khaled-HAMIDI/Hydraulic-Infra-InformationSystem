@@ -167,7 +167,7 @@ export class AcademyCourseComponent implements OnInit, OnDestroy {
         if ((<DynamicComponent>componentRef.instance).validateEvent) {
             (<DynamicComponent>componentRef.instance).validateEvent.subscribe(($event) => {
                 if (this.currentStep === this.courses.length - 1) {
-                    this.router.navigate(['/patrimony/ouvrages/list']);
+                    this.router.navigate(['/patrimony/ouvrages']);
                 }
                 else {
                     this.gotoNextStep();

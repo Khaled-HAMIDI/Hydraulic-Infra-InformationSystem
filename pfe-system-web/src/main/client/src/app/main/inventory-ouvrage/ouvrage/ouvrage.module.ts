@@ -212,7 +212,7 @@ const routes: Routes = [
         resolve: { data: ComposantGetService }
     },
     {
-        path: 'list',
+        path: '',
         component: OuvrageListComponent,
         resolve: { data: OuvrageListService }
     }

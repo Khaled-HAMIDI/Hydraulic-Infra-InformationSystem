@@ -3,7 +3,7 @@ export const locale = {
     data: {
         'LIST': {
             'HEADER': {
-                'title': 'Utilisateurs',
+                'title': 'Ouvrages',
                 'search':'Recherche',
                 'export': 'Exporter',
             },
@@ -12,13 +12,11 @@ export const locale = {
             },
             'TABLE': {
                 'username': 'Nom d\'utilisateur',
-                'employee-code': 'Code d\'employé',
-                'roles': 'Profils',
-                'firstName': 'Prénom',
-                'lastName': 'Nom',
-                'structure': 'Structure',
-                'phone': 'Téléphone',
-                'email': 'Email',
+                'code': 'Code',
+                'nom': 'Nom de la station',
+                'debit': 'Débit',
+                'datee': 'Date mise en service',
+                'dates': 'Date transfert d\'exploitation',
                 'enabled': 'Actif',
                 'action': {
                     'show': 'Afficher',
