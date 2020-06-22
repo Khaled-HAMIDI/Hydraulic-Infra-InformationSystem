@@ -4,6 +4,7 @@ export const locale = {
         'LIST': {
             'HEADER': {
                 'validate': 'Valider l\'ouvrage',
+                'completed' :'Cet ouvrage a été déja inventorié'
             }
         },
         'ADD':{

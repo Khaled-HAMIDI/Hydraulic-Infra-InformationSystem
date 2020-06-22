@@ -27,8 +27,10 @@ export class InventoryStepperComponent implements OnInit, OnDestroy {
     animationDirection: 'left' | 'right' | 'none';
     composants: any[] = [];
     currentStep: number;
-    action :String;
-    code:string;
+    action : string;
+    code : string;
+    completed : boolean;
+
 
     @ViewChildren(FusePerfectScrollbarDirective)
     fuseScrollbarDirectives: QueryList<FusePerfectScrollbarDirective>;
@@ -53,7 +55,8 @@ export class InventoryStepperComponent implements OnInit, OnDestroy {
 
         // Set the private defaults
         this._unsubscribeAll = new Subject();
-        this.code = this.inventoryStepperService.code
+        this.code = this.inventoryStepperService.code;
+        this.completed = true;
     }
 
     // -----------------------------------------------------------------------------------------------------
@@ -67,6 +70,12 @@ export class InventoryStepperComponent implements OnInit, OnDestroy {
         this.route.data.pipe(takeUntil(this._unsubscribeAll)).subscribe(
             (response) => {
                 this.action = response.action;
+
+                //Vérfier si l'ouvrage est déja validé
+                if (response.data[1]){
+                    if (response.data[0][1].inventoryCode == response.data[1].code) this.completed =false;
+                }
+
                 switch (this.route.snapshot.params['type']) {
 
                     case "StationTraitementConventionelle" :

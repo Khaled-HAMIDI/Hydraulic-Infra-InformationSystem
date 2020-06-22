@@ -17,6 +17,8 @@ public class InventoryComponentDto {
 
     private String ouvrageCode;
 
+    private String inventoryCode;
+
     private String componentType;
 
     @Enumerated(EnumType.STRING)

@@ -12,6 +12,7 @@ public interface GetComponentByInventoryMapper {
 
     @Mappings({
             @Mapping(source = "ouvrage.code", target = "ouvrageCode"),
+            @Mapping(source = "inventory.code", target = "inventoryCode"),
     })
     InventoryComponentDto inventoryComponentToInventoryComponentDto(InventoryComponent inventoryComponent);
 

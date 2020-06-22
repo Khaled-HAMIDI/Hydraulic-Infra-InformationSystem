@@ -1,4 +1,14 @@
-<div id="stepper" class="page-layout simple left-sidebar inner-scroll">
+<div class="content-card mat-white-bg" *ngIf="completed">
+    <div class="content" >
+        <div class="tab-content p-24" fusePerfectScrollbar>
+            <div class="pb-16 red-fg" fxLayout="row" fxLayoutAlign="start center">
+                <p class="h2" >{{'LIST.HEADER.completed' | translate}}</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="stepper" class="page-layout simple left-sidebar inner-scroll" *ngIf="!completed">
 
     <!-- SIDEBAR -->
     <fuse-sidebar class="sidebar" name="left-sidebar" position="left" lockedOpen="gt-md">

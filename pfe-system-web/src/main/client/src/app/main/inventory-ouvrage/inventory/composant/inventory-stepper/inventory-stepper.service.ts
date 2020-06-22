@@ -34,6 +34,15 @@ export class InventoryStepperService implements Resolve<any> {
         });
     }
 
+    getCurrentInventory(){
+        return new Promise((resolve, reject) => {
+            this.http.get(API + '/inventory/current')
+                .subscribe((response: any) => {
+                    resolve(response);
+                }, reject = (err) => { console.log(err) });
+        });
+    }
+
     saveInventoryComponent(component,codeInventory,codeOuvrage): Promise<any> {
         return new Promise((resolve, reject) => {
             this.http.post(INVENTORY_API  +codeInventory +'/' + codeOuvrage + '/components', component)
@@ -69,7 +78,8 @@ export class InventoryStepperService implements Resolve<any> {
         return new Promise((resolve, reject) => {
 
             Promise.all([
-                this.getComponents(route.params['codeInventory'],route.params['codeOuvrage'])
+                this.getComponents(route.params['codeInventory'],route.params['codeOuvrage']),
+                this.getCurrentInventory()
             ]).then(
                 (data) => {
                     resolve(data);
