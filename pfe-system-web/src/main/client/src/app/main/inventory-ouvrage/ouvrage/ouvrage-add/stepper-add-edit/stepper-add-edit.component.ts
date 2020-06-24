@@ -50,7 +50,6 @@ export class StepperAddEditComponent implements OnInit, OnDestroy {
 
         // Set the private defaults
         this._unsubscribeAll = new Subject();
-        this.code = composantGetService.code;
     }
 
     // -----------------------------------------------------------------------------------------------------
@@ -61,7 +60,8 @@ export class StepperAddEditComponent implements OnInit, OnDestroy {
      * On init
      */
     ngOnInit(): void {
-        // Subscribe to courses
+
+        this.code =this.route.snapshot.params['code'];
         this.route.data.pipe(takeUntil(this._unsubscribeAll)).subscribe(
             (response) => {
                 this.action = response.action;
