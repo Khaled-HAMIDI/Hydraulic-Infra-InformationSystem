@@ -27,7 +27,6 @@ export class InventoryStepperComponent implements OnInit, OnDestroy {
     animationDirection: 'left' | 'right' | 'none';
     composants: any[] = [];
     currentStep: number;
-    action : string;
     code : string;
     completed : boolean;
 
@@ -69,13 +68,11 @@ export class InventoryStepperComponent implements OnInit, OnDestroy {
     ngOnInit(): void {
         this.route.data.pipe(takeUntil(this._unsubscribeAll)).subscribe(
             (response) => {
-                this.action = response.action;
 
                 //Vérfier si l'ouvrage est déja validé
                 if (response.data[1]){
                     if (response.data[0][1].inventoryCode == response.data[1].code) this.completed =false;
                 }
-
                 switch (this.route.snapshot.params['type']) {
 
                     case "StationTraitementConventionelle" :
@@ -97,7 +94,8 @@ export class InventoryStepperComponent implements OnInit, OnDestroy {
                         this.composants = this.steppersService.briseChargeComposants;
                         break;
                 }
-                this.loadComponent(this.composants[0].ComponentName);
+                if (!this.completed) this.loadComponent(this.composants[0].ComponentName);
+
             },
             (error) => {
                 console.log(error);
@@ -124,7 +122,7 @@ export class InventoryStepperComponent implements OnInit, OnDestroy {
      * @param step
      */
     gotoStep(step): void {
-        if (this.action != "edit") return;
+
         // Decide the animation direction
         this.animationDirection = this.currentStep < step ? 'left' : 'right';
 
@@ -163,7 +161,7 @@ export class InventoryStepperComponent implements OnInit, OnDestroy {
      * Go to previous step
      */
     gotoPreviousStep(): void {
-        if (this.currentStep === 0 || this.action != "edit") {
+        if (this.currentStep === 0) {
             return;
         }
 
@@ -181,7 +179,6 @@ export class InventoryStepperComponent implements OnInit, OnDestroy {
 
 
     loadComponent(componentName: string): void {
-
 
         const componentFactory = this.componentFactoryResolver.resolveComponentFactory(componentMapping['InventoryComposantComponent']);
         const viewContainerRef = this.integrationHost.viewContainerRef;
@@ -209,7 +206,7 @@ export class InventoryStepperComponent implements OnInit, OnDestroy {
                 },
                 (error) => {
                     console.log(error)
-                });;
+                });
     }
 
 }

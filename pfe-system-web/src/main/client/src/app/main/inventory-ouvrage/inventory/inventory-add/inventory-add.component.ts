@@ -199,11 +199,11 @@ export class InventoryAddComponent implements OnInit, OnDestroy {
         this.inventoryAdd.responsablesOuvrage = this.responsablesOuvrages;
         this.inventoryAddService.saveInventory(this.inventoryAdd)
             .then((response) => {
-                    console.log(response);
-            },
-                (error) => {
-                    console.log(error)
-                });
+                this.router.navigate(['/patrimony/inventory/current']);
+                console.log(response);
+            }, (error) => {
+                console.log(error)
+            });
 
     }
     ngOnDestroy(): void {
