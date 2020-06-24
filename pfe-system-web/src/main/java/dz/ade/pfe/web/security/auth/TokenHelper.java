@@ -38,13 +38,20 @@ public class TokenHelper {
 
         return Optional.ofNullable(username);
     }
+    public Optional<String> getOrganisationalStructureIdFromToken(String token) {
+        String structureId = null;
+        Optional<LinkedHashMap> organisationalStructureFromToken = getOrganisationalStructureFromToken(token);
+        if(organisationalStructureFromToken.isPresent())
+            structureId = organisationalStructureFromToken.get().get("id").toString();
+        return Optional.ofNullable(structureId);
+    }
 
-    public Optional<String> getOrganisationelStructureFromToken(String token) {
-        String structure = null;
+    public Optional<LinkedHashMap> getOrganisationalStructureFromToken(String token) {
+        LinkedHashMap structure = null;
         try {
             final Optional<Claims> claims = getAllClaimsFromToken(token);
             if (claims.isPresent()) {
-                structure = ((LinkedHashMap) claims.get().get("structure")).get("id").toString();
+                structure = ((LinkedHashMap) claims.get().get("structure"));
             }
         } catch (Exception e) {
             Log.error("getUsernameFromToken : {@token}, {@exception}", token, e.getMessage());

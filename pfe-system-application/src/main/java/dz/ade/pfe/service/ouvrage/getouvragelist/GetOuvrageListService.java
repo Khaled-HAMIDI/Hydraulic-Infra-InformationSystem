@@ -17,8 +17,8 @@ public class GetOuvrageListService implements GetOuvrageListQuery {
 
 
     @Override
-    public List<OuvrageListDto> getOuvrageList() {
-        List<Ouvrage> ouvrages = loadOuvrageList.loadOuvrageList();
+    public List<OuvrageListDto> getOuvrageList(String codeStructure) {
+        List<Ouvrage> ouvrages = loadOuvrageList.loadOuvrageList(codeStructure);
         return  getOuvrageListMapper.ouvrageToOuvrageListDto(ouvrages);
     }
 }

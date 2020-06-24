@@ -7,6 +7,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.LinkedHashMap;
 import java.util.List;
 
 @Component
@@ -22,9 +23,14 @@ public class SecurityUtils {
         return tokenHelper.getRolesFromToken(authToken);
     }
 
-    public String getConnectedUserOrganisationalStructure(HttpServletRequest httpServletRequest) {
+    public String getConnectedUserOrganisationalStructureId(HttpServletRequest httpServletRequest) {
         String token = getToken(httpServletRequest);
-        return tokenHelper.getOrganisationelStructureFromToken(token)
+        return tokenHelper.getOrganisationalStructureIdFromToken(token)
+                .orElseThrow(() -> new ResourceNotFoundException("user not affected to structure"));
+    }
+    public LinkedHashMap getConnectedUserOrganisationalStructure(HttpServletRequest httpServletRequest) {
+        String token = getToken(httpServletRequest);
+        return tokenHelper.getOrganisationalStructureFromToken(token)
                 .orElseThrow(() -> new ResourceNotFoundException("user not affected to structure"));
     }
 

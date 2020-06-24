@@ -22,8 +22,8 @@ public class OuvragePersistenceAdapter implements LoadOuvrageList, LoadOuvragesB
 
 
     @Override
-    public List<Ouvrage> loadOuvrageList() {
-        return ouvrageRepository.findAll();
+    public List<Ouvrage> loadOuvrageList(String codeStructure) {
+        return ouvrageRepository.findByUnitCode(codeStructure);
     }
 
     @Override
@@ -52,7 +52,9 @@ public class OuvragePersistenceAdapter implements LoadOuvrageList, LoadOuvragesB
     @Override
     public List<Object> loadNbOuvrages() {
         List<Object> list = ouvrageRepository.loadNbOuvrages();
-        Object obj = ouvrageRepository.loadNbAllOuvrages();
+        Object obj = ouvrageRepository.loadNbTotal();
+        list.add(obj);
+        obj = ouvrageRepository.loadNbAllOuvrages();
         list.add(obj);
         return list;
     }

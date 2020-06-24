@@ -33,7 +33,7 @@ public class GetSiteListController extends BaseController {
             @ApiResponse(code = 404, message = "The resource you were trying to reach is not found")
     })
     public List<SiteDto> getListSite(HttpServletRequest httpServletRequest) {
-        String codeStructure = securityUtils.getConnectedUserOrganisationalStructure(httpServletRequest);
+        String codeStructure = securityUtils.getConnectedUserOrganisationalStructureId(httpServletRequest);
 
         return getSiteListQuery.getSiteList(codeStructure);
     }

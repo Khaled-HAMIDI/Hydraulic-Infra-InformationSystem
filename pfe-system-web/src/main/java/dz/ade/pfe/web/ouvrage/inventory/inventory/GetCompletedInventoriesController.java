@@ -31,7 +31,7 @@ public class GetCompletedInventoriesController extends BaseController {
     @ApiOperation(value = "Obtenir la liste des inventaires effecués dans l'unité")
     public List<InventoryShowDto> getCompletedInventories(HttpServletRequest httpServletRequest) {
 
-        String unitCode= securityUtils.getConnectedUserOrganisationalStructure(httpServletRequest);
+        String unitCode= securityUtils.getConnectedUserOrganisationalStructureId(httpServletRequest);
         return getCompletedInventoriesQuery.getCompletedInventories(unitCode);
     }
 
@@ -39,7 +39,7 @@ public class GetCompletedInventoriesController extends BaseController {
     @ApiOperation(value = "Obtenir la liste des chefs des inventaires effecués dans l'unité")
     public List<String> getCompletedInventoriesChiefs(HttpServletRequest httpServletRequest) {
 
-        String unitCode= securityUtils.getConnectedUserOrganisationalStructure(httpServletRequest);
+        String unitCode= securityUtils.getConnectedUserOrganisationalStructureId(httpServletRequest);
         return getCompletedInventoriesQuery.getCompletedInventoriesChiefs(unitCode);
     }
 }

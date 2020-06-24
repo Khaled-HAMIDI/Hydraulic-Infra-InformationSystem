@@ -4,7 +4,7 @@ public enum OuvrageType {
     StationTraitementConventionelle("Station de Traitement Conventionelle"),
     StationTraitementNonConventionelle("Station de Traitement Non Conventionelle"),
     Reservoir("Reservoir"),
-    Forage("Forage"),
+    Forage("Forage, Puis, Source"),
     StationPompage("Station de Pompage"),
     BriseCharge("Brise Charge");
     private String value;
