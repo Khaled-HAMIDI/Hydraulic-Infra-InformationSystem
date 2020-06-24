@@ -20,6 +20,10 @@ public interface OrganisationalStructureComponent {
 
     List<Center> getCenters();
 
+    List<Center> getUnitCenters(String code);
+
+    List<Center> getCenters(String code);
+
     Optional<Center> findNotDeletedCenterByCode(String code);
 
     Optional<Unit> getUnitByCode(String code);

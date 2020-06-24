@@ -12,6 +12,7 @@ export const locale = {
             "FIELD" :{
                 'type': 'Type d\'ouvrage',
                 'site': 'Le site',
+                'center': 'Le centre',
                 'name': 'Nom du site'
             },
             'TOAST-ADD':{

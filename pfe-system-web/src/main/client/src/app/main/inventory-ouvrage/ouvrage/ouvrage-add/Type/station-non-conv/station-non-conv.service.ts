@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { API } from 'config/api.config';
-import {  Router, ActivatedRouteSnapshot, RouterStateSnapshot, Resolve } from '@angular/router';
+import { Router, ActivatedRouteSnapshot, RouterStateSnapshot, Resolve } from '@angular/router';
 import { ToolsService } from '@ayams/services/tools.service';
 import { Observable } from 'rxjs';
 
@@ -14,8 +14,8 @@ const OUVRAGE_API = API + '/ouvrage';
 export class StationNonConvService implements Resolve<any>{
 
     constructor(private router: Router,
-                private http: HttpClient,
-                private toolsService: ToolsService) {
+        private http: HttpClient,
+        private toolsService: ToolsService) {
     }
 
     // -----------------------------------------------------------------------------------------------------
@@ -28,7 +28,7 @@ export class StationNonConvService implements Resolve<any>{
             this.http.post(OUVRAGE_API, ouvrage)
                 .subscribe((response: any) => {
                     resolve(response);
-                }, (error : any) => {
+                }, (error: any) => {
                     console.log(error);
                     reject(error);
                 });
@@ -42,10 +42,10 @@ export class StationNonConvService implements Resolve<any>{
         return new Promise((resolve, reject) => {
             this.toolsService.showProgressBar();
             this.save(ouvrage).then((response) => {
-                    this.toolsService.hideProgressBar();
-                    this.toolsService.showSuccess('ADD.TOAST-ADD.success');
-                    resolve(response);
-                },
+                this.toolsService.hideProgressBar();
+                this.toolsService.showSuccess('ADD.TOAST-ADD.success');
+                resolve(response);
+            },
                 (error) => {
                     this.toolsService.hideProgressBar();
                     this.toolsService.showApiError(error.error.apierror.message);
@@ -54,9 +54,9 @@ export class StationNonConvService implements Resolve<any>{
         });
 
     }
-    getDeployedUnit(): Promise<any> {
+    geSequelNumber(code): Promise<any> {
         return new Promise((resolve, reject) => {
-            this.http.get(API + '/units/deployedunit')
+            this.http.get(API + '/next/StationTraitementNonConventionelle/' + code)
                 .subscribe((response: any) => {
                     resolve(response);
                 }, reject);
@@ -68,7 +68,7 @@ export class StationNonConvService implements Resolve<any>{
         return new Promise((resolve, reject) => {
 
             Promise.all([
-                this.getDeployedUnit()
+                this.geSequelNumber(route.params.code)
 
             ]).then(
                 (data) => {

@@ -54,9 +54,9 @@ export class ReservoirService implements Resolve<any>{
         });
 
     }
-    getDeployedUnit(): Promise<any> {
+    geSequelNumber(code): Promise<any> {
         return new Promise((resolve, reject) => {
-            this.http.get(API + '/units/deployedunit')
+            this.http.get(API + '/next/Reservoir/'+code)
                 .subscribe((response: any) => {
                     resolve(response);
                 }, reject);
@@ -68,7 +68,7 @@ export class ReservoirService implements Resolve<any>{
         return new Promise((resolve, reject) => {
 
             Promise.all([
-                this.getDeployedUnit()
+                this.geSequelNumber(route.params.code)
 
             ]).then(
                 (data) => {

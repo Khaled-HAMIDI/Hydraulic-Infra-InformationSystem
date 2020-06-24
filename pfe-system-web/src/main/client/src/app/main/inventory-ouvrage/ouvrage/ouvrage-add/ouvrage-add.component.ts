@@ -27,6 +27,7 @@ export class OuvrageAddComponent implements OnInit,  OnDestroy{
     siteId : String
     site : Site
     sites : Site [];
+    centers = [];
     ouvrage: Ouvrage;
     ouvrageForm: FormGroup;
     siteForm: FormGroup;
@@ -52,6 +53,8 @@ export class OuvrageAddComponent implements OnInit,  OnDestroy{
     ngOnInit(): void {
         this.route.data.pipe(takeUntil(this._unsubscribeAll)).subscribe(
             (response) => {
+                console.log(response.data[1])
+                this.centers  = response.data[1]
                 this.sites = sortBy(response.data[0], ['name']);
                 this.initForm();
             },
@@ -66,7 +69,8 @@ export class OuvrageAddComponent implements OnInit,  OnDestroy{
     createOuvrageForm(): FormGroup {
         let obj = {
             type: [this.ouvrage.type,Validators.required],
-            site:[this.ouvrage.site,Validators.required]
+            site:[this.ouvrage.site,Validators.required],
+            center:[this.ouvrage.center,Validators.required]
         };
 
         return this.formBuilder.group(obj);
@@ -96,7 +100,8 @@ export class OuvrageAddComponent implements OnInit,  OnDestroy{
 
     onSelect(): void {
         this.siteId = this.ouvrageForm.get('site').value;
-        this.router.navigate([this.ouvrageForm.get('type').value +'/'+ this.siteId],{relativeTo:this.route});
+        const centerCode = this.ouvrageForm.get('center').value;
+        this.router.navigate([this.ouvrageForm.get('type').value +'/'+ this.siteId + '/'+centerCode],{relativeTo:this.route});
     }
     onSelectSite(): void {
         const site = this.siteForm.getRawValue();

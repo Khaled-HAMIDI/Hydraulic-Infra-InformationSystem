@@ -13,6 +13,9 @@ public interface OuvrageRepository extends JpaRepository<Ouvrage, Long> {
 
     Ouvrage findByCode(String code);
 
+    @Query(value = "select count(*) from pfe.ouvrage o join pfe.organisational_structure s on o.unit_id=s.id where o.type like :type and s.code= :code", nativeQuery = true)
+    Integer getNext(String type ,String code);
+
     @Query("SELECT distinct o FROM Ouvrage o JOIN  o.unit u where u.code=:code")
     List<Ouvrage> findByUnitCode (String code);
 

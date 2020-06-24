@@ -4,6 +4,7 @@ export class Ouvrage {
     name: string;
     type: string;
     site: string;
+    center:string
     enabled: boolean;
     form: string;
     state: string;

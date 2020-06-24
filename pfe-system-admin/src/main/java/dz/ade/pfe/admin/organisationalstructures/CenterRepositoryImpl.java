@@ -22,4 +22,5 @@ interface CenterRepositoryImpl extends CenterRepository, JpaRepository<Center, L
     @Modifying
     @Query(value= "UPDATE Center SET deleted = true, deletedDate = CURRENT_TIMESTAMP WHERE code IN ?1 AND deleted = false")
     int delete(List<String> centers);
+
 }
