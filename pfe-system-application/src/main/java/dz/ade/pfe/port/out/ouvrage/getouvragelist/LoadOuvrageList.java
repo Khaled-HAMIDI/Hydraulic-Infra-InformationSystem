@@ -4,5 +4,5 @@ import dz.ade.pfe.domain.ouvrage.Ouvrage;
 import java.util.List;
 
 public interface LoadOuvrageList {
-    List<Ouvrage> loadOuvrageList();
+    List<Ouvrage> loadOuvrageList(String codeStructure);
 }

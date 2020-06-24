@@ -85,7 +85,7 @@ public class GetOuvrageByInventoryController extends BaseController {
     @GetMapping(value = "/inventory/current")
     public InventoryShowDto getCurrentInventory(HttpServletRequest httpServletRequest) {
 
-        String unitCode= securityUtils.getConnectedUserOrganisationalStructure(httpServletRequest);
+        String unitCode= securityUtils.getConnectedUserOrganisationalStructureId(httpServletRequest);
         return getOuvrageByInventoryQuery.getCurrentInventory(unitCode);
     }
 }

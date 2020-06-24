@@ -1,7 +1,6 @@
 package dz.ade.pfe.ouvrage.inventory.ouvrage;
 
 import dz.ade.pfe.domain.ouvrage.Ouvrage;
-import dz.ade.pfe.service.exploitation.getouvrages.OuvrageExploitationDto;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -13,6 +12,9 @@ public interface OuvrageRepository extends JpaRepository<Ouvrage, Long> {
     boolean existsByCode(String Code);
 
     Ouvrage findByCode(String code);
+
+    @Query("SELECT distinct o FROM Ouvrage o JOIN  o.unit u where u.code=:code")
+    List<Ouvrage> findByUnitCode (String code);
 
     @Query("SELECT ouvrage FROM Ouvrage ouvrage WHERE ouvrage.code IN :ouvrages")
     List<Ouvrage> loadAllOuvrages(@Param("ouvrages") List<String> ouvrages);
@@ -34,6 +36,9 @@ public interface OuvrageRepository extends JpaRepository<Ouvrage, Long> {
 
     @Query(value = "select count(ouvrage_id) from pfe.exploitation_reading", nativeQuery = true)
     Object loadNbAllOuvrages();
+
+    @Query(value = "select count(*) from pfe.ouvrage", nativeQuery = true)
+    Object loadNbTotal();
 
 
 }

@@ -21,7 +21,7 @@ public abstract class BaseController {
 
 
     protected OrganisationalStructure getUserOrganisationalStructure(HttpServletRequest httpServletRequest) {
-        String structureId = securityUtils.getConnectedUserOrganisationalStructure(httpServletRequest);
+        String structureId = securityUtils.getConnectedUserOrganisationalStructureId(httpServletRequest);
 
         return organisationalStructureComponent.getStructure(structureId)
                 .orElseThrow(() -> new ResourceNotFoundException(String.format("There is not structure with given code : %s", structureId)));

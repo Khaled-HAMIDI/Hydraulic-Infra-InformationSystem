@@ -6,5 +6,5 @@ import dz.ade.pfe.service.ouvrage.getouvragelist.OuvrageListDto;
 import java.util.List;
 
 public interface GetOuvrageListQuery {
-    List<OuvrageListDto> getOuvrageList();
+    List<OuvrageListDto> getOuvrageList(String codeStructure);
 }

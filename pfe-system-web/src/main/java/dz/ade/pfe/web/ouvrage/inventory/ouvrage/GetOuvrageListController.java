@@ -2,6 +2,7 @@ package dz.ade.pfe.web.ouvrage.inventory.ouvrage;
 
 import dz.ade.pfe.port.in.ouvrage.getouvragelist.GetOuvrageListQuery;
 import dz.ade.pfe.service.ouvrage.getouvragelist.OuvrageListDto;
+import dz.ade.pfe.web.commons.controller.BaseController;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 @RestController
@@ -20,7 +22,7 @@ import java.util.List;
 @Api(value = "Ouvrages", description = "Obtenir la list des ouvrages")
 @Component
 @RequiredArgsConstructor
-public class GetOuvrageListController {
+public class GetOuvrageListController extends BaseController {
 
     private final GetOuvrageListQuery getOuvrageListQuery;
 
@@ -33,7 +35,8 @@ public class GetOuvrageListController {
             @ApiResponse(code = 403, message = "Accessing the resource you were trying to reach is forbidden"),
             @ApiResponse(code = 404, message = "The resource you were trying to reach is not found")
     })
-    public List<OuvrageListDto> getOuvrageDetails() {
-        return getOuvrageListQuery.getOuvrageList();
+    public List<OuvrageListDto> getOuvrageDetails(HttpServletRequest httpServletRequest) {
+        String codeStructure = securityUtils.getConnectedUserOrganisationalStructureId(httpServletRequest);
+        return getOuvrageListQuery.getOuvrageList(codeStructure);
     }
 }

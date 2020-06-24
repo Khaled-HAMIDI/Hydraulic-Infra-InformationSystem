@@ -28,8 +28,9 @@ export class HomeComponent implements OnInit {
     widget5SelectedDay = 'today';
     types:any;
     nbOuvrages
-    nbOuvrage;
+    nbOuvrageExploitation;
     nbReleve;
+    nbTotalOuvrages;
     constructor(private fuseTranslationLoader: FuseTranslationLoaderService,
         private _analyticsDashboardService: HomeService,
         private router: Router,
@@ -51,9 +52,10 @@ export class HomeComponent implements OnInit {
         // Get the widgets from the service    
         this.route.data.pipe(takeUntil(this._unsubscribeAll)).subscribe(
             (response) => {
-                console.log(response.data[4])
                 this.types = response.data[1];
-                this.nbOuvrage = response.data[0].splice(response.data[0].length-1,1)
+                this.nbOuvrageExploitation = response.data[0].splice(response.data[0].length-1,1)
+                this.nbTotalOuvrages = response.data[0].splice(response.data[0].length-1,1)
+                console.log(this.nbOuvrageExploitation)
                 this.nbReleve = response.data[2].splice(response.data[2].length-1,1)
                 this.types = sortBy(this.types,["name"])
                 this.nbOuvrages = sortBy(response.data[0],['0'])
@@ -93,7 +95,7 @@ export class HomeComponent implements OnInit {
         let date : Date
         this.widgets.widget2.datasets[0].data = [];
         this.widgets.widget2.labels = [];
-        this.widgets.widget2.conversion.value = ((this.nbReleve*100) /(this.nbOuvrage*data.length)).toFixed(1);
+        this.widgets.widget2.conversion.value = ((this.nbReleve[0]*100) /(this.nbOuvrageExploitation[0]*data.length)).toFixed(1);
         data.forEach((row)=>{
             this.widgets.widget2.datasets[0].data.push(row[1])
             date = new Date(row[0])

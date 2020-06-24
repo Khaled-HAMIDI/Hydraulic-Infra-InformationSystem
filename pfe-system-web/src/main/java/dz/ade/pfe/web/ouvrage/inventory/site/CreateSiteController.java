@@ -34,7 +34,7 @@ public class CreateSiteController extends BaseController {
             @ApiResponse(code = 404, message = "The resource you were trying to reach is not found")
     })
     public SiteDto CreateSite(@RequestBody SiteDto siteDto, HttpServletRequest httpServletRequest) {
-        String codeStructure = securityUtils.getConnectedUserOrganisationalStructure(httpServletRequest);
+        String codeStructure = securityUtils.getConnectedUserOrganisationalStructureId(httpServletRequest);
         return createSiteCommand.createSite(siteDto, codeStructure);
     }
 }

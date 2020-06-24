@@ -33,7 +33,7 @@ public class CreateOuvrageController extends BaseController {
             @ApiResponse(code = 404, message = "The resource you were trying to reach is not found")
     })
     public OuvrageShowDto createOuvrage(@RequestBody OuvrageAddDto ouvrageAddDto, HttpServletRequest httpServletRequest){
-        String codeStructure = securityUtils.getConnectedUserOrganisationalStructure(httpServletRequest);
+        String codeStructure = securityUtils.getConnectedUserOrganisationalStructureId(httpServletRequest);
 
         return createOuvrageCommand.createOuvrage(ouvrageAddDto, codeStructure);
     }

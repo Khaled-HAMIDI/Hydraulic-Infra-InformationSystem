@@ -6,7 +6,6 @@ import dz.ade.pfe.port.out.ouvrage.getouvragesbycodes.LoadOuvragesByCodes;
 import dz.ade.pfe.port.out.ouvrage.getouvragelist.LoadOuvrageList;
 import dz.ade.pfe.port.out.ouvrage.getouvragesynoptic.LoadOuvrageSynoptic;
 import dz.ade.pfe.port.out.ouvrage.loadnbouvrages.LoadNbOuvrages;
-import dz.ade.pfe.service.exploitation.getouvrages.OuvrageExploitationDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
@@ -22,8 +21,11 @@ public class OuvragePersistenceAdapter implements LoadOuvrageList, LoadOuvragesB
 
 
     @Override
-    public List<Ouvrage> loadOuvrageList() {
-        return ouvrageRepository.findAll();
+    public List<Ouvrage> loadOuvrageList(String codeStructure) {
+        if (codeStructure.equals("DG"))
+            return ouvrageRepository.findAll();
+        else
+            return ouvrageRepository.findByUnitCode(codeStructure);
     }
 
     @Override
@@ -43,16 +45,19 @@ public class OuvragePersistenceAdapter implements LoadOuvrageList, LoadOuvragesB
         else
             return ouvrageRepository.findAllForSynopticByCode(code);
     }
+
     @Override
-    public List<Ouvrage> loadOuvragesExploitation(){
-       return Stream.concat(ouvrageRepository.loadOuvragesExploitation().stream(), ouvrageRepository.loadOuvragesNotInExploitation().stream())
+    public List<Ouvrage> loadOuvragesExploitation() {
+        return Stream.concat(ouvrageRepository.loadOuvragesExploitation().stream(), ouvrageRepository.loadOuvragesNotInExploitation().stream())
                 .collect(Collectors.toList());
     }
 
     @Override
     public List<Object> loadNbOuvrages() {
         List<Object> list = ouvrageRepository.loadNbOuvrages();
-        Object obj = ouvrageRepository.loadNbAllOuvrages();
+        Object obj = ouvrageRepository.loadNbTotal();
+        list.add(obj);
+        obj = ouvrageRepository.loadNbAllOuvrages();
         list.add(obj);
         return list;
     }
