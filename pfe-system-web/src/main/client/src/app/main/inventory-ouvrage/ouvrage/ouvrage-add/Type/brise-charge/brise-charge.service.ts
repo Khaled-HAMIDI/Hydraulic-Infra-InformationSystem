@@ -56,9 +56,9 @@ export class BriseChargeService implements Resolve<any> {
 
     }
 
-    getDeployedUnit(): Promise<any> {
+    geSequelNumber(code): Promise<any> {
         return new Promise((resolve, reject) => {
-            this.http.get(API + '/units/deployedunit')
+            this.http.get(API + '/next/BriseCharge/'+code)
                 .subscribe((response: any) => {
                     resolve(response);
                 }, reject);
@@ -70,7 +70,7 @@ export class BriseChargeService implements Resolve<any> {
         return new Promise((resolve, reject) => {
 
             Promise.all([
-                this.getDeployedUnit()
+                this.geSequelNumber(route.params.code)
 
             ]).then(
                 (data) => {

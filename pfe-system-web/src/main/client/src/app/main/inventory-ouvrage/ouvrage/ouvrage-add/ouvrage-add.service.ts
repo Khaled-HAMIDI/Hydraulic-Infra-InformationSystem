@@ -57,12 +57,22 @@ export class OuvrageAddService implements Resolve<any>{
         });
     }
 
+    getCenters(){
+        return new Promise((resolve, reject) => {
+            this.http.get(API+'/ouvrage/centers')
+                .subscribe((response: any) => {
+                    resolve(response);
+                }, reject);
+        });
+    }
+
     resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<any> | Promise<any> | any {
 
         return new Promise((resolve, reject) => {
 
             Promise.all([
-                this.getSites()
+                this.getSites(),
+                this.getCenters()
             ]).then(
                 (data) => {
                     resolve(data);

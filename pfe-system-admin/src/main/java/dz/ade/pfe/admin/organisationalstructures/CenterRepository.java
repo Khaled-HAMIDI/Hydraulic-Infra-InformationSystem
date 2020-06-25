@@ -16,4 +16,6 @@ interface CenterRepository {
     Center save(Center center);
 
     int delete(List<String> centers);
+    List<Center> findByUnitCode(String code);
+    List<Center> findByCode(String code);
 }

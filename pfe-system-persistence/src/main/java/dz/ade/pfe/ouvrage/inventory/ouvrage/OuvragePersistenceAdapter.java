@@ -1,6 +1,7 @@
 package dz.ade.pfe.ouvrage.inventory.ouvrage;
 
 import dz.ade.pfe.domain.ouvrage.Ouvrage;
+import dz.ade.pfe.port.out.LoadSequelNumber;
 import dz.ade.pfe.port.out.exploitation.getouvrages.LoadOuvragesExploitation;
 import dz.ade.pfe.port.out.ouvrage.getouvragesbycodes.LoadOuvragesByCodes;
 import dz.ade.pfe.port.out.ouvrage.getouvragelist.LoadOuvrageList;
@@ -15,7 +16,7 @@ import java.util.stream.Stream;
 
 @Component
 @RequiredArgsConstructor
-public class OuvragePersistenceAdapter implements LoadOuvrageList, LoadOuvragesByCodes, LoadOuvrageSynoptic, LoadOuvragesExploitation, LoadNbOuvrages {
+public class OuvragePersistenceAdapter implements LoadOuvrageList, LoadOuvragesByCodes, LoadOuvrageSynoptic, LoadOuvragesExploitation, LoadNbOuvrages, LoadSequelNumber {
 
     private final OuvrageRepository ouvrageRepository;
 
@@ -60,5 +61,10 @@ public class OuvragePersistenceAdapter implements LoadOuvrageList, LoadOuvragesB
         obj = ouvrageRepository.loadNbAllOuvrages();
         list.add(obj);
         return list;
+    }
+
+    @Override
+    public Integer getNext(String type, String code) {
+        return ouvrageRepository.getNext(type,code);
     }
 }

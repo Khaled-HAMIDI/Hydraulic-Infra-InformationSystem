@@ -14,7 +14,7 @@ export const locale = {
                 'username': 'Nom d\'utilisateur',
                 'code': 'Code',
                 'nom': 'Nom de la station',
-                'debit': 'Débit',
+                'debit': 'Capacité',
                 'datee': 'Date mise en service',
                 'dates': 'Date transfert d\'exploitation',
                 'enabled': 'Actif',

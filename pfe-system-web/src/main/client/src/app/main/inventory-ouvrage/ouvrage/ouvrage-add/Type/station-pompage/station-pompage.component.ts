@@ -119,8 +119,11 @@ export class StationPompageComponent implements OnInit, OnDestroy {
     ngOnInit(): void {
         this.route.data.pipe(takeUntil(this._unsubscribeAll)).subscribe(
             (response) => {
-                this.unit=response.data[0];
+                response.data[0]++
+                let code = '0'.repeat(4 - response.data[0].toString().length) + response.data[0]
+                this.ouvrage.code = this.route.snapshot.paramMap.get('code') + 'SP' + code;
                 this.ouvrage.site = this.route.snapshot.paramMap.get('id');
+                this.ouvrage.center = this.route.snapshot.paramMap.get('code');
                 this.initFormStationPompage();
             },
             (error) => {
@@ -151,7 +154,7 @@ export class StationPompageComponent implements OnInit, OnDestroy {
 
     createStPompageForm(): FormGroup {
         let obj = {
-            code: [this.ouvrage.code, Validators.required],
+            code: [{ value: this.ouvrage.code, disabled: true }, Validators.required],
             name: [this.ouvrage.name , Validators.required],
             enabled: [this.ouvrage.enabled, Validators.required],
             state: [this.ouvrage.state, Validators.required],
@@ -204,6 +207,7 @@ export class StationPompageComponent implements OnInit, OnDestroy {
         this.ouvrageAdd.enabled = ouvrage.enabled;
         this.ouvrageAdd.state = ouvrage.state;
         this.ouvrageAdd.site = this.ouvrage.site;
+        this.ouvrageAdd.center = this.ouvrage.center;
         this.ouvrageAdd.nbCompartment = ouvrage.nbCompartment;
         this.ouvrageAdd.coordinateX = ouvrage.coordinateX;
         this.ouvrageAdd.coordinateY = ouvrage.coordinateY;

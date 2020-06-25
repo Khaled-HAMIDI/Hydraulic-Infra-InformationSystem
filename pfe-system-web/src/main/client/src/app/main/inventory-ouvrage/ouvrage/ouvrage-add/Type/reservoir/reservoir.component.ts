@@ -124,8 +124,11 @@ export class ReservoirComponent implements OnInit, OnDestroy {
     ngOnInit(): void {
         this.route.data.pipe(takeUntil(this._unsubscribeAll)).subscribe(
             (response) => {
-                this.unit=response.data[0];
+                response.data[0]++
+                let code = '0'.repeat(4 - response.data[0].toString().length) + response.data[0]
+                this.ouvrage.code = this.route.snapshot.paramMap.get('code') + 'RE' + code;
                 this.ouvrage.site = this.route.snapshot.paramMap.get('id');
+                this.ouvrage.center = this.route.snapshot.paramMap.get('code');
                 this.initFormReservoir();
             },
             (error) => {
@@ -156,7 +159,7 @@ export class ReservoirComponent implements OnInit, OnDestroy {
 
     createReservoirForm(): FormGroup {
         let obj = {
-            code: [this.ouvrage.code, Validators.required],
+            code: [{ value: this.ouvrage.code, disabled: true }, Validators.required],
             name: [this.ouvrage.name, Validators.required],
             enabled: [this.ouvrage.enabled, Validators.required],
             form: [this.ouvrage.form, Validators.required],
@@ -208,6 +211,7 @@ export class ReservoirComponent implements OnInit, OnDestroy {
         this.ouvrageAdd.form = ouvrage.form;
         this.ouvrageAdd.state = ouvrage.state;
         this.ouvrageAdd.site = this.ouvrage.site;
+        this.ouvrageAdd.center = this.ouvrage.center;
         this.ouvrageAdd.nbCompartment = ouvrage.nbCompartment;
         this.ouvrageAdd.raftRating = ouvrage.raftRating;
         this.ouvrageAdd.coteTropFull = ouvrage.coteTropFull;

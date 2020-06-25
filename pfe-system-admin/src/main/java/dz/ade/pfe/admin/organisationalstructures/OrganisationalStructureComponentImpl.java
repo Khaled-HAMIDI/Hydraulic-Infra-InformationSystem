@@ -35,6 +35,15 @@ class OrganisationalStructureComponentImpl implements OrganisationalStructureCom
     }
 
     @Override
+    public List<Center> getUnitCenters(String code) {
+        return centerRepository.findByUnitCode(code);
+    }
+    @Override
+    public List<Center> getCenters(String code) {
+        return centerRepository.findByCode(code);
+    }
+
+    @Override
     public Center createCenter(Center center) {
         return centerRepository.save(center);
     }

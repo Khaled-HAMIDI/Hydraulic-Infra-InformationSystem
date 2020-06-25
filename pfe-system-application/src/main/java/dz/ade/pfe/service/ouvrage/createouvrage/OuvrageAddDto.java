@@ -29,6 +29,8 @@ public class OuvrageAddDto {
 
     private String site;
 
+    private String center;
+
     @Enumerated(EnumType.STRING)
     private State state;
 

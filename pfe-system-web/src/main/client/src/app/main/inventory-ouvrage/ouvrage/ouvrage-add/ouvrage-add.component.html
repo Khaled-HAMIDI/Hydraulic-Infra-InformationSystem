@@ -78,6 +78,17 @@
                                         </mat-select>
                                         <mat-icon matSuffix class="secondary-text">domain</mat-icon>
                                     </mat-form-field>
+
+                                    <mat-form-field appearance="outline" class="w-100-p">
+                                        <mat-label>{{'ADD.FIELD.center' | translate}}</mat-label>
+                                        <mat-select formControlName="center" required>
+                                            <mat-option *ngFor="let center of centers"
+                                                [value]="center.id">
+                                                {{center.designation}}
+                                            </mat-option>
+                                        </mat-select>
+                                        <mat-icon matSuffix class="secondary-text">domain</mat-icon>
+                                    </mat-form-field>
                                 </fieldset>
 
                             </div>
