@@ -13,13 +13,17 @@ import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import {Inventory, generalType, AllOuvrages} from './model/inventory.model';
 import * as moment from 'moment';
-
-
+import { MatDialog, DateAdapter, MAT_DATE_FORMATS } from '@angular/material';
+import { AppDateAdapter, APP_DATE_FORMATS } from '@ayams/components/date-format/format-datepicker';
 @Component({
     selector: 'app-inventory-add',
     templateUrl: './inventory-add.component.html',
     styleUrls: ['./inventory-add.component.scss'],
-    animations: fuseAnimations
+    animations: fuseAnimations,
+    providers: [
+        {provide: DateAdapter, useClass: AppDateAdapter},
+        {provide: MAT_DATE_FORMATS, useValue: APP_DATE_FORMATS}
+      ]
 })
 export class InventoryAddComponent implements OnInit, OnDestroy {
     private _unsubscribeAll: Subject<any>;
@@ -30,7 +34,8 @@ export class InventoryAddComponent implements OnInit, OnDestroy {
     users: User[];
     currentchef: any;
     existCurrent:boolean;
-
+    minDate : Date;
+    maxDate : Date;
     searchTerm : string = '';
     AllOuvrages = [];
     filteredOuvrages = [];
@@ -60,6 +65,10 @@ export class InventoryAddComponent implements OnInit, OnDestroy {
     ngOnInit(): void {
         this.route.data.pipe(takeUntil(this._unsubscribeAll)).subscribe(
             (response) => {
+                console.log(response.data[4]);
+                this.minDate = response.data[3]
+                let year = new Date(response.data[3]).getFullYear()
+                this.maxDate = new Date(year + 0,11,31)
                 this.users = sortBy(response.data[0], ['lastname', 'firstname']);
                 if (response.data[2]) this.existCurrent = true;
                 this.initForm();

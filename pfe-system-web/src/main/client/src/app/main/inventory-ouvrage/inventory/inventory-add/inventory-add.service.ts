@@ -54,6 +54,24 @@ export class InventoryAddService implements Resolve<any>{
         });
     }
 
+    getDate() {
+        return new Promise((resolve, reject) => {
+            this.http.get(API + '/date')
+                .subscribe((response: any) => {
+                    resolve(response);
+                }, reject);
+        });
+    }
+
+    getDeployedUnit(): Promise<any> {
+        return new Promise((resolve, reject) => {
+            this.http.get(API + '/units/deployedunit')
+                .subscribe((response: any) => {
+                    resolve(response);
+                }, reject);
+        });
+    }
+
     save(inventory): Promise<any> {
         return new Promise((resolve, reject) => {
             this.http.post(INVENTORY_API, inventory)
@@ -75,7 +93,9 @@ export class InventoryAddService implements Resolve<any>{
             Promise.all([
                 this.getUsers(),
                 this.getAllOuvrages(),
-                this.getCurrentInventory()
+                this.getCurrentInventory(),
+                this.getDate(),
+                this.getDeployedUnit()
             ]).then(
                 (data) => {
                     resolve(data);

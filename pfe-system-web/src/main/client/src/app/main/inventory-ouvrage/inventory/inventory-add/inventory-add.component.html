@@ -22,8 +22,8 @@
                 </div>
             </div>
             <!-- / APP TITLE -->
-            <button mat-raised-button class=" mat-white-bg" [disabled]="inventoryForm.invalid" (click)="onSave()"
-                *ngIf="!existCurrent">
+            <button mat-raised-button class=" mat-white-bg"
+                [disabled]="inventoryForm.invalid || !selectedOuvrages.length" (click)="onSave()" *ngIf="!existCurrent">
                 <span>{{'ADD.BUTTON.create' | translate}}</span>
             </button>
 
@@ -63,8 +63,8 @@
 
                                 <mat-form-field appearance="outline" class="w-100-p">
                                     <mat-label>{{'ADD.FIELD.date' | translate}}</mat-label>
-                                    <input matInput [matDatepicker]="picker1" name="date" formControlName="date"
-                                        required>
+                                    <input matInput [min]="minDate" [max]="maxDate" [matDatepicker]="picker1"
+                                        name="date" formControlName="date" required>
                                     <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
                                     <mat-datepicker #picker1></mat-datepicker>
                                 </mat-form-field>

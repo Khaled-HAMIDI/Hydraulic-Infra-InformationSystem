@@ -11,7 +11,7 @@ import { Subject } from 'rxjs';
 import { ToolsService } from '@ayams/services/tools.service';
 import { tileLayer, latLng, marker, icon, Map, map, Draggable, MarkerOptions, LeafletMouseEvent } from 'leaflet';
 import { takeUntil } from 'rxjs/operators';
-
+import * as moment from 'moment';
 
 
 @Component({
@@ -212,8 +212,8 @@ export class StationPompageComponent implements OnInit, OnDestroy {
         this.ouvrageAdd.installedCapacity = ouvrage.installedCapacity;
         this.ouvrageAdd.currentCapacity = ouvrage.currentCapacity;
         this.ouvrageAdd.constructionType = ouvrage.constructionType;
-        this.ouvrageAdd.commissioningDate = ouvrage.commissioningDate;
-        this.ouvrageAdd.operatingDate = ouvrage.operatingDate;
+        this.ouvrageAdd.commissioningDate = moment(ouvrage.commissioningDate).format('YYYY-MM-DD');
+        this.ouvrageAdd.operatingDate = moment(ouvrage.operatingDate).format('YYYY-MM-DD');
         this.ouvrageAdd.maitreOuvrage = ouvrage.maitreOuvrage;
         this.ouvrageAdd.realizationCost = ouvrage.realizationCost;
         this.ouvrageAdd.remoteManagement = ouvrage.remoteManagement;
