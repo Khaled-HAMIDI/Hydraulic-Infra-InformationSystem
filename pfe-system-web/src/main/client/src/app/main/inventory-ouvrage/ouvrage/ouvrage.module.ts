@@ -185,7 +185,7 @@ const routes: Routes = [
         resolve: { data: StationNonConvService }
     },
     {
-        path: 'add/:type/:site/composants/:code',
+        path: 'add/:type/:site/:center/composants/:code',
         component: StepperAddEditComponent,
         data: { action: 'add' }
     },

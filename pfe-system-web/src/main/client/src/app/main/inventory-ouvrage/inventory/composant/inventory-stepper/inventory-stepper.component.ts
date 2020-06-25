@@ -70,8 +70,10 @@ export class InventoryStepperComponent implements OnInit, OnDestroy {
             (response) => {
 
                 //Vérfier si l'ouvrage est déja validé
-                if (response.data[1]){
-                    if (response.data[0][1].inventoryCode == response.data[1].code) this.completed =false;
+
+                if (response.data[1] && (response.data[0].length != 0)){
+                    // A ameliorer
+                    if (response.data[0][0].inventoryCode == response.data[1].code) this.completed =false;
                 }
                 switch (this.route.snapshot.params['type']) {
 
