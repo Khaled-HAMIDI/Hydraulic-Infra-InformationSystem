@@ -12,7 +12,7 @@ const Composant_API = API + '/ouvrage/';
 })
 
 export class ComposantGetService implements Resolve<any>{
-    code : string;
+
     constructor(private router: Router,
         private http: HttpClient,
         private toolsService: ToolsService) {
@@ -261,7 +261,6 @@ export class ComposantGetService implements Resolve<any>{
     }
 
     loadSpecificComposant(typeOuvrage: string,code: string){
-        this.code = code;
         switch (typeOuvrage) {
 
             case "StationTraitementConventionelle" :
@@ -374,7 +373,6 @@ export class ComposantGetService implements Resolve<any>{
     }
 
     resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<any> | Promise<any> | any {
-
         return new Promise((resolve, reject) => {
 
             Promise.all(

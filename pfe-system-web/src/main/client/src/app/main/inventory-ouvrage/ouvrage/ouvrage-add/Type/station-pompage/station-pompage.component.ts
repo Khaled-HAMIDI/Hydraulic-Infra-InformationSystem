@@ -176,6 +176,10 @@ export class StationPompageComponent implements OnInit, OnDestroy {
             specializedLine: [this.ouvrage.specializedLine, Validators.required],
             energyMonthlyBill: [this.ouvrage.energyMonthlyBill, Validators.required],
             totalWorkforce: [this.ouvrage.totalWorkforce, Validators.required],
+            hmt: [this.ouvrage.hmt, Validators.required],
+            nbPump: [this.ouvrage.nbPump, Validators.required],
+            pumpDebit: [this.ouvrage.pumpDebit, Validators.required],
+            power: [this.ouvrage.power, Validators.required],
             distribution: [this.ouvrage.distribution, Validators.required],
             populationServed: [this.ouvrage.populationServed],
         };
@@ -222,6 +226,10 @@ export class StationPompageComponent implements OnInit, OnDestroy {
         this.ouvrageAdd.specializedLine = ouvrage.specializedLine;
         this.ouvrageAdd.energyMonthlyBill = ouvrage.energyMonthlyBill;
         this.ouvrageAdd.totalWorkforce = ouvrage.totalWorkforce;
+        this.ouvrageAdd.hmt = ouvrage.hmt;
+        this.ouvrageAdd.power = ouvrage.power;
+        this.ouvrageAdd.nbPump = ouvrage.nbPump;
+        this.ouvrageAdd.pumpDebit = ouvrage.pumpDebit;
         this.ouvrageAdd.distribution = ouvrage.distribution;
         this.ouvrageAdd.populationServed = ouvrage.populationServed;
 

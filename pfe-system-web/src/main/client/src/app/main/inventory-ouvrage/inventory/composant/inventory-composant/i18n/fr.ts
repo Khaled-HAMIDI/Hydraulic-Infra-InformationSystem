@@ -6,7 +6,7 @@ export const locale = {
             },
             'PLACE-HOLDER': {
                 'state': 'Etat',
-                'ecart': 'Ecart',
+                'ecart': 'Nombre actuel',
                 'observation': 'Observations',
                 'inexistant' : 'Cet ouvrage ne contient pas de '
             }
