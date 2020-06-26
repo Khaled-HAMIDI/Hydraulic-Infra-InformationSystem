@@ -34,6 +34,7 @@ export class InventoryAddComponent implements OnInit, OnDestroy {
     users: User[];
     currentchef: any;
     existCurrent:boolean;
+    date: Date;
     minDate : Date;
     maxDate : Date;
     searchTerm : string = '';

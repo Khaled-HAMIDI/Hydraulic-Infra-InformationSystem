@@ -55,7 +55,7 @@ export class InventoryStepperComponent implements OnInit, OnDestroy {
         // Set the private defaults
         this._unsubscribeAll = new Subject();
         this.code = this.inventoryStepperService.code;
-        this.completed = false;
+        this.completed = true;
     }
 
     // -----------------------------------------------------------------------------------------------------
@@ -68,11 +68,11 @@ export class InventoryStepperComponent implements OnInit, OnDestroy {
     ngOnInit(): void {
         this.route.data.pipe(takeUntil(this._unsubscribeAll)).subscribe(
             (response) => {
-
+                console.log(response.data[0])
                 //Vérfier si l'ouvrage est déja validé
-                // if (response.data[1]){
-                //     if (response.data[0][1].inventoryCode == response.data[1].code) this.completed =false;
-                // }
+                if (response.data[1]){
+                    if (response.data[0][0].inventoryCode == response.data[1].code) this.completed =false;
+                }
                 switch (this.route.snapshot.params['type']) {
 
                     case "StationTraitementConventionelle" :
