@@ -46,7 +46,6 @@ export class StepperShowComponent implements OnInit, OnDestroy {
 
         // Set the private defaults
         this._unsubscribeAll = new Subject();
-        this.code = composantGetService.code;
     }
 
     // -----------------------------------------------------------------------------------------------------
@@ -57,10 +56,9 @@ export class StepperShowComponent implements OnInit, OnDestroy {
      * On init
      */
     ngOnInit(): void {
-        // Subscribe to courses
         this.route.data.pipe(takeUntil(this._unsubscribeAll)).subscribe(
             (response) => {
-
+                this.code = this.route.snapshot.params['type']
                 switch (this.route.snapshot.params['type']) {
                     case "StationTraitementConventionelle" :
                         this.composants = this.steppersService.stationTraitementConventionelleComposants;

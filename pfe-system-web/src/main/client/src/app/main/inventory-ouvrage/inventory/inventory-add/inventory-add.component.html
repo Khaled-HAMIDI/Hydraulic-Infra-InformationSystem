@@ -58,13 +58,14 @@
                                 <mat-form-field appearance="outline" class="w-100-p">
                                     <mat-label>{{'ADD.FIELD.code' | translate}}</mat-label>
                                     <mat-icon matSuffix class="secondary-text">keyboard</mat-icon>
-                                    <input matInput name="code" formControlName="code" required>
+                                    <input [(ngModel)]="code" matInput name="code" formControlName="code" required>
                                 </mat-form-field>
 
                                 <mat-form-field appearance="outline" class="w-100-p">
                                     <mat-label>{{'ADD.FIELD.date' | translate}}</mat-label>
-                                    <input [(ngModel)]="date" matInput [min]="minDate" [max]="maxDate" [matDatepicker]="picker1"
-                                        name="date" formControlName="date" required>
+                                    <input [(ngModel)]="date" (ngModelChange)="calCode()" matInput [min]="minDate"
+                                        [max]="maxDate" [matDatepicker]="picker1" name="date" formControlName="date"
+                                        required>
                                     <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
                                     <mat-datepicker #picker1></mat-datepicker>
                                 </mat-form-field>
