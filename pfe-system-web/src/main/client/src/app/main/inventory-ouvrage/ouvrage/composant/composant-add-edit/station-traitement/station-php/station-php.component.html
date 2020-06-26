@@ -15,15 +15,15 @@
 
                     <mat-form-field appearance="outline" class="w-100-p" >
                         <mat-label>{{'FIELD.puissance' | translate}}</mat-label>
-                        <mat-icon matSuffix class="secondary-text">keyboard</mat-icon>
                         <input matInput name="puissance" formControlName="puissance" required>
+                        <span matSuffix>Kw</span>
                     </mat-form-field>
 
 
                     <mat-form-field appearance="outline" class="w-100-p">
                         <mat-label>{{'FIELD.hmt' | translate}}</mat-label>
-                        <mat-icon matSuffix class="secondary-text">keyboard</mat-icon>
                         <input matInput name="hmt" formControlName="hmt" required>
+                        <span matSuffix>m</span>
                     </mat-form-field>
 
             </div>
@@ -39,8 +39,8 @@
 
                     <mat-form-field appearance="outline" class="w-100-p">
                         <mat-label>{{'FIELD.debit' | translate}}</mat-label>
-                        <mat-icon matSuffix class="secondary-text">keyboard</mat-icon>
                         <input matInput name="debit" formControlName="debit" required>
+                        <span matSuffix>m³/h</span>
                     </mat-form-field>
 
             </div>

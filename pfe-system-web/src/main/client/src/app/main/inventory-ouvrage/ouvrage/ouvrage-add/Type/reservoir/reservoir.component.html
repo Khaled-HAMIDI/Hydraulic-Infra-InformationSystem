@@ -49,12 +49,12 @@
 
                                 <fieldset class="myfieldset">
                                     <legend>{{'ADD.LEGENDS.general' | translate}}</legend>
-                                
-                                        <mat-form-field appearance="outline" class="w-100-p">
-                                            <mat-label>{{'ADD.PLACE-HOLDER.code' | translate}}</mat-label>
-                                            <mat-icon matSuffix class="secondary-text">keyboard</mat-icon>
-                                            <input matInput name="code" formControlName="code" required>
-                                        </mat-form-field>
+
+                                    <mat-form-field appearance="outline" class="w-100-p">
+                                        <mat-label>{{'ADD.PLACE-HOLDER.code' | translate}}</mat-label>
+                                        <mat-icon matSuffix class="secondary-text">keyboard</mat-icon>
+                                        <input matInput name="code" formControlName="code" required>
+                                    </mat-form-field>
 
 
                                     <mat-form-field appearance="outline" class="w-100-p">
@@ -75,9 +75,8 @@
 
 
                                     <div>
-                                        <mat-slide-toggle matInput name="enabled" formControlName="enabled"
-                                             required [checked]="ouvrage.enabled"
-                                            (change)="toggleEnabled()">
+                                        <mat-slide-toggle matInput name="enabled" formControlName="enabled" required
+                                            [checked]="ouvrage.enabled" (change)="toggleEnabled()">
                                             <span *ngIf="ouvrage.enabled">
                                                 {{ 'ADD.PLACE-HOLDER.enabledActive' | translate }}
                                             </span>
@@ -86,7 +85,7 @@
                                             </span>
                                         </mat-slide-toggle>
                                     </div>
-                                    <br/>
+                                    <br />
 
                                     <mat-form-field appearance="outline" class="w-100-p">
                                         <mat-label>{{'ADD.PLACE-HOLDER.tankRole' | translate}}</mat-label>
@@ -152,9 +151,9 @@
 
                                     <mat-form-field appearance="outline" class="w-100-p">
                                         <mat-label>{{'ADD.PLACE-HOLDER.realizationCost' | translate}}</mat-label>
-                                        <mat-icon matSuffix class="secondary-text">keyboard</mat-icon>
                                         <input matInput name="realizationCost" formControlName="realizationCost"
                                             required>
+                                        <span matSuffix>DA</span>
                                     </mat-form-field>
 
                                 </fieldset>
@@ -172,26 +171,26 @@
 
                                     <mat-form-field appearance="outline" class="w-100-p">
                                         <mat-label>{{'ADD.PLACE-HOLDER.tankCapacity1' | translate}}</mat-label>
-                                        <mat-icon matSuffix class="secondary-text">keyboard</mat-icon>
                                         <input matInput name="tankCapacity1" formControlName="tankCapacity1" required>
+                                        <span matSuffix>m³</span>
                                     </mat-form-field>
 
                                     <mat-form-field appearance="outline" class="w-100-p">
                                         <mat-label>{{'ADD.PLACE-HOLDER.raftRating' | translate}}</mat-label>
-                                        <mat-icon matSuffix class="secondary-text">keyboard</mat-icon>
                                         <input matInput name="raftRating" formControlName="raftRating" required>
+                                        <span matSuffix>m</span>
                                     </mat-form-field>
 
                                     <mat-form-field appearance="outline" class="w-100-p">
                                         <mat-label>{{'ADD.PLACE-HOLDER.coteTropFull' | translate}}</mat-label>
-                                        <mat-icon matSuffix class="secondary-text">keyboard</mat-icon>
                                         <input matInput name="coteTropFull" formControlName="coteTropFull" required>
+                                        <span matSuffix>m</span>
                                     </mat-form-field>
 
 
                                     <div>
                                         <mat-slide-toggle matInput name="remoteManagement"
-                                            formControlName="remoteManagement"  required
+                                            formControlName="remoteManagement" required
                                             [checked]="ouvrage.remoteManagement" (change)="toggleRemoteManagement()">
                                             <span *ngIf="ouvrage.remoteManagement">
                                                 {{ 'ADD.PLACE-HOLDER.remoteManagementActive' | translate }}
@@ -201,11 +200,11 @@
                                             </span>
                                         </mat-slide-toggle>
                                     </div>
-                                    <br/>
+                                    <br />
 
                                     <div>
                                         <mat-slide-toggle matInput name="electricAlimentation"
-                                            formControlName="electricAlimentation"  required
+                                            formControlName="electricAlimentation" required
                                             [checked]="ouvrage.electricAlimentation"
                                             (change)="toggleElectricAlimentation()">
                                             <span *ngIf="ouvrage.electricAlimentation">
@@ -216,11 +215,11 @@
                                             </span>
                                         </mat-slide-toggle>
                                     </div>
-                                    <br/>
+                                    <br />
 
                                     <div>
                                         <mat-slide-toggle matInput name="specializedLine"
-                                            formControlName="specializedLine"  required
+                                            formControlName="specializedLine" required
                                             [checked]="ouvrage.specializedLine" (change)="toggleSpecializedLine()"
                                             *ngIf="ouvrage.electricAlimentation">
                                             <span *ngIf="ouvrage.specializedLine">
@@ -231,7 +230,7 @@
                                             </span>
                                         </mat-slide-toggle>
                                     </div>
-                                    <br/>
+                                    <br />
 
                                     <mat-form-field appearance="outline" class="w-100-p">
                                         <mat-label>{{'ADD.PLACE-HOLDER.totalWorkforce' | translate}}</mat-label>
@@ -242,16 +241,15 @@
                                     <div>
                                         <mat-form-field appearance="outline" class="w-100-p">
                                             <mat-label>{{'ADD.PLACE-HOLDER.energyMonthlyBill' | translate}}</mat-label>
-                                            <mat-icon matSuffix class="secondary-text">keyboard</mat-icon>
                                             <input matInput name="energyMonthlyBill" formControlName="energyMonthlyBill"
                                                 required>
+                                                <span matSuffix>DA</span>
                                         </mat-form-field>
                                     </div>
 
                                     <div>
                                         <mat-slide-toggle matInput name="distribution" formControlName="distribution"
-                                             required [checked]="ouvrage.distribution"
-                                            (change)="toggleDistribution()">
+                                            required [checked]="ouvrage.distribution" (change)="toggleDistribution()">
                                             <span *ngIf="ouvrage.distribution">
                                                 {{ 'ADD.PLACE-HOLDER.distributionActive' | translate }}
                                             </span>
@@ -261,7 +259,7 @@
                                         </mat-slide-toggle>
                                     </div>
 
-                                    <br/>
+                                    <br />
                                     <div>
                                         <mat-form-field appearance="outline" class="w-100-p"
                                             *ngIf="ouvrage.distribution">
@@ -283,11 +281,11 @@
                             <fieldset class="myfieldset">
 
                                 <div class="mr-sm-12" fxFlex>
-                                    <button mat-raised-button class="accent add-button"  (click)="autoCoordinates()">
+                                    <button mat-raised-button class="accent add-button" (click)="autoCoordinates()">
                                         <span>{{'ADD.BUTTON.autocoordinates' | translate}}</span>
                                     </button>
                                 </div>
-                                <br/>
+                                <br />
 
                                 <legend>{{'ADD.LEGENDS.location' | translate}}</legend>
                                 <div class="ml-sm-12" fxLayout.xs="column" fxLayout.sm="column">
@@ -303,8 +301,7 @@
                                             <mat-label>{{'ADD.PLACE-HOLDER.coordinateX' | translate}}
                                             </mat-label>
                                             <input matInput name="coordinateX" formControlName="coordinateX"
-                                                   [(ngModel)]="long" value="{{long}}" (change)="onCoordChange()"
-                                                   required>
+                                                [(ngModel)]="long" value="{{long}}" (change)="onCoordChange()" required>
                                             <mat-icon matSuffix class="secondary-text">place</mat-icon>
                                         </mat-form-field>
                                     </div>
@@ -313,7 +310,7 @@
                                             <mat-label>{{'ADD.PLACE-HOLDER.coordinateY' | translate}}
                                             </mat-label>
                                             <input matInput formControlName="coordinateY" [(ngModel)]="lati"
-                                                   value="{{lati}}" (change)="onCoordChange()" required>
+                                                value="{{lati}}" (change)="onCoordChange()" required>
                                             <mat-icon matSuffix class="secondary-text">place</mat-icon>
                                         </mat-form-field>
                                     </div>
@@ -327,21 +324,19 @@
                                     </div>
                                 </div>
                                 <div class="mapcls">
-                                    <div leaflet [leafletOptions]="options"
-                                         [leafletLayersControl]="layersControl"
-                                         (leafletMapReady)="onMapReady($event)" style="height: 300px;"
-                                         class="mapwh">
+                                    <div leaflet [leafletOptions]="options" [leafletLayersControl]="layersControl"
+                                        (leafletMapReady)="onMapReady($event)" style="height: 300px;" class="mapwh">
                                     </div>
                                 </div>
 
                             </fieldset>
                         </div>
                         <div fxLayout="column" class="mr-sm-12 ml-sm-12">
-                                <ayams-file-uploader fxFlex [uploadFiles]="filesToBeAttached" [showAndUpdate]="true"
-                                    [events]="onUploadEventSubject.asObservable()" (errorUpload)="errorUploadFiles()"
-                                    (allRequiredAttached)="onAllRequiredAttached($event)"
-                                    (successUpload)="successUploadFiles()">
-                                </ayams-file-uploader>
+                            <ayams-file-uploader fxFlex [uploadFiles]="filesToBeAttached" [showAndUpdate]="true"
+                                [events]="onUploadEventSubject.asObservable()" (errorUpload)="errorUploadFiles()"
+                                (allRequiredAttached)="onAllRequiredAttached($event)"
+                                (successUpload)="successUploadFiles()">
+                            </ayams-file-uploader>
                         </div>
                     </div>
 

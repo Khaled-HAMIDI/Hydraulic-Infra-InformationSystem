@@ -3,6 +3,7 @@ package dz.ade.pfe.ouvrage.inventory.ouvrage;
 import dz.ade.pfe.domain.ouvrage.Ouvrage;
 import dz.ade.pfe.port.out.LoadSequelNumber;
 import dz.ade.pfe.port.out.exploitation.getouvrages.LoadOuvragesExploitation;
+import dz.ade.pfe.port.out.exploitation.updateouvrage.UpdateExpOuvrage;
 import dz.ade.pfe.port.out.ouvrage.getouvragesbycodes.LoadOuvragesByCodes;
 import dz.ade.pfe.port.out.ouvrage.getouvragelist.LoadOuvrageList;
 import dz.ade.pfe.port.out.ouvrage.getouvragesynoptic.LoadOuvrageSynoptic;
@@ -16,7 +17,7 @@ import java.util.stream.Stream;
 
 @Component
 @RequiredArgsConstructor
-public class OuvragePersistenceAdapter implements LoadOuvrageList, LoadOuvragesByCodes, LoadOuvrageSynoptic, LoadOuvragesExploitation, LoadNbOuvrages, LoadSequelNumber {
+public class OuvragePersistenceAdapter implements LoadOuvrageList, UpdateExpOuvrage, LoadOuvragesByCodes, LoadOuvrageSynoptic, LoadOuvragesExploitation, LoadNbOuvrages, LoadSequelNumber {
 
     private final OuvrageRepository ouvrageRepository;
 
@@ -48,7 +49,10 @@ public class OuvragePersistenceAdapter implements LoadOuvrageList, LoadOuvragesB
     }
 
     @Override
-    public List<Ouvrage> loadOuvragesExploitation() {
+    public List<Ouvrage> loadOuvragesExploitation(String codeUser) {
+        List<Ouvrage> list = ouvrageRepository.loadOuvragesExploitation(codeUser);
+        if(list.size()>0)
+            return list;
         return Stream.concat(ouvrageRepository.loadOuvragesExploitation().stream(), ouvrageRepository.loadOuvragesNotInExploitation().stream())
                 .collect(Collectors.toList());
     }
@@ -66,5 +70,10 @@ public class OuvragePersistenceAdapter implements LoadOuvrageList, LoadOuvragesB
     @Override
     public Integer getNext(String type, String code) {
         return ouvrageRepository.getNext(type,code);
+    }
+
+    @Override
+    public void updateOuvrage(Ouvrage ouvrage) {
+        ouvrageRepository.save(ouvrage);
     }
 }

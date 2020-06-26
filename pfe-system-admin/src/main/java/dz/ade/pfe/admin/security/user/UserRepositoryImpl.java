@@ -61,4 +61,6 @@ public interface UserRepositoryImpl extends UserRepository, JpaRepository<User, 
     @Query(value = "SELECT u FROM User u WHERE exists (select r from u.roles r where r.role = :role) " +
             "AND u.username = :username AND u.deleted = false ")
     Optional<User> findUserByUsernameAndRole(@Param("username") String username, @Param("role") String role);
+    @Query("SELECT u FROM User u JOIN u.ouvrages e join e.ouvrage o where o.code = :code")
+    List<User> getPersonnels (String code);
 }

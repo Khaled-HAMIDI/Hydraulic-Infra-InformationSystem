@@ -6,11 +6,13 @@ import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.Mappings;
 
+import java.util.Collection;
 import java.util.List;
 @Mapper(componentModel = "spring", uses = SiteSynopticMapper.class)
 public interface OuvrageSynopticMapper {
     @Mappings({
-            @Mapping(target = "nbApears",expression = "java(getNbChains(ouvrage))")
+            @Mapping(target = "nbApears",expression = "java(getNbChains(ouvrage))"),
+            @Mapping(target = "currentDebit", expression = "java(getCapacity(ouvrage))")
     })
     OuvrageSynopticDto ouvrageToOuvrageDto (Ouvrage ouvrage);
     List<OuvrageSynopticDto> ouvrageToOuvrageDto(List<Ouvrage> ouvrages);
@@ -19,5 +21,12 @@ public interface OuvrageSynopticMapper {
         if(ouvrage.getChains() != null)
             return ouvrage.getChains().size();
         return 0;
+    }
+
+    default Double getCapacity(Ouvrage ouvrage) {
+        if (ouvrage.getReadings().size() > 0)
+            return ouvrage.getReadings().get(0).getDebit();
+        else
+            return null;
     }
 }

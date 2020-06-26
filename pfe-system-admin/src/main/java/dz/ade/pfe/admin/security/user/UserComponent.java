@@ -30,6 +30,8 @@ public interface UserComponent {
 
     List<User> findAllNonDeleted();
 
+    List<User> getPersonnel(String code);
+
     List<User> findUsersByRoles(List<String> roles);
 
     List<User> getAllUserByUsername(List<String> usernames);

@@ -54,7 +54,7 @@ export class DrawComponent implements OnInit, OnDestroy {
   }
 
   initSynopticStructure(chains, ouvrages) {
-    let debit;
+    let debit : number;
     ouvrages.forEach((ouv) => {
       if (ouv.nbApears > 0) {
         var n = new node();
@@ -98,8 +98,7 @@ export class DrawComponent implements OnInit, OnDestroy {
         debit = ouvrages.find((ouv) => {
           return ouv.code === chain.ouvrages[i].code
         }).currentDebit
-        //console.log(debit);
-        l.meta = { interface: { source: "10", target: "10" } };
+        l.meta = { interface: { source: debit.toString() , target: "" } };
         var ind = this.links.findIndex((link) => {
           return ((link.source === l.source) && (link.target === l.target))
         });

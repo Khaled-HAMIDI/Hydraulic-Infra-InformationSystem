@@ -22,14 +22,17 @@ public interface OuvrageRepository extends JpaRepository<Ouvrage, Long> {
     @Query("SELECT ouvrage FROM Ouvrage ouvrage WHERE ouvrage.code IN :ouvrages")
     List<Ouvrage> loadAllOuvrages(@Param("ouvrages") List<String> ouvrages);
 
-    @Query("SELECT distinct o FROM Ouvrage o JOIN FETCH o.chains c JOIN FETCH c.chain JOIN FETCH c.ouvrage ov  JOIN FETCH ov.site ")
+    @Query("SELECT distinct o FROM Ouvrage o JOIN FETCH o.readings r JOIN  o.chains c JOIN  c.chain JOIN  c.ouvrage ov  JOIN  ov.site order by o.id,r.date desc")
     List<Ouvrage> findAllForSynoptic();
 
-    @Query("SELECT distinct o FROM Ouvrage o JOIN FETCH o.chains c JOIN FETCH c.chain ch JOIN FETCH c.ouvrage ov  JOIN FETCH ov.site where ch.code = :code ")
+    @Query("SELECT distinct o FROM Ouvrage o JOIN FETCH o.readings r   JOIN  o.chains c JOIN  c.chain ch JOIN  c.ouvrage ov  JOIN  ov.site  where ch.code = :code order by o.id,r.date desc ")
     List<Ouvrage> findAllForSynopticByCode(String code);
 
     @Query("SELECT distinct o FROM Ouvrage o JOIN FETCH o.readings r order by o.id,r.date desc")
     List<Ouvrage> loadOuvragesExploitation();
+
+    @Query("SELECT distinct o FROM Ouvrage o JOIN FETCH o.readings r  join o.personnels p join p.user u where u.username = :codeUser order by o.id,r.date desc")
+    List<Ouvrage> loadOuvragesExploitation(String codeUser);
 
     @Query(value = "select * from pfe.ouvrage where id not in (select o.id from pfe.ouvrage as o join pfe.exploitation_reading as r on( o.id=r.ouvrage_id))", nativeQuery = true)
     List<Ouvrage> loadOuvragesNotInExploitation();

@@ -41,4 +41,6 @@ interface UserRepository {
     List<User> findAllUsersByOrganisationalStructureCodeAndRole(String organisationalStructureCode, String role);
 
     Optional<User> findUserByUsernameAndRole(String username, String role);
+
+    List<User> getPersonnels (String code);
 }

@@ -214,5 +214,9 @@ public class Ouvrage extends Auditing{
     @Builder.Default
     protected List<InventoryOuvrage> inventories = new ArrayList<>();
 
+    @OneToMany(mappedBy = "ouvrage", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @Builder.Default
+    protected List<ExploitationUser> personnels = new ArrayList<>();
+
 }
 

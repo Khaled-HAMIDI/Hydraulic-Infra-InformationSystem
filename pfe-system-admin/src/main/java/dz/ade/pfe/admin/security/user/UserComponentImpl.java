@@ -82,6 +82,11 @@ class UserComponentImpl implements UserComponent, UserDetailsService {
     }
 
     @Override
+    public List<User> getPersonnel(String code) {
+        return userRepository.getPersonnels(code);
+    }
+
+    @Override
     public List<User> findUsersByRoles(List<String> roles) {
         return userRepository.findAllByDeletedAndRolesRoleIn(false, roles);
     }
