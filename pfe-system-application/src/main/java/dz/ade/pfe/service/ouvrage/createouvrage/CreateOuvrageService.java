@@ -39,5 +39,11 @@ public class CreateOuvrageService implements CreateOuvrageCommand {
         ouvrage.setSite(site.get());
         return createOuvrageMapper.ouvrageToOuvrageDto(saveOuvrage.saveOuvrage(ouvrage));
     }
+
+    @Override
+    public Boolean deleteOuvrage(String code) {
+         saveOuvrage.deleteOuvrage(code);
+         return true;
+    }
 }
 

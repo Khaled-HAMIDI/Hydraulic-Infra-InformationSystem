@@ -35,7 +35,10 @@ public class Ouvrage extends Auditing{
     private OuvrageType type;
 
     @Column(name = "enabled")
-    private boolean enabled;
+    private Boolean enabled;
+
+    @Column(name = "declassed")
+    private Boolean declassed;
 
     @Column(name = "form")
     @Enumerated(EnumType.STRING)
@@ -44,6 +47,10 @@ public class Ouvrage extends Auditing{
     @Column(name = "state")
     @Enumerated(EnumType.STRING)
     private State state;
+
+    @Column(name = "cycle")
+    @Enumerated(EnumType.STRING)
+    private Cycle cycle;
 
     @Column(name = "process")
     @Enumerated(EnumType.STRING)
@@ -193,6 +200,10 @@ public class Ouvrage extends Auditing{
     @OneToMany(mappedBy = "ouvrage", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @Builder.Default
     protected List<WorkStopTimes> workStopTimes = new ArrayList<>();
+
+    @OneToMany(mappedBy = "ouvrage", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @Builder.Default
+    protected List<CycleOuvrage> cycles = new ArrayList<>();
 
     @OneToMany(mappedBy = "ouvrage", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @Builder.Default

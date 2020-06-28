@@ -26,6 +26,7 @@ export class DrawComponent implements OnInit, OnDestroy {
   links = [];
   selectAllOn: boolean = true;
   selectedChains = []
+  linksToRedden = [];
   constructor(
     private route: ActivatedRoute,
     private router: Router,
@@ -54,7 +55,9 @@ export class DrawComponent implements OnInit, OnDestroy {
   }
 
   initSynopticStructure(chains, ouvrages) {
-    let debit : number;
+    let debit: number;
+    let count : number = 0;
+    let ouvrage ;
     ouvrages.forEach((ouv) => {
       if (ouv.nbApears > 0) {
         var n = new node();
@@ -85,26 +88,34 @@ export class DrawComponent implements OnInit, OnDestroy {
       }
 
     })
-    chains.forEach((chain) => {
+    chains.forEach((chain) => { 
+      let enabled = true;
       this.selectedChains.push(chain.code);
       chain.ouvrages.sort(this.compare);
       var l;
       let k: number;
       for (var i = 0; i < chain.ouvrages.length - 1; i++) {
         //let k = findIndex(this.ouvragesInfo, {'code': chain.ouvrages[i].code})
+       ouvrage =  ouvrages.find((ouv) => {
+          return ouv.code === chain.ouvrages[i].code
+        })
+        if(!ouvrage.enabled)
+        enabled = false;
+        if(!enabled)
+        this.linksToRedden.push(count);
         l = new link();
         l.source = chain.ouvrages[i].site.replace(' ', '') + '-' + chain.ouvrages[i].code;
         l.target = chain.ouvrages[i + 1].site.replace(' ', '') + '-' + chain.ouvrages[i + 1].code;
-        debit = ouvrages.find((ouv) => {
-          return ouv.code === chain.ouvrages[i].code
-        }).currentDebit
-        l.meta = { interface: { source: debit.toString() , target: "" } };
+        debit = ouvrage.currentDebit;
+        l.meta = { interface: { source: debit.toString(), target: "" } };
         var ind = this.links.findIndex((link) => {
           return ((link.source === l.source) && (link.target === l.target))
         });
         //if (ind != 1)
         this.links.push(l);
+        count++;
       }
+      enabled = true;
     })
   }
   compare(a, b) {
@@ -159,6 +170,11 @@ export class DrawComponent implements OnInit, OnDestroy {
       //   }
       // });
       // Define the div for the tooltip
+      console.log(this.linksToRedden);
+      for (let i in this.linksToRedden){
+        d3.select("#link" + this.linksToRedden[i]).style("stroke", "red")
+        d3.select("#path" + this.linksToRedden[i]).style("stroke", "red")
+      }
       var div = d3.select(".tooltip")
         .style("opacity", 0);
       // You can also change label position, which is, how far it is from the node along the link line

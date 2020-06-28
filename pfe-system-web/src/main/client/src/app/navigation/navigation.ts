@@ -54,13 +54,6 @@ export const navigation: FuseNavigation[] = [
                         url  : 'patrimony/ouvrages'
                     },
                     {
-                        id   : 'integrate',
-                        title: 'Intégrer',
-                        translate: 'NAV.PATRIMONY.ITEMS.INTEGRATE',
-                        type : 'item',
-                        url  : 'patrimony/ouvrages/add'
-                    },
-                    {
                         id: 'chain',
                         title: 'Chaine',
                         translate: 'NAV.PATRIMONY.ITEMS.CHAIN',

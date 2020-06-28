@@ -54,9 +54,9 @@ export class OuvrageListService implements Resolve<any> {
     });
   }
 
-  delete(ids: String[]): Promise<[]> {
+  delete(id: String): Promise<[]> {
     return new Promise((resolve, reject) => {
-      this.http.request('delete', OUVRAGE_API, { body: ids })
+      this.http.delete(API+'/ouvrage/'+id)
         .subscribe((response: any) => {
           resolve(response);
         }, reject);
@@ -100,14 +100,9 @@ export class OuvrageListService implements Resolve<any> {
   // @ Delete function
   // -----------------------------------------------------------------------------------------------------
   deleteOuvrage(ouvrage): void {
-    if (ouvrage.systemEntity) {
-      this.toolsService.hideProgressBar();
-      this.toolsService.showError('LIST.TOAST.error-delete-system-entity');
-      return;
-    }
-
+ 
     this.toolsService.showProgressBar();
-    this.delete([ouvrage.id]).then(
+    this.delete(ouvrage.id).then(
       (response) => {
 
         const ouvrageIndex = this.ouvrages.indexOf(ouvrage);
@@ -135,25 +130,25 @@ export class OuvrageListService implements Resolve<any> {
 
 
   deleteSelectedOuvrages(): void {
-    this.toolsService.showProgressBar();
+    // this.toolsService.showProgressBar();
 
-    this.delete(this.ouvragesSelected).then(
-      (response: any) => {
+    // this.delete(this.ouvragesSelected).then(
+    //   (response: any) => {
 
-        this.deleteFromSelectedOuvrages(this.ouvragesSelected);
-        this.onOuvragesChanged.next(this.ouvrages);
-        this.deselectAll();
+    //     this.deleteFromSelectedOuvrages(this.ouvragesSelected);
+    //     this.onOuvragesChanged.next(this.ouvrages);
+    //     this.deselectAll();
 
-        this.toolsService.hideProgressBar();
-        this.toolsService.showSuccess('LIST.TOAST.success-delete');
+    //     this.toolsService.hideProgressBar();
+    //     this.toolsService.showSuccess('LIST.TOAST.success-delete');
 
-      },
-      (error) => {
-        console.log(error);
-        this.toolsService.hideProgressBar();
-        this.toolsService.showError('LIST.TOAST.error-delete');
-      }
-    );
+    //   },
+    //   (error) => {
+    //     console.log(error);
+    //     this.toolsService.hideProgressBar();
+    //     this.toolsService.showError('LIST.TOAST.error-delete');
+    //   }
+    // );
 
   }
 

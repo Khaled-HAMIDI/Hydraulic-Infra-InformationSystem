@@ -24,6 +24,8 @@ public class InventoryComponentDto {
     @Enumerated(EnumType.STRING)
     private State state;
 
+    private Double number;
+
     private String gap;
 
     private String observation;

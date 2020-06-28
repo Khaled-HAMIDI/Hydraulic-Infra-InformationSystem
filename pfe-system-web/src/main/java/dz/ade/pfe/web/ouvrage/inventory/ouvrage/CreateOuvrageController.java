@@ -32,7 +32,19 @@ public class CreateOuvrageController extends BaseController {
             @ApiResponse(code = 403, message = "Accessing the resource you were trying to reach is forbidden"),
             @ApiResponse(code = 404, message = "The resource you were trying to reach is not found")
     })
-    public OuvrageShowDto createOuvrage(@RequestBody OuvrageAddDto ouvrageAddDto){
+    public OuvrageShowDto createOuvrage(@RequestBody OuvrageAddDto ouvrageAddDto) {
         return createOuvrageCommand.createOuvrage(ouvrageAddDto, ouvrageAddDto.getCenter());
+    }
+
+    @DeleteMapping(value = "/ouvrage/{code}")
+    @ApiOperation(value = "declasser an ouvrage")
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "Successfully added an ouvrage"),
+            @ApiResponse(code = 401, message = "You are not authorized to view the resource"),
+            @ApiResponse(code = 403, message = "Accessing the resource you were trying to reach is forbidden"),
+            @ApiResponse(code = 404, message = "The resource you were trying to reach is not found")
+    })
+    public Boolean deleteOuvrage(@PathVariable(value = "code") String code) {
+        return createOuvrageCommand.deleteOuvrage(code);
     }
 }

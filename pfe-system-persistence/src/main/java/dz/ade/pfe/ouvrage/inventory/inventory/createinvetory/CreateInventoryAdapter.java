@@ -43,6 +43,7 @@ public class CreateInventoryAdapter implements SaveInventory, SaveInventoryOuvra
 
         if (inventoryComponentRepository.existsByInventoryAndOuvrageAndComponentType(inventory,ouvrage,type)){
             InventoryComponent old = inventoryComponentRepository.findByInventoryAndAndOuvrageAndComponentType(inventory,ouvrage,type);
+            inventoryComponent.setNumber(old.getNumber());
             inventoryComponentRepository.delete(old);
             inventoryComponent.setDone(true);
         }

@@ -34,6 +34,10 @@ public class InventoryComponent extends Auditing{
     @Enumerated(EnumType.STRING)
     private State state;
 
+    /* virtuel quantity*/
+    @Column(name = "number")
+    private Double number;
+
     /* Difference */
     @Column(name = "gap")
     private String gap;

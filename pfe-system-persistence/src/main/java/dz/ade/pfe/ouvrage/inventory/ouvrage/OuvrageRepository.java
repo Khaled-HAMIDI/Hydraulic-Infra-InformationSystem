@@ -2,27 +2,36 @@ package dz.ade.pfe.ouvrage.inventory.ouvrage;
 
 import dz.ade.pfe.domain.ouvrage.Ouvrage;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
 public interface OuvrageRepository extends JpaRepository<Ouvrage, Long> {
 
+    List<Ouvrage> findByDeclassed(boolean state);
+
     boolean existsByCode(String Code);
 
     Ouvrage findByCode(String code);
 
-    @Query(value = "select count(*) from pfe.ouvrage o join pfe.organisational_structure s on o.unit_id=s.id where o.type like :type and s.code= :code", nativeQuery = true)
-    Integer getNext(String type ,String code);
+    @Transactional
+    @Modifying
+    @Query(value = "UPDATE Ouvrage o SET o.declassed = true where o.code = :code")
+    void deleteOuvrage(String code);
 
-    @Query("SELECT distinct o FROM Ouvrage o JOIN  o.unit u where u.code=:code")
-    List<Ouvrage> findByUnitCode (String code);
+    @Query(value = "select count(*) from pfe.ouvrage o join pfe.organisational_structure s on o.unit_id=s.id where o.type like :type and s.code= :code", nativeQuery = true)
+    Integer getNext(String type, String code);
+
+    @Query("SELECT distinct o FROM Ouvrage o JOIN  o.unit u where u.code=:code and o.declassed = false")
+    List<Ouvrage> findByUnitCode(String code);
 
     @Query("SELECT ouvrage FROM Ouvrage ouvrage WHERE ouvrage.code IN :ouvrages")
     List<Ouvrage> loadAllOuvrages(@Param("ouvrages") List<String> ouvrages);
 
-    @Query("SELECT distinct o FROM Ouvrage o JOIN FETCH o.readings r JOIN  o.chains c JOIN  c.chain JOIN  c.ouvrage ov  JOIN  ov.site order by o.id,r.date desc")
+    @Query("SELECT distinct o FROM Ouvrage o JOIN FETCH o.readings r   JOIN  o.chains c JOIN  c.chain JOIN  c.ouvrage ov  JOIN  ov.site order by o.id,r.date desc")
     List<Ouvrage> findAllForSynoptic();
 
     @Query("SELECT distinct o FROM Ouvrage o JOIN FETCH o.readings r   JOIN  o.chains c JOIN  c.chain ch JOIN  c.ouvrage ov  JOIN  ov.site  where ch.code = :code order by o.id,r.date desc ")

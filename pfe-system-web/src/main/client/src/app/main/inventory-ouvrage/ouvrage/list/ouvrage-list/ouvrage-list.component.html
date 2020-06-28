@@ -157,4 +157,10 @@
         <!-- / CONTENT CARD -->
     </div>
     <!-- / CENTER -->
+    <ng-container *ayamsHasAnyPermissions="['ouvrage:add','ouvrage:*','*:add','*:*']">
+        <button mat-fab class="accent add-button" [routerLink]="'/patrimony/ouvrages/add'"
+            matTooltip="{{'LIST.BUTTON.add' | translate}}" matTooltipPosition="left" *fuseIfOnDom>
+            <mat-icon>add</mat-icon>
+        </button>
+    </ng-container>
 </div>

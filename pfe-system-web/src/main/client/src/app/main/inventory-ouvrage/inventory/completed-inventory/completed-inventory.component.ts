@@ -11,6 +11,8 @@ import {CompletedInventoryService} from "./completed-inventory.service";
 const COLUMN_NAMES: string[] = [
     'componentType',
     'state',
+    'nbv',
+    'nbp',
     'gap',
     'observation'
 ];
@@ -46,6 +48,7 @@ export class CompletedInventoryComponent extends Table implements OnInit, OnDest
     ngOnInit() {
         this.route.data.pipe(takeUntil(this._unsubscribeAll)).subscribe(
             (response) => {
+                console.log(response.data[2]);
                 this.inventoryCode = this.route.snapshot.params['codeInventory'];
                 this.dates = response.data[1];
                 this.btnExport = response.data[0].length;
@@ -74,7 +77,7 @@ export class CompletedInventoryComponent extends Table implements OnInit, OnDest
     // @ Public function
     // -----------------------------------------------------------------------------------------------------
 
-
+    calculGap(a1:number , a2:string){return Number(a2)-a1}
 
     updateTable(ouvrage) {
 

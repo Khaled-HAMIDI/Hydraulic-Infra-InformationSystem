@@ -23,4 +23,9 @@ public class CreateOuvrageAdapter implements SaveOuvrage {
 
         return ouvrage;
     }
+
+    @Override
+    public void deleteOuvrage(String code) {
+         ouvrageRepository.deleteOuvrage(code);
+    }
 }

@@ -25,7 +25,7 @@ public class OuvragePersistenceAdapter implements LoadOuvrageList, UpdateExpOuvr
     @Override
     public List<Ouvrage> loadOuvrageList(String codeStructure) {
         if (codeStructure.equals("DG"))
-            return ouvrageRepository.findAll();
+            return ouvrageRepository.findByDeclassed(false);
         else
             return ouvrageRepository.findByUnitCode(codeStructure);
     }

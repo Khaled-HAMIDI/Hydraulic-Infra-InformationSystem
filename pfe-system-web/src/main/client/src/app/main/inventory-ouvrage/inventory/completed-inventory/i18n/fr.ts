@@ -11,6 +11,8 @@ export const locale = {
                 'componentType': 'Type',
                 'state': 'Etat',
                 'gap': 'Ecart',
+                'nbv':'Nombre virtuel',
+                'nbp':'Nombre physique',
                 'observation': 'Observation'
             },
             'TOAST': {

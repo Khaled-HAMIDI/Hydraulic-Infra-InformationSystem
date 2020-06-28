@@ -53,7 +53,7 @@ export class OuvrageAddComponent implements OnInit,  OnDestroy{
     ngOnInit(): void {
         this.route.data.pipe(takeUntil(this._unsubscribeAll)).subscribe(
             (response) => {
-                console.log(response.data[1])
+                console.log(response.data[2])
                 this.centers  = response.data[1]
                 this.sites = sortBy(response.data[0], ['name']);
                 this.initForm();

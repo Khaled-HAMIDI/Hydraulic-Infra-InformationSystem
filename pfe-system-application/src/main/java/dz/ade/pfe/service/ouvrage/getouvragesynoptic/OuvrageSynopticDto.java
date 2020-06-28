@@ -15,4 +15,5 @@ public class OuvrageSynopticDto {
     private SiteDto site;
     private Double currentDebit;
     private Integer nbApears;
+    private Boolean enabled;
 }

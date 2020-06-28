@@ -8,7 +8,7 @@ export const locale = {
                 'export': 'Exporter',
             },
             'BUTTON': {
-                'add': 'Ajouter un utilisateur'
+                'add': 'Intégrer un ouvrage'
             },
             'TABLE': {
                 'username': 'Nom d\'utilisateur',
@@ -21,12 +21,12 @@ export const locale = {
                 'action': {
                     'show': 'Afficher',
                     'edit': 'Modifier',
-                    'remove': 'Supprimer',
+                    'remove': 'Désaffecter',
                     'reset_pswd': 'Réinitialiser le mot de passe'
                 }
             },
             'CONFIRM-DIALOG': {
-                'delete': 'Etes-vous sûr que vous voulez supprimer ?',
+                'delete': 'Etes-vous sûr que vous voulez désaffecter l`\'ouvrage ?',
                 'reset': 'Etes-vous sûr que vous voulez réinitialiser le mot de passe ?'
             },
             'TOAST': {
