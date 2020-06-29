@@ -59,6 +59,13 @@ export const navigation: FuseNavigation[] = [
                         translate: 'NAV.PATRIMONY.ITEMS.CHAIN',
                         type: 'item',
                         url: 'patrimony/chain'
+                    },
+                    {
+                        id: 'declassed',
+                        title: 'Ouvrage déclassé',
+                        translate: 'NAV.PATRIMONY.ITEMS.DEC',
+                        type: 'item',
+                        url: 'patrimony/ouvrages/declassed'
                     }
                 ]
                 

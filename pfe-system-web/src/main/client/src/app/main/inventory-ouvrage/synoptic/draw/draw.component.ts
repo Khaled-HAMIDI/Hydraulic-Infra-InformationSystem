@@ -173,7 +173,7 @@ export class DrawComponent implements OnInit, OnDestroy {
       console.log(this.linksToRedden);
       for (let i in this.linksToRedden){
         d3.select("#link" + this.linksToRedden[i]).style("stroke", "red")
-        d3.select("#path" + this.linksToRedden[i]).style("stroke", "red")
+        //d3.select("#path" + this.linksToRedden[i]).style("stroke", "red")
       }
       var div = d3.select(".tooltip")
         .style("opacity", 0);

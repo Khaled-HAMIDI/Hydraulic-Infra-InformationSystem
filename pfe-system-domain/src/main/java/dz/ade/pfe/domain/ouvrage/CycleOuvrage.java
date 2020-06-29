@@ -29,6 +29,9 @@ public class CycleOuvrage extends Auditing {
     @Enumerated(EnumType.STRING)
     private Cycle cycle;
 
+    @Column(name = "cout")
+    private Double cout;
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "ouvrage_id")
     private Ouvrage ouvrage;

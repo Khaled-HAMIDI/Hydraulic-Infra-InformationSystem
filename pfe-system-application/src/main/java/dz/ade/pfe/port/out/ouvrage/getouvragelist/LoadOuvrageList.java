@@ -5,4 +5,5 @@ import java.util.List;
 
 public interface LoadOuvrageList {
     List<Ouvrage> loadOuvrageList(String codeStructure);
+    List<Ouvrage> loadDeclassedList(String codeStructure);
 }

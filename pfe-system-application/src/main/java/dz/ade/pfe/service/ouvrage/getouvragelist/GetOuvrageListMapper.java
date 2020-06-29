@@ -19,4 +19,11 @@ public interface GetOuvrageListMapper {
 
     List<OuvrageListDto> ouvrageToOuvrageListDto(List<Ouvrage> ouvrage);
 
+    @Mappings({
+            @Mapping(source = "code", target = "id")
+    })
+    DeclassedDto ouvrageToDeclassedDto(Ouvrage ouvrage);
+
+    List<DeclassedDto> ouvrageToDeclassedListDto(List<Ouvrage> ouvrage);
+
 }

@@ -1,0 +1,164 @@
+<div id="ouvrages" class="page-layout carded fullwidth inner-scroll">
+
+    <!-- SELECTED BAR -->
+    <selected-bar [ngStyle]="{ 'height': heightDyn() }" class="accent-600" *ngIf="selectBarDisplayed" [@slideInTop]>
+    </selected-bar>
+    <!-- / SELECTED BAR -->
+    <!-- TOP BACKGROUND -->
+    <div class="top-bg accent" id="headerHeight"></div>
+    <!-- / TOP BACKGROUND -->
+    <!-- CENTER -->
+    <div [ngClass]="{HideTable: emptyList}" class="center">
+        <!-- HEADER -->
+        <div class="header accent" fxLayout="column" fxLayoutAlign="center center" fxLayout.gt-sm="row"
+            fxLayoutAlign.gt-sm="space-between center">
+
+            <!-- APP TITLE -->
+            <div class="logo my-12 m-sm-0" fxLayout="row" fxLayoutAlign="start center">
+                <span class="logo-text h1">
+                    {{'LIST.HEADER.title' | translate}}
+                </span>
+            </div>
+            <!-- / APP TITLE -->
+
+            <!-- SEARCH -->
+            <ng-container *ayamsHasAnyPermissions="['*:*']">
+                <div class="search-wrapper mx-32 mx-md-0">
+                    <div class="search" fxFlex fxLayout="row" fxLayoutAlign="start center">
+                        <mat-icon>search</mat-icon>
+                        <input matInput [(ngModel)]="searchTerm" (keyup)="applyFilter($event.target.value)" [placeholder]="'LIST.HEADER.search' | translate">
+                    </div>
+                </div>
+                <!-- / SEARCH -->
+                <mat-form-field appearance="outline" class="category-selector mt-24">
+                    <mat-label>Types</mat-label>
+                    <mat-select [(ngModel)]="currentCategory" (selectionChange)="filterOuvragesByType()">
+                        <mat-option [value]="'all'">
+                            Tous
+                        </mat-option>
+                        <mat-option *ngFor="let type of types" [value]="type.name">{{type.value}}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+
+                <button mat-raised-button (click)="export()" class="mat-white-bg mt-24 mt-md-0" [disabled]="!btnExport">
+                    <span>{{'LIST.HEADER.export' | translate}}</span>
+                </button>
+            </ng-container>
+        </div>
+        <!-- / HEADER -->
+
+        <!-- CONTENT CARD -->
+        <ng-container *ayamsHasAnyPermissions="['*:*']">
+            <div class="example-container mat-white-bg">
+
+                <table mat-table [dataSource]="dataSource" matSort>
+
+                    <!-- Checkbox Column -->
+                    <ng-container matColumnDef="checkbox">
+                        <th mat-header-cell *matHeaderCellDef>
+                        </th>
+                        <td mat-cell *matCellDef="let ouvrage">
+                            <ng-container>
+                                <mat-checkbox [(ngModel)]="ouvragesCheckbox[ouvrage.id]"
+                                    (ngModelChange)="onSelectedChange(ouvrage)" (click)="$event.stopPropagation()">
+                                </mat-checkbox>
+                            </ng-container>
+                        </td>
+                    </ng-container>
+
+                    <!-- Code Column -->
+                    <ng-container matColumnDef="code">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header>{{'LIST.TABLE.code' | translate}}
+                        </th>
+                        <td mat-cell *matCellDef="let ouvrage">
+                            <p class="text-truncate">{{ouvrage.code}}</p>
+                        </td>
+                    </ng-container>
+
+                    <!-- Code Designation -->
+                    <ng-container matColumnDef="name">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header>{{'LIST.TABLE.nom' | translate}}
+                        </th>
+                        <td mat-cell *matCellDef="let ouvrage">
+                            <p class="text-truncate">{{ouvrage.name}}</p>
+                        </td>
+                    </ng-container>
+
+
+                     <!-- Code Column -->
+                     <ng-container matColumnDef="operatingDate">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header>{{'LIST.TABLE.datee' | translate}}
+                        </th>
+                        <td mat-cell *matCellDef="let ouvrage">
+                            <p class="text-truncate">{{ouvrage.operatingDate | date: 'dd-MM-yyyy'}}</p>
+                        </td>
+                    </ng-container>
+
+                    <!-- Permissions Column -->
+                    <ng-container matColumnDef="commissioningDate">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header>{{'LIST.TABLE.dates' | translate}}
+                        </th>
+                        <td mat-cell *matCellDef="let ouvrage">
+                            <p class="text-truncate">{{ouvrage.commissioningDate | date: 'dd-MM-yyyy'}}</p>
+                        </td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="declassedDate">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header>{{'LIST.TABLE.debit' | translate}}
+                        </th>
+                        <td mat-cell *matCellDef="let ouvrage">
+                            <p class="text-truncate">{{ouvrage.declassedDate | date: 'dd-MM-yyyy'}</p>
+                        </td>
+                    </ng-container>
+
+                    <!-- Buttons Column -->
+                    <ng-container matColumnDef="buttons" stickyEnd>
+                        <th mat-header-cell *matHeaderCellDef></th>
+                        <td mat-cell *matCellDef="let ouvrage">
+
+                            <button mat-icon-button [matMenuTriggerFor]="moreMenu" aria-label="More"
+                                (click)="$event.stopPropagation();">
+                                <mat-icon class="secondary-text">more_vert</mat-icon>
+                            </button>
+
+                            <mat-menu #moreMenu="matMenu">
+                                <ng-container *ayamsHasAnyPermissions="['ouvrages:edit','ouvrages:*','*:edit','*:*']">
+                                    <button mat-menu-item aria-label="edit"
+                                        (click)="router.navigate(['/patrimony/ouvrages/'+ouvrage.code+'/edit'])">
+                                        <mat-icon>edit</mat-icon>
+                                        <span>{{'LIST.TABLE.action.edit' | translate}}</span>
+                                    </button>
+                                </ng-container>
+                                <ng-container
+                                    *ayamsHasAnyPermissions="['ouvrages:delete','ouvrages:*','*:delete','*:*']">
+                                    <button mat-menu-item aria-label="remove" (click)="onDelete(ouvrage)">
+                                        <mat-icon>delete</mat-icon>
+                                        <span>{{'LIST.TABLE.action.remove' | translate}}</span>
+                                    </button>
+                                </ng-container>
+                            </mat-menu>
+                        </td>
+                    </ng-container>
+
+                    <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky:true"></tr>
+                    <ng-container *ayamsHasAnyPermissions="['ouvrages:show','ouvrages:*','*:show','*:*']">
+                        <tr mat-row *matRowDef="let ouvrage; columns: displayedColumns;" class="ouvrage" matRipple
+                            (click)="router.navigate(['/patrimony/ouvrages/'+ouvrage.code+'/show'])">
+                        </tr>
+                    </ng-container>
+                </table>
+
+            </div>
+
+        </ng-container>
+        <mat-paginator [pageSizeOptions]="pageSizeOptions"></mat-paginator>
+        <!-- / CONTENT CARD -->
+    </div>
+    <!-- / CENTER -->
+    <ng-container *ayamsHasAnyPermissions="['ouvrage:add','ouvrage:*','*:add','*:*']">
+        <button mat-fab class="accent add-button" [routerLink]="'/patrimony/ouvrages/add'"
+            matTooltip="{{'LIST.BUTTON.add' | translate}}" matTooltipPosition="left" *fuseIfOnDom>
+            <mat-icon>add</mat-icon>
+        </button>
+    </ng-container>
+</div>

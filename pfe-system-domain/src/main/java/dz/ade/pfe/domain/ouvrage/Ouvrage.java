@@ -5,6 +5,7 @@ import lombok.*;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -153,6 +154,10 @@ public class Ouvrage extends Auditing{
 
     @Column(name = "operating_date")
     private LocalDate operatingDate;
+
+    @Column(name = "declassed_date", columnDefinition = "TIMESTAMP")
+    @Builder.Default
+    protected LocalDateTime declassedDate = LocalDateTime.of(0, 1, 1, 0, 0);
 
     @Column(name = "maitre_ouvrage")
     private String maitreOuvrage;

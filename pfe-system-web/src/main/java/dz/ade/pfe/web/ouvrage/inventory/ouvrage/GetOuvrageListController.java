@@ -1,6 +1,7 @@
 package dz.ade.pfe.web.ouvrage.inventory.ouvrage;
 
 import dz.ade.pfe.port.in.ouvrage.getouvragelist.GetOuvrageListQuery;
+import dz.ade.pfe.service.ouvrage.getouvragelist.DeclassedDto;
 import dz.ade.pfe.service.ouvrage.getouvragelist.OuvrageListDto;
 import dz.ade.pfe.web.commons.controller.BaseController;
 import io.swagger.annotations.Api;
@@ -38,5 +39,19 @@ public class GetOuvrageListController extends BaseController {
     public List<OuvrageListDto> getOuvrageDetails(HttpServletRequest httpServletRequest) {
         String codeStructure = securityUtils.getConnectedUserOrganisationalStructureId(httpServletRequest);
         return getOuvrageListQuery.getOuvrageList(codeStructure);
+    }
+
+    @GetMapping(value = "/ouvrages/declassed")
+    @PreAuthorize("hasAnyAuthority('roles:list', '*:*')")
+    @ApiOperation(value = "View a list of available ouvrages")
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "Successfully retrieved a list of commune by wilaya"),
+            @ApiResponse(code = 401, message = "You are not authorized to view the resource"),
+            @ApiResponse(code = 403, message = "Accessing the resource you were trying to reach is forbidden"),
+            @ApiResponse(code = 404, message = "The resource you were trying to reach is not found")
+    })
+    public List<DeclassedDto> getOuvrageDeclassed(HttpServletRequest httpServletRequest) {
+        String codeStructure = securityUtils.getConnectedUserOrganisationalStructureId(httpServletRequest);
+        return getOuvrageListQuery.getOuvrageDeclassed(codeStructure);
     }
 }

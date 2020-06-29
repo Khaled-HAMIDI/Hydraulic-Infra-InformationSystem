@@ -21,4 +21,10 @@ public class GetOuvrageListService implements GetOuvrageListQuery {
         List<Ouvrage> ouvrages = loadOuvrageList.loadOuvrageList(codeStructure);
         return  getOuvrageListMapper.ouvrageToOuvrageListDto(ouvrages);
     }
+
+    @Override
+    public List<DeclassedDto> getOuvrageDeclassed(String codeStructure) {
+       List<Ouvrage> ouvrages = loadOuvrageList.loadDeclassedList(codeStructure);
+        return getOuvrageListMapper.ouvrageToDeclassedListDto(ouvrages);
+    }
 }

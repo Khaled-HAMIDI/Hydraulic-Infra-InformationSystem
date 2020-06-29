@@ -19,7 +19,7 @@ public interface OuvrageRepository extends JpaRepository<Ouvrage, Long> {
 
     @Transactional
     @Modifying
-    @Query(value = "UPDATE Ouvrage o SET o.declassed = true where o.code = :code")
+    @Query(value = "UPDATE Ouvrage o SET o.declassed = true, o.declassedDate = CURRENT_TIMESTAMP where o.code = :code")
     void deleteOuvrage(String code);
 
     @Query(value = "select count(*) from pfe.ouvrage o join pfe.organisational_structure s on o.unit_id=s.id where o.type like :type and s.code= :code", nativeQuery = true)
@@ -27,6 +27,9 @@ public interface OuvrageRepository extends JpaRepository<Ouvrage, Long> {
 
     @Query("SELECT distinct o FROM Ouvrage o JOIN  o.unit u where u.code=:code and o.declassed = false")
     List<Ouvrage> findByUnitCode(String code);
+
+    @Query("SELECT distinct o FROM Ouvrage o JOIN  o.unit u where u.code=:code and o.declassed = true")
+    List<Ouvrage> findByUnitCodeDeclassed(String code);
 
     @Query("SELECT ouvrage FROM Ouvrage ouvrage WHERE ouvrage.code IN :ouvrages")
     List<Ouvrage> loadAllOuvrages(@Param("ouvrages") List<String> ouvrages);
