@@ -20,7 +20,7 @@ export class StepperAddEditService {
         },
         {
             'title': 'Compteur/débitmètre arrivée',
-            'ComponentName': 'Compteur',
+            'ComponentName': 'CompteurDebimetre',
         },
         {
             'title': 'Joint de démontage arrivée',
@@ -32,7 +32,7 @@ export class StepperAddEditService {
         },
         {
             'title': 'Soupape de décharge',
-            'ComponentName': 'SoupageDecharge',
+            'ComponentName': 'SoupapeDecharge',
         },
         {
             'title': 'Vanne de distribution',
@@ -100,7 +100,7 @@ export class StepperAddEditService {
         },
         {
             'title': 'Soupape de décharge',
-            'ComponentName': 'SoupageDecharge',
+            'ComponentName': 'SoupapeDecharge',
         },
         {
             'title': 'Vanne ',
@@ -116,7 +116,7 @@ export class StepperAddEditService {
         },
         {
             'title': 'Compteur/débitmètre',
-            'ComponentName': 'Compteur',
+            'ComponentName': 'CompteurDebimetre',
         },
         {
             'title': 'Colonnes montantes' ,
@@ -139,7 +139,7 @@ export class StepperAddEditService {
         },
         {
             'title': 'Compteur/débitmètre arrivée',
-            'ComponentName': 'Compteur',
+            'ComponentName': 'CompteurDebimetre',
         },
         {
             'title': 'Flotteur',
@@ -346,7 +346,7 @@ export class StepperAddEditService {
         },
         {
             'title': 'Soupape de décharge',
-            'ComponentName': 'SoupageDecharge',
+            'ComponentName': 'SoupapeDecharge',
         },
         {
             'title': 'Vanne',
@@ -362,7 +362,7 @@ export class StepperAddEditService {
         },
         {
             'title': 'Compteur/débitmètre',
-            'ComponentName': 'Compteur',
+            'ComponentName': 'CompteurDebimetre',
         },
         {
             'title': 'Joint de démontage' ,

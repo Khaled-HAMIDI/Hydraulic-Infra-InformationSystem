@@ -6,6 +6,7 @@ export const navigation: FuseNavigation[] = [
         title: 'Accueil',
         translate: 'NAV.HOME.TITLE',
         type: 'group',
+        authorizations: ['*:*'],
         children: [
             {
                 id: 'welcome',
@@ -45,27 +46,31 @@ export const navigation: FuseNavigation[] = [
                 translate: 'NAV.PATRIMONY.TITLE',
                 type: 'collapsable',
                 icon: 'web_asset',
+                authorizations: ['ouvrage:show', 'chain:show', 'ouvrage:declassed'],
                 children:[
                     {
                         id   : 'list',
                         title: 'Liste',
                         translate: 'NAV.PATRIMONY.ITEMS.LIST',
                         type : 'item',
-                        url  : 'patrimony/ouvrages'
+                        url  : 'patrimony/ouvrages',
+                        authorizations : ['ouvrage:show']
                     },
                     {
                         id: 'chain',
                         title: 'Chaine',
                         translate: 'NAV.PATRIMONY.ITEMS.CHAIN',
                         type: 'item',
-                        url: 'patrimony/chain'
+                        url: 'patrimony/chain',
+                        authorizations : ['chain:show']
                     },
                     {
                         id: 'declassed',
                         title: 'Ouvrage déclassé',
                         translate: 'NAV.PATRIMONY.ITEMS.DEC',
                         type: 'item',
-                        url: 'patrimony/ouvrages/declassed'
+                        url: 'patrimony/ouvrages/declassed',
+                        authorizations : ['ouvrage:declassed']
                     }
                 ]
                 
@@ -76,27 +81,31 @@ export const navigation: FuseNavigation[] = [
                 translate: 'NAV.INVENTORY.TITLE',
                 type: 'collapsable',
                 icon: 'list_alt',
+                authorizations: ['inventory:show', 'ouvrage:inventory', 'ouvrage:validate', 'inventory:add'],
                 children:[
                     {
                         id: 'lancer',
                         title: 'Lancer inventaire',
                         translate: 'NAV.INVENTORY.ITEMS.START',
                         type: 'item',
-                        url: 'patrimony/inventory/add'
+                        url: 'patrimony/inventory/add',
+                        authorizations : ['inventory:add','*:*']
                     },
                     {
                         id   : 'suivre',
                         title: 'Suivre inventaire',
                         translate: 'NAV.INVENTORY.ITEMS.FOLLOW',
                         type : 'item',
-                        url  : 'patrimony/inventory/current'
+                        url  : 'patrimony/inventory/current',
+                        authorizations : ['ouvrage:inventory','ouvrage:validate']
                     },
                     {
                         id: 'liste',
                         title: 'Liste inventaires',
                         translate: 'NAV.INVENTORY.ITEMS.LIST',
                         type: 'item',
-                        url: 'patrimony/inventory/completed'
+                        url: 'patrimony/inventory/completed',
+                        authorizations : ['inventory:show']
                     }
                 ]
 
@@ -107,7 +116,8 @@ export const navigation: FuseNavigation[] = [
                 translate: 'NAV.EXPLOITATION.TITLE',
                 type: 'item',
                 icon: 'build',
-                url: 'exploitation/reading'
+                url: 'exploitation/reading',
+                authorizations: ['exploitation:addreleve','exploitaion:personnel'],
             }
         ]
     },

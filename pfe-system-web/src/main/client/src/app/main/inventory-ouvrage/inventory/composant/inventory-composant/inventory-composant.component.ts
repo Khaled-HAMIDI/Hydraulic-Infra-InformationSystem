@@ -83,7 +83,9 @@ export class InventoryComposantComponent implements OnInit{
 
 
     checkTypeComponents(components):componentInventory{
+        
         for (var i in components){
+            console.log(this.typeComponent + ','+components[i].componentType)
             if (components[i].componentType == this.typeComponent) return components[i];
         }
         return null;

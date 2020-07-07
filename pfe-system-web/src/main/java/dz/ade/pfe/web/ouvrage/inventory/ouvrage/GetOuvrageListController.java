@@ -28,7 +28,6 @@ public class GetOuvrageListController extends BaseController {
     private final GetOuvrageListQuery getOuvrageListQuery;
 
     @GetMapping(value = "/ouvrages")
-    @PreAuthorize("hasAnyAuthority('roles:list', '*:*')")
     @ApiOperation(value = "View a list of available ouvrages")
     @ApiResponses(value = {
             @ApiResponse(code = 200, message = "Successfully retrieved a list of commune by wilaya"),
@@ -42,7 +41,6 @@ public class GetOuvrageListController extends BaseController {
     }
 
     @GetMapping(value = "/ouvrages/declassed")
-    @PreAuthorize("hasAnyAuthority('roles:list', '*:*')")
     @ApiOperation(value = "View a list of available ouvrages")
     @ApiResponses(value = {
             @ApiResponse(code = 200, message = "Successfully retrieved a list of commune by wilaya"),

@@ -57,7 +57,9 @@ export class OuvrageDeclassedListComponent extends Table implements OnInit, OnDe
   ngOnInit() {
     this.route.data.pipe(takeUntil(this._unsubscribeAll)).subscribe(
       (response) => {
-        console.log(response.data[0]);
+        response.data[0].forEach(ouv=>{
+          ouv.declassedDate = new Date(ouv.declassedDate);
+        })
         this.types = response.data[1];
         this.btnExport = response.data[0].length;
         this.emptyList = response.data[0].length == 0;

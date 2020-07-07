@@ -65,7 +65,7 @@ export class GroupeElecPompPompComponent implements OnInit{
             nbSecours: [composant.nbSecours,Validators.required],
             genre:[composant.genre,Validators.required],
             marque: [composant.marque,Validators.required],
-            operatingDate: [composant.operatingDate ,Validators.required],
+            commissioningDate: [composant.commissioningDate ,Validators.required],
             debit:[composant.debit,Validators.required],
             rotationSpeed:[composant.rotationSpeed,Validators.required],
             npsh: [composant.npsh,Validators.required],

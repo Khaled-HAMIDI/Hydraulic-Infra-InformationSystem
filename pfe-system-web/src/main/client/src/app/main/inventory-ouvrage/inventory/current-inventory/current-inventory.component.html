@@ -17,7 +17,7 @@
             <!-- / APP TITLE -->
 
             <!-- SEARCH -->
-            <ng-container *ayamsHasAnyPermissions="['*:*']">
+            <ng-container >
                 <div class="search-wrapper mx-32 mx-md-0">
                     <div class="search" fxFlex fxLayout="row" fxLayoutAlign="start center">
                         <mat-icon>search</mat-icon>
@@ -33,16 +33,18 @@
                         <mat-option *ngFor="let type of types" [value]="type.name">{{type.value}}</mat-option>
                     </mat-select>
                 </mat-form-field>
-
-                <button mat-raised-button (click)="InventoryValidate()" class="mat-white-bg mt-24 mt-md-0">
-                    <span>{{'LIST.HEADER.validate' | translate}}</span>
-                </button>
+                <ng-container *ayamsHasAnyPermissions="['inventory:validate','*:*']">
+                    <button mat-raised-button (click)="InventoryValidate()" class="mat-white-bg mt-24 mt-md-0">
+                        <span>{{'LIST.HEADER.validate' | translate}}</span>
+                    </button>
+                </ng-container>
+               
             </ng-container>
         </div>
         <!-- / HEADER -->
 
         <!-- CONTENT CARD -->
-        <ng-container *ayamsHasAnyPermissions="['*:*']">
+        <ng-container >
             <div class="example-container mat-white-bg">
 
                 <table mat-table [dataSource]="dataSource" matSort>
@@ -100,7 +102,7 @@
                     </ng-container>
 
                     <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky:true"></tr>
-                    <ng-container *ayamsHasAnyPermissions="['ouvrages:show','ouvrages:*','*:show','*:*']">
+                    <ng-container >
                         <tr mat-row *matRowDef="let data; columns: displayedColumns;" class="ouvrage" matRipple
                             (click)="router.navigate(['/patrimony/inventory/current/'+ inventory.code + '/' +data.ouvrage.type+'/'+data.ouvrage.code])">
                         </tr>

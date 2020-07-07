@@ -22,7 +22,6 @@ import javax.validation.Valid;
 public class UpdateChainController {
     private final UpdateChainCommand updateChainCommand;
     @PutMapping(value = "/chain/{code}")
-    @PreAuthorize("hasAuthority('*:*')")
     @ApiOperation(value = "Update user information")
     @ApiResponses(value = {
             @ApiResponse(code = 200, message = "Successfully updated user information"),

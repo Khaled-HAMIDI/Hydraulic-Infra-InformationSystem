@@ -88,7 +88,7 @@ public class UserController extends BaseController {
     }
 
     @GetMapping(value = "/users")
-    @PreAuthorize("hasAnyAuthority('*:*', 'SHOW')")
+    //@PreAuthorize("hasAnyAuthority('*:*', 'SHOW')")
     @ApiOperation(value = "View a list of available users")
     @ApiResponses(value = {
             @ApiResponse(code = 200, message = "Successfully retrieved a list of users"),

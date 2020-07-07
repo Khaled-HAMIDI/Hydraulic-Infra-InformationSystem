@@ -1,4 +1,4 @@
-<ng-container *ayamsHasAnyPermissions="['chains:add','chains:edit','chains:*','*:edit','*:add','*:*']">
+<ng-container *ayamsHasAnyPermissions="['chain:show','chain:*','*:*']">
     <div id="chain" class="page-layout carded fullwidth inner-scroll">
 
         <!-- TOP BACKGROUND -->
@@ -53,11 +53,19 @@
                         <mat-tab-group>
                             <mat-tab label="Chaine Info">
                                 <div class="tab-content p-24" fusePerfectScrollbar>
-                                    <mat-form-field appearance="outline" class="w-100-p">
-                                        <mat-label>{{'ADD-EDIT.PLACE-HOLDER.id' | translate}}</mat-label>
-                                        <mat-icon matSuffix class="secondary-text">crop_free</mat-icon>
-                                        <input matInput name="code" formControlName="code">
-                                    </mat-form-field>
+                                    <div class="ml-sm-12" fxLayout.xs="column" fxLayout.sm="column">
+                                        <mat-form-field class="mr-sm-12" appearance="outline" fxFlex="15">
+                                            <input matInput [value]="unit.code+'CH'" disabled=true>
+                                        </mat-form-field>
+                                        <mat-form-field appearance="outline" class="w-100-p" fxFlex="85">
+                                            <mat-label>{{'ADD-EDIT.PLACE-HOLDER.id' | translate}}</mat-label>
+                                            <mat-icon matSuffix class="secondary-text">crop_free</mat-icon>
+                                            <input matInput name="code" formControlName="code" minlength="4" maxlength="4"  #code>
+                                            <mat-hint align="end" class="hint">{{code.value.length}} / 4
+                                            </mat-hint>
+                                        </mat-form-field>
+                                    </div>
+                                    
 
                                     <mat-form-field appearance="outline" class="w-100-p">
                                         <mat-label>{{'ADD-EDIT.PLACE-HOLDER.name' | translate}}</mat-label>

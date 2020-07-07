@@ -12,7 +12,7 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { AgmCoreModule } from '@agm/core';
 import { ChartsModule } from 'ng2-charts';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
-
+import { AyamsModule } from '@ayams/ayams.module';
 import { FuseSharedModule } from '@fuse/shared.module';
 import { FuseWidgetModule } from '@fuse/components/widget/widget.module';
 import { HomeService } from './home.service';
@@ -41,7 +41,7 @@ const routes = [
         MatIconModule,
         MatMenuModule,
         MatSelectModule,
-        MatTabsModule,
+        MatTabsModule,AyamsModule,
         AgmCoreModule.forRoot({
             apiKey: 'AIzaSyD81ecsCj4yYpcXSLFcYU97PvRsE_X8Bx8'
         }),

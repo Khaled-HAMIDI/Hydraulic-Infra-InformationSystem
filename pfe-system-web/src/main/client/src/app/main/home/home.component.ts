@@ -38,10 +38,10 @@ export class HomeComponent implements OnInit {
         private authenticationService: AuthenticationService) {
         const userRoles = authenticationService.getRoles();
 
-        // if (includes(userRoles, "responsable commercial"))
-        //     this.router.navigate(['dashboard/customerservicedashboards']);
-        // else if (includes(userRoles, "responsable facturation"))
-        //     this.router.navigate(['dashboard/meterreading-invoicing']);
+        if (includes(userRoles, "operateur"))
+            this.router.navigate(['exploitation/reading']);
+        else if (includes(userRoles, "RH"))
+            this.router.navigate(['exploitation/reading']);
 
         this.fuseTranslationLoader.loadTranslations(french, arabic);
         this._unsubscribeAll = new Subject();
@@ -131,7 +131,7 @@ export class HomeComponent implements OnInit {
                             ctx.font = (window as any).Chart.helpers.fontString(fontSize, fontStyle, fontFamily);
 
                             // Just naively convert to string for now
-                            const dataString = dataset.data[index].toString() + 'k';
+                            const dataString = dataset.data[index].toString();
 
                             // Make sure alignment settings are correct
                             ctx.textAlign = 'center';

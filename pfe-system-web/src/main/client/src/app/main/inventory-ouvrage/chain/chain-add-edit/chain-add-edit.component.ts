@@ -40,6 +40,7 @@ export class ChainAddEditComponent implements OnInit, OnDestroy {
     pageType: string;
     AllOuvrages = [];
     filteredOuvrages = [];
+    unit;
     searchTerm: string = '';
     chainForm: FormGroup;
     dataSource: MatTableDataSource<any>;
@@ -68,6 +69,7 @@ export class ChainAddEditComponent implements OnInit, OnDestroy {
             (response) => {
                 console.log(response.data[0]);
                 this.ouvrages = response.data[1];
+                this.unit=response.data[2];
                 this.initForm(response.data[0], response.action);
                 this.classOuvrages(response.data[1], response.action);
                 this.initTable(this.AllOuvrages);
@@ -194,6 +196,7 @@ export class ChainAddEditComponent implements OnInit, OnDestroy {
         this.selectedOuvrages.forEach((ouv) => { ouvragesIds.push(ouv.code) });
         chain.ouvrages = ouvragesIds;
         console.log(chain);
+        chain.code = this.unit.code + 'CH' + chain.code;
         this.chainAddEditService.saveChain(chain)
             .then(() => {
                 if (this.chain.id) {
@@ -202,7 +205,7 @@ export class ChainAddEditComponent implements OnInit, OnDestroy {
                     window.history.replaceState({}, '', `/patrimony/chain/${chain.code}/edit`);
                 }
                 else {
-                    this.router.navigate(['/patrimony/chain/list']);
+                    this.router.navigate(['/patrimony/chain']);
                 }
             });
     }
@@ -211,6 +214,7 @@ export class ChainAddEditComponent implements OnInit, OnDestroy {
     initForm(chain, type) {
         if (type == 'edit') {
             this.chain = new Chain(chain);
+            this.chain.code = this.chain.code.substring(4,8)
             this.selectedOuvrages = new Array(this.chain.ouvrages.length)
         } else {
             this.chain = new Chain();

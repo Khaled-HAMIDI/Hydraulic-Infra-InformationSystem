@@ -24,7 +24,6 @@ public class GetChainListController {
     private final GetChainListQuery getChainListQuery;
 
     @GetMapping(value = "/chains")
-    @PreAuthorize("hasAnyAuthority('roles:list', '*:*')")
     @ApiOperation(value = "View a list of available chains")
     @ApiResponses(value = {
             @ApiResponse(code = 200, message = "Successfully retrieved a list of commune by wilaya"),

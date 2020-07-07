@@ -39,8 +39,19 @@ public class GetOuvrageByInventoryAdapter implements LoadOuvrageByInventory {
                         ouvrages.add(inventoryOuvrage.getOuvrage());
                     }
                 });
+        if(ouvrages.size()>0)
+            return ouvrages;
+        else{
+            List<InventoryOuvrage> inventoryOuvrages2 = inventoryOuvrageRepository.findAllByInventory(inventory);
+            List<Ouvrage> ouvrages2 = new ArrayList<Ouvrage>();
+            inventoryOuvrages2.stream()
+                    .forEach((inventoryOuvrage) -> {
 
-        return ouvrages;
+                        ouvrages2.add(inventoryOuvrage.getOuvrage());
+
+                    });
+            return ouvrages2;
+        }
     }
 
     @Override
@@ -57,8 +68,19 @@ public class GetOuvrageByInventoryAdapter implements LoadOuvrageByInventory {
                         ouvrages.add(inventoryOuvrage.getOuvrage());
                     }
                 });
-
+        if(ouvrages.size()>0)
         return ouvrages;
+        else{
+            List<InventoryOuvrage> inventoryOuvrages2 = inventoryOuvrageRepository.findAllByInventory(inventory);
+            List<Ouvrage> ouvrages2 = new ArrayList<Ouvrage>();
+            inventoryOuvrages2.stream()
+                    .forEach((inventoryOuvrage) -> {
+
+                        ouvrages2.add(inventoryOuvrage.getOuvrage());
+
+                    });
+            return ouvrages2;
+        }
     }
 
     @Override
@@ -76,7 +98,19 @@ public class GetOuvrageByInventoryAdapter implements LoadOuvrageByInventory {
                     }
                 });
 
+        if(ouvragesStatus.size()>0)
         return ouvragesStatus;
+        else{
+            List<InventoryOuvrage> inventoryOuvrages2 = inventoryOuvrageRepository.findAllByInventory(inventory);
+            List<Boolean> ouvrages2 = new ArrayList<Boolean>();
+            inventoryOuvrages2.stream()
+                    .forEach((inventoryOuvrage) -> {
+
+                        ouvrages2.add(inventoryOuvrage.isDone());
+
+                    });
+            return ouvrages2;
+        }
     }
 
     @Override
@@ -109,7 +143,19 @@ public class GetOuvrageByInventoryAdapter implements LoadOuvrageByInventory {
                     }
                 });
 
-        return ouvragesDates;
+        if(ouvragesDates.size()>0)
+            return ouvragesDates;
+        else{
+            List<InventoryOuvrage> inventoryOuvrages2 = inventoryOuvrageRepository.findAllByInventory(inventory);
+            List<LocalDate> ouvrages2 = new ArrayList<LocalDate>();
+            inventoryOuvrages2.stream()
+                    .forEach((inventoryOuvrage) -> {
+
+                        ouvrages2.add(inventoryOuvrage.getDoneDate());
+
+                    });
+            return ouvrages2;
+        }
     }
 
     @Override
@@ -127,6 +173,18 @@ public class GetOuvrageByInventoryAdapter implements LoadOuvrageByInventory {
                     }
                 });
 
-        return ouvragesDates;
+        if(ouvragesDates.size()>0)
+            return ouvragesDates;
+        else{
+            List<InventoryOuvrage> inventoryOuvrages2 = inventoryOuvrageRepository.findAllByInventory(inventory);
+            List<LocalDate> ouvrages2 = new ArrayList<LocalDate>();
+            inventoryOuvrages2.stream()
+                    .forEach((inventoryOuvrage) -> {
+
+                        ouvrages2.add(inventoryOuvrage.getDoneDate());
+
+                    });
+            return ouvrages2;
+        }
     }
 }

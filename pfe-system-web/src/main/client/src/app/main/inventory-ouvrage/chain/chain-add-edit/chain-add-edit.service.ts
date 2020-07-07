@@ -61,6 +61,15 @@ export class ChainAddEditService implements Resolve<any> {
         });
     }
 
+    getDeployedUnit(): Promise<any> {
+        return new Promise((resolve, reject) => {
+            this.http.get(API + '/units/deployedunit')
+                .subscribe((response: any) => {
+                    resolve(response);
+                }, reject);
+        });
+    }
+
     save(chain): Promise<any> {
         if (chain.id) return new Promise((resolve, reject) => {
             this.http.put(CHAIN_API + '/' + this.code, chain)
@@ -84,6 +93,7 @@ export class ChainAddEditService implements Resolve<any> {
             Promise.all([
                 this.getExist(route),
                 this.getAllOuvrages(),
+                this.getDeployedUnit()
             ]).then(
                 (data) => {
                     resolve(data);

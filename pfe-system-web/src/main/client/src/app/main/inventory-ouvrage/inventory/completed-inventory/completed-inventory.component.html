@@ -54,10 +54,9 @@
                                     (click)="updateTable(ouvrage)">
 
                                     <mat-expansion-panel-header fxLayout="row" fxLayoutAlign="end center">
-                                        <mat-panel-title> {{ouvrage.ouvrage.type}} </mat-panel-title>
+                                        <mat-panel-title class="type"> {{ouvrage.ouvrage.type}} </mat-panel-title>
                                         <mat-panel-description> {{ouvrage.ouvrage.code}} </mat-panel-description>
                                         <mat-panel-description> {{ouvrage.ouvrage.name}} </mat-panel-description>
-                                        <mat-panel-description> {{ouvrage.ouvrage.type}} </mat-panel-description>
                                         <mat-panel-description> {{ouvrage.finishDate}} </mat-panel-description>
                                     </mat-expansion-panel-header>
 

@@ -37,6 +37,7 @@ public class CreateOuvrageService implements CreateOuvrageCommand {
             throw new ResourceNotFoundException(String.format("No site found with id '%s'.", ouvrageAddDto.getSite()));
         }
         ouvrage.setSite(site.get());
+        ouvrage.setDeclassed(false);
         return createOuvrageMapper.ouvrageToOuvrageDto(saveOuvrage.saveOuvrage(ouvrage));
     }
 

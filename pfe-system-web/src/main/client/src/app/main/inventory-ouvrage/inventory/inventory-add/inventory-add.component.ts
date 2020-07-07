@@ -31,7 +31,8 @@ export class InventoryAddComponent implements OnInit, OnDestroy {
     inventory: Inventory;
     inventoryAdd: Inventory;
     inventoryForm: FormGroup;
-    users: User[];
+    oprerateurs = [];
+    responsables = [];
     currentchef: any;
     existCurrent: boolean;
     date: Date;
@@ -73,7 +74,14 @@ export class InventoryAddComponent implements OnInit, OnDestroy {
                 this.minDate = response.data[3]
                 let year = new Date(response.data[3]).getFullYear()
                 this.maxDate = new Date(year + 0, 11, 31)
-                this.users = sortBy(response.data[0], ['lastname', 'firstname']);
+                this.oprerateurs = response.data[0].filter(user=>{
+                    return user.roles.includes('operateur')
+                })
+                this.responsables = response.data[0].filter(user=>{
+                    return user.roles.includes('RP')
+                })
+                console.log(this.responsables);
+                console.log(this.oprerateurs);
                 if (response.data[2]) this.existCurrent = true;
                 this.initForm();
                 this.classOuvrages(response.data[1]);
@@ -196,12 +204,16 @@ export class InventoryAddComponent implements OnInit, OnDestroy {
     }
 
     changeCurrentChef(IdCurrentChef) {
-        this.currentchef = find(this.users, { 'id': IdCurrentChef })
+        this.currentchef = find(this.responsables, { 'id': IdCurrentChef })
     }
 
     setOuvrageResponsable(IdResponsable, codeOuvrage) {
         this.responsablesOuvrages = this.responsablesOuvrages.filter(ouvrageResponsable => ouvrageResponsable.ouvrage != codeOuvrage);
         this.responsablesOuvrages.push({ ouvrage: codeOuvrage, responsable: IdResponsable });
+    }
+
+    goInventory(){
+       return !!(this.selectedOuvrages.length === this.responsablesOuvrages.length)
     }
 
     onSave(): void {

@@ -6,24 +6,24 @@ export class AnalyticsDashboardDb
             datasets : {
                 '2016': [
                     {
-                        label: 'Sales',
-                        data : [1.9, 3, 3.4, 2.2, 2.9, 3.9, 2.5, 3.8, 4.1, 3.8, 3.2, 2.9],
+                        label: 'interuption',
+                        data : [10, 13, 5, 12, 9, 3, 15, 12, 14, 18, 3, 7],
                         fill : 'start'
 
                     }
                 ],
                 '2017': [
                     {
-                        label: 'Sales',
-                        data : [2.2, 2.9, 3.9, 2.5, 3.8, 3.2, 2.9, 1.9, 3, 3.4, 4.1, 3.8],
+                        label: 'interuption',
+                        data : [10, 13, 5, 12, 9, 3, 15, 12, 14, 18, 3, 7],
                         fill : 'start'
 
                     }
                 ],
                 '2018': [
                     {
-                        label: 'Sales',
-                        data : [3.9, 2.5, 3.8, 4.1, 1.9, 3, 3.8, 3.2, 2.9, 3.4, 2.2, 2.9],
+                        label: 'interuption',
+                        data : [10, 13, 5, 12, 9, 3, 15, 12, 14, 18, 3, 7],
                         fill : 'start'
 
                     }
@@ -82,8 +82,8 @@ export class AnalyticsDashboardDb
                         {
                             display: false,
                             ticks  : {
-                                min     : 1.5,
-                                max     : 5,
+                                min     : 0,
+                                max     : 30,
                                 stepSize: 0.5
                             }
                         }

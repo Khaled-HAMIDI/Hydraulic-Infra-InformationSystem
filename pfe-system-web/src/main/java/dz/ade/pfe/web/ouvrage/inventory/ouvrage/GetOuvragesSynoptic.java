@@ -24,7 +24,6 @@ import java.util.List;
 public class GetOuvragesSynoptic {
     private final GetOuvrageSynopticQuery getOuvragesSynopticQuery;
     @GetMapping(value = "/ouvrages/synoptic/{code}")
-    @PreAuthorize("hasAnyAuthority('roles:list', '*:*')")
     @ApiOperation(value = "View a list of available ouvrages")
     @ApiResponses(value = {
             @ApiResponse(code = 200, message = "Successfully retrieved a list of commune by wilaya"),

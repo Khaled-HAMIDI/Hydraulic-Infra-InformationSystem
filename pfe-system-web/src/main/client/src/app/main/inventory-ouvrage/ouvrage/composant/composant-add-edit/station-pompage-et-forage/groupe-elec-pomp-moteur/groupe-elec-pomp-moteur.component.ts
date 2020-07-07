@@ -65,7 +65,7 @@ export class GroupeElecPompMoteurComponent implements OnInit{
             nbSecours: [composant.nbSecours,Validators.required],
             puissance:[composant.puissance,Validators.required],
             marque: [composant.marque,Validators.required],
-            operatingDate: [composant.operatingDate,Validators.required],
+            commissioningDate: [composant.commissioningDate,Validators.required],
             type:[composant.type,Validators.required],
             tensionAlimentation:[composant.tensionAlimentation,Validators.required],
             intensite: [composant.intensite,Validators.required],

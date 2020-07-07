@@ -24,7 +24,6 @@ import java.util.List;
 public class GetChainSynopticController {
     private final GetChainSynopticQuery getChainSynopticQuery;
     @GetMapping(value = "/chain/synoptic/{code}")
-    @PreAuthorize("hasAnyAuthority('roles:list', '*:*')")
     @ApiOperation(value = "View a list of available chains")
     @ApiResponses(value = {
             @ApiResponse(code = 200, message = "Successfully retrieved a list of commune by wilaya"),

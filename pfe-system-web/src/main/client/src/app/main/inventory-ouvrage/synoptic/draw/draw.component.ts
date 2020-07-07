@@ -134,6 +134,7 @@ export class DrawComponent implements OnInit, OnDestroy {
       .on("mouseover", function (d) {
         var id = d.id
         html = '<span class="tooltiptext">Nom : ' + ouvrages[id].name + '</span><br>';
+        html += '<span class="tooltiptext">Code : ' + ouvrages[id].code + '</span><br>'
         html += '<span class="tooltiptext">Débit Actuel : ' + ouvrages[id].currentDebit + '</span><br>'
         div.transition()
           .duration(200)

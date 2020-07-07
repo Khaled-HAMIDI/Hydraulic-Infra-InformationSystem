@@ -23,7 +23,7 @@
             </div>
             <!-- / APP TITLE -->
             <button mat-raised-button class=" mat-white-bg"
-                [disabled]="inventoryForm.invalid || !selectedOuvrages.length" (click)="onSave()" *ngIf="!existCurrent">
+                [disabled]="inventoryForm.invalid || !selectedOuvrages.length || !goInventory()" (click)="onSave()" *ngIf="!existCurrent">
                 <span>{{'ADD.BUTTON.create' | translate}}</span>
             </button>
 
@@ -75,7 +75,7 @@
                                     <mat-icon matSuffix class="secondary-text">account_circle</mat-icon>
                                     <mat-select formControlName="headOfTheInventory"
                                         (selectionChange)="changeCurrentChef($event.value)">
-                                        <mat-option *ngFor="let headOfInventory of users" [value]="headOfInventory.id">
+                                        <mat-option *ngFor="let headOfInventory of responsables" [value]="headOfInventory.id">
                                             {{headOfInventory.lastName}} {{headOfInventory.firstName}}
                                         </mat-option>
                                     </mat-select>
@@ -149,7 +149,7 @@
                                             <mat-icon matSuffix class="secondary-text">account_circle</mat-icon>
                                             <mat-select
                                                 (selectionChange)="setOuvrageResponsable($event.value,ouvrage.code)">
-                                                <mat-option *ngFor="let user of users" [value]="user.id">
+                                                <mat-option *ngFor="let user of oprerateurs" [value]="user.id">
                                                     {{user.lastName}} {{user.firstName}}
                                                 </mat-option>
                                             </mat-select>
