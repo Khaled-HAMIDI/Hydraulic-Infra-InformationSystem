@@ -41,6 +41,12 @@ export const locale = {
             },
             'CENTERS': {
                 'TITLE': 'المراكز'
+            },
+            'REPPORT': {
+                'TITLE': 'التقارير',
+                'REPORTS': {
+                    'TITLE': 'التقارير'
+                }
             }
         }
     }

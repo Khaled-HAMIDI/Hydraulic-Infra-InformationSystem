@@ -53,7 +53,7 @@
         <module>pfe-system-admin</module>
         <module>pfe-system-web</module>
         <module>pfe-system-adminserver</module>
-        <module>pfe-system-print</module>
+        <module>pfe-system-infrastructure</module>
     </modules>
 
     <dependencies>

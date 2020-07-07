@@ -1,0 +1,84 @@
+<div id="report" class="page-layout simple">
+
+    <!-- HEADER -->
+    <div class="header accent p-16 p-sm-24" fxLayout="column" fxLayoutAlign="center center">
+
+        <div class="hero-text">
+            <h1 [@animate]="{value:'*',params:{delay:'100ms', y:'25px'}}">
+                {{'REPORTS.TITLE' | translate}}
+            </h1>
+        </div>
+
+    </div>
+    <!-- / HEADER -->
+
+    <!-- CONTENT -->
+    <div class="content p-24">
+
+        <div fxLayout="column" fxLayoutAlign="center">
+
+            <div class="filters" fxLayout="column" fxLayoutAlign="center center" fxLayout.gt-xs="row"
+                fxLayoutAlign.gt-xs="space-between center">
+
+                <mat-form-field appearance="outline" floatLabel="always" class="report-search">
+                    <mat-label>{{'REPORTS.SEARCH.TITLE' | translate}}</mat-label>
+                    <input matInput placeholder="{{'REPORTS.SEARCH.INPUT' | translate}}" [(ngModel)]="searchTerm"
+                        (input)="filterReportsByTerm()">
+                </mat-form-field>
+
+                <mat-form-field appearance="outline" class="module-selector">
+                    <mat-label>{{'REPORTS.CATEGORY.TITLE' | translate}}</mat-label>
+                    <mat-select [(ngModel)]="currentModule" (selectionChange)="filterReportsByModule()">
+                        <mat-option [value]="'all'">
+                            Tout
+                        </mat-option>
+                        <mat-option *ngFor="let module of modules" [value]="module.value">
+                            {{ module.viewValue }}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+
+            </div>
+
+            <div class="reports" fxLayout="row wrap" fxLayoutAlign="center" [@animateStagger]="{value:'50'}">
+
+                <div class="report" *ngFor="let report of filteredReports; let i=index" fxFlex="100" fxFlex.gt-xs="50"
+                    fxFlex.gt-sm="33" [@animate]="{value:'*',params:{y:'100%'}}">
+
+                    <div class="report-content" fxLayout="column" fxFlex="1 1 auto">
+
+                        <div class="header" fxLayout="row" fxLayoutAlign="center center"
+                            [ngStyle]="{'background-color': getModuleOfReport(report.moduleId).color}">
+
+                            <div class="module" fxFlex fxLayoutAlign="center center">
+                                {{report.title}}
+                            </div>
+
+                        </div>
+
+                        <div class="content" fxLayout="column" fxLayoutAlign="center center" fxFlex="1 1 auto">
+                            <div class="h1">{{report.description}}</div>
+                        </div>
+
+                        <div class="footer" fxLayout="row" fxLayoutAlign="center center">
+                            <button mat-button color="accent" (click)="openPrintDialog(i)">
+                                IMPRIMER
+                            </button>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="no-reports" *ngIf="filteredReports.length === 0">
+                    No reports found!
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+    <!-- / CONTENT -->
+
+</div>

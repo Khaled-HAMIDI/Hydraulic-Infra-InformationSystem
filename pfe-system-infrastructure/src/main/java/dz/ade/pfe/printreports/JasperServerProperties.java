@@ -1,4 +1,4 @@
-package dz.ade.pfe.print;
+package dz.ade.pfe.printreports;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

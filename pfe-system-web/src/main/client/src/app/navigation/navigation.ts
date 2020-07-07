@@ -165,5 +165,21 @@ export const navigation: FuseNavigation[] = [
                 authorizations: ['centers']
             }
         ]
+    },
+    {
+        id: 'reports',
+        title: 'Rapports',
+        translate: 'NAV.REPPORT.TITLE',
+        type: 'group',
+        children: [
+            {
+                id: 'reports',
+                title: 'Rapports',
+                translate: 'NAV.REPPORT.REPORTS.TITLE',
+                type: 'item',
+                icon: 'library_books',
+                url: '/report'
+            }
+        ]
     }
 ];

@@ -10,11 +10,11 @@
         <version>0.0.1</version>
     </parent>
 
-    <artifactId>pfe-system-print</artifactId>
+    <artifactId>pfe-system-infrastructure</artifactId>
     <version>0.0.1</version>
     <packaging>jar</packaging>
-    <name>pfe-system-print</name>
-    <description>Print module</description>
+    <name>pfe-system-infrastructure</name>
+    <description>Infrastructure module</description>
 
     <dependencies>
         <dependency>
@@ -35,6 +35,12 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-webflux</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>dz.ade.pfe</groupId>
+            <artifactId>pfe-system-application</artifactId>
+            <version>0.0.1</version>
+            <scope>compile</scope>
         </dependency>
     </dependencies>
 

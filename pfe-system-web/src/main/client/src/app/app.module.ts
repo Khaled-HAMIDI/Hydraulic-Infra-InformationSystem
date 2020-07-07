@@ -74,6 +74,11 @@ const appRoutes: Routes = [
         loadChildren: () => import('./main/academy/academy.module').then(m => m.AcademyModule)
     },
     {
+        path: 'report',
+        loadChildren: () => import('./main/report/report.module').then(m => m.ReportModule),
+        canActivate: [AuthenticationGuard]
+    },
+    {
         path: '**',
         redirectTo: 'home',
         pathMatch: 'full'

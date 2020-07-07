@@ -1,4 +1,4 @@
-package dz.ade.pfe.print;
+package dz.ade.pfe.common.report;
 
 import org.springframework.core.io.Resource;
 

@@ -1,7 +1,7 @@
 package dz.ade.pfe.web;
 
 import dz.ade.pfe.commons.filesmanagement.FileStorageProperties;
-import dz.ade.pfe.print.JasperServerProperties;
+import dz.ade.pfe.printreports.JasperServerProperties;
 import dz.ade.pfe.utils.logger.LoggerConfigurator;
 import dz.ade.pfe.web.security.config.SecurityProperties;
 import org.springframework.boot.SpringApplication;

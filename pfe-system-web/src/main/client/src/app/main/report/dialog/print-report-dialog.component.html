@@ -1,0 +1,44 @@
+<form autocomplete="off"  [formGroup]="form" class="w-100-p" fxLayout="column" fxFlex>
+
+  <ng-container *ngFor="let myInput of data.formInputs; let i=index">
+
+    <!-- INPUT TEXT -->
+    <mat-form-field *ngIf="myInput.type == 'text' || myInput.type == 'number'" class="w-100-p" appearance="outline">
+      <mat-label>{{myInput.label}}</mat-label>
+      <input matInput type="{{myInput.type}}" formControlName="{{myInput.name}}" required="{{myInput.required != null ? myInput.required : true }}">
+    </mat-form-field>
+
+    <!-- INPUT DATE -->
+    <mat-form-field *ngIf="myInput.type == 'date'" appearance="outline" class="w-100-p" fxFlex>
+      <mat-label>{{myInput.label}}</mat-label>
+      <input matInput [matDatepicker]="i" formControlName="{{myInput.name}}" required="{{myInput.required != null ? myInput.required : true}}">
+      <mat-datepicker-toggle matSuffix [for]="i"></mat-datepicker-toggle>
+      <mat-datepicker #i></mat-datepicker>
+    </mat-form-field>
+
+    <!-- SELECT -->
+    <mat-form-field *ngIf="myInput.type == 'select'" appearance="outline">
+      <mat-label>{{myInput.label}}</mat-label>
+      <mat-select formControlName="{{myInput.name}}" placeholder="{{myInput.label}}" required="{{myInput.required != null ? myInput.required : true}}">
+        <mat-option *ngFor="let option of myInput.options" [value]="option.value">
+          {{option.viewValue}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+      <!-- INPUT CHECKBOX -->
+    <div *ngIf="myInput.type == 'checkbox'" class="w-100-p mb-16">
+        <mat-checkbox formControlName="{{myInput.name}}" required="{{myInput.required != null ? myInput.required : true }}">
+            {{myInput.label}}
+        </mat-checkbox>
+    </div>
+
+  </ng-container>
+
+  <div mat-dialog-actions fxFlex fxFlexAlign="center" fxLayoutGap="10px">
+    <button mat-button class="warn-bg fuse-white-500-fg" (click)="onClose()">{{'BUTTONS.cancel' | translate}}</button>
+    <button mat-raised-button color="accent" [disabled]="form.invalid"
+      (click)="onPrintReport()">{{'BUTTONS.print' | translate}}</button>
+  </div>
+
+</form>

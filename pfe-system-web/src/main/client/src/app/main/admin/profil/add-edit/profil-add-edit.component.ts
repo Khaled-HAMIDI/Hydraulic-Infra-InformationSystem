@@ -17,6 +17,8 @@ import pullAllWith from 'lodash/pullAllWith';
 import isEqual from 'lodash/isEqual';
 import { AllPermissions, AuthorityTab, Domains } from './permission'
 import { MatTableDataSource } from '@angular/material/table';
+import groupBy from 'lodash/groupBy';
+import split from 'lodash/split';
 const COLUMN_NAMES: string[] = [
     'domain',
     'action'
@@ -40,6 +42,7 @@ export class ProfilAddEditComponent implements OnInit, OnDestroy {
     displayedColumns: string[];
     selectedOuvrages: any[];
     domains: string[];
+    actions: string[];
 
     constructor(
         private profilAddEditService: ProfilAddEditService,
@@ -54,7 +57,8 @@ export class ProfilAddEditComponent implements OnInit, OnDestroy {
         this.fuseTranslationLoader.loadTranslations(french, arabic);
         this.AllPermissions = AllPermissions;
         this.displayedColumns = COLUMN_NAMES;
-        this.domains = []
+        this.domains = [];
+        this.actions = [];
     }
 
     hasChild = (_: number, node) => !!node.children && node.children.length > 0;
@@ -80,6 +84,19 @@ export class ProfilAddEditComponent implements OnInit, OnDestroy {
         let i = -1;
         var permissions: AuthorityTab[];
         permissions = new Array();
+
+        const groupedAuthorities = groupBy(authorities, ((authority) => { return split(authority.id, ':')[0]; }));
+
+        let action: string;
+        authorities.forEach((authority) => {
+            action = split(authority.id, ':')[1];
+            if (!this.actions.includes(action))
+                this.actions.push(action);
+        });
+
+        console.log(groupedAuthorities);
+        console.log(this.actions);
+        
         authorities = sortBy(authorities, ['domain'])
         authorities.forEach((authority) => {
             if (authority.domain !== null)
@@ -101,26 +118,26 @@ export class ProfilAddEditComponent implements OnInit, OnDestroy {
     classAuthorities(authorities, profil, type) {
         let i;
         this.AllPermissions = this.createAuthorityStructure(authorities);
-        if (type === 'edit') {
-            this.AllPermissions.forEach((perm) => {
-                if (profil.authorities.findIndex((auth) => {
-                    return auth.id === perm.id
-                }) >= 0) {
-                    perm.checked = true;
-                    perm.children.forEach((child) => {
-                        child.checked = true;
-                    })
-                } else {
-                    perm.children.forEach((child) => {
-                        if (profil.authorities.findIndex((auth) => {
-                            return auth.id === child.id
-                        }) >= 0) {
-                            child.checked = true;
-                        }
-                    })
-                }
-            })
-        }
+        // if (type === 'edit') {
+        //     this.AllPermissions.forEach((perm) => {
+        //         if (profil.authorities.findIndex((auth) => {
+        //             return auth.id === perm.id
+        //         }) >= 0) {
+        //             perm.checked = true;
+        //             perm.children.forEach((child) => {
+        //                 child.checked = true;
+        //             })
+        //         } else {
+        //             perm.children.forEach((child) => {
+        //                 if (profil.authorities.findIndex((auth) => {
+        //                     return auth.id === child.id
+        //                 }) >= 0) {
+        //                     child.checked = true;
+        //                 }
+        //             })
+        //         }
+        //     })
+        // }
     }
     createProfilForm(): FormGroup {
 

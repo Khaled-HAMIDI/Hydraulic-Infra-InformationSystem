@@ -1,5 +1,6 @@
-package dz.ade.pfe.print;
+package dz.ade.pfe.printreports;
 
+import dz.ade.pfe.common.report.PrintFileStorageComponent;
 import dz.ade.pfe.commons.filesmanagement.FileStorageProperties;
 import dz.ade.pfe.domain.exceptions.FileNotFoundException;
 import dz.ade.pfe.domain.exceptions.FileStorageException;

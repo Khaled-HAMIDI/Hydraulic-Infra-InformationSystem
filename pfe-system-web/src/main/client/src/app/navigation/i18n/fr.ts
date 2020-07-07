@@ -50,6 +50,12 @@ export const locale = {
             },
             'CENTERS': {
                 'TITLE': 'Centres'
+            },
+            'REPPORT': {
+                'TITLE': 'Rapports',
+                'REPORTS': {
+                    'TITLE': 'Rapports'
+                }
             }
         }
     }
