@@ -57,11 +57,6 @@
     <dependencies>
         <dependency>
             <groupId>dz.ade.pfe</groupId>
-            <artifactId>pfe-system-print</artifactId>
-            <version>${project.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>dz.ade.pfe</groupId>
             <artifactId>pfe-system-utils</artifactId>
             <version>${project.version}</version>
         </dependency>
