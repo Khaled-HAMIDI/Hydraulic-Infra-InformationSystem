@@ -71,7 +71,15 @@ export const navigation: FuseNavigation[] = [
                         type: 'item',
                         url: 'patrimony/ouvrages/declassed',
                         authorizations : ['ouvrage:declassed']
-                    }
+                    },
+                    {
+                        id: 'site',
+                        title: 'Site',
+                        translate: 'NAV.PATRIMONY.ITEMS.SITE',
+                        type: 'item',
+                        url: 'patrimony/sites',
+                        authorizations : ['site:show']
+                    },
                 ]
                 
             },

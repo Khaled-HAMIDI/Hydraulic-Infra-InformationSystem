@@ -14,6 +14,7 @@ export const locale = {
                     'INTEGRATE':'Intégrer un ouvrage',
                     'LIST':'Ouvrages',
                     'CHAIN' :'Chaines',
+                    'SITE' :'Sites',
                     'DEC' :'Ouvrage déclassé'
                 }
             },

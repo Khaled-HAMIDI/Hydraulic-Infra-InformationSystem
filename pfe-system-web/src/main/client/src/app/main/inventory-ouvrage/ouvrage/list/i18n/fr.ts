@@ -26,6 +26,7 @@ export const locale = {
                 }
             },
             'CONFIRM-DIALOG': {
+                'detach':'Il faut détacher l\'ouvrage de toutes les chaines avant de le désaffecter',
                 'delete': 'Etes-vous sûr que vous voulez désaffecter l`\'ouvrage ?',
                 'reset': 'Etes-vous sûr que vous voulez réinitialiser le mot de passe ?'
             },

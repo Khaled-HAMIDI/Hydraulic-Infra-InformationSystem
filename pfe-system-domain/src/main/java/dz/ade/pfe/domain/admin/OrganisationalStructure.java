@@ -112,7 +112,7 @@ public abstract class OrganisationalStructure extends Auditing {
     @Builder.Default
     private List<Center> inventories = new ArrayList<>();
 
-    @OneToMany(mappedBy = "unit", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "structure", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @Builder.Default
     private List<Ouvrage> ouvrages = new ArrayList<>();
 

@@ -13,6 +13,7 @@ public interface GetOuvrageListMapper {
 
 
     @Mappings({
+            @Mapping(target = "nbApears", expression = "java(getNbChains(ouvrage))"),
             @Mapping(source = "code", target = "id")
     })
     OuvrageListDto ouvrageToOuvrageDto(Ouvrage ouvrage);
@@ -25,5 +26,11 @@ public interface GetOuvrageListMapper {
     DeclassedDto ouvrageToDeclassedDto(Ouvrage ouvrage);
 
     List<DeclassedDto> ouvrageToDeclassedListDto(List<Ouvrage> ouvrage);
+
+    default Integer getNbChains(Ouvrage ouvrage) {
+        if (ouvrage.getChains() != null)
+            return ouvrage.getChains().size();
+        return 0;
+    }
 
 }

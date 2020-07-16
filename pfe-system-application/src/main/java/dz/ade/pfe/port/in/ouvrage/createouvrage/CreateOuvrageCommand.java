@@ -5,5 +5,4 @@ import dz.ade.pfe.service.ouvrage.getouvrage.OuvrageShowDto;
 
 public interface CreateOuvrageCommand {
     OuvrageShowDto createOuvrage(OuvrageAddDto ouvrageAddDto, String unitCode);
-    Boolean deleteOuvrage (String code);
 }

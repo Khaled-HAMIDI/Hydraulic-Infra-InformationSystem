@@ -238,6 +238,7 @@ export class DrawComponent implements OnInit, OnDestroy {
       for (var j = 0; j < this.chains[index].ouvrages.length - 1; j++) {
         d3.select("#link" + npath).style("display", "block")
         d3.select("#path" + npath).style("opacity", "1")
+        d3.select("text.path"+npath).style("display", "block")
         npath++;
       }
     }
@@ -249,6 +250,7 @@ export class DrawComponent implements OnInit, OnDestroy {
       for (var j = 0; j < this.chains[index].ouvrages.length - 1; j++) {
         d3.select("#link" + npath).style("display", "none")
         d3.select("#path" + npath).style("opacity", "0")
+        d3.select("text.path"+npath).style("display", "none")
         npath++;
       }
     }
@@ -264,11 +266,13 @@ export class DrawComponent implements OnInit, OnDestroy {
       // Line and path style
       d3.selectAll("line").style("display", "block");
       d3.selectAll("path").style("opacity", "1");
+      d3.selectAll("textPath tspan").style("display", "block");
     } else {
       this.displayAllOuvrages(false);
       this.selectedChains = [];
       d3.selectAll("line").style("display", "none");
       d3.selectAll("path").style("opacity", "0");
+      d3.selectAll("textPath tspan").style("display", "none");
     }
   }
 

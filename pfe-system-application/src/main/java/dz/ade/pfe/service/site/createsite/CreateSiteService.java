@@ -19,7 +19,7 @@ public class CreateSiteService implements CreateSiteCommand {
     private final SiteDtoMapper siteDtoMapper;
     @Override
     public SiteDto createSite(SiteDto site, String unitCode) {
-        Site site1 = new Site();
+        Site site1 = siteDtoMapper.SiteDtoMapper(site);
         site1.setName(site.getName());
         Optional<OrganisationalStructure> unit = loadUnitByCode.loadUnitByCode(unitCode);
         if (!unit.isPresent()) {
