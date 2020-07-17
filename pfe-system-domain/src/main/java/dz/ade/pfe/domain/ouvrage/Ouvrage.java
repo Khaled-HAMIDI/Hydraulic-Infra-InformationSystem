@@ -1,6 +1,7 @@
 package dz.ade.pfe.domain.ouvrage;
 
 import dz.ade.pfe.domain.admin.OrganisationalStructure;
+import dz.ade.pfe.domain.commons.Commune;
 import lombok.*;
 
 import javax.persistence.*;
@@ -225,6 +226,10 @@ public class Ouvrage extends Auditing{
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "unit_id")
     private OrganisationalStructure unit;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "commune_id")
+    private Commune commune;
 
     @OneToMany(mappedBy = "ouvrage", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @Builder.Default

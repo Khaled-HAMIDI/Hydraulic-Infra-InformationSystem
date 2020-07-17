@@ -71,7 +71,8 @@ export class GroupeElecPompMoteurComponent implements OnInit{
             intensite: [composant.intensite,Validators.required],
             modeDemarrage: [composant.modeDemarrage,Validators.required],
             state:[composant.state,Validators.required],
-            speed:[composant.speed,Validators.required]
+            speed:[composant.speed,Validators.required],
+            cost:[composant.cost,Validators.required]
         };
 
         return this.formBuilder.group(obj);

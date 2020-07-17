@@ -73,6 +73,7 @@ export class PosteChlorationComponent implements OnInit{
             nombrePompe:[composant.nombrePompe,Validators.required],
             fonctionnementPompe: [composant.fonctionnementPompe,Validators.required],
             pointInjectPompe: [composant.pointInjectPompe],
+            cost:[composant.cost,Validators.required]
         };
 
         return this.formBuilder.group(obj);

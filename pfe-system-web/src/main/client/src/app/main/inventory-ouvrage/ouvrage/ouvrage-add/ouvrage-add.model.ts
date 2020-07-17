@@ -56,6 +56,7 @@ export class Ouvrage {
     tankType: string;
     tankRole: string;
     treatmentStationType:string;
+    commune: string;
 
 
     constructor(ouvrage?) {
@@ -106,6 +107,7 @@ export class Ouvrage {
         this.tankType = ouvrage.tankType ||  '';
         this.tankRole = ouvrage.tankRole ||  '';
         this.treatmentStationType = ouvrage.treatmentStationType ||  '';
+        this.commune = ouvrage.commune ||  '';
 
     }
 }

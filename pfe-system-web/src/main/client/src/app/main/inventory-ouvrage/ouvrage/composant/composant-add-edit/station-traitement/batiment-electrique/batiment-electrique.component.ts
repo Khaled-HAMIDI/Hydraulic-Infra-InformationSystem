@@ -63,7 +63,8 @@ export class BatimentElectriqueComponent implements OnInit{
             typeComposant:['BatimentElectrique'],
             area: [composant.area,Validators.required],
             state: [composant.state,Validators.required],
-            nature: [composant.nature,Validators.required]
+            nature: [composant.nature,Validators.required],
+            cost:[composant.cost,Validators.required]
         };
 
         return this.formBuilder.group(obj);

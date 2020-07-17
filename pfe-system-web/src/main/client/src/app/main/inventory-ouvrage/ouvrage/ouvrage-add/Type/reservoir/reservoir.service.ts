@@ -63,12 +63,62 @@ export class ReservoirService implements Resolve<any>{
         });
     }
 
+    getCommunes(): Promise<any> {
+        return new Promise((resolve, reject) => {
+            this.http.get(API + '/deployedunit/communes')
+                .subscribe((response: any) => {
+                    resolve(response);
+                }, reject);
+        });
+    }
+
+    getStates(): Promise<any> {
+        return new Promise((resolve, reject) => {
+            this.http.get(API + '/enum/state')
+                .subscribe((response: any) => {
+                    resolve(response);
+                }, reject);
+        });
+    }
+
+    getTankRoles(): Promise<any> {
+        return new Promise((resolve, reject) => {
+            this.http.get(API + '/enum/tankRole')
+                .subscribe((response: any) => {
+                    resolve(response);
+                }, reject);
+        });
+    }
+
+    getTankTypes(): Promise<any> {
+        return new Promise((resolve, reject) => {
+            this.http.get(API + '/enum/tankType')
+                .subscribe((response: any) => {
+                    resolve(response);
+                }, reject);
+        });
+    }
+
+    getForms(): Promise<any> {
+        return new Promise((resolve, reject) => {
+            this.http.get(API + '/enum/forms')
+                .subscribe((response: any) => {
+                    resolve(response);
+                }, reject);
+        });
+    }
+
     resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<any> | Promise<any> | any {
 
         return new Promise((resolve, reject) => {
 
             Promise.all([
-                this.geSequelNumber(route.params.code)
+                this.geSequelNumber(route.params.code),
+                this.getCommunes(),
+                this.getStates(),
+                this.getTankRoles(),
+                this.getTankTypes(),
+                this.getForms(),
 
             ]).then(
                 (data) => {

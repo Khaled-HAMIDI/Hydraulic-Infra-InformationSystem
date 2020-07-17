@@ -68,7 +68,8 @@ export class PriseEauComponent implements OnInit{
             typeComposant:['PriseEau'],
             type: [composant.type,Validators.required],
             dimension: [composant.dimension,Validators.required],
-            nature:[composant.nature,Validators.required]
+            nature:[composant.nature,Validators.required],
+            cost:[composant.cost,Validators.required]
         };
 
         return this.formBuilder.group(obj);

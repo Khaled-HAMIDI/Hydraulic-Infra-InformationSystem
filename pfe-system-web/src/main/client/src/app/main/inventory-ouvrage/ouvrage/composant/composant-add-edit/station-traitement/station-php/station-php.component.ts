@@ -70,7 +70,8 @@ export class StationPhpComponent implements OnInit{
             puissance: [composant.puissance,Validators.required],
             hmt: [composant.hmt,Validators.required],
             nombre:[composant.nombre,Validators.required],
-            debit: [composant.debit,Validators.required]
+            debit: [composant.debit,Validators.required],
+            cost:[composant.cost,Validators.required]
         };
 
         return this.formBuilder.group(obj);

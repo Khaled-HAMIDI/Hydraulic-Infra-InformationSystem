@@ -63,12 +63,42 @@ export class StationNonConvService implements Resolve<any>{
         });
     }
 
+    getCommunes(): Promise<any> {
+        return new Promise((resolve, reject) => {
+            this.http.get(API + '/deployedunit/communes')
+                .subscribe((response: any) => {
+                    resolve(response);
+                }, reject);
+        });
+    }
+
+    getStates(): Promise<any> {
+        return new Promise((resolve, reject) => {
+            this.http.get(API + '/enum/state')
+                .subscribe((response: any) => {
+                    resolve(response);
+                }, reject);
+        });
+    }
+
+    getTraitementType(): Promise<any> {
+        return new Promise((resolve, reject) => {
+            this.http.get(API + '/enum/traitementStationType')
+                .subscribe((response: any) => {
+                    resolve(response);
+                }, reject);
+        });
+    }
+
     resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<any> | Promise<any> | any {
 
         return new Promise((resolve, reject) => {
 
             Promise.all([
-                this.geSequelNumber(route.params.code)
+                this.geSequelNumber(route.params.code),
+                this.getCommunes(),
+                this.getStates(),
+                this.getTraitementType()
 
             ]).then(
                 (data) => {

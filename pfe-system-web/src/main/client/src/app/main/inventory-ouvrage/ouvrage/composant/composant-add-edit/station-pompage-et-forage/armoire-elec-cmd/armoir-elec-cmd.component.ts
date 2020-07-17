@@ -65,7 +65,8 @@ export class ArmoirElecCmdComponent implements OnInit{
             number: [composant.number,Validators.required],
             state:[composant.state,Validators.required],
             observation:[composant.observation,Validators.required],
-            marque:[composant.marque,Validators.required]
+            marque:[composant.marque,Validators.required],
+            cost:[composant.cost,Validators.required]
         };
 
         return this.formBuilder.group(obj);

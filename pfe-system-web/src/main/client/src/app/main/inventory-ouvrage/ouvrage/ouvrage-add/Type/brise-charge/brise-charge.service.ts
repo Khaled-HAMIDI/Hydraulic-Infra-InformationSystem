@@ -65,13 +65,42 @@ export class BriseChargeService implements Resolve<any> {
         });
     }
 
+    getCommunes(): Promise<any> {
+        return new Promise((resolve, reject) => {
+            this.http.get(API + '/deployedunit/communes')
+                .subscribe((response: any) => {
+                    resolve(response);
+                }, reject);
+        });
+    }
+
+    getStates(): Promise<any> {
+        return new Promise((resolve, reject) => {
+            this.http.get(API + '/enum/state')
+                .subscribe((response: any) => {
+                    resolve(response);
+                }, reject);
+        });
+    }
+
+    getWaterSources(): Promise<any> {
+        return new Promise((resolve, reject) => {
+            this.http.get(API + '/enum/sourceType')
+                .subscribe((response: any) => {
+                    resolve(response);
+                }, reject);
+        });
+    }
+
     resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<any> | Promise<any> | any {
 
         return new Promise((resolve, reject) => {
 
             Promise.all([
-                this.geSequelNumber(route.params.code)
-
+                this.geSequelNumber(route.params.code),
+                this.getCommunes(),
+                this.getStates(),
+                this.getWaterSources()
             ]).then(
                 (data) => {
                     resolve(data);

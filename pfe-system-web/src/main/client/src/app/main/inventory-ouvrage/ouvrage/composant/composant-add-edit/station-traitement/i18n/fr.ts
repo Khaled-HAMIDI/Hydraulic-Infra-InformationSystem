@@ -37,6 +37,7 @@ export const locale = {
                 'enabledActivePompe': 'Pompes en marche',
                 'enabledInactivePompe': 'Pompes en arret',
                 'cuve':'Cuve de stockage',
+                'cost' :'Cout',
 
                 'postPrepInjecInexistante':'Cet ouvrage ne contient pas de poste de préparation d\'inejction, appuyez sur ajouter si vous voulez l\'ajouter.',
                 'bassinMelangeInexistante':'Cet ouvrage ne contient pas de bassin de mélange, appuyez sur ajouter si vous voulez l\'ajouter.',

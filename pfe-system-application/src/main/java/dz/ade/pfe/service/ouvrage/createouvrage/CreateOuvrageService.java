@@ -1,10 +1,12 @@
 package dz.ade.pfe.service.ouvrage.createouvrage;
 
 import dz.ade.pfe.domain.admin.OrganisationalStructure;
+import dz.ade.pfe.domain.commons.Commune;
 import dz.ade.pfe.domain.exceptions.ResourceNotFoundException;
 import dz.ade.pfe.domain.ouvrage.Ouvrage;
 import dz.ade.pfe.domain.ouvrage.Site;
 import dz.ade.pfe.port.in.ouvrage.createouvrage.CreateOuvrageCommand;
+import dz.ade.pfe.port.out.commune.LoadCommuneById;
 import dz.ade.pfe.port.out.ouvrage.createouvrage.SaveOuvrage;
 import dz.ade.pfe.port.out.site.LoadSiteById;
 import dz.ade.pfe.port.out.unit.LoadUnitByCode;
@@ -21,17 +23,26 @@ public class CreateOuvrageService implements CreateOuvrageCommand {
     private final SaveOuvrage saveOuvrage;
     private final LoadSiteById loadSiteById;
     private final LoadUnitByCode loadUnitByCode;
+    private final LoadCommuneById loadCommuneById;
     private final CreateOuvrageMapper createOuvrageMapper;
 
     @Override
     public OuvrageShowDto createOuvrage(OuvrageAddDto ouvrageAddDto, String unitCode) {
 
         Ouvrage ouvrage =createOuvrageMapper.ouvrageAddToOuvrage(ouvrageAddDto);
+
+        Optional<Commune> commune = loadCommuneById.loadCommuneByCode(ouvrageAddDto.getCommune());
+        if (!commune.isPresent()) {
+            throw new ResourceNotFoundException(String.format("No commune found with code '%s'.", unitCode));
+        }
+        ouvrage.setCommune(commune.get());
+
         Optional<OrganisationalStructure> unit = loadUnitByCode.loadUnitByCode(unitCode);
         if (!unit.isPresent()) {
             throw new ResourceNotFoundException(String.format("No unit found with code '%s'.", unitCode));
         }
         ouvrage.setUnit(unit.get());
+
         Optional<Site> site = loadSiteById.loadSiteId(ouvrageAddDto.getSite());
         if (!site.isPresent()) {
             throw new ResourceNotFoundException(String.format("No site found with id '%s'.", ouvrageAddDto.getSite()));

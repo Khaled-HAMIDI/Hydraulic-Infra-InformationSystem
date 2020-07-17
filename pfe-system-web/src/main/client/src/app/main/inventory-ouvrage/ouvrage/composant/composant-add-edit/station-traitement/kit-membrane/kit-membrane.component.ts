@@ -63,7 +63,8 @@ export class KitMembraneComponent implements OnInit{
         let obj = {
             typeComposant:['KitMembrane'],
             nombre: [composant.nombre,Validators.required],
-            caracteristique: [composant.caracteristique,Validators.required]
+            caracteristique: [composant.caracteristique,Validators.required],
+            cost:[composant.cost,Validators.required]
         };
 
         return this.formBuilder.group(obj);

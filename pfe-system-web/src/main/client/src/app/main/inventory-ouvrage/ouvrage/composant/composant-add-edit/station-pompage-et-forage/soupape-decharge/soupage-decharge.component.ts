@@ -65,7 +65,8 @@ export class SoupageDechargeComponent implements OnInit{
             type: [composant.type,Validators.required],
             presseionTarage:[composant.presseionTarage,Validators.required],
             presseionEtanchiete:[composant.presseionEtanchiete,Validators.required],
-            presseionService:[composant.presseionService,Validators.required]
+            presseionService:[composant.presseionService,Validators.required],
+            cost:[composant.cost,Validators.required]
         };
 
         return this.formBuilder.group(obj);

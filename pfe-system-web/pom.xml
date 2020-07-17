@@ -62,11 +62,6 @@
         </dependency>
         <dependency>
             <groupId>dz.ade.pfe</groupId>
-            <artifactId>pfe-system-commons</artifactId>
-            <version>${project.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>dz.ade.pfe</groupId>
             <artifactId>pfe-system-domain</artifactId>
             <version>${project.version}</version>
         </dependency>

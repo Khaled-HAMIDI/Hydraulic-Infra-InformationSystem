@@ -31,6 +31,8 @@ public class OuvrageAddDto {
 
     private String center;
 
+    private String commune;
+
     @Enumerated(EnumType.STRING)
     private State state;
 

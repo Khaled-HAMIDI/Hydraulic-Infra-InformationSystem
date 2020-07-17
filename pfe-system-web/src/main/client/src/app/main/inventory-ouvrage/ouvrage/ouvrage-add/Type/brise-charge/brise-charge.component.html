@@ -63,12 +63,12 @@
 
                                     <mat-form-field appearance="outline" class="w-100-p">
                                         <mat-label>{{'ADD.PLACE-HOLDER.state' | translate}}</mat-label>
-                                        <mat-select formControlName="state" required>
-                                            <mat-option value="Bon">Bon</mat-option>
-                                            <mat-option value="Moyen">Moyen</mat-option>
-                                            <mat-option value="Mauvais">Mauvais</mat-option>
+                                        <mat-icon matSuffix class="secondary-text">domain</mat-icon>
+                                        <mat-select formControlName="state">
+                                            <mat-option *ngFor="let state of states" [value]="state.name" >
+                                                {{state.value}}
+                                            </mat-option>
                                         </mat-select>
-                                        <mat-icon matSuffix class="secondary-text">keyboard</mat-icon>
                                     </mat-form-field>
 
 
@@ -94,13 +94,12 @@
 
                                     <mat-form-field appearance="outline" class="w-100-p">
                                         <mat-label>{{'ADD.PLACE-HOLDER.waterSource' | translate}}</mat-label>
-                                        <mat-select formControlName="waterSource" required>
-                                            <mat-option value="Barrage">Barrage</mat-option>
-                                            <mat-option value="Oued">Oued</mat-option>
-                                            <mat-option value="Source">Source</mat-option>
-                                            <mat-option value="Forage">Forage</mat-option>
+                                        <mat-icon matSuffix class="secondary-text">domain</mat-icon>
+                                        <mat-select formControlName="waterSource">
+                                            <mat-option *ngFor="let source of sourcesType" [value]="source.name">
+                                                {{source.value}}
+                                            </mat-option>
                                         </mat-select>
-                                        <mat-icon matSuffix class="secondary-text">keyboard</mat-icon>
                                     </mat-form-field>
 
                                     <mat-form-field appearance="outline" class="w-100-p">
@@ -148,6 +147,16 @@
                                             </span>
                                         </mat-slide-toggle>
                                     </div>
+
+                                    <mat-form-field appearance="outline" class="w-100-p">
+                                        <mat-label>{{'ADD.PLACE-HOLDER.commune' | translate}}</mat-label>
+                                        <mat-icon matSuffix class="secondary-text">domain</mat-icon>
+                                        <mat-select formControlName="commune">
+                                            <mat-option *ngFor="let commune of communes" [value]="commune.code">
+                                                {{commune.designation}}
+                                            </mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
 
                                 </fieldset>
                             </div>
@@ -268,6 +277,7 @@
 
                                 <legend>{{'ADD.LEGENDS.location' | translate}}</legend>
                                 <div class="ml-sm-12" fxLayout.xs="column" fxLayout.sm="column">
+
                                     <div class="mr-sm-12" fxFlex>
                                         <mat-form-field appearance="outline" class="w-100-p">
                                             <mat-label>{{'ADD.PLACE-HOLDER.area' | translate}}</mat-label>

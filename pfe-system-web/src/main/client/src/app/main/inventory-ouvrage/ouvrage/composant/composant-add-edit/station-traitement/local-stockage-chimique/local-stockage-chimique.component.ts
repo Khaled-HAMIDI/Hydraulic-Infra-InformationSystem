@@ -70,7 +70,8 @@ export class LocalStockageChimiqueComponent implements OnInit{
             form:[composant.form,Validators.required],
             dimension: [composant.dimension,Validators.required],
             arrangement : [composant.arrangement ,Validators.required],
-            number:[composant.number,Validators.required]
+            number:[composant.number,Validators.required],
+            cost:[composant.cost,Validators.required]
         };
 
         return this.formBuilder.group(obj);

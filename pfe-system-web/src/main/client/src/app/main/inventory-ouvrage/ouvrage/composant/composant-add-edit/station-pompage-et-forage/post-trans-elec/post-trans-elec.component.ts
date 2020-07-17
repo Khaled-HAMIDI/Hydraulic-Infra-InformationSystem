@@ -74,7 +74,8 @@ export class PostTransElecComponent implements OnInit{
             pmd: [composant.pmd,Validators.required],
             tarif: [composant.tarif ,Validators.required],
             pma:[composant.pma,Validators.required],
-            typeComptage:[composant.typeComptage,Validators.required]
+            typeComptage:[composant.typeComptage,Validators.required],
+            cost:[composant.cost,Validators.required]
         };
 
         return this.formBuilder.group(obj);

@@ -1,5 +1,18 @@
 package dz.ade.pfe.domain.ouvrage;
 
 public enum InjectionType {
-    Manuel, Automatique
+
+    MANUEL("Manuel"),
+    AUTOMATIQUE("Automatique"),
+    NONE("none");
+
+    private String value;
+
+    InjectionType(String value) {
+        this.value = value;
+    }
+
+    public String getValue() {
+        return value;
+    }
 }

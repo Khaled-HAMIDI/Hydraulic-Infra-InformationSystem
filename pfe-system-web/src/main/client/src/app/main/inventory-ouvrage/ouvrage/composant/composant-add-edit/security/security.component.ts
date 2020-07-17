@@ -67,7 +67,8 @@ export class SecurityComponent implements OnInit{
             guerites: [composant.guerites,Validators.required],
             agents: [composant.agents,Validators.required],
             nature:[composant.nature,Validators.required],
-            armement:[composant.armement,Validators.required]
+            armement:[composant.armement,Validators.required],
+            cost:[composant.cost,Validators.required]
         };
 
         return this.formBuilder.group(obj);

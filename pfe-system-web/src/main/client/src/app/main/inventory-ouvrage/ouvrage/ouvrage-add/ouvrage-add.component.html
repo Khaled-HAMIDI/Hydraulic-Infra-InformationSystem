@@ -52,18 +52,15 @@
 
                                     <mat-form-field appearance="outline" class="w-100-p">
                                         <mat-label>{{'ADD.FIELD.type' | translate}}</mat-label>
-                                        <mat-select formControlName="type" required>
-                                            <mat-option value="StationTraitementConventionelle" #typeouv>Station de
-                                                Traitement Conventionelle</mat-option>
-                                            <mat-option value="StationTraitementNonConventionelle">Station de Traitement
-                                                Non Conventionelle</mat-option>
-                                            <mat-option value="Reservoir">Reservoir</mat-option>
-                                            <mat-option value="Forage">Forage, Puit, Source</mat-option>
-                                            <mat-option value="StationPompage">Station de Pompage</mat-option>
-                                            <mat-option value="BriseCharge">Brise Charge</mat-option>
-                                        </mat-select>
                                         <mat-icon matSuffix class="secondary-text">domain</mat-icon>
+                                        <mat-select formControlName="type">
+                                            <mat-option *ngFor="let type of ouvragesTypes" [value]="type.name">
+                                                {{type.value}}
+                                            </mat-option>
+                                        </mat-select>
                                     </mat-form-field>
+
+
                                 </fieldset>
                                 <fieldset class="myfieldset">
                                     <legend>{{'ADD.LEGENDS.site' | translate}}</legend>

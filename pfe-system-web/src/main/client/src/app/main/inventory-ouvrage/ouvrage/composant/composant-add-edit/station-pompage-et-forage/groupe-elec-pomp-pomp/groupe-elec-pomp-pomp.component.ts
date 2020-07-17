@@ -71,6 +71,7 @@ export class GroupeElecPompPompComponent implements OnInit{
             npsh: [composant.npsh,Validators.required],
             state: [composant.state,Validators.required],
             hmt:[composant.hmt,Validators.required],
+            cost:[composant.cost,Validators.required]
         };
 
         return this.formBuilder.group(obj);

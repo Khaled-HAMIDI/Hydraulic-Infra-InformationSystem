@@ -53,8 +53,15 @@
                         <input matInput name="nombrePompe" formControlName="nombrePompe" required>
                     </mat-form-field>
 
+                <mat-form-field appearance="outline" class="w-100-p" >
+                    <mat-label>{{'FIELD.cost' | translate}}</mat-label>
+                    <mat-icon matSuffix class="secondary-text">keyboard</mat-icon>
+                    <input matInput name="cost" formControlName="cost" required>
+                </mat-form-field>
 
-                    <div>
+
+
+                <div>
                         <mat-slide-toggle matInput name="fonctionnementPompe" formControlName="fonctionnementPompe"
                                            required [checked]="poste.fonctionnementPompe" (change)="toggleFonctionnementPompe()">
                             <span *ngIf="poste.fonctionnementPompe"> {{ 'FIELD.enabledActivePompe' | translate }} </span>

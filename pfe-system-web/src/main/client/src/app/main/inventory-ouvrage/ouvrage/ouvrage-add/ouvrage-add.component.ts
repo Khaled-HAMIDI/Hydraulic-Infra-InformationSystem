@@ -28,6 +28,7 @@ export class OuvrageAddComponent implements OnInit,  OnDestroy{
     site : Site
     sites : Site [];
     centers = [];
+    ouvragesTypes =[];
     ouvrage: Ouvrage;
     ouvrageForm: FormGroup;
     siteForm: FormGroup;
@@ -53,8 +54,8 @@ export class OuvrageAddComponent implements OnInit,  OnDestroy{
     ngOnInit(): void {
         this.route.data.pipe(takeUntil(this._unsubscribeAll)).subscribe(
             (response) => {
-                console.log(response.data[2])
-                this.centers  = response.data[1]
+                this.centers  = response.data[1];
+                this.ouvragesTypes = response.data[2];
                 this.sites = sortBy(response.data[0], ['name']);
                 this.initForm();
             },

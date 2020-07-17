@@ -69,7 +69,8 @@ export class VannePompageComponent implements OnInit{
             materiaux:[composant.materiaux,Validators.required],
             lieuImplantation:[composant.lieuImplantation,Validators.required],
             type:[composant.type,Validators.required],
-            number:[composant.number,Validators.required]
+            number:[composant.number,Validators.required],
+            cost:[composant.cost,Validators.required]
         };
 
         return this.formBuilder.group(obj);

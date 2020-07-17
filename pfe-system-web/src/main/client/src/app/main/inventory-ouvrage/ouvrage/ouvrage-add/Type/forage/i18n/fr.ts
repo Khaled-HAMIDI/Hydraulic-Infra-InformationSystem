@@ -71,7 +71,8 @@ export const locale = {
                 'abriActive' : 'Existance d\'un abri',
                 'abriInactive' : 'Non existance d\'un abri',
                 'electricAlimentationActive' : 'Alimenté par une ligne électrique',
-                'electricAlimentationInactive' : 'Non alimmenté par une ligne électrique'
+                'electricAlimentationInactive' : 'Non alimmenté par une ligne électrique',
+                'commune' : 'Commune'
 
 
             },

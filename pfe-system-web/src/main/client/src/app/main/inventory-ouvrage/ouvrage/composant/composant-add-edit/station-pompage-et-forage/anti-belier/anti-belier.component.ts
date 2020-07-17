@@ -70,7 +70,8 @@ export class AntiBelierComponent implements OnInit{
             compresseur:[composant.compresseur ,Validators.required],
             presseionService:[composant.presseionService,Validators.required],
             presseionEpreuve:[composant.presseionEpreuve,Validators.required],
-            presseionRegonflage: [composant.presseionRegonflage,Validators.required]
+            presseionRegonflage: [composant.presseionRegonflage,Validators.required],
+            cost:[composant.cost,Validators.required]
         };
 
         return this.formBuilder.group(obj);

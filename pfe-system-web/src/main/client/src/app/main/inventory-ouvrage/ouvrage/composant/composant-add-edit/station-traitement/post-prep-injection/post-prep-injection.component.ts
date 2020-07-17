@@ -79,6 +79,7 @@ export class PostPrepInjectionComponent implements OnInit{
             nombrePompe:[composant.nombrePompe,Validators.required],
             fonctionnementPompe: [composant.fonctionnementPompe,Validators.required],
             pointInjectPompe: [composant.pointInjectPompe,Validators.required],
+            cost:[composant.cost,Validators.required]
         };
 
         return this.formBuilder.group(obj);

@@ -64,7 +64,8 @@ export class GroupeElectrogeneComponent implements OnInit{
             puissance: [composant.puissance,Validators.required],
             cuve: [composant.cuve,Validators.required],
             number:[composant.number,Validators.required],
-            nature: [composant.nature,Validators.required]
+            nature: [composant.nature,Validators.required],
+            cost:[composant.cost,Validators.required]
         };
 
         return this.formBuilder.group(obj);

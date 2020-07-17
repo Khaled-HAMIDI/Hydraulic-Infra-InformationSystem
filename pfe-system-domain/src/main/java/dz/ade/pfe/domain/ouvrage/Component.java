@@ -34,6 +34,8 @@ public class Component extends Auditing{
     @Enumerated(EnumType.STRING)
     private ComponentType componentType;
 
+    @Column(name = "cost")
+    private Double cost;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "ouvrage_id")

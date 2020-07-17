@@ -69,7 +69,8 @@ export class ReservoirEauTraiteComponent implements OnInit{
             capacity: [composant.capacity,Validators.required],
             enabled: [composant.enabled ,Validators.required],
             nature:[composant.nature,Validators.required],
-            number:[composant.number,Validators.required]
+            number:[composant.number,Validators.required],
+            cost:[composant.cost,Validators.required]
         };
 
         return this.formBuilder.group(obj);

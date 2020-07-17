@@ -30,6 +30,8 @@ export class StationPompageComponent implements OnInit, OnDestroy {
     options: any;
     lati: number;
     long: number;
+    communes: any[];
+    states: any[];
 
     streetMaps = tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         detectRetina: true,
@@ -125,6 +127,8 @@ export class StationPompageComponent implements OnInit, OnDestroy {
                 this.ouvrage.site = this.route.snapshot.paramMap.get('id');
                 this.ouvrage.center = this.route.snapshot.paramMap.get('code');
                 this.initFormStationPompage();
+                this.communes = response.data[1];
+                this.states =response.data[2];
             },
             (error) => {
                 console.log(error);
@@ -181,6 +185,7 @@ export class StationPompageComponent implements OnInit, OnDestroy {
             pumpDebit: [this.ouvrage.pumpDebit, Validators.required],
             power: [this.ouvrage.power, Validators.required],
             distribution: [this.ouvrage.distribution, Validators.required],
+            commmune: [this.ouvrage.commune, Validators.required],
             populationServed: [this.ouvrage.populationServed],
         };
 
@@ -232,15 +237,16 @@ export class StationPompageComponent implements OnInit, OnDestroy {
         this.ouvrageAdd.pumpDebit = ouvrage.pumpDebit;
         this.ouvrageAdd.distribution = ouvrage.distribution;
         this.ouvrageAdd.populationServed = ouvrage.populationServed;
+        this.ouvrageAdd.commune = ouvrage.commune;
 
-        if (this.ouvrageAdd.tankRole == '') this.ouvrageAdd.tankRole = 'none';
-        if (this.ouvrageAdd.tankType == '') this.ouvrageAdd.tankType = 'none';
-        if (this.ouvrageAdd.waterSource == '') this.ouvrageAdd.waterSource = 'none';
-        if (this.ouvrageAdd.process == '') this.ouvrageAdd.process = 'none';
-        if (this.ouvrageAdd.state == '') this.ouvrageAdd.state = 'none';
-        if (this.ouvrageAdd.form == '') this.ouvrageAdd.form = 'none';
-        if (this.ouvrageAdd.type == '') this.ouvrageAdd.type = 'none';
-        if (this.ouvrageAdd.treatmentStationType == '') this.ouvrageAdd.treatmentStationType = 'none';
+        if (this.ouvrageAdd.tankRole == '') this.ouvrageAdd.tankRole = 'NONE';
+        if (this.ouvrageAdd.tankType == '') this.ouvrageAdd.tankType = 'NONE';
+        if (this.ouvrageAdd.waterSource == '') this.ouvrageAdd.waterSource = 'NONE';
+        if (this.ouvrageAdd.process == '') this.ouvrageAdd.process = 'NONE';
+        if (this.ouvrageAdd.state == '') this.ouvrageAdd.state = 'NONE';
+        if (this.ouvrageAdd.form == '') this.ouvrageAdd.form = 'NONE';
+        if (this.ouvrageAdd.type == '') this.ouvrageAdd.type = 'NONE';
+        if (this.ouvrageAdd.treatmentStationType == '') this.ouvrageAdd.treatmentStationType = 'NONE';
 
         this.stationPompageService.saveOuvrage(this.ouvrageAdd)
             .then((response:any) => {

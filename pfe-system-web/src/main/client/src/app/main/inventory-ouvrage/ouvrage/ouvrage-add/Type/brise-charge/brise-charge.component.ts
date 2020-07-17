@@ -33,6 +33,9 @@ export class BriseChargeComponent implements OnInit, OnDestroy {
     options: any;
     lati: number;
     long: number;
+    communes: any[];
+    states: any[];
+    sourcesType: any [];
 
     streetMaps = tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         detectRetina: true,
@@ -128,6 +131,10 @@ export class BriseChargeComponent implements OnInit, OnDestroy {
                 this.ouvrage.site = this.route.snapshot.paramMap.get('id');
                 this.ouvrage.center = this.route.snapshot.paramMap.get('code');
                 this.initFormBriseCharge();
+                this.communes = response.data[1];
+                this.states = response.data[2];
+                this.sourcesType = response.data[3];
+
             },
             (error) => {
                 console.log(error);
@@ -180,7 +187,8 @@ export class BriseChargeComponent implements OnInit, OnDestroy {
             coteTn: [this.ouvrage.coteTn, Validators.required],
             debitLoadBreaker: [this.ouvrage.debitLoadBreaker, Validators.required],
             chargesAmontEtAval: [this.ouvrage.chargesAmontEtAval, Validators.required],
-            electricAlimentation: [this.ouvrage.electricAlimentation, Validators.required]
+            electricAlimentation: [this.ouvrage.electricAlimentation, Validators.required],
+            commune: [this.ouvrage.commune, Validators.required],
         };
 
         return this.formBuilder.group(obj);
@@ -229,15 +237,16 @@ export class BriseChargeComponent implements OnInit, OnDestroy {
         this.ouvrageAdd.debitLoadBreaker = ouvrage.debitLoadBreaker;
         this.ouvrageAdd.chargesAmontEtAval = ouvrage.chargesAmontEtAval;
         this.ouvrageAdd.electricAlimentation = ouvrage.electricAlimentation;
+        this.ouvrageAdd.commune = ouvrage.commune;
 
-        if (this.ouvrageAdd.tankRole == '') this.ouvrageAdd.tankRole = 'none';
-        if (this.ouvrageAdd.tankType == '') this.ouvrageAdd.tankType = 'none';
-        if (this.ouvrageAdd.waterSource == '') this.ouvrageAdd.waterSource = 'none';
-        if (this.ouvrageAdd.process == '') this.ouvrageAdd.process = 'none';
-        if (this.ouvrageAdd.state == '') this.ouvrageAdd.state = 'none';
-        if (this.ouvrageAdd.form == '') this.ouvrageAdd.form = 'none';
-        if (this.ouvrageAdd.type == '') this.ouvrageAdd.type = 'none';
-        if (this.ouvrageAdd.treatmentStationType == '') this.ouvrageAdd.treatmentStationType = 'none';
+        if (this.ouvrageAdd.tankRole == '') this.ouvrageAdd.tankRole = 'NONE';
+        if (this.ouvrageAdd.tankType == '') this.ouvrageAdd.tankType = 'NONE';
+        if (this.ouvrageAdd.waterSource == '') this.ouvrageAdd.waterSource = 'NONE';
+        if (this.ouvrageAdd.process == '') this.ouvrageAdd.process = 'NONE';
+        if (this.ouvrageAdd.state == '') this.ouvrageAdd.state = 'NONE';
+        if (this.ouvrageAdd.form == '') this.ouvrageAdd.form = 'NONE';
+        if (this.ouvrageAdd.type == '') this.ouvrageAdd.type = 'NONE';
+        if (this.ouvrageAdd.treatmentStationType == '') this.ouvrageAdd.treatmentStationType = 'NONE';
 
         this.briseChargeService.saveOuvrage(this.ouvrageAdd)
             .then((response: any) => {

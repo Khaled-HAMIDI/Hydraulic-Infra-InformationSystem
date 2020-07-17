@@ -66,13 +66,23 @@ export class OuvrageAddService implements Resolve<any>{
         });
     }
 
+    getTypes(){
+        return new Promise((resolve, reject) => {
+            this.http.get(API+'/enum/typeOuvrage')
+                .subscribe((response: any) => {
+                    resolve(response);
+                }, reject);
+        });
+    }
+
     resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<any> | Promise<any> | any {
 
         return new Promise((resolve, reject) => {
 
             Promise.all([
                 this.getSites(),
-                this.getCenters()
+                this.getCenters(),
+                this.getTypes()
             ]).then(
                 (data) => {
                     resolve(data);
