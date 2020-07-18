@@ -21,6 +21,7 @@ export class InventoryComposantComponent implements OnInit{
 
     private _unsubscribeAll: Subject<any>;
     exist:boolean;
+    observation:boolean;
     componentInventoryForm: FormGroup;
     components : componentInventory[];
     component : componentInventory;
@@ -40,6 +41,7 @@ export class InventoryComposantComponent implements OnInit{
         this.fuseTranslationLoader.loadTranslations(french, arabic);
         this._unsubscribeAll = new Subject();
         this.exist=true;
+        this.observation=false;
         this.component = new componentInventory();
     }
 
@@ -89,6 +91,11 @@ export class InventoryComposantComponent implements OnInit{
             if (components[i].componentType == this.typeComponent) return components[i];
         }
         return null;
+    }
+
+    toggleObs(){
+        this.exist = true;
+        this.observation = true;
     }
 
     onSave(): void {

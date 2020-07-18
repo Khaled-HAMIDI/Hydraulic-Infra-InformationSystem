@@ -260,6 +260,20 @@ export class ComposantGetService implements Resolve<any>{
 
     }
 
+    loadState() {
+        return new Promise((resolve, reject) => {
+
+            this.http.get(API +'/enum/state')
+                .subscribe((response: any) => {
+                    resolve(response);
+                }, (error: any) => {
+                    reject(error);
+                });
+
+        });
+
+    }
+
     loadSpecificComposant(typeOuvrage: string,code: string){
         switch (typeOuvrage) {
 
@@ -274,13 +288,15 @@ export class ComposantGetService implements Resolve<any>{
                     this.loadLocalStockageChimique(code),
                     this.loadPostChimique(code),
                     this.loadBatimentElectrique(code),
-                    this.loadGroupeElectrogene(code) ];
+                    this.loadGroupeElectrogene(code),
+                    this.loadState()];
 
             case "Reservoir":
                 return [
                     this.loadSecurity(code),
                     this.loadHydroMeca(code),
-                    this.loadPostChloration(code)];
+                    this.loadPostChloration(code),
+                    this.loadState()];
 
             case "Forage":
                 return [
@@ -292,7 +308,8 @@ export class ComposantGetService implements Resolve<any>{
                     this.loadArmoire(code),
                     this.loadAntiBelier(code),
                     this.loadSoupape(code),
-                    this.loadHydroMeca(code) ];
+                    this.loadHydroMeca(code),
+                    this.loadState() ];
 
             case "StationPompage":
                 return [
@@ -304,13 +321,15 @@ export class ComposantGetService implements Resolve<any>{
                     this.loadArmoire(code),
                     this.loadAntiBelier(code),
                     this.loadSoupape(code),
-                    this.loadHydroMeca(code),];
+                    this.loadHydroMeca(code),
+                    this.loadState()];
 
             case "BriseCharge":
                 return [
                     this.loadSecurity(code),
                     this.loadHydroMeca(code),
-                    this.loadPostChloration(code) ];
+                    this.loadPostChloration(code),
+                    this.loadState() ];
         }
 
     }
@@ -330,14 +349,16 @@ export class ComposantGetService implements Resolve<any>{
                     localStockageChimiqueData: data[5],
                     postChimiqueData: data[6],
                     batimentElectriqueData: data[7],
-                    groupeElectrogeneData: data[8] };
+                    groupeElectrogeneData: data[8],
+                    stateData : data[9]};
 
 
             case "Reservoir":
                 return {
                     securityData: data[0],
                     hydroMecaData: data[1],
-                    postChlorationData: data[2] };
+                    postChlorationData: data[2],
+                    stateData : data[3] };
 
             case "Forage":
                 return {
@@ -349,7 +370,8 @@ export class ComposantGetService implements Resolve<any>{
                     armoireData: data[5],
                     antiBelierData: data[6],
                     soupapeData: data[7],
-                    hydroMecaData: data[8] };
+                    hydroMecaData: data[8],
+                    stateData : data[9] };
 
             case "StationPompage":
                 return {
@@ -361,13 +383,15 @@ export class ComposantGetService implements Resolve<any>{
                     armoireData: data[5],
                     antiBelierData: data[6],
                     soupapeData: data[7],
-                    hydroMecaData: data[8] };
+                    hydroMecaData: data[8],
+                    stateData : data[9] };
 
             case "BriseCharge":
                 return {
                     securityData: data[0],
                     hydroMecaData: data[1],
-                    postChlorationData: data[2] };
+                    postChlorationData: data[2],
+                    stateData : data[3] };
 
         }
     }

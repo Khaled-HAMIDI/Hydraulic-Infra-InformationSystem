@@ -196,7 +196,7 @@ export class ReservoirComponent implements OnInit, OnDestroy {
             electricAlimentation: [this.ouvrage.electricAlimentation, Validators.required],
             tankType: [this.ouvrage.tankType, Validators.required],
             tankRole: [this.ouvrage.tankRole, Validators.required],
-            commmune: [this.ouvrage.commune, Validators.required],
+            commune: [this.ouvrage.commune, Validators.required],
             populationServed: [this.ouvrage.populationServed]
         };
 

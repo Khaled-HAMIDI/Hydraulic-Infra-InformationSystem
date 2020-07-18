@@ -185,7 +185,7 @@ export class StationPompageComponent implements OnInit, OnDestroy {
             pumpDebit: [this.ouvrage.pumpDebit, Validators.required],
             power: [this.ouvrage.power, Validators.required],
             distribution: [this.ouvrage.distribution, Validators.required],
-            commmune: [this.ouvrage.commune, Validators.required],
+            commune: [this.ouvrage.commune, Validators.required],
             populationServed: [this.ouvrage.populationServed],
         };
 

@@ -186,7 +186,7 @@ export class StationTraitementConvComponent implements OnInit, OnDestroy {
             distribution: [this.ouvrage.distribution, Validators.required],
             chemicalMonthlyBill: [this.ouvrage.chemicalMonthlyBill, Validators.required],
             treatmentStationType: [this.ouvrage.treatmentStationType, Validators.required],
-            commmune: [this.ouvrage.commune, Validators.required],
+            commune: [this.ouvrage.commune, Validators.required],
             populationServed: [this.ouvrage.populationServed]
         };
 

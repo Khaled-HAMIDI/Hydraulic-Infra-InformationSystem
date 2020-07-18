@@ -2,7 +2,7 @@ package dz.ade.pfe.domain.ouvrage;
 
 public enum ProcessType {
 
-    TES("TraitementEauxSurface"),
+    TES("Traitement des eaux de surface"),
     DM("Déminéralisation"),
     DF("Deférrisation"),
     NONE("none");

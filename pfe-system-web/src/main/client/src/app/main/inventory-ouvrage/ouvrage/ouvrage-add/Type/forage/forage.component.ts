@@ -187,7 +187,7 @@ export class ForageComponent implements OnInit, OnDestroy {
             populationServed: [this.ouvrage.populationServed],
             currentDebit: [this.ouvrage.currentDebit, Validators.required],
             exploitationDebit: [this.ouvrage.exploitationDebit, Validators.required],
-            commmune: [this.ouvrage.commune, Validators.required],
+            commune: [this.ouvrage.commune, Validators.required],
         };
 
         return this.formBuilder.group(obj);
