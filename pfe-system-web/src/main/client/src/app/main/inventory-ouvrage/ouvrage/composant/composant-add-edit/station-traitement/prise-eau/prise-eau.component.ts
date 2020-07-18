@@ -28,6 +28,8 @@ export class PriseEauComponent implements OnInit{
     add:boolean;
     priseEau:PriseEau;
     priseEauForm: FormGroup;
+    states:any[];
+    priseEauTypes:any[];
 
     @Output() validateEvent = new EventEmitter<string>();
 
@@ -54,6 +56,8 @@ export class PriseEauComponent implements OnInit{
             (response) => {
                 if (response.action == 'edit') this.priseEau = response.data.priseEauData;
                 this.initForm(response.action);
+                this.states =response.data.stateData;
+                this.priseEauTypes =response.data.waterIntakeType;
             },
             (error) => {
                 console.log(error);

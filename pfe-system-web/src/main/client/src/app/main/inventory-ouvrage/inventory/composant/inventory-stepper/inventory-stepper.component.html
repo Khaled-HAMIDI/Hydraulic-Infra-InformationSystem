@@ -1,15 +1,16 @@
 <div class="content-card mat-white-bg" *ngIf="completed">
     <div class="content" >
-        <div class="tab-content p-24" fusePerfectScrollbar>
-            <div class="pb-16 red-fg" fxLayout="row" fxLayoutAlign="start center">
-                <p class="h2" >{{'LIST.HEADER.completed' | translate}}</p>
-            </div>
-        </div>
+        <mat-card>
+            <h2 fxLayoutAlign="center center">
+                {{'LIST.HEADER.completed' | translate}}
+            </h2>
+        </mat-card>
     </div>
 </div>
 
-<!-- div id="stepper" class="page-layout simple left-sidebar inner-scroll" *ngIf="!completed" generate a problem with host -->
-<div id="stepper" class="page-layout simple left-sidebar inner-scroll">
+
+
+<div id="stepper" class="page-layout simple left-sidebar inner-scroll" *ngIf="!completed" >
     <!-- SIDEBAR -->
     <fuse-sidebar class="sidebar" name="left-sidebar" position="left" lockedOpen="gt-md">
 

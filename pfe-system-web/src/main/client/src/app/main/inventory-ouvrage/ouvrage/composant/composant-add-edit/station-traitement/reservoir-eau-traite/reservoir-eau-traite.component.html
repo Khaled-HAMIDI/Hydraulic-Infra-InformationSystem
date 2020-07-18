@@ -24,9 +24,9 @@
                     <mat-form-field appearance="outline" class="w-100-p">
                         <mat-label>{{'FIELD.state' | translate}}</mat-label>
                         <mat-select formControlName="state" required>
-                            <mat-option value="GOOD">Bon</mat-option>
-                            <mat-option value="AVERAGE">Moyen</mat-option>
-                            <mat-option value="BAD">Mauvais</mat-option>
+                            <mat-option *ngFor="let state of states" [value]="state.name" >
+                                {{state.value}}
+                            </mat-option>
                         </mat-select>
                         <mat-icon matSuffix class="secondary-text">keyboard</mat-icon>
                     </mat-form-field>
@@ -34,9 +34,9 @@
                     <mat-form-field appearance="outline" class="w-100-p" >
                         <mat-label>{{'FIELD.type' | translate}}</mat-label>
                         <mat-select formControlName="type" required>
-                            <mat-option value="Entiri">Entiré</mat-option>
-                            <mat-option value="SemiEntiri">Semi entiré</mat-option>
-                            <mat-option value="Surleve">Surleve</mat-option>
+                            <mat-option *ngFor="let type of reservoirTypes" [value]="type.name" >
+                            {{type.value}}
+                            </mat-option>
                         </mat-select>
                         <mat-icon matSuffix class="secondary-text">keyboard</mat-icon>
                     </mat-form-field>
@@ -45,9 +45,9 @@
                         <mat-form-field appearance="outline" class="w-100-p" >
                             <mat-label>{{'FIELD.form' | translate}}</mat-label>
                             <mat-select formControlName="form" required >
-                                <mat-option value="Carre">Carre</mat-option>
-                                <mat-option value="Rectangulaire">Rectangulaire</mat-option>
-                                <mat-option value="Circulaire">Circulaire</mat-option>
+                                <mat-option *ngFor="let form of reservoirForm" [value]="form.name" >
+                                    {{form.value}}
+                                </mat-option>
                             </mat-select>
                             <mat-icon matSuffix class="secondary-text">domain</mat-icon>
                         </mat-form-field>

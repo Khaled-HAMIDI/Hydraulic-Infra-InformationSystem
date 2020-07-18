@@ -24,6 +24,8 @@ export class PostPrepInjectionComponent implements OnInit{
     poste:PostChimique;
     postes : PostChimique[];
     postPrepInjectForm: FormGroup;
+    states:any[];
+    injectionTypes:any[];
 
     @Output() validateEvent = new EventEmitter<string>();
 
@@ -50,6 +52,8 @@ export class PostPrepInjectionComponent implements OnInit{
             (response) => {
                 if (response.action == 'edit') this.postes = response.data.postChimiqueData;
                 this.initForm(response.action);
+                this.states =response.data.stateData;
+                this.injectionTypes=response.data.injectionTypeData;
 
             },
             (error) => {

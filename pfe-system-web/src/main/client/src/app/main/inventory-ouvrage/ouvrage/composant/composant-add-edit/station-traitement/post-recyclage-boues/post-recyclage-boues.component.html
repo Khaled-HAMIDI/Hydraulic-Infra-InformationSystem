@@ -25,9 +25,9 @@
                     <mat-form-field appearance="outline" class="w-100-p">
                         <mat-label>{{'FIELD.statePompe' | translate}}</mat-label>
                         <mat-select formControlName="statePompe" required>
-                            <mat-option value="Bon">Bon</mat-option>
-                            <mat-option value="Moyen">Moyen</mat-option>
-                            <mat-option value="Mauvais">Mauvais</mat-option>
+                            <mat-option *ngFor="let state of states" [value]="state.name" >
+                                {{state.value}}
+                            </mat-option>
                         </mat-select>
                         <mat-icon matSuffix class="secondary-text">keyboard</mat-icon>
                     </mat-form-field>
@@ -41,8 +41,9 @@
                     <mat-form-field appearance="outline" class="w-100-p">
                         <mat-label>{{'FIELD.dosagePompe' | translate}}</mat-label>
                         <mat-select formControlName="dosagePompe" required>
-                            <mat-option value="Manuel">Manuel</mat-option>
-                            <mat-option value="Automatique">Automatique</mat-option>
+                            <mat-option *ngFor="let type of injectionTypes" [value]="type.name" >
+                                {{type.value}}
+                            </mat-option>
                         </mat-select>
                         <mat-icon matSuffix class="secondary-text">keyboard</mat-icon>
                     </mat-form-field>

@@ -23,6 +23,7 @@ export class ArmoirElecCmdComponent implements OnInit{
     add:boolean;
     armoire:ArmoireElectrique;
     armoirElecForm: FormGroup;
+    states:any[];
 
     @Output() validateEvent = new EventEmitter<string>();
 
@@ -49,6 +50,7 @@ export class ArmoirElecCmdComponent implements OnInit{
             (response) => {
                 if (response.action == 'edit') this.armoire = response.data.armoireData;
                 this.initForm(response.action);
+                this.states =response.data.stateData;
             },
             (error) => {
                 console.log(error);

@@ -189,7 +189,8 @@ const routes: Routes = [
     {
         path: 'add/:type/:site/:center/composants/:code',
         component: StepperAddEditComponent,
-        data: { action: 'add' }
+        data: { action: 'add' },
+        resolve: { data: ComposantGetService }
     },
     {
         path: ':code/edit',

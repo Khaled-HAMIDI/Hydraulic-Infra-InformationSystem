@@ -23,6 +23,7 @@ export class GroupeElecPompMoteurComponent implements OnInit{
     add:boolean;
     groupe:GroupeElectroMoteur;
     grouprElecPMForm: FormGroup;
+    states:any[];
 
     @Output() validateEvent = new EventEmitter<string>();
 
@@ -49,6 +50,7 @@ export class GroupeElecPompMoteurComponent implements OnInit{
             (response) => {
                 if (response.action == 'edit') this.groupe = response.data.moteurData;
                 this.initForm(response.action);
+                this.states =response.data.stateData;
             },
             (error) => {
                 console.log(error);

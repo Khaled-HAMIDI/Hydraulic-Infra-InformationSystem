@@ -23,6 +23,7 @@ export class SecurityComponent implements OnInit{
     add:boolean;
     security:Security;
     securityForm: FormGroup;
+    states:any[];
 
     @Output() validateEvent = new EventEmitter<string>();
 
@@ -50,6 +51,7 @@ export class SecurityComponent implements OnInit{
             (response) => {
                 if (response.action == 'edit') this.security = response.data.securityData;
                 this.initForm(response.action);
+                this.states =response.data.stateData;
             },
             (error) => {
                 console.log(error);

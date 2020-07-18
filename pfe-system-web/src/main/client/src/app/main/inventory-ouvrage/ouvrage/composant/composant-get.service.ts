@@ -271,7 +271,58 @@ export class ComposantGetService implements Resolve<any>{
                 });
 
         });
+    }
 
+    loadWaterIntakeType(){
+        return new Promise((resolve, reject) => {
+
+            this.http.get(API +'/enum/waterIntakeType')
+                .subscribe((response: any) => {
+                    resolve(response);
+                }, (error: any) => {
+                    reject(error);
+                });
+
+        });
+    }
+
+    loadTankType(){
+        return new Promise((resolve, reject) => {
+
+            this.http.get(API +'/enum/tankType')
+                .subscribe((response: any) => {
+                    resolve(response);
+                }, (error: any) => {
+                    reject(error);
+                });
+
+        });
+    }
+
+    loadTankForm(){
+        return new Promise((resolve, reject) => {
+
+            this.http.get(API +'/enum/forms')
+                .subscribe((response: any) => {
+                    resolve(response);
+                }, (error: any) => {
+                    reject(error);
+                });
+
+        });
+    }
+
+    loadInjectionType(){
+        return new Promise((resolve, reject) => {
+
+            this.http.get(API +'/enum/injectionType')
+                .subscribe((response: any) => {
+                    resolve(response);
+                }, (error: any) => {
+                    reject(error);
+                });
+
+        });
     }
 
     loadSpecificComposant(typeOuvrage: string,code: string){
@@ -289,14 +340,22 @@ export class ComposantGetService implements Resolve<any>{
                     this.loadPostChimique(code),
                     this.loadBatimentElectrique(code),
                     this.loadGroupeElectrogene(code),
-                    this.loadState()];
+                    this.loadState(),
+                    this.loadWaterIntakeType(),
+                    this.loadTankType(),
+                    this.loadTankForm(),
+                    this.loadInjectionType()];
 
             case "Reservoir":
                 return [
                     this.loadSecurity(code),
                     this.loadHydroMeca(code),
                     this.loadPostChloration(code),
-                    this.loadState()];
+                    this.loadState(),
+                    this.loadWaterIntakeType(),
+                    this.loadTankType(),
+                    this.loadTankForm(),
+                    this.loadInjectionType()];
 
             case "Forage":
                 return [
@@ -309,7 +368,11 @@ export class ComposantGetService implements Resolve<any>{
                     this.loadAntiBelier(code),
                     this.loadSoupape(code),
                     this.loadHydroMeca(code),
-                    this.loadState() ];
+                    this.loadState(),
+                    this.loadWaterIntakeType(),
+                    this.loadTankType(),
+                    this.loadTankForm(),
+                    this.loadInjectionType()];
 
             case "StationPompage":
                 return [
@@ -322,14 +385,22 @@ export class ComposantGetService implements Resolve<any>{
                     this.loadAntiBelier(code),
                     this.loadSoupape(code),
                     this.loadHydroMeca(code),
-                    this.loadState()];
+                    this.loadState(),
+                    this.loadWaterIntakeType(),
+                    this.loadTankType(),
+                    this.loadTankForm(),
+                    this.loadInjectionType()];
 
             case "BriseCharge":
                 return [
                     this.loadSecurity(code),
                     this.loadHydroMeca(code),
                     this.loadPostChloration(code),
-                    this.loadState() ];
+                    this.loadState(),
+                    this.loadWaterIntakeType(),
+                    this.loadTankType(),
+                    this.loadTankForm(),
+                    this.loadInjectionType()];
         }
 
     }
@@ -350,7 +421,11 @@ export class ComposantGetService implements Resolve<any>{
                     postChimiqueData: data[6],
                     batimentElectriqueData: data[7],
                     groupeElectrogeneData: data[8],
-                    stateData : data[9]};
+                    stateData : data[9],
+                    waterIntakeType : data[10],
+                    tankTypeData:data[11],
+                    tankFormData:data[12],
+                    injectionTypeData:data[13]};
 
 
             case "Reservoir":
@@ -358,7 +433,11 @@ export class ComposantGetService implements Resolve<any>{
                     securityData: data[0],
                     hydroMecaData: data[1],
                     postChlorationData: data[2],
-                    stateData : data[3] };
+                    stateData : data[3],
+                    waterIntakeType : data[4],
+                    tankTypeData:data[5],
+                    tankFormData:data[6],
+                    injectionTypeData:data[7] };
 
             case "Forage":
                 return {
@@ -371,7 +450,11 @@ export class ComposantGetService implements Resolve<any>{
                     antiBelierData: data[6],
                     soupapeData: data[7],
                     hydroMecaData: data[8],
-                    stateData : data[9] };
+                    stateData : data[9],
+                    waterIntakeType : data[10],
+                    tankTypeData:data[11],
+                    tankFormData:data[12],
+                    injectionTypeData:data[13]};
 
             case "StationPompage":
                 return {
@@ -384,14 +467,22 @@ export class ComposantGetService implements Resolve<any>{
                     antiBelierData: data[6],
                     soupapeData: data[7],
                     hydroMecaData: data[8],
-                    stateData : data[9] };
+                    stateData : data[9],
+                    waterIntakeType : data[10],
+                    tankTypeData:data[11],
+                    tankFormData:data[12],
+                    injectionTypeData:data[13]};
 
             case "BriseCharge":
                 return {
                     securityData: data[0],
                     hydroMecaData: data[1],
                     postChlorationData: data[2],
-                    stateData : data[3] };
+                    stateData : data[3],
+                    waterIntakeType : data[4],
+                    tankTypeData:data[5],
+                    tankFormData:data[6],
+                    injectionTypeData:data[7]};
 
         }
     }

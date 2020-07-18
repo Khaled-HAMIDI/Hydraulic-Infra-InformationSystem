@@ -24,6 +24,7 @@ export class DecanteurComponent implements OnInit{
     equipement:EquipementStationTraitement;
     equipements : EquipementStationTraitement[];
     decanteurForm: FormGroup;
+    states:any[];
 
     @Output() validateEvent = new EventEmitter<string>();
 
@@ -51,6 +52,7 @@ export class DecanteurComponent implements OnInit{
             (response) => {
                 if (response.action == 'edit') this.equipements = response.data.equipementStationTraitemenData;
                 this.initForm(response.action);
+                this.states =response.data.stateData;
 
             },
             (error) => {

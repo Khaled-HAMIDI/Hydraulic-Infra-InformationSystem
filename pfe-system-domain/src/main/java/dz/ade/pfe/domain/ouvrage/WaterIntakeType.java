@@ -2,9 +2,9 @@ package dz.ade.pfe.domain.ouvrage;
 
 public enum WaterIntakeType {
 
-    BACHEACCUMULATION("BacheAccumulation"),
+    BACHEACCUMULATION("Bache d'accumulation"),
     CAPTAGE("Captage"),
-    BARGEFLOTTANTE("BargeFlottante"),
+    BARGEFLOTTANTE("Barge flottante"),
     NONE("none");
 
     private String value;

@@ -24,6 +24,9 @@ export class ReservoirEauTraiteComponent implements OnInit{
     equipement:EquipementStationTraitement;
     equipements : EquipementStationTraitement[];
     reservoirEauTraitForm: FormGroup;
+    states:any[];
+    reservoirTypes:any[];
+    reservoirForm:any[];
 
     @Output() validateEvent = new EventEmitter<string>();
 
@@ -50,6 +53,9 @@ export class ReservoirEauTraiteComponent implements OnInit{
             (response) => {
                 if (response.action == 'edit') this.equipements = response.data.equipementStationTraitemenData;
                 this.initForm(response.action);
+                this.states =response.data.stateData;
+                this.reservoirForm =response.data.tankFormData;
+                this.reservoirTypes =response.data.tankTypeData;
             },
             (error) => {
                 console.log(error);

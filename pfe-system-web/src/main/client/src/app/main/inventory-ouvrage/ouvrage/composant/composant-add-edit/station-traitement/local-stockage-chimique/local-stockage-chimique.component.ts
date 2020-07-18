@@ -28,6 +28,7 @@ export class LocalStockageChimiqueComponent implements OnInit{
     add:boolean;
     local:LocalStockage;
     localStockageChimiqueForm: FormGroup;
+    states:any[];
 
     @Output() validateEvent = new EventEmitter<string>();
 
@@ -54,6 +55,7 @@ export class LocalStockageChimiqueComponent implements OnInit{
             (response) => {
                 if (response.action == 'edit') this.local = response.data.localStockageChimiqueData;
                 this.initForm(response.action);
+                this.states =response.data.stateData;
             },
             (error) => {
                 console.log(error);

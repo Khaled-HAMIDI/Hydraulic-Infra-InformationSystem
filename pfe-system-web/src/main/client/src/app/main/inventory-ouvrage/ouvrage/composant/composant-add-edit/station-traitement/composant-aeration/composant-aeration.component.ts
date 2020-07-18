@@ -25,6 +25,7 @@ export class ComposantAerationComponent implements OnInit{
     equipement:EquipementStationTraitement;
     equipements : EquipementStationTraitement[];
     composantAerationForm: FormGroup;
+    states:any[];
 
     @Output() validateEvent = new EventEmitter<string>();
 
@@ -52,6 +53,7 @@ export class ComposantAerationComponent implements OnInit{
             (response) => {
                 if (response.action == 'edit') this.equipements = response.data.equipementStationTraitemenData;
                 this.initForm(response.action);
+                this.states =response.data.stateData;
             },
             (error) => {
                 console.log(error);

@@ -29,6 +29,7 @@ export class StationPhpComponent implements OnInit{
     add:boolean;
     stationPhp:StationPhp;
     stationPhpForm: FormGroup;
+    states:any[];
 
     @Output() validateEvent = new EventEmitter<string>();
 
@@ -55,6 +56,7 @@ export class StationPhpComponent implements OnInit{
             (response) => {
                 if (response.action == 'edit') this.stationPhp = response.data.stationPhpData;
                 this.initForm(response.action);
+                this.states =response.data.stateData;
             },
             (error) => {
                 console.log(error);

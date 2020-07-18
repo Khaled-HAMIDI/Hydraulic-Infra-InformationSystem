@@ -23,6 +23,7 @@ export class BatimentElectriqueComponent implements OnInit{
     add:boolean;
     batiment:BatimentElectrique;
     batimentElectForm: FormGroup;
+    states:any[];
 
     @Output() validateEvent = new EventEmitter<string>();
 
@@ -49,6 +50,7 @@ export class BatimentElectriqueComponent implements OnInit{
             (response) => {
                 if (response.action == 'edit') this.batiment = response.data.batimentElectriqueData;
                 this.initForm(response.action);
+                this.states =response.data.stateData;
             },
             (error) => {
                 console.log(error);
