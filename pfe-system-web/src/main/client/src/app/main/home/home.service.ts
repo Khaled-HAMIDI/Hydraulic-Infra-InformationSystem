@@ -5,6 +5,8 @@ import { Router, ActivatedRouteSnapshot, RouterStateSnapshot, Resolve } from '@a
 import { ToolsService } from '@ayams/services/tools.service';
 import { Observable } from 'rxjs';
 import { AnalyticsDashboardDb } from './dashboard';
+import includes from 'lodash/includes';
+import { AuthenticationService } from '../authentication/authentication.service';
 
 const OUVRAGE_API = API + '/ouvrage';
 const READING_API = API + '/reading';
@@ -17,7 +19,8 @@ export class HomeService implements Resolve<any> {
     widgets
     constructor(private router: Router,
         private http: HttpClient,
-        private toolsService: ToolsService) {
+        private toolsService: ToolsService,
+        private authenticationService: AuthenticationService) {
     }
 
     getWidgets(): Promise<any>
@@ -76,6 +79,12 @@ export class HomeService implements Resolve<any> {
       }
 
     resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<any> | Promise<any> | any {
+        const userRoles = this.authenticationService.getRoles();
+
+        if (includes(userRoles, "operateur"))
+            this.router.navigate(['exploitation/reading']);
+        else if (includes(userRoles, "RH"))
+            this.router.navigate(['exploitation/reading']);
 
         return new Promise((resolve, reject) => {
 

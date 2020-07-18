@@ -5,6 +5,6 @@ import org.mapstruct.Mapper;
 
 @Mapper(componentModel = "spring")
 public interface SiteDtoMapper {
-
+    Site SiteDtoMapper (SiteDto site);
     SiteDto SiteMapper(Site site);
 }

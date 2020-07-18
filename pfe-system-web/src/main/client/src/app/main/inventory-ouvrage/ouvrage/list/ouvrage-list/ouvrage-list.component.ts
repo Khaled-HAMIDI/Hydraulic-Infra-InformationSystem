@@ -111,16 +111,22 @@ export class OuvrageListComponent extends Table implements OnInit, OnDestroy {
   }
 
   onDelete(ouvrage): void {
-    this.confirmDialogRef = this.matDialog.open(FuseConfirmDialogComponent);
+    if (ouvrage.nbApears > 0) {
+      this.confirmDialogRef = this.matDialog.open(FuseConfirmDialogComponent);
+      this.confirmDialogRef.componentInstance.confirmMessage = this.toolsService.getTranslation('LIST.CONFIRM-DIALOG.detach');
+    }
+    else {
+      this.confirmDialogRef = this.matDialog.open(FuseConfirmDialogComponent);
+      this.confirmDialogRef.componentInstance.confirmMessage = this.toolsService.getTranslation('LIST.CONFIRM-DIALOG.delete');
+      this.confirmDialogRef.afterClosed().pipe(takeUntil(this._unsubscribeAll)).subscribe(result => {
+        if (result) {
+          this.ouvrageListService.deleteOuvrage(ouvrage);
 
-    this.confirmDialogRef.componentInstance.confirmMessage = this.toolsService.getTranslation('LIST.CONFIRM-DIALOG.delete');
-    this.confirmDialogRef.afterClosed().pipe(takeUntil(this._unsubscribeAll)).subscribe(result => {
-      if (result) {
-        this.ouvrageListService.deleteOuvrage(ouvrage);
+        }
+        this.confirmDialogRef = null;
+      });
+    }
 
-      }
-      this.confirmDialogRef = null;
-    });
 
   }
 

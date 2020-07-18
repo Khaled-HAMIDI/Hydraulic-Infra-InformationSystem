@@ -40,7 +40,8 @@ public class Ouvrage extends Auditing{
     private Boolean enabled;
 
     @Column(name = "declassed")
-    private Boolean declassed;
+    @Builder.Default
+    private Boolean declassed = false;
 
     @Column(name = "form")
     @Enumerated(EnumType.STRING)
@@ -224,8 +225,8 @@ public class Ouvrage extends Auditing{
     private Site site;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "unit_id")
-    private OrganisationalStructure unit;
+    @JoinColumn(name = "structure_id")
+    private OrganisationalStructure structure;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "commune_id")

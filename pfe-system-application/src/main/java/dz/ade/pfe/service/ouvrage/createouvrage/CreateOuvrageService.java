@@ -33,7 +33,7 @@ public class CreateOuvrageService implements CreateOuvrageCommand {
 
         Optional<Commune> commune = loadCommuneById.loadCommuneByCode(ouvrageAddDto.getCommune());
         if (!commune.isPresent()) {
-            throw new ResourceNotFoundException(String.format("No commune found with code '%s'.", unitCode));
+            throw new ResourceNotFoundException(String.format("No commune found with code '%s'.", ouvrageAddDto.getCommune()));
         }
         ouvrage.setCommune(commune.get());
 
@@ -41,7 +41,7 @@ public class CreateOuvrageService implements CreateOuvrageCommand {
         if (!unit.isPresent()) {
             throw new ResourceNotFoundException(String.format("No unit found with code '%s'.", unitCode));
         }
-        ouvrage.setUnit(unit.get());
+        ouvrage.setStructure(unit.get());
 
         Optional<Site> site = loadSiteById.loadSiteId(ouvrageAddDto.getSite());
         if (!site.isPresent()) {
@@ -52,10 +52,5 @@ public class CreateOuvrageService implements CreateOuvrageCommand {
         return createOuvrageMapper.ouvrageToOuvrageDto(saveOuvrage.saveOuvrage(ouvrage));
     }
 
-    @Override
-    public Boolean deleteOuvrage(String code) {
-         saveOuvrage.deleteOuvrage(code);
-         return true;
-    }
 }
 

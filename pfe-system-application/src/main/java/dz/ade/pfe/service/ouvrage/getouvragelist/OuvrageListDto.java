@@ -28,4 +28,6 @@ public class OuvrageListDto {
     private Double installedCapacity;
 
     private Double currentCapacity;
+
+    private Integer nbApears;
 }

@@ -16,6 +16,11 @@ const routes: Routes = [
     canActivate: [AuthenticationGuard]
   },
   {
+    path: 'sites',
+    loadChildren: () => import('./site/site.module').then(m => m.SiteModule),
+    canActivate: [AuthenticationGuard]
+  },
+  {
     path: 'chain',
     loadChildren: () => import('./chain/chain.module').then(m => m.ChainModule),
     canActivate: [AuthenticationGuard]

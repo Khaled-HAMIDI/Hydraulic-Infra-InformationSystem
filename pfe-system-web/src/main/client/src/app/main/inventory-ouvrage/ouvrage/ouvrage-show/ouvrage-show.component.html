@@ -121,7 +121,7 @@
                                         <p class="myLabel">{{'SHOW.LABEL.commissioningDate' | translate}}</p>
                                         <p class="myp">
                                             <mat-icon matPrefix class="mr-12 s-20" color="accent">keyboard</mat-icon>
-                                            <span>{{ouvrage.commissioningDate}}</span>
+                                            <span>{{ouvrage.commissioningDate | date: 'dd-MM-yyyy'}}</span>
                                         </p>
                                     </div>
 
@@ -129,7 +129,7 @@
                                         <p class="myLabel">{{'SHOW.LABEL.operatingDate' | translate}}</p>
                                         <p class="myp">
                                             <mat-icon matPrefix class="mr-12 s-20" color="accent">keyboard</mat-icon>
-                                            <span>{{ouvrage.operatingDate}}</span>
+                                            <span>{{ouvrage.operatingDate | date: 'dd-MM-yyyy'}}</span>
                                         </p>
                                     </div>
 
@@ -188,7 +188,7 @@
                                         <p class="myLabel">{{'SHOW.LABEL.currentDebit' | translate}}</p>
                                         <p class="myp">
                                             <mat-icon matPrefix class="mr-12 s-20" color="accent">keyboard</mat-icon>
-                                            <span>{{ouvrage.commissioningDate}}</span>
+                                            <span>{{ouvrage.commissioningDate | date: 'dd-MM-yyyy'}}</span>
                                         </p>
                                     </div>
 
@@ -196,7 +196,7 @@
                                         <p class="myLabel">{{'SHOW.LABEL.chargesAmontEtAval' | translate}}</p>
                                         <p class="myp">
                                             <mat-icon matPrefix class="mr-12 s-20" color="accent">keyboard</mat-icon>
-                                            <span>{{ouvrage.operatingDate}}</span>
+                                            <span>{{ouvrage.operatingDate | date: 'dd-MM-yyyy'}}</span>
                                         </p>
                                     </div>
 

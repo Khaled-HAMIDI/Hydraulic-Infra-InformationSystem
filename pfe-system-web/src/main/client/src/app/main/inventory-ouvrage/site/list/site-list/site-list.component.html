@@ -1,0 +1,138 @@
+<div id="sites" class="page-layout carded fullwidth inner-scroll">
+    <!-- SELECTED BAR -->
+    <selected-bar [ngStyle]="{ 'height': heightDyn() }" class="accent-600" *ngIf="selectBarDisplayed" [@slideInTop]>
+    </selected-bar>
+    <!-- / SELECTED BAR -->
+    <!-- TOP BACKGROUND -->
+    <div class="top-bg accent" id="headerHeight"></div>
+    <!-- / TOP BACKGROUND -->
+    <!-- CENTER -->
+    <div [ngClass]="{HideTable: emptyList}" class="center">
+        <!-- HEADER -->
+        <div class="header accent" fxLayout="column" fxLayoutAlign="center center" fxLayout.gt-sm="row"
+            fxLayoutAlign.gt-sm="space-between center">
+
+            <!-- APP TITLE -->
+            <div class="logo my-12 m-sm-0" fxLayout="row" fxLayoutAlign="start center">
+                <span class="logo-text h1">
+                    Sites
+                    <!-- {{'LIST.HEADER.title' | translate}} -->
+                </span>
+            </div>
+            <!-- / APP TITLE -->
+
+            <!-- SEARCH -->
+            <ng-container *ayamsHasAnyPermissions="['site:show','site:*','*:*']">
+                <div class="search-wrapper mx-32 mx-md-0">
+                    <div class="search" fxFlex fxLayout="row" fxLayoutAlign="start center">
+                        <mat-icon>search</mat-icon>
+                        <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Recherche">
+                    </div>
+                </div>
+                <!-- / SEARCH -->
+
+
+                <button mat-raised-button (click)="export()" class="mat-white-bg mt-24 mt-md-0" [disabled]="!btnExport">
+                    <span>Exporter</span>
+                </button>
+            </ng-container>
+        </div>
+        <!-- / HEADER -->
+
+        <!-- CONTENT CARD -->
+        <ng-container *ayamsHasAnyPermissions="['site:show','site:*','*:*']">
+            <div class="example-container mat-white-bg">
+
+                <table mat-table [dataSource]="dataSource" matSort>
+
+                    <!-- Checkbox Column -->
+                    <ng-container matColumnDef="checkbox">
+                        <th mat-header-cell *matHeaderCellDef>
+                        </th>
+                        <td mat-cell *matCellDef="let site">
+                            <ng-container>
+                                <mat-checkbox [(ngModel)]="sitesCheckbox[site.id]"
+                                    (ngModelChange)="onSelectedChange(site)" (click)="$event.stopPropagation()">
+                                </mat-checkbox>
+                            </ng-container>
+                        </td>
+                    </ng-container>
+
+                    <!-- Code Column -->
+                    <ng-container matColumnDef="name">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header>Nom
+                        </th>
+                        <td mat-cell *matCellDef="let site">
+                            <p class="text-truncate">{{site.name}}</p>
+                        </td>
+                    </ng-container>
+
+                    <!-- Code Designation -->
+                    <ng-container matColumnDef="space">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header>Superficie
+                        </th>
+                        <td mat-cell *matCellDef="let site">
+                            <p class="text-truncate">{{site.space}}</p>
+                        </td>
+                    </ng-container>
+
+                    <!-- Code Column -->
+                    <!-- <ng-container matColumnDef="commune">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header>Nombre d'ouvrage
+                        </th>
+                        <td mat-cell *matCellDef="let site">
+                            <p class="text-truncate">{{site.ouvragesNumber}}</p>
+                        </td>
+                    </ng-container> -->
+
+
+                    <!-- Buttons Column -->
+                    <ng-container matColumnDef="buttons" stickyEnd>
+                        <th mat-header-cell *matHeaderCellDef></th>
+                        <td mat-cell *matCellDef="let site">
+
+                            <button mat-icon-button [matMenuTriggerFor]="moreMenu" aria-label="More"
+                                (click)="$event.stopPropagation();">
+                                <mat-icon class="secondary-text">more_vert</mat-icon>
+                            </button>
+
+                            <mat-menu #moreMenu="matMenu">
+                                <ng-container *ayamsHasAnyPermissions="['site:edit','site:*','*:*']">
+                                    <button mat-menu-item aria-label="edit"
+                                        (click)="router.navigate(['/patrimony/sites/edit/'+site.id])">
+                                        <mat-icon>edit</mat-icon>
+                                        <span>{{'LIST.TABLE.action.edit' | translate}}</span>
+                                    </button>
+                                </ng-container>
+                                <ng-container *ayamsHasAnyPermissions="['site:show','site:*','*:*']">
+                                    <button mat-menu-item aria-label="view" (click)="onDelete(site)">
+                                        <mat-icon>delete</mat-icon>
+                                        <span>{{'LIST.TABLE.action.remove' | translate}}</span>
+                                    </button>
+                                </ng-container>
+                            </mat-menu>
+                        </td>
+                    </ng-container>
+
+                    <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky:true"></tr>
+                    <ng-container *ayamsHasAnyPermissions="['site:show','site:*','*:*']">
+                        <tr mat-row *matRowDef="let site; columns: displayedColumns;" class="site" matRipple
+                            (click)="router.navigate(['/patrimony/site/'+site.code+'/show'])">
+                        </tr>
+                    </ng-container>
+                </table>
+
+            </div>
+
+        </ng-container>
+        <mat-paginator [pageSizeOptions]="pageSizeOptions"></mat-paginator>
+        <!-- / CONTENT CARD -->
+    </div>
+    <!-- / CENTER -->
+    <ng-container *ayamsHasAnyPermissions="['site:add','site:*','*:*']">
+        <button mat-fab class="accent add-button" [routerLink]="'/patrimony/sites/add'"
+            matTooltip="{{'LIST.BUTTON.add' | translate}}" matTooltipPosition="left" *fuseIfOnDom>
+            <mat-icon>add</mat-icon>
+        </button>
+    </ng-container>
+</div>
