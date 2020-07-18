@@ -34,10 +34,10 @@ public interface OuvrageRepository extends JpaRepository<Ouvrage, Long> {
     @Query("SELECT ouvrage FROM Ouvrage ouvrage WHERE ouvrage.code IN :ouvrages and ouvrage.declassed = false")
     List<Ouvrage> loadAllOuvrages(@Param("ouvrages") List<String> ouvrages);
 
-    @Query("SELECT distinct o FROM Ouvrage o JOIN FETCH o.readings r   JOIN  o.chains c JOIN  c.chain JOIN  c.ouvrage ov  JOIN  ov.site where o.declassed = false order by o.id,r.date desc")
+    @Query("SELECT distinct o FROM Ouvrage o LEFT JOIN FETCH o.readings r   JOIN  o.chains c JOIN  c.chain JOIN  c.ouvrage ov  JOIN  ov.site where o.declassed = false order by o.id,r.date desc")
     List<Ouvrage> findAllForSynoptic();
 
-    @Query("SELECT distinct o FROM Ouvrage o JOIN FETCH o.readings r   JOIN  o.chains c JOIN  c.chain ch JOIN  c.ouvrage ov  JOIN  ov.site  where ch.code = :code and  o.declassed = false order by o.id,r.date desc ")
+    @Query("SELECT distinct o FROM Ouvrage o LEFT JOIN FETCH o.readings r   JOIN  o.chains c JOIN  c.chain ch JOIN  c.ouvrage ov  JOIN  ov.site  where ch.code = :code and  o.declassed = false order by o.id,r.date desc ")
     List<Ouvrage> findAllForSynopticByCode(String code);
 
     @Query("SELECT distinct o FROM Ouvrage o JOIN FETCH o.readings r where o.declassed = false order by o.id,r.date desc")
