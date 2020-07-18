@@ -8,7 +8,7 @@ export const locale = {
                 'export': 'تصدير',
             },
             'BUTTON': {
-                'add': 'إضافة مستخدم'
+                'add': 'إضافة منشأة'
             },
             'TABLE': {
                 'username': 'إسم المستخدم',
@@ -39,7 +39,7 @@ export const locale = {
             }
         },
         'EMPTY-LIST': {
-            'msg': 'لا يوجد أي مستخدم'
+            'msg': 'لا توجد أي منشأة'
         }
     }
 };

@@ -3,15 +3,15 @@ export const locale = {
     data: {
         'LIST': {
             'HEADER': {
-                'title': 'المستخدمين ',
+                'title': 'المواقع ',
                 'search':'بحث',
                 'export': 'تصدير',
             },
             'BUTTON': {
-                'add': 'إضافة مستخدم'
+                'add': 'إضافة موقع'
             },
             'TABLE': {
-                'username': 'إسم المستخدم',
+                'username': 'إسم الموقع',
                 'employee-code': 'رمز الموظف',
                 'roles': 'أدوار',
                 'firstName': 'الإسم',
@@ -32,16 +32,16 @@ export const locale = {
                 'reset': 'هل أنت متأكد من أنك تريد إعادة تعيين كلمة السر؟'
             },
             'TOAST': {
-                'title-delete': 'حذف المستخدم',
-                'success-delete': 'تم حذف المستخدمين',
-                'error-delete': 'لم يتم حذف المستخدمين',
+                'title-delete': 'حذف الموقع',
+                'success-delete': 'تم حذف المواقع',
+                'error-delete': 'لم يتم حذف المواقع',
                 'title-reset': 'إعادة تعيين كلمة السر',
                 'success-reset': 'تمت إعادة تعيين كلمة السر',
                 'error-reset': 'لم تتم إعادة تعيين كلمة السر'
             }
         },
         'EMPTY-LIST': {
-            'msg': 'لا يوجد أي مستخدم'
+            'msg': 'لا يوجد أي موقع'
         }
     }
 };

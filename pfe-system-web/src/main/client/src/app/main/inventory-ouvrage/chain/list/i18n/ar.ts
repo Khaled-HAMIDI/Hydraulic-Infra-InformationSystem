@@ -41,7 +41,7 @@ export const locale = {
             }
         },
         'EMPTY-LIST': {
-            'msg': 'لا يوجد أي مستخدم'
+            'msg': 'لا توجد أي سلسلة'
         }
     }
 };
