@@ -42,7 +42,7 @@ export const locale = {
             }
         },
         'EMPTY-LIST': {
-            'msg': 'Aucun utilisateur disponible pour le moment'
+            'msg': 'Aucun site disponible pour le moment'
         }
     }
 };

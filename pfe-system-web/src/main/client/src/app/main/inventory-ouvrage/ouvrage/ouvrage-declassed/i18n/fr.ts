@@ -39,7 +39,7 @@ export const locale = {
             }
         },
         'EMPTY-LIST': {
-            'msg': 'Aucun utilisateur disponible pour le moment'
+            'msg': 'Aucun ouvrage disponible pour le moment'
         }
     }
 };

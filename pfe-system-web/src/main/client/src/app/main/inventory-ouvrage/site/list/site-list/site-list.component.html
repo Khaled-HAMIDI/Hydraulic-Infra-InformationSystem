@@ -129,6 +129,34 @@
         <!-- / CONTENT CARD -->
     </div>
     <!-- / CENTER -->
+
+    <div [ngClass]="{HideTable: !emptyList}" class="center">
+    
+        <!-- HEADER -->
+        <div class="header accent" fxLayout="column" fxLayoutAlign="center center" fxLayout.gt-sm="row"
+            fxLayoutAlign.gt-sm="space-between center">
+    
+            <!-- APP TITLE -->
+            <div class="logo my-12 m-sm-0" fxLayout="row" fxLayoutAlign="start center">
+                <span class="logo-text h1">
+                    {{'LIST.HEADER.title' | translate}}
+                </span>
+            </div>
+    
+        </div>
+        <!-- / HEADER -->
+    
+        <!-- CONTENT CARD -->
+        <div class="example-container mat-white-bg">
+            <mat-card>
+                <h2 fxLayoutAlign="center center">
+                    {{'EMPTY-LIST.msg' | translate}}
+                </h2>
+            </mat-card>
+        </div>
+    
+    </div>
+    
     <ng-container *ayamsHasAnyPermissions="['site:add','site:*','*:*']">
         <button mat-fab class="accent add-button" [routerLink]="'/patrimony/sites/add'"
             matTooltip="{{'LIST.BUTTON.add' | translate}}" matTooltipPosition="left" *fuseIfOnDom>
