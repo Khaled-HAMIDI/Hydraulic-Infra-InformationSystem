@@ -3,7 +3,8 @@ export const locale = {
     data: {
         'SHOW': {
             'BUTTON':{
-                'composant':'Afficher les composants'
+                'composant':'Afficher les composants',
+                'print': 'Fiche technique'
             },
             'HEADER': {
                 'title': 'Les informations de l\'ouvrage ',

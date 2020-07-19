@@ -8,6 +8,7 @@ import * as XLSX from 'xlsx';
 import { OuvrageList } from '../../../../model/ouvrage.model';
 import forEach from 'lodash/forEach';
 import map from 'lodash/map';
+import { PrintReportsService } from '@ayams/services/print-reports.service';
 
 const OUVRAGE_API = API + '/ouvrages';
 @Injectable({
@@ -23,7 +24,8 @@ export class OuvrageListService implements Resolve<any> {
   constructor(
     private router: Router,
     private http: HttpClient,
-    private toolsService: ToolsService
+    private toolsService: ToolsService,
+    private printReportsService: PrintReportsService
   ) {
     this.ouvragesByFilter = [];
     this.ouvragesSelected = [];
@@ -47,7 +49,7 @@ export class OuvrageListService implements Resolve<any> {
 
   getTypes(){
     return new Promise((resolve, reject) => {
-      this.http.get(API+"/ouvrage/type")
+      this.http.get(API+"/enum/typeOuvrage")
         .subscribe((response: any) => {
           resolve(response);
         }, reject = (err) => { console.log(err) });
@@ -161,6 +163,11 @@ export class OuvrageListService implements Resolve<any> {
       // this.deleteFromOuvrages(this.ouvrages.indexOf(ouvrage), false);
     }
   }
+
+  printFicheTechnique(code: string, type: string){
+    this.printReportsService.printReport("print/OuvrageFicheTechnique", {code: code, type: type});
+  }
+
   // -----------------------------------------------------------------------------------------------------
   // @ Setter function
   // -----------------------------------------------------------------------------------------------------

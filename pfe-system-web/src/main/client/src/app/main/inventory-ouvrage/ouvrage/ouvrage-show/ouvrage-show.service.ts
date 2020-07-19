@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { API } from 'config/api.config';
 import {  Router, Resolve, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
 import { Observable } from 'rxjs';
+import { PrintReportsService } from '@ayams/services/print-reports.service';
 
 
 const OUVRAGES_API = API + '/ouvrage/';
@@ -15,7 +16,8 @@ export class OuvrageShowService  implements Resolve<any> {
 
 
     constructor(private router: Router,
-                private http: HttpClient) {
+                private http: HttpClient,
+                private printReportsService: PrintReportsService) {
 
     }
     // @ API function
@@ -31,6 +33,10 @@ export class OuvrageShowService  implements Resolve<any> {
         });
     }
 
+      
+    printFicheTechnique(code: string, type: string){
+      this.printReportsService.printReport("print/OuvrageFicheTechnique", {code: code, type: type});
+    }
 
     resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<any> | Promise<any> | any {
         return new Promise((resolve, reject) => {

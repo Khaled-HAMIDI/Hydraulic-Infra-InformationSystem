@@ -129,6 +129,13 @@
                                         <span>{{'LIST.TABLE.action.edit' | translate}}</span>
                                     </button>
                                 </ng-container>
+                                <ng-container *ayamsHasAnyPermissions="['ouvrages:edit','ouvrages:*','*:*']">
+                                    <button mat-menu-item aria-label="print"
+                                        (click)="onPrintFicheTechnique(ouvrage.code,ouvrage.type)">
+                                        <mat-icon>print</mat-icon>
+                                        <span>{{'LIST.TABLE.action.print' | translate}}</span>
+                                    </button>
+                                </ng-container>
                                 <ng-container
                                     *ayamsHasAnyPermissions="['ouvrages:delete','ouvrages:*','*:delete','*:*']">
                                     <button mat-menu-item aria-label="remove" (click)="onDelete(ouvrage)">

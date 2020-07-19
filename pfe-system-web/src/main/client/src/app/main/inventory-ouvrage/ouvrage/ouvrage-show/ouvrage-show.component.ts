@@ -85,6 +85,10 @@ export class OuvrageShowComponent implements OnInit, OnDestroy {
 
     }
 
+    onPrintFicheTechnique(code: string, type: string){
+        this.ouvrageShowService.printFicheTechnique(code, type);
+      }
+
     ngOnDestroy(): void {
         this._unsubscribeAll.next();
         this._unsubscribeAll.complete();

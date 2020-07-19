@@ -46,7 +46,7 @@ export class CurrentInventoryService implements Resolve<any> {
 
     getTypes(){
         return new Promise((resolve, reject) => {
-            this.http.get(API+"/ouvrage/type")
+            this.http.get(API+"/enum/typeOuvrage")
                 .subscribe((response: any) => {
                     resolve(response);
                 }, reject = (err) => { console.log(err) });

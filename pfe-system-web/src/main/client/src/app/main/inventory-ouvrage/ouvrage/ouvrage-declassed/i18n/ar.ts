@@ -22,7 +22,7 @@ export const locale = {
                     'show': 'عرض',
                     'edit': 'تعديل',
                     'remove': 'حذف',
-                    'reset_pswd': 'إعادة تعيين كلمة السر'
+                    'print': 'البطاقة التقنية'
                 }
             },
             'CONFIRM-DIALOG': {
