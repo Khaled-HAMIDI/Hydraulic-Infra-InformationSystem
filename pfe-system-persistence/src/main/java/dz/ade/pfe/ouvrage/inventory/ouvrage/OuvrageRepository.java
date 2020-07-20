@@ -1,5 +1,6 @@
 package dz.ade.pfe.ouvrage.inventory.ouvrage;
 
+import dz.ade.pfe.domain.admin.Center;
 import dz.ade.pfe.domain.ouvrage.Ouvrage;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
@@ -25,19 +26,23 @@ public interface OuvrageRepository extends JpaRepository<Ouvrage, Long> {
     @Query(value = "select count(*) from pfe.ouvrage o join pfe.organisational_structure s on o.structure_id=s.id where o.type like :type and s.code= :code", nativeQuery = true)
     Integer getNext(String type, String code);
 
-    @Query("SELECT distinct o FROM Ouvrage o JOIN  o.structure u where u.code=:code and o.declassed = false")
+    @Query("SELECT distinct o FROM Ouvrage o " +
+            "JOIN  o.structure str " +
+            "where (str.code = :code or str.code in (SELECT c.code FROM Center c JOIN c.unit u where u.code =:code)) and o.declassed = false")
     List<Ouvrage> findByUnitCode(String code);
 
-    @Query("SELECT distinct o FROM Ouvrage o JOIN  o.structure u where u.code=:code and o.declassed = true")
+    @Query("SELECT distinct o FROM Ouvrage o " +
+            "JOIN  o.structure str " +
+            "where (str.code = :code or str.code in (SELECT c.code FROM Center c JOIN c.unit u where u.code =:code)) and o.declassed = true")
     List<Ouvrage> findByUnitCodeDeclassed(String code);
 
     @Query("SELECT ouvrage FROM Ouvrage ouvrage WHERE ouvrage.code IN :ouvrages and ouvrage.declassed = false")
     List<Ouvrage> loadAllOuvrages(@Param("ouvrages") List<String> ouvrages);
 
-    @Query("SELECT distinct o FROM Ouvrage o JOIN FETCH o.readings r   JOIN  o.chains c JOIN  c.chain JOIN  c.ouvrage ov  JOIN  ov.site where o.declassed = false order by o.id,r.date desc")
+    @Query("SELECT distinct o FROM Ouvrage o LEFT JOIN FETCH o.readings r   JOIN  o.chains c JOIN  c.chain JOIN  c.ouvrage ov  JOIN  ov.site where o.declassed = false order by o.id,r.date desc")
     List<Ouvrage> findAllForSynoptic();
 
-    @Query("SELECT distinct o FROM Ouvrage o JOIN FETCH o.readings r   JOIN  o.chains c JOIN  c.chain ch JOIN  c.ouvrage ov  JOIN  ov.site  where ch.code = :code and  o.declassed = false order by o.id,r.date desc ")
+    @Query("SELECT distinct o FROM Ouvrage o LEFT JOIN FETCH o.readings r   JOIN  o.chains c JOIN  c.chain ch JOIN  c.ouvrage ov  JOIN  ov.site  where ch.code = :code and  o.declassed = false order by o.id,r.date desc ")
     List<Ouvrage> findAllForSynopticByCode(String code);
 
     @Query("SELECT distinct o FROM Ouvrage o JOIN FETCH o.readings r where o.declassed = false order by o.id,r.date desc")

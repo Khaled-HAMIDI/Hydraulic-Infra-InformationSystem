@@ -22,7 +22,7 @@ export const locale = {
                     'show': 'Afficher',
                     'edit': 'Modifier',
                     'remove': 'Désaffecter',
-                    'reset_pswd': 'Réinitialiser le mot de passe'
+                    'print': 'Fiche technique'
                 }
             },
             'CONFIRM-DIALOG': {

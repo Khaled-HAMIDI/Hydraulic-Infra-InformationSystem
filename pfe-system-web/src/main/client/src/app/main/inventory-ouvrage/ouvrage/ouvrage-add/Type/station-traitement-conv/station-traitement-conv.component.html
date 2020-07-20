@@ -282,7 +282,7 @@
                                             <mat-label>{{'ADD.PLACE-HOLDER.coordinateX' | translate}}
                                             </mat-label>
                                             <input matInput name="coordinateX" formControlName="coordinateX"
-                                                [(ngModel)]="long" value="{{long}}" (change)="onCoordChange()" required>
+                                                [(ngModel)]="lati" value="{{lati}}" (change)="onCoordChange()" required>
                                             <mat-icon matSuffix class="secondary-text">place</mat-icon>
                                         </mat-form-field>
                                     </div>
@@ -290,8 +290,8 @@
                                         <mat-form-field appearance="outline" fxFlex>
                                             <mat-label>{{'ADD.PLACE-HOLDER.coordinateY' | translate}}
                                             </mat-label>
-                                            <input matInput formControlName="coordinateY" [(ngModel)]="lati"
-                                                value="{{lati}}" (change)="onCoordChange()" required>
+                                            <input matInput formControlName="coordinateY" [(ngModel)]="long"
+                                                value="{{long}}" (change)="onCoordChange()" required>
                                             <mat-icon matSuffix class="secondary-text">place</mat-icon>
                                         </mat-form-field>
                                     </div>

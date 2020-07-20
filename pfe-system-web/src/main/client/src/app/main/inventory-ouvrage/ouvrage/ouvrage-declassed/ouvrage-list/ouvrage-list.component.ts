@@ -126,6 +126,10 @@ export class OuvrageDeclassedListComponent extends Table implements OnInit, OnDe
 
   }
 
+  onPrintFicheTechnique(code: string, type: string){
+    this.ouvrageListService.printFicheTechnique(code, type);
+  }
+  
   // -----------------------------------------------------------------------------------------------------
   // @ Public function
   // -----------------------------------------------------------------------------------------------------

@@ -11,7 +11,7 @@ import java.util.Map;
 
 @Service
 @RequiredArgsConstructor
-public class PrintUserReportService implements PrintFicheUserReportQuery {
+class PrintUserReportService implements PrintFicheUserReportQuery {
     private final static String reportId = "fiche_user.pdf";
 
     private final PrintReportService printReportService;

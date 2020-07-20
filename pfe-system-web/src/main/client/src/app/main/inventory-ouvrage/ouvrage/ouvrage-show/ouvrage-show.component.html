@@ -28,6 +28,11 @@
                 </div>
                 <!-- / APP TITLE -->
 
+                <button mat-raised-button class="mat-white-bg" (click)="onPrintFicheTechnique(ouvrage.code,ouvrage.type)">
+                    <mat-icon>print</mat-icon>
+                    <span> {{'SHOW.BUTTON.print' | translate}}</span>
+                </button>
+
                 <button mat-raised-button class=" mat-white-bg" [routerLink]="'/patrimony/ouvrages/show/'+ouvrage.type+'/composants/'+ouvrage.code">
                     <span>{{'SHOW.BUTTON.composant' | translate}}</span>
                 </button>

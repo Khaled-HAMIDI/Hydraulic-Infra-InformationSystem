@@ -1,6 +1,8 @@
 package dz.ade.pfe.web.printreports;
 
+import dz.ade.pfe.port.in.ouvrage.printouvragefichetechniquereport.PrintOuvrageFicheTechniqueReportQuery;
 import dz.ade.pfe.port.in.user.printficheuserreport.PrintFicheUserReportQuery;
+import dz.ade.pfe.service.ouvrage.printouvragefichetechniquereport.PrintOuvrageFicheTechniqueDto;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
@@ -19,6 +21,7 @@ public class PrintReportsController {
     private final static String MEDIA_TYPE = "application/pdf";
 
     private final PrintFicheUserReportQuery printFicheUserReportQuery;
+    private final PrintOuvrageFicheTechniqueReportQuery printOuvrageFicheTechniqueReportQuery;
 
     @PostMapping(value = "/ficheUser/{employeeCode}")
     @ApiOperation(value = "Generate fiche user for request")
@@ -34,6 +37,23 @@ public class PrintReportsController {
         return ResponseEntity.ok()
                 .contentType(org.springframework.http.MediaType.parseMediaType(MEDIA_TYPE))
                 .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"ficheUser.pdf\"")
+                .body(resource);
+    }
+
+    @PostMapping(value = "/OuvrageFicheTechnique")
+    @ApiOperation(value = "Generate fiche technique for ouvrage")
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "Successfully generated fiche technique"),
+            @ApiResponse(code = 401, message = "You are not authorized to view the resource"),
+            @ApiResponse(code = 403, message = "Accessing the resource you were trying to reach is forbidden"),
+            @ApiResponse(code = 404, message = "The resource you were trying to reach is not found")
+    })
+    public ResponseEntity<Resource> generateOuvrageFicheTechniqueReport(@RequestBody PrintOuvrageFicheTechniqueDto printOuvrageFicheTechniqueDto) {
+        Resource resource = printOuvrageFicheTechniqueReportQuery.execute(printOuvrageFicheTechniqueDto);
+
+        return ResponseEntity.ok()
+                .contentType(org.springframework.http.MediaType.parseMediaType(MEDIA_TYPE))
+                .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"ficheTechnique.pdf\"")
                 .body(resource);
     }
 }

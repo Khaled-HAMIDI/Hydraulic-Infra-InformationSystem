@@ -126,8 +126,10 @@ export class OuvrageListComponent extends Table implements OnInit, OnDestroy {
         this.confirmDialogRef = null;
       });
     }
+  }
 
-
+  onPrintFicheTechnique(code: string, type: string){
+    this.ouvrageListService.printFicheTechnique(code, type);
   }
 
   // -----------------------------------------------------------------------------------------------------

@@ -2,6 +2,10 @@ export const locale = {
     lang: 'ar',
     data: {
         'SHOW': {
+            'BUTTON':{
+                'composant':'إظهار المكونات',
+                'print': 'البطاقة التقنية'
+            },
             'HEADER': {
                 'title-add': 'منشأة',
             },
