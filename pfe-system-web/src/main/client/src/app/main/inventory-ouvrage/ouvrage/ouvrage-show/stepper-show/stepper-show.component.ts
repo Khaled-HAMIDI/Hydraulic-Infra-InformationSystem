@@ -35,7 +35,7 @@ export class StepperShowComponent implements OnInit, OnDestroy {
         private steppersService: StepperShowServie,
         private _changeDetectorRef: ChangeDetectorRef,
         private _fuseSidebarService: FuseSidebarService,
-        private route: ActivatedRoute,
+        public route: ActivatedRoute,
         private router: Router,
         private componentFactoryResolver: ComponentFactoryResolver,
         private composantGetService :ComposantGetService

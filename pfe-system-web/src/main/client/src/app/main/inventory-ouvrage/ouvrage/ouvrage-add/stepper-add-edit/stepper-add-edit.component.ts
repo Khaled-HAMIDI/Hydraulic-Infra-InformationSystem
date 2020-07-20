@@ -39,7 +39,7 @@ export class StepperAddEditComponent implements OnInit, OnDestroy {
         private steppersService: StepperAddEditService,
         private _changeDetectorRef: ChangeDetectorRef,
         private _fuseSidebarService: FuseSidebarService,
-        private route: ActivatedRoute,
+        public route: ActivatedRoute,
         private router: Router,
         private componentFactoryResolver: ComponentFactoryResolver,
         private composantGetService :ComposantGetService

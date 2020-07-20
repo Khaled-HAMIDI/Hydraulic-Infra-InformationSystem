@@ -8,11 +8,11 @@ import { OuvrageDeclassedListService } from '../ouvrage-list/ouvrage-list.servic
 import { takeUntil } from '../../../../../../../node_modules/rxjs/operators';
 import { ToolsService } from '@ayams/services/tools.service';
 @Component({
-    selector   : 'selected-bar',
+    selector   : 'ouvrages-declasse-selected-bar',
     templateUrl: './selected-bar.component.html',
     styleUrls  : ['./selected-bar.component.scss']
 })
-export class OuvragesSelectedBarComponent implements OnInit, OnDestroy
+export class OuvragesDeclassedSelectedBarComponent implements OnInit, OnDestroy
 {
     selectedOuvragesLength: number;
 
