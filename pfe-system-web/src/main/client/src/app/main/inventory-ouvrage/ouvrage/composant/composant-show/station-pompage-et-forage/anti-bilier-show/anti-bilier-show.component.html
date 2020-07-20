@@ -36,6 +36,14 @@
                         <span *ngIf="!antiBelier.compresseur">{{ 'FIELD.compresseurInactive' | translate }}</span>
                     </p>
                 </div>
+
+                <div>
+                    <p class="myLabel">{{'FIELD.cost' | translate}}</p>
+                    <p class="myp">
+                        <mat-icon matPrefix class="mr-12 s-20" color="accent">keyboard</mat-icon>
+                        <span>{{antiBelier.cost}}</span>
+                    </p>
+                </div>
         </div>
 
         <div class="mr-sm-12 ml-sm-12" fxFlex>

@@ -16,23 +16,22 @@ import java.time.LocalDate;
 public class OuvrageShowDto {
 
     private String id ;
+
     private String code;
+
+    private String commune;
 
     private String name;
 
-    @Enumerated(EnumType.STRING)
-    private OuvrageType type;
+    private String type;
 
     private boolean enabled;
 
-    @Enumerated(EnumType.STRING)
-    private OuvrageFormType form;
+    private String form;
 
-    @Enumerated(EnumType.STRING)
-    private State state;
+    private String state;
 
-    @Enumerated(EnumType.STRING)
-    private ProcessType process;
+    private String process;
 
     private Integer nbCompartment;
 
@@ -62,8 +61,7 @@ public class OuvrageShowDto {
 
     private String constructionType;
 
-    @Enumerated(EnumType.STRING)
-    private SourceType waterSource;
+    private String waterSource;
 
     private LocalDate commissioningDate;
 
@@ -107,14 +105,11 @@ public class OuvrageShowDto {
 
     private Boolean electricAlimentation;
 
-    @Enumerated(EnumType.STRING)
-    private TankType tankType;
+    private String tankType;
 
-    @Enumerated(EnumType.STRING)
-    private TankRole tankRole;
+    private String tankRole;
 
-    @Enumerated(EnumType.STRING)
-    private TraitementStationType treatmentStationType;
+    private String treatmentStationType;
 
     public boolean getEnabled() {
         return this.enabled;

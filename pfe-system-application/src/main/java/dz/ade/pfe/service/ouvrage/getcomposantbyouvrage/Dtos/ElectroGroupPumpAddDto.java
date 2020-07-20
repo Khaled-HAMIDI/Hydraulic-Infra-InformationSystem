@@ -16,12 +16,13 @@ public class ElectroGroupPumpAddDto {
 
     private String typeComposant;
 
+    private Double cost;
+
     private String marque;
 
     private double hmt;
 
-    @Enumerated(EnumType.STRING)
-    private State state;
+    private String state;
 
     private LocalDate operatingDate;
 

@@ -95,7 +95,6 @@ export class SecurityComponent implements OnInit{
     onSave(): void {
 
         const security = this.securityForm.getRawValue();
-
         this.composantService.saveSecurity(security,this.route.snapshot.params['code'])
             .then((response) => {
                     this.validateEvent.emit("to-next-step");

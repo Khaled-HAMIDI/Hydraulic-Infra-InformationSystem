@@ -67,22 +67,22 @@ export class StepperAddEditComponent implements OnInit, OnDestroy {
                 this.action = response.action;
                 switch (this.route.snapshot.params['type']) {
 
-                    case "StationTraitementConventionelle" :
+                    case "Station de Traitement Conventionelle" :
                         this.composants = this.steppersService.stationTraitementConventionelleComposants;
                         break;
-                    case "StationTraitementNonConventionelle":
+                    case "Station de Traitement Non Conventionelle":
                         this.composants = this.steppersService.stationTraitementNonConventionelleComposants;
                         break;
                     case "Reservoir":
                         this.composants = this.steppersService.reservoirComposants;
                         break;
-                    case "Forage":
+                    case "Forage, Puis, Source":
                         this.composants = this.steppersService.forageComposants;
                         break;
-                    case "StationPompage":
+                    case "Station de Pompage":
                         this.composants = this.steppersService.stationPompageComposants;
                         break;
-                    case "BriseCharge":
+                    case "Brise Charge":
                         this.composants = this.steppersService.briseChargeComposants;
                         break;
                 }

@@ -15,6 +15,8 @@ public class AntiRamAddDto {
 
     private String typeComposant;
 
+    private Double cost;
+
     private String marque;
 
     private double capacity;

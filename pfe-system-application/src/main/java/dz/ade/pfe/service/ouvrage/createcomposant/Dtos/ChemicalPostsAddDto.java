@@ -18,6 +18,8 @@ public class ChemicalPostsAddDto {
 
     private String typeComposant;
 
+    private Double cost;
+
     private String postType;
 
     private String type;

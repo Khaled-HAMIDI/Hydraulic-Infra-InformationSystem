@@ -15,6 +15,8 @@ public class ElectricBuildingAddDto {
 
     private String typeComposant;
 
+    private Double cost;
+
     @Enumerated(EnumType.STRING)
     private State state;
 

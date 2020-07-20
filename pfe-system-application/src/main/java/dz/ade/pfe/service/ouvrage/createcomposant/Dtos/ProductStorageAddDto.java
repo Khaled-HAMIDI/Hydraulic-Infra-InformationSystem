@@ -15,6 +15,8 @@ public class ProductStorageAddDto {
 
     private String typeComposant;
 
+    private Double cost;
+
     private String type;
 
     private String form;
@@ -25,7 +27,6 @@ public class ProductStorageAddDto {
 
     private double number;
 
-    @Enumerated(EnumType.STRING)
-    private State state;
+    private String state;
 
 }

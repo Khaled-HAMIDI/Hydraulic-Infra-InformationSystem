@@ -15,6 +15,8 @@ public class ChlorationPostAddDto {
 
     private String typeComposant;
 
+    private Double cost;
+
     private boolean abri;
 
     private String type;
@@ -37,6 +39,5 @@ public class ChlorationPostAddDto {
 
     private boolean fonctionnementPompe;
 
-    @Enumerated(EnumType.STRING)
-    private State statePompe;
+    private String statePompe;
 }

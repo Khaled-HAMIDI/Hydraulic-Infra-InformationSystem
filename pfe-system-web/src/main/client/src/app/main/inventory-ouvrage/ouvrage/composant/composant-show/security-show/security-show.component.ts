@@ -37,6 +37,7 @@ export class SecurityShowComponent implements OnInit {
             (response) => {
                 if (response.data.securityData) this.security = new Security(response.data.securityData);
                 else this.exist =false;
+                console.log(this.security);
             },
             (error) => {
                 console.log(error);

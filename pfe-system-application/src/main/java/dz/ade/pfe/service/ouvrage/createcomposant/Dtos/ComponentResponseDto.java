@@ -14,4 +14,6 @@ import javax.persistence.Enumerated;
 public class ComponentResponseDto {
 
     private String typeComposant;
+
+    private Double cost;
 }

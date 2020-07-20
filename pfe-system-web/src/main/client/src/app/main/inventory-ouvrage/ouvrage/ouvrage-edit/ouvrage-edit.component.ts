@@ -23,6 +23,8 @@ export class OuvrageEditComponent implements OnInit, OnDestroy {
     ouvrageEdit : OuvrageEdit;
     ouvrageForm: FormGroup;
     ouvrageCode: string;
+    states: any[];
+
     private _unsubscribeAll: Subject<any>;
     filesToBeAttached: any[];
     isFilesValid: boolean;
@@ -83,25 +85,25 @@ export class OuvrageEditComponent implements OnInit, OnDestroy {
     ngOnInit(): void {
         this.route.data.pipe(takeUntil(this._unsubscribeAll)).subscribe(
             (response) => {
-                console.log(response.data[0]);
+                this.states = response.data[1];
                 this.ouvrage= new Ouvrage(response.data[0]);
                 switch (this.ouvrage.type) {
-                    case 'StationTraitementConventionelle':
+                    case 'Station de Traitement Conventionelle':
                         this.ouvrageForm = this.createStationTCForm();
                         break;
                     case 'Reservoir' :
                         this.ouvrageForm = this.createReservoirForm();
                         break;
-                    case 'Forage' :
+                    case 'Forage, Puis, Source' :
                         this.ouvrageForm =  this.createForageForm();
                         break;
-                    case 'StationPompage' :
+                    case 'Station de Pompage' :
                         this.ouvrageForm = this.createStationPompageForm();
                         break;
-                    case 'StationTraitementNonConventionelle' :
+                    case 'Station de Traitement Non Conventionelle' :
                         this.ouvrageForm = this.createStationTCForm();
                         break;
-                    case 'BriseCharge' :
+                    case 'Brise Charge' :
                         this.ouvrageForm = this.createBriseChargeForm();
                         break;
                 }

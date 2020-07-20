@@ -18,6 +18,6 @@ public interface CreateOuvrageMapper {
     })
     Ouvrage ouvrageAddToOuvrage(OuvrageAddDto ouvrageAddDto);
 
-    OuvrageShowDto ouvrageToOuvrageDto(Ouvrage ouvrage);
+    OuvrageCreatedDto ouvrageToOuvrageCreatedDto(Ouvrage ouvrage);
 
 }

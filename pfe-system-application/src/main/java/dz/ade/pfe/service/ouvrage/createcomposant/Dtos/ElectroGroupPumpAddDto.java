@@ -17,6 +17,8 @@ public class ElectroGroupPumpAddDto {
 
     private String typeComposant;
 
+    private Double cost;
+
     private String marque;
 
     private double hmt;

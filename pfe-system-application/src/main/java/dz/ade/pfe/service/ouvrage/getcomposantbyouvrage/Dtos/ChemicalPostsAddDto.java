@@ -17,6 +17,8 @@ public class ChemicalPostsAddDto {
 
     private String typeComposant;
 
+    private Double cost;
+
     private String postType;
 
     private String type;
@@ -31,8 +33,7 @@ public class ChemicalPostsAddDto {
 
     private String pointInjectPompe;
 
-    @Enumerated(EnumType.STRING)
-    private PumpMode dosagePompe;
+    private String dosagePompe;
 
     private String typePompe;
 
@@ -46,9 +47,7 @@ public class ChemicalPostsAddDto {
 
     private boolean fonctionnementPompe;
 
-    @Enumerated(EnumType.STRING)
-    private PumpMode modePompe;
+    private String modePompe;
 
-    @Enumerated(EnumType.STRING)
-    private State statePompe;
+    private String statePompe;
 }

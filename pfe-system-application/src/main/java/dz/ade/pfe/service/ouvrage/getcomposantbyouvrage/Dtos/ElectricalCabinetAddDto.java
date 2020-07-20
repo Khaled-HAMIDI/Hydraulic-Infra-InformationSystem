@@ -15,14 +15,15 @@ public class ElectricalCabinetAddDto {
 
     private String typeComposant;
 
+    private Double cost;
+
     private double puissance;
 
     private double number;
 
     private String observation;
 
-    @Enumerated(EnumType.STRING)
-    private State state;
+    private String state;
 
     private String marque;
 }

@@ -15,8 +15,9 @@ public class WaterIntakeAddDto {
 
     private String typeComposant;
 
-    @Enumerated(EnumType.STRING)
-    private WaterIntakeType type;
+    private Double cost;
+
+    private String type;
 
     private String dimension;
 

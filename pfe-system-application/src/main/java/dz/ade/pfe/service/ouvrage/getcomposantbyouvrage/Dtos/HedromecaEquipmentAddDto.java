@@ -15,6 +15,8 @@ public class HedromecaEquipmentAddDto {
 
     private String typeComposant;
 
+    private Double cost;
+
     private String equipementType;
 
     private String type;
@@ -27,8 +29,7 @@ public class HedromecaEquipmentAddDto {
 
     private String materiaux;
 
-    @Enumerated(EnumType.STRING)
-    private State state;
+    private String state;
 
     private String lieuImplantation;
 }

@@ -16,10 +16,11 @@ public class SecurityAddDto {
 
     private String typeComposant;
 
+    private Double cost;
+
     private boolean closing;
 
-    @Enumerated(EnumType.STRING)
-    private SecurityNature nature;
+    private String nature;
 
     private double guerites;
 
@@ -29,6 +30,5 @@ public class SecurityAddDto {
 
     private boolean telsurveillance;
 
-    @Enumerated(EnumType.STRING)
-    private State state;
+    private String state;
 }

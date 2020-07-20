@@ -33,7 +33,7 @@ export const locale = {
                 'pointInjectPompe':'Point d\'injection',
                 'enabledActivePompe': 'Pompes en marche',
                 'enabledInactivePompe': 'Pompes en arret',
-
+                'cost':'Cout',
                 'marque':'Marque',
                 'up':'UP/US ',
                 'is':'IP/IS ',

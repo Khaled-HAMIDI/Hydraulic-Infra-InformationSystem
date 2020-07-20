@@ -23,7 +23,7 @@ public interface GetComposantByOuvrageMapper {
            @Mapping(source = "nbAgents",target = "agents"),
            @Mapping(source = "weaponry",target = "armement"),
            @Mapping(source = "remoteMonitoring",target = "telsurveillance"),
-           @Mapping(source = "access",target = "state")
+           @Mapping(source = "access.value",target = "state")
    })
    SecurityAddDto securityToSecurityAdd(Security security);
 
@@ -43,14 +43,14 @@ public interface GetComposantByOuvrageMapper {
            @Mapping(source = "componentType", target = "typeComposant"),
            @Mapping(source = "implantaionPlace",target = "lieuImplantation"),
            @Mapping(source = "injectionPoint",target = "pointInjectPompe"),
-           @Mapping(source = "injection",target = "dosagePompe"),
+           @Mapping(source = "injection.value",target = "dosagePompe"),
            @Mapping(source = "postNumber",target = "number"),
            @Mapping(source = "debit",target = "debitPompe"),
            @Mapping(source = "hmt",target = "hmtPompe"),
            @Mapping(source = "power",target = "puissancePompe"),
            @Mapping(source = "pumpNumber",target = "nombrePompe"),
            @Mapping(source = "enabled",target = "fonctionnementPompe"),
-           @Mapping(source = "state",target = "statePompe"),
+           @Mapping(source = "state.value",target = "statePompe"),
            @Mapping(source = "pumpType",target = "typePompe"),
            @Mapping(source = "mode",target = "modePompe")
    })
@@ -69,7 +69,7 @@ public interface GetComposantByOuvrageMapper {
            @Mapping(source = "power",target = "puissancePompe"),
            @Mapping(source = "pumpNumber",target = "nombrePompe"),
            @Mapping(source = "enabled",target = "fonctionnementPompe"),
-           @Mapping(source = "state",target = "statePompe")
+           @Mapping(source = "state.value",target = "statePompe")
    })
    ChlorationPostAddDto chlorationPostToChlorationPostAdd(ChlorationPost chlorationPost);
 
@@ -77,18 +77,22 @@ public interface GetComposantByOuvrageMapper {
    @Mappings({
            @Mapping(source = "componentType", target = "typeComposant"),
            @Mapping(source = "brand",target = "marque"),
+           @Mapping(source = "state.value",target = "state"),
            @Mapping(source = "power",target = "puissance")
    })
    ElectricalCabinetAddDto electricalCabinetToElectricalCabinetAdd(ElectricalCabinet electricalCabinet);
 
-
-   @Mapping(source = "componentType", target = "typeComposant")
+   @Mappings({
+      @Mapping(source = "componentType", target = "typeComposant"),
+      @Mapping(source = "state.value",target = "state"),
+   })
    ElectricBuildingAddDto electricBuildingToElectricBuildingAdd(ElectricBuilding electricBuilding);
 
 
    @Mappings({
            @Mapping(source = "componentType", target = "typeComposant"),
            @Mapping(source = "brand",target = "marque"),
+           @Mapping(source = "state.value",target = "state"),
            @Mapping(source = "power",target = "puissance"),
            @Mapping(source = "mode",target = "modeDemarrage"),
            @Mapping(source = "date",target = "operatingDate"),
@@ -103,6 +107,7 @@ public interface GetComposantByOuvrageMapper {
    @Mappings({
            @Mapping(source = "componentType", target = "typeComposant"),
            @Mapping(source = "brand",target = "marque"),
+           @Mapping(source = "state.value",target = "state"),
            @Mapping(source = "date",target = "operatingDate"),
            @Mapping(source = "functionningNumber",target = "nbService"),
            @Mapping(source = "secoursNumber",target = "nbSecours")
@@ -121,13 +126,17 @@ public interface GetComposantByOuvrageMapper {
    @Mappings({
            @Mapping(source = "componentType", target = "typeComposant"),
            @Mapping(source = "observation",target = "lieuImplantation"),
+           @Mapping(source = "state.value",target = "state"),
            @Mapping(source = "materials",target = "materiaux")
    })
    HedromecaEquipmentAddDto hedromecaEquipmentToHedromecaEquipmentAdd(HedromecaEquipment hedromecaEquipment);
 
    List<HedromecaEquipmentAddDto> hedromecaEquipmentToHedromecaEquipmentAdd(List<HedromecaEquipment> hedromecaEquipment);
 
-   @Mapping(source = "componentType", target = "typeComposant")
+   @Mappings({
+      @Mapping(source = "componentType", target = "typeComposant"),
+      @Mapping(source = "state.value",target = "state"),
+   })
    LocalBlockAddDto localBlockToLocalBlockAdd(LocalBlock localBlock);
 
    @Mappings({
@@ -146,7 +155,10 @@ public interface GetComposantByOuvrageMapper {
    })
    PhpStationAddDto phpStationToPhpStationAdd(PhpStation phpStation);
 
-   @Mapping(source = "componentType", target = "typeComposant")
+   @Mappings({
+           @Mapping(source = "componentType", target = "typeComposant"),
+           @Mapping(source = "state.value",target = "state"),
+   })
    ProductStorageAddDto productStorageToProductStorageAdd(ProductStorage productStorage);
 
    @Mappings({
@@ -173,8 +185,11 @@ public interface GetComposantByOuvrageMapper {
            @Mapping(source = "tcomptage",target = "typeComptage")
    })
    TransformationStationAddDto transformationStationToTransformationStationAdd(TransformationStation transformationStation);
-
-   @Mapping(source = "componentType", target = "typeComposant")
+   
+   @Mappings({
+      @Mapping(source = "componentType", target = "typeComposant"),
+      @Mapping(source = "type.value", target = "type")
+   })
    WaterIntakeAddDto waterIntakeToWaterIntakeAdd(WaterIntake waterIntake);
 
 }

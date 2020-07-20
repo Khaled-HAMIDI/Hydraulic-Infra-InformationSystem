@@ -17,6 +17,7 @@ export const locale = {
                 'nature': 'Nature',
                 'armementActive':'Armement existant',
                 'armementInactive': 'Il n\' y a pas d\' armement',
+                'cost':'Cout',
 
                 'SecurityInexistante':'Cet ouvrage ne contient pas de sécurité',
                 'closing':'Cloture',

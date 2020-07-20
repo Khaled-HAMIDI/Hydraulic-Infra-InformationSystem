@@ -15,6 +15,8 @@ public class ElectricalCabinetAddDto {
 
     private String typeComposant;
 
+    private Double cost;
+
     private double puissance;
 
     private double number;

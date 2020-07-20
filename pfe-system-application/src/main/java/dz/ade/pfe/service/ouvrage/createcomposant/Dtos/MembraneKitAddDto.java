@@ -16,6 +16,8 @@ public class MembraneKitAddDto {
 
     private String typeComposant;
 
+    private Double cost;
+
     private String caracteristique;
 
     private Double nombre;

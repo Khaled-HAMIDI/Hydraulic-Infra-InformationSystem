@@ -18,12 +18,13 @@ public class ElectroGroupMotorAddDto {
 
     private String typeComposant;
 
+    private Double cost;
+
     private String marque;
 
     private double puissance;
 
-    @Enumerated(EnumType.STRING)
-    private State state;
+    private String state;
 
     @Enumerated(EnumType.STRING)
     private GroupeStartMode modeDemarrage;

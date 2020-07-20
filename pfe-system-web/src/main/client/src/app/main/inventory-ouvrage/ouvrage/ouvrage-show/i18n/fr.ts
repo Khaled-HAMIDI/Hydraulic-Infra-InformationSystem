@@ -15,6 +15,7 @@ export const locale = {
                 'enabled': 'Fonctionnement',
                 'form': 'Forme de l\'ouvrage',
                 'state': 'Etat',
+                'commune':'Commune',
                 'process': 'Processus ??',
                 'nbCompartment': 'Nombre de compartiments',
                 'raftRating': 'Cote du radier',

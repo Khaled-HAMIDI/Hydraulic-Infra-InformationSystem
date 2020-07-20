@@ -33,6 +33,15 @@ export class OuvrageEditService implements Resolve<any>{
         });
     }
 
+    getStates(): Promise<any> {
+        return new Promise((resolve, reject) => {
+            this.http.get(API + '/enum/state')
+                .subscribe((response: any) => {
+                    resolve(response);
+                }, reject);
+        });
+    }
+
 
 
 
@@ -79,7 +88,8 @@ export class OuvrageEditService implements Resolve<any>{
         return new Promise((resolve, reject) => {
     
           Promise.all([
-            this.get(route.params.code)
+              this.get(route.params.code),
+              this.getStates()
           ]).then(
             (data) => {
               resolve(data);

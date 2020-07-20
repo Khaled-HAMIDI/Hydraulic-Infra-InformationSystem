@@ -15,6 +15,8 @@ public class HedromecaEquipmentAddDto {
 
     private String typeComposant;
 
+    private Double cost;
+
     private String equipementType;
 
     private String type;

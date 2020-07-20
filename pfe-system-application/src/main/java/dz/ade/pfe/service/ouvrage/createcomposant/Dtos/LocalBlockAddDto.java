@@ -16,6 +16,8 @@ public class LocalBlockAddDto {
 
     private String typeComposant;
 
+    private Double cost;
+
     private double area;
 
     @Enumerated(EnumType.STRING)

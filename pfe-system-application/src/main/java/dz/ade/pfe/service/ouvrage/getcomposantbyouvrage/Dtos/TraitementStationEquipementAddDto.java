@@ -15,6 +15,8 @@ public class TraitementStationEquipementAddDto {
 
     private String typeComposant;
 
+    private Double cost;
+
     private double capacity;
 
     private String typeEquipement;

@@ -15,6 +15,8 @@ public class ChlorationPostAddDto {
 
     private String typeComposant;
 
+    private Double cost;
+
     private boolean abri;
 
     private String type;

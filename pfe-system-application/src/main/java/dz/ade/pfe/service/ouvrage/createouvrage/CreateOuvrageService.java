@@ -27,7 +27,7 @@ public class CreateOuvrageService implements CreateOuvrageCommand {
     private final CreateOuvrageMapper createOuvrageMapper;
 
     @Override
-    public OuvrageShowDto createOuvrage(OuvrageAddDto ouvrageAddDto, String unitCode) {
+    public OuvrageCreatedDto createOuvrage(OuvrageAddDto ouvrageAddDto, String unitCode) {
 
         Ouvrage ouvrage =createOuvrageMapper.ouvrageAddToOuvrage(ouvrageAddDto);
 
@@ -49,7 +49,7 @@ public class CreateOuvrageService implements CreateOuvrageCommand {
         }
         ouvrage.setSite(site.get());
         ouvrage.setDeclassed(false);
-        return createOuvrageMapper.ouvrageToOuvrageDto(saveOuvrage.saveOuvrage(ouvrage));
+        return createOuvrageMapper.ouvrageToOuvrageCreatedDto(saveOuvrage.saveOuvrage(ouvrage));
     }
 
 }

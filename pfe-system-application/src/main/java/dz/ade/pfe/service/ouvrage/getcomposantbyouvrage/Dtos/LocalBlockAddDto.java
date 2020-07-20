@@ -16,11 +16,12 @@ public class LocalBlockAddDto {
 
     private String typeComposant;
 
+    private Double cost;
+
     private double area;
 
     @Enumerated(EnumType.STRING)
     private LocalBlocNature nature;
 
-    @Enumerated(EnumType.STRING)
-    private State state;
+    private String state;
 }

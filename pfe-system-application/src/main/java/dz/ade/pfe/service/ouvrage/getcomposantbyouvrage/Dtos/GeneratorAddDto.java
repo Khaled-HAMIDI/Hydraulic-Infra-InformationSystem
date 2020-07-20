@@ -16,6 +16,8 @@ public class GeneratorAddDto {
 
     private String typeComposant;
 
+    private Double cost;
+
     private double cuve;
 
     private String nature;

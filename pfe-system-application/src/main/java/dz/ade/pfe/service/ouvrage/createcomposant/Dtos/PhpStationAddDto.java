@@ -15,6 +15,8 @@ public class PhpStationAddDto {
 
     private String typeComposant;
 
+    private Double cost;
+
     private double debit;
 
     private double hmt;
