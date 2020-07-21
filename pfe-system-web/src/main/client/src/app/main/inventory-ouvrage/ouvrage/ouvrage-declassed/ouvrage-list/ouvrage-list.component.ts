@@ -112,20 +112,6 @@ export class OuvrageDeclassedListComponent extends Table implements OnInit, OnDe
     this.ouvrageListService.selectAll();
   }
 
-  onDelete(ouvrage): void {
-    this.confirmDialogRef = this.matDialog.open(FuseConfirmDialogComponent);
-
-    this.confirmDialogRef.componentInstance.confirmMessage = this.toolsService.getTranslation('LIST.CONFIRM-DIALOG.delete');
-    this.confirmDialogRef.afterClosed().pipe(takeUntil(this._unsubscribeAll)).subscribe(result => {
-      if (result) {
-        this.ouvrageListService.deleteOuvrage(ouvrage);
-
-      }
-      this.confirmDialogRef = null;
-    });
-
-  }
-
   onPrintFicheTechnique(code: string, type: string){
     this.ouvrageListService.printFicheTechnique(code, type);
   }
