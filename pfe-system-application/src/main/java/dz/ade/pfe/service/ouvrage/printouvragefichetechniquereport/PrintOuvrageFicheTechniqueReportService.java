@@ -39,7 +39,7 @@ class PrintOuvrageFicheTechniqueReportService implements PrintOuvrageFicheTechni
             case BriseCharge:
                 return "fiche_brise_charge.pdf";
             case Forage:
-                return "fiche_forage.pdf";
+                return "fiche_forage_puits.pdf";
             case Reservoir:
                 return "fiche_reservoir.pdf";
             case StationPompage:
