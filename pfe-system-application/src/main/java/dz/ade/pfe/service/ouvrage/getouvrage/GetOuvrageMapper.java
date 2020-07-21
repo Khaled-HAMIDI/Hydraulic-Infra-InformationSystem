@@ -11,8 +11,7 @@ public interface GetOuvrageMapper {
 
     @Mappings({
             @Mapping(target = "commune", source = "commune.designation"),
-            @Mapping(target = "type", source = "type.value"),
-            @Mapping(target = "form", source = "form.value"),
+            @Mapping(target = "typeViewValue", source = "type.value"),
             @Mapping(target = "state", source = "state.value"),
             @Mapping(target = "process", source = "process.value"),
             @Mapping(target = "waterSource", source = "waterSource.value"),

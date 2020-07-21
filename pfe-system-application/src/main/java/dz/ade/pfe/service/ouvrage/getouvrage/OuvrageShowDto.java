@@ -25,6 +25,8 @@ public class OuvrageShowDto {
 
     private String type;
 
+    private String typeViewValue;
+
     private boolean enabled;
 
     private String form;

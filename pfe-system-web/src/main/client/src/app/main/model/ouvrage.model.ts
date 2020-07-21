@@ -3,6 +3,7 @@ export class Ouvrage {
     code: string;
     name: string;
     type: string;
+    typeViewValue: string;
     site: string;
     center:string
     enabled: boolean;
@@ -56,6 +57,7 @@ export class Ouvrage {
         this.code = ouvrage.code || '';
         this.name = ouvrage.name || '';
         this.type = ouvrage.type || '';
+        this.typeViewValue = ouvrage.typeViewValue || '';
         this.enabled = ouvrage.enabled || false;
         this.form = ouvrage.form ||  '';
         this.state = ouvrage.state ||  '';
