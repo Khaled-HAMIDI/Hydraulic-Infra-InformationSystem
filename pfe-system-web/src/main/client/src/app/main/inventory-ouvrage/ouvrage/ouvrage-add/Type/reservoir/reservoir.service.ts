@@ -56,7 +56,7 @@ export class ReservoirService implements Resolve<any>{
     }
     geSequelNumber(code): Promise<any> {
         return new Promise((resolve, reject) => {
-            this.http.get(API + '/next/Reservoir/'+code)
+            this.http.get(API + '/next/RE/'+code)
                 .subscribe((response: any) => {
                     resolve(response);
                 }, reject);

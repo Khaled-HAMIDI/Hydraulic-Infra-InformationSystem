@@ -208,7 +208,7 @@ export class StationTraitementConvComponent implements OnInit, OnDestroy {
 
         this.ouvrageAdd.code = ouvrage.code;
         this.ouvrageAdd.name = ouvrage.name;
-        this.ouvrageAdd.type = 'StationTraitementConventionelle';
+        this.ouvrageAdd.type = 'SC';
         this.ouvrageAdd.enabled = ouvrage.enabled;
         this.ouvrageAdd.state = ouvrage.state;
         this.ouvrageAdd.site = this.ouvrage.site;

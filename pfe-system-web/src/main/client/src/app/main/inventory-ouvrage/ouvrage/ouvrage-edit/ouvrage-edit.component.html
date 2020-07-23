@@ -62,7 +62,7 @@
                                     </mat-form-field>
 
                                     <mat-form-field appearance="outline" class="w-100-p"
-                                        *ngIf="ouvrage.type == 'StationPompage'">
+                                        *ngIf="ouvrage.type == 'SP'">
                                         <mat-label>{{'EDIT.PLACE-HOLDER.currentCapacity' | translate}}</mat-label>
                                         <input matInput name="currentCapacity" formControlName="currentCapacity"
                                             required>
@@ -70,7 +70,7 @@
                                     </mat-form-field>
 
                                     <mat-form-field appearance="outline" class="w-100-p"
-                                        *ngIf="ouvrage.type == 'StationPompage' || ouvrage.type =='Forage'">
+                                        *ngIf="ouvrage.type == 'SP' || ouvrage.type =='FO'">
                                         <mat-label>{{'EDIT.PLACE-HOLDER.power' | translate}}</mat-label>
                                         <input matInput name="power" formControlName="power" required>
                                         <span matSuffix>Kw</span>
@@ -79,7 +79,7 @@
                                     <div>
                                         <mat-slide-toggle matInput name="abri" formControlName="abri" 
                                             required [checked]="ouvrage.abri" (change)="toggleAbri()"
-                                            *ngIf="ouvrage.type == 'Forage'">
+                                            *ngIf="ouvrage.type == 'FO'">
                                             <span *ngIf="ouvrage.abri">
                                                 {{ 'EDIT.PLACE-HOLDER.abriActive' | translate }}
                                             </span>
@@ -88,7 +88,7 @@
                                             </span>
                                         </mat-slide-toggle>
                                     </div>
-                                    <br *ngIf="ouvrage.type == 'Forage'" />
+                                    <br *ngIf="ouvrage.type == 'FO'" />
 
                                     <div>
                                         <mat-slide-toggle matInput name="enabled" formControlName="enabled"
@@ -114,7 +114,7 @@
                                             formControlName="electricAlimentation"  required
                                             [checked]="ouvrage.electricAlimentation"
                                             (change)="toggleElectricAlimentation()"
-                                            *ngIf="ouvrage.type == 'Reservoir' || ouvrage.type =='BriseCharge'">
+                                            *ngIf="ouvrage.type == 'RE' || ouvrage.type =='BC'">
                                             <span *ngIf="ouvrage.electricAlimentation">
                                                 {{ 'EDIT.PLACE-HOLDER.electricAlimentationActive' | translate }}
                                             </span>
@@ -123,10 +123,10 @@
                                             </span>
                                         </mat-slide-toggle>
                                     </div>
-                                    <br *ngIf="ouvrage.type == 'Reservoir' || ouvrage.type =='BriseCharge'" />
+                                    <br *ngIf="ouvrage.type == 'RE' || ouvrage.type =='BC'" />
 
                                     <mat-form-field appearance="outline" class="w-100-p"
-                                        *ngIf="ouvrage.type == 'BriseCharge'">
+                                        *ngIf="ouvrage.type == 'BC'">
                                         <mat-label>{{'EDIT.PLACE-HOLDER.chargesAmontEtAval' | translate}}</mat-label>
                                         <input matInput name="chargesAmontEtAval" formControlName="chargesAmontEtAval"
                                             required>
@@ -134,21 +134,21 @@
                                     </mat-form-field>
 
                                     <mat-form-field appearance="outline" class="w-100-p"
-                                        *ngIf="ouvrage.type == 'StationPompage'">
+                                        *ngIf="ouvrage.type == 'SP'">
                                         <mat-label>{{'EDIT.PLACE-HOLDER.pumpDebit' | translate}}</mat-label>
                                         <input matInput name="pumpDebit" formControlName="pumpDebit" required>
                                         <span matSuffix>m³/j</span>
                                     </mat-form-field>
 
                                     <mat-form-field appearance="outline" class="w-100-p"
-                                        *ngIf="ouvrage.type == 'Forage'">
+                                        *ngIf="ouvrage.type == 'FO'">
                                         <mat-label>{{'EDIT.PLACE-HOLDER.currentDebit' | translate}}</mat-label>
                                         <input matInput name="currentDebit" formControlName="currentDebit" required>
                                         <span matSuffix>m³/j</span>
                                     </mat-form-field>
 
                                     <mat-form-field appearance="outline" class="w-100-p"
-                                        *ngIf="ouvrage.type == 'BriseCharge'">
+                                        *ngIf="ouvrage.type == 'BC'">
                                         <mat-label>{{'EDIT.PLACE-HOLDER.debitLoadBreaker' | translate}}</mat-label>
                                         <mat-icon matSuffix class="secondary-text">keyboard</mat-icon>
                                         <input matInput name="debitLoadBreaker" formControlName="debitLoadBreaker"
@@ -156,7 +156,7 @@
                                     </mat-form-field>
 
                                     <mat-form-field appearance="outline" class="w-100-p"
-                                        *ngIf="ouvrage.type == 'BriseCharge'">
+                                        *ngIf="ouvrage.type == 'BC'">
                                         <mat-label>{{'EDIT.PLACE-HOLDER.coteTn' | translate}}</mat-label>
                                         <input matInput name="coteTn" formControlName="coteTn" required>
                                         <span matSuffix>m</span>
@@ -169,7 +169,7 @@
                                     </mat-form-field>
 
                                     <mat-form-field appearance="outline" class="w-100-p"
-                                        *ngIf="ouvrage.type == 'StationTraitementConventionelle' || ouvrage.type == 'StationTraitementNonConventionelle'">
+                                        *ngIf="ouvrage.type == 'SC' || ouvrage.type == 'SN'">
                                         <mat-label>{{'EDIT.PLACE-HOLDER.chemicalMonthlyBill' | translate}}</mat-label>
                                         <input matInput name="chemicalMonthlyBill" formControlName="chemicalMonthlyBill"
                                             required>

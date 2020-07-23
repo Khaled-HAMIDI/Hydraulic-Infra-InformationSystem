@@ -56,7 +56,7 @@ export class StationPompageService implements Resolve<any> {
     }
     geSequelNumber(code): Promise<any> {
         return new Promise((resolve, reject) => {
-            this.http.get(API + '/next/StationPompage/'+code)
+            this.http.get(API + '/next/SP/'+code)
                 .subscribe((response: any) => {
                     resolve(response);
                 }, reject);

@@ -211,7 +211,7 @@ export class BriseChargeComponent implements OnInit, OnDestroy {
 
         this.ouvrageAdd.code = ouvrage.code;
         this.ouvrageAdd.name = ouvrage.name;
-        this.ouvrageAdd.type = 'BriseCharge';
+        this.ouvrageAdd.type = 'BC';
         this.ouvrageAdd.enabled = ouvrage.enabled;
         this.ouvrageAdd.state = ouvrage.state;
         this.ouvrageAdd.site = this.ouvrage.site;

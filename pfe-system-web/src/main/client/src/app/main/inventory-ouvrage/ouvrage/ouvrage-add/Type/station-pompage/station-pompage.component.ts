@@ -208,7 +208,7 @@ export class StationPompageComponent implements OnInit, OnDestroy {
 
         this.ouvrageAdd.code = ouvrage.code;
         this.ouvrageAdd.name = ouvrage.name;
-        this.ouvrageAdd.type = 'StationPompage';
+        this.ouvrageAdd.type = 'SP';
         this.ouvrageAdd.enabled = ouvrage.enabled;
         this.ouvrageAdd.state = ouvrage.state;
         this.ouvrageAdd.site = this.ouvrage.site;

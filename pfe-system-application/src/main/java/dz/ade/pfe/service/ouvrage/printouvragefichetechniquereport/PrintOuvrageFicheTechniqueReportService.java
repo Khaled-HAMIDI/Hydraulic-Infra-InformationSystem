@@ -36,17 +36,17 @@ class PrintOuvrageFicheTechniqueReportService implements PrintOuvrageFicheTechni
         }
 
         switch (ouvrageType) {
-            case BriseCharge:
+            case BC:
                 return "fiche_brise_charge.pdf";
-            case Forage:
+            case FO:
                 return "fiche_forage.pdf";
-            case Reservoir:
+            case RE:
                 return "fiche_reservoir.pdf";
-            case StationPompage:
+            case SP:
                 return "fiche_station_de_pompage.pdf";
-            case StationTraitementConventionelle:
+            case SC:
                 return "fiche_station_de_traitement_conventionnelle.pdf";
-            case StationTraitementNonConventionelle:
+            case SN:
                 return "fiche_station_de_traitement_non_conventionnelle.pdf";
             default:
                 return "";

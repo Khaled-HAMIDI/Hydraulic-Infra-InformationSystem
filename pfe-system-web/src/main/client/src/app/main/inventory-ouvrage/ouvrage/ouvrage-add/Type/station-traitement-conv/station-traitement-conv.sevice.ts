@@ -56,7 +56,7 @@ export class StationTraitementConvSevice implements Resolve<any> {
     }
     geSequelNumber(code): Promise<any> {
         return new Promise((resolve, reject) => {
-            this.http.get(API + '/next/StationTraitementConventionelle/'+code)
+            this.http.get(API + '/next/SC/'+code)
                 .subscribe((response: any) => {
                     resolve(response);
                 }, reject);

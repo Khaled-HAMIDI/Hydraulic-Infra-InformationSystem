@@ -54,7 +54,7 @@ export class ForageService implements Resolve<any> {
     }
     geSequelNumber(code): Promise<any> {
         return new Promise((resolve, reject) => {
-            this.http.get(API + '/next/Forage/'+code)
+            this.http.get(API + '/next/FO/'+code)
                 .subscribe((response: any) => {
                     resolve(response);
                 }, reject);

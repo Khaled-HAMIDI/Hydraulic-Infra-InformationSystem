@@ -9,11 +9,15 @@ import { AuthenticationGuard } from 'app/guards/authentication.guard';
 import { PrintReportDialogComponent } from './dialog/print-report-dialog.component';
 import { MatMomentDateModule } from '@angular/material-moment-adapter';
 import { PrintReportDialogService } from './dialog/print-report-dialog.service';
+import { ReportService } from './report.service';
 
 const routes = [
     {
         path: '**',
         component: ReportComponent,
+        resolve: {
+            data: ReportService
+        },
         canActivate: [AuthenticationGuard]
     }
 ];

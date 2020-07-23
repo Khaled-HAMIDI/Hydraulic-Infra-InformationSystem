@@ -218,7 +218,7 @@ export class ReservoirComponent implements OnInit, OnDestroy {
 
         this.ouvrageAdd.code = ouvrage.code;
         this.ouvrageAdd.name = ouvrage.name;
-        this.ouvrageAdd.type = 'Reservoir';
+        this.ouvrageAdd.type = 'RE';
         this.ouvrageAdd.enabled = ouvrage.enabled;
         this.ouvrageAdd.form = ouvrage.form;
         this.ouvrageAdd.state = ouvrage.state;

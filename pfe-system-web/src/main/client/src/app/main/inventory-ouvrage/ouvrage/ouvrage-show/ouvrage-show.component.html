@@ -98,7 +98,7 @@
                                         </p>
                                     </div>
 
-                                    <div class="mr-sm-24" fxFlex *ngIf="ouvrage.type =='Reservoir'">
+                                    <div class="mr-sm-24" fxFlex *ngIf="ouvrage.type =='RE'">
                                         <p class="myLabel">{{'SHOW.LABEL.form' | translate}}</p>
                                         <p class="myp">
                                             <mat-icon matPrefix class="mr-12 s-20" color="accent">domain</mat-icon>
@@ -106,7 +106,7 @@
                                         </p>
                                     </div>
 
-                                    <div class="mr-sm-24" fxFlex *ngIf="ouvrage.type =='StationTraitementConventionelle'">
+                                    <div class="mr-sm-24" fxFlex *ngIf="ouvrage.type =='SC'">
                                         <p class="myLabel">{{'SHOW.LABEL.process' | translate}}</p>
                                         <p class="myp">
                                             <mat-icon matPrefix class="mr-12 s-20" color="accent">keyboard</mat-icon>
@@ -122,7 +122,7 @@
                                         </p>
                                     </div>
 
-                                    <div class="mr-sm-24" fxFlex *ngIf="ouvrage.type == 'StationTraitementConventionelle' || ouvrage.type == 'BriseCharge'">
+                                    <div class="mr-sm-24" fxFlex *ngIf="ouvrage.type == 'SC' || ouvrage.type == 'BC'">
                                         <p class="myLabel">{{'SHOW.LABEL.waterSource' | translate}}</p>
                                         <p class="myp">
                                             <mat-icon matPrefix class="mr-12 s-20" color="accent">keyboard</mat-icon>
@@ -183,7 +183,7 @@
                                         </p>
                                     </div>
 
-                                    <div class="mr-sm-24" fxFlex *ngIf="ouvrage.type == 'Forage'">
+                                    <div class="mr-sm-24" fxFlex *ngIf="ouvrage.type == 'FO'">
                                         <p class="myLabel">{{'SHOW.LABEL.abri' | translate}}</p>
                                         <p class="myp">
                                             <mat-icon matPrefix class="mr-12 s-20" color="accent">home</mat-icon>
@@ -197,7 +197,7 @@
                                     </div>
 
 
-                                    <div class="mr-sm-24" fxFlex *ngIf="ouvrage.type == 'Forage'">
+                                    <div class="mr-sm-24" fxFlex *ngIf="ouvrage.type == 'FO'">
                                         <p class="myLabel">{{'SHOW.LABEL.currentDebit' | translate}}</p>
                                         <p class="myp">
                                             <mat-icon matPrefix class="mr-12 s-20" color="accent">keyboard</mat-icon>
@@ -205,7 +205,7 @@
                                         </p>
                                     </div>
 
-                                    <div class="mr-sm-24" fxFlex *ngIf="ouvrage.type == 'BriseCharge'">
+                                    <div class="mr-sm-24" fxFlex *ngIf="ouvrage.type == 'BC'">
                                         <p class="myLabel">{{'SHOW.LABEL.chargesAmontEtAval' | translate}}</p>
                                         <p class="myp">
                                             <mat-icon matPrefix class="mr-12 s-20" color="accent">keyboard</mat-icon>
@@ -213,7 +213,7 @@
                                         </p>
                                     </div>
 
-                                    <div class="mr-sm-24" fxFlex *ngIf="ouvrage.type == 'BriseCharge'">
+                                    <div class="mr-sm-24" fxFlex *ngIf="ouvrage.type == 'BC'">
                                         <p class="myLabel">{{'SHOW.LABEL.debitLoadBreaker' | translate}}</p>
                                         <p class="myp">
                                             <mat-icon matPrefix class="mr-12 s-20" color="accent">keyboard</mat-icon>
@@ -221,7 +221,7 @@
                                         </p>
                                     </div>
 
-                                    <div class="mr-sm-24" fxFlex *ngIf="ouvrage.type == 'BriseCharge'">
+                                    <div class="mr-sm-24" fxFlex *ngIf="ouvrage.type == 'BC'">
                                         <p class="myLabel">{{'SHOW.LABEL.coteTn' | translate}}</p>
                                         <p class="myp">
                                             <mat-icon matPrefix class="mr-12 s-20" color="accent">keyboard</mat-icon>
@@ -229,7 +229,7 @@
                                         </p>
                                     </div>
 
-                                    <div class="mr-sm-24" fxFlex  *ngIf="ouvrage.type == 'StationTraitementConventionelle' || ouvrage.type == 'StationTraitementNonConventionelle'">
+                                    <div class="mr-sm-24" fxFlex  *ngIf="ouvrage.type == 'SC' || ouvrage.type == 'SN'">
                                         <p class="myLabel">{{'SHOW.LABEL.chemicalMonthlyBill' | translate}}</p>
                                         <p class="myp">
                                             <mat-icon matPrefix class="mr-12 s-20" color="accent">person</mat-icon>
@@ -253,7 +253,7 @@
                                         </p>
                                     </div>
 
-                                    <div class="mr-sm-24" fxFlex *ngIf="ouvrage.type == 'Reservoir'">
+                                    <div class="mr-sm-24" fxFlex *ngIf="ouvrage.type == 'RE'">
                                         <p class="myLabel">{{'SHOW.LABEL.raftRating' | translate}}</p>
                                         <p class="myp">
                                             <mat-icon matPrefix class="mr-12 s-20" color="accent">keyboard</mat-icon>
@@ -261,7 +261,7 @@
                                         </p>
                                     </div>
 
-                                    <div class="mr-sm-24" fxFlex *ngIf="ouvrage.type == 'Reservoir'">
+                                    <div class="mr-sm-24" fxFlex *ngIf="ouvrage.type == 'RE'">
                                         <p class="myLabel">{{'SHOW.LABEL.coteTropFull' | translate}}</p>
                                         <p class="myp">
                                             <mat-icon matPrefix class="mr-12 s-20" color="accent">keyboard</mat-icon>
@@ -269,7 +269,7 @@
                                         </p>
                                     </div>
 
-                                    <div class="mr-sm-24" fxFlex *ngIf="ouvrage.type == 'StationPompage'">
+                                    <div class="mr-sm-24" fxFlex *ngIf="ouvrage.type == 'SP'">
                                         <p class="myLabel">{{'SHOW.LABEL.installedCapacity' | translate}}</p>
                                         <p class="myp">
                                             <mat-icon matPrefix class="mr-12 s-20" color="accent">keyboard</mat-icon>
@@ -277,7 +277,7 @@
                                         </p>
                                     </div>
 
-                                    <div class="mr-sm-24" fxFlex *ngIf="ouvrage.type == 'StationPompage'">
+                                    <div class="mr-sm-24" fxFlex *ngIf="ouvrage.type == 'SP'">
                                         <p class="myLabel">{{'SHOW.LABEL.currentCapacity' | translate}}</p>
                                         <p class="myp">
                                             <mat-icon matPrefix class="mr-12 s-20" color="accent">keyboard</mat-icon>
@@ -285,7 +285,7 @@
                                         </p>
                                     </div>
 
-                                    <div class="mr-sm-24" fxFlex  *ngIf="ouvrage.type == 'StationPompage' || ouvrage.type =='Forage'">
+                                    <div class="mr-sm-24" fxFlex  *ngIf="ouvrage.type == 'SP' || ouvrage.type =='FO'">
                                         <p class="myLabel">{{'SHOW.LABEL.hmt' | translate}}</p>
                                         <p class="myp">
                                             <mat-icon matPrefix class="mr-12 s-20" color="accent">keyboard</mat-icon>
@@ -293,7 +293,7 @@
                                         </p>
                                     </div>
 
-                                    <div class="mr-sm-24" fxFlex *ngIf="ouvrage.type == 'StationPompage' || ouvrage.type =='Forage'">
+                                    <div class="mr-sm-24" fxFlex *ngIf="ouvrage.type == 'SP' || ouvrage.type =='FO'">
                                         <p class="myLabel">{{'SHOW.LABEL.power' | translate}}</p>
                                         <p class="myp">
                                             <mat-icon matPrefix class="mr-12 s-20" color="accent">keyboard</mat-icon>
@@ -301,7 +301,7 @@
                                         </p>
                                     </div>
 
-                                    <div class="mr-sm-24" fxFlex *ngIf="ouvrage.type == 'StationPompage'">
+                                    <div class="mr-sm-24" fxFlex *ngIf="ouvrage.type == 'SP'">
                                         <p class="myLabel">{{'SHOW.LABEL.nbPump' | translate}}</p>
                                         <p class="myp">
                                             <mat-icon matPrefix class="mr-12 s-20" color="accent">keyboard</mat-icon>
@@ -309,7 +309,7 @@
                                         </p>
                                     </div>
 
-                                    <div class="mr-sm-24" fxFlex *ngIf="ouvrage.type == 'StationPompage'">
+                                    <div class="mr-sm-24" fxFlex *ngIf="ouvrage.type == 'SP'">
                                         <p class="myLabel">{{'SHOW.LABEL.pumpDebit' | translate}}</p>
                                         <p class="myp">
                                             <mat-icon matPrefix class="mr-12 s-20" color="accent">keyboard</mat-icon>
@@ -330,7 +330,7 @@
                                         </p>
                                     </div>
 
-                                    <div class="mr-sm-24" fxFlex *ngIf="ouvrage.type == 'StationPompage'">
+                                    <div class="mr-sm-24" fxFlex *ngIf="ouvrage.type == 'SP'">
                                         <p class="myLabel">{{'SHOW.LABEL.waterTank' | translate}}</p>
                                         <p class="myp">
                                             <mat-icon matPrefix class="mr-12 s-20" color="accent">keyboard</mat-icon>
@@ -343,7 +343,7 @@
                                         </p>
                                     </div>
 
-                                    <div class="mr-sm-24" fxFlex *ngIf="ouvrage.type == 'Reservoir'">
+                                    <div class="mr-sm-24" fxFlex *ngIf="ouvrage.type == 'RE'">
                                         <p class="myLabel">{{'SHOW.LABEL.tankCapacity1' | translate}}</p>
                                         <p class="myp">
                                             <mat-icon matPrefix class="mr-12 s-20" color="accent">keyboard</mat-icon>
@@ -351,7 +351,7 @@
                                         </p>
                                     </div>
 
-                                    <div class="mr-sm-24" fxFlex *ngIf="ouvrage.type == 'StationPompage'">
+                                    <div class="mr-sm-24" fxFlex *ngIf="ouvrage.type == 'SP'">
                                         <p class="myLabel">{{'SHOW.LABEL.tankCapacity2' | translate}}</p>
                                         <p class="myp">
                                             <mat-icon matPrefix class="mr-12 s-20" color="accent">keyboard</mat-icon>
@@ -389,7 +389,7 @@
                                     </div>
 
 
-                                    <div class="mr-sm-24" fxFlex *ngIf="ouvrage.type === 'StationTraitementConventionelle' || ouvrage.type == 'StationTraitementNonConventionelle'">
+                                    <div class="mr-sm-24" fxFlex *ngIf="ouvrage.type === 'SC' || ouvrage.type == 'SN'">
                                         <p class="myLabel">{{'SHOW.LABEL.treatmentStationType' | translate}}</p>
                                         <p class="myp">
                                             <mat-icon matPrefix class="mr-12 s-20" color="accent">keyboard</mat-icon>
@@ -397,7 +397,7 @@
                                         </p>
                                     </div>
 
-                                    <div class="mr-sm-24" fxFlex *ngIf="ouvrage.type == 'Reservoir'">
+                                    <div class="mr-sm-24" fxFlex *ngIf="ouvrage.type == 'RE'">
                                         <p class="myLabel">{{'SHOW.LABEL.tankRole' | translate}}</p>
                                         <p class="myp">
                                             <mat-icon matPrefix class="mr-12 s-20" color="accent">keyboard</mat-icon>
@@ -405,7 +405,7 @@
                                         </p>
                                     </div>
 
-                                    <div class="mr-sm-24" fxFlex *ngIf="ouvrage.type == 'Reservoir'">
+                                    <div class="mr-sm-24" fxFlex *ngIf="ouvrage.type == 'RE'">
                                         <p class="myLabel">{{'SHOW.LABEL.tankType' | translate}}</p>
                                         <p class="myp">
                                             <mat-icon matPrefix class="mr-12 s-20" color="accent">keyboard</mat-icon>
@@ -413,7 +413,7 @@
                                         </p>
                                     </div>
 
-                                    <div class="mr-sm-24" fxFlex *ngIf="ouvrage.type == 'Reservoir' || ouvrage.type =='BriseCharge'">
+                                    <div class="mr-sm-24" fxFlex *ngIf="ouvrage.type == 'RE' || ouvrage.type =='BC'">
                                         <p class="myLabel">{{'SHOW.LABEL.electricAlimentation' | translate}}</p>
                                         <p class="myp">
                                             <mat-icon matPrefix class="mr-12 s-20" color="accent">keyboard</mat-icon>
@@ -426,7 +426,7 @@
                                         </p>
                                     </div>
 
-                                    <div class="mr-sm-24" fxFlex *ngIf="ouvrage.type == 'Forage'">
+                                    <div class="mr-sm-24" fxFlex *ngIf="ouvrage.type == 'FO'">
                                         <p class="myLabel">{{'SHOW.LABEL.exploitationDebit' | translate}}</p>
                                         <p class="myp">
                                             <mat-icon matPrefix class="mr-12 s-20" color="accent">keyboard</mat-icon>

@@ -78,12 +78,7 @@ export class OuvrageAddComponent implements OnInit,  OnDestroy{
 
     }
 
-    createSiteForm():FormGroup {
-        let obj = {
-            site:[this.site.name,Validators.required]
-        };
-        return this.formBuilder.group(obj);
-    }
+
 
     initForm(){
         this.site = new Site();
@@ -95,7 +90,6 @@ export class OuvrageAddComponent implements OnInit,  OnDestroy{
         this.ouvrage.waterTank = true;
         this.ouvrage.electricAlimentation = true;
         this.ouvrageForm = this.createOuvrageForm();
-        this.siteForm = this.createSiteForm();
     }
 
 
@@ -104,18 +98,7 @@ export class OuvrageAddComponent implements OnInit,  OnDestroy{
         const centerCode = this.ouvrageForm.get('center').value;
         this.router.navigate([this.ouvrageForm.get('type').value +'/'+ this.siteId + '/'+centerCode],{relativeTo:this.route});
     }
-    onSelectSite(): void {
-        const site = this.siteForm.getRawValue();
-        let siteAdd :Site = new Site;
-        siteAdd.name = site.site;
-        this.ouvrageAddService.saveSiteOuv(siteAdd)
-        .then((response:Site)=> {
-            this.siteForm.setValue({['site']:''});
-            this.siteId = response.id;
-            this.sites.push(response);
-            this.sites = sortBy(this.sites, ['name']);
-        })
-    }
+    
     ngOnDestroy(): void {
         // Unsubscribe from all subscriptions
         this._unsubscribeAll.next();

@@ -36,12 +36,6 @@ export class HomeComponent implements OnInit {
         private router: Router,
         private route: ActivatedRoute,
         private authenticationService: AuthenticationService) {
-        const userRoles = authenticationService.getRoles();
-
-        if (includes(userRoles, "operateur"))
-            this.router.navigate(['exploitation/reading']);
-        else if (includes(userRoles, "RH"))
-            this.router.navigate(['exploitation/reading']);
 
         this.fuseTranslationLoader.loadTranslations(french, arabic);
         this._unsubscribeAll = new Subject();

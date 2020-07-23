@@ -30,11 +30,11 @@ export class AllOuvrages {
 }
 
 export enum generalType {
-    StationTraitementConventionelle = 'StationTraitementConventionelle',
-    StationTraitementNonConventionelle = 'StationTraitementNonConventionelle',
-    Reservoir = 'Reservoir',
-    Forage = 'Forage',
-    StationPompage = 'StationPompage',
-    BriseCharge = 'BriseCharge',
+    StationTraitementConventionelle = 'SC',
+    StationTraitementNonConventionelle = 'SN',
+    Reservoir = 'RE',
+    Forage = 'FO',
+    StationPompage = 'SP',
+    BriseCharge = 'BC',
     none = 'none'
 }

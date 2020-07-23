@@ -226,26 +226,26 @@ export class OuvrageEditComponent implements OnInit, OnDestroy {
 
 
         switch (this.ouvrage.type) {
-            case 'StationTraitementConventionelle':
+            case 'SC':
                 this.ouvrageEdit.chemicalMonthlyBill = this.ouvrageForm.get('chemicalMonthlyBill').value ;
                 break;
-            case 'Reservoir' :
+            case 'RE' :
                 this.ouvrageEdit.electricAlimentation = this.ouvrageForm.get('electricAlimentation').value ;
                 break;
-            case 'Forage' :
+            case 'FO' :
                 this.ouvrageEdit.power = this.ouvrageForm.get('power').value ;
                 this.ouvrageEdit.abri = this.ouvrageForm.get('abri').value ;
                 this.ouvrageEdit.currentDebit = this.ouvrageForm.get('currentDebit').value ;
                 break;
-            case 'StationPompage' :
+            case 'SP' :
                 this.ouvrageEdit.currentCapacity = this.ouvrageForm.get('currentCapacity').value;
                 this.ouvrageEdit.power = this.ouvrageForm.get('power').value ;
                 this.ouvrageEdit.pumpDebit = this.ouvrageForm.get('pumpDebit').value ;
                 break;
-            case 'StationTraitementNonConventionelle' :
+            case 'SN' :
                 this.ouvrageEdit.chemicalMonthlyBill = this.ouvrageForm.get('chemicalMonthlyBill').value ;
                 break;
-            case 'BriseCharge' :
+            case 'BC' :
                 this.ouvrageEdit.coteTn = this.ouvrageForm.get('coteTn').value ;
                 this.ouvrageEdit.debitLoadBreaker = this.ouvrageForm.get('debitLoadBreaker').value ;
                 this.ouvrageEdit.chargesAmontEtAval = this.ouvrageForm.get('chargesAmontEtAval').value ;

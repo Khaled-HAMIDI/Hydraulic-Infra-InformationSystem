@@ -58,7 +58,7 @@ export class BriseChargeService implements Resolve<any> {
 
     geSequelNumber(code): Promise<any> {
         return new Promise((resolve, reject) => {
-            this.http.get(API + '/next/BriseCharge/'+code)
+            this.http.get(API + '/next/BC/'+code)
                 .subscribe((response: any) => {
                     resolve(response);
                 }, reject);
