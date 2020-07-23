@@ -52,14 +52,6 @@ export class ForageService implements Resolve<any> {
         });
 
     }
-    geSequelNumber(code): Promise<any> {
-        return new Promise((resolve, reject) => {
-            this.http.get(API + '/next/FO/'+code)
-                .subscribe((response: any) => {
-                    resolve(response);
-                }, reject);
-        });
-    }
 
     getCommunes(): Promise<any> {
         return new Promise((resolve, reject) => {
@@ -84,7 +76,6 @@ export class ForageService implements Resolve<any> {
         return new Promise((resolve, reject) => {
 
             Promise.all([
-                this.geSequelNumber(route.params.code),
                 this.getCommunes(),
                 this.getStates()
             ]).then(

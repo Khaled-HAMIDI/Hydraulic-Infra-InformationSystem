@@ -56,15 +56,6 @@ export class BriseChargeService implements Resolve<any> {
 
     }
 
-    geSequelNumber(code): Promise<any> {
-        return new Promise((resolve, reject) => {
-            this.http.get(API + '/next/BC/'+code)
-                .subscribe((response: any) => {
-                    resolve(response);
-                }, reject);
-        });
-    }
-
     getCommunes(): Promise<any> {
         return new Promise((resolve, reject) => {
             this.http.get(API + '/deployedunit/communes')
@@ -97,7 +88,6 @@ export class BriseChargeService implements Resolve<any> {
         return new Promise((resolve, reject) => {
 
             Promise.all([
-                this.geSequelNumber(route.params.code),
                 this.getCommunes(),
                 this.getStates(),
                 this.getWaterSources()

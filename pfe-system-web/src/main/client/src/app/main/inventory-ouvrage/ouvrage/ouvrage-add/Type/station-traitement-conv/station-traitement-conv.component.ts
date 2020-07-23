@@ -124,17 +124,14 @@ export class StationTraitementConvComponent implements OnInit, OnDestroy {
     ngOnInit(): void {
         this.route.data.pipe(takeUntil(this._unsubscribeAll)).subscribe(
             (response) => {
-                response.data[0]++
-                let code = '0'.repeat(4 - response.data[0].toString().length) + response.data[0]
-                this.ouvrage.code = this.route.snapshot.paramMap.get('code') + 'SC' + code;
                 this.ouvrage.site = this.route.snapshot.paramMap.get('id');
                 this.ouvrage.center = this.route.snapshot.paramMap.get('code');
                 this.initFormStationTC();
-                this.communes = response.data[1];
-                this.states =response.data[2];
-                this.types =response.data[3];
-                this.sources =response.data[4];
-                this.process = response.data[5];
+                this.communes = response.data[0];
+                this.states =response.data[1];
+                this.types =response.data[2];
+                this.sources =response.data[3];
+                this.process = response.data[4];
             },
             (error) => {
                 console.log(error);
@@ -163,7 +160,6 @@ export class StationTraitementConvComponent implements OnInit, OnDestroy {
     /*Forms types*/
     createStTraitCForm(): FormGroup {
         let obj = {
-            code: [{ value: this.ouvrage.code, disabled: true }, Validators.required],
             name: [this.ouvrage.name, Validators.required],
             enabled: [this.ouvrage.enabled, Validators.required],
             state: [this.ouvrage.state, Validators.required],
@@ -206,7 +202,6 @@ export class StationTraitementConvComponent implements OnInit, OnDestroy {
         const ouvrage = this.ouvrageForm.getRawValue();
         this.ouvrageAdd = new Ouvrage();
 
-        this.ouvrageAdd.code = ouvrage.code;
         this.ouvrageAdd.name = ouvrage.name;
         this.ouvrageAdd.type = 'SC';
         this.ouvrageAdd.enabled = ouvrage.enabled;

@@ -54,14 +54,6 @@ export class StationNonConvService implements Resolve<any>{
         });
 
     }
-    geSequelNumber(code): Promise<any> {
-        return new Promise((resolve, reject) => {
-            this.http.get(API + '/next/SN/' + code)
-                .subscribe((response: any) => {
-                    resolve(response);
-                }, reject);
-        });
-    }
 
     getCommunes(): Promise<any> {
         return new Promise((resolve, reject) => {
@@ -95,7 +87,6 @@ export class StationNonConvService implements Resolve<any>{
         return new Promise((resolve, reject) => {
 
             Promise.all([
-                this.geSequelNumber(route.params.code),
                 this.getCommunes(),
                 this.getStates(),
                 this.getTraitementType()

@@ -4,17 +4,18 @@ import dz.ade.pfe.domain.admin.OrganisationalStructure;
 import dz.ade.pfe.domain.commons.Commune;
 import dz.ade.pfe.domain.exceptions.ResourceNotFoundException;
 import dz.ade.pfe.domain.ouvrage.Ouvrage;
+import dz.ade.pfe.domain.ouvrage.OuvrageType;
 import dz.ade.pfe.domain.ouvrage.Site;
 import dz.ade.pfe.port.in.ouvrage.createouvrage.CreateOuvrageCommand;
+import dz.ade.pfe.port.out.LoadSequelNumber;
 import dz.ade.pfe.port.out.commune.LoadCommuneById;
 import dz.ade.pfe.port.out.ouvrage.createouvrage.SaveOuvrage;
 import dz.ade.pfe.port.out.site.LoadSiteById;
 import dz.ade.pfe.port.out.unit.LoadUnitByCode;
-import dz.ade.pfe.service.ouvrage.getouvrage.OuvrageShowDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.util.Optional;
+import java.util.Collections;
 
 @Service
 @RequiredArgsConstructor
@@ -25,31 +26,37 @@ public class CreateOuvrageService implements CreateOuvrageCommand {
     private final LoadUnitByCode loadUnitByCode;
     private final LoadCommuneById loadCommuneById;
     private final CreateOuvrageMapper createOuvrageMapper;
+    private final LoadSequelNumber loadSequelNumber;
 
     @Override
-    public OuvrageCreatedDto createOuvrage(OuvrageAddDto ouvrageAddDto, String unitCode) {
+    public OuvrageCreatedDto createOuvrage(OuvrageAddDto ouvrageAddDto, String organisationalStructureCode) {
 
-        Ouvrage ouvrage =createOuvrageMapper.ouvrageAddToOuvrage(ouvrageAddDto);
+        Ouvrage ouvrage = createOuvrageMapper.ouvrageAddToOuvrage(ouvrageAddDto);
 
-        Optional<Commune> commune = loadCommuneById.loadCommuneByCode(ouvrageAddDto.getCommune());
-        if (!commune.isPresent()) {
-            throw new ResourceNotFoundException(String.format("No commune found with code '%s'.", ouvrageAddDto.getCommune()));
-        }
-        ouvrage.setCommune(commune.get());
+        Commune commune = loadCommuneById.loadCommuneByCode(ouvrageAddDto.getCommune())
+                .orElseThrow(() -> new ResourceNotFoundException(String.format("No commune found with code '%s'.", ouvrageAddDto.getCommune())));
 
-        Optional<OrganisationalStructure> unit = loadUnitByCode.loadUnitByCode(unitCode);
-        if (!unit.isPresent()) {
-            throw new ResourceNotFoundException(String.format("No unit found with code '%s'.", unitCode));
-        }
-        ouvrage.setStructure(unit.get());
+        OrganisationalStructure organisationalStructure = loadUnitByCode.loadUnitByCode(organisationalStructureCode)
+                .orElseThrow(() -> new ResourceNotFoundException(String.format("No organisational structure found with code '%s'.", organisationalStructureCode)));
 
-        Optional<Site> site = loadSiteById.loadSiteId(ouvrageAddDto.getSite());
-        if (!site.isPresent()) {
-            throw new ResourceNotFoundException(String.format("No site found with id '%s'.", ouvrageAddDto.getSite()));
-        }
-        ouvrage.setSite(site.get());
+        Site site = loadSiteById.loadSiteId(ouvrageAddDto.getSite())
+                .orElseThrow(() -> new ResourceNotFoundException(String.format("No site found with id '%s'.", ouvrageAddDto.getSite())));
+
+        ouvrage.setCommune(commune);
+        ouvrage.setStructure(organisationalStructure);
+        ouvrage.setSite(site);
         ouvrage.setDeclassed(false);
+
+        String generatedCode = generateCode(ouvrage.getType(), organisationalStructureCode);
+        ouvrage.setCode(generatedCode);
         return createOuvrageMapper.ouvrageToOuvrageCreatedDto(saveOuvrage.saveOuvrage(ouvrage));
+    }
+
+
+    private String generateCode(OuvrageType ouvrageType, String organisationalStructureCode) {
+        Integer number = loadSequelNumber.getNext(ouvrageType.name(), organisationalStructureCode) + 1;
+        String code = String.join("", Collections.nCopies((4 - number.toString().length()), "0")) + number;
+        return organisationalStructureCode + ouvrageType.name() + code;
     }
 
 }
