@@ -328,8 +328,8 @@ export class ComposantGetService implements Resolve<any>{
     loadSpecificComposant(typeOuvrage: string,code: string){
         switch (typeOuvrage) {
 
-            case "Station de Traitement Conventionelle":
-            case "Station de Traitement Non Conventionelle":
+            case "SC":
+            case "SN":
                 return [
                     this.loadSecurity(code),
                     this.loadPriseEau(code),
@@ -346,7 +346,7 @@ export class ComposantGetService implements Resolve<any>{
                     this.loadTankForm(),
                     this.loadInjectionType()];
 
-            case "Reservoir":
+            case "RE":
                 return [
                     this.loadSecurity(code),
                     this.loadHydroMeca(code),
@@ -357,7 +357,7 @@ export class ComposantGetService implements Resolve<any>{
                     this.loadTankForm(),
                     this.loadInjectionType()];
 
-            case "Forage, Puis, Source":
+            case "FO":
                 return [
                     this.loadSecurity(code),
                     this.loadPostTrandformationElectrique(code),
@@ -374,7 +374,7 @@ export class ComposantGetService implements Resolve<any>{
                     this.loadTankForm(),
                     this.loadInjectionType()];
 
-            case "Station de Pompage":
+            case "SP":
                 return [
                     this.loadSecurity(code),
                     this.loadPostTrandformationElectrique(code),
@@ -391,7 +391,7 @@ export class ComposantGetService implements Resolve<any>{
                     this.loadTankForm(),
                     this.loadInjectionType()];
 
-            case "Brise Charge":
+            case "BC":
                 return [
                     this.loadSecurity(code),
                     this.loadHydroMeca(code),
@@ -409,8 +409,8 @@ export class ComposantGetService implements Resolve<any>{
 
         switch (typeOuvrage) {
 
-            case "Station de Traitement Conventionelle":
-            case "Station de Traitement Non Conventionelle":
+            case "SC":
+            case "SN":
                 return {
                     securityData: data[0],
                     priseEauData: data[1],
@@ -428,7 +428,7 @@ export class ComposantGetService implements Resolve<any>{
                     injectionTypeData:data[13]};
 
 
-            case "Reservoir":
+            case "RE":
                 return {
                     securityData: data[0],
                     hydroMecaData: data[1],
@@ -439,7 +439,7 @@ export class ComposantGetService implements Resolve<any>{
                     tankFormData:data[6],
                     injectionTypeData:data[7] };
 
-            case "Forage, Puis, Source":
+            case "FO":
                 return {
                     securityData: data[0],
                     postTrandformationElectriqueData: data[1],
@@ -456,7 +456,7 @@ export class ComposantGetService implements Resolve<any>{
                     tankFormData:data[12],
                     injectionTypeData:data[13]};
 
-            case "Station de Pompage":
+            case "SP":
                 return {
                     securityData: data[0],
                     postTrandformationElectriqueData: data[1],
@@ -473,7 +473,7 @@ export class ComposantGetService implements Resolve<any>{
                     tankFormData:data[12],
                     injectionTypeData:data[13]};
 
-            case "Brise Charge":
+            case "BC":
                 return {
                     securityData: data[0],
                     hydroMecaData: data[1],

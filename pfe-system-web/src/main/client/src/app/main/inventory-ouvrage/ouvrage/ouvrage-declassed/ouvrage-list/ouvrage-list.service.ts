@@ -56,15 +56,6 @@ export class OuvrageDeclassedListService implements Resolve<any> {
     });
   }
 
-  delete(id: String): Promise<[]> {
-    return new Promise((resolve, reject) => {
-      this.http.delete(API+'/ouvrage/'+id)
-        .subscribe((response: any) => {
-          resolve(response);
-        }, reject);
-    });
-  }
-
   // -----------------------------------------------------------------------------------------------------
   // @ Selection function
   // -----------------------------------------------------------------------------------------------------
@@ -97,73 +88,7 @@ export class OuvrageDeclassedListService implements Resolve<any> {
     this.ouvragesSelected = [];
     this.onSelectedOuvragesChanged.next(this.ouvragesSelected);
   }
-
-  // -----------------------------------------------------------------------------------------------------
-  // @ Delete function
-  // -----------------------------------------------------------------------------------------------------
-  deleteOuvrage(ouvrage): void {
  
-    this.toolsService.showProgressBar();
-    this.delete(ouvrage.id).then(
-      (response) => {
-
-        const ouvrageIndex = this.ouvrages.indexOf(ouvrage);
-        const indexOuvrageSelected = this.ouvragesSelected.indexOf(ouvrage.id);
-
-        this.deleteFromOuvrages(ouvrageIndex);
-        if (indexOuvrageSelected != -1) this.deselectOuvrage(indexOuvrageSelected);
-
-        this.toolsService.hideProgressBar();
-        this.toolsService.showSuccess('LIST.TOAST.success-delete');
-
-      },
-      (error) => {
-        console.log(error);
-        this.toolsService.hideProgressBar();
-        this.toolsService.showError('LIST.TOAST.error-delete');
-      }
-    );
-  }
-
-  deleteFromOuvrages(ouvrageIndex, onEvent = true) {
-    this.ouvrages.splice(ouvrageIndex, 1);
-    if (onEvent) this.onOuvragesChanged.next(this.ouvrages);
-  }
-
-
-  deleteSelectedOuvrages(): void {
-    // this.toolsService.showProgressBar();
-
-    // this.delete(this.ouvragesSelected).then(
-    //   (response: any) => {
-
-    //     this.deleteFromSelectedOuvrages(this.ouvragesSelected);
-    //     this.onOuvragesChanged.next(this.ouvrages);
-    //     this.deselectAll();
-
-    //     this.toolsService.hideProgressBar();
-    //     this.toolsService.showSuccess('LIST.TOAST.success-delete');
-
-    //   },
-    //   (error) => {
-    //     console.log(error);
-    //     this.toolsService.hideProgressBar();
-    //     this.toolsService.showError('LIST.TOAST.error-delete');
-    //   }
-    // );
-
-  }
-
-  deleteFromSelectedOuvrages(ids_to_delete) {
-    for (const ouvrageId of ids_to_delete) {
-      const ouvrage = this.ouvrages.find(_ouvrage => {
-        return _ouvrage.id === ouvrageId;
-      });
-      // if (!ouvrage.systemEntity)
-      // this.deleteFromOuvrages(this.ouvrages.indexOf(ouvrage), false);
-    }
-  }
-  
   printFicheTechnique(code: string, type: string){
     this.printReportsService.printReport("print/OuvrageFicheTechnique", {code: code, type: type});
   }

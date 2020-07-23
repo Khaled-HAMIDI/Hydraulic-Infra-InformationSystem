@@ -136,13 +136,6 @@
                                         <span>{{'LIST.TABLE.action.print' | translate}}</span>
                                     </button>
                                 </ng-container>
-                                <ng-container
-                                    *ayamsHasAnyPermissions="['ouvrages:delete','ouvrages:*','*:delete','*:*']">
-                                    <button mat-menu-item aria-label="remove" (click)="onDelete(ouvrage)">
-                                        <mat-icon>delete</mat-icon>
-                                        <span>{{'LIST.TABLE.action.remove' | translate}}</span>
-                                    </button>
-                                </ng-container>
                             </mat-menu>
                         </td>
                     </ng-container>

@@ -62,24 +62,6 @@ export class OuvragesDeclassedSelectedBarComponent implements OnInit, OnDestroy
         this.ouvrageListService.deselectAll();
     }
 
-    onDeleteSelected(): void
-    {
-        this.confirmDialogRef = this._matDialog.open(FuseConfirmDialogComponent, {
-            disableClose: false
-        });
-
-        this.confirmDialogRef.componentInstance.confirmMessage= this.toolsService.getTranslation('SELECT-BAR.CONFIRM-DIALOG.delete');
-        
-        this.confirmDialogRef.afterClosed().pipe(takeUntil(this._unsubscribeAll)).subscribe(result => {
-                if ( result )
-                {
-                    this.ouvrageListService.deleteSelectedOuvrages();
-                }
-                this.confirmDialogRef = null;
-            }
-        );
-    }
-
     export(){
         this.ouvrageListService.exportDataXLS(["id","active"]);
     }

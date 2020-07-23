@@ -88,22 +88,22 @@ export class OuvrageEditComponent implements OnInit, OnDestroy {
                 this.states = response.data[1];
                 this.ouvrage= new Ouvrage(response.data[0]);
                 switch (this.ouvrage.type) {
-                    case 'Station de Traitement Conventionelle':
+                    case 'SC':
                         this.ouvrageForm = this.createStationTCForm();
                         break;
-                    case 'Reservoir' :
+                    case 'RE' :
                         this.ouvrageForm = this.createReservoirForm();
                         break;
-                    case 'Forage, Puis, Source' :
+                    case 'FO' :
                         this.ouvrageForm =  this.createForageForm();
                         break;
-                    case 'Station de Pompage' :
+                    case 'SP' :
                         this.ouvrageForm = this.createStationPompageForm();
                         break;
-                    case 'Station de Traitement Non Conventionelle' :
+                    case 'SN' :
                         this.ouvrageForm = this.createStationTCForm();
                         break;
-                    case 'Brise Charge' :
+                    case 'BC' :
                         this.ouvrageForm = this.createBriseChargeForm();
                         break;
                 }
