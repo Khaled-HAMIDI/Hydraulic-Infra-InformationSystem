@@ -9,6 +9,7 @@ export class Ouvrage {
     enabled: boolean;
     form: string;
     state: string;
+    stateViewValue: string;
     process: string;
     nbCompartment: number;
     raftRating: number;
@@ -61,6 +62,7 @@ export class Ouvrage {
         this.enabled = ouvrage.enabled || false;
         this.form = ouvrage.form ||  '';
         this.state = ouvrage.state ||  '';
+        this.stateViewValue = ouvrage.stateViewValue ||  '';
         this.process = ouvrage.process ||  '';
         this.nbCompartment = ouvrage.nbCompartment ||  '';
         this.raftRating = ouvrage.raftRating ||  '';
