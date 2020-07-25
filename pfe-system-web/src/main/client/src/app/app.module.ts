@@ -130,8 +130,9 @@ const appRoutes: Routes = [
         JwtModule.forRoot({
             config: {
                 tokenGetter: jwtTokenGetter,
-                whitelistedDomains: ['ouvrage.ade.dz', 'ouvrage.loc.ade.dz'],
-                blacklistedRoutes: ['ouvrage.ade.dz/api/auth/login', 'ouvrage.loc.ade.dz/api/auth/login'],
+                whitelistedDomains: ['ouvrage.ade.dz', '10.100.1.41','ouvrage.loc.ade.dz'],
+                blacklistedRoutes: ['ouvrage.ade.dz/api/auth/login', 'ouvrage.loc.ade.dz/api/auth/login',
+                                    '10.100.1.41/api/auth/login'],
                 throwNoTokenError: false
             }
         }),

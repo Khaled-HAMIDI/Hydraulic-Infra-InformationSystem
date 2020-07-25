@@ -1,7 +1,7 @@
 export const environment = {
     production: true,
     hmr: false,
-    domain: "ouvrage.ade.dz",
+    domain: "10.100.1.41",
     log: false,
     lockScreenTimer: 900, //seconde
     showBanner: false,
