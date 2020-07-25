@@ -242,6 +242,7 @@ export class ForageComponent implements OnInit, OnDestroy {
 
         this.forageService.saveOuvrage(this.ouvrageAdd)
             .then((response:any) => {
+                this.ouvrageAdd.code = response.code;
                 this.onSubmitFiles(response.code)
                 },
                 (error) => {

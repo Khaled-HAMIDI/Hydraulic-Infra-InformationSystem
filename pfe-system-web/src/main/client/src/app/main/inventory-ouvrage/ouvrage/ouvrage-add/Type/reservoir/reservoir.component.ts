@@ -252,6 +252,7 @@ export class ReservoirComponent implements OnInit, OnDestroy {
         if (this.ouvrageAdd.treatmentStationType == '') this.ouvrageAdd.treatmentStationType = 'NONE';
         this.reservoirService.saveOuvrage(this.ouvrageAdd)
             .then((response: any) => {
+                this.ouvrageAdd.code = response.code;
                 this.onSubmitFiles(response.code)
             },
                 (error) => {

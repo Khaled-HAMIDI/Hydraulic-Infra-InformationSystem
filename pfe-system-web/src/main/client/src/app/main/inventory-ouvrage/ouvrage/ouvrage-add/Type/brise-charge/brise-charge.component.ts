@@ -245,7 +245,7 @@ export class BriseChargeComponent implements OnInit, OnDestroy {
 
         this.briseChargeService.saveOuvrage(this.ouvrageAdd)
             .then((response: any) => {
-                console.log(response.code)
+                this.ouvrageAdd.code = response.code;
                 this.onSubmitFiles(response.code);
             },
                 (error) => {

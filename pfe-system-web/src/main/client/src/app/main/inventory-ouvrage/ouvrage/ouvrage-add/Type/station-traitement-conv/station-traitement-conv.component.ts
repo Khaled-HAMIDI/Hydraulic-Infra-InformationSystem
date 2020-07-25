@@ -241,6 +241,7 @@ export class StationTraitementConvComponent implements OnInit, OnDestroy {
 
         this.stationTraitementConvSevice.saveOuvrage(this.ouvrageAdd)
             .then((response:any) => {
+                this.ouvrageAdd.code = response.code;
                 this.onSubmitFiles(response.code);
             },
                 (error) => {

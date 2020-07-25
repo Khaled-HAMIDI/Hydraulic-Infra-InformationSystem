@@ -116,8 +116,7 @@
 
                     <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky:true"></tr>
                     <ng-container *ayamsHasAnyPermissions="['site:show','site:*','*:*']">
-                        <tr mat-row *matRowDef="let site; columns: displayedColumns;" class="site" matRipple
-                            (click)="router.navigate(['/patrimony/site/'+site.code+'/show'])">
+                        <tr mat-row *matRowDef="let site; columns: displayedColumns;" class="site" matRipple>
                         </tr>
                     </ng-container>
                 </table>

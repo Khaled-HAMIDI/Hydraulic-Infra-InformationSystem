@@ -233,6 +233,7 @@ export class StationNonConvComponent  implements OnInit, OnDestroy {
 
         this.stationNonConvService.saveOuvrage(this.ouvrageAdd)
             .then((response:any) => {
+                this.ouvrageAdd.code = response.code;
                 this.onSubmitFiles(response.code);
                 },
                 (error) => {

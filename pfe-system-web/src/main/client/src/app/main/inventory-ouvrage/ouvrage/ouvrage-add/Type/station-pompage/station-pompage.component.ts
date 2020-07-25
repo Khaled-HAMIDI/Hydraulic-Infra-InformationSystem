@@ -245,6 +245,7 @@ export class StationPompageComponent implements OnInit, OnDestroy {
 
         this.stationPompageService.saveOuvrage(this.ouvrageAdd)
             .then((response:any) => {
+                this.ouvrageAdd.code = response.code;
                 this.onSubmitFiles(response.code)
                 },
                 (error) => {
