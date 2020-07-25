@@ -129,18 +129,14 @@ export class ReservoirComponent implements OnInit, OnDestroy {
     ngOnInit(): void {
         this.route.data.pipe(takeUntil(this._unsubscribeAll)).subscribe(
             (response) => {
-                response.data[0]++
-                let code = '0'.repeat(4 - response.data[0].toString().length) + response.data[0]
-                this.ouvrage.code = this.route.snapshot.paramMap.get('code') + 'RE' + code;
                 this.ouvrage.site = this.route.snapshot.paramMap.get('id');
                 this.ouvrage.center = this.route.snapshot.paramMap.get('code');
                 this.initFormReservoir();
-                this.communes = response.data[1];
-                this.states = response.data[2];
-                this.tankRoles = response.data[3];
-                this.tankTypes = response.data[4];
-                this.forms = response.data[5];
-
+                this.communes = response.data[0];
+                this.states = response.data[1];
+                this.tankRoles = response.data[2];
+                this.tankTypes = response.data[3];
+                this.forms = response.data[4];
             },
             (error) => {
                 console.log(error);
@@ -170,7 +166,6 @@ export class ReservoirComponent implements OnInit, OnDestroy {
 
     createReservoirForm(): FormGroup {
         let obj = {
-            code: [{ value: this.ouvrage.code, disabled: true }, Validators.required],
             name: [this.ouvrage.name, Validators.required],
             enabled: [this.ouvrage.enabled, Validators.required],
             form: [this.ouvrage.form, Validators.required],
@@ -216,7 +211,6 @@ export class ReservoirComponent implements OnInit, OnDestroy {
 
         this.ouvrageAdd = new Ouvrage();
 
-        this.ouvrageAdd.code = ouvrage.code;
         this.ouvrageAdd.name = ouvrage.name;
         this.ouvrageAdd.type = 'RE';
         this.ouvrageAdd.enabled = ouvrage.enabled;

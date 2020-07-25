@@ -33,6 +33,8 @@ public class OuvrageShowDto {
 
     private String state;
 
+    private String stateViewValue;
+
     private String process;
 
     private Integer nbCompartment;

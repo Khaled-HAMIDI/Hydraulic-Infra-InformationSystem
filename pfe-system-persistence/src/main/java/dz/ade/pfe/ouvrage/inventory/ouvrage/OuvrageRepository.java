@@ -23,7 +23,7 @@ public interface OuvrageRepository extends JpaRepository<Ouvrage, Long> {
     @Query(value = "UPDATE Ouvrage o SET o.declassed = true, o.declassedDate = CURRENT_TIMESTAMP where o.code = :code")
     void deleteOuvrage(String code);
 
-    @Query(value = "select count(*) from pfe.ouvrage o join pfe.organisational_structure s on o.structure_id=s.id where o.type like :type and s.code= :code", nativeQuery = true)
+    @Query(value = "select count(*) from pfe.ouvrage o join pfe.organisational_structure s on o.structure_id=s.id where o.type = :type and s.code= :code", nativeQuery = true)
     Integer getNext(String type, String code);
 
     @Query("SELECT distinct o FROM Ouvrage o " +
