@@ -14,7 +14,7 @@ import { takeUntil } from 'rxjs/operators';
 const COLUMN_NAMES: string[] = [
   'checkbox',
   'name',
-  'space',
+  //'space',
   'buttons'
 ];
 

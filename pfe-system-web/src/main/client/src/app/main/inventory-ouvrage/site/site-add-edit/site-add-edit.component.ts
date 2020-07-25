@@ -1,28 +1,16 @@
-import { Component, OnInit, OnDestroy, ViewChild, ElementRef, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Site } from './model/site.model';
-import { FormGroup, FormBuilder, Validators, ValidatorFn, AbstractControl } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { SiteAddEditService } from './site-add-edit.service';
 import { fuseAnimations } from '@fuse/animations';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FuseTranslationLoaderService } from '@fuse/services/translation-loader.service';
 import { locale as french } from './i18n/fr';
 import { locale as arabic } from './i18n/ar';
-import { Subject, Observable } from 'rxjs';
-import { takeUntil, startWith, map } from 'rxjs/operators';
-import { pullAllWith, sortBy } from 'lodash-es';
-import { MatDialog, DateAdapter, MAT_DATE_FORMATS } from '@angular/material';
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
+import { DateAdapter, MAT_DATE_FORMATS } from '@angular/material';
 import { AppDateAdapter, APP_DATE_FORMATS } from '@ayams/components/date-format/format-datepicker';
-import { isEqual } from 'date-fns';
-import { ENTER, COMMA } from '@angular/cdk/keycodes';
-import { Authority } from 'app/main/model/admin.model';
-import { MatChipInputEvent, MatAutocompleteSelectedEvent, MatTreeNestedDataSource } from '@angular/material';
-import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
-import { MatTableDataSource } from '@angular/material/table';
-import * as moment from 'moment';
-const COLUMN_NAMES: string[] = [
-    'type',
-    'ouvrage',
-];
 
 
 const REGX_CODE = "^-?[0-9][0-9,\.]+$";
@@ -39,7 +27,6 @@ const REGX_CODE = "^-?[0-9][0-9,\.]+$";
 })
 
 export class SiteAddEditComponent implements OnInit, OnDestroy {
-    public customPatterns = { 'A': { pattern: new RegExp('@"^-?[0-9][0-9,\.]+$"') } };
     private _unsubscribeAll: Subject<any>;
     siteForm;
     pageType;
@@ -75,48 +62,31 @@ export class SiteAddEditComponent implements OnInit, OnDestroy {
         );
     }
 
-
-    createSiteForm(type): FormGroup {
-        let obj;
-        obj = {
+    createSiteForm(): FormGroup { 
+        return this.formBuilder.group({
             id: [this.site.id],
             name: [this.site.name, Validators.required],
-            space: [this.site.space, [Validators.min(0),Validators.pattern(REGX_CODE)]],
-        };
-        return this.formBuilder.group(obj);
+            //space: [this.site.space, [Validators.min(0),Validators.pattern(REGX_CODE)]],
+        });
     }
-
 
     onSave(): void {
         const site = this.siteForm.getRawValue();
-        site.start = moment(site.start).format('YYYY-MM-DD')
-        site.stop = moment(site.stop).format('YYYY-MM-DD')
         this.siteAddEditService.saveSite(site)
             .then(() => {
                     this.router.navigate(['/patrimony/sites']);
             });
     }
 
-
     initForm(site, type) {
         if (type == 'edit') {
             this.site = new Site(site);
-            console.log(this.site);
         } else {
             this.site = new Site();
         }
         this.pageType = type;
-        this.siteForm = this.createSiteForm(type);
+        this.siteForm = this.createSiteForm();
     }
-
-
-    // Chips
-    visible = true;
-    selectable = true;
-    removable = true;
-    addOnBlur = false;
-    separatorKeysCodes: number[] = [ENTER, COMMA];
-    filteredPermissions: Observable<Authority[]>;
 
 
     ngOnDestroy(): void {
@@ -125,7 +95,3 @@ export class SiteAddEditComponent implements OnInit, OnDestroy {
     }
 
 }
-
-
-
-
