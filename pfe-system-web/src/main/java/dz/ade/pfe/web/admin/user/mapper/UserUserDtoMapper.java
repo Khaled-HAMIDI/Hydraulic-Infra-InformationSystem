@@ -42,7 +42,8 @@ public interface UserUserDtoMapper {
     @Mappings({
             @Mapping(source = "username", target = "id"),
             @Mapping(source = "username", target = "username"),
-            @Mapping(source = "organisationalStructure.designation", target = "structure")
+            @Mapping(source = "organisationalStructure.designation", target = "structure"),
+            @Mapping(target = "roles", expression = "java(rolesToString(user.getRoles()))")
     })
     @Named("toUserShowDto")
     UserListDto userToUserShowDto(User user);
@@ -58,4 +59,20 @@ public interface UserUserDtoMapper {
 
     @Mapping(target = "roles", ignore = true)
     User userAddDtoToUser(UserAddDto userAddDto);
+
+    @Mappings({
+            @Mapping(source = "username", target = "id"),
+            @Mapping(source = "username", target = "username"),
+            @Mapping(source = "organisationalStructure.designation", target = "structure"),
+            @Mapping(target = "roles", expression = "java(rolesToRoleString(user.getRoles()))"),
+    })
+    UserListDto userToUserShowDtoForInventory(User user);
+
+    List<UserListDto> userToUserShowDtoForInventory(List<User> user);
+
+    default List<String> rolesToRoleString(Set<Role> roles){
+        return roles.stream().map(
+                Role::getRole
+        ).collect(Collectors.toList());
+    }
 }

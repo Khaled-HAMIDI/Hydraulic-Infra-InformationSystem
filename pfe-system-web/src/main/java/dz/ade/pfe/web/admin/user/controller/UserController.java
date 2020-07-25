@@ -101,6 +101,19 @@ public class UserController extends BaseController {
         return userUserDtoMapper.usersToUsersShowDto(users);
     }
 
+    @GetMapping(value = "/users/inventory")
+    @ApiOperation(value = "View a list of available users")
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "Successfully retrieved a list of users"),
+            @ApiResponse(code = 401, message = "You are not authorized to view the resource"),
+            @ApiResponse(code = 403, message = "Accessing the resource you were trying to reach is forbidden"),
+            @ApiResponse(code = 404, message = "The resource you were trying to reach is not found")
+    })
+    public List<UserListDto> loadAllForInventory() {
+        List<User> users = userComponent.findAllNonDeleted();
+        return userUserDtoMapper.userToUserShowDtoForInventory(users);
+    }
+
     @GetMapping(value = "/users/{userName}")
     @PreAuthorize("hasAuthority('*:*')")
     @ApiOperation(value = "Search for a user with a UserName")

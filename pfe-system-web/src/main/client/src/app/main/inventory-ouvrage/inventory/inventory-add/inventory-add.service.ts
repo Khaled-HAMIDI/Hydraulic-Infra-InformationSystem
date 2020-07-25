@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 import {Ouvrage} from "../../chain/chain-add-edit/model/chain.model";
 
 const INVENTORY_API = API + '/inventory';
-const USERS_API = API + '/users';
+const USERS_API = API + '/users/inventory';
 const OUVRAGES_API = API + '/ouvrages' ;
 
 @Injectable({
