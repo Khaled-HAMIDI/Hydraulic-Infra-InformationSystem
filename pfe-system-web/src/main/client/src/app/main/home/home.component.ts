@@ -1,18 +1,15 @@
-import { Component, OnInit } from '@angular/core';
-
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FuseTranslationLoaderService } from '@fuse/services/translation-loader.service';
-
 import { locale as french } from './i18n/fr';
 import { locale as arabic } from './i18n/ar';
-import { Router, ActivatedRoute } from '@angular/router';
-import { AuthenticationService } from '../authentication/authentication.service';
-import includes from 'lodash/includes';
+import { ActivatedRoute } from '@angular/router';
 import { fuseAnimations } from '@fuse/animations';
 import { ViewEncapsulation } from '@angular/core';
 import { HomeService } from './home.service';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import sortBy from 'lodash/sortBy';
+import { FuseSidebarService } from '@fuse/components/sidebar/sidebar.service';
 
 @Component({
     selector: 'fuse-home',
@@ -21,7 +18,7 @@ import sortBy from 'lodash/sortBy';
     encapsulation: ViewEncapsulation.None,
     animations: fuseAnimations
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent implements OnInit, OnDestroy {
     private _unsubscribeAll: Subject<any>;
     widgets: any;
     widget1SelectedYear = '2016';
@@ -33,10 +30,10 @@ export class HomeComponent implements OnInit {
     nbTotalOuvrages;
     constructor(private fuseTranslationLoader: FuseTranslationLoaderService,
         private _analyticsDashboardService: HomeService,
-        private router: Router,
         private route: ActivatedRoute,
-        private authenticationService: AuthenticationService) {
+        private fuseSidebarService: FuseSidebarService) {
 
+        this.fuseSidebarService.getSidebar('navbar').fold();
         this.fuseTranslationLoader.loadTranslations(french, arabic);
         this._unsubscribeAll = new Subject();
         this._registerCustomChartJSPlugin();
@@ -49,7 +46,6 @@ export class HomeComponent implements OnInit {
                 this.types = response.data[1];
                 this.nbOuvrageExploitation = response.data[0].splice(response.data[0].length-1,1)
                 this.nbTotalOuvrages = response.data[0].splice(response.data[0].length-1,1)
-                console.log(this.nbOuvrageExploitation)
                 this.nbReleve = response.data[2].splice(response.data[2].length-1,1)
                 this.types = sortBy(this.types,["name"])
                 this.nbOuvrages = sortBy(response.data[0],['0'])
@@ -89,7 +85,8 @@ export class HomeComponent implements OnInit {
         let date : Date
         this.widgets.widget2.datasets[0].data = [];
         this.widgets.widget2.labels = [];
-        this.widgets.widget2.conversion.value = ((this.nbReleve[0]*100) /(this.nbOuvrageExploitation[0]*data.length)).toFixed(1);
+        let nbExploi = this.nbOuvrageExploitation[0]*data.length != 0 ? this.nbOuvrageExploitation[0]*data.length : 1 ;
+        this.widgets.widget2.conversion.value = ((this.nbReleve[0]*100) / nbExploi).toFixed(1);
         data.forEach((row)=>{
             this.widgets.widget2.datasets[0].data.push(row[1])
             date = new Date(row[0])
@@ -150,6 +147,10 @@ export class HomeComponent implements OnInit {
                 });
             }
         });
+    }
+
+    ngOnDestroy(): void {
+        this.fuseSidebarService.getSidebar('navbar').unfold();
     }
 
 }
