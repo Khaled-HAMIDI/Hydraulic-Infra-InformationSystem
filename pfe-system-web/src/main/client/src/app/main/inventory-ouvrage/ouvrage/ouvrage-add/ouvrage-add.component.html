@@ -54,7 +54,7 @@
                                         <mat-label>{{'ADD.FIELD.type' | translate}}</mat-label>
                                         <mat-icon matSuffix class="secondary-text">domain</mat-icon>
                                         <mat-select formControlName="type">
-                                            <mat-option *ngFor="let type of ouvragesTypes" [value]="type.value">
+                                            <mat-option *ngFor="let type of ouvragesTypes" [value]="type.name">
                                                 {{type.value}}
                                             </mat-option>
                                         </mat-select>

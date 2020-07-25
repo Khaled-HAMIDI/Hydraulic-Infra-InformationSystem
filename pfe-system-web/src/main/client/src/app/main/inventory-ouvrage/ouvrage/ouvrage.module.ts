@@ -152,37 +152,37 @@ const routes: Routes = [
         resolve: { data: OuvrageAddService }
     },
     {
-        path: 'add/Station de Traitement Conventionelle/:id/:code',
+        path: 'add/SC/:id/:code',
         component: StationTraitementConvComponent,
         data: { action: 'add' },
         resolve: { data: StationTraitementConvSevice }
     },
     {
-        path: 'add/Reservoir/:id/:code',
+        path: 'add/RE/:id/:code',
         component: ReservoirComponent,
         data: { action: 'add' } ,
         resolve: { data: ReservoirService }
     },
     {
-        path: 'add/Forage, Puis, Source/:id/:code',
+        path: 'add/FO/:id/:code',
         component: ForageComponent,
         data: { action: 'add' },
         resolve: { data: ForageService }
     },
     {
-        path: 'add/Station de Pompage/:id/:code',
+        path: 'add/SP/:id/:code',
         component: StationPompageComponent,
         data: { action: 'add' },
         resolve: { data: StationPompageService }
     },
     {
-        path: 'add/Brise Charge/:id/:code',
+        path: 'add/BC/:id/:code',
         component: BriseChargeComponent,
         data: { action: 'add' },
         resolve: { data: BriseChargeService }
     },
     {
-        path: 'add/Station de Traitement Non Conventionelle/:id/:code',
+        path: 'add/SN/:id/:code',
         component: StationNonConvComponent,
         data: { action: 'add' },
         resolve: { data: StationNonConvService }

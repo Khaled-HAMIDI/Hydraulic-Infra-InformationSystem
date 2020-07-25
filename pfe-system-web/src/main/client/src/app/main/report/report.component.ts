@@ -16,40 +16,26 @@ import { ActivatedRoute, Router } from '@angular/router';
     animations: fuseAnimations
 })
 export class ReportComponent implements OnInit, OnDestroy {
-    modules: any[] = [{ id: 1, value: 'USER', viewValue: 'Utilisateur', color: "#8bc34a" },
-    { id: 2, value: 'TOURS', viewValue: 'Tournées', color: "#cddc39" },
+    value = {}
+    modules: any[] = [
     { id: 3, value: 'OUVRAGES', viewValue: 'Ouvrages', color: "#cddc39" }];
     reports: any[] = [
-        {
-            title: 'Planning globale des tournées', description: 'Edition globale triée par code de la tournée', moduleId: 2,
-            api: "print/scheduledTour/globalState/{agencyCode}/{year}/{periodicity}/{period}",
-            formInputs: [{ name: 'agencyCode', label: 'Code Agence', type: 'text' },
-            { name: 'year', label: 'Année', type: 'number' },
-            { name: 'periodicity', label: 'Periodicité', type: 'select', options: [{ value: 'MONTHLY', viewValue: 'Mensuelle' }, { value: 'QUARTERLY', viewValue: 'Trimestrielle' }] },
-            { name: 'period', label: 'Periode', type: 'number' }
-            ]
-        },
-
-        {
-            title: "Fiche utilisateur", description: "Détails de l'utilisateur", moduleId: 1,
-            api: "print/ficheUser/{code}",
-            formInputs: [{ name: 'code', label: 'Code de l\'utilisateur', type: 'text' }]
-        },
         {
             title: "Recap Ouvrage", description: "Recap sur les ouvrages", moduleId: 3,
             api: "print/OuvrageRecap",
             formInputs: [
-                { name: 'wilaya', label: 'Wilaya', type: 'select', options: [{ value: 'null', viewValue: 'none' }, { value: '1', viewValue: 'Adrar' }] },
-                { name: 'type', label: 'Type', type: 'select', options: [{ value: 'null', viewValue: 'none' }, { value: 'ENTIRI', viewValue: 'Entiri' },{ value: 'SEMIENTIRI', viewValue: 'SemiEntiri' },{ value: 'SURLEVE', viewValue: 'Surleve' },{ value: 'MONOBLOC', viewValue: 'Monoblocs' },{ value: 'ENDUR', viewValue: 'Endur'}] },
-                { name: 'capacity_min', label: 'Capacité min', type: 'number' },
-                { name: 'capacity_max', label: 'Capacité max', type: 'number' },
-                { name: 'dater', label: 'Année de réalisation', type: 'number' },
-                { name: 'dates', label: 'Année mise en service', type: 'number' },
-                { name: 'role', label: 'Role', type: 'select', options: [{ value: 'null', viewValue: 'none' }, { value: 'TAMPON', viewValue: 'Tampon' },{ value: 'DISTRIBUTION', viewValue: 'Distribution' },{ value: 'BACHAHAUT', viewValue: 'Bacheahaut' },{ value: 'TES', viewValue: 'Traitement des eaux de surface' },{ value: 'DM', viewValue: 'Déminéralisation'},{ value: 'DF', viewValue: 'Deférrisation'}] },
-                { name: 'state', label: 'Etat', type: 'select', options: [{ value: 'null', viewValue: 'none' }, { value: 'GOOD', viewValue: 'Bon' },{ value: 'AVERAGE', viewValue: 'Moyen'},{ value: 'BAD', viewValue: 'Mauvais'}] },
-                { name: 'enabled', label: 'Fonctionnement', type: 'select', options: [{ value: 'null', viewValue: 'none' }, { value: 'ON', viewValue: 'Marche' },{ value: 'OFF', viewValue: 'Arret'}] },
-                { name: 'cost_min', label: 'Cout min', type: 'number' },
-                { name: 'cost_max', label: 'Cout max', type: 'number' },
+                { name: 'wilaya', label: 'Wilaya', type: 'select', options: [],required : false },
+                { name: 'ouvrage', label: 'Ouvrage', type: 'select', options: [],required : false },
+                { name: 'type', label: 'Type', type: 'select', options: [{ value: 'null', viewValue: 'none' }, { value: 'ENTIRI', viewValue: 'Entiri' },{ value: 'SEMIENTIRI', viewValue: 'SemiEntiri' },{ value: 'SURLEVE', viewValue: 'Surleve' },{ value: 'MONOBLOC', viewValue: 'Monoblocs' },{ value: 'ENDUR', viewValue: 'Endur'}],required : false },
+                { name: 'capacity_min', label: 'Capacité min', type: 'number',required : false },
+                { name: 'capacity_max', label: 'Capacité max', type: 'number',required : false },
+                { name: 'dater', label: 'Année de réalisation', type: 'number',required : false },
+                { name: 'dates', label: 'Année mise en service', type: 'number',required : false },
+                { name: 'role', label: 'Role', type: 'select', options: [{ value: 'null', viewValue: 'none' }, { value: 'TAMPON', viewValue: 'Tampon' },{ value: 'DISTRIBUTION', viewValue: 'Distribution' },{ value: 'BACHAHAUT', viewValue: 'Bacheahaut' },{ value: 'TES', viewValue: 'Traitement des eaux de surface' },{ value: 'DM', viewValue: 'Déminéralisation'},{ value: 'DF', viewValue: 'Deférrisation'}],required : false },
+                { name: 'state', label: 'Etat', type: 'select', options: [{ value: 'null', viewValue: 'none' }, { value: 'GOOD', viewValue: 'Bon' },{ value: 'AVERAGE', viewValue: 'Moyen'},{ value: 'BAD', viewValue: 'Mauvais'}],required : false },
+                { name: 'enabled', label: 'Fonctionnement', type: 'select', options: [{ value: 'null', viewValue: 'none' }, { value: 'ON', viewValue: 'Marche' },{ value: 'OFF', viewValue: 'Arret'}],required : false},
+                { name: 'cost_min', label: 'Cout min', type: 'number',required : false },
+                { name: 'cost_max', label: 'Cout max', type: 'number',required : false },
             ]
         }
     ];
@@ -80,7 +66,20 @@ export class ReportComponent implements OnInit, OnDestroy {
         this.route.data.pipe(takeUntil(this._unsubscribeAll)).subscribe(
             (response) => {
                 this.filteredReports = this.reportsFilteredByModule = this.reports;
-                console.log(response.data[0]);
+                console.log(response.data[1]);
+                response.data[0].forEach((type)=>{
+                    this.value['value'] = type.name;
+                    this.value['viewValue'] = type.value;
+                    this.reports[0].formInputs[1].options.push(this.value);
+                    this.value = {};
+                })
+                response.data[1].forEach((type)=>{
+                    this.value['value'] = type.id;
+                    this.value['viewValue'] = type.designation;
+                    this.reports[0].formInputs[0].options.push(this.value);
+                    this.value = {};
+                })
+                
             },
             (error) => {
                 console.log(error);
