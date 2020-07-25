@@ -101,11 +101,11 @@
                                                 </div>
                                                 <div fxLayout="row wrap">
                                                     <div *ngFor="let ouvrage of ouvrages.ouvrages;let i=index"
-                                                        fxFlex="100" fxFlex.gt-xs="50" fxFlex.gt-sm="25">
+                                                        fxFlex="100" fxFlex.gt-xs="50" fxFlex.gt-sm="33">
                                                         <mat-checkbox (change)="selectOuvrage(ouvrage,j)"
                                                             [(ngModel)]="ouvrages.ouvrages[i].checked"
                                                             [ngModelOptions]="{standalone: true}">
-                                                            <p class="text-truncate">{{ouvrage.name}} - {{ouvrage.code}}
+                                                            <p class="text-truncate">{{ouvrage.code}} - {{ouvrage.name}}
                                                             </p>
                                                         </mat-checkbox>
                                                     </div>
