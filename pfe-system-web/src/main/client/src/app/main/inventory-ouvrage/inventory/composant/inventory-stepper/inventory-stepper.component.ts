@@ -73,24 +73,25 @@ export class InventoryStepperComponent implements OnInit, OnDestroy {
                 if (response.data[1] && (response.data[0].length != 0)){
                     if (response.data[0][0].inventoryCode == response.data[1].code) this.completed =false;
                 }
+                console.log(this.route.snapshot.params['type']);
                 switch (this.route.snapshot.params['type']) {
 
-                    case "StationTraitementConventionelle" :
+                    case "SC" :
                         this.composants = this.steppersService.stationTraitementConventionelleComposants;
                         break;
-                    case "StationTraitementNonConventionelle":
+                    case "SN":
                         this.composants = this.steppersService.stationTraitementNonConventionelleComposants;
                         break;
-                    case "Reservoir":
+                    case "RE":
                         this.composants = this.steppersService.reservoirComposants;
                         break;
-                    case "Forage":
+                    case "FO":
                         this.composants = this.steppersService.forageComposants;
                         break;
-                    case "StationPompage":
+                    case "SP":
                         this.composants = this.steppersService.stationPompageComposants;
                         break;
-                    case "BriseCharge":
+                    case "BC":
                         this.composants = this.steppersService.briseChargeComposants;
                         break;
                 }

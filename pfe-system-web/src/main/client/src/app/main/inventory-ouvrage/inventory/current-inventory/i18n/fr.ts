@@ -5,7 +5,7 @@ export const locale = {
             'HEADER': {
                 'title': 'Inventaire courant',
                 'search':'Recherche',
-                'validate': 'Valider l\'inventaire',
+                'synthese': 'Synthese',
             },
             'BUTTON': {
                 'add': 'Ajouter un utilisateur'

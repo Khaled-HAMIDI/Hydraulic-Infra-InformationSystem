@@ -41,6 +41,8 @@ import {SecurityComponent} from "../ouvrage/composant/composant-add-edit/securit
 import {InventoryStepperService} from "./composant/inventory-stepper/inventory-stepper.service";
 import { CompletedInventoryComponent } from './completed-inventory/completed-inventory.component';
 import {CompletedInventoryService} from "./completed-inventory/completed-inventory.service";
+import { SyntheseComponent } from './synthese/synthese.component';
+import {SyntheseService} from "./synthese/synthese.service";
 
 
 export const options: Partial<IConfig> | (() => Partial<IConfig>) = null;
@@ -59,6 +61,13 @@ const routes: Routes = [
         component: CurrentInventoryComponent,
         resolve: {
             data: CurrentInventoryService
+        }
+    },
+    {
+        path: 'current/synthese/:codeInventory',
+        component: SyntheseComponent,
+        resolve: {
+            data: SyntheseService
         }
     },
     {
@@ -85,7 +94,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-    declarations: [InventoryAddComponent, CurrentInventoryComponent, CompletedInventoriesComponent, InventoryStepperComponent, InventoryComposantComponent, LoadComponenteDirective, CompletedInventoryComponent],
+    declarations: [InventoryAddComponent, CurrentInventoryComponent, CompletedInventoriesComponent, InventoryStepperComponent, InventoryComposantComponent, LoadComponenteDirective, CompletedInventoryComponent, SyntheseComponent],
     imports: [
         CommonModule,
         RouterModule.forChild(routes),

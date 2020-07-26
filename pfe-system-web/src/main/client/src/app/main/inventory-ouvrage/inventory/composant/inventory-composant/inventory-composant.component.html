@@ -43,13 +43,14 @@
             </div>
 
             <div *ngIf="!observation">
-                <button mat-raised-button class="accent add-button" (click)="onSave()">
+                <button mat-raised-button class="accent add-button" [disabled]="componentInventoryForm.invalid" (click)="onSave()">
                     <span>{{'BUTTON.add' | translate}}</span>
                 </button>
             </div>
 
+
             <div *ngIf="observation">
-                <button mat-raised-button class="accent add-button"  [disabled]="componentInventoryForm.invalid" (click)="onSave()">
+                <button mat-raised-button class="accent add-button" (click)="onSave()">
                     <span>{{'BUTTON.add' | translate}}</span>
                 </button>
             </div>

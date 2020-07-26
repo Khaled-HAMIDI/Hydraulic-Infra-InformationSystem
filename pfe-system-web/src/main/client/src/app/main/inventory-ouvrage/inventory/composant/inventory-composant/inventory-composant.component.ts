@@ -95,6 +95,8 @@ export class InventoryComposantComponent implements OnInit{
 
     toggleObs(){
         this.exist = true;
+        this.component = new componentInventory(this.checkTypeComponents(this.components));
+        this.componentInventoryForm = this.createForm(this.component);
         this.observation = true;
     }
 
@@ -103,9 +105,16 @@ export class InventoryComposantComponent implements OnInit{
         this.componentAdd = new  componentInventory();
 
         this.componentAdd.componentType = this.typeComponent;
-        this.componentAdd.gap = formComponent.ecart;
+        if (this.observation) {
+            this.componentAdd.gap = 0;
+            this.componentAdd.state = 'NONE'
+        }
+        else{
+            this.componentAdd.gap = formComponent.ecart;
+            this.componentAdd.state = formComponent.state;
+        }
+
         this.componentAdd.observation = formComponent.observation;
-        this.componentAdd.state = formComponent.state;
         this.componentAdd.done = true;
 
         this.inventoryStepperService.saveInventoryComponent(this.componentAdd,this.route.snapshot.params['codeInventory'],this.route.snapshot.params['codeOuvrage'])

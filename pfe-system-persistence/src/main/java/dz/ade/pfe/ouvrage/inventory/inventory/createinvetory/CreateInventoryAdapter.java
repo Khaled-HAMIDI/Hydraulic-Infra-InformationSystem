@@ -7,12 +7,15 @@ import dz.ade.pfe.domain.ouvrage.Ouvrage;
 import dz.ade.pfe.ouvrage.inventory.inventory.InventoryComponentRepository;
 import dz.ade.pfe.ouvrage.inventory.inventory.InventoryOuvrageRepository;
 import dz.ade.pfe.ouvrage.inventory.inventory.InventoryRepository;
+import dz.ade.pfe.ouvrage.inventory.ouvrage.ComponentRepository;
 import dz.ade.pfe.ouvrage.inventory.ouvrage.OuvrageRepository;
 import dz.ade.pfe.port.out.inventory.createinventory.SaveInventory;
 import dz.ade.pfe.port.out.inventory.saveinventorycomponent.SaveInventoryComponent;
 import dz.ade.pfe.port.out.inventory.saveinventoryouvrage.SaveInventoryOuvrage;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
+
+import javax.validation.constraints.Null;
 
 @Component
 @RequiredArgsConstructor
@@ -22,6 +25,7 @@ public class CreateInventoryAdapter implements SaveInventory, SaveInventoryOuvra
     private final InventoryOuvrageRepository inventoryOuvrageRepository;
     private final InventoryComponentRepository inventoryComponentRepository;
     private final OuvrageRepository ouvrageRepository;
+    private final ComponentRepository componentRepository;
 
     @Override
     public Inventory saveInventory(Inventory inventory) {
@@ -39,11 +43,21 @@ public class CreateInventoryAdapter implements SaveInventory, SaveInventoryOuvra
 
         Ouvrage ouvrage =ouvrageRepository.findByCode(codeOuvrage);
         Inventory inventory =inventoryRepository.findByCode(codeInventoty);
+
         String type = inventoryComponent.getComponentType();
 
         if (inventoryComponentRepository.existsByInventoryAndOuvrageAndComponentType(inventory,ouvrage,type)){
             InventoryComponent old = inventoryComponentRepository.findByInventoryAndAndOuvrageAndComponentType(inventory,ouvrage,type);
+            dz.ade.pfe.domain.ouvrage.Component component = old.getComponent();
             inventoryComponent.setNumber(old.getNumber());
+            inventoryComponent.setComponent(old.getComponent());
+
+            //La première fois que le composant est inventorié
+            if(component.getPhysicalNumber() == null) inventoryComponent.setGap(0.0);
+            else  inventoryComponent.setGap(component.getPhysicalNumber());
+
+            component.setPhysicalNumber(inventoryComponent.getNumber());
+            componentRepository.save(component);
             inventoryComponentRepository.delete(old);
             inventoryComponent.setDone(true);
         }

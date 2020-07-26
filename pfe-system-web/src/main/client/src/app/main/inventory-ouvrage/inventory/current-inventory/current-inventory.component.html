@@ -34,8 +34,8 @@
                     </mat-select>
                 </mat-form-field>
                 <ng-container *ayamsHasAnyPermissions="['inventory:validate','*:*']">
-                    <button mat-raised-button (click)="InventoryValidate()" class="mat-white-bg mt-24 mt-md-0">
-                        <span>{{'LIST.HEADER.validate' | translate}}</span>
+                    <button mat-raised-button (click)="router.navigate(['/patrimony/inventory/current/synthese/' +inventory.code])"  class="mat-white-bg mt-24 mt-md-0">
+                        <span>{{'LIST.HEADER.synthese' | translate}}</span>
                     </button>
                 </ng-container>
                

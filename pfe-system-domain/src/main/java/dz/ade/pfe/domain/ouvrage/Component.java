@@ -28,14 +28,15 @@ public class Component extends Auditing{
     @SequenceGenerator(name = "component_gen", sequenceName = "component_seq", schema = "pfe", allocationSize = 1)
     protected Long id;
 
-
-
     @Column(name = "component_type")
     @Enumerated(EnumType.STRING)
     private ComponentType componentType;
 
     @Column(name = "cost")
     private Double cost;
+
+    @Column(name = "physical_number")
+    private Double physicalNumber;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "ouvrage_id")

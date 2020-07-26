@@ -26,7 +26,7 @@ public class InventoryComponentDto {
 
     private Double number;
 
-    private String gap;
+    private Double gap;
 
     private String observation;
 

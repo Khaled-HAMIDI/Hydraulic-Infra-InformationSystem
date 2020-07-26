@@ -100,25 +100,23 @@ public class CreateInventoryService implements CreateInventoryCommand {
                     components.forEach((component) -> {
                             switch (component.getComponentType()){
 
-                                case EquipementStationTraitement:
+                             case EquipementStationTraitement:
                                     TraitementStationEquipement traitementStationEquipement = (TraitementStationEquipement) component;
-                                    saveInventoryComponent.setInventoryComponent(new InventoryComponent(null,traitementStationEquipement.getTypeEquipement(),inventory1,ouvrage,State.GOOD,((TraitementStationEquipement) component).getNumber()," "," ",false));
+                                    saveInventoryComponent.setInventoryComponent(new InventoryComponent(null,traitementStationEquipement.getTypeEquipement(),inventory1,ouvrage,traitementStationEquipement,State.GOOD,1.0,0.0," ",false));
                                     break;
 
                             case ComposantHydroMecanique:
                                 HedromecaEquipment hedromecaEquipment = (HedromecaEquipment) component;
-                                saveInventoryComponent.setInventoryComponent(new InventoryComponent(null,hedromecaEquipment.getEquipementType(),inventory1,ouvrage,State.GOOD,((HedromecaEquipment) component).getNumber()," "," ",false));
+                                saveInventoryComponent.setInventoryComponent(new InventoryComponent(null,hedromecaEquipment.getEquipementType(),inventory1,ouvrage,hedromecaEquipment,State.GOOD,1.0,0.0," ",false));
                                 break;
 
                             case PosteChimique:
                                 ChemicalPosts chemicalPost = (ChemicalPosts) component;
-                                saveInventoryComponent.setInventoryComponent(new InventoryComponent(null,chemicalPost.getPostType(),inventory1,ouvrage,State.GOOD,1.0," "," ",false));
+                                saveInventoryComponent.setInventoryComponent(new InventoryComponent(null,chemicalPost.getPostType(),inventory1,ouvrage,chemicalPost,State.GOOD,1.0,0.0," ",false));
                                 break;
-                            case ArmoireElectrique:
-                                saveInventoryComponent.setInventoryComponent(new InventoryComponent(null,component.getComponentType().toString(),inventory1,ouvrage,State.GOOD,((ElectricalCabinet) component).getNumber()," "," ",false));
 
                             default:
-                                saveInventoryComponent.setInventoryComponent(new InventoryComponent(null,component.getComponentType().toString(),inventory1,ouvrage,State.GOOD,1.0," "," ",false));
+                                saveInventoryComponent.setInventoryComponent(new InventoryComponent(null,component.getComponentType().toString(),inventory1,ouvrage,component,State.GOOD,1.0,0.0," ",false));
                         }
                     });
 

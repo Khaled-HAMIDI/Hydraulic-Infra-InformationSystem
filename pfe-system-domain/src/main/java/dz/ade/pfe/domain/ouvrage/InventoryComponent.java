@@ -30,6 +30,10 @@ public class InventoryComponent extends Auditing{
     @JoinColumn(name = "ouvrage_id")
     private Ouvrage ouvrage;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "component_id")
+    private Component component;
+
     @Column(name = "state")
     @Enumerated(EnumType.STRING)
     private State state;
@@ -38,9 +42,9 @@ public class InventoryComponent extends Auditing{
     @Column(name = "number")
     private Double number;
 
-    /* Difference */
+    /* physic quantity */
     @Column(name = "gap")
-    private String gap;
+    private Double gap;
 
 
     @Column(name = "observation")

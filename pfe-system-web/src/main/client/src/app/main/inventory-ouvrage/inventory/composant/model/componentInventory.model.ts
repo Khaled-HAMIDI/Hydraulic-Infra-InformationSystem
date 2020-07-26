@@ -1,7 +1,7 @@
 export class componentInventory {
     componentType: string;
     state : string;
-    gap:string;
+    gap:number;
     observation: string;
     done: Boolean;
 
